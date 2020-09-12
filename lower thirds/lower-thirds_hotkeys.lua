@@ -7,9 +7,7 @@
 
 
 local obs = obslua
-local source, increment, interval, reset, debug
-local sceneItem
-local direction = 1
+local debug
 local hk = {}
 local hotkeyMasterSwitch = 0;
 local hotkeySwitch1 = 0;
@@ -31,7 +29,7 @@ local hotkeys = {
 
 -- add any custom actions here
 local function onHotKey(action)
-	obs.timer_remove(rotate)
+	--obs.timer_remove(rotate)
 	if debug then obs.script_log(obs.LOG_INFO, string.format("Hotkey : %s", action)) end
 
 	if action == "SWITCH_main" then

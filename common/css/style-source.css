@@ -1,5 +1,5 @@
 /*********************************
-**	Animated Lower Thirds v1.1	**
+**	Animated Lower Thirds v1.2	**
 **	Author: NoeAL				**
 *********************************/
 
@@ -615,11 +615,14 @@ body {
 	height: 100%;
 	margin: -1em;
 	padding: 1em;
+	/*margin: -1em -5em;
+	padding: 1em 400%;	Full with background */
 	transform: translateY(1em); /*OBS background position fix ¯\_(ツ)_/¯*/
 }
 #lower-third-1.style-1 > .graph-2 {
 	background: var(--alt-1-style-color-2);
-	opacity: var(--alt-1-background);		
+	opacity: var(--alt-1-background);
+	/*opacity: 0.5;*/		
 }
 #lower-third-2.style-1 > .graph-2 {
 	background: var(--alt-2-style-color-2);
@@ -741,3 +744,18 @@ body {
 .style-2 > .graph-2 {
 	display: none;
 }
+
+
+
+/*********************************
+**			PREVIEW				**
+*********************************/
+
+.preview {
+	width: 1920px;
+	height: 350px;
+	transform: scale(0.1875);
+	left: -216.6%;
+	top: -5px;
+}
+

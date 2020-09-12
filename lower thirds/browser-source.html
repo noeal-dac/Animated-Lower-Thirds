@@ -1,16 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  	<!--Animated Lower Thirds v1.2-->
     <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>Lower thirds Source</title>
 	<link rel="stylesheet" href="../common/css/style-source.css">
 	<script src="../common/js/jquery.js"></script>
-	<script>
-		var bc = new BroadcastChannel('obs-lower-thirds-channel');
 
-		var bcr = new BroadcastChannel('obs-lower-thirds-channe2'); //Send to Control Panel
+ </head>
+  <body class="browser-source lower-thirds">
+		<!--Lower third 1-->
+		<div id="lower-third-1" class="alt left style-1 hide-anim">
+			<div id="alt-1-logo" class="logo no-logo"></div>
+			<div class="graph-1"></div>
+			<div class="text-content">
+				<div class="text-mask">
+					<div id="alt-1-name"></div>
+				</div>
+				<div class="text-mask">
+					<div id="alt-1-info"></div>
+				</div>
+			</div>
+			<div class="graph-2"></div>
+		</div>
+
+		<!--Lower third 2-->
+		<div id="lower-third-2" class="alt left style-1 hide-anim">
+			<div id="alt-2-logo" class="logo no-logo"></div>
+			<div class="graph-1"></div>
+			<div class="text-content">
+				<div class="text-mask">
+					<div id="alt-2-name"></div>
+				</div>
+				<div class="text-mask">
+					<div id="alt-2-info"></div>
+				</div>
+			</div>
+			<div class="graph-2"></div>
+		</div>
+
+		<!--Lower third 3-->
+		<div id="lower-third-3" class="alt left style-1 hide-anim">
+			<div id="alt-3-logo" class="logo no-logo"></div>
+			<div class="graph-1"></div>
+			<div class="text-content">
+				<div class="text-mask">
+					<div id="alt-3-name"></div>
+				</div>
+				<div class="text-mask">
+					<div id="alt-3-info"></div>
+				</div>
+			</div>
+			<div class="graph-2"></div>
+		</div>
+
+		<!--Lower third 4-->
+		<div id="lower-third-4" class="alt left style-1 hide-anim">
+			<div id="alt-4-logo" class="logo no-logo"></div>
+			<div class="graph-1"></div>
+			<div class="text-content">
+				<div class="text-mask">
+					<div id="alt-4-name"></div>
+				</div>
+				<div class="text-mask">
+					<div id="alt-4-info"></div>
+				</div>
+			</div>
+			<div class="graph-2"></div>
+		</div>
+
+	<script>
+
+		//Check preview
+		var getUrlParameter = function getUrlParameter(sParam) {
+		    var sPageURL = window.location.search.substring(1),
+		        sURLVariables = sPageURL.split('&'),
+		        sParameterName,
+		        i;
+
+		    for (i = 0; i < sURLVariables.length; i++) {
+		        sParameterName = sURLVariables[i].split('=');
+
+		        if (sParameterName[0] === sParam) {
+		            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+		        }
+		    }
+		};		
+
+		var mode = getUrlParameter('mode');
+
+		//Check mode and change de channel to receive switches orders or preview orders
+		if (mode == "preview") {
+			document.body.classList.add('preview');
+			var receiveChannel = 'obs-lower-thirds-preview'; //Preview channel
+		} else {
+			var receiveChannel = 'obs-lower-thirds-channel';
+		}
+
+		var bcp = new BroadcastChannel(receiveChannel); //Receives from the source 
+		var bcr = new BroadcastChannel('obs-lower-thirds-channel2'); //Send to Control Panel
 
 		var alt_1_logo_image = "../logos/logo_1.png";
 		var alt_2_logo_image = "../logos/logo_2.png";
@@ -91,6 +181,7 @@
 		var alt_4_align_old = alt_4_align;
 		var alt_4_style;
 		var alt_4_style_old = alt_4_style;
+
 
 		function animationIn(animation) {
 			elementAnim = document.getElementById(animation);			
@@ -307,10 +398,14 @@
 
 		///////////////////////////
 
-		bc.onmessage = function (ev) {
+		bcp.onmessage = function (ev) {
 			received_data=ev.data.split("|");
 			animationTime = received_data[0];
-			activeTime = received_data[1];
+			if (mode != "preview") {
+				activeTime = received_data[1];
+			} else {
+				activeTime = "0";				
+			}
 			inactiveTime = received_data[2];
 
 			//Animated Lower Thirds 1
@@ -576,7 +671,7 @@
 			if (alt_1_logo_switch != alt_1_logo_switch_old){
 				if (alt_1_switch == "false"){
 					document.getElementById("lower-third-1").classList.add("hide-anim");
-				}/*puedo hacer una funcion para todos los switches y LT. "myfunction(switch,lt)"*/
+				}
 				if (alt_1_logo_switch == "true"){
 					document.getElementById("alt-1-logo").classList.remove("no-logo");
 					loadLogo("alt-1-logo",alt_1_logo_image);
@@ -590,7 +685,7 @@
 			if (alt_2_logo_switch != alt_2_logo_switch_old){
 				if (alt_2_switch == "false"){
 					document.getElementById("lower-third-2").classList.add("hide-anim");
-				}/*puedo hacer una funcion para todos los switches y LT. "myfunction(switch,lt)"*/
+				}
 				if (alt_2_logo_switch == "true"){
 					document.getElementById("alt-2-logo").classList.remove("no-logo");
 					loadLogo("alt-2-logo",alt_2_logo_image);
@@ -604,7 +699,7 @@
 			if (alt_3_logo_switch != alt_3_logo_switch_old){
 				if (alt_3_switch == "false"){
 					document.getElementById("lower-third-3").classList.add("hide-anim");
-				}/*puedo hacer una funcion para todos los switches y LT. "myfunction(switch,lt)"*/
+				}
 				if (alt_3_logo_switch == "true"){
 					document.getElementById("alt-3-logo").classList.remove("no-logo");
 					loadLogo("alt-3-logo",alt_3_logo_image);
@@ -618,7 +713,7 @@
 			if (alt_4_logo_switch != alt_4_logo_switch_old){
 				if (alt_4_switch == "false"){
 					document.getElementById("lower-third-4").classList.add("hide-anim");
-				}/*puedo hacer una funcion para todos los switches y LT. "myfunction(switch,lt)"*/
+				}
 				if (alt_4_logo_switch == "true"){
 					document.getElementById("alt-4-logo").classList.remove("no-logo");
 					loadLogo("alt-4-logo",alt_4_logo_image);
@@ -667,10 +762,10 @@
 			root.style.setProperty('--alt-1-info-transform', alt_1_info_transform);
 			root.style.setProperty('--alt-1-name-weight', alt_1_name_weight);
 			root.style.setProperty('--alt-1-info-weight', alt_1_info_weight);
-			root.style.setProperty('--alt-1-name-color', "#" + alt_1_name_color);
-			root.style.setProperty('--alt-1-info-color', "#" + alt_1_info_color);
-			root.style.setProperty('--alt-1-style-color-1', "#" + alt_1_style_color_1);
-			root.style.setProperty('--alt-1-style-color-2', "#" + alt_1_style_color_2);
+			root.style.setProperty('--alt-1-name-color', alt_1_name_color);
+			root.style.setProperty('--alt-1-info-color', alt_1_info_color);
+			root.style.setProperty('--alt-1-style-color-1', alt_1_style_color_1);
+			root.style.setProperty('--alt-1-style-color-2', alt_1_style_color_2);
 			root.style.setProperty('--alt-1-font', alt_1_font);
 
 			root.style.setProperty('--alt-2-size', alt_2_size + "px");
@@ -683,10 +778,10 @@
 			root.style.setProperty('--alt-2-info-transform', alt_2_info_transform);
 			root.style.setProperty('--alt-2-name-weight', alt_2_name_weight);
 			root.style.setProperty('--alt-2-info-weight', alt_2_info_weight);
-			root.style.setProperty('--alt-2-name-color', "#" + alt_2_name_color);
-			root.style.setProperty('--alt-2-info-color', "#" + alt_2_info_color);
-			root.style.setProperty('--alt-2-style-color-1', "#" + alt_2_style_color_1);
-			root.style.setProperty('--alt-2-style-color-2', "#" + alt_2_style_color_2);
+			root.style.setProperty('--alt-2-name-color', alt_2_name_color);
+			root.style.setProperty('--alt-2-info-color', alt_2_info_color);
+			root.style.setProperty('--alt-2-style-color-1', alt_2_style_color_1);
+			root.style.setProperty('--alt-2-style-color-2', alt_2_style_color_2);
 			root.style.setProperty('--alt-2-font', alt_2_font);
 
 			root.style.setProperty('--alt-3-size', alt_3_size + "px");
@@ -699,10 +794,10 @@
 			root.style.setProperty('--alt-3-info-transform', alt_3_info_transform);
 			root.style.setProperty('--alt-3-name-weight', alt_3_name_weight);
 			root.style.setProperty('--alt-3-info-weight', alt_3_info_weight);
-			root.style.setProperty('--alt-3-name-color', "#" + alt_3_name_color);
-			root.style.setProperty('--alt-3-info-color', "#" + alt_3_info_color);
-			root.style.setProperty('--alt-3-style-color-1', "#" + alt_3_style_color_1);
-			root.style.setProperty('--alt-3-style-color-2', "#" + alt_3_style_color_2);
+			root.style.setProperty('--alt-3-name-color', alt_3_name_color);
+			root.style.setProperty('--alt-3-info-color', alt_3_info_color);
+			root.style.setProperty('--alt-3-style-color-1', alt_3_style_color_1);
+			root.style.setProperty('--alt-3-style-color-2', alt_3_style_color_2);
 			root.style.setProperty('--alt-3-font', alt_3_font);
 
 			root.style.setProperty('--alt-4-size', alt_4_size + "px");
@@ -715,10 +810,10 @@
 			root.style.setProperty('--alt-4-info-transform', alt_4_info_transform);
 			root.style.setProperty('--alt-4-name-weight', alt_4_name_weight);
 			root.style.setProperty('--alt-4-info-weight', alt_4_info_weight);
-			root.style.setProperty('--alt-4-name-color', "#" + alt_4_name_color);
-			root.style.setProperty('--alt-4-info-color', "#" + alt_4_info_color);
-			root.style.setProperty('--alt-4-style-color-1', "#" + alt_4_style_color_1);
-			root.style.setProperty('--alt-4-style-color-2', "#" + alt_4_style_color_2);
+			root.style.setProperty('--alt-4-name-color', alt_4_name_color);
+			root.style.setProperty('--alt-4-info-color', alt_4_info_color);
+			root.style.setProperty('--alt-4-style-color-1', alt_4_style_color_1);
+			root.style.setProperty('--alt-4-style-color-2', alt_4_style_color_2);
 			root.style.setProperty('--alt-4-font', alt_4_font);
 
 						
@@ -796,76 +891,15 @@
 		function refreshData() {
 		    x = 0.05; // Refresh time miltiplier
 
-		    function_send();
-		    //loadLogo();
+		    if (mode != "preview"){
+		    	function_send();
+		    }
 
 		    setTimeout(refreshData, x*1000);
 		}
 		refreshData();
 
 	</script>
-
-  </head>
-  <body class="browser-source lower-thirds">
-		<!--Lower third 1-->
-		<div id="lower-third-1" class="alt left style-1 hide-anim">
-			<div id="alt-1-logo" class="logo no-logo"></div>
-			<div class="graph-1"></div>
-			<div class="text-content">
-				<div class="text-mask">
-					<div id="alt-1-name"></div>
-				</div>
-				<div class="text-mask">
-					<div id="alt-1-info"></div>
-				</div>
-			</div>
-			<div class="graph-2"></div>
-		</div>
-
-		<!--Lower third 2-->
-		<div id="lower-third-2" class="alt left style-1 hide-anim">
-			<div id="alt-2-logo" class="logo no-logo"></div>
-			<div class="graph-1"></div>
-			<div class="text-content">
-				<div class="text-mask">
-					<div id="alt-2-name"></div>
-				</div>
-				<div class="text-mask">
-					<div id="alt-2-info"></div>
-				</div>
-			</div>
-			<div class="graph-2"></div>
-		</div>
-
-		<!--Lower third 3-->
-		<div id="lower-third-3" class="alt left style-1 hide-anim">
-			<div id="alt-3-logo" class="logo no-logo"></div>
-			<div class="graph-1"></div>
-			<div class="text-content">
-				<div class="text-mask">
-					<div id="alt-3-name"></div>
-				</div>
-				<div class="text-mask">
-					<div id="alt-3-info"></div>
-				</div>
-			</div>
-			<div class="graph-2"></div>
-		</div>
-
-		<!--Lower third 4-->
-		<div id="lower-third-4" class="alt left style-1 hide-anim">
-			<div id="alt-4-logo" class="logo no-logo"></div>
-			<div class="graph-1"></div>
-			<div class="text-content">
-				<div class="text-mask">
-					<div id="alt-4-name"></div>
-				</div>
-				<div class="text-mask">
-					<div id="alt-4-info"></div>
-				</div>
-			</div>
-			<div class="graph-2"></div>
-		</div>
 
   </body>
 </html>

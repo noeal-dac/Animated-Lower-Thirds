@@ -1,3 +1,8 @@
+/*********************************
+**  Animated Lower Thirds v1.2  **
+**  Author: NoeAL               **
+*********************************/
+
 :root {
   --interface-size: 1;
   --main-color: #d2d2d2;
@@ -25,16 +30,18 @@ body.browser-source.lower-thirds{
 	color: var(--main-color);
 	font:normal 12px -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 	max-width:100%;
-  transform: scale(var(--interface-size));
-  transform-origin: top;
-	margin: 8px 3px;
+  /*transform: scale(var(--interface-size));
+  transform-origin: top;*/
+	margin: 8px 3px 40px;
   user-select: none;
 }
 
 .static-panel-top {
-  max-width: 370px;
-  min-width: 360px;
-  margin: 5px auto;
+  width: 370px;
+  /*max-width: 370px;
+  min-width: 360px;*/
+  /*margin: 5px auto;*/
+  margin: 5px;
   display: flex;
   flex-direction: column;
 }
@@ -83,6 +90,7 @@ body.browser-source.lower-thirds{
 #alt-2-config-content,
 #alt-3-config-content,
 #alt-4-config-content {
+  /*background: var(--obs-background);*/
   box-shadow: inset 0px 0px 5px 0px rgb(0 0 0 / 20%);
   padding: 5px;
   margin-bottom: 15px;
@@ -90,7 +98,7 @@ body.browser-source.lower-thirds{
   transition: background 0.5s;
 }
 #alt-4-config-content{
-  margin-bottom: 0px;
+  /*margin-bottom: 0px;*/
 }
 
 #alt-1-config-content.active,
@@ -133,7 +141,7 @@ body.browser-source.lower-thirds{
 /***********************/
 .accordion {
   cursor: pointer;
-  width: calc(100% - 30px);
+  width: calc(100% - 50px);
   border: none;
   text-align: left;
   outline: none;
@@ -147,7 +155,9 @@ body.browser-source.lower-thirds{
   font-weight: bold;
   margin-left: 5px;
   font-size: 20px;
-  line-height: 0.6em;
+  /*line-height: 0.6em;*/
+  line-height: 10px;
+  margin: 1px 0 2px;
 }
 .accordion.active:after {
   content: "\2212";
@@ -197,7 +207,7 @@ li {
 #alt-2-name-color, #alt-2-info-color,
 #alt-3-name-color, #alt-3-info-color,
 #alt-4-name-color, #alt-4-info-color {
-  width: 40px;
+  width: 50px;
   height: 14px;
   border: none;
   border-radius: var(--element-radius);
@@ -208,6 +218,10 @@ li {
   cursor: pointer;
   text-align: center;
   margin: 4px;
+  /*
+  color: #ffffff;
+  text-shadow: 0px 0px 1px #000000, 1px 1px 2px #000000, -1px -1px 2px #000000, -1px 1px 2px #000000, 1px -1px 2px #000000;
+    */
 }
 #alt-1-name-color.jscolor-active, #alt-1-info-color.jscolor-active,
 #alt-2-name-color.jscolor-active, #alt-2-info-color.jscolor-active,
@@ -219,7 +233,7 @@ li {
 #alt-2-style-color-1, #alt-2-style-color-2,
 #alt-3-style-color-1, #alt-3-style-color-2,
 #alt-4-style-color-1, #alt-4-style-color-2 {
-  width: 40px;
+  width: 50px;
   height: 14px;
   border: none;
   border-radius: var(--element-radius);
@@ -280,7 +294,7 @@ li {
   padding: 1px 3px;
   line-height: 1em;
   margin: 0 0 0 4px;
-  min-width: 15px;
+  width: 20px;
   height: 7px;
   background: #333233;
   border-radius: 3px;
@@ -393,7 +407,7 @@ input#alt-2-name, input#alt-2-info,
 input#alt-3-name, input#alt-3-info,
 input#alt-4-name, input#alt-4-info {
     float: left;
-    width: calc(100% - 97px);
+    width: calc(100% - 107px);
     margin-right: 0px;
     border-radius: 2px 0 0 2px;
 }
@@ -406,7 +420,7 @@ input#alt-4-name, input#alt-4-info {
     border-radius: 0 2px 2px 0;
     padding: 0 0 0 5px;
     height: 23px;
-    width: 92px;
+    width: 102px;
 }
 #alt-1-name-appearance.disable, #alt-1-info-appearance.disable,
 #alt-2-name-appearance.disable, #alt-2-info-appearance.disable,
@@ -436,7 +450,7 @@ input#alt-4-name, input#alt-4-info {
     border-radius: 2px;
     padding: 0 0 0 5px;
     height: 23px;
-    width: 190px;
+    width: 210px;
     display: inline-flex;
     justify-content: flex-end;
 }
@@ -727,4 +741,137 @@ select#alt-4-font {
 }
 .font-config.group {
     min-width: 143px;
+}
+
+
+
+/*********************************
+**           PREVIEW            **
+*********************************/
+
+#alt-preview {
+  position: fixed;
+  bottom: 0px;
+  height: 223px;
+  width: 360px;
+  padding: 5px;
+  margin: 15px 0px 5px;
+  border: none;
+  border-radius: 3px;
+  background: #3a393a;
+  box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 40%);
+  transition: bottom 0.5s;
+  /*background: #1f1e1f;*/
+}
+#alt-preview.hide {
+  bottom: -213px;
+}
+
+#toggle-preview {
+  position: absolute;
+  right: 12px;
+  top: 3px;
+  cursor: pointer;
+}
+
+#toggle-preview.hide i.fas{
+    transform: rotate(-180deg);
+}
+
+.embed-container {
+  /*padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;*/
+  /*height: 203px;
+  width: 360px;
+
+  background: #3a393a;*/
+  /*box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 40%);
+  padding: 5px;*/
+}
+
+.embed-container iframe {
+  height: 203px;
+  width: 360px;
+  border-radius: 3px;
+  /*background: #1f1e1f;*/
+  background: linear-gradient(135deg, rgba(31,30,31,1) 0%,
+                                      rgba(31,30,31,1) 8%,
+                                      rgba(29,28,29,1) 10%,
+                                      rgba(29,28,29,1) 18%, 
+                                      rgba(31,30,31,1) 20%, 
+                                      rgba(31,30,31,1) 28%, 
+                                      rgba(29,28,29,1) 30%, 
+                                      rgba(29,28,29,1) 38%, 
+                                      rgba(31,30,31,1) 40%, 
+                                      rgba(31,30,31,1) 48%, 
+                                      rgba(29,28,29,1) 50%, 
+                                      rgba(29,28,29,1) 58%, 
+                                      rgba(31,30,31,1) 60%,
+                                      rgba(31,30,31,1) 68%, 
+                                      rgba(29,28,29,1) 70%, 
+                                      rgba(29,28,29,1) 78%, 
+                                      rgba(31,30,31,1) 80%, 
+                                      rgba(31,30,31,1) 88%, 
+                                      rgba(29,28,29,1) 90%, 
+                                      rgba(29,28,29,1) 98%, 
+                                      rgba(31,30,31,1) 100%);
+  box-shadow: inset 0px 0px 30px 10px rgb(29 28 29 / 100%);
+}
+
+
+
+
+#alt-main-config-content > .accordion {
+    width: calc(100% - 30px);
+}
+.config-btn.preview-btn {
+  float: right;
+  margin: 0px 3px;
+  width: 16px;
+  height: 16px;
+}
+.config-btn.preview-btn > .icon-btn > i.fas {
+  margin: 0px;
+  font-size: 13px;
+}
+
+
+.sortees {
+  background: var(--obs-background);
+
+}
+
+.renameable {
+  display: inline-block;
+  min-width: 268px;
+  position: relative;
+  /*top: -4px;*/
+  top: 4px;
+}
+.renameable input {
+  display: inline-block;
+  background: none;
+  margin: 0;
+  padding: 0;
+  height: 14px;
+}
+
+i.alt-icon {
+  font-size: 15px;
+  /*margin: 0 6px 0 2px;*/
+  margin: 0 6px 0 7px;
+  position: relative;
+  height: 10px;
+  overflow: hidden;
+  /*top: -3px;*/
+  top: 5px;
+}
+
+.drag-handle {
+    position: absolute;
+    transform: translate(-5px, -5px);
+    height: 25px;
+    /*width: 298px;*/
+    /*background-color: #ffff0047;*/
 }
