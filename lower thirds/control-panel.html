@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>Lower Thirds Control Panel</title>
+		<link rel="stylesheet" href="../common/css/style-control_panel.css">
+		<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+		<script src="../common/js/jquery.js"></script>
+		<script src="../common/js/jscolor.js"></script>
+
+	</head>
+	<body class="lower-thirds-panel panel">
+		<div class="static-panel-top">
+			<div>
+				<label class="switch">
+				<input type="checkbox" id="lower-thirds-masterswitch"> <!--"checked" to active switch-->
+				<span class="slider round"></span>
+				</label>
+				<label class="accordion"><i class="fas">&#xf013;</i>Settings</label>
+				<div id="times-configuration" class="hidable">
+					<div class="column-33">
+						<input class="storable" id="lower-thirds-animation" placeholder="4s (in-out)">
+					</div>
+					<div class="column-33">
+						<input class="storable" id="lower-thirds-length" placeholder="25s (active)">
+					</div>
+					<div class="column-33">
+						<input class="storable" id="lower-thirds-interval" placeholder="420s (inactive)">
+					</div>
+					<div id="shadows"><i class="fas">&#xf24d;</i></div>
+				</div>
+			</div>
+			<div style="clear:both"></div>
+			</br>
+			<label class="switch">
+			<input type="checkbox" id="lower-thirds-switch1">
+			<span class="slider round"></span>
+			</label>
+			<label class="accordion"><i class="fas">&#xf007;</i>Left</label>
+			<div class="hidable">
+				<input class="storable" type="text" id="lower-thirds-name1" placeholder="Name">
+				<input class="storable" type="text" id="lower-thirds-info1" placeholder="Info">
+				<div class="panel-bottom">
+					<input id="color-m1" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, insetWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true}" value="cf4c4e">
+					<div id="clean-m1" class="clean"><i class="fas">&#xf00d;</i></div>
+					<ul id="m1-slots">
+						<li id="m1-slot1"><div class="slot-storable" id="m1-name1"></div><div class="slot-storable" id="m1-info1"></div></li>
+						<li id="m1-slot2"><div class="slot-storable" id="m1-name2"></div><div class="slot-storable" id="m1-info2"></div></li>
+					</ul>
+					<div class="move-up off"><i class="fas">&#xf0de;</i></div>
+					<div id="move-down-m1" class="move-down on"><i class="fas">&#xf0dd;</i></div>
+					<div class="time-bar">
+						<div id="active-t1">0</div>
+						<div id="inactive-t1">0</div>
+					</div>
+				</div>		
+			</div>
+			</br>
+			<label class="switch">
+			<input type="checkbox" id="lower-thirds-switch2">
+			<span class="slider round"></span>
+			</label>
+			<label class="accordion"><i class="fas">&#xf007;</i>Right</label>
+			<div class="hidable">
+				<input class="storable" type="text" id="lower-thirds-name2" placeholder="Name">
+				<input class="storable" type="text" id="lower-thirds-info2" placeholder="Info">
+				<div class="panel-bottom">
+					<input id="color-m2" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, insetWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true}" value="cf4c4e">
+					<div id="clean-m2" class="clean"><i class="fas">&#xf00d;</i></div>
+					<ul id="m2-slots">
+						<li id="m2-slot1"><div class="slot-storable" id="m2-name1"></div><div class="slot-storable" id="m2-info1"></div></li>
+						<li id="m2-slot2"><div class="slot-storable" id="m2-name2"></div><div class="slot-storable" id="m2-info2"></div></li>
+					</ul>
+					<div id="move-up-m2" class="move-up on"><i class="fas">&#xf0de;</i></div>
+					<div id="move-down-m2" class="move-down on"><i class="fas">&#xf0dd;</i></div>
+					<div class="time-bar">
+						<div id="active-t2">0</div>
+						<div id="inactive-t2">0</div>
+					</div>
+				</div>
+			</div>
+			</br>
+			<label class="switch">
+			<input type="checkbox" id="lower-thirds-switch3">
+			<span class="slider round"></span>
+			</label>
+			<label class="accordion"><i class="fas">&#xf007;</i>Center</label>
+			<div class="hidable">
+				<input class="storable" type="text" id="lower-thirds-name3" placeholder="Name">
+				<input class="storable" type="text" id="lower-thirds-info3" placeholder="Info">
+				<div class="panel-bottom">
+					<input id="color-m3" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, insetWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true}" value="cf4c4e">
+					<div id="clean-m3" class="clean"><i class="fas">&#xf00d;</i></div>
+					<ul id="m3-slots">
+						<li id="m3-slot1"><div class="slot-storable" id="m3-name1"></div><div class="slot-storable" id="m3-info1"></div></li>
+						<li id="m3-slot2"><div class="slot-storable" id="m3-name2"></div><div class="slot-storable" id="m3-info2"></div></li>
+					</ul>
+					<div id="move-up-m3" class="move-up on"><i class="fas">&#xf0de;</i></div>
+					<div id="move-down-m3" class="move-down off"><i class="fas">&#xf0dd;</i></div>
+					<div class="time-bar">
+						<div id="active-t3">0</div>
+						<div id="inactive-t3">0</div>
+					</div>
+				</div>			
+			</div>
+			<div style="clear:both"></div>
+			
+		</div>
+
+		<script>
+			var bc = new BroadcastChannel('obs-lower-thirds-channel');
+			
+			var bcr = new BroadcastChannel('obs-lower-thirds-channe2'); //Recibe from source
+
+
+			canTurnOn = false;
+			var shadowsOn = false;
+
+			var m1s1Empty;
+			var m1s2Empty;
+			var m2s1Empty;
+			var m2s2Empty;
+			var m3s1Empty;
+			var m3s2Empty;
+
+			var m1Empty;
+			var m2Empty;
+			var m3Empty;
+
+			var slotDeleted = false;
+
+
+			//////////////////////////////////
+			//  Awful Mem Slot System (:S)  //
+			//////////////////////////////////
+
+			function checkSlots () {
+				if ($('#m1-name1').is(':empty') && $('#m1-info1').is(':empty')){
+		  			document.getElementById("m1-slot1").classList.remove("stored");
+		  			m1s1Empty = true;
+				} else {
+					document.getElementById("m1-slot1").classList.add("stored");
+					m1s1Empty = false;
+				}
+				if ($('#m1-name2').is(':empty') && $('#m1-info2').is(':empty')){
+		  			document.getElementById("m1-slot2").classList.remove("stored");
+		  			m1s2Empty = true;
+				} else {
+					document.getElementById("m1-slot2").classList.add("stored");
+					m1s2Empty = false;
+				}
+
+				if ($('#m2-name1').is(':empty') && $('#m2-info1').is(':empty')){
+		  			document.getElementById("m2-slot1").classList.remove("stored");
+		  			m2s1Empty = true;
+				} else {
+					document.getElementById("m2-slot1").classList.add("stored");
+					m2s1Empty = false;
+				}
+				if ($('#m2-name2').is(':empty') && $('#m2-info2').is(':empty')){
+		  			document.getElementById("m2-slot2").classList.remove("stored");
+		  			m2s2Empty = true;
+				} else {
+					document.getElementById("m2-slot2").classList.add("stored");
+					m2s2Empty = false;
+				}
+
+				if ($('#m3-name1').is(':empty') && $('#m3-info1').is(':empty')){
+		  			document.getElementById("m3-slot1").classList.remove("stored");
+		  			m3s1Empty = true;
+				} else {
+					document.getElementById("m3-slot1").classList.add("stored");
+					m3s1Empty = false;
+				}
+				if ($('#m3-name2').is(':empty') && $('#m3-info2').is(':empty')){
+		  			document.getElementById("m3-slot2").classList.remove("stored");
+		  			m3s2Empty = true;
+				} else {
+					document.getElementById("m3-slot2").classList.add("stored");
+					m3s2Empty = false;
+				}
+
+				if ($('#lower-thirds-name1').val() || $('#lower-thirds-info1').val()){
+					m1Empty = false;
+				} else {
+					m1Empty = true;
+				}
+				if ($('#lower-thirds-name2').val() || $('#lower-thirds-info2').val()){
+					m2Empty = false;
+				} else {
+					m2Empty = true;
+				}
+				if ($('#lower-thirds-name3').val() || $('#lower-thirds-info3').val()){
+					m3Empty = false;
+				} else {
+					m3Empty = true;
+				}						
+			}
+
+			//Memory slots 1-1
+			$("li#m1-slot1").mousedown(function(e){
+				clearTimeout(this.downTimer);
+				this.downTimer = setTimeout(function() {
+					    document.getElementById("m1-slot1").classList.add("delete");
+						$('#m1-name1')[0].innerHTML = "";
+						$('#m1-info1')[0].innerHTML = "";
+						slotDeleted = true;
+				}, 600);
+			}).mouseup(function(e) {
+				clearTimeout(this.downTimer);
+			    document.getElementById("m1-slot1").classList.remove("delete");
+			    	if (!slotDeleted){
+			    		if (!m1s1Empty) {
+						name_to_load = $(this).children('#m1-name1').text();
+						info_to_load = $(this).children('#m1-info1').text();
+						$("#lower-thirds-name1:text").val(name_to_load);
+						$("#lower-thirds-info1:text").val(info_to_load);
+						}
+						if (m1s1Empty) {
+							name_to_save = $("#lower-thirds-name1:text").val();
+							info_to_save = $("#lower-thirds-info1:text").val();
+							$('#m1-name1')[0].innerHTML = name_to_save;
+							$('#m1-info1')[0].innerHTML = info_to_save;
+						}
+			    	} else {
+						slotDeleted = false;
+			    	}	    	
+			});
+
+			//Memory slots 1-2
+			$("li#m1-slot2").mousedown(function(e){
+				clearTimeout(this.downTimer);
+				this.downTimer = setTimeout(function() {
+					    document.getElementById("m1-slot2").classList.add("delete");
+						$('#m1-name2')[0].innerHTML = "";
+						$('#m1-info2')[0].innerHTML = "";
+						slotDeleted = true;
+				}, 600);
+			}).mouseup(function(e) {
+				clearTimeout(this.downTimer);
+			    document.getElementById("m1-slot2").classList.remove("delete");
+			    	if (!slotDeleted){
+			    		if (!m1s2Empty) {
+						name_to_load = $(this).children('#m1-name2').text();
+						info_to_load = $(this).children('#m1-info2').text();
+						$("#lower-thirds-name1:text").val(name_to_load);
+						$("#lower-thirds-info1:text").val(info_to_load);
+						}
+						if (m1s2Empty) {
+							name_to_save = $("#lower-thirds-name1:text").val();
+							info_to_save = $("#lower-thirds-info1:text").val();
+							$('#m1-name2')[0].innerHTML = name_to_save;
+							$('#m1-info2')[0].innerHTML = info_to_save;
+						}
+			    	} else {
+						slotDeleted = false;
+			    	}	    	
+			});
+
+			//Memory slots 2-1
+			$("li#m2-slot1").mousedown(function(e){
+				clearTimeout(this.downTimer);
+				this.downTimer = setTimeout(function() {
+					    document.getElementById("m2-slot1").classList.add("delete");
+						$('#m2-name1')[0].innerHTML = "";
+						$('#m2-info1')[0].innerHTML = "";
+						slotDeleted = true;
+				}, 600);
+			}).mouseup(function(e) {
+				clearTimeout(this.downTimer);
+			    document.getElementById("m2-slot1").classList.remove("delete");
+			    	if (!slotDeleted){
+			    		if (!m2s1Empty) {
+						name_to_load = $(this).children('#m2-name1').text();
+						info_to_load = $(this).children('#m2-info1').text();
+						$("#lower-thirds-name2:text").val(name_to_load);
+						$("#lower-thirds-info2:text").val(info_to_load);
+						}
+						if (m2s1Empty) {
+							name_to_save = $("#lower-thirds-name2:text").val();
+							info_to_save = $("#lower-thirds-info2:text").val();
+							$('#m2-name1')[0].innerHTML = name_to_save;
+							$('#m2-info1')[0].innerHTML = info_to_save;
+						}
+			    	} else {
+						slotDeleted = false;
+			    	}	    	
+			});
+
+			//Memory slots 2-2
+			$("li#m2-slot2").mousedown(function(e){
+				clearTimeout(this.downTimer);
+				this.downTimer = setTimeout(function() {
+					    document.getElementById("m2-slot2").classList.add("delete");
+						$('#m2-name2')[0].innerHTML = "";
+						$('#m2-info2')[0].innerHTML = "";
+						slotDeleted = true;
+				}, 600);
+			}).mouseup(function(e) {
+				clearTimeout(this.downTimer);
+			    document.getElementById("m2-slot2").classList.remove("delete");
+			    	if (!slotDeleted){
+			    		if (!m2s2Empty) {
+						name_to_load = $(this).children('#m2-name2').text();
+						info_to_load = $(this).children('#m2-info2').text();
+						$("#lower-thirds-name2:text").val(name_to_load);
+						$("#lower-thirds-info2:text").val(info_to_load);
+						}
+						if (m2s2Empty) {
+							name_to_save = $("#lower-thirds-name2:text").val();
+							info_to_save = $("#lower-thirds-info2:text").val();
+							$('#m2-name2')[0].innerHTML = name_to_save;
+							$('#m2-info2')[0].innerHTML = info_to_save;
+						}
+			    	} else {
+						slotDeleted = false;
+			    	}	    	
+			});
+
+			//Memory slots 3-1
+			$("li#m3-slot1").mousedown(function(e){
+				clearTimeout(this.downTimer);
+				this.downTimer = setTimeout(function() {
+					    document.getElementById("m3-slot1").classList.add("delete");
+						$('#m3-name1')[0].innerHTML = "";
+						$('#m3-info1')[0].innerHTML = "";
+						slotDeleted = true;
+				}, 600);
+			}).mouseup(function(e) {
+				clearTimeout(this.downTimer);
+			    document.getElementById("m3-slot1").classList.remove("delete");
+			    	if (!slotDeleted){
+			    		if (!m3s1Empty) {
+						name_to_load = $(this).children('#m3-name1').text();
+						info_to_load = $(this).children('#m3-info1').text();
+						$("#lower-thirds-name3:text").val(name_to_load);
+						$("#lower-thirds-info3:text").val(info_to_load);
+						}
+						if (m3s1Empty) {
+							name_to_save = $("#lower-thirds-name3:text").val();
+							info_to_save = $("#lower-thirds-info3:text").val();
+							$('#m3-name1')[0].innerHTML = name_to_save;
+							$('#m3-info1')[0].innerHTML = info_to_save;
+						}
+			    	} else {
+						slotDeleted = false;
+			    	}	    	
+			});
+
+			//Memory slots 3-2
+			$("li#m3-slot2").mousedown(function(e){
+				clearTimeout(this.downTimer);
+				this.downTimer = setTimeout(function() {
+					    document.getElementById("m3-slot2").classList.add("delete");
+						$('#m3-name2')[0].innerHTML = "";
+						$('#m3-info2')[0].innerHTML = "";
+						slotDeleted = true;
+				}, 600);
+			}).mouseup(function(e) {
+				clearTimeout(this.downTimer);
+			    document.getElementById("m3-slot2").classList.remove("delete");
+			    	if (!slotDeleted){
+			    		if (!m3s2Empty) {
+						name_to_load = $(this).children('#m3-name2').text();
+						info_to_load = $(this).children('#m3-info2').text();
+						$("#lower-thirds-name3:text").val(name_to_load);
+						$("#lower-thirds-info3:text").val(info_to_load);
+						}
+						if (m3s2Empty) {
+							name_to_save = $("#lower-thirds-name3:text").val();
+							info_to_save = $("#lower-thirds-info3:text").val();
+							$('#m3-name2')[0].innerHTML = name_to_save;
+							$('#m3-info2')[0].innerHTML = info_to_save;
+						}
+			    	} else {
+						slotDeleted = false;
+			    	}	    	
+			});
+
+			////////////////////////////////////// end AMSS
+
+			$("#clean-m1").click(function(){
+				$("#lower-thirds-name1:text").val("");
+				$("#lower-thirds-info1:text").val("");
+			});
+
+			$("#clean-m2").click(function(){
+				$("#lower-thirds-name2:text").val("");
+				$("#lower-thirds-info2:text").val("");
+			});
+
+			$("#clean-m3").click(function(){
+				$("#lower-thirds-name3:text").val("");
+				$("#lower-thirds-info3:text").val("");
+			});
+
+			///////////////////////////////////////
+
+			$("#move-down-m1").click(function(){
+				if (!m1Empty){
+					name_to_move_down = $("#lower-thirds-name1:text").val();
+					info_to_move_down = $("#lower-thirds-info1:text").val();
+					name_to_move_up = $("#lower-thirds-name2:text").val();
+					info_to_move_up = $("#lower-thirds-info2:text").val();
+					$("#lower-thirds-name1:text").val(name_to_move_up);
+					$("#lower-thirds-info1:text").val(info_to_move_up);
+					$("#lower-thirds-name2:text").val(name_to_move_down);
+					$("#lower-thirds-info2:text").val(info_to_move_down);				
+				}
+			});
+
+			$("#move-down-m2").click(function(){
+				if (!m2Empty){
+					name_to_move_down = $("#lower-thirds-name2:text").val();
+					info_to_move_down = $("#lower-thirds-info2:text").val();
+					name_to_move_up = $("#lower-thirds-name3:text").val();
+					info_to_move_up = $("#lower-thirds-info3:text").val();
+					$("#lower-thirds-name2:text").val(name_to_move_up);
+					$("#lower-thirds-info2:text").val(info_to_move_up);
+					$("#lower-thirds-name3:text").val(name_to_move_down);
+					$("#lower-thirds-info3:text").val(info_to_move_down);				
+				}
+			});
+
+			$("#move-up-m2").click(function(){
+				if (!m2Empty){
+					name_to_move_down = $("#lower-thirds-name1:text").val();
+					info_to_move_down = $("#lower-thirds-info1:text").val();
+					name_to_move_up = $("#lower-thirds-name2:text").val();
+					info_to_move_up = $("#lower-thirds-info2:text").val();
+					$("#lower-thirds-name1:text").val(name_to_move_up);
+					$("#lower-thirds-info1:text").val(info_to_move_up);
+					$("#lower-thirds-name2:text").val(name_to_move_down);
+					$("#lower-thirds-info2:text").val(info_to_move_down);				
+				}
+			});
+
+			$("#move-up-m3").click(function(){
+				if (!m3Empty){
+					name_to_move_down = $("#lower-thirds-name2:text").val();
+					info_to_move_down = $("#lower-thirds-info2:text").val();
+					name_to_move_up = $("#lower-thirds-name3:text").val();
+					info_to_move_up = $("#lower-thirds-info3:text").val();
+					$("#lower-thirds-name2:text").val(name_to_move_up);
+					$("#lower-thirds-info2:text").val(info_to_move_up);
+					$("#lower-thirds-name3:text").val(name_to_move_down);
+					$("#lower-thirds-info3:text").val(info_to_move_down);				
+				}
+			});
+
+			//////////////////////////////////////
+
+			//Reciber
+			bcr.onmessage = function (ev) {
+				received_data=ev.data.split("|");
+				document.getElementById("active-t1").innerHTML = received_data[0];
+				document.getElementById("inactive-t1").innerHTML = received_data[1];
+				document.getElementById("active-t2").innerHTML = received_data[2];
+				document.getElementById("inactive-t2").innerHTML = received_data[3];
+				document.getElementById("active-t3").innerHTML = received_data[4];
+				document.getElementById("inactive-t3").innerHTML = received_data[5];
+
+			}
+
+			//////////////////////////////////////
+
+			//Shadows on/off
+			$("#shadows").click(function(){
+				document.getElementById("shadows").classList.toggle("shadows-on");
+				if (!shadowsOn) {
+					shadowsOn = true;
+				} else {
+					shadowsOn = false;
+				}
+			});
+
+			//////////////////////////////////////
+
+			function function_send() {
+				animation_to_send = $("#lower-thirds-animation").val();
+				length_to_send = $("#lower-thirds-length:text").val();
+				interval_to_send = $("#lower-thirds-interval:text").val();
+
+				name1_to_send = $("#lower-thirds-name1:text").val();
+				info1_to_send = $("#lower-thirds-info1:text").val();
+				name2_to_send = $("#lower-thirds-name2:text").val();
+				info2_to_send = $("#lower-thirds-info2:text").val();
+				name3_to_send = $("#lower-thirds-name3:text").val();
+				info3_to_send = $("#lower-thirds-info3:text").val();
+
+				color1_to_send = $("#color-m1:text").val();
+				color2_to_send = $("#color-m2:text").val();
+				color3_to_send = $("#color-m3:text").val();
+
+				//Check Master Switch
+				if (document.getElementById("lower-thirds-masterswitch").checked == true) {
+					masterSwitchIsOn = true;
+				} else {
+					masterSwitchIsOn = false;
+				}
+
+				//Master Switch turn on/off all lower thirds
+				if (document.getElementById("lower-thirds-masterswitch").checked == false && canTurnOn == false) {
+					canTurnOn = true;
+				}
+				if (document.getElementById("lower-thirds-masterswitch").checked == true) {
+					canTurnOn = false;
+				}
+
+				//Switch 1 turn on/off name and info (left)
+				if (document.getElementById("lower-thirds-switch1").checked == false) {
+					switch1_to_send = "false";
+					document.getElementById("lower-thirds-name1").classList.add("disable");
+					document.getElementById("lower-thirds-info1").classList.add("disable");
+				} else {
+					if (masterSwitchIsOn){
+						switch1_to_send = "true";
+					}				
+					if (!masterSwitchIsOn){
+						switch1_to_send = "false";
+					}	
+					document.getElementById("lower-thirds-name1").classList.remove("disable");
+					document.getElementById("lower-thirds-info1").classList.remove("disable");
+				};
+
+				//Switch 2 turn on/off name and info (right)
+				if (document.getElementById("lower-thirds-switch2").checked == false) {
+					switch2_to_send = "false";
+					document.getElementById("lower-thirds-name2").classList.add("disable");
+					document.getElementById("lower-thirds-info2").classList.add("disable");
+				} else {
+					if (masterSwitchIsOn){
+						switch2_to_send = "true";
+					}				
+					if (!masterSwitchIsOn){
+						switch2_to_send = "false";
+					}	
+					document.getElementById("lower-thirds-name2").classList.remove("disable");
+					document.getElementById("lower-thirds-info2").classList.remove("disable");
+				};
+
+				//Switch 3 turn on/off name and info (center)
+				if (document.getElementById("lower-thirds-switch3").checked == false) {
+					switch3_to_send = "false";
+					document.getElementById("lower-thirds-name3").classList.add("disable");
+					document.getElementById("lower-thirds-info3").classList.add("disable");
+				} else {
+					if (masterSwitchIsOn){
+						switch3_to_send = "true";
+					}				
+					if (!masterSwitchIsOn){
+						switch3_to_send = "false";
+					}	
+					document.getElementById("lower-thirds-name3").classList.remove("disable");
+					document.getElementById("lower-thirds-info3").classList.remove("disable");
+				};
+
+				//Standard Values
+				if(length_to_send == "") {
+					length_to_send = 25;
+				}
+				if(interval_to_send == "") {
+					interval_to_send = 420;
+				}
+				if(animation_to_send == "") {
+					animation_to_send = 4;
+				}
+
+
+				bc.postMessage(animation_to_send + '|' + length_to_send + '|' + interval_to_send + '|' + shadowsOn + '|' + switch1_to_send + '|' + color1_to_send + '|' + name1_to_send + '|' + info1_to_send + '|' + switch2_to_send + '|' + color2_to_send + '|' + name2_to_send + '|' + info2_to_send + '|' + switch3_to_send + '|' + color3_to_send + '|' + name3_to_send + '|' + info3_to_send);
+			}
+
+			function loadData () {
+				$('.storable').each(function(){    
+					var id = $(this).attr('id');
+					var value = localStorage.getItem(id);
+					
+					$(this).val(value);              
+				});
+
+				$('.slot-storable').each(function(){    
+					var id = $(this).attr('id');
+					var value = localStorage.getItem(id);
+
+					$(this).text(value);
+				});
+			}
+
+			function saveData () {
+	        	y = 2;
+
+	        	$('.storable').each(function(){    
+					var id = $(this).attr('id');
+					var value = $(this).val();
+					localStorage.setItem(id, value);              
+	        	});
+
+	        	$('.slot-storable').each(function(){    
+					var id = $(this).attr('id');
+					var value = $(this).text();
+					localStorage.setItem(id, value);
+	        	});
+
+	        	setTimeout(saveData, y*1000);
+			}
+
+			function refreshData() {
+			    x = 0.05;  // 5 Seconds
+
+			    function_send();
+			    checkSlots ();
+
+			    setTimeout(refreshData, x*1000);
+			}
+
+			loadData();
+			refreshData();
+			saveData();
+
+			var acc = document.getElementsByClassName("accordion");
+			var i;
+
+			for (i = 0; i < acc.length; i++) {
+			  acc[i].onclick = function() {
+			    this.classList.toggle("active");
+			    var hidable = this.nextElementSibling;
+			    if (hidable.style.maxHeight){
+			      hidable.style.maxHeight = null;
+			    } else {
+			      hidable.style.maxHeight = hidable.scrollHeight + "px";
+			    } 
+			  }
+			}
+			acc[1].onclick()
+			acc[2].onclick()
+			acc[3].onclick()
+	
+		</script>
+
+	</body>
+</html>

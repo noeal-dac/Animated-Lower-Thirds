@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<link rel="stylesheet" href="../common/css/style-source.css">
+    <title>Lower thirds Source</title>
+
+	<script>
+		var bc = new BroadcastChannel('obs-lower-thirds-channel');
+
+		var bcr = new BroadcastChannel('obs-lower-thirds-channe2'); //Send to Control Panel
+
+		var animationTime;
+		var activeTime;
+		var inactiveTime;
+
+		var canIn1 = false;
+		var canIn2 = false;
+		var canIn3 = false;
+
+		var oldIn;
+
+		var c1 = 0;
+		var d1 = 0;
+		var t1;
+		var s1;
+
+		var c2 = 0;
+		var d2 = 0;
+		var t2;
+		var s2;
+
+		var c3 = 0;
+		var d3 = 0;
+		var t3;
+		var s3;
+
+		var active1IsOn = 0;
+		var inactive1IsOn = 0;
+		var active2IsOn = 0;
+		var inactive2IsOn = 0;
+		var active3IsOn = 0;
+		var inactive3IsOn = 0;
+
+
+		function animationIn(animation) {
+			elementAnim = document.getElementById(animation);			
+			document.getElementById(animation).classList.remove("animation-out");
+			void elementAnim.offsetWidth;
+			document.getElementById(animation).classList.add("animation-in");
+		}
+
+		function animationOut(animation) {
+			elementAnim = document.getElementById(animation);			
+			document.getElementById(animation).classList.remove("animation-in");
+			void elementAnim.offsetWidth;
+			document.getElementById(animation).classList.add("animation-out");		
+		}
+
+		// Active time counter (Lower Third 1)
+		function activeCount1(i) {
+		  if (c1 <= activeTime){
+		    c1 = c1 + 1;
+		    t1 = setTimeout(activeCount1, 1000, i);
+		  } else {
+		      stopTimeCount(i);
+		      startInactiveCount(i);      
+		  }
+		}
+
+		// Inactive time counter (Lower Third 1)
+		function inactiveCount1(i) {
+		  if (d1 <= inactiveTime){
+		    d1 = d1 + 1;
+		    s1 = setTimeout(inactiveCount1, 1000, i);
+		  } else {
+		      startActiveCount(i);
+		      d1 = 0;
+		      clearTimeout(s1);
+		      inactive1IsOn = 0;
+		  }
+		}
+
+
+		// Active time counter (Lower Third 2)
+		function activeCount2(i) {
+		  if (c2 <= activeTime){
+		    c2 = c2 + 1;
+		    t2 = setTimeout(activeCount2, 1000, i);
+		  } else {
+		      stopTimeCount(i);
+		      startInactiveCount(i);      
+		  }
+		}
+
+		// Inactive time counter (Lower Third 2)
+		function inactiveCount2(i) {
+		  if (d2 <= inactiveTime){
+		    d2 = d2 + 1;
+		    s2 = setTimeout(inactiveCount2, 1000, i);
+		  } else {
+		      startActiveCount(i);
+		      d2 = 0;
+		      clearTimeout(s2);
+		      inactive2IsOn = 0;
+		  }
+		}
+
+		// Active time counter (Lower Third 3)
+		function activeCount3(i) {
+		  if (c3 <= activeTime){
+		    c3 = c3 + 1;
+		    t3 = setTimeout(activeCount3, 1000, i);
+		  } else {
+		      stopTimeCount(i);
+		      startInactiveCount(i);      
+		  }
+		}
+
+		// Inactive time counter (Lower Third 3)
+		function inactiveCount3(i) {
+		  if (d3 <= inactiveTime){
+		    d3 = d3 + 1;
+		    s3 = setTimeout(inactiveCount3, 1000, i);
+		  } else {
+		      startActiveCount(i);
+		      d3 = 0;
+		      clearTimeout(s3);
+		      inactive3IsOn = 0;
+		  }
+		}
+
+		// Can start Active time counter? Start Animation In
+		function startActiveCount(i) {
+		  if (!active1IsOn) {
+		  	activeIs1On = true;
+			if (i == "animation-1"){
+				activeCount1(i);
+				animationIn(i);
+			}
+		  }
+		  if (!active2IsOn) {
+		  	activeIs2On = true;
+			if (i == "animation-2"){
+				activeCount2(i);
+				animationIn(i);
+			}
+		  }
+		  if (!active3IsOn) {
+		  	activeIs3On = true;
+			if (i == "animation-3"){
+				activeCount3(i);
+				animationIn(i);
+			}
+		  }		  
+		}
+
+		// Can start Inactive time counter? Start Animation Out
+		function startInactiveCount(i) {
+		  if (!inactive1IsOn) {
+		    inactive1IsOn = true;
+		    if (i == "animation-1"){
+			    inactiveCount1(i);
+			    animationOut(i);
+			}
+		  }
+		  if (!inactive2IsOn) {
+		    inactive2IsOn = true;
+			if (i == "animation-2"){
+			    inactiveCount2(i);
+			    animationOut(i);
+			}
+		  }
+		  if (!inactive3IsOn) {
+		    inactive3IsOn = true;
+			if (i == "animation-3"){
+			    inactiveCount3(i);
+			    animationOut(i);
+			}
+		  }
+		}
+
+		// Stop active and inactive states.
+		function stopTimeCount(i) {
+		  if (i == "animation-1"){
+			c1 = 0;
+			clearTimeout(t1);
+			active1IsOn = 0;
+			d1 = 0;
+			clearTimeout(s1);
+			inactive1IsOn = 0;		  
+		  }
+		  if (i == "animation-2"){
+			c2 = 0;
+
+			clearTimeout(t2);
+			active2IsOn = 0;
+			d2 = 0;
+			clearTimeout(s2);
+			inactive2IsOn = 0;		  
+		  }
+		  if (i == "animation-3"){
+			c3 = 0;
+			clearTimeout(t3);
+			active3IsOn = 0;
+			d3 = 0;
+			clearTimeout(s3);
+			inactive3IsOn = 0;		  
+		  }
+
+		  animationOut(i);
+		}
+
+		///////////////////////////
+
+		bc.onmessage = function (ev) {
+			received_data=ev.data.split("|");
+			animationTime = received_data[0];
+			activeTime = received_data[1];
+			inactiveTime = received_data[2];
+			shadowsOn = received_data[3];
+
+			switch1 = received_data[4];
+			color1 = received_data[5];
+			document.getElementById("name1").innerHTML = received_data[6];
+			document.getElementById("info1").innerHTML = received_data[7];
+
+			switch2 = received_data[8];
+			color2 = received_data[9];
+			document.getElementById("name2").innerHTML = received_data[10];
+			document.getElementById("info2").innerHTML = received_data[11];
+
+			switch3 = received_data[12];
+			color3 = received_data[13];
+			document.getElementById("name3").innerHTML = received_data[14];
+			document.getElementById("info3").innerHTML = received_data[15];
+			
+			//If active time is 0 the lower thirds is always active (24hs actually)
+			if (activeTime == "0") {
+		    	activeTime = 86400;
+		  	}
+			//Isn't lower third empty? unhide it
+			if (canIn1) {
+				document.getElementById("animation-1").classList.remove("hide-anim");
+			}
+			if (canIn2) {
+				document.getElementById("animation-2").classList.remove("hide-anim");
+			}
+			if (canIn3) {
+				document.getElementById("animation-3").classList.remove("hide-anim");
+			}
+
+			//Check the switches
+			if (switch1 == "false" || received_data[6].length == 0 || received_data[7].length == 0) {
+				if(canIn1){
+					canIn1 = false;
+					stopTimeCount("animation-1");
+				} else {
+					stopTimeCount("animation-1");
+				}	
+			} else {
+				if(!canIn1){
+					canIn1 = true;
+					startActiveCount("animation-1");
+				}
+			};
+
+			if (switch2 == "false" || received_data[10].length == 0 || received_data[11].length == 0) {
+				if(canIn2){
+					canIn2 = false;
+					stopTimeCount("animation-2");
+				} else {
+					stopTimeCount("animation-2");
+				}	
+			} else {
+				if(!canIn2){
+					canIn2 = true;
+					startActiveCount("animation-2");
+				}
+			};
+
+			if (switch3 == "false" || received_data[14].length == 0 || received_data[15].length == 0) {
+				if(canIn3){
+					canIn3 = false;
+					stopTimeCount("animation-3");
+				} else {
+					stopTimeCount("animation-3");
+				}	
+			} else {
+				if(!canIn3){
+					canIn3 = true;
+					startActiveCount("animation-3");
+				}
+			};
+
+			let root = document.documentElement;
+			root.style.setProperty('--anim-duration', animationTime + "s");
+			root.style.setProperty('--anim-bar1', "#" + color1);
+			root.style.setProperty('--anim-bar2', "#" + color2);
+			root.style.setProperty('--anim-bar3', "#" + color3);
+			
+			if (shadowsOn == "false") {
+				root.style.setProperty('--anim-bar-shadow', "none");
+				root.style.setProperty('--anim-name-shadow', "none");
+				root.style.setProperty('--anim-info-shadow', "none");
+			} else if (shadowsOn == "true") {
+				root.style.setProperty('--anim-bar-shadow', "2px 2px 3px #00000030");
+				root.style.setProperty('--anim-name-shadow', "2px 2px 4px #00000040");
+				root.style.setProperty('--anim-info-shadow', "2px 2px 3px #00000060");	
+			}			
+		}
+
+		//Sender
+		function function_send() {
+			activeTime1_to_send = c1 - 1;
+			inactiveTime1_to_send = d1 - 1;
+			activeTime2_to_send = c2 - 1;
+			inactiveTime2_to_send = d2 - 1;
+			activeTime3_to_send = c3 - 1;
+			inactiveTime3_to_send = d3 - 1;
+			
+			if (activeTime1_to_send < 0){
+				activeTime1_to_send = 0;
+			}
+			if (inactiveTime1_to_send < 0){
+				inactiveTime1_to_send = 0;
+			}
+			if (activeTime2_to_send < 0){
+				activeTime2_to_send = 0;
+			}
+			if (inactiveTime2_to_send < 0){
+				inactiveTime2_to_send = 0;
+			}
+			if (activeTime3_to_send < 0){
+				activeTime3_to_send = 0;
+			}
+			if (inactiveTime3_to_send < 0){
+				inactiveTime3_to_send = 0;
+			}
+
+			bcr.postMessage(activeTime1_to_send + '|' + inactiveTime1_to_send + '|' + activeTime2_to_send + '|' + inactiveTime2_to_send + '|' + activeTime3_to_send + '|' + inactiveTime3_to_send);
+		}
+
+		function refreshData() {
+		    x = 0.05;  // 5 Seconds
+
+		    function_send();
+
+		    setTimeout(refreshData, x*1000);
+		}
+		refreshData();
+
+	</script>
+
+  </head>
+  <body class="browser-source lower-thirds">
+
+	   <div id="animation-1" class="lower-third hide-anim">
+	    <div class="bar">|</div>
+	    <div class="white light mask">
+	      <div id="name1"></div>
+	    </div>
+	    <div class="white light mask">
+	      <div id="info1"></div>
+	    </div>
+	   </div>
+
+	  <div id="animation-2" class="lower-third right hide-anim">
+	    <div class="bar">|</div>
+	    <div class="white light mask">
+	      <div id="name2"></div>
+	    </div>
+	    <div class="white light mask">
+	      <div id="info2"></div>
+	    </div>
+	  </div>
+
+	  <div id="animation-3" class="lower-third center hide-anim">
+	    <div class="bar"></div>
+	    <div class="white light">
+	      <div id="name3"></div>
+	    </div>
+	    <div class="white light">
+	      <div id="info3"></div>
+	    </div>
+	  </div>
+
+  </body>
+</html>
