@@ -1,89 +1,65 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300);
+/*********************************
+**	Animated Lower Thirds v1.1	**
+**	Author: NoeAL				**
+*********************************/
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patua+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kalam&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
 :root {
-	--anim-length: 0;
-	--anim-interval: 0;
-	--anim-direction: normal;
-	--anim-duration: 4s;
+	--animation-time: 4s;
 }
 
 body {
 	margin: 0;
 	line-height: 0;
-	font-family: Open Sans;
-	text-transform: uppercase;
+	font-family: 'Open Sans', sans-serif;
 	line-height: 1;
 	position: absolute;
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
-	/*background-color: #888888;*/
-	font-size: 24px;
+	/*background-color: #888888; //Tests background*/ 
+}
+.lower-thirds {
+	display: flex;
+	justify-content: center;
 }
 
-.lower-third {
-	width: 20em;
-	height: 4em;
-	top: 86%;
-	margin: 50px;
-	position: sticky;
+/****************************
+** Style 1 Animation: Left **
+****************************/
+@keyframes animation-left-logo {
+	0% {
+		opacity: 0;
+		right: -30%;
+	}
+	55% {
+		opacity: 0;
+		right: -30%;
+	}
+	100% {
+		opacity: 1;
+		right: 0;
+	}
 }
-
-.hide-anim {
-	display: none;
-}
-.right {
-	margin-left: auto;
-	right: 0;
-}
-.right > div:first-child {
-	margin-left: auto;
-	right: 0;
-}
-.center {
-	margin: 50px auto;
-}
-.center > div:first-child {
-	margin: auto;
-}
-#animation-1 >.bar {
-	color: var(--anim-bar1);
-}
-#animation-2 > .bar {
-	color: var(--anim-bar2);
-}
-#animation-3 > .bar {
-	color: var(--anim-bar3);
-}
-
-.white {
-	color: #f5f5f5;
-}
-
-.light {
-	font-weight: 300;
-}
-
-.bold {
-	font-weight: 700;
-}
-
-.mask {
-	overflow: hidden;
-	position: relative;
-}
-
-/**************************
-** Animation: Slide Left **
-**************************/
 @keyframes animation-left-slash {
 	0% {
 		opacity: 0;
-		transform: translate3d(6em, 0, 0);
+		transform: translate3d(10em, 0, 0);
 	}
-	25% {
+	23% {
 		opacity: 0;
-		transform: translate3d(6em, 0, 0);
+		transform: translate3d(10em, 0, 0);
 	}
 		50% {
 		opacity: 1;
@@ -95,11 +71,26 @@ body {
 		transform: translate3d(0, 0, 0);
 	}
 }
+@keyframes animation-left-background {
+	0% {
+		width: 0;
+		padding-left: 0;
+		padding-right: 0;
+	}
+	30% {
+		width: 0;
+		padding-left: 0;
+		padding-right: 0;
+	}	
+	100% {
+		width: 100%
+	}
+}
 @keyframes animation-left-text-1 {
 	0% {
 		left: -100%;
 	}
-	50% {
+	45% {
 		left: -100%;
 	}
 	100% {
@@ -118,9 +109,23 @@ body {
 	}
 }
 
-/***************************
-** Animation: Slide Right **
-***************************/
+/*****************************
+** Style 1 Animation: Right **
+*****************************/
+@keyframes animation-right-logo {
+	0% {
+		opacity: 0;
+		left: -30%;
+	}
+	55% {
+		opacity: 0;
+		left: -30%;
+	}
+	100% {
+		opacity: 1;
+		left: 0;
+	}
+}
 @keyframes animation-right-slash {
 	0% {
 		opacity: 0;
@@ -140,11 +145,26 @@ body {
 		transform: translate3d(0, 0, 0);
 	}
 }
+@keyframes animation-right-background {
+	0% {
+		width: 0;
+		padding-left: 0;
+		padding-right: 0;
+	}
+	30% {
+		width: 0;
+		padding-left: 0;
+		padding-right: 0;
+	}	
+	100% {
+		width: 100%
+	}
+}
 @keyframes animation-right-text-1 {
 	0% {
 		right: -100%;
 	}
-	50% {
+	45% {
 		right: -100%;
 	}
 	100% {
@@ -163,9 +183,23 @@ body {
 	}
 }
 
-/****************************
-** Animation: Slide Center **
-****************************/
+/******************************
+** Style 1 Animation: Cented **
+******************************/
+@keyframes animation-center-logo {
+	0% {
+		opacity: 0;
+		right: -30%;
+	}
+	55% {
+		opacity: 0;
+		right: -30%;
+	}
+	100% {
+		opacity: 1;
+		right: 0;
+	}
+}
 @keyframes animation-center-slash {
 	0% {
 		opacity: 0;
@@ -187,167 +221,523 @@ body {
 }
 @keyframes animation-center-text-1 {
 	0% {
-		left: -50%;
-		opacity: 0;
+		left: -100%;
 	}
 	50% {
-		left: -50%;
-		opacity: 0;
+		left: -100%;
 	}
 	60% {
-		opacity: 0;
 	}	  
 	100% {
 		left: 0;
-		opacity: 1;
 	}
 }
 @keyframes animation-center-text-2 {
 	0% {
-		right: -50%;
-		opacity: 0;
+		right: -100%;
 	}
 	50% {
-		right: -50%;
-		opacity: 0;
+		right: -100%;
 	}
 	60% {
-		opacity: 0;
 	}
 	100% {
 		right: 0;
-		opacity: 1;
 	}
 }
 
-#animation-1 div,
-#animation-2 div,
-#animation-3 div {
-	position: absolute;
+/*Logo animation*/
+.animation-in > div:first-child img {
+	animation: cubic-bezier(0.19, 0.76, 0.32, 1) 1 normal both;
+	animation-duration: var(--animation-time);
 }
-#animation-1 > div:first-child,
-#animation-2 > div:first-child,
-#animation-3 > div:first-child {
-	font-size: 3.5em;
-	font-weight: 600;
-	top: -.13em;
-	text-shadow : var(--anim-bar-shadow);
+.animation-out > div:first-child img {
+	animation: cubic-bezier(0.19, 0.76, 0.32, 1) 1 reverse both;
+	animation-duration: var(--animation-time);
 }
 /*left*/
-.animation-in > div:first-child {
-	animation: cubic-bezier(0.19, 0.76, 0.32, 1) 1 normal both animation-left-slash;
-	animation-duration: var(--anim-duration);
-}	
-.animation-out > div:first-child {
-	animation: cubic-bezier(0.19, 0.76, 0.32, 1) 1 reverse both animation-left-slash;
-	animation-duration: var(--anim-duration);
+.animation-in.left > div:first-child img,
+.animation-out.left > div:first-child img {
+	animation-name: animation-left-logo;
 }
 /*right*/
-.animation-in.right > div:first-child {
-	animation: cubic-bezier(0.19, 0.76, 0.32, 1) 1 normal both animation-right-slash;
-	animation-duration: var(--anim-duration);
-}	
-.animation-out.right > div:first-child {
-	animation: cubic-bezier(0.19, 0.76, 0.32, 1) 1 reverse both animation-right-slash;
-	animation-duration: var(--anim-duration);
+.animation-in.right > div:first-child img,
+.animation-out.right > div:first-child img {
+	animation-name: animation-right-logo;
 }
 /*center*/
-.animation-in.center > div:first-child {
-	animation: cubic-bezier(0.19, 0.76, 0.32, 1) 1 normal both animation-center-slash;
-	animation-duration: var(--anim-duration);
-}	
-.animation-out.center > div:first-child {
-	animation: cubic-bezier(0.19, 0.76, 0.32, 1) 1 reverse both animation-center-slash;
-	animation-duration: var(--anim-duration);
-}
-#animation-1 > div:nth-child(2),
-#animation-2 > div:nth-child(2),
-#animation-3 > div:nth-child(2) {
-	font-size: 1.7em;
-	font-weight: 900;
-	text-shadow : var(--anim-name-shadow);
-}
-/*correction of margin left in name*/
-#animation-1 > div:nth-child(2) div{
-	margin-left: 1px;
-}
-#animation-1 > div:nth-child(3),
-#animation-2 > div:nth-child(3),
-#animation-3 > div:nth-child(3) {
-	font-size: 1em;
-	font-weight: 300;
-	line-height: 3.9;
-	text-transform: none;
-	text-shadow : var(--anim-info-shadow);
-}	
-#animation-1 > div:nth-child(2), #animation-1 > div:nth-child(3),
-#animation-2 > div:nth-child(2), #animation-2 > div:nth-child(3),
-#animation-3 > div:nth-child(2), #animation-3 > div:nth-child(3) {
-	height: 3.8em;
-	width: 25em;
-}
-.animation-in > div:nth-child(2) div, .animation-in > div:nth-child(3) div {
-	animation: cubic-bezier(0.19, 0.76, 0.32, 1) 1 normal both;
-	animation-duration: var(--anim-duration);
-}
-.animation-out > div:nth-child(2) div, .animation-out > div:nth-child(3) div {
-	animation: cubic-bezier(0.19, 0.76, 0.32, 1) 1 reverse both;
-	animation-duration: var(--anim-duration);
-}
-#animation-1 div:nth-child(2) {
-	top: 0;
-	left: 1.2em;
-	padding-left: 5px;
-}
-#animation-2.right div:nth-child(2){
-	top: 0;
-	right: 1.2em;
-	padding-right: 5px;
-}
-#animation-3.center div:nth-child(2){
-	top: 0;
-	left: 50%;
-}
-#animation-3.center div:nth-child(2) > div {
-	transform: translateX(-50%);
+.animation-in.center > div:first-child img,
+.animation-out.center > div:first-child img {
+	animation-name: animation-center-logo;
 }
 
-.animation-in div:nth-child(2) div,
-.animation-out div:nth-child(2) div {
+/*Graph1 animation*/
+.animation-in > div:nth-child(2),
+.animation-in > div:nth-child(4) {
+	animation: cubic-bezier(0.19, 0.76, 0.32, 1) 1 normal both;
+	animation-duration: var(--animation-time);
+}	
+.animation-out > div:nth-child(2),
+.animation-out > div:nth-child(4) {
+	animation: cubic-bezier(0.19, 0.76, 0.32, 1) 1 reverse both;
+	animation-duration: var(--animation-time);
+}
+/*left*/
+.animation-in.left > div:nth-child(2),
+.animation-out.left > div:nth-child(2) {
+	animation-name: animation-left-slash;
+}
+/*right*/
+.animation-in.right > div:nth-child(2),
+.animation-out.right > div:nth-child(2) {
+	animation-name: animation-right-slash;
+}
+/*center*/
+.animation-in.center > div:nth-child(2),
+.animation-out.center > div:nth-child(2) {
+	animation-name: animation-center-slash;
+}
+
+/*Graph2 animation*/
+.animation-in.left > div:nth-child(4),
+.animation-out.left > div:nth-child(4) {
+	animation-name: animation-left-background;
+}
+.animation-in.right > div:nth-child(4),
+.animation-out.right > div:nth-child(4) {
+	animation-name: animation-right-background;
+}
+
+/*Texts animation*/
+.animation-in > .text-content > div:first-child div,
+.animation-in > .text-content > div:nth-child(2) div {
+	animation: cubic-bezier(0.19, 0.76, 0.32, 1) 1 normal both;
+	animation-duration: var(--animation-time);
+}
+.animation-out > .text-content > div:first-child div,
+.animation-out > .text-content > div:nth-child(2) div {
+	animation: cubic-bezier(0.19, 0.76, 0.32, 1) 1 reverse both;
+	animation-duration: var(--animation-time);
+}
+/*left*/
+.animation-in.left > .text-content > div:first-child div,
+.animation-out.left > .text-content > div:first-child div {
 	animation-name: animation-left-text-1;
 }
-.animation-in.right div:nth-child(2) div,
-.animation-out.right div:nth-child(2) div {
-	animation-name: animation-right-text-1;
-}
-.animation-in.center div:nth-child(2) div,
-.animation-out.center div:nth-child(2) div {
-	animation-name: animation-center-text-1;
-}
-#animation-1 div:nth-child(3) {
-	top: .6em;
-	left: 2em;
-}
-#animation-2.right div:nth-child(3) {
-	top: .6em;
-	right: 2em;
-}
-#animation-3.center div:nth-child(3) {
-	top: .6em;
-	right: 50%;
-}
-#animation-3.center div:nth-child(3) > div {
-	transform: translateX(50%);
-}
-.animation-in div:nth-child(3) div,
-.animation-out div:nth-child(3) div {
+.animation-in.left > .text-content > div:nth-child(2) div,
+.animation-out.left > .text-content > div:nth-child(2) div {
 	animation-name: animation-left-text-2;
 }
-.animation-in.right div:nth-child(3) div,
-.animation-out.right div:nth-child(3) div {
+/*right*/
+.animation-in.right > .text-content > div:first-child div,
+.animation-out.right > .text-content > div:first-child div {
+	animation-name: animation-right-text-1;
+}
+.animation-in.right .text-content > div:nth-child(2) div,
+.animation-out.right .text-content > div:nth-child(2) div {
 	animation-name: animation-right-text-2;
 }
-.animation-in.center div:nth-child(3) div,
-.animation-out.center div:nth-child(3) div {
+/*center*/
+.animation-in.center > .text-content > div:first-child div,
+.animation-out.center > .text-content > div:first-child div {
+	animation-name: animation-center-text-1;
+}
+.animation-in.center .text-content > div:nth-child(2) div,
+.animation-out.center .text-content > div:nth-child(2) div {
 	animation-name: animation-center-text-2;
+}
+
+.alt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    transition: left 0.1s, bottom 0.1s, right 0.1s;
+}
+.alt > .text-content {
+    order: 2;
+    display: flex;
+    flex-direction: column;
+}
+.alt > .text-content > .text-mask {
+    overflow: hidden;
+    transition: height 0.1s;
+}
+#lower-third-1.alt{
+	font-size: var(--alt-1-size);
+}
+#lower-third-2.alt{
+	font-size: var(--alt-2-size);
+}
+#lower-third-3.alt{
+	font-size: var(--alt-3-size);
+}
+#lower-third-4.alt{
+	font-size: var(--alt-4-size);
+}
+
+#lower-third-1.left{
+    left: var(--alt-1-margin-h);
+    bottom: var(--alt-1-margin-v);
+}
+#lower-third-1.right{
+    flex-direction: row-reverse;
+    right: var(--alt-1-margin-h);
+    bottom: var(--alt-1-margin-v);
+}
+#lower-third-1.center{
+	bottom: var(--alt-1-margin-v);
+}
+
+#lower-third-2.left{
+    left: var(--alt-2-margin-h);
+    bottom: var(--alt-2-margin-v);
+}
+#lower-third-2.right{
+    flex-direction: row-reverse;
+    right: var(--alt-2-margin-h);
+    bottom: var(--alt-2-margin-v);
+}
+#lower-third-2.center{
+	bottom: var(--alt-2-margin-v);
+}
+
+#lower-third-3.left{
+    left: var(--alt-3-margin-h);
+    bottom: var(--alt-3-margin-v);
+}
+#lower-third-3.right{
+    flex-direction: row-reverse;
+    right: var(--alt-3-margin-h);
+    bottom: var(--alt-3-margin-v);
+}
+#lower-third-3.center{
+	bottom: var(--alt-3-margin-v);
+}
+
+#lower-third-4.left{
+    left: var(--alt-4-margin-h);
+    bottom: var(--alt-4-margin-v);
+}
+#lower-third-4.right{
+    flex-direction: row-reverse;
+    right: var(--alt-4-margin-h);
+    bottom: var(--alt-4-margin-v);
+}
+#lower-third-4.center{
+	bottom: var(--alt-4-margin-v);
+}
+
+.hide-anim {
+	display: none;
+}
+
+.right > .text-content > .text-mask {
+	text-align: right;
+}
+.center > .text-content > .text-mask {
+	text-align: center;
+}
+#lower-third-1 > div.text-content > div:first-child {
+    height: calc(var(--alt-1-name-size) + 0.25em);
+    margin-bottom: var(--alt-1-line-spacing);
+    transition: margin 0.1s;
+}
+#lower-third-1 > div.text-content > div:nth-child(2) {
+	height: calc(var(--alt-1-info-size) + 0.25em);
+}
+#lower-third-2 > div.text-content > div:first-child {
+    height: calc(var(--alt-2-name-size) + 0.25em);
+    margin-bottom: var(--alt-2-line-spacing);
+    transition: margin 0.1s;
+}
+#lower-third-2 > div.text-content > div:nth-child(2) {
+	height: calc(var(--alt-2-info-size) + 0.25em);
+}
+#lower-third-3 > div.text-content > div:first-child {
+    height: calc(var(--alt-3-name-size) + 0.25em);
+    margin-bottom: var(--alt-3-line-spacing);
+    transition: margin 0.1s;
+}
+#lower-third-3 > div.text-content > div:nth-child(2) {
+	height: calc(var(--alt-3-info-size) + 0.25em);
+}
+#lower-third-4 > div.text-content > div:first-child {
+    height: calc(var(--alt-4-name-size) + 0.25em);
+    margin-bottom: var(--alt-4-line-spacing);
+    transition: margin 0.1s;
+}
+#lower-third-4 > div.text-content > div:nth-child(2) {
+	height: calc(var(--alt-4-info-size) + 0.25em);
+}
+
+/*Name*/
+.text-content > div:first-child div {
+    position: relative;
+    display: inline-flex;
+    transition: font-size 0.1s;
+    padding: 0 0.2rem;
+}
+#lower-third-1 > div.text-content > div:first-child div {
+	font-family: var(--alt-1-font);
+	font-size: var(--alt-1-name-size);
+    font-weight: var(--alt-1-name-weight);
+    text-transform: var(--alt-1-name-transform);
+    color: var(--alt-1-name-color);
+    text-shadow : var(--alt-1-shadows);
+}
+#lower-third-2 > div.text-content > div:first-child div {
+	font-family: var(--alt-2-font);
+	font-size: var(--alt-2-name-size);
+    font-weight: var(--alt-2-name-weight);
+    text-transform: var(--alt-2-name-transform);
+    color: var(--alt-2-name-color);
+    text-shadow : var(--alt-2-shadows);
+}
+#lower-third-3 > div.text-content > div:first-child div {
+	font-family: var(--alt-3-font);
+	font-size: var(--alt-3-name-size);
+    font-weight: var(--alt-3-name-weight);
+    text-transform: var(--alt-3-name-transform);
+    color: var(--alt-3-name-color);
+    text-shadow : var(--alt-3-shadows);
+}
+#lower-third-4 > div.text-content > div:first-child div {
+	font-family: var(--alt-4-font);
+	font-size: var(--alt-4-name-size);
+    font-weight: var(--alt-4-name-weight);
+    text-transform: var(--alt-4-name-transform);
+    color: var(--alt-4-name-color);
+    text-shadow : var(--alt-4-shadows);
+}
+
+/*Info*/
+.text-content > div:nth-child(2) div {
+    position: relative;
+    display: inline-flex;
+    transition: font-size 0.1s;
+    padding: 0 0.2rem;
+}
+#lower-third-1 > div.text-content > div:nth-child(2) div {
+    font-family: var(--alt-1-font);
+    font-size: var(--alt-1-info-size);
+    font-weight: var(--alt-1-info-weight);
+    text-transform: var(--alt-1-info-transform);
+    color: var(--alt-1-info-color);
+    text-shadow : var(--alt-1-shadows);	
+}
+#lower-third-2 > div.text-content > div:nth-child(2) div {
+    font-family: var(--alt-2-font);
+    font-size: var(--alt-2-info-size);
+    font-weight: var(--alt-2-info-weight);
+    text-transform: var(--alt-2-info-transform);
+    color: var(--alt-2-info-color);
+    text-shadow : var(--alt-2-shadows);	
+}
+#lower-third-3 > div.text-content > div:nth-child(2) div {
+    font-family: var(--alt-3-font);
+    font-size: var(--alt-3-info-size);
+    font-weight: var(--alt-3-info-weight);
+    text-transform: var(--alt-3-info-transform);
+    color: var(--alt-3-info-color);
+    text-shadow : var(--alt-3-shadows);	
+}
+#lower-third-4 > div.text-content > div:nth-child(2) div {
+    font-family: var(--alt-4-font);
+    font-size: var(--alt-4-info-size);
+    font-weight: var(--alt-4-info-weight);
+    text-transform: var(--alt-4-info-transform);
+    color: var(--alt-4-info-color);
+    text-shadow : var(--alt-4-shadows);	
+}
+
+/*Logo*/
+.logo{
+	order: 0;
+	overflow: hidden;
+	transition: margin 0.5s;
+}
+.logo img {
+    max-height: 3.5em;
+    display: flex;
+    position: relative;
+}
+.no-logo {
+    opacity: 0;
+    width: 0;
+    margin: 0!important;
+}
+.left > .logo {
+	margin-right: 0.8em;
+}
+.right > .logo {
+	margin-left: 0.8em;
+}
+
+
+/*****Style 1*****/
+.style-1.left > .text-content{
+	margin-left: 1.2em;
+}
+.style-1.right > .text-content{
+	margin-right: 1.2em;
+}
+
+.style-1 > .graph-1 {
+    order: 1;
+    position: relative;
+    width: 0.3em;
+    height: 3.5em;
+}
+
+#lower-third-1.style-1 > .graph-1 {
+    background: var(--alt-1-style-color-1);
+    box-shadow : var(--alt-1-shadows);	
+}
+#lower-third-2.style-1 > .graph-1 {
+    background: var(--alt-2-style-color-1);
+    box-shadow : var(--alt-2-shadows);	
+}
+#lower-third-3.style-1 > .graph-1 {
+    background: var(--alt-3-style-color-1);
+    box-shadow : var(--alt-3-shadows);	
+}
+#lower-third-4.style-1 > .graph-1 {
+    background: var(--alt-4-style-color-1);
+    box-shadow : var(--alt-4-shadows);	
+}
+
+.style-1 > .graph-2 {
+	order: 3;
+	z-index: -1;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	margin: -1em;
+	padding: 1em;
+	transform: translateY(1em); /*OBS background position fix ¯\_(ツ)_/¯*/
+}
+#lower-third-1.style-1 > .graph-2 {
+	background: var(--alt-1-style-color-2);
+	opacity: var(--alt-1-background);		
+}
+#lower-third-2.style-1 > .graph-2 {
+	background: var(--alt-2-style-color-2);
+	opacity: var(--alt-2-background);		
+}
+#lower-third-3.style-1 > .graph-2 {
+	background: var(--alt-3-style-color-2);
+	opacity: var(--alt-3-background);		
+}
+#lower-third-4.style-1 > .graph-2 {
+	background: var(--alt-4-style-color-2);
+	opacity: var(--alt-4-background);		
+}
+
+.style-1.left > .graph-2 {
+	left: 0;
+	margin-right: -1.8em;
+	padding-right: 1.8em;
+} 
+.style-1.right > .graph-2 {
+	right: 0;
+	margin-left: -1.8em;
+	padding-left: 1.8em;
+}
+
+
+/*****Style 2*****/
+#lower-third-1.style-2 > div.text-content > div:first-child {
+    height: calc(var(--alt-1-name-size) + 1rem);
+}
+#lower-third-2.style-2 > div.text-content > div:first-child {
+    height: calc(var(--alt-2-name-size) + 1rem);
+}
+#lower-third-3.style-2 > div.text-content > div:first-child {
+    height: calc(var(--alt-3-name-size) + 1rem);
+}
+#lower-third-4.style-2 > div.text-content > div:first-child {
+    height: calc(var(--alt-4-name-size) + 1rem);
+}
+
+.style-2 > div.text-content > div:first-child div {
+	padding: 0.5rem 1.3rem;
+}
+.style-2 > div.text-content > div:first-child div::after {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	top: 0;
+	left: 0;	
+}
+
+#lower-third-1.style-2 > div.text-content > div:first-child div::after {
+	background: var(--alt-1-style-color-1);
+	opacity: var(--alt-1-background);
+}
+#lower-third-2.style-2 > div.text-content > div:first-child div::after {
+	background: var(--alt-2-style-color-1);
+	opacity: var(--alt-2-background);
+}
+#lower-third-3.style-2 > div.text-content > div:first-child div::after {
+	background: var(--alt-3-style-color-1);
+	opacity: var(--alt-3-background);
+}
+#lower-third-4.style-2 > div.text-content > div:first-child div::after {
+	background: var(--alt-4-style-color-1);
+	opacity: var(--alt-4-background);
+}
+
+#lower-third-1.style-2 > div.text-content > div:nth-child(2) {
+	height: calc(var(--alt-1-info-size) + 1rem);
+}
+#lower-third-2.style-2 > div.text-content > div:nth-child(2) {
+	height: calc(var(--alt-2-info-size) + 1rem);
+}
+#lower-third-3.style-2 > div.text-content > div:nth-child(2) {
+	height: calc(var(--alt-3-info-size) + 1rem);
+}
+#lower-third-4.style-2 > div.text-content > div:nth-child(2) {
+	height: calc(var(--alt-4-info-size) + 1rem);
+}
+
+.style-2.center > div.text-content > div:nth-child(2) {
+	width: fit-content;
+	margin: 0 auto;
+}
+.style-2 > div.text-content > div:nth-child(2) div {
+	padding: 0.5rem 1.3rem;
+}
+.style-2 > div.text-content > div:nth-child(2) div::after {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	top: 0;
+	left: 0;
+}
+
+#lower-third-1.style-2 > div.text-content > div:nth-child(2) div::after {
+    background: var(--alt-1-style-color-2);
+    opacity: var(--alt-1-background);
+}
+#lower-third-2.style-2 > div.text-content > div:nth-child(2) div::after {
+    background: var(--alt-2-style-color-2);
+    opacity: var(--alt-2-background);	
+}
+#lower-third-3.style-2 > div.text-content > div:nth-child(2) div::after {
+    background: var(--alt-3-style-color-2);
+    opacity: var(--alt-3-background);
+}
+#lower-third-4.style-2 > div.text-content > div:nth-child(2) div::after {
+    background: var(--alt-4-style-color-2);
+    opacity: var(--alt-4-background);
+}
+
+.style-2 > .graph-1,
+.style-2 > .graph-2 {
+	display: none;
 }

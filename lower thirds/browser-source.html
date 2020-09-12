@@ -4,13 +4,18 @@
     <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<link rel="stylesheet" href="../common/css/style-source.css">
     <title>Lower thirds Source</title>
-
+	<link rel="stylesheet" href="../common/css/style-source.css">
+	<script src="../common/js/jquery.js"></script>
 	<script>
 		var bc = new BroadcastChannel('obs-lower-thirds-channel');
 
 		var bcr = new BroadcastChannel('obs-lower-thirds-channe2'); //Send to Control Panel
+
+		var alt_1_logo_image = "../logos/logo_1.png";
+		var alt_2_logo_image = "../logos/logo_2.png";
+		var alt_3_logo_image = "../logos/logo_3.png";
+		var alt_4_logo_image = "../logos/logo_4.png";
 
 		var animationTime;
 		var activeTime;
@@ -19,8 +24,7 @@
 		var canIn1 = false;
 		var canIn2 = false;
 		var canIn3 = false;
-
-		var oldIn;
+		var canIn4 = false;		
 
 		var c1 = 0;
 		var d1 = 0;
@@ -37,13 +41,56 @@
 		var t3;
 		var s3;
 
+		var c4 = 0;
+		var d4 = 0;
+		var t4;
+		var s4;		
+
+		var activeTime1_to_send;
+		var inactiveTime1_to_send;
+		var activeTime2_to_send;
+		var inactiveTime2_to_send;
+		var activeTime3_to_send;
+		var inactiveTime3_to_send;
+		var activeTime4_to_send;
+		var inactiveTime4_to_send;
+
 		var active1IsOn = 0;
 		var inactive1IsOn = 0;
 		var active2IsOn = 0;
 		var inactive2IsOn = 0;
 		var active3IsOn = 0;
 		var inactive3IsOn = 0;
+		var active4IsOn = 0;
+		var inactive4IsOn = 0;
 
+		var alt_1_logo_switch;
+		var alt_1_logo_switch_old = alt_1_logo_switch;
+		var alt_1_align = "left";
+		var alt_1_align_old = alt_1_align;
+		var alt_1_style;
+		var alt_1_style_old = alt_1_style;
+
+		var alt_2_logo_switch;
+		var alt_2_logo_switch_old = alt_2_logo_switch;
+		var alt_2_align = "left";
+		var alt_2_align_old = alt_2_align;
+		var alt_2_style;
+		var alt_2_style_old = alt_2_style;
+
+		var alt_3_logo_switch;
+		var alt_3_logo_switch_old = alt_3_logo_switch;
+		var alt_3_align = "left";
+		var alt_3_align_old = alt_3_align;
+		var alt_3_style;
+		var alt_3_style_old = alt_3_style;				
+
+		var alt_4_logo_switch;
+		var alt_4_logo_switch_old = alt_4_logo_switch;
+		var alt_4_align = "left";
+		var alt_4_align_old = alt_4_align;
+		var alt_4_style;
+		var alt_4_style_old = alt_4_style;
 
 		function animationIn(animation) {
 			elementAnim = document.getElementById(animation);			
@@ -82,7 +129,6 @@
 		      inactive1IsOn = 0;
 		  }
 		}
-
 
 		// Active time counter (Lower Third 2)
 		function activeCount2(i) {
@@ -132,51 +178,89 @@
 		  }
 		}
 
+		// Active time counter (Lower Third 4)
+		function activeCount4(i) {
+		  if (c4 <= activeTime){
+		    c4 = c4 + 1;
+		    t4 = setTimeout(activeCount4, 1000, i);
+		  } else {
+		      stopTimeCount(i);
+		      startInactiveCount(i);      
+		  }
+		}
+
+		// Inactive time counter (Lower Third 4)
+		function inactiveCount4(i) {
+		  if (d4 <= inactiveTime){
+		    d4 = d4 + 1;
+		    s4 = setTimeout(inactiveCount4, 1000, i);
+		  } else {
+		      startActiveCount(i);
+		      d4 = 0;
+		      clearTimeout(s4);
+		      inactive4IsOn = 0;
+		  }
+		}
+
 		// Can start Active time counter? Start Animation In
 		function startActiveCount(i) {
 		  if (!active1IsOn) {
 		  	activeIs1On = true;
-			if (i == "animation-1"){
+			if (i == "lower-third-1"){
 				activeCount1(i);
 				animationIn(i);
 			}
 		  }
 		  if (!active2IsOn) {
 		  	activeIs2On = true;
-			if (i == "animation-2"){
+			if (i == "lower-third-2"){
 				activeCount2(i);
 				animationIn(i);
 			}
 		  }
 		  if (!active3IsOn) {
 		  	activeIs3On = true;
-			if (i == "animation-3"){
+			if (i == "lower-third-3"){
 				activeCount3(i);
 				animationIn(i);
 			}
-		  }		  
+		  }
+		  if (!active4IsOn) {
+		  	activeIs4On = true;
+			if (i == "lower-third-4"){
+				activeCount4(i);
+				animationIn(i);
+			}
+		  }
 		}
 
 		// Can start Inactive time counter? Start Animation Out
 		function startInactiveCount(i) {
 		  if (!inactive1IsOn) {
 		    inactive1IsOn = true;
-		    if (i == "animation-1"){
+		    if (i == "lower-third-1"){
 			    inactiveCount1(i);
 			    animationOut(i);
 			}
 		  }
 		  if (!inactive2IsOn) {
 		    inactive2IsOn = true;
-			if (i == "animation-2"){
+			if (i == "lower-third-2"){
 			    inactiveCount2(i);
 			    animationOut(i);
 			}
 		  }
 		  if (!inactive3IsOn) {
 		    inactive3IsOn = true;
-			if (i == "animation-3"){
+			if (i == "lower-third-3"){
 			    inactiveCount3(i);
+			    animationOut(i);
+			}
+		  }
+		  if (!inactive4IsOn) {
+		    inactive4IsOn = true;
+			if (i == "lower-third-4"){
+			    inactiveCount4(i);
 			    animationOut(i);
 			}
 		  }
@@ -184,7 +268,7 @@
 
 		// Stop active and inactive states.
 		function stopTimeCount(i) {
-		  if (i == "animation-1"){
+		  if (i == "lower-third-1"){
 			c1 = 0;
 			clearTimeout(t1);
 			active1IsOn = 0;
@@ -192,7 +276,7 @@
 			clearTimeout(s1);
 			inactive1IsOn = 0;		  
 		  }
-		  if (i == "animation-2"){
+		  if (i == "lower-third-2"){
 			c2 = 0;
 
 			clearTimeout(t2);
@@ -201,13 +285,21 @@
 			clearTimeout(s2);
 			inactive2IsOn = 0;		  
 		  }
-		  if (i == "animation-3"){
+		  if (i == "lower-third-3"){
 			c3 = 0;
 			clearTimeout(t3);
 			active3IsOn = 0;
 			d3 = 0;
 			clearTimeout(s3);
 			inactive3IsOn = 0;		  
+		  }
+		  if (i == "lower-third-4"){
+			c4 = 0;
+			clearTimeout(t4);
+			active4IsOn = 0;
+			d4 = 0;
+			clearTimeout(s4);
+			inactive4IsOn = 0;		  
 		  }
 
 		  animationOut(i);
@@ -220,99 +312,448 @@
 			animationTime = received_data[0];
 			activeTime = received_data[1];
 			inactiveTime = received_data[2];
-			shadowsOn = received_data[3];
 
-			switch1 = received_data[4];
-			color1 = received_data[5];
-			document.getElementById("name1").innerHTML = received_data[6];
-			document.getElementById("info1").innerHTML = received_data[7];
+			//Animated Lower Thirds 1
+			alt_1_switch = received_data[3];
+			alt_1_style = received_data[4];		
+			document.getElementById("alt-1-name").innerHTML = received_data[5];
+			document.getElementById("alt-1-info").innerHTML = received_data[6];
+			alt_1_name_size = received_data[7];
+			alt_1_info_size = received_data[8];
+			alt_1_name_transform = received_data[9];
+			alt_1_info_transform = received_data[10];
+			alt_1_name_weight = received_data[11];
+			alt_1_info_weight = received_data[12];
+			alt_1_name_color = received_data[13];
+			alt_1_info_color = received_data[14];
+			alt_1_style_color_1 = received_data[15];
+			alt_1_style_color_2 = received_data[16];
+			alt_1_logo_switch = received_data[17];
+			alt_1_background_switch = received_data[18];
+			alt_1_shadows = received_data[19];
+			alt_1_align = received_data[20];
+			alt_1_size = received_data[21];
+			alt_1_margin_h = received_data[22];
+			alt_1_margin_v = received_data[23];
+			alt_1_line_spacing = received_data[24] * 0.1;
+			alt_1_font = received_data [25];
 
-			switch2 = received_data[8];
-			color2 = received_data[9];
-			document.getElementById("name2").innerHTML = received_data[10];
-			document.getElementById("info2").innerHTML = received_data[11];
+			//Animated Lower Thirds 2
+			alt_2_switch = received_data[26];
+			alt_2_style = received_data[27];		
+			document.getElementById("alt-2-name").innerHTML = received_data[28];
+			document.getElementById("alt-2-info").innerHTML = received_data[29];
+			alt_2_name_size = received_data[30];
+			alt_2_info_size = received_data[31];
+			alt_2_name_transform = received_data[32];
+			alt_2_info_transform = received_data[33];
+			alt_2_name_weight = received_data[34];
+			alt_2_info_weight = received_data[35];
+			alt_2_name_color = received_data[36];
+			alt_2_info_color = received_data[37];
+			alt_2_style_color_1 = received_data[38];
+			alt_2_style_color_2 = received_data[39];
+			alt_2_logo_switch = received_data[40];
+			alt_2_background_switch = received_data[41];
+			alt_2_shadows = received_data[42];
+			alt_2_align = received_data[43];
+			alt_2_size = received_data[44];
+			alt_2_margin_h = received_data[45];
+			alt_2_margin_v = received_data[46];
+			alt_2_line_spacing = received_data[47] * 0.1;
+			alt_2_font = received_data [48];
 
-			switch3 = received_data[12];
-			color3 = received_data[13];
-			document.getElementById("name3").innerHTML = received_data[14];
-			document.getElementById("info3").innerHTML = received_data[15];
-			
+			//Animated Lower Thirds 3
+			alt_3_switch = received_data[49];
+			alt_3_style = received_data[50];		
+			document.getElementById("alt-3-name").innerHTML = received_data[51];
+			document.getElementById("alt-3-info").innerHTML = received_data[52];
+			alt_3_name_size = received_data[53];
+			alt_3_info_size = received_data[54];
+			alt_3_name_transform = received_data[55];
+			alt_3_info_transform = received_data[56];
+			alt_3_name_weight = received_data[57];
+			alt_3_info_weight = received_data[58];
+			alt_3_name_color = received_data[59];
+			alt_3_info_color = received_data[60];
+			alt_3_style_color_1 = received_data[61];
+			alt_3_style_color_2 = received_data[62];
+			alt_3_logo_switch = received_data[63];
+			alt_3_background_switch = received_data[64];
+			alt_3_shadows = received_data[65];
+			alt_3_align = received_data[66];
+			alt_3_size = received_data[67];
+			alt_3_margin_h = received_data[68];
+			alt_3_margin_v = received_data[69];
+			alt_3_line_spacing = received_data[70] * 0.1;
+			alt_3_font = received_data [71];
+
+			//Animated Lower Thirds 4
+			alt_4_switch = received_data[72];
+			alt_4_style = received_data[73];		
+			document.getElementById("alt-4-name").innerHTML = received_data[74];
+			document.getElementById("alt-4-info").innerHTML = received_data[75];
+			alt_4_name_size = received_data[76];
+			alt_4_info_size = received_data[77];
+			alt_4_name_transform = received_data[78];
+			alt_4_info_transform = received_data[79];
+			alt_4_name_weight = received_data[80];
+			alt_4_info_weight = received_data[81];
+			alt_4_name_color = received_data[82];
+			alt_4_info_color = received_data[83];
+			alt_4_style_color_1 = received_data[84];
+			alt_4_style_color_2 = received_data[85];
+			alt_4_logo_switch = received_data[86];
+			alt_4_background_switch = received_data[87];
+			alt_4_shadows = received_data[88];
+			alt_4_align = received_data[89];
+			alt_4_size = received_data[90];
+			alt_4_margin_h = received_data[91];
+			alt_4_margin_v = received_data[92];
+			alt_4_line_spacing = received_data[93] * 0.1;
+			alt_4_font = received_data [94];
+
+
 			//If active time is 0 the lower thirds is always active (24hs actually)
 			if (activeTime == "0") {
 		    	activeTime = 86400;
 		  	}
 			//Isn't lower third empty? unhide it
 			if (canIn1) {
-				document.getElementById("animation-1").classList.remove("hide-anim");
+				document.getElementById("lower-third-1").classList.remove("hide-anim");
 			}
 			if (canIn2) {
-				document.getElementById("animation-2").classList.remove("hide-anim");
+				document.getElementById("lower-third-2").classList.remove("hide-anim");
 			}
 			if (canIn3) {
-				document.getElementById("animation-3").classList.remove("hide-anim");
+				document.getElementById("lower-third-3").classList.remove("hide-anim");
+			}
+			if (canIn4) {
+				document.getElementById("lower-third-4").classList.remove("hide-anim");
 			}
 
 			//Check the switches
-			if (switch1 == "false" || received_data[6].length == 0 || received_data[7].length == 0) {
+			if (alt_1_switch == "false" || received_data[5].length == 0 || received_data[6].length == 0) {
 				if(canIn1){
 					canIn1 = false;
-					stopTimeCount("animation-1");
+					stopTimeCount("lower-third-1");
 				} else {
-					stopTimeCount("animation-1");
+					stopTimeCount("lower-third-1");
 				}	
 			} else {
 				if(!canIn1){
 					canIn1 = true;
-					startActiveCount("animation-1");
+					startActiveCount("lower-third-1");
 				}
 			};
 
-			if (switch2 == "false" || received_data[10].length == 0 || received_data[11].length == 0) {
+			if (alt_2_switch == "false" || received_data[28].length == 0 || received_data[29].length == 0) {
 				if(canIn2){
 					canIn2 = false;
-					stopTimeCount("animation-2");
+					stopTimeCount("lower-third-2");
 				} else {
-					stopTimeCount("animation-2");
+					stopTimeCount("lower-third-2");
 				}	
 			} else {
 				if(!canIn2){
 					canIn2 = true;
-					startActiveCount("animation-2");
+					startActiveCount("lower-third-2");
 				}
 			};
 
-			if (switch3 == "false" || received_data[14].length == 0 || received_data[15].length == 0) {
+			if (alt_3_switch == "false" || received_data[51].length == 0 || received_data[52].length == 0) {
 				if(canIn3){
 					canIn3 = false;
-					stopTimeCount("animation-3");
+					stopTimeCount("lower-third-3");
 				} else {
-					stopTimeCount("animation-3");
+					stopTimeCount("lower-third-3");
 				}	
 			} else {
 				if(!canIn3){
 					canIn3 = true;
-					startActiveCount("animation-3");
+					startActiveCount("lower-third-3");
+				}
+			};
+			if (alt_4_switch == "false" || received_data[74].length == 0 || received_data[75].length == 0) {
+				if(canIn4){
+					canIn4 = false;
+					stopTimeCount("lower-third-4");
+				} else {
+					stopTimeCount("lower-third-4");
+				}	
+			} else {
+				if(!canIn4){
+					canIn4 = true;
+					startActiveCount("lower-third-4");
 				}
 			};
 
-			let root = document.documentElement;
-			root.style.setProperty('--anim-duration', animationTime + "s");
-			root.style.setProperty('--anim-bar1', "#" + color1);
-			root.style.setProperty('--anim-bar2', "#" + color2);
-			root.style.setProperty('--anim-bar3', "#" + color3);
-			
-			if (shadowsOn == "false") {
-				root.style.setProperty('--anim-bar-shadow', "none");
-				root.style.setProperty('--anim-name-shadow', "none");
-				root.style.setProperty('--anim-info-shadow', "none");
-			} else if (shadowsOn == "true") {
-				root.style.setProperty('--anim-bar-shadow', "2px 2px 3px #00000030");
-				root.style.setProperty('--anim-name-shadow', "2px 2px 4px #00000040");
-				root.style.setProperty('--anim-info-shadow', "2px 2px 3px #00000060");	
+			//Change the alignment of the lower third
+			if (alt_1_align != alt_1_align_old){
+				if (alt_1_switch == "false"){
+					document.getElementById("lower-third-1").classList.add("hide-anim");
+				}
+				document.getElementById("lower-third-1").classList.replace("left", alt_1_align);
+				document.getElementById("lower-third-1").classList.replace("center", alt_1_align);
+				document.getElementById("lower-third-1").classList.replace("right", alt_1_align);
+			}
+			alt_1_align_old = alt_1_align;
+
+			if (alt_2_align != alt_2_align_old){
+				if (alt_2_switch == "false"){
+					document.getElementById("lower-third-2").classList.add("hide-anim");
+				}
+				document.getElementById("lower-third-2").classList.replace("left", alt_2_align);
+				document.getElementById("lower-third-2").classList.replace("center", alt_2_align);
+				document.getElementById("lower-third-2").classList.replace("right", alt_2_align);
+			}
+			alt_2_align_old = alt_2_align;
+
+			if (alt_3_align != alt_3_align_old){
+				if (alt_3_switch == "false"){
+					document.getElementById("lower-third-3").classList.add("hide-anim");
+				}
+				document.getElementById("lower-third-3").classList.replace("left", alt_3_align);
+				document.getElementById("lower-third-3").classList.replace("center", alt_3_align);
+				document.getElementById("lower-third-3").classList.replace("right", alt_3_align);
+			}
+			alt_3_align_old = alt_3_align;
+
+			if (alt_4_align != alt_4_align_old){
+				if (alt_4_switch == "false"){
+					document.getElementById("lower-third-4").classList.add("hide-anim");
+				}
+				document.getElementById("lower-third-4").classList.replace("left", alt_4_align);
+				document.getElementById("lower-third-4").classList.replace("center", alt_4_align);
+				document.getElementById("lower-third-4").classList.replace("right", alt_4_align);
+			}
+			alt_4_align_old = alt_4_align;
+
+			//Change the style of the lower third
+			if (alt_1_style != alt_1_style_old){
+				if (alt_1_switch == "false"){
+					document.getElementById("lower-third-1").classList.add("hide-anim");
+				}
+				document.getElementById("lower-third-1").classList.replace("style-1", "style-" + alt_1_style);
+				document.getElementById("lower-third-1").classList.replace("style-2", "style-" + alt_1_style);
+				document.getElementById("lower-third-1").classList.replace("style-3", "style-" + alt_1_style);
+				//document.getElementById("lower-third-1").classList.replace("style-4", "style-" + alt_1_style);
+				//document.getElementById("lower-third-1").classList.replace("style-5", "style-" + alt_1_style);
+			}
+			alt_1_style_old = alt_1_style;
+
+			if (alt_2_style != alt_2_style_old){
+				if (alt_2_switch == "false"){
+					document.getElementById("lower-third-2").classList.add("hide-anim");
+				}
+				document.getElementById("lower-third-2").classList.replace("style-1", "style-" + alt_2_style);
+				document.getElementById("lower-third-2").classList.replace("style-2", "style-" + alt_2_style);
+				document.getElementById("lower-third-2").classList.replace("style-3", "style-" + alt_2_style);
+			}
+			alt_2_style_old = alt_2_style;
+
+			if (alt_3_style != alt_3_style_old){
+				if (alt_3_switch == "false"){
+					document.getElementById("lower-third-3").classList.add("hide-anim");
+				}
+				document.getElementById("lower-third-3").classList.replace("style-1", "style-" + alt_3_style);
+				document.getElementById("lower-third-3").classList.replace("style-2", "style-" + alt_3_style);
+				document.getElementById("lower-third-3").classList.replace("style-3", "style-" + alt_3_style);
+			}
+			alt_3_style_old = alt_3_style;			
+
+			if (alt_4_style != alt_4_style_old){
+				if (alt_4_switch == "false"){
+					document.getElementById("lower-third-4").classList.add("hide-anim");
+				}
+				document.getElementById("lower-third-4").classList.replace("style-1", "style-" + alt_4_style);
+				document.getElementById("lower-third-4").classList.replace("style-2", "style-" + alt_4_style);
+				document.getElementById("lower-third-4").classList.replace("style-3", "style-" + alt_4_style);
+			}
+			alt_4_style_old = alt_4_style;
+
+			//Show or hide Logo
+			if (alt_1_logo_switch != alt_1_logo_switch_old){
+				if (alt_1_switch == "false"){
+					document.getElementById("lower-third-1").classList.add("hide-anim");
+				}/*puedo hacer una funcion para todos los switches y LT. "myfunction(switch,lt)"*/
+				if (alt_1_logo_switch == "true"){
+					document.getElementById("alt-1-logo").classList.remove("no-logo");
+					loadLogo("alt-1-logo",alt_1_logo_image);
+				} else {
+					document.getElementById("alt-1-logo").classList.add("no-logo");
+					loadLogo("alt-1-logo","");
+				}
 			}			
+			alt_1_logo_switch_old = alt_1_logo_switch;
+
+			if (alt_2_logo_switch != alt_2_logo_switch_old){
+				if (alt_2_switch == "false"){
+					document.getElementById("lower-third-2").classList.add("hide-anim");
+				}/*puedo hacer una funcion para todos los switches y LT. "myfunction(switch,lt)"*/
+				if (alt_2_logo_switch == "true"){
+					document.getElementById("alt-2-logo").classList.remove("no-logo");
+					loadLogo("alt-2-logo",alt_2_logo_image);
+				} else {
+					document.getElementById("alt-2-logo").classList.add("no-logo");
+					loadLogo("alt-2-logo","");
+				}
+			}			
+			alt_2_logo_switch_old = alt_2_logo_switch;
+
+			if (alt_3_logo_switch != alt_3_logo_switch_old){
+				if (alt_3_switch == "false"){
+					document.getElementById("lower-third-3").classList.add("hide-anim");
+				}/*puedo hacer una funcion para todos los switches y LT. "myfunction(switch,lt)"*/
+				if (alt_3_logo_switch == "true"){
+					document.getElementById("alt-3-logo").classList.remove("no-logo");
+					loadLogo("alt-3-logo",alt_3_logo_image);
+				} else {
+					document.getElementById("alt-3-logo").classList.add("no-logo");
+					loadLogo("alt-3-logo","");
+				}
+			}			
+			alt_3_logo_switch_old = alt_3_logo_switch;
+
+			if (alt_4_logo_switch != alt_4_logo_switch_old){
+				if (alt_4_switch == "false"){
+					document.getElementById("lower-third-4").classList.add("hide-anim");
+				}/*puedo hacer una funcion para todos los switches y LT. "myfunction(switch,lt)"*/
+				if (alt_4_logo_switch == "true"){
+					document.getElementById("alt-4-logo").classList.remove("no-logo");
+					loadLogo("alt-4-logo",alt_4_logo_image);
+				} else {
+					document.getElementById("alt-4-logo").classList.add("no-logo");
+					loadLogo("alt-4-logo","");
+				}
+			}			
+			alt_4_logo_switch_old = alt_4_logo_switch;
+
+
+			let root = document.documentElement;
+
+			//Show or hide Background
+			if (alt_1_background_switch == "true"){
+				root.style.setProperty('--alt-1-background', "1");
+			} else {
+				root.style.setProperty('--alt-1-background', "0");
+			}
+			if (alt_2_background_switch == "true"){
+				root.style.setProperty('--alt-2-background', "1");
+			} else {
+				root.style.setProperty('--alt-2-background', "0");
+			}
+			if (alt_3_background_switch == "true"){
+				root.style.setProperty('--alt-3-background', "1");
+			} else {
+				root.style.setProperty('--alt-3-background', "0");
+			}
+			if (alt_4_background_switch == "true"){
+				root.style.setProperty('--alt-4-background', "1");
+			} else {
+				root.style.setProperty('--alt-4-background', "0");
+			}
+
+			root.style.setProperty('--animation-time', animationTime + "s");
+
+			//texts styling
+			root.style.setProperty('--alt-1-size', alt_1_size + "px");
+			root.style.setProperty('--alt-1-margin-h', alt_1_margin_h + "rem");
+			root.style.setProperty('--alt-1-margin-v', alt_1_margin_v + "rem");
+			root.style.setProperty('--alt-1-line-spacing', alt_1_line_spacing + "em");
+			root.style.setProperty('--alt-1-name-size', alt_1_name_size + "em");
+			root.style.setProperty('--alt-1-info-size', alt_1_info_size + "em");
+			root.style.setProperty('--alt-1-name-transform', alt_1_name_transform);
+			root.style.setProperty('--alt-1-info-transform', alt_1_info_transform);
+			root.style.setProperty('--alt-1-name-weight', alt_1_name_weight);
+			root.style.setProperty('--alt-1-info-weight', alt_1_info_weight);
+			root.style.setProperty('--alt-1-name-color', "#" + alt_1_name_color);
+			root.style.setProperty('--alt-1-info-color', "#" + alt_1_info_color);
+			root.style.setProperty('--alt-1-style-color-1', "#" + alt_1_style_color_1);
+			root.style.setProperty('--alt-1-style-color-2', "#" + alt_1_style_color_2);
+			root.style.setProperty('--alt-1-font', alt_1_font);
+
+			root.style.setProperty('--alt-2-size', alt_2_size + "px");
+			root.style.setProperty('--alt-2-margin-h', alt_2_margin_h + "rem");
+			root.style.setProperty('--alt-2-margin-v', alt_2_margin_v + "rem");
+			root.style.setProperty('--alt-2-line-spacing', alt_2_line_spacing + "em");
+			root.style.setProperty('--alt-2-name-size', alt_2_name_size + "em");
+			root.style.setProperty('--alt-2-info-size', alt_2_info_size + "em");
+			root.style.setProperty('--alt-2-name-transform', alt_2_name_transform);
+			root.style.setProperty('--alt-2-info-transform', alt_2_info_transform);
+			root.style.setProperty('--alt-2-name-weight', alt_2_name_weight);
+			root.style.setProperty('--alt-2-info-weight', alt_2_info_weight);
+			root.style.setProperty('--alt-2-name-color', "#" + alt_2_name_color);
+			root.style.setProperty('--alt-2-info-color', "#" + alt_2_info_color);
+			root.style.setProperty('--alt-2-style-color-1', "#" + alt_2_style_color_1);
+			root.style.setProperty('--alt-2-style-color-2', "#" + alt_2_style_color_2);
+			root.style.setProperty('--alt-2-font', alt_2_font);
+
+			root.style.setProperty('--alt-3-size', alt_3_size + "px");
+			root.style.setProperty('--alt-3-margin-h', alt_3_margin_h + "rem");
+			root.style.setProperty('--alt-3-margin-v', alt_3_margin_v + "rem");
+			root.style.setProperty('--alt-3-line-spacing', alt_3_line_spacing + "em");
+			root.style.setProperty('--alt-3-name-size', alt_3_name_size + "em");
+			root.style.setProperty('--alt-3-info-size', alt_3_info_size + "em");
+			root.style.setProperty('--alt-3-name-transform', alt_3_name_transform);
+			root.style.setProperty('--alt-3-info-transform', alt_3_info_transform);
+			root.style.setProperty('--alt-3-name-weight', alt_3_name_weight);
+			root.style.setProperty('--alt-3-info-weight', alt_3_info_weight);
+			root.style.setProperty('--alt-3-name-color', "#" + alt_3_name_color);
+			root.style.setProperty('--alt-3-info-color', "#" + alt_3_info_color);
+			root.style.setProperty('--alt-3-style-color-1', "#" + alt_3_style_color_1);
+			root.style.setProperty('--alt-3-style-color-2', "#" + alt_3_style_color_2);
+			root.style.setProperty('--alt-3-font', alt_3_font);
+
+			root.style.setProperty('--alt-4-size', alt_4_size + "px");
+			root.style.setProperty('--alt-4-margin-h', alt_4_margin_h + "rem");
+			root.style.setProperty('--alt-4-margin-v', alt_4_margin_v + "rem");
+			root.style.setProperty('--alt-4-line-spacing', alt_4_line_spacing + "em");
+			root.style.setProperty('--alt-4-name-size', alt_4_name_size + "em");
+			root.style.setProperty('--alt-4-info-size', alt_4_info_size + "em");
+			root.style.setProperty('--alt-4-name-transform', alt_4_name_transform);
+			root.style.setProperty('--alt-4-info-transform', alt_4_info_transform);
+			root.style.setProperty('--alt-4-name-weight', alt_4_name_weight);
+			root.style.setProperty('--alt-4-info-weight', alt_4_info_weight);
+			root.style.setProperty('--alt-4-name-color', "#" + alt_4_name_color);
+			root.style.setProperty('--alt-4-info-color', "#" + alt_4_info_color);
+			root.style.setProperty('--alt-4-style-color-1', "#" + alt_4_style_color_1);
+			root.style.setProperty('--alt-4-style-color-2', "#" + alt_4_style_color_2);
+			root.style.setProperty('--alt-4-font', alt_4_font);
+
+						
+			//alt_1_shadows
+			if (alt_1_shadows == "false") {
+				root.style.setProperty('--alt-1-shadows', "none");
+			} else if (alt_1_shadows == "true") {
+				root.style.setProperty('--alt-1-shadows', "0.1rem 0.1rem 0.2rem #00000060");
+			}
+			if (alt_2_shadows == "false") {
+				root.style.setProperty('--alt-2-shadows', "none");
+			} else if (alt_2_shadows == "true") {
+				root.style.setProperty('--alt-2-shadows', "0.1rem 0.1rem 0.2rem #00000060");
+			}
+			if (alt_3_shadows == "false") {
+				root.style.setProperty('--alt-3-shadows', "none");
+			} else if (alt_3_shadows == "true") {
+				root.style.setProperty('--alt-3-shadows', "0.1rem 0.1rem 0.2rem #00000060");
+			}
+			if (alt_4_shadows == "false") {
+				root.style.setProperty('--alt-4-shadows', "none");
+			} else if (alt_4_shadows == "true") {
+				root.style.setProperty('--alt-4-shadows', "0.1rem 0.1rem 0.2rem #00000060");
+			}
 		}
 
-		//Sender
+		function loadLogo(alt,logo) {
+			if(logo){
+				document.getElementById(alt).innerHTML = '<img src="' + logo + '"></div>';				
+			} else {
+				document.getElementById(alt).innerHTML = '';	
+			}
+		}
+
+		//Send data to Control Panel
 		function function_send() {
 			activeTime1_to_send = c1 - 1;
 			inactiveTime1_to_send = d1 - 1;
@@ -320,7 +761,9 @@
 			inactiveTime2_to_send = d2 - 1;
 			activeTime3_to_send = c3 - 1;
 			inactiveTime3_to_send = d3 - 1;
-			
+			activeTime4_to_send = c4 - 1;
+			inactiveTime4_to_send = d4 - 1;
+
 			if (activeTime1_to_send < 0){
 				activeTime1_to_send = 0;
 			}
@@ -339,14 +782,22 @@
 			if (inactiveTime3_to_send < 0){
 				inactiveTime3_to_send = 0;
 			}
+			if (activeTime4_to_send < 0){
+				activeTime4_to_send = 0;
+			}
+			if (inactiveTime4_to_send < 0){
+				inactiveTime4_to_send = 0;
+			}
 
-			bcr.postMessage(activeTime1_to_send + '|' + inactiveTime1_to_send + '|' + activeTime2_to_send + '|' + inactiveTime2_to_send + '|' + activeTime3_to_send + '|' + inactiveTime3_to_send);
+
+			bcr.postMessage(activeTime1_to_send + '|' + inactiveTime1_to_send + '|' + activeTime2_to_send + '|' + inactiveTime2_to_send + '|' + activeTime3_to_send + '|' + inactiveTime3_to_send + '|' + activeTime4_to_send + '|' + inactiveTime4_to_send);
 		}
 
 		function refreshData() {
-		    x = 0.05;  // 5 Seconds
+		    x = 0.05; // Refresh time miltiplier
 
 		    function_send();
+		    //loadLogo();
 
 		    setTimeout(refreshData, x*1000);
 		}
@@ -356,36 +807,65 @@
 
   </head>
   <body class="browser-source lower-thirds">
+		<!--Lower third 1-->
+		<div id="lower-third-1" class="alt left style-1 hide-anim">
+			<div id="alt-1-logo" class="logo no-logo"></div>
+			<div class="graph-1"></div>
+			<div class="text-content">
+				<div class="text-mask">
+					<div id="alt-1-name"></div>
+				</div>
+				<div class="text-mask">
+					<div id="alt-1-info"></div>
+				</div>
+			</div>
+			<div class="graph-2"></div>
+		</div>
 
-	   <div id="animation-1" class="lower-third hide-anim">
-	    <div class="bar">|</div>
-	    <div class="white light mask">
-	      <div id="name1"></div>
-	    </div>
-	    <div class="white light mask">
-	      <div id="info1"></div>
-	    </div>
-	   </div>
+		<!--Lower third 2-->
+		<div id="lower-third-2" class="alt left style-1 hide-anim">
+			<div id="alt-2-logo" class="logo no-logo"></div>
+			<div class="graph-1"></div>
+			<div class="text-content">
+				<div class="text-mask">
+					<div id="alt-2-name"></div>
+				</div>
+				<div class="text-mask">
+					<div id="alt-2-info"></div>
+				</div>
+			</div>
+			<div class="graph-2"></div>
+		</div>
 
-	  <div id="animation-2" class="lower-third right hide-anim">
-	    <div class="bar">|</div>
-	    <div class="white light mask">
-	      <div id="name2"></div>
-	    </div>
-	    <div class="white light mask">
-	      <div id="info2"></div>
-	    </div>
-	  </div>
+		<!--Lower third 3-->
+		<div id="lower-third-3" class="alt left style-1 hide-anim">
+			<div id="alt-3-logo" class="logo no-logo"></div>
+			<div class="graph-1"></div>
+			<div class="text-content">
+				<div class="text-mask">
+					<div id="alt-3-name"></div>
+				</div>
+				<div class="text-mask">
+					<div id="alt-3-info"></div>
+				</div>
+			</div>
+			<div class="graph-2"></div>
+		</div>
 
-	  <div id="animation-3" class="lower-third center hide-anim">
-	    <div class="bar"></div>
-	    <div class="white light">
-	      <div id="name3"></div>
-	    </div>
-	    <div class="white light">
-	      <div id="info3"></div>
-	    </div>
-	  </div>
+		<!--Lower third 4-->
+		<div id="lower-third-4" class="alt left style-1 hide-anim">
+			<div id="alt-4-logo" class="logo no-logo"></div>
+			<div class="graph-1"></div>
+			<div class="text-content">
+				<div class="text-mask">
+					<div id="alt-4-name"></div>
+				</div>
+				<div class="text-mask">
+					<div id="alt-4-info"></div>
+				</div>
+			</div>
+			<div class="graph-2"></div>
+		</div>
 
   </body>
 </html>

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<!--Animated Lower Thirds v1.1-->
+		<!--Author: NoeAL-->
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -9,567 +11,1478 @@
 		<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 		<script src="../common/js/jquery.js"></script>
 		<script src="../common/js/jscolor.js"></script>
-
+		<script src="../common/js/hotkeys.js"></script>
 	</head>
 	<body class="lower-thirds-panel panel">
 		<div class="static-panel-top">
-			<div>
+			
+			<!--// Main Settings//-->
+			<div id="alt-main-config-content">
 				<label class="switch">
-				<input type="checkbox" id="lower-thirds-masterswitch"> <!--"checked" to active switch-->
+				<input class="checkbox-storable" type="checkbox" id="lower-thirds-masterswitch"> <!--"checked" to active switch-->
 				<span class="slider round"></span>
 				</label>
-				<label class="accordion"><i class="fas">&#xf013;</i>Settings</label>
+				<label class="accordion"><i class="fas">&#xf013;</i>Main settings</label>
 				<div id="times-configuration" class="hidable">
 					<div class="column-33">
-						<input class="storable" id="lower-thirds-animation" placeholder="4s (in-out)">
+						<input class="storable" id="lower-thirds-animation" placeholder="4s (in-out)" tabindex="1">
 					</div>
 					<div class="column-33">
-						<input class="storable" id="lower-thirds-length" placeholder="25s (active)">
+						<input class="storable" id="lower-thirds-length" placeholder="25s (active)" tabindex="2">
 					</div>
 					<div class="column-33">
-						<input class="storable" id="lower-thirds-interval" placeholder="420s (inactive)">
-					</div>
-					<div id="shadows"><i class="fas">&#xf24d;</i></div>
-				</div>
-			</div>
-			<div style="clear:both"></div>
-			</br>
-			<label class="switch">
-			<input type="checkbox" id="lower-thirds-switch1">
-			<span class="slider round"></span>
-			</label>
-			<label class="accordion"><i class="fas">&#xf007;</i>Left</label>
-			<div class="hidable">
-				<input class="storable" type="text" id="lower-thirds-name1" placeholder="Name">
-				<input class="storable" type="text" id="lower-thirds-info1" placeholder="Info">
-				<div class="panel-bottom">
-					<input id="color-m1" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, insetWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true}" value="cf4c4e">
-					<div id="clean-m1" class="clean"><i class="fas">&#xf00d;</i></div>
-					<ul id="m1-slots">
-						<li id="m1-slot1"><div class="slot-storable" id="m1-name1"></div><div class="slot-storable" id="m1-info1"></div></li>
-						<li id="m1-slot2"><div class="slot-storable" id="m1-name2"></div><div class="slot-storable" id="m1-info2"></div></li>
-					</ul>
-					<div class="move-up off"><i class="fas">&#xf0de;</i></div>
-					<div id="move-down-m1" class="move-down on"><i class="fas">&#xf0dd;</i></div>
-					<div class="time-bar">
-						<div id="active-t1">0</div>
-						<div id="inactive-t1">0</div>
+						<input class="storable" id="lower-thirds-interval" placeholder="420s (inactive)" tabindex="3">
 					</div>
 				</div>		
 			</div>
-			</br>
-			<label class="switch">
-			<input type="checkbox" id="lower-thirds-switch2">
-			<span class="slider round"></span>
-			</label>
-			<label class="accordion"><i class="fas">&#xf007;</i>Right</label>
-			<div class="hidable">
-				<input class="storable" type="text" id="lower-thirds-name2" placeholder="Name">
-				<input class="storable" type="text" id="lower-thirds-info2" placeholder="Info">
-				<div class="panel-bottom">
-					<input id="color-m2" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, insetWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true}" value="cf4c4e">
-					<div id="clean-m2" class="clean"><i class="fas">&#xf00d;</i></div>
-					<ul id="m2-slots">
-						<li id="m2-slot1"><div class="slot-storable" id="m2-name1"></div><div class="slot-storable" id="m2-info1"></div></li>
-						<li id="m2-slot2"><div class="slot-storable" id="m2-name2"></div><div class="slot-storable" id="m2-info2"></div></li>
-					</ul>
-					<div id="move-up-m2" class="move-up on"><i class="fas">&#xf0de;</i></div>
-					<div id="move-down-m2" class="move-down on"><i class="fas">&#xf0dd;</i></div>
-					<div class="time-bar">
-						<div id="active-t2">0</div>
-						<div id="inactive-t2">0</div>
+
+			<!--// Lower Third 1//-->
+			<div id="alt-1-config-content">
+				<label class="switch">
+				<input class="checkbox-storable" type="checkbox" id="lower-thirds-switch1">
+				<span class="slider round"></span>
+				</label>
+				<label class="accordion"><i class="fas">&#xf550;</i>Lower Third 1</label>
+				<div class="hidable">
+					<div class="grid-container">
+					  <div class="grid-row-1">
+					    <div>
+							<label class="config-btn">
+								<input class="checkbox-storable" type="checkbox" id="alt-1-logo">
+								<span class="icon-btn"><i class='fas'>&#xf03e;</i></span>
+							</label>
+							<label class="config-btn">
+								<input class="checkbox-storable" type="checkbox" id="alt-1-background">
+								<span class="icon-btn"><i class='fas'>&#xf576;</i></span>
+							</label>
+							<label class="config-btn">
+								<input class="checkbox-storable" type="checkbox" id="alt-1-shadows">
+								<span class="icon-btn"><i class='fas fa-rotate-270'>&#xf24d;</i></span>
+							</label>
+							<div class="align-toggle">
+							  <input class="radio-storable" id="alt-1-align-left" name="alt-1-align" type="radio" value="left" checked/>
+							  <label for="alt-1-align-left" onclick=""><i class="fas">&#xf036;</i></label>
+							  <input class="radio-storable" id="alt-1-align-center" name="alt-1-align" type="radio" value="center" />
+							  <label for="alt-1-align-center" onclick=""><i class="fas">&#xf037;</i></label>
+							  <input class="radio-storable" id="alt-1-align-right" name="alt-1-align" type="radio" value="right" />
+							  <label for="alt-1-align-right" onclick=""><i class="fas">&#xf038;</i></label>
+							</div>
+					    </div>
+					    <div>
+							<div id="alt-1-style-color-appearance">
+								<div class="tool-tittle">Color 1</div>
+								<input class="storable" id="alt-1-style-color-1" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, insetWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true}" value="D54141">
+								<div class="tool-tittle">Color 2</div>
+								<input class="storable" id="alt-1-style-color-2" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, insetWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true}" value="222222">
+							</div>
+					    </div>
+					  </div>
+					  <div class="grid-row-2">
+					    <div>
+							<div class="number-input">
+								<input id="alt-1-style" class="storable" min="1" max="2" name="quantity" value="1" type="number" placeholder="1" readonly>
+								<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+								<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+								<div class="input-icon"><i class="fas">&#xf1fc;</i></div>
+							</div>
+					    </div>
+					    <div>
+							<div class="number-input">
+								<input id="alt-1-size" class="storable" min="10" max="50" name="quantity" value="24" type="number" placeholder="24">
+								<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+								<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+								<div class="input-icon"><i class="fas">&#xf424;</i></div>
+							</div>
+					    </div>
+					    <div class="margin-config group">
+							<div class="number-input">
+								<input id="alt-1-margin-h" class="storable" min="0" max="100" name="quantity" value="4" type="number" placeholder="4">
+								<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+								<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+								<div class="input-icon"><i class="fas">&#xf31e;</i></div>
+							</div>
+							<div class="number-input input-no-icon">
+								<input id="alt-1-margin-v" class="storable" min="0" max="55" name="quantity" value="4" type="number" placeholder="4">
+								<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+								<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+							</div>
+					    </div>
+					  </div>
+					  <div class="grid-row-3">
+					    <div>
+							<div class="number-input">
+							  <input id="alt-1-inverse-ratio" class="storable" min="0" max="10" name="quantity" value="9" type="number" placeholder="9">
+							  <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+							  <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+							  <div class="input-icon"><i class="fas">&#xf034;</i></div>
+							</div>
+					    </div>
+					    <div>
+							<div class="number-input">
+							   <input id="alt-1-line-spacing" class="storable" min="-5" max="5" name="quantity" value="2" type="number" placeholder="0">
+							  <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+							  <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+							  <div class="input-icon"><i class="fas fa-rotate-270">&#xf362;</i></div>
+							</div>
+					    </div>
+					    <div class="font-config group">
+							<div class="input-icon"><i class="fas">&#xf031;</i></div>
+							<select id="alt-1-font" class="font-storable">
+								<option value="'Open Sans', sans-serif" selected="selected">Open Sans</option> 
+								<option value="'Poppins', sans-serif">Poppins</option>
+								<option value="'Raleway', sans-serif">Raleway</option> 
+								<option value="'Anonymous Pro', monospace">Anonymous Pro</option> 
+								<option value="'Patua One', cursive">Patua One</option>;
+								<option value="'Abril Fatface', cursive">Abril Fatface</option>
+								<option value="'Lora', serif">Lora</option>
+								<option value="'Cookie', cursive">Cookie</option>
+								<option value="'Oleo Script', cursive">Oleo Script</option>
+								<option value="'Kalam', cursive">Kalam</option>
+								<option value="'Fredoka One', cursive">Fredoka One</option>
+						    </select>
+					    </div>
+					  </div>
+					</div>					
+				</div>
+				<div class="textfields-container">
+					<input class="storable" type="text" id="alt-1-name" placeholder="Name" tabindex="4">
+					<div id="alt-1-name-appearance">
+						<label class="config-btn">
+						<input class="checkbox-storable" type="checkbox" id="alt-1-name-transform" checked>
+						<span class="icon-btn"><i class='fas'>&#xf031;</i><p>a</p></span>
+						</label>
+						<label class="config-btn">
+							<input class="checkbox-storable" type="checkbox" id="alt-1-name-weight" checked>
+							<span class="icon-btn"><i class='fas'>&#xf032;</i></span>
+						</label>
+						<input class="storable" id="alt-1-name-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, insetWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true}" value="f2f2f2">
+					</div>
+					<input class="storable" type="text" id="alt-1-info" placeholder="Info" tabindex="5">
+					<div id="alt-1-info-appearance">
+						<label class="config-btn">
+							<input class="checkbox-storable" type="checkbox" id="alt-1-info-transform">
+							<span class="icon-btn"><i class='fas'>&#xf031;</i><p>a</p></span>
+						</label>
+						<label class="config-btn">
+							<input class="checkbox-storable" type="checkbox" id="alt-1-info-weight">
+							<span class="icon-btn"><i class='fas'>&#xf032;</i></span>
+						</label>
+						<input class="storable" id="alt-1-info-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, insetWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true}" value="555555">
+					</div>	
+					<div style="clear:both"></div>
+					<div class="panel-bottom">
+						<div id="alt-1-clean-inputs" class="clean"><i class="fas">&#xf00d;</i></div>
+						<ul id="alt-1-memory-slots">
+							<li id="alt-1-slot-1"><div class="slot-storable stored-name" id="alt-1-name-1"></div><div class="slot-storable stored-info" id="alt-1-info-1"></div></li>
+							<li id="alt-1-slot-2"><div class="slot-storable stored-name" id="alt-1-name-2"></div><div class="slot-storable stored-info" id="alt-1-info-2"></div></li>
+							<li id="alt-1-slot-3"><div class="slot-storable stored-name" id="alt-1-name-3"></div><div class="slot-storable stored-info" id="alt-1-info-3"></div></li>
+							<li id="alt-1-slot-4"><div class="slot-storable stored-name" id="alt-1-name-4"></div><div class="slot-storable stored-info" id="alt-1-info-4"></div></li>
+							<li id="alt-1-slot-5"><div class="slot-storable stored-name" id="alt-1-name-5"></div><div class="slot-storable stored-info" id="alt-1-info-5"></div></li>
+							<li id="alt-1-slot-6"><div class="slot-storable stored-name" id="alt-1-name-6"></div><div class="slot-storable stored-info" id="alt-1-info-6"></div></li>
+							<li id="alt-1-slot-7"><div class="slot-storable stored-name" id="alt-1-name-7"></div><div class="slot-storable stored-info" id="alt-1-info-7"></div></li>
+							<li id="alt-1-slot-8"><div class="slot-storable stored-name" id="alt-1-name-8"></div><div class="slot-storable stored-info" id="alt-1-info-8"></div></li>
+							<li id="alt-1-slot-9"><div class="slot-storable stored-name" id="alt-1-name-9"></div><div class="slot-storable stored-info" id="alt-1-info-9"></div></li>
+							<li id="alt-1-slot-10"><div class="slot-storable stored-name" id="alt-1-name-10"></div><div class="slot-storable stored-info" id="alt-1-info-10"></div></li>
+						</ul>
+						<div class="time-bar">
+							<div id="alt-1-active-time">0</div>
+							<div id="alt-1-inactive-time">0</div>
+						</div>
 					</div>
 				</div>
 			</div>
-			</br>
-			<label class="switch">
-			<input type="checkbox" id="lower-thirds-switch3">
-			<span class="slider round"></span>
-			</label>
-			<label class="accordion"><i class="fas">&#xf007;</i>Center</label>
-			<div class="hidable">
-				<input class="storable" type="text" id="lower-thirds-name3" placeholder="Name">
-				<input class="storable" type="text" id="lower-thirds-info3" placeholder="Info">
-				<div class="panel-bottom">
-					<input id="color-m3" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, insetWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true}" value="cf4c4e">
-					<div id="clean-m3" class="clean"><i class="fas">&#xf00d;</i></div>
-					<ul id="m3-slots">
-						<li id="m3-slot1"><div class="slot-storable" id="m3-name1"></div><div class="slot-storable" id="m3-info1"></div></li>
-						<li id="m3-slot2"><div class="slot-storable" id="m3-name2"></div><div class="slot-storable" id="m3-info2"></div></li>
-					</ul>
-					<div id="move-up-m3" class="move-up on"><i class="fas">&#xf0de;</i></div>
-					<div id="move-down-m3" class="move-down off"><i class="fas">&#xf0dd;</i></div>
-					<div class="time-bar">
-						<div id="active-t3">0</div>
-						<div id="inactive-t3">0</div>
+
+			<!--// Lower Third 2//-->
+			<div id="alt-2-config-content">
+				<label class="switch">
+				<input class="checkbox-storable" type="checkbox" id="lower-thirds-switch2">
+				<span class="slider round"></span>
+				</label>
+				<label class="accordion"><i class="fas">&#xf550;</i>Lower Third 2</label>
+				<div class="hidable">
+					<div class="grid-container">
+					  <div class="grid-row-1">
+					    <div>
+							<label class="config-btn">
+								<input class="checkbox-storable" type="checkbox" id="alt-2-logo">
+								<span class="icon-btn"><i class='fas'>&#xf03e;</i></span>
+							</label>
+							<label class="config-btn">
+								<input class="checkbox-storable" type="checkbox" id="alt-2-background">
+								<span class="icon-btn"><i class='fas'>&#xf576;</i></span>
+							</label>
+							<label class="config-btn">
+								<input class="checkbox-storable" type="checkbox" id="alt-2-shadows">
+								<span class="icon-btn"><i class='fas fa-rotate-270'>&#xf24d;</i></span>
+							</label>
+							<div class="align-toggle">
+							  <input class="radio-storable" id="alt-2-align-left" name="alt-2-align" type="radio" value="left" checked/>
+							  <label for="alt-2-align-left" onclick=""><i class="fas">&#xf036;</i></label>
+							  <input class="radio-storable" id="alt-2-align-center" name="alt-2-align" type="radio" value="center" />
+							  <label for="alt-2-align-center" onclick=""><i class="fas">&#xf037;</i></label>
+							  <input class="radio-storable" id="alt-2-align-right" name="alt-2-align" type="radio" value="right" />
+							  <label for="alt-2-align-right" onclick=""><i class="fas">&#xf038;</i></label>
+							</div>
+					    </div>
+					    <div>
+							<div id="alt-2-style-color-appearance">
+								<div class="tool-tittle">Color 1</div>
+								<input class="storable" id="alt-2-style-color-1" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, insetWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true}" value="D54141">
+								<div class="tool-tittle">Color 2</div>
+								<input class="storable" id="alt-2-style-color-2" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, insetWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true}" value="222222">
+							</div>
+					    </div>
+					  </div>
+					  <div class="grid-row-2">
+					    <div>
+							<div class="number-input">
+								<input id="alt-2-style" class="storable" min="1" max="2" name="quantity" value="1" type="number" placeholder="1" readonly>
+								<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+								<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+								<div class="input-icon"><i class="fas">&#xf1fc;</i></div>
+							</div>
+					    </div>
+					    <div>
+							<div class="number-input">
+								<input id="alt-2-size" class="storable" min="10" max="50" name="quantity" value="24" type="number" placeholder="24">
+								<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+								<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+								<div class="input-icon"><i class="fas">&#xf424;</i></div>
+							</div>
+					    </div>
+					    <div class="margin-config group">
+							<div class="number-input">
+								<input id="alt-2-margin-h" class="storable" min="0" max="100" name="quantity" value="4" type="number" placeholder="4">
+								<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+								<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+								<div class="input-icon"><i class="fas">&#xf31e;</i></div>
+							</div>
+							<div class="number-input input-no-icon">
+								<input id="alt-2-margin-v" class="storable" min="0" max="55" name="quantity" value="4" type="number" placeholder="4">
+								<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+								<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+							</div>
+					    </div>
+					  </div>
+					  <div class="grid-row-3">
+					    <div>
+							<div class="number-input">
+							  <input id="alt-2-inverse-ratio" class="storable" min="0" max="10" name="quantity" value="9" type="number" placeholder="9">
+							  <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+							  <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+							  <div class="input-icon"><i class="fas">&#xf034;</i></div>
+							</div>
+					    </div>
+					    <div>
+							<div class="number-input">
+							   <input id="alt-2-line-spacing" class="storable" min="-5" max="5" name="quantity" value="2" type="number" placeholder="0">
+							  <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+							  <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+							  <div class="input-icon"><i class="fas fa-rotate-270">&#xf362;</i></div>
+							</div>
+					    </div>
+					    <div class="font-config group">
+							<div class="input-icon"><i class="fas">&#xf031;</i></div>
+							<select id="alt-2-font" class="font-storable">
+								<option value="'Open Sans', sans-serif" selected="selected">Open Sans</option> 
+								<option value="'Poppins', sans-serif">Poppins</option>
+								<option value="'Raleway', sans-serif">Raleway</option> 
+								<option value="'Anonymous Pro', monospace">Anonymous Pro</option> 
+								<option value="'Patua One', cursive">Patua One</option>;
+								<option value="'Abril Fatface', cursive">Abril Fatface</option>
+								<option value="'Lora', serif">Lora</option>
+								<option value="'Cookie', cursive">Cookie</option>
+								<option value="'Oleo Script', cursive">Oleo Script</option>
+								<option value="'Kalam', cursive">Kalam</option>
+								<option value="'Fredoka One', cursive">Fredoka One</option>
+						    </select>
+					    </div>
+					  </div>
+					</div>					
+				</div>
+				<div class="textfields-container">
+					<input class="storable" type="text" id="alt-2-name" placeholder="Name" tabindex="6">
+					<div id="alt-2-name-appearance">
+						<label class="config-btn">
+						<input class="checkbox-storable" type="checkbox" id="alt-2-name-transform" checked>
+						<span class="icon-btn"><i class='fas'>&#xf031;</i><p>a</p></span>
+						</label>
+						<label class="config-btn">
+							<input class="checkbox-storable" type="checkbox" id="alt-2-name-weight" checked>
+							<span class="icon-btn"><i class='fas'>&#xf032;</i></span>
+						</label>
+						<input class="storable" id="alt-2-name-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, insetWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true}" value="f2f2f2">
 					</div>
-				</div>			
+					<input class="storable" type="text" id="alt-2-info" placeholder="Info" tabindex="7">
+					<div id="alt-2-info-appearance">
+						<label class="config-btn">
+							<input class="checkbox-storable" type="checkbox" id="alt-2-info-transform">
+							<span class="icon-btn"><i class='fas'>&#xf031;</i><p>a</p></span>
+						</label>
+						<label class="config-btn">
+							<input class="checkbox-storable" type="checkbox" id="alt-2-info-weight">
+							<span class="icon-btn"><i class='fas'>&#xf032;</i></span>
+						</label>
+						<input class="storable" id="alt-2-info-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, insetWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true}" value="555555">
+					</div>	
+					<div style="clear:both"></div>
+					<div class="panel-bottom">
+						<div id="alt-2-clean-inputs" class="clean"><i class="fas">&#xf00d;</i></div>
+						<ul id="alt-2-memory-slots">
+							<li id="alt-2-slot-1"><div class="slot-storable stored-name" id="alt-2-name-1"></div><div class="slot-storable stored-info" id="alt-2-info-1"></div></li>
+							<li id="alt-2-slot-2"><div class="slot-storable stored-name" id="alt-2-name-2"></div><div class="slot-storable stored-info" id="alt-2-info-2"></div></li>
+							<li id="alt-2-slot-3"><div class="slot-storable stored-name" id="alt-2-name-3"></div><div class="slot-storable stored-info" id="alt-2-info-3"></div></li>
+							<li id="alt-2-slot-4"><div class="slot-storable stored-name" id="alt-2-name-4"></div><div class="slot-storable stored-info" id="alt-2-info-4"></div></li>
+							<li id="alt-2-slot-5"><div class="slot-storable stored-name" id="alt-2-name-5"></div><div class="slot-storable stored-info" id="alt-2-info-5"></div></li>
+							<li id="alt-2-slot-6"><div class="slot-storable stored-name" id="alt-2-name-6"></div><div class="slot-storable stored-info" id="alt-2-info-6"></div></li>
+							<li id="alt-2-slot-7"><div class="slot-storable stored-name" id="alt-2-name-7"></div><div class="slot-storable stored-info" id="alt-2-info-7"></div></li>
+							<li id="alt-2-slot-8"><div class="slot-storable stored-name" id="alt-2-name-8"></div><div class="slot-storable stored-info" id="alt-2-info-8"></div></li>
+							<li id="alt-2-slot-9"><div class="slot-storable stored-name" id="alt-2-name-9"></div><div class="slot-storable stored-info" id="alt-2-info-9"></div></li>
+							<li id="alt-2-slot-10"><div class="slot-storable stored-name" id="alt-2-name-10"></div><div class="slot-storable stored-info" id="alt-2-info-10"></div></li>
+						</ul>
+						<div class="time-bar">
+							<div id="alt-2-active-time">0</div>
+							<div id="alt-2-inactive-time">0</div>
+						</div>
+					</div>
+				</div>
 			</div>
-			<div style="clear:both"></div>
-			
+
+			<!--// Lower Third 3//-->
+			<div id="alt-3-config-content">
+				<label class="switch">
+				<input class="checkbox-storable" type="checkbox" id="lower-thirds-switch3">
+				<span class="slider round"></span>
+				</label>
+				<label class="accordion"><i class="fas">&#xf550;</i>Lower Third 3</label>
+				<div class="hidable">
+					<div class="grid-container">
+					  <div class="grid-row-1">
+					    <div>
+							<label class="config-btn">
+								<input class="checkbox-storable" type="checkbox" id="alt-3-logo">
+								<span class="icon-btn"><i class='fas'>&#xf03e;</i></span>
+							</label>
+							<label class="config-btn">
+								<input class="checkbox-storable" type="checkbox" id="alt-3-background">
+								<span class="icon-btn"><i class='fas'>&#xf576;</i></span>
+							</label>
+							<label class="config-btn">
+								<input class="checkbox-storable" type="checkbox" id="alt-3-shadows">
+								<span class="icon-btn"><i class='fas fa-rotate-270'>&#xf24d;</i></span>
+							</label>
+							<div class="align-toggle">
+							  <input class="radio-storable" id="alt-3-align-left" name="alt-3-align" type="radio" value="left" checked/>
+							  <label for="alt-3-align-left" onclick=""><i class="fas">&#xf036;</i></label>
+							  <input class="radio-storable" id="alt-3-align-center" name="alt-3-align" type="radio" value="center" />
+							  <label for="alt-3-align-center" onclick=""><i class="fas">&#xf037;</i></label>
+							  <input class="radio-storable" id="alt-3-align-right" name="alt-3-align" type="radio" value="right" />
+							  <label for="alt-3-align-right" onclick=""><i class="fas">&#xf038;</i></label>
+							</div>
+					    </div>
+					    <div>
+							<div id="alt-3-style-color-appearance">
+								<div class="tool-tittle">Color 1</div>
+								<input class="storable" id="alt-3-style-color-1" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, insetWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true}" value="D54141">
+								<div class="tool-tittle">Color 2</div>
+								<input class="storable" id="alt-3-style-color-2" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, insetWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true}" value="222222">
+							</div>
+					    </div>
+					  </div>
+					  <div class="grid-row-2">
+					    <div>
+							<div class="number-input">
+								<input id="alt-3-style" class="storable" min="1" max="2" name="quantity" value="1" type="number" placeholder="1" readonly>
+								<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+								<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+								<div class="input-icon"><i class="fas">&#xf1fc;</i></div>
+							</div>
+					    </div>
+					    <div>
+							<div class="number-input">
+								<input id="alt-3-size" class="storable" min="10" max="50" name="quantity" value="24" type="number" placeholder="24">
+								<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+								<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+								<div class="input-icon"><i class="fas">&#xf424;</i></div>
+							</div>
+					    </div>
+					    <div class="margin-config group">
+							<div class="number-input">
+								<input id="alt-3-margin-h" class="storable" min="0" max="100" name="quantity" value="4" type="number" placeholder="4">
+								<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+								<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+								<div class="input-icon"><i class="fas">&#xf31e;</i></div>
+							</div>
+							<div class="number-input input-no-icon">
+								<input id="alt-3-margin-v" class="storable" min="0" max="55" name="quantity" value="4" type="number" placeholder="4">
+								<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+								<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+							</div>
+					    </div>
+					  </div>
+					  <div class="grid-row-3">
+					    <div>
+							<div class="number-input">
+							  <input id="alt-3-inverse-ratio" class="storable" min="0" max="10" name="quantity" value="9" type="number" placeholder="9">
+							  <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+							  <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+							  <div class="input-icon"><i class="fas">&#xf034;</i></div>
+							</div>
+					    </div>
+					    <div>
+							<div class="number-input">
+							   <input id="alt-3-line-spacing" class="storable" min="-5" max="5" name="quantity" value="2" type="number" placeholder="0">
+							  <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+							  <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+							  <div class="input-icon"><i class="fas fa-rotate-270">&#xf362;</i></div>
+							</div>
+					    </div>
+					    <div class="font-config group">
+							<div class="input-icon"><i class="fas">&#xf031;</i></div>
+							<select id="alt-3-font" class="font-storable">
+								<option value="'Open Sans', sans-serif" selected="selected">Open Sans</option> 
+								<option value="'Poppins', sans-serif">Poppins</option>
+								<option value="'Raleway', sans-serif">Raleway</option> 
+								<option value="'Anonymous Pro', monospace">Anonymous Pro</option> 
+								<option value="'Patua One', cursive">Patua One</option>;
+								<option value="'Abril Fatface', cursive">Abril Fatface</option>
+								<option value="'Lora', serif">Lora</option>
+								<option value="'Cookie', cursive">Cookie</option>
+								<option value="'Oleo Script', cursive">Oleo Script</option>
+								<option value="'Kalam', cursive">Kalam</option>
+								<option value="'Fredoka One', cursive">Fredoka One</option>
+						    </select>
+					    </div>
+					  </div>
+					</div>					
+				</div>
+				<div class="textfields-container">
+					<input class="storable" type="text" id="alt-3-name" placeholder="Name" tabindex="8">
+					<div id="alt-3-name-appearance">
+						<label class="config-btn">
+						<input class="checkbox-storable" type="checkbox" id="alt-3-name-transform" checked>
+						<span class="icon-btn"><i class='fas'>&#xf031;</i><p>a</p></span>
+						</label>
+						<label class="config-btn">
+							<input class="checkbox-storable" type="checkbox" id="alt-3-name-weight" checked>
+							<span class="icon-btn"><i class='fas'>&#xf032;</i></span>
+						</label>
+						<input class="storable" id="alt-3-name-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, insetWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true}" value="f2f2f2">
+					</div>
+					<input class="storable" type="text" id="alt-3-info" placeholder="Info" tabindex="9">
+					<div id="alt-3-info-appearance">
+						<label class="config-btn">
+							<input class="checkbox-storable" type="checkbox" id="alt-3-info-transform">
+							<span class="icon-btn"><i class='fas'>&#xf031;</i><p>a</p></span>
+						</label>
+						<label class="config-btn">
+							<input class="checkbox-storable" type="checkbox" id="alt-3-info-weight">
+							<span class="icon-btn"><i class='fas'>&#xf032;</i></span>
+						</label>
+						<input class="storable" id="alt-3-info-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, insetWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true}" value="555555">
+					</div>	
+					<div style="clear:both"></div>
+					<div class="panel-bottom">
+						<div id="alt-3-clean-inputs" class="clean"><i class="fas">&#xf00d;</i></div>
+						<ul id="alt-3-memory-slots">
+							<li id="alt-3-slot-1"><div class="slot-storable stored-name" id="alt-3-name-1"></div><div class="slot-storable stored-info" id="alt-3-info-1"></div></li>
+							<li id="alt-3-slot-2"><div class="slot-storable stored-name" id="alt-3-name-2"></div><div class="slot-storable stored-info" id="alt-3-info-2"></div></li>
+							<li id="alt-3-slot-3"><div class="slot-storable stored-name" id="alt-3-name-3"></div><div class="slot-storable stored-info" id="alt-3-info-3"></div></li>
+							<li id="alt-3-slot-4"><div class="slot-storable stored-name" id="alt-3-name-4"></div><div class="slot-storable stored-info" id="alt-3-info-4"></div></li>
+							<li id="alt-3-slot-5"><div class="slot-storable stored-name" id="alt-3-name-5"></div><div class="slot-storable stored-info" id="alt-3-info-5"></div></li>
+							<li id="alt-3-slot-6"><div class="slot-storable stored-name" id="alt-3-name-6"></div><div class="slot-storable stored-info" id="alt-3-info-6"></div></li>
+							<li id="alt-3-slot-7"><div class="slot-storable stored-name" id="alt-3-name-7"></div><div class="slot-storable stored-info" id="alt-3-info-7"></div></li>
+							<li id="alt-3-slot-8"><div class="slot-storable stored-name" id="alt-3-name-8"></div><div class="slot-storable stored-info" id="alt-3-info-8"></div></li>
+							<li id="alt-3-slot-9"><div class="slot-storable stored-name" id="alt-3-name-9"></div><div class="slot-storable stored-info" id="alt-3-info-9"></div></li>
+							<li id="alt-3-slot-10"><div class="slot-storable stored-name" id="alt-3-name-10"></div><div class="slot-storable stored-info" id="alt-3-info-10"></div></li>
+						</ul>
+						<div class="time-bar">
+							<div id="alt-3-active-time">0</div>
+							<div id="alt-3-inactive-time">0</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!--// Lower Third 4//-->
+			<div id="alt-4-config-content">
+				<label class="switch">
+				<input class="checkbox-storable" type="checkbox" id="lower-thirds-switch4">
+				<span class="slider round"></span>
+				</label>
+				<label class="accordion"><i class="fas">&#xf550;</i>Lower Third 4</label>
+				<div class="hidable">
+					<div class="grid-container">
+					  <div class="grid-row-1">
+					    <div>
+							<label class="config-btn">
+								<input class="checkbox-storable" type="checkbox" id="alt-4-logo">
+								<span class="icon-btn"><i class='fas'>&#xf03e;</i></span>
+							</label>
+							<label class="config-btn">
+								<input class="checkbox-storable" type="checkbox" id="alt-4-background">
+								<span class="icon-btn"><i class='fas'>&#xf576;</i></span>
+							</label>
+							<label class="config-btn">
+								<input class="checkbox-storable" type="checkbox" id="alt-4-shadows">
+								<span class="icon-btn"><i class='fas fa-rotate-270'>&#xf24d;</i></span>
+							</label>
+							<div class="align-toggle">
+							  <input class="radio-storable" id="alt-4-align-left" name="alt-4-align" type="radio" value="left" checked/>
+							  <label for="alt-4-align-left" onclick=""><i class="fas">&#xf036;</i></label>
+							  <input class="radio-storable" id="alt-4-align-center" name="alt-4-align" type="radio" value="center" />
+							  <label for="alt-4-align-center" onclick=""><i class="fas">&#xf037;</i></label>
+							  <input class="radio-storable" id="alt-4-align-right" name="alt-4-align" type="radio" value="right" />
+							  <label for="alt-4-align-right" onclick=""><i class="fas">&#xf038;</i></label>
+							</div>
+					    </div>
+					    <div>
+							<div id="alt-4-style-color-appearance">
+								<div class="tool-tittle">Color 1</div>
+								<input class="storable" id="alt-4-style-color-1" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, insetWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true}" value="D54141">
+								<div class="tool-tittle">Color 2</div>
+								<input class="storable" id="alt-4-style-color-2" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, insetWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true}" value="222222">
+							</div>
+					    </div>
+					  </div>
+					  <div class="grid-row-2">
+					    <div>
+							<div class="number-input">
+								<input id="alt-4-style" class="storable" min="1" max="2" name="quantity" value="1" type="number" placeholder="1" readonly>
+								<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+								<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+								<div class="input-icon"><i class="fas">&#xf1fc;</i></div>
+							</div>
+					    </div>
+					    <div>
+							<div class="number-input">
+								<input id="alt-4-size" class="storable" min="10" max="50" name="quantity" value="24" type="number" placeholder="24">
+								<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+								<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+								<div class="input-icon"><i class="fas">&#xf424;</i></div>
+							</div>
+					    </div>
+					    <div class="margin-config group">
+							<div class="number-input">
+								<input id="alt-4-margin-h" class="storable" min="0" max="100" name="quantity" value="4" type="number" placeholder="4">
+								<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+								<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+								<div class="input-icon"><i class="fas">&#xf31e;</i></div>
+							</div>
+							<div class="number-input input-no-icon">
+								<input id="alt-4-margin-v" class="storable" min="0" max="55" name="quantity" value="4" type="number" placeholder="4">
+								<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+								<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+							</div>
+					    </div>
+					  </div>
+					  <div class="grid-row-3">
+					    <div>
+							<div class="number-input">
+							  <input id="alt-4-inverse-ratio" class="storable" min="0" max="10" name="quantity" value="9" type="number" placeholder="9">
+							  <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+							  <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+							  <div class="input-icon"><i class="fas">&#xf034;</i></div>
+							</div>
+					    </div>
+					    <div>
+							<div class="number-input">
+							   <input id="alt-4-line-spacing" class="storable" min="-5" max="5" name="quantity" value="2" type="number" placeholder="0">
+							  <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+							  <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+							  <div class="input-icon"><i class="fas fa-rotate-270">&#xf362;</i></div>
+							</div>
+					    </div>
+					    <div class="font-config group">
+							<div class="input-icon"><i class="fas">&#xf031;</i></div>
+							<select id="alt-4-font" class="font-storable">
+								<option value="'Open Sans', sans-serif" selected="selected">Open Sans</option> 
+								<option value="'Poppins', sans-serif">Poppins</option>
+								<option value="'Raleway', sans-serif">Raleway</option> 
+								<option value="'Anonymous Pro', monospace">Anonymous Pro</option> 
+								<option value="'Patua One', cursive">Patua One</option>;
+								<option value="'Abril Fatface', cursive">Abril Fatface</option>
+								<option value="'Lora', serif">Lora</option>
+								<option value="'Cookie', cursive">Cookie</option>
+								<option value="'Oleo Script', cursive">Oleo Script</option>
+								<option value="'Kalam', cursive">Kalam</option>
+								<option value="'Fredoka One', cursive">Fredoka One</option>
+						    </select>
+					    </div>
+					  </div>
+					</div>					
+				</div>
+				<div class="textfields-container">
+					<input class="storable" type="text" id="alt-4-name" placeholder="Name" tabindex="10">
+					<div id="alt-4-name-appearance">
+						<label class="config-btn">
+						<input class="checkbox-storable" type="checkbox" id="alt-4-name-transform" checked>
+						<span class="icon-btn"><i class='fas'>&#xf031;</i><p>a</p></span>
+						</label>
+						<label class="config-btn">
+							<input class="checkbox-storable" type="checkbox" id="alt-4-name-weight" checked>
+							<span class="icon-btn"><i class='fas'>&#xf032;</i></span>
+						</label>
+						<input class="storable" id="alt-4-name-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, insetWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true}" value="f2f2f2">
+					</div>
+					<input class="storable" type="text" id="alt-4-info" placeholder="Info" tabindex="11">
+					<div id="alt-4-info-appearance">
+						<label class="config-btn">
+							<input class="checkbox-storable" type="checkbox" id="alt-4-info-transform">
+							<span class="icon-btn"><i class='fas'>&#xf031;</i><p>a</p></span>
+						</label>
+						<label class="config-btn">
+							<input class="checkbox-storable" type="checkbox" id="alt-4-info-weight">
+							<span class="icon-btn"><i class='fas'>&#xf032;</i></span>
+						</label>
+						<input class="storable" id="alt-4-info-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, insetWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true}" value="555555">
+					</div>	
+					<div style="clear:both"></div>
+					<div class="panel-bottom">
+						<div id="alt-4-clean-inputs" class="clean"><i class="fas">&#xf00d;</i></div>
+						<ul id="alt-4-memory-slots">
+							<li id="alt-4-slot-1"><div class="slot-storable stored-name" id="alt-4-name-1"></div><div class="slot-storable stored-info" id="alt-4-info-1"></div></li>
+							<li id="alt-4-slot-2"><div class="slot-storable stored-name" id="alt-4-name-2"></div><div class="slot-storable stored-info" id="alt-4-info-2"></div></li>
+							<li id="alt-4-slot-3"><div class="slot-storable stored-name" id="alt-4-name-3"></div><div class="slot-storable stored-info" id="alt-4-info-3"></div></li>
+							<li id="alt-4-slot-4"><div class="slot-storable stored-name" id="alt-4-name-4"></div><div class="slot-storable stored-info" id="alt-4-info-4"></div></li>
+							<li id="alt-4-slot-5"><div class="slot-storable stored-name" id="alt-4-name-5"></div><div class="slot-storable stored-info" id="alt-4-info-5"></div></li>
+							<li id="alt-4-slot-6"><div class="slot-storable stored-name" id="alt-4-name-6"></div><div class="slot-storable stored-info" id="alt-4-info-6"></div></li>
+							<li id="alt-4-slot-7"><div class="slot-storable stored-name" id="alt-4-name-7"></div><div class="slot-storable stored-info" id="alt-4-info-7"></div></li>
+							<li id="alt-4-slot-8"><div class="slot-storable stored-name" id="alt-4-name-8"></div><div class="slot-storable stored-info" id="alt-4-info-8"></div></li>
+							<li id="alt-4-slot-9"><div class="slot-storable stored-name" id="alt-4-name-9"></div><div class="slot-storable stored-info" id="alt-4-info-9"></div></li>
+							<li id="alt-4-slot-10"><div class="slot-storable stored-name" id="alt-4-name-10"></div><div class="slot-storable stored-info" id="alt-4-info-10"></div></li>
+						</ul>
+						<div class="time-bar">
+							<div id="alt-4-active-time">0</div>
+							<div id="alt-4-inactive-time">0</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
 		</div>
 
 		<script>
-			var bc = new BroadcastChannel('obs-lower-thirds-channel');
-			
-			var bcr = new BroadcastChannel('obs-lower-thirds-channe2'); //Recibe from source
-
-
-			canTurnOn = false;
-			var shadowsOn = false;
-
-			var m1s1Empty;
-			var m1s2Empty;
-			var m2s1Empty;
-			var m2s2Empty;
-			var m3s1Empty;
-			var m3s2Empty;
-
-			var m1Empty;
-			var m2Empty;
-			var m3Empty;
+			var bc = new BroadcastChannel('obs-lower-thirds-channel');		
+			var bcr = new BroadcastChannel('obs-lower-thirds-channe2'); //Receives from the source
 
 			var slotDeleted = false;
 
+			var alt_1_active_time;
+			var alt_1_inactive_time;
+			var alt_2_active_time;
+			var alt_2_inactive_time;
+			var alt_3_active_time;
+			var alt_3_inactive_time;
+			var alt_4_active_time;
+			var alt_4_inactive_time;
 
-			//////////////////////////////////
-			//  Awful Mem Slot System (:S)  //
-			//////////////////////////////////
+			var alt_1_style = 1;
+			var alt_1_inverse_ratio = 9;
+			var alt_1_name_size;
+			var alt_1_info_size;
+			var alt_1_size;
+			var alt_1_line_spacing;
+			var alt_1_margin_h;
+			var alt_1_margin_v;
+			var alt_1_shadows;
+			var alt_1_font;
 
-			function checkSlots () {
-				if ($('#m1-name1').is(':empty') && $('#m1-info1').is(':empty')){
-		  			document.getElementById("m1-slot1").classList.remove("stored");
-		  			m1s1Empty = true;
-				} else {
-					document.getElementById("m1-slot1").classList.add("stored");
-					m1s1Empty = false;
-				}
-				if ($('#m1-name2').is(':empty') && $('#m1-info2').is(':empty')){
-		  			document.getElementById("m1-slot2").classList.remove("stored");
-		  			m1s2Empty = true;
-				} else {
-					document.getElementById("m1-slot2").classList.add("stored");
-					m1s2Empty = false;
-				}
+			var alt_2_style = 1;
+			var alt_2_inverse_ratio = 9;
+			var alt_2_name_size;
+			var alt_2_info_size;
+			var alt_2_size;
+			var alt_2_line_spacing;
+			var alt_2_margin_h;
+			var alt_2_margin_v;
+			var alt_2_shadows;
+			var alt_2_font;
 
-				if ($('#m2-name1').is(':empty') && $('#m2-info1').is(':empty')){
-		  			document.getElementById("m2-slot1").classList.remove("stored");
-		  			m2s1Empty = true;
-				} else {
-					document.getElementById("m2-slot1").classList.add("stored");
-					m2s1Empty = false;
-				}
-				if ($('#m2-name2').is(':empty') && $('#m2-info2').is(':empty')){
-		  			document.getElementById("m2-slot2").classList.remove("stored");
-		  			m2s2Empty = true;
-				} else {
-					document.getElementById("m2-slot2").classList.add("stored");
-					m2s2Empty = false;
-				}
+			var alt_3_style = 1;
+			var alt_3_inverse_ratio = 9;
+			var alt_3_name_size;
+			var alt_3_info_size;
+			var alt_3_size;
+			var alt_3_line_spacing;
+			var alt_3_margin_h;
+			var alt_3_margin_v;
+			var alt_3_shadows;
+			var alt_3_font;
 
-				if ($('#m3-name1').is(':empty') && $('#m3-info1').is(':empty')){
-		  			document.getElementById("m3-slot1").classList.remove("stored");
-		  			m3s1Empty = true;
-				} else {
-					document.getElementById("m3-slot1").classList.add("stored");
-					m3s1Empty = false;
-				}
-				if ($('#m3-name2').is(':empty') && $('#m3-info2').is(':empty')){
-		  			document.getElementById("m3-slot2").classList.remove("stored");
-		  			m3s2Empty = true;
-				} else {
-					document.getElementById("m3-slot2").classList.add("stored");
-					m3s2Empty = false;
-				}
+			var alt_4_style = 1;
+			var alt_4_inverse_ratio = 9;
+			var alt_4_name_size;
+			var alt_4_info_size;
+			var alt_4_size;
+			var alt_4_line_spacing;
+			var alt_4_margin_h;
+			var alt_4_margin_v;
+			var alt_4_shadows;
+			var alt_4_font;
 
-				if ($('#lower-thirds-name1').val() || $('#lower-thirds-info1').val()){
-					m1Empty = false;
-				} else {
-					m1Empty = true;
-				}
-				if ($('#lower-thirds-name2').val() || $('#lower-thirds-info2').val()){
-					m2Empty = false;
-				} else {
-					m2Empty = true;
-				}
-				if ($('#lower-thirds-name3').val() || $('#lower-thirds-info3').val()){
-					m3Empty = false;
-				} else {
-					m3Empty = true;
-				}						
+			var hotkeyMasterSwitchOld = hotkeyMasterSwitch;
+			var hotkeySwitch1Old = hotkeySwitch1;
+			var hotkeySwitch2Old = hotkeySwitch2;
+			var hotkeySwitch3Old = hotkeySwitch3;
+			var hotkeySwitch4Old = hotkeySwitch4;
+
+			var acc = document.getElementsByClassName("accordion");
+			var i;
+
+			for (i = 0; i < acc.length; i++) {
+			  acc[i].onclick = function() {
+			    this.classList.toggle("active");
+			    var hidable = this.nextElementSibling;
+			    if (hidable.style.maxHeight){
+			      hidable.style.maxHeight = null;
+			    } else {
+			      hidable.style.maxHeight = hidable.scrollHeight + "px";
+			    } 
+			  }
+			}
+			acc[0].onclick() //Open the Main Settings accordion at startup.
+			//acc[1].onclick()
+			//acc[2].onclick()
+			//acc[3].onclick()
+			//acc[4].onclick()
+
+			//Reload the hotjeys.js file updated by the LUA script
+			function updateHorkeys() {
+			    src = '../common/js/hotkeys.js';
+			    $('script[src="' + src + '"]').remove();
+			    var head= document.getElementsByTagName('head')[0];
+		    	var script= document.createElement('script');
+		    	script.src= src;
+		    	head.appendChild(script);
 			}
 
-			//Memory slots 1-1
-			$("li#m1-slot1").mousedown(function(e){
-				clearTimeout(this.downTimer);
-				this.downTimer = setTimeout(function() {
-					    document.getElementById("m1-slot1").classList.add("delete");
-						$('#m1-name1')[0].innerHTML = "";
-						$('#m1-info1')[0].innerHTML = "";
-						slotDeleted = true;
-				}, 600);
-			}).mouseup(function(e) {
-				clearTimeout(this.downTimer);
-			    document.getElementById("m1-slot1").classList.remove("delete");
-			    	if (!slotDeleted){
-			    		if (!m1s1Empty) {
-						name_to_load = $(this).children('#m1-name1').text();
-						info_to_load = $(this).children('#m1-info1').text();
-						$("#lower-thirds-name1:text").val(name_to_load);
-						$("#lower-thirds-info1:text").val(info_to_load);
+			//Toggle the switches if a hotkey is pressed
+			function checkHotkeys (){
+				if (hotkeyMasterSwitch != hotkeyMasterSwitchOld){
+					if (document.getElementById("lower-thirds-masterswitch").checked == true) {
+		            	document.getElementById("lower-thirds-masterswitch").checked = false;
+		            }
+		            else {
+		            	document.getElementById("lower-thirds-masterswitch").checked = true;
+		            }
+					hotkeyMasterSwitchOld = hotkeyMasterSwitch;
+				}
+
+				if (hotkeySwitch1 != hotkeySwitch1Old){
+					if (document.getElementById("lower-thirds-switch1").checked == true) {
+						document.getElementById("lower-thirds-switch1").checked = false;
+					}
+					else {
+						document.getElementById("lower-thirds-switch1").checked = true;
+					}
+					hotkeySwitch1Old = hotkeySwitch1;
+				}
+
+				if (hotkeySwitch2 != hotkeySwitch2Old){
+					if (document.getElementById("lower-thirds-switch2").checked == true) {
+						document.getElementById("lower-thirds-switch2").checked = false;
+					}
+					else {
+						document.getElementById("lower-thirds-switch2").checked = true;
+					}
+					hotkeySwitch2Old = hotkeySwitch2;
+				}
+
+				if (hotkeySwitch3 != hotkeySwitch3Old){
+					if (document.getElementById("lower-thirds-switch3").checked == true) {
+						document.getElementById("lower-thirds-switch3").checked = false;
+					}
+					else {
+						document.getElementById("lower-thirds-switch3").checked = true;
+					}
+					hotkeySwitch3Old = hotkeySwitch3;
+				}
+				if (hotkeySwitch4 != hotkeySwitch4Old){
+					if (document.getElementById("lower-thirds-switch4").checked == true) {
+						document.getElementById("lower-thirds-switch4").checked = false;
+					}
+					else {
+						document.getElementById("lower-thirds-switch4").checked = true;
+					}
+					hotkeySwitch4Old = hotkeySwitch4;
+				}
+			}
+
+			//Memory Slots System
+			function checkSlots (memory_slot, name, info) {
+				$("ul" + memory_slot + " li").each(function(){
+					check_slot_id = $(this).attr('id');
+					check_name_id = $(this).children('.stored-name').attr('id');
+					check_info_id = $(this).children('.stored-info').attr('id');
+					name_value = $(this).children('.stored-name').text();
+					info_value = $(this).children('.stored-info').text();
+					if ($('#' + check_name_id).is(':empty') && $('#' + check_info_id).is(':empty')){
+			  			document.getElementById(check_slot_id).classList.remove("stored");
+					} else {
+						document.getElementById(check_slot_id).classList.add("stored");
+					}
+					//Check active slots
+					if ($(name).val() == name_value && $(info).val() == info_value){
+						if(name_value && info_value){
+							document.getElementById(check_slot_id).classList.add("active-slot");
 						}
-						if (m1s1Empty) {
-							name_to_save = $("#lower-thirds-name1:text").val();
-							info_to_save = $("#lower-thirds-info1:text").val();
-							$('#m1-name1')[0].innerHTML = name_to_save;
-							$('#m1-info1')[0].innerHTML = info_to_save;
-						}
-			    	} else {
-						slotDeleted = false;
-			    	}	    	
+					} else {
+						document.getElementById(check_slot_id).classList.remove("active-slot");
+					}					
+				});
+			}
+
+			function memorySlotsSystem (memory_slot, name, info) {
+				$("ul" + memory_slot + " li").mousedown(function(e){
+					slot_id = $(this).attr('id');
+					name_id = $(this).children('.stored-name').attr('id');
+					info_id = $(this).children('.stored-info').attr('id');
+					name_value = $(this).children('.stored-name').text();
+					info_value = $(this).children('.stored-info').text();
+					clearTimeout(this.downTimer);
+					this.downTimer = setTimeout(function() {
+						    document.getElementById(slot_id).classList.add("delete");
+							$('#' + name_id)[0].innerHTML = "";
+							$('#' + info_id)[0].innerHTML = "";
+							slotDeleted = true;
+					}, 600);
+				}).mouseup(function(e) {
+					clearTimeout(this.downTimer);
+				    document.getElementById(slot_id).classList.remove("delete");
+				    	if (!slotDeleted){
+				    		if ($('#' + name_id).is(':empty') && $('#' + info_id).is(':empty')){
+								name_to_save = $(name + ":text").val();
+								info_to_save = $(info + ":text").val();
+								$('#' + name_id)[0].innerHTML = name_to_save;
+								$('#' + info_id)[0].innerHTML = info_to_save;
+							} else {
+								name_to_load = $(this).children('#' + name_id).text();
+								info_to_load = $(this).children('#' + info_id).text();
+								$(name + ":text").val(name_to_load);
+								$(info + ":text").val(info_to_load);							
+							}
+				    	} else {
+							slotDeleted = false;
+				    	}
+				});
+			}
+			memorySlotsSystem("#alt-1-memory-slots", "#alt-1-name", "#alt-1-info");
+			memorySlotsSystem("#alt-2-memory-slots", "#alt-2-name", "#alt-2-info");
+			memorySlotsSystem("#alt-3-memory-slots", "#alt-3-name", "#alt-3-info");
+			memorySlotsSystem("#alt-4-memory-slots", "#alt-4-name", "#alt-4-info");
+
+			//////////////////////////////////////
+
+			//Button to clear fields
+			$("#alt-1-clean-inputs").click(function(){
+				$("#alt-1-name:text").val("");
+				$("#alt-1-info:text").val("");
 			});
-
-			//Memory slots 1-2
-			$("li#m1-slot2").mousedown(function(e){
-				clearTimeout(this.downTimer);
-				this.downTimer = setTimeout(function() {
-					    document.getElementById("m1-slot2").classList.add("delete");
-						$('#m1-name2')[0].innerHTML = "";
-						$('#m1-info2')[0].innerHTML = "";
-						slotDeleted = true;
-				}, 600);
-			}).mouseup(function(e) {
-				clearTimeout(this.downTimer);
-			    document.getElementById("m1-slot2").classList.remove("delete");
-			    	if (!slotDeleted){
-			    		if (!m1s2Empty) {
-						name_to_load = $(this).children('#m1-name2').text();
-						info_to_load = $(this).children('#m1-info2').text();
-						$("#lower-thirds-name1:text").val(name_to_load);
-						$("#lower-thirds-info1:text").val(info_to_load);
-						}
-						if (m1s2Empty) {
-							name_to_save = $("#lower-thirds-name1:text").val();
-							info_to_save = $("#lower-thirds-info1:text").val();
-							$('#m1-name2')[0].innerHTML = name_to_save;
-							$('#m1-info2')[0].innerHTML = info_to_save;
-						}
-			    	} else {
-						slotDeleted = false;
-			    	}	    	
+			$("#alt-2-clean-inputs").click(function(){
+				$("#alt-2-name:text").val("");
+				$("#alt-2-info:text").val("");
 			});
-
-			//Memory slots 2-1
-			$("li#m2-slot1").mousedown(function(e){
-				clearTimeout(this.downTimer);
-				this.downTimer = setTimeout(function() {
-					    document.getElementById("m2-slot1").classList.add("delete");
-						$('#m2-name1')[0].innerHTML = "";
-						$('#m2-info1')[0].innerHTML = "";
-						slotDeleted = true;
-				}, 600);
-			}).mouseup(function(e) {
-				clearTimeout(this.downTimer);
-			    document.getElementById("m2-slot1").classList.remove("delete");
-			    	if (!slotDeleted){
-			    		if (!m2s1Empty) {
-						name_to_load = $(this).children('#m2-name1').text();
-						info_to_load = $(this).children('#m2-info1').text();
-						$("#lower-thirds-name2:text").val(name_to_load);
-						$("#lower-thirds-info2:text").val(info_to_load);
-						}
-						if (m2s1Empty) {
-							name_to_save = $("#lower-thirds-name2:text").val();
-							info_to_save = $("#lower-thirds-info2:text").val();
-							$('#m2-name1')[0].innerHTML = name_to_save;
-							$('#m2-info1')[0].innerHTML = info_to_save;
-						}
-			    	} else {
-						slotDeleted = false;
-			    	}	    	
+			$("#alt-3-clean-inputs").click(function(){
+				$("#alt-3-name:text").val("");
+				$("#alt-3-info:text").val("");
 			});
-
-			//Memory slots 2-2
-			$("li#m2-slot2").mousedown(function(e){
-				clearTimeout(this.downTimer);
-				this.downTimer = setTimeout(function() {
-					    document.getElementById("m2-slot2").classList.add("delete");
-						$('#m2-name2')[0].innerHTML = "";
-						$('#m2-info2')[0].innerHTML = "";
-						slotDeleted = true;
-				}, 600);
-			}).mouseup(function(e) {
-				clearTimeout(this.downTimer);
-			    document.getElementById("m2-slot2").classList.remove("delete");
-			    	if (!slotDeleted){
-			    		if (!m2s2Empty) {
-						name_to_load = $(this).children('#m2-name2').text();
-						info_to_load = $(this).children('#m2-info2').text();
-						$("#lower-thirds-name2:text").val(name_to_load);
-						$("#lower-thirds-info2:text").val(info_to_load);
-						}
-						if (m2s2Empty) {
-							name_to_save = $("#lower-thirds-name2:text").val();
-							info_to_save = $("#lower-thirds-info2:text").val();
-							$('#m2-name2')[0].innerHTML = name_to_save;
-							$('#m2-info2')[0].innerHTML = info_to_save;
-						}
-			    	} else {
-						slotDeleted = false;
-			    	}	    	
-			});
-
-			//Memory slots 3-1
-			$("li#m3-slot1").mousedown(function(e){
-				clearTimeout(this.downTimer);
-				this.downTimer = setTimeout(function() {
-					    document.getElementById("m3-slot1").classList.add("delete");
-						$('#m3-name1')[0].innerHTML = "";
-						$('#m3-info1')[0].innerHTML = "";
-						slotDeleted = true;
-				}, 600);
-			}).mouseup(function(e) {
-				clearTimeout(this.downTimer);
-			    document.getElementById("m3-slot1").classList.remove("delete");
-			    	if (!slotDeleted){
-			    		if (!m3s1Empty) {
-						name_to_load = $(this).children('#m3-name1').text();
-						info_to_load = $(this).children('#m3-info1').text();
-						$("#lower-thirds-name3:text").val(name_to_load);
-						$("#lower-thirds-info3:text").val(info_to_load);
-						}
-						if (m3s1Empty) {
-							name_to_save = $("#lower-thirds-name3:text").val();
-							info_to_save = $("#lower-thirds-info3:text").val();
-							$('#m3-name1')[0].innerHTML = name_to_save;
-							$('#m3-info1')[0].innerHTML = info_to_save;
-						}
-			    	} else {
-						slotDeleted = false;
-			    	}	    	
-			});
-
-			//Memory slots 3-2
-			$("li#m3-slot2").mousedown(function(e){
-				clearTimeout(this.downTimer);
-				this.downTimer = setTimeout(function() {
-					    document.getElementById("m3-slot2").classList.add("delete");
-						$('#m3-name2')[0].innerHTML = "";
-						$('#m3-info2')[0].innerHTML = "";
-						slotDeleted = true;
-				}, 600);
-			}).mouseup(function(e) {
-				clearTimeout(this.downTimer);
-			    document.getElementById("m3-slot2").classList.remove("delete");
-			    	if (!slotDeleted){
-			    		if (!m3s2Empty) {
-						name_to_load = $(this).children('#m3-name2').text();
-						info_to_load = $(this).children('#m3-info2').text();
-						$("#lower-thirds-name3:text").val(name_to_load);
-						$("#lower-thirds-info3:text").val(info_to_load);
-						}
-						if (m3s2Empty) {
-							name_to_save = $("#lower-thirds-name3:text").val();
-							info_to_save = $("#lower-thirds-info3:text").val();
-							$('#m3-name2')[0].innerHTML = name_to_save;
-							$('#m3-info2')[0].innerHTML = info_to_save;
-						}
-			    	} else {
-						slotDeleted = false;
-			    	}	    	
-			});
-
-			////////////////////////////////////// end AMSS
-
-			$("#clean-m1").click(function(){
-				$("#lower-thirds-name1:text").val("");
-				$("#lower-thirds-info1:text").val("");
-			});
-
-			$("#clean-m2").click(function(){
-				$("#lower-thirds-name2:text").val("");
-				$("#lower-thirds-info2:text").val("");
-			});
-
-			$("#clean-m3").click(function(){
-				$("#lower-thirds-name3:text").val("");
-				$("#lower-thirds-info3:text").val("");
+			$("#alt-4-clean-inputs").click(function(){
+				$("#alt-4-name:text").val("");
+				$("#alt-4-info:text").val("");
 			});
 
 			///////////////////////////////////////
 
-			$("#move-down-m1").click(function(){
-				if (!m1Empty){
-					name_to_move_down = $("#lower-thirds-name1:text").val();
-					info_to_move_down = $("#lower-thirds-info1:text").val();
-					name_to_move_up = $("#lower-thirds-name2:text").val();
-					info_to_move_up = $("#lower-thirds-info2:text").val();
-					$("#lower-thirds-name1:text").val(name_to_move_up);
-					$("#lower-thirds-info1:text").val(info_to_move_up);
-					$("#lower-thirds-name2:text").val(name_to_move_down);
-					$("#lower-thirds-info2:text").val(info_to_move_down);				
+			function getAppearance () {
+				//Lower Third Style
+				alt_1_style = $("#alt-1-style").val();
+				if (!alt_1_style){
+					alt_1_style = 1;
+					$("#alt-1-style").val("1");
 				}
-			});
+				alt_2_style = $("#alt-2-style").val();
+				if (!alt_2_style){
+					alt_2_style = 1;
+					$("#alt-2-style").val("1");
+				}
+				alt_3_style = $("#alt-3-style").val();
+				if (!alt_3_style){
+					alt_3_style = 1;
+					$("#alt-3-style").val("1");
+				}
+				alt_4_style = $("#alt-4-style").val();
+				if (!alt_4_style){
+					alt_4_style = 1;
+					$("#alt-4-style").val("1");
+				}
 
-			$("#move-down-m2").click(function(){
-				if (!m2Empty){
-					name_to_move_down = $("#lower-thirds-name2:text").val();
-					info_to_move_down = $("#lower-thirds-info2:text").val();
-					name_to_move_up = $("#lower-thirds-name3:text").val();
-					info_to_move_up = $("#lower-thirds-info3:text").val();
-					$("#lower-thirds-name2:text").val(name_to_move_up);
-					$("#lower-thirds-info2:text").val(info_to_move_up);
-					$("#lower-thirds-name3:text").val(name_to_move_down);
-					$("#lower-thirds-info3:text").val(info_to_move_down);				
+				//Calculate Text Sizes using the inverse ratio
+				alt_1_inverse_ratio = $("#alt-1-inverse-ratio").val();
+				if (!alt_1_inverse_ratio){
+					alt_1_inverse_ratio = 9;
 				}
-			});
+				alt_1_name_size = 1 + alt_1_inverse_ratio * 0.1;
+				alt_1_info_size = 2 - alt_1_inverse_ratio * 0.1;
 
-			$("#move-up-m2").click(function(){
-				if (!m2Empty){
-					name_to_move_down = $("#lower-thirds-name1:text").val();
-					info_to_move_down = $("#lower-thirds-info1:text").val();
-					name_to_move_up = $("#lower-thirds-name2:text").val();
-					info_to_move_up = $("#lower-thirds-info2:text").val();
-					$("#lower-thirds-name1:text").val(name_to_move_up);
-					$("#lower-thirds-info1:text").val(info_to_move_up);
-					$("#lower-thirds-name2:text").val(name_to_move_down);
-					$("#lower-thirds-info2:text").val(info_to_move_down);				
+				alt_2_inverse_ratio = $("#alt-2-inverse-ratio").val();
+				if (!alt_2_inverse_ratio){
+					alt_2_inverse_ratio = 9;
 				}
-			});
+				alt_2_name_size = 1 + alt_2_inverse_ratio * 0.1;
+				alt_2_info_size = 2 - alt_2_inverse_ratio * 0.1;				
 
-			$("#move-up-m3").click(function(){
-				if (!m3Empty){
-					name_to_move_down = $("#lower-thirds-name2:text").val();
-					info_to_move_down = $("#lower-thirds-info2:text").val();
-					name_to_move_up = $("#lower-thirds-name3:text").val();
-					info_to_move_up = $("#lower-thirds-info3:text").val();
-					$("#lower-thirds-name2:text").val(name_to_move_up);
-					$("#lower-thirds-info2:text").val(info_to_move_up);
-					$("#lower-thirds-name3:text").val(name_to_move_down);
-					$("#lower-thirds-info3:text").val(info_to_move_down);				
+				alt_3_inverse_ratio = $("#alt-3-inverse-ratio").val();
+				if (!alt_3_inverse_ratio){
+					alt_3_inverse_ratio = 9;
 				}
-			});
+				alt_3_name_size = 1 + alt_3_inverse_ratio * 0.1;
+				alt_3_info_size = 2 - alt_3_inverse_ratio * 0.1;
+
+				alt_4_inverse_ratio = $("#alt-4-inverse-ratio").val();
+				if (!alt_4_inverse_ratio){
+					alt_4_inverse_ratio = 9;
+				}
+				alt_4_name_size = 1 + alt_4_inverse_ratio * 0.1;
+				alt_4_info_size = 2 - alt_4_inverse_ratio * 0.1;				
+
+				//Line Spacing
+				alt_1_line_spacing = $("#alt-1-line-spacing").val();
+				if (!alt_1_line_spacing){
+					alt_1_line_spacing = 0;
+				}
+				alt_2_line_spacing = $("#alt-2-line-spacing").val();
+				if (!alt_2_line_spacing){
+					alt_2_line_spacing = 0;
+				}
+				alt_3_line_spacing = $("#alt-3-line-spacing").val();
+				if (!alt_3_line_spacing){
+					alt_3_line_spacing = 0;
+				}
+				alt_4_line_spacing = $("#alt-4-line-spacing").val();
+				if (!alt_4_line_spacing){
+					alt_4_line_spacing = 0;
+				}
+
+				//Lower Third Size
+				alt_1_size = $("#alt-1-size").val();
+				if (!alt_1_size){
+					alt_1_size = 24;
+				}
+				alt_2_size = $("#alt-2-size").val();
+				if (!alt_2_size){
+					alt_2_size = 24;
+				}
+				alt_3_size = $("#alt-3-size").val();
+				if (!alt_3_size){
+					alt_3_size = 24;
+				}
+				alt_4_size = $("#alt-4-size").val();
+				if (!alt_4_size){
+					alt_4_size = 24;
+				}
+
+				//Margin from de borders Horizontal and Vertical
+				alt_1_margin_h = $("#alt-1-margin-h").val();
+				if (!alt_1_margin_h){
+					alt_1_margin_h = 4;
+				}
+				alt_1_margin_v = $("#alt-1-margin-v").val();
+				if (!alt_1_margin_v){
+					alt_1_margin_v = 4;
+				}
+
+				alt_2_margin_h = $("#alt-2-margin-h").val();
+				if (!alt_2_margin_h){
+					alt_2_margin_h = 4;
+				}
+				alt_2_margin_v = $("#alt-2-margin-v").val();
+				if (!alt_2_margin_v){
+					alt_2_margin_v = 4;
+				}
+
+				alt_3_margin_h = $("#alt-3-margin-h").val();
+				if (!alt_3_margin_h){
+					alt_3_margin_h = 4;
+				}
+				alt_3_margin_v = $("#alt-3-margin-v").val();
+				if (!alt_3_margin_v){
+					alt_3_margin_v = 4;
+				}
+
+				alt_4_margin_h = $("#alt-4-margin-h").val();
+				if (!alt_4_margin_h){
+					alt_4_margin_h = 4;
+				}
+				alt_4_margin_v = $("#alt-4-margin-v").val();
+				if (!alt_4_margin_v){
+					alt_4_margin_v = 4;
+				}
+
+				styleRestrictions();
+			}
+
+			function styleRestrictions() {
+				switch (alt_1_style){
+					case "1":
+						//Disable: align center | Enable: logo;
+						document.getElementById("alt-1-align-center").disabled = true;
+						if (document.getElementById("alt-1-align-center").checked == true){
+							document.getElementById("alt-1-align-left").checked = true;
+						}
+						document.getElementById("alt-1-logo").disabled = false;
+						break;
+					case "2":
+						//Disable: logo | Enable: align center;
+						document.getElementById("alt-1-align-center").disabled = false;
+						document.getElementById("alt-1-logo").disabled = true;
+						if (document.getElementById("alt-1-logo").checked == true){
+							document.getElementById("alt-1-logo").checked = false;
+						}
+
+						break;
+					case "3":
+						//Disable: - | Enable: Logo, align center;
+						document.getElementById("alt-1-align-center").disabled = false;
+						document.getElementById("alt-1-logo").disabled = false;
+						break;
+				}
+				switch (alt_2_style){
+					case "1":
+						//Disable: align center | Enable: logo;
+						document.getElementById("alt-2-align-center").disabled = true;
+						if (document.getElementById("alt-2-align-center").checked == true){
+							document.getElementById("alt-2-align-left").checked = true;
+						}
+						document.getElementById("alt-2-logo").disabled = false;
+						break;
+					case "2":
+						//Disable: logo | Enable: align center;
+						document.getElementById("alt-2-align-center").disabled = false;
+						document.getElementById("alt-2-logo").disabled = true;
+						if (document.getElementById("alt-2-logo").checked == true){
+							document.getElementById("alt-2-logo").checked = false;
+						}
+						break;
+					case "3":
+						//Disable: - | Enable: Logo, align center;
+						document.getElementById("alt-2-align-center").disabled = false;
+						document.getElementById("alt-2-logo").disabled = false;
+						break;
+				}
+				switch (alt_3_style){
+					case "1":
+						//Disable: align center | Enable: logo;
+						document.getElementById("alt-3-align-center").disabled = true;
+						if (document.getElementById("alt-3-align-center").checked == true){
+							document.getElementById("alt-3-align-left").checked = true;
+						}
+						document.getElementById("alt-3-logo").disabled = false;
+						break;
+					case "2":
+						//Disable: logo | Enable: align center;
+						document.getElementById("alt-3-align-center").disabled = false;
+						document.getElementById("alt-3-logo").disabled = true;
+						if (document.getElementById("alt-3-logo").checked == true){
+							document.getElementById("alt-3-logo").checked = false;
+						}
+						break;
+					case "3":
+						//Disable: - | Enable: Logo, align center;
+						document.getElementById("alt-3-align-center").disabled = false;
+						document.getElementById("alt-3-logo").disabled = false;
+						break;
+				}
+				switch (alt_4_style){
+					case "1":
+						//Disable: align center | Enable: logo;
+						document.getElementById("alt-4-align-center").disabled = true;
+						if (document.getElementById("alt-4-align-center").checked == true){
+							document.getElementById("alt-4-align-left").checked = true;
+						}
+						document.getElementById("alt-4-logo").disabled = false;
+						break;
+					case "2":
+						//Disable: logo | Enable: align center;
+						document.getElementById("alt-4-align-center").disabled = false;
+						document.getElementById("alt-4-logo").disabled = true;
+						if (document.getElementById("alt-4-logo").checked == true){
+							document.getElementById("alt-4-logo").checked = false;
+						}
+						break;
+					case "3":
+						//Disable: - | Enable: Logo, align center;
+						document.getElementById("alt-4-align-center").disabled = false;
+						document.getElementById("alt-4-logo").disabled = false;
+						break;
+				}				
+			}
 
 			//////////////////////////////////////
 
-			//Reciber
+			//Receive data from the source
 			bcr.onmessage = function (ev) {
 				received_data=ev.data.split("|");
-				document.getElementById("active-t1").innerHTML = received_data[0];
-				document.getElementById("inactive-t1").innerHTML = received_data[1];
-				document.getElementById("active-t2").innerHTML = received_data[2];
-				document.getElementById("inactive-t2").innerHTML = received_data[3];
-				document.getElementById("active-t3").innerHTML = received_data[4];
-				document.getElementById("inactive-t3").innerHTML = received_data[5];
+				document.getElementById("alt-1-active-time").innerHTML = received_data[0];
+				document.getElementById("alt-1-inactive-time").innerHTML = received_data[1];
+				document.getElementById("alt-2-active-time").innerHTML = received_data[2];
+				document.getElementById("alt-2-inactive-time").innerHTML = received_data[3];
+				document.getElementById("alt-3-active-time").innerHTML = received_data[4];
+				document.getElementById("alt-3-inactive-time").innerHTML = received_data[5];
+				document.getElementById("alt-4-active-time").innerHTML = received_data[6];
+				document.getElementById("alt-4-inactive-time").innerHTML = received_data[7];
+
+				alt_1_active_time = received_data[0];
+				alt_1_inactive_time = received_data[1];
+				alt_2_active_time = received_data[2];
+				alt_2_inactive_time = received_data[3];
+				alt_3_active_time = received_data[4];
+				alt_3_inactive_time = received_data[5];
+				alt_4_active_time = received_data[6];
+				alt_4_inactive_time = received_data[7];
 
 			}
 
 			//////////////////////////////////////
 
-			//Shadows on/off
-			$("#shadows").click(function(){
-				document.getElementById("shadows").classList.toggle("shadows-on");
-				if (!shadowsOn) {
-					shadowsOn = true;
-				} else {
-					shadowsOn = false;
-				}
-			});
-
-			//////////////////////////////////////
-
 			function function_send() {
-				animation_to_send = $("#lower-thirds-animation").val();
-				length_to_send = $("#lower-thirds-length:text").val();
-				interval_to_send = $("#lower-thirds-interval:text").val();
+				animation_time = $("#lower-thirds-animation").val();
+				active_time = $("#lower-thirds-length:text").val();
+				inactive_time = $("#lower-thirds-interval:text").val();
 
-				name1_to_send = $("#lower-thirds-name1:text").val();
-				info1_to_send = $("#lower-thirds-info1:text").val();
-				name2_to_send = $("#lower-thirds-name2:text").val();
-				info2_to_send = $("#lower-thirds-info2:text").val();
-				name3_to_send = $("#lower-thirds-name3:text").val();
-				info3_to_send = $("#lower-thirds-info3:text").val();
+				alt_1_name = $("#alt-1-name:text").val();
+				alt_1_info = $("#alt-1-info:text").val();				
+				alt_1_name_color = $("#alt-1-name-color:text").val();
+				alt_1_info_color = $("#alt-1-info-color:text").val();
+				alt_1_style_color_1 = $("#alt-1-style-color-1:text").val();
+				alt_1_style_color_2 = $("#alt-1-style-color-2:text").val();
 
-				color1_to_send = $("#color-m1:text").val();
-				color2_to_send = $("#color-m2:text").val();
-				color3_to_send = $("#color-m3:text").val();
+				alt_2_name = $("#alt-2-name:text").val();
+				alt_2_info = $("#alt-2-info:text").val();				
+				alt_2_name_color = $("#alt-2-name-color:text").val();
+				alt_2_info_color = $("#alt-2-info-color:text").val();
+				alt_2_style_color_1 = $("#alt-2-style-color-1:text").val();
+				alt_2_style_color_2 = $("#alt-2-style-color-2:text").val();
+
+				alt_3_name = $("#alt-3-name:text").val();
+				alt_3_info = $("#alt-3-info:text").val();				
+				alt_3_name_color = $("#alt-3-name-color:text").val();
+				alt_3_info_color = $("#alt-3-info-color:text").val();
+				alt_3_style_color_1 = $("#alt-3-style-color-1:text").val();
+				alt_3_style_color_2 = $("#alt-3-style-color-2:text").val();
+
+				alt_4_name = $("#alt-4-name:text").val();
+				alt_4_info = $("#alt-4-info:text").val();				
+				alt_4_name_color = $("#alt-4-name-color:text").val();
+				alt_4_info_color = $("#alt-4-info-color:text").val();
+				alt_4_style_color_1 = $("#alt-4-style-color-1:text").val();
+				alt_4_style_color_2 = $("#alt-4-style-color-2:text").val();
 
 				//Check Master Switch
 				if (document.getElementById("lower-thirds-masterswitch").checked == true) {
 					masterSwitchIsOn = true;
+					document.getElementById("alt-main-config-content").classList.add("active");
 				} else {
 					masterSwitchIsOn = false;
+					document.getElementById("alt-main-config-content").classList.remove("active");
 				}
 
-				//Master Switch turn on/off all lower thirds
-				if (document.getElementById("lower-thirds-masterswitch").checked == false && canTurnOn == false) {
-					canTurnOn = true;
-				}
-				if (document.getElementById("lower-thirds-masterswitch").checked == true) {
-					canTurnOn = false;
-				}
+				//Check switches and blue and red lights in the background to see active and inactive times
+				if (masterSwitchIsOn) {
+					//When the Main Switch is ON the lower thirds can be Active, Inactive or OFF.
+					//Switch 1
+					if (document.getElementById("lower-thirds-switch1").checked == true){
+						alt_1_switch = "true";
+						if (alt_1_active_time >= 0 && alt_1_inactive_time == 0 && alt_1_name && alt_1_info){
+							document.getElementById("alt-1-config-content").classList.remove("inactive");
+							document.getElementById("alt-1-config-content").classList.add("active");
+						} else {
+							document.getElementById("alt-1-config-content").classList.remove("active");
+							document.getElementById("alt-1-config-content").classList.add("inactive");
+						}
+					} else {
+						alt_1_switch = "false";
+						document.getElementById("alt-1-config-content").className = '';
+					}
 
-				//Switch 1 turn on/off name and info (left)
-				if (document.getElementById("lower-thirds-switch1").checked == false) {
-					switch1_to_send = "false";
-					document.getElementById("lower-thirds-name1").classList.add("disable");
-					document.getElementById("lower-thirds-info1").classList.add("disable");
+					//Switch 2
+					if (document.getElementById("lower-thirds-switch2").checked == true){
+						alt_2_switch = "true";
+						if (alt_2_active_time >= 0 && alt_2_inactive_time == 0 && alt_2_name && alt_2_info){
+							document.getElementById("alt-2-config-content").classList.remove("inactive");
+							document.getElementById("alt-2-config-content").classList.add("active");
+						} else {
+							document.getElementById("alt-2-config-content").classList.remove("active");
+							document.getElementById("alt-2-config-content").classList.add("inactive");
+						}
+					} else {
+						alt_2_switch = "false";
+						document.getElementById("alt-2-config-content").className = '';
+					}
+
+					//Switch 3
+					if (document.getElementById("lower-thirds-switch3").checked == true){
+						alt_3_switch = "true";
+						if (alt_3_active_time >= 0 && alt_3_inactive_time == 0 && alt_3_name && alt_3_info){
+							document.getElementById("alt-3-config-content").classList.remove("inactive");
+							document.getElementById("alt-3-config-content").classList.add("active");
+						} else {
+							document.getElementById("alt-3-config-content").classList.remove("active");
+							document.getElementById("alt-3-config-content").classList.add("inactive");
+						}
+					} else {
+						alt_3_switch = "false";
+						document.getElementById("alt-3-config-content").className = '';
+					}
+
+					//Switch 4
+					if (document.getElementById("lower-thirds-switch4").checked == true){
+						alt_4_switch = "true";
+						if (alt_4_active_time >= 0 && alt_4_inactive_time == 0 && alt_4_name && alt_4_info){
+							document.getElementById("alt-4-config-content").classList.remove("inactive");
+							document.getElementById("alt-4-config-content").classList.add("active");
+						} else {
+							document.getElementById("alt-4-config-content").classList.remove("active");
+							document.getElementById("alt-4-config-content").classList.add("inactive");
+						}
+					} else {
+						alt_4_switch = "false";
+						document.getElementById("alt-4-config-content").className = '';
+					}
+
 				} else {
-					if (masterSwitchIsOn){
-						switch1_to_send = "true";
-					}				
-					if (!masterSwitchIsOn){
-						switch1_to_send = "false";
-					}	
-					document.getElementById("lower-thirds-name1").classList.remove("disable");
-					document.getElementById("lower-thirds-info1").classList.remove("disable");
-				};
+					//When the Main Switch is OFF all the Lower Thirds area Inactives or OFF.
+					//Switch 1
+					alt_1_switch = "false";
+					if (document.getElementById("lower-thirds-switch1").checked == true) {
+						document.getElementById("alt-1-config-content").classList.add("inactive");
+						document.getElementById("alt-1-config-content").classList.remove("active");
+					} else {
+						document.getElementById("alt-1-config-content").className = '';
+					}
 
-				//Switch 2 turn on/off name and info (right)
-				if (document.getElementById("lower-thirds-switch2").checked == false) {
-					switch2_to_send = "false";
-					document.getElementById("lower-thirds-name2").classList.add("disable");
-					document.getElementById("lower-thirds-info2").classList.add("disable");
+					//Switch 2
+					alt_2_switch = "false";
+					if (document.getElementById("lower-thirds-switch2").checked == true) {
+						document.getElementById("alt-2-config-content").classList.add("inactive");
+						document.getElementById("alt-2-config-content").classList.remove("active");
+					} else {
+						document.getElementById("alt-2-config-content").className = '';
+					}
+
+					//Switch 3					
+					alt_3_switch = "false";
+					if (document.getElementById("lower-thirds-switch3").checked == true) {
+						document.getElementById("alt-3-config-content").classList.add("inactive");
+						document.getElementById("alt-3-config-content").classList.remove("active");
+					} else {
+						document.getElementById("alt-3-config-content").className = '';
+					}
+
+					//Switch 4					
+					alt_4_switch = "false";
+					if (document.getElementById("lower-thirds-switch4").checked == true) {
+						document.getElementById("alt-4-config-content").classList.add("inactive");
+						document.getElementById("alt-4-config-content").classList.remove("active");
+					} else {
+						document.getElementById("alt-4-config-content").className = '';
+					}
+
+				}
+
+				//////////////////////////////
+
+
+				//Switch Logo ON/OFF
+				if (document.getElementById("alt-1-logo").checked == false) {
+					alt_1_logo_switch = "false";
 				} else {
-					if (masterSwitchIsOn){
-						switch2_to_send = "true";
-					}				
-					if (!masterSwitchIsOn){
-						switch2_to_send = "false";
-					}	
-					document.getElementById("lower-thirds-name2").classList.remove("disable");
-					document.getElementById("lower-thirds-info2").classList.remove("disable");
-				};
-
-				//Switch 3 turn on/off name and info (center)
-				if (document.getElementById("lower-thirds-switch3").checked == false) {
-					switch3_to_send = "false";
-					document.getElementById("lower-thirds-name3").classList.add("disable");
-					document.getElementById("lower-thirds-info3").classList.add("disable");
+					alt_1_logo_switch = "true";
+				}
+				if (document.getElementById("alt-2-logo").checked == false) {
+					alt_2_logo_switch = "false";
 				} else {
-					if (masterSwitchIsOn){
-						switch3_to_send = "true";
-					}				
-					if (!masterSwitchIsOn){
-						switch3_to_send = "false";
-					}	
-					document.getElementById("lower-thirds-name3").classList.remove("disable");
-					document.getElementById("lower-thirds-info3").classList.remove("disable");
-				};
-
-				//Standard Values
-				if(length_to_send == "") {
-					length_to_send = 25;
+					alt_2_logo_switch = "true";
 				}
-				if(interval_to_send == "") {
-					interval_to_send = 420;
+				if (document.getElementById("alt-3-logo").checked == false) {
+					alt_3_logo_switch = "false";
+				} else {
+					alt_3_logo_switch = "true";
 				}
-				if(animation_to_send == "") {
-					animation_to_send = 4;
+				if (document.getElementById("alt-4-logo").checked == false) {
+					alt_4_logo_switch = "false";
+				} else {
+					alt_4_logo_switch = "true";
 				}
 
+				//Switch Background ON/OFF
+				if (document.getElementById("alt-1-background").checked == false) {
+					alt_1_background_switch = "false";
+				} else {
+					alt_1_background_switch = "true";
+				}
+				if (document.getElementById("alt-2-background").checked == false) {
+					alt_2_background_switch = "false";
+				} else {
+					alt_2_background_switch = "true";
+				}
+				if (document.getElementById("alt-3-background").checked == false) {
+					alt_3_background_switch = "false";
+				} else {
+					alt_3_background_switch = "true";
+				}
+				if (document.getElementById("alt-4-background").checked == false) {
+					alt_4_background_switch = "false";
+				} else {
+					alt_4_background_switch = "true";
+				}
 
-				bc.postMessage(animation_to_send + '|' + length_to_send + '|' + interval_to_send + '|' + shadowsOn + '|' + switch1_to_send + '|' + color1_to_send + '|' + name1_to_send + '|' + info1_to_send + '|' + switch2_to_send + '|' + color2_to_send + '|' + name2_to_send + '|' + info2_to_send + '|' + switch3_to_send + '|' + color3_to_send + '|' + name3_to_send + '|' + info3_to_send);
+				//Switch Shadows ON/OFF
+				if (document.getElementById("alt-1-shadows").checked == false) {
+					alt_1_shadows = "false";
+				} else {
+					alt_1_shadows = "true";
+				}
+				if (document.getElementById("alt-2-shadows").checked == false) {
+					alt_2_shadows = "false";
+				} else {
+					alt_2_shadows = "true";
+				}
+				if (document.getElementById("alt-3-shadows").checked == false) {
+					alt_3_shadows = "false";
+				} else {
+					alt_3_shadows = "true";
+				}
+				if (document.getElementById("alt-4-shadows").checked == false) {
+					alt_4_shadows = "false";
+				} else {
+					alt_4_shadows = "true";
+				}
+
+				//Name and Info text appearance (Uppercase and Bold)
+				if (document.getElementById("alt-1-name-transform").checked == false) {
+					alt_1_name_transform = "normal";
+				} else {
+					alt_1_name_transform = "uppercase";
+				}
+				if (document.getElementById("alt-1-name-weight").checked == false) {
+					alt_1_name_weight = "lighter";
+				} else {
+					alt_1_name_weight = "bold";
+				}
+				if (document.getElementById("alt-2-name-transform").checked == false) {
+					alt_2_name_transform = "normal";
+				} else {
+					alt_2_name_transform = "uppercase";
+				}
+				if (document.getElementById("alt-2-name-weight").checked == false) {
+					alt_2_name_weight = "lighter";
+				} else {
+					alt_2_name_weight = "bold";
+				}
+				if (document.getElementById("alt-3-name-transform").checked == false) {
+					alt_3_name_transform = "normal";
+				} else {
+					alt_3_name_transform = "uppercase";
+				}
+				if (document.getElementById("alt-3-name-weight").checked == false) {
+					alt_3_name_weight = "lighter";
+				} else {
+					alt_3_name_weight = "bold";
+				}
+				if (document.getElementById("alt-4-name-transform").checked == false) {
+					alt_4_name_transform = "normal";
+				} else {
+					alt_4_name_transform = "uppercase";
+				}
+				if (document.getElementById("alt-4-name-weight").checked == false) {
+					alt_4_name_weight = "lighter";
+				} else {
+					alt_4_name_weight = "bold";
+				}
+
+				if (document.getElementById("alt-1-info-transform").checked == false) {
+					alt_1_info_transform = "normal";
+				} else {
+					alt_1_info_transform = "uppercase";
+				}
+				if (document.getElementById("alt-1-info-weight").checked == false) {
+					alt_1_info_weight = "lighter";
+				} else {
+					alt_1_info_weight = "bold";
+				}
+				if (document.getElementById("alt-2-info-transform").checked == false) {
+					alt_2_info_transform = "normal";
+				} else {
+					alt_2_info_transform = "uppercase";
+				}
+				if (document.getElementById("alt-2-info-weight").checked == false) {
+					alt_2_info_weight = "lighter";
+				} else {
+					alt_2_info_weight = "bold";
+				}
+				if (document.getElementById("alt-3-info-transform").checked == false) {
+					alt_3_info_transform = "normal";
+				} else {
+					alt_3_info_transform = "uppercase";
+				}
+				if (document.getElementById("alt-3-info-weight").checked == false) {
+					alt_3_info_weight = "lighter";
+				} else {
+					alt_3_info_weight = "bold";
+				}
+				if (document.getElementById("alt-4-info-transform").checked == false) {
+					alt_4_info_transform = "normal";
+				} else {
+					alt_4_info_transform = "uppercase";
+				}
+				if (document.getElementById("alt-4-info-weight").checked == false) {
+					alt_4_info_weight = "lighter";
+				} else {
+					alt_4_info_weight = "bold";
+				}
+
+				//Font of the Lower Third
+				var font_id_1 = document.getElementById("alt-1-font");
+				var alt_1_font = font_id_1.options[font_id_1.selectedIndex].value;
+				var font_id_2 = document.getElementById("alt-2-font");
+				var alt_2_font = font_id_2.options[font_id_2.selectedIndex].value;
+				var font_id_3 = document.getElementById("alt-3-font");
+				var alt_3_font = font_id_3.options[font_id_3.selectedIndex].value;
+				var font_id_4 = document.getElementById("alt-4-font");
+				var alt_4_font = font_id_4.options[font_id_4.selectedIndex].value;
+
+				//Alignment of the Lower Third
+				var alt_1_align = $('input[name=alt-1-align]:checked').val();
+				if (!alt_1_align) {
+					document.getElementById("alt-1-align-left").checked = true;
+				}
+				var alt_2_align = $('input[name=alt-2-align]:checked').val();
+				if (!alt_2_align) {
+					document.getElementById("alt-2-align-left").checked = true;
+				}
+				var alt_3_align = $('input[name=alt-3-align]:checked').val();
+				if (!alt_3_align) {
+					document.getElementById("alt-3-align-left").checked = true;
+				}
+				var alt_4_align = $('input[name=alt-4-align]:checked').val();
+				if (!alt_4_align) {
+					document.getElementById("alt-4-align-left").checked = true;
+				}
+
+				//Standard Main settings values
+				if(active_time == "") {
+					active_time = 25;
+				}
+				if(inactive_time == "") {
+					inactive_time = 420;
+				}
+				if(animation_time == "") {
+					animation_time = 4;
+				}
+
+				bc.postMessage(animation_time + '|' + active_time + '|' + inactive_time + '|' + alt_1_switch + '|' + alt_1_style + '|' + alt_1_name + '|' + alt_1_info + '|' + alt_1_name_size + '|' + alt_1_info_size  + '|' + alt_1_name_transform + '|' + alt_1_info_transform + '|' + alt_1_name_weight + '|' + alt_1_info_weight + '|' + alt_1_name_color + '|' + alt_1_info_color + '|' + alt_1_style_color_1 + '|' + alt_1_style_color_2 + '|' + alt_1_logo_switch + '|' + alt_1_background_switch + '|' + alt_1_shadows + '|' + alt_1_align + '|' + alt_1_size + '|' + alt_1_margin_h + '|' + alt_1_margin_v + '|' + alt_1_line_spacing + '|' + alt_1_font + '|' + alt_2_switch + '|' + alt_2_style + '|' + alt_2_name + '|' + alt_2_info + '|' + alt_2_name_size + '|' + alt_2_info_size  + '|' + alt_2_name_transform + '|' + alt_2_info_transform + '|' + alt_2_name_weight + '|' + alt_2_info_weight + '|' + alt_2_name_color + '|' + alt_2_info_color + '|' + alt_2_style_color_1 + '|' + alt_2_style_color_2 + '|' + alt_2_logo_switch + '|' + alt_2_background_switch + '|' + alt_2_shadows + '|' + alt_2_align + '|' + alt_2_size + '|' + alt_2_margin_h + '|' + alt_2_margin_v + '|' + alt_2_line_spacing + '|' + alt_2_font + '|' + alt_3_switch + '|' + alt_3_style + '|' + alt_3_name + '|' + alt_3_info + '|' + alt_3_name_size + '|' + alt_3_info_size  + '|' + alt_3_name_transform + '|' + alt_3_info_transform + '|' + alt_3_name_weight + '|' + alt_3_info_weight + '|' + alt_3_name_color + '|' + alt_3_info_color + '|' + alt_3_style_color_1 + '|' + alt_3_style_color_2 + '|' + alt_3_logo_switch + '|' + alt_3_background_switch + '|' + alt_3_shadows + '|' + alt_3_align + '|' + alt_3_size + '|' + alt_3_margin_h + '|' + alt_3_margin_v + '|' + alt_3_line_spacing + '|' + alt_3_font + '|' + alt_4_switch + '|' + alt_4_style + '|' + alt_4_name + '|' + alt_4_info + '|' + alt_4_name_size + '|' + alt_4_info_size  + '|' + alt_4_name_transform + '|' + alt_4_info_transform + '|' + alt_4_name_weight + '|' + alt_4_info_weight + '|' + alt_4_name_color + '|' + alt_4_info_color + '|' + alt_4_style_color_1 + '|' + alt_4_style_color_2 + '|' + alt_4_logo_switch + '|' + alt_4_background_switch + '|' + alt_4_shadows + '|' + alt_4_align + '|' + alt_4_size + '|' + alt_4_margin_h + '|' + alt_4_margin_v + '|' + alt_4_line_spacing + '|' + alt_4_font);
 			}
 
 			function loadData () {
@@ -586,10 +1499,29 @@
 
 					$(this).text(value);
 				});
+
+				$('.checkbox-storable').each(function(){
+					var id = $(this).attr('id');
+					var checked = JSON.parse(localStorage.getItem(id));
+    				document.getElementById(id).checked = checked;
+    			});
+
+				$('.radio-storable').each(function(){
+					var id = $(this).attr('id');
+					var checked = JSON.parse(localStorage.getItem(id));
+    				document.getElementById(id).checked = checked;
+    			});
+
+				$('.font-storable').each(function(){
+					var id = $(this).attr('id');
+				    if(localStorage.getItem(id)){
+				        $("#" + id).val(localStorage.getItem(id));
+				    }
+    			});
 			}
 
 			function saveData () {
-	        	y = 2;
+				y = 0.05; // Refresh time multiplier
 
 	        	$('.storable').each(function(){    
 					var id = $(this).attr('id');
@@ -603,14 +1535,41 @@
 					localStorage.setItem(id, value);
 	        	});
 
+				$('.checkbox-storable').each(function(){
+					var id = $(this).attr('id');
+					var checkbox = document.getElementById(id);
+					localStorage.setItem(id, checkbox.checked);
+    			});
+
+				$('.radio-storable').each(function(){
+					var id = $(this).attr('id');
+					var checkbox = document.getElementById(id);	
+					localStorage.setItem(id, checkbox.checked);
+    			});
+
+				$('.font-storable').each(function(){
+					var id =  $(this).attr('id');
+					$("#" + id).change(function() {
+				        localStorage.setItem(id, this.value);
+				    });
+				});
+
+				//localStorage.clear(); //To clear data fields
 	        	setTimeout(saveData, y*1000);
 			}
 
 			function refreshData() {
-			    x = 0.05;  // 5 Seconds
+			    x = 0.05; // Refresh time multiplier
+
+			    checkSlots("#alt-1-memory-slots", "#alt-1-name", "#alt-1-info");
+				checkSlots("#alt-2-memory-slots", "#alt-2-name", "#alt-2-info");
+				checkSlots("#alt-3-memory-slots", "#alt-3-name", "#alt-3-info");
+				checkSlots("#alt-4-memory-slots", "#alt-4-name", "#alt-4-info");
+			    checkHotkeys();
+			    getAppearance();
+			    updateHorkeys();
 
 			    function_send();
-			    checkSlots ();
 
 			    setTimeout(refreshData, x*1000);
 			}
@@ -619,24 +1578,6 @@
 			refreshData();
 			saveData();
 
-			var acc = document.getElementsByClassName("accordion");
-			var i;
-
-			for (i = 0; i < acc.length; i++) {
-			  acc[i].onclick = function() {
-			    this.classList.toggle("active");
-			    var hidable = this.nextElementSibling;
-			    if (hidable.style.maxHeight){
-			      hidable.style.maxHeight = null;
-			    } else {
-			      hidable.style.maxHeight = hidable.scrollHeight + "px";
-			    } 
-			  }
-			}
-			acc[1].onclick()
-			acc[2].onclick()
-			acc[3].onclick()
-	
 		</script>
 
 	</body>
