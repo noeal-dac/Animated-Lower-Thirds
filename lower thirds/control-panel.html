@@ -25,14 +25,19 @@
 				</label>
 				<label class="accordion"><i class="fas">&#xf013;</i>Main settings</label>
 				<div id="times-configuration" class="hidable">
-					<div class="column-33">
-						<input class="storable" id="lower-thirds-animation" placeholder="4s (in-out)" tabindex="1">
+					<div id="time-options">
+						<div class="settings-title">Global times</div>
+						<div class="settings-inputs">
+							<input class="storable" id="global-animation-time" placeholder="4s (in-out)" tabindex="1">
+							<input class="storable" id="global-active-time" placeholder="25s (active)" tabindex="2">
+							<input class="storable" id="global-inactive-time" placeholder="420s (inactive)" tabindex="3">
+						</div>
 					</div>
-					<div class="column-33">
-						<input class="storable" id="lower-thirds-length" placeholder="25s (active)" tabindex="2">
-					</div>
-					<div class="column-33">
-						<input class="storable" id="lower-thirds-interval" placeholder="420s (inactive)" tabindex="3">
+					<div id="theme-options">
+						<div class="settings-title">Theme</div>
+						<div class="settings-inputs">
+							<select name="theme" id="theme" class="select-settings-storable" onchange="changeTheme(this.value)"></select>
+						</div>
 					</div>
 				</div>		
 			</div>
@@ -799,6 +804,34 @@
 
 			////////////////////
 
+			//Load the theme style
+			var theme = localStorage.getItem('theme') ? localStorage.getItem('theme') : 'dark';
+			$('head').append('<link rel="stylesheet" href="../common/css/themes/' + theme + '/theme.css"/>');
+
+			function changeTheme(newTheme) {
+				$('link[href="../common/css/themes/' + theme + '/theme.css"]').remove();
+				var head= document.getElementsByTagName('head')[0];
+				var link= document.createElement('link');
+				link.rel= "stylesheet";
+				link.href= "../common/css/themes/" + newTheme + "/theme.css";
+				head.appendChild(link);
+				theme = newTheme;
+			}
+		
+			//Theme options to settings
+			var themes = ['acri', 'dark', 'rachni'];
+
+			$.each(themes, function(i) {
+				var $selected = '';
+
+				if(themes[i] == theme) {
+					$selected = 'selected';
+				}
+
+				$('#alt-main-config-content #theme').append('<option name="' + themes[i] + '"' + $selected + '>' + themes[i] + '</option>');
+			});
+
+			//////////////////
 
 		    $( "#sortable" ).sortable({handle: ".drag-handle"});
 		    $( "#sortable" ).on("sortupdate",function( event, ui ) {
@@ -1258,9 +1291,9 @@
 			//////////////////////////////////////
 
 			function function_send() {
-				animation_time = $("#lower-thirds-animation").val();
-				active_time = $("#lower-thirds-length:text").val();
-				inactive_time = $("#lower-thirds-interval:text").val();
+				global_animation_time = $("#global-animation-time").val();
+				global_active_time = $("#global-active-time:text").val();
+				global_inactive_time = $("#global-inactive-time:text").val();
 
 				alt_1_name = $("#alt-1-name:text").val();
 				alt_1_info = $("#alt-1-info:text").val();				
@@ -1607,20 +1640,20 @@
 				}
 
 				//Standard Main settings values
-				if(active_time == "") {
-					active_time = 25;
+				if(global_active_time == "") {
+					global_active_time = 25;
 				}
-				if(inactive_time == "") {
-					inactive_time = 420;
+				if(global_inactive_time == "") {
+					global_inactive_time = 420;
 				}
-				if(animation_time == "") {
-					animation_time = 4;
+				if(global_animation_time == "") {
+					global_animation_time = 4;
 				}
 
-				bc.postMessage(animation_time + '|' + active_time + '|' + inactive_time + '|' + alt_1_switch + '|' + alt_1_style + '|' + alt_1_name + '|' + alt_1_info + '|' + alt_1_name_size + '|' + alt_1_info_size  + '|' + alt_1_name_transform + '|' + alt_1_info_transform + '|' + alt_1_name_weight + '|' + alt_1_info_weight + '|' + alt_1_name_color + '|' + alt_1_info_color + '|' + alt_1_style_color_1 + '|' + alt_1_style_color_2 + '|' + alt_1_logo_switch + '|' + alt_1_background_switch + '|' + alt_1_shadows + '|' + alt_1_align + '|' + alt_1_size + '|' + alt_1_margin_h + '|' + alt_1_margin_v + '|' + alt_1_line_spacing + '|' + alt_1_font + '|' + alt_2_switch + '|' + alt_2_style + '|' + alt_2_name + '|' + alt_2_info + '|' + alt_2_name_size + '|' + alt_2_info_size  + '|' + alt_2_name_transform + '|' + alt_2_info_transform + '|' + alt_2_name_weight + '|' + alt_2_info_weight + '|' + alt_2_name_color + '|' + alt_2_info_color + '|' + alt_2_style_color_1 + '|' + alt_2_style_color_2 + '|' + alt_2_logo_switch + '|' + alt_2_background_switch + '|' + alt_2_shadows + '|' + alt_2_align + '|' + alt_2_size + '|' + alt_2_margin_h + '|' + alt_2_margin_v + '|' + alt_2_line_spacing + '|' + alt_2_font + '|' + alt_3_switch + '|' + alt_3_style + '|' + alt_3_name + '|' + alt_3_info + '|' + alt_3_name_size + '|' + alt_3_info_size  + '|' + alt_3_name_transform + '|' + alt_3_info_transform + '|' + alt_3_name_weight + '|' + alt_3_info_weight + '|' + alt_3_name_color + '|' + alt_3_info_color + '|' + alt_3_style_color_1 + '|' + alt_3_style_color_2 + '|' + alt_3_logo_switch + '|' + alt_3_background_switch + '|' + alt_3_shadows + '|' + alt_3_align + '|' + alt_3_size + '|' + alt_3_margin_h + '|' + alt_3_margin_v + '|' + alt_3_line_spacing + '|' + alt_3_font + '|' + alt_4_switch + '|' + alt_4_style + '|' + alt_4_name + '|' + alt_4_info + '|' + alt_4_name_size + '|' + alt_4_info_size  + '|' + alt_4_name_transform + '|' + alt_4_info_transform + '|' + alt_4_name_weight + '|' + alt_4_info_weight + '|' + alt_4_name_color + '|' + alt_4_info_color + '|' + alt_4_style_color_1 + '|' + alt_4_style_color_2 + '|' + alt_4_logo_switch + '|' + alt_4_background_switch + '|' + alt_4_shadows + '|' + alt_4_align + '|' + alt_4_size + '|' + alt_4_margin_h + '|' + alt_4_margin_v + '|' + alt_4_line_spacing + '|' + alt_4_font);
+				bc.postMessage(global_animation_time + '|' + global_active_time + '|' + global_inactive_time + '|' + alt_1_switch + '|' + alt_1_style + '|' + alt_1_name + '|' + alt_1_info + '|' + alt_1_name_size + '|' + alt_1_info_size  + '|' + alt_1_name_transform + '|' + alt_1_info_transform + '|' + alt_1_name_weight + '|' + alt_1_info_weight + '|' + alt_1_name_color + '|' + alt_1_info_color + '|' + alt_1_style_color_1 + '|' + alt_1_style_color_2 + '|' + alt_1_logo_switch + '|' + alt_1_background_switch + '|' + alt_1_shadows + '|' + alt_1_align + '|' + alt_1_size + '|' + alt_1_margin_h + '|' + alt_1_margin_v + '|' + alt_1_line_spacing + '|' + alt_1_font + '|' + alt_2_switch + '|' + alt_2_style + '|' + alt_2_name + '|' + alt_2_info + '|' + alt_2_name_size + '|' + alt_2_info_size  + '|' + alt_2_name_transform + '|' + alt_2_info_transform + '|' + alt_2_name_weight + '|' + alt_2_info_weight + '|' + alt_2_name_color + '|' + alt_2_info_color + '|' + alt_2_style_color_1 + '|' + alt_2_style_color_2 + '|' + alt_2_logo_switch + '|' + alt_2_background_switch + '|' + alt_2_shadows + '|' + alt_2_align + '|' + alt_2_size + '|' + alt_2_margin_h + '|' + alt_2_margin_v + '|' + alt_2_line_spacing + '|' + alt_2_font + '|' + alt_3_switch + '|' + alt_3_style + '|' + alt_3_name + '|' + alt_3_info + '|' + alt_3_name_size + '|' + alt_3_info_size  + '|' + alt_3_name_transform + '|' + alt_3_info_transform + '|' + alt_3_name_weight + '|' + alt_3_info_weight + '|' + alt_3_name_color + '|' + alt_3_info_color + '|' + alt_3_style_color_1 + '|' + alt_3_style_color_2 + '|' + alt_3_logo_switch + '|' + alt_3_background_switch + '|' + alt_3_shadows + '|' + alt_3_align + '|' + alt_3_size + '|' + alt_3_margin_h + '|' + alt_3_margin_v + '|' + alt_3_line_spacing + '|' + alt_3_font + '|' + alt_4_switch + '|' + alt_4_style + '|' + alt_4_name + '|' + alt_4_info + '|' + alt_4_name_size + '|' + alt_4_info_size  + '|' + alt_4_name_transform + '|' + alt_4_info_transform + '|' + alt_4_name_weight + '|' + alt_4_info_weight + '|' + alt_4_name_color + '|' + alt_4_info_color + '|' + alt_4_style_color_1 + '|' + alt_4_style_color_2 + '|' + alt_4_logo_switch + '|' + alt_4_background_switch + '|' + alt_4_shadows + '|' + alt_4_align + '|' + alt_4_size + '|' + alt_4_margin_h + '|' + alt_4_margin_v + '|' + alt_4_line_spacing + '|' + alt_4_font);
 
 				//Previews
-				bcp.postMessage(animation_time + '|' + active_time + '|' + inactive_time + '|' + alt_1_preview + '|' + alt_1_style + '|' + alt_1_name + '|' + alt_1_info + '|' + alt_1_name_size + '|' + alt_1_info_size  + '|' + alt_1_name_transform + '|' + alt_1_info_transform + '|' + alt_1_name_weight + '|' + alt_1_info_weight + '|' + alt_1_name_color + '|' + alt_1_info_color + '|' + alt_1_style_color_1 + '|' + alt_1_style_color_2 + '|' + alt_1_logo_switch + '|' + alt_1_background_switch + '|' + alt_1_shadows + '|' + alt_1_align + '|' + alt_1_size + '|' + alt_1_margin_h + '|' + alt_1_margin_v + '|' + alt_1_line_spacing + '|' + alt_1_font + '|' + alt_2_preview + '|' + alt_2_style + '|' + alt_2_name + '|' + alt_2_info + '|' + alt_2_name_size + '|' + alt_2_info_size  + '|' + alt_2_name_transform + '|' + alt_2_info_transform + '|' + alt_2_name_weight + '|' + alt_2_info_weight + '|' + alt_2_name_color + '|' + alt_2_info_color + '|' + alt_2_style_color_1 + '|' + alt_2_style_color_2 + '|' + alt_2_logo_switch + '|' + alt_2_background_switch + '|' + alt_2_shadows + '|' + alt_2_align + '|' + alt_2_size + '|' + alt_2_margin_h + '|' + alt_2_margin_v + '|' + alt_2_line_spacing + '|' + alt_2_font + '|' + alt_3_preview + '|' + alt_3_style + '|' + alt_3_name + '|' + alt_3_info + '|' + alt_3_name_size + '|' + alt_3_info_size  + '|' + alt_3_name_transform + '|' + alt_3_info_transform + '|' + alt_3_name_weight + '|' + alt_3_info_weight + '|' + alt_3_name_color + '|' + alt_3_info_color + '|' + alt_3_style_color_1 + '|' + alt_3_style_color_2 + '|' + alt_3_logo_switch + '|' + alt_3_background_switch + '|' + alt_3_shadows + '|' + alt_3_align + '|' + alt_3_size + '|' + alt_3_margin_h + '|' + alt_3_margin_v + '|' + alt_3_line_spacing + '|' + alt_3_font + '|' + alt_4_preview + '|' + alt_4_style + '|' + alt_4_name + '|' + alt_4_info + '|' + alt_4_name_size + '|' + alt_4_info_size  + '|' + alt_4_name_transform + '|' + alt_4_info_transform + '|' + alt_4_name_weight + '|' + alt_4_info_weight + '|' + alt_4_name_color + '|' + alt_4_info_color + '|' + alt_4_style_color_1 + '|' + alt_4_style_color_2 + '|' + alt_4_logo_switch + '|' + alt_4_background_switch + '|' + alt_4_shadows + '|' + alt_4_align + '|' + alt_4_size + '|' + alt_4_margin_h + '|' + alt_4_margin_v + '|' + alt_4_line_spacing + '|' + alt_4_font);
+				bcp.postMessage(global_animation_time + '|' + global_active_time + '|' + global_inactive_time + '|' + alt_1_preview + '|' + alt_1_style + '|' + alt_1_name + '|' + alt_1_info + '|' + alt_1_name_size + '|' + alt_1_info_size  + '|' + alt_1_name_transform + '|' + alt_1_info_transform + '|' + alt_1_name_weight + '|' + alt_1_info_weight + '|' + alt_1_name_color + '|' + alt_1_info_color + '|' + alt_1_style_color_1 + '|' + alt_1_style_color_2 + '|' + alt_1_logo_switch + '|' + alt_1_background_switch + '|' + alt_1_shadows + '|' + alt_1_align + '|' + alt_1_size + '|' + alt_1_margin_h + '|' + alt_1_margin_v + '|' + alt_1_line_spacing + '|' + alt_1_font + '|' + alt_2_preview + '|' + alt_2_style + '|' + alt_2_name + '|' + alt_2_info + '|' + alt_2_name_size + '|' + alt_2_info_size  + '|' + alt_2_name_transform + '|' + alt_2_info_transform + '|' + alt_2_name_weight + '|' + alt_2_info_weight + '|' + alt_2_name_color + '|' + alt_2_info_color + '|' + alt_2_style_color_1 + '|' + alt_2_style_color_2 + '|' + alt_2_logo_switch + '|' + alt_2_background_switch + '|' + alt_2_shadows + '|' + alt_2_align + '|' + alt_2_size + '|' + alt_2_margin_h + '|' + alt_2_margin_v + '|' + alt_2_line_spacing + '|' + alt_2_font + '|' + alt_3_preview + '|' + alt_3_style + '|' + alt_3_name + '|' + alt_3_info + '|' + alt_3_name_size + '|' + alt_3_info_size  + '|' + alt_3_name_transform + '|' + alt_3_info_transform + '|' + alt_3_name_weight + '|' + alt_3_info_weight + '|' + alt_3_name_color + '|' + alt_3_info_color + '|' + alt_3_style_color_1 + '|' + alt_3_style_color_2 + '|' + alt_3_logo_switch + '|' + alt_3_background_switch + '|' + alt_3_shadows + '|' + alt_3_align + '|' + alt_3_size + '|' + alt_3_margin_h + '|' + alt_3_margin_v + '|' + alt_3_line_spacing + '|' + alt_3_font + '|' + alt_4_preview + '|' + alt_4_style + '|' + alt_4_name + '|' + alt_4_info + '|' + alt_4_name_size + '|' + alt_4_info_size  + '|' + alt_4_name_transform + '|' + alt_4_info_transform + '|' + alt_4_name_weight + '|' + alt_4_info_weight + '|' + alt_4_name_color + '|' + alt_4_info_color + '|' + alt_4_style_color_1 + '|' + alt_4_style_color_2 + '|' + alt_4_logo_switch + '|' + alt_4_background_switch + '|' + alt_4_shadows + '|' + alt_4_align + '|' + alt_4_size + '|' + alt_4_margin_h + '|' + alt_4_margin_v + '|' + alt_4_line_spacing + '|' + alt_4_font);
 			}
 
 			function loadData () {
@@ -1708,6 +1741,12 @@
 					localStorage.setItem(id, value);              
 	        	});
 
+				$('.select-settings-storable').each(function(){
+					var id =  $(this).attr('id');
+					$("#" + id).change(function() {
+				        localStorage.setItem(id, this.value);
+				    });
+				});
 
 				//localStorage.clear(); //To clear data fields
 	        	setTimeout(saveData, y*1000);

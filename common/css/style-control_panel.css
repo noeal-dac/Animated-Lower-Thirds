@@ -5,16 +5,7 @@
 
 :root {
   --interface-size: 1;
-  --main-color: #d2d2d2;
-  --element-radius: 0.2em;
-  --obs-background: #3a393a; 
-  --obs-button-background: #4c4c4c;
-  --obs-button-border: none;
-  --obs-button-hover-background: #7a797a;
-  --obs-button-hover-border: none;
-  --obs-button-active-background: #1f1e1f;
-  --obs-button-color: #fff;
-  --obs-field-background: #1f1e1f;
+  --obs-background: #3a393a;
 }
 
 
@@ -77,13 +68,33 @@ body.browser-source.lower-thirds{
   background-size: 400% 400%;
   animation: gradient 10s ease infinite;
 }
-#times-configuration {
+#times-configuration #time-options,
+#times-configuration #theme-options {
   display: flex;
-  justify-content: space-between;
 }
 .column-33 + .column-33 {
   margin-left: 4px 
 }
+#times-configuration #theme-options #theme {
+  width: 100%;
+  text-transform: capitalize;
+}
+.settings-title{
+  margin: 0 10px 0 0;
+  /*display: inline-block;*/
+  width: 20%;
+  text-align: right;
+}
+.settings-inputs {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}
+.settings-inputs > input,
+.settings-inputs > select {
+  margin-left: 4px!important;
+}
+
 /*********************/
 
 #alt-1-config-content,
@@ -146,8 +157,6 @@ body.browser-source.lower-thirds{
   text-align: left;
   outline: none;
   transition: 0.4s;
-}
-.active, .accordion:hover {
 }
 .accordion:after {
   content: '\002B';
@@ -776,18 +785,6 @@ select#alt-4-font {
 
 #toggle-preview.hide i.fas{
     transform: rotate(-180deg);
-}
-
-.embed-container {
-  /*padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;*/
-  /*height: 203px;
-  width: 360px;
-
-  background: #3a393a;*/
-  /*box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 40%);
-  padding: 5px;*/
 }
 
 .embed-container iframe {

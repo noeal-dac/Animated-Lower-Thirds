@@ -1,0 +1,12 @@
+:root {
+  --main-color: #d2d2d2;
+  --element-radius: 0.2em;
+  --obs-background: #3a393a; 
+  --obs-button-background: #4c4c4c;
+  --obs-button-border: none;
+  --obs-button-hover-background: #7a797a;
+  --obs-button-hover-border: none;
+  --obs-button-active-background: #1f1e1f;
+  --obs-button-color: #fff;
+  --obs-field-background: #1f1e1f;
+}
