@@ -3,12 +3,6 @@
 **  Author: NoeAL               **
 *********************************/
 
-:root {
-  --interface-size: 1;
-  --obs-background: #3a393a;
-}
-
-
 *:focus {outline:none !important}
 
 /*OBS*/
@@ -68,33 +62,15 @@ body.browser-source.lower-thirds{
   background-size: 400% 400%;
   animation: gradient 10s ease infinite;
 }
-#times-configuration #time-options,
-#times-configuration #theme-options {
+#times-configuration #time-options {
   display: flex;
 }
 .column-33 + .column-33 {
   margin-left: 4px 
 }
 #times-configuration #theme-options #theme {
-  width: 100%;
-  text-transform: capitalize;
-}
-.settings-title{
-  margin: 0 10px 0 0;
-  /*display: inline-block;*/
   width: 20%;
-  text-align: right;
 }
-.settings-inputs {
-  width: 80%;
-  display: flex;
-  justify-content: space-between;
-}
-.settings-inputs > input,
-.settings-inputs > select {
-  margin-left: 4px!important;
-}
-
 /*********************/
 
 #alt-1-config-content,
