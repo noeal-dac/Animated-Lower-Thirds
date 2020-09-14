@@ -25,21 +25,19 @@
 				</label>
 				<label class="accordion"><i class="fas">&#xf013;</i>Main settings</label>
 				<div id="times-configuration" class="hidable">
-					<p class="settings-title">Times</p>
 					<div id="time-options">
-						<div class="column-33">
-							<input class="storable" id="lower-thirds-animation" placeholder="4s (in-out)" tabindex="1">
-						</div>
-						<div class="column-33">
-							<input class="storable" id="lower-thirds-length" placeholder="25s (active)" tabindex="2">
-						</div>
-						<div class="column-33">
-							<input class="storable" id="lower-thirds-interval" placeholder="420s (inactive)" tabindex="3">
+						<div class="settings-title">Global times</div>
+						<div class="settings-inputs">
+							<input class="storable" id="global-animation-time" placeholder="4s (in-out)" tabindex="1">
+							<input class="storable" id="global-active-time" placeholder="25s (active)" tabindex="2">
+							<input class="storable" id="global-inactive-time" placeholder="420s (inactive)" tabindex="3">
 						</div>
 					</div>
 					<div id="theme-options">
-						<p class="settings-title">Theme</p>
-						<select name="theme" id="theme" class="select-settings-storable"></select>
+						<div class="settings-title">Theme</div>
+						<div class="settings-inputs">
+							<select name="theme" id="theme" class="select-settings-storable" onchange="changeTheme(this.value)"></select>
+						</div>
 					</div>
 				</div>		
 			</div>
@@ -719,26 +717,6 @@
 		</div>
 
 		<script>
-			//Load the theme style
-
-			var theme = localStorage.getItem('theme') ? localStorage.getItem('theme') : 'dark';
-			
-			$('head').append('<link rel="stylesheet" href="../common/css/themes/' + theme + '/theme.css"/>');
-
-			//Theme options to settings
-
-			var themes = ['acri', 'dark', 'rachni'];
-
-			$.each(themes, function(i) {
-				var $selected = '';
-
-				if(themes[i] == theme) {
-					$selected = 'selected';
-				}
-
-				$('#alt-main-config-content #theme').append('<option name="' + themes[i] + '"' + $selected + '>' + themes[i] + '</option>');
-			});
-
 			var bc = new BroadcastChannel('obs-lower-thirds-channel'); //Send to browser source
 			var bcr = new BroadcastChannel('obs-lower-thirds-channel2'); //Receives from the source
 			var bcp = new BroadcastChannel('obs-lower-thirds-preview'); //Send to preview windows		
@@ -1767,10 +1745,8 @@
 					var id =  $(this).attr('id');
 					$("#" + id).change(function() {
 				        localStorage.setItem(id, this.value);
-						location.reload();
 				    });
 				});
-
 
 				//localStorage.clear(); //To clear data fields
 	        	setTimeout(saveData, y*1000);
