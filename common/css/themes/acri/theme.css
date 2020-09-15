@@ -1,12 +1,37 @@
 :root {
   --main-color: #fff;
-  --element-radius: 1em;
+  --element-radius: 0;
   --obs-background: #181819; 
   --obs-button-background: #162458;
   --obs-button-border: #233166;
   --obs-button-hover-background: #581624;
   --obs-button-hover-border: #84162d;
   --obs-button-active-background: #1f1e1f;
+  --obs-switch-active-background: #244ee7;
   --obs-button-color: #fff;
-  --obs-field-background: #1f1e1f;
+  --obs-field-background: #08080b;
+  --obs-field-background-disable: #28282a;
+  --obs-field-border: none;
+  --obs-panel-border: solid 1px #2f2f2f;
+  --alt-preview-background: linear-gradient(135deg, #0b0b0c 0%,
+                                                    #0b0b0c 8%,
+                                                    #08080b 10%,
+                                                    #08080b 18%, 
+                                                    #0b0b0c 20%, 
+                                                    #0b0b0c 28%, 
+                                                    #08080b 30%, 
+                                                    #08080b 38%, 
+                                                    #0b0b0c 40%, 
+                                                    #0b0b0c 48%, 
+                                                    #08080b 50%, 
+                                                    #08080b 58%, 
+                                                    #0b0b0c 60%,
+                                                    #0b0b0c 68%, 
+                                                    #08080b 70%, 
+                                                    #08080b 78%, 
+                                                    #0b0b0c 80%, 
+                                                    #0b0b0c 88%, 
+                                                    #08080b 90%, 
+                                                    #08080b 98%, 
+                                                    #0b0b0c 100%);
 }

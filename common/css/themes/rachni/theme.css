@@ -1,12 +1,41 @@
 :root {
   --main-color: #d2d2d2;
-  --element-radius: 4em;
+  --element-radius: 0.2em;
   --obs-background: #31363B; 
   --obs-button-background: #00BCD4;
   --obs-button-border: #76797C;
   --obs-button-hover-background: #914C67;
   --obs-button-hover-border: #0f0408;
   --obs-button-active-background: #1f1e1f;
+  --obs-switch-active-background: #00BCD4;
   --obs-button-color: #fff;
-  --obs-field-background: #1f1e1f;
+  --obs-field-background: #232629;
+  --obs-field-background-disable: #3f4448;
+  --obs-field-border: solid 1px #76797c;
+  --obs-panel-border: solid 1px #76797c;
+  --alt-preview-background: linear-gradient(135deg, #25282c 0%,
+                                                    #25282c 8%,
+                                                    #232629 10%,
+                                                    #232629 18%, 
+                                                    #25282c 20%, 
+                                                    #25282c 28%, 
+                                                    #232629 30%, 
+                                                    #232629 38%, 
+                                                    #25282c 40%, 
+                                                    #25282c 48%, 
+                                                    #232629 50%, 
+                                                    #232629 58%, 
+                                                    #25282c 60%,
+                                                    #25282c 68%, 
+                                                    #232629 70%, 
+                                                    #232629 78%, 
+                                                    #25282c 80%, 
+                                                    #25282c 88%, 
+                                                    #232629 90%, 
+                                                    #232629 98%, 
+                                                    #25282c 100%);
 }
+
+/*Fixing border issues*/
+select {background-size: 1px 100%, 26px 24px, 18px 20px, 20px 100%;}
+.tool-tittle {margin: 3px 4px 3px 0px;}

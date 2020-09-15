@@ -28,7 +28,7 @@ body.browser-source.lower-thirds{
 }
 
 .static-panel-top {
-  width: 370px;
+  width: 372px;
   /*max-width: 370px;
   min-width: 360px;*/
   /*margin: 5px auto;*/
@@ -55,18 +55,21 @@ body.browser-source.lower-thirds{
 /*Main settings panel*/
 #alt-main-config-content{
   box-shadow: inset 0px 0px 5px 0px rgb(0 0 0 / 20%);
+  border: var(--obs-panel-border);
   padding: 5px;
   margin-bottom: 15px;
   transition: background 0.5s;
 }
 #alt-main-config-content.active {
-  box-shadow: inset 0px 0px 2px 0px rgba(0,136,255,0.5);
-  padding: 4px;
+  box-shadow: inset 0px 0px 2px 0px rgba(0,136,255,1);
   border-radius: 3px;
   border: 1px solid #2196f340;
   background: linear-gradient(-45deg, rgba(33,150,243,0.1) 0%, rgba(66,149,227,0) 25%, rgba(33,150,243,0.1) 50%, rgba(33,150,243,0) 75%, rgba(33,150,243,0.1) 100%);
   background-size: 400% 400%;
   animation: gradient 10s ease infinite;
+}
+#alt-main-config-content > .accordion {
+  width: calc(100% - 30px);
 }
 #times-configuration #time-options,
 #times-configuration #theme-options {
@@ -95,61 +98,6 @@ body.browser-source.lower-thirds{
   margin-left: 4px!important;
 }
 
-/*********************/
-
-#alt-1-config-content,
-#alt-2-config-content,
-#alt-3-config-content,
-#alt-4-config-content {
-  /*background: var(--obs-background);*/
-  box-shadow: inset 0px 0px 5px 0px rgb(0 0 0 / 20%);
-  padding: 5px;
-  margin-bottom: 15px;
-  border-radius: 3px;
-  transition: background 0.5s;
-}
-#alt-4-config-content{
-  /*margin-bottom: 0px;*/
-}
-
-#alt-1-config-content.active,
-#alt-2-config-content.active,
-#alt-3-config-content.active,
-#alt-4-config-content.active {
-  box-shadow: inset 0px 0px 2px 0px rgba(0,136,255,0.5);
-  padding: 4px;
-  border-radius: 3px;
-  border: 1px solid #2196f340;
-  background: linear-gradient(-45deg, rgba(33,150,243,0.1) 0%, rgba(66,149,227,0) 25%, rgba(33,150,243,0.1) 50%, rgba(33,150,243,0) 75%, rgba(33,150,243,0.1) 100%);
-  background-size: 300% 300%;
-  animation: gradient 10s ease infinite;
-}
-#alt-1-config-content.inactive,
-#alt-2-config-content.inactive,
-#alt-3-config-content.inactive,
-#alt-4-config-content.inactive {
-  box-shadow: inset 0px 0px 2px 0px rgba(255,0,0,0.5);
-  padding: 4px;
-  border-radius: 3px;  
-  border: 1px solid #f3215b40;
-  background: linear-gradient(-45deg, rgba(242,34,62,0.1) 0%, rgba(242,34,62,0) 25%, rgba(242,34,62,0.1) 50%, rgba(242,34,62,0) 75%, rgba(242,34,62,0.1) 100%);
-  background-size: 300% 300%;
-  animation: gradient 10s ease infinite;
-}
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 0%;
-  }
-  50% {
-    background-position: 100% 100%;
-  }
-  100% {
-    background-position: 0% 0%;
-  }
-}
-
-/***********************/
 .accordion {
   cursor: pointer;
   width: calc(100% - 50px);
@@ -183,7 +131,56 @@ body.browser-source.lower-thirds{
     height: 10px;
     overflow: hidden;
 }
-/***********************/
+
+/*********************/
+
+#alt-1-config-content,
+#alt-2-config-content,
+#alt-3-config-content,
+#alt-4-config-content {
+  box-shadow: inset 0px 0px 5px 0px rgb(0 0 0 / 20%);
+  border: var(--obs-panel-border);
+  padding: 5px;
+  margin-bottom: 15px;
+  border-radius: 3px;
+  transition: background 0.5s;
+}
+
+#alt-1-config-content.active,
+#alt-2-config-content.active,
+#alt-3-config-content.active,
+#alt-4-config-content.active {
+  box-shadow: inset 0px 0px 2px 0px rgba(0,136,255,1);
+  border-radius: 3px;
+  border: 1px solid #2196f340;
+  background: linear-gradient(-45deg, rgba(33,150,243,0.1) 0%, rgba(66,149,227,0) 25%, rgba(33,150,243,0.1) 50%, rgba(33,150,243,0) 75%, rgba(33,150,243,0.1) 100%);
+  background-size: 300% 300%;
+  animation: gradient 10s ease infinite;
+}
+#alt-1-config-content.inactive,
+#alt-2-config-content.inactive,
+#alt-3-config-content.inactive,
+#alt-4-config-content.inactive {
+  box-shadow: inset 0px 0px 2px 0px rgba(255,0,0,1);
+  border-radius: 3px;  
+  border: 1px solid #f3215b40;
+  background: linear-gradient(-45deg, rgba(242,34,62,0.1) 0%, rgba(242,34,62,0) 25%, rgba(242,34,62,0.1) 50%, rgba(242,34,62,0) 75%, rgba(242,34,62,0.1) 100%);
+  background-size: 300% 300%;
+  animation: gradient 10s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
 ul {
   list-style: none;
   padding: 0;
@@ -195,8 +192,8 @@ li div {
 li {
   display: block;
   float: left;
-  border: 1px solid #1f1e1f;
-  background-color: #1f1e1f;
+  border: 1px solid var(--obs-field-background);
+  background-color: var(--obs-field-background);
   margin: 0 0 0 0.35em;
   cursor: pointer;
   width: 22px;
@@ -227,10 +224,6 @@ li {
   cursor: pointer;
   text-align: center;
   margin: 4px;
-  /*
-  color: #ffffff;
-  text-shadow: 0px 0px 1px #000000, 1px 1px 2px #000000, -1px -1px 2px #000000, -1px 1px 2px #000000, 1px -1px 2px #000000;
-    */
 }
 #alt-1-name-color.jscolor-active, #alt-1-info-color.jscolor-active,
 #alt-2-name-color.jscolor-active, #alt-2-info-color.jscolor-active,
@@ -269,28 +262,7 @@ li {
   0% { background-color: #1f1e1f; border: 1px solid var(--obs-field-background); }
   50% { background-color: red; border: 1px solid var(--obs-field-background); }
 }
-/*
-.move-up {
-    float: left;
-    font-size: 16px;
-    line-height: 0px;
-    margin: -1px 0 -9px 12px;
-    cursor: pointer;
-}
-.move-down {
-    float: left;
-    font-size: 16px;
-    line-height: 0px;
-    margin: -9px 0 -2px 2px;
-    cursor: pointer;
-}
 
-.move-up.off,
-.move-down.off {
-  color: #666;
-  cursor: default;
-}
-*/
 .time-bar{
   float: right;
 }
@@ -305,7 +277,7 @@ li {
   margin: 0 0 0 4px;
   width: 20px;
   height: 7px;
-  background: #333233;
+  background: var(--obs-field-background-disable);
   border-radius: 3px;
   text-align: right;
 }
@@ -318,7 +290,6 @@ li {
 }
 .switch {
   position: relative;
-  display: inline-block;
   width: 24px;
   height: 14px;
   float: right;
@@ -349,7 +320,7 @@ i.fas {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #1f1e1f;
+  background-color: var(--obs-field-background);
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -365,10 +336,10 @@ i.fas {
   transition: .4s;
 }
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: var(--obs-switch-active-background);
 }
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px var(--obs-switch-active-background);
 }
 input:checked + .slider:before {
   -webkit-transform: translateX(10px);
@@ -392,7 +363,7 @@ input:checked + .slider:before {
 	box-sizing: border-box;
 	padding:.4em;
 	margin:0 0 0.4em;
-	border:none;
+	border: var(--obs-field-border);
 	display:block;
 	width:100%;
   height: 23px;
@@ -419,24 +390,23 @@ input#alt-4-name, input#alt-4-info {
     width: calc(100% - 107px);
     margin-right: 0px;
     border-radius: 2px 0 0 2px;
+    border-right: 0;
 }
 #alt-1-name-appearance, #alt-1-info-appearance,
 #alt-2-name-appearance, #alt-2-info-appearance,
 #alt-3-name-appearance, #alt-3-info-appearance,
 #alt-4-name-appearance, #alt-4-info-appearance {
     float: right;
-    background-color: #1f1e1f;
-    border-radius: 0 2px 2px 0;
-    padding: 0 0 0 5px;
+    background-color: var(--obs-field-background);
+    border-radius: 0 var(--element-radius) var(--element-radius) 0;
+    border: var(--obs-field-border);
+    border-left: 0;
+    box-sizing: border-box;
+    padding: 0 0 0 3px;
     height: 23px;
-    width: 102px;
+    width: 107px;
 }
-#alt-1-name-appearance.disable, #alt-1-info-appearance.disable,
-#alt-2-name-appearance.disable, #alt-2-info-appearance.disable,
-#alt-3-name-appearance.disable, #alt-3-info-appearance.disable,
-#alt-4-name-appearance.disable, #alt-4-info-appearance.disable {
-    background: #333233;
-}
+
 #alt-1-name-appearance > .config-btn > .icon-btn > i.fas,
 #alt-1-info-appearance > .config-btn > .icon-btn > i.fas,
 #alt-2-name-appearance > .config-btn > .icon-btn > i.fas,
@@ -455,11 +425,13 @@ input#alt-4-name, input#alt-4-info {
 #alt-2-style-color-appearance,
 #alt-3-style-color-appearance,
 #alt-4-style-color-appearance {
-    background-color: #1f1e1f;
-    border-radius: 2px;
+    background-color: var(--obs-field-background);
+    border-radius: var(--element-radius);
+    border: var(--obs-field-border);
+    box-sizing: border-box;
     padding: 0 0 0 5px;
     height: 23px;
-    width: 210px;
+    width: 215px;
     display: inline-flex;
     justify-content: flex-end;
 }
@@ -703,20 +675,21 @@ input:disabled + .icon-btn {
 select {
   padding: 0.4em;
   font-size: 1em;
-  border: 0px;
-  border-radius: 3px;
+  /*border: 0px;*/
+  border: var(--obs-field-border);
+  border-radius: var(--element-radius);
   height: 23px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background-image: linear-gradient(#1f1e1f, #1f1e1f),
-                    linear-gradient(-135deg, transparent 50%, #1f1e1f 50%),
-                    linear-gradient(-225deg, transparent 50%, #1f1e1f 50%),
-                    linear-gradient(#1f1e1f 42%, #d2d2d2 42%);
+  background-image: linear-gradient(var(--obs-field-background), var(--obs-field-background)),
+                    linear-gradient(-135deg, transparent 50%, var(--obs-field-background) 50%),
+                    linear-gradient(-225deg, transparent 50%, var(--obs-field-background) 50%),
+                    linear-gradient(var(--obs-field-background) 42%, #d2d2d2 42%);
   background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
   background-size: 1px 100%, 24px 22px, 20px 22px, 20px 100%;
   background-position: right 20px center, right bottom, right bottom, right bottom;
-  background-color: #1f1e1f;
+  background-color: var(--obs-field-background);
   color: #d2d2d2;
 }
 select#alt-1-font,
@@ -766,14 +739,15 @@ select#alt-4-font {
   padding: 5px;
   margin: 15px 0px 5px;
   border: none;
+  border: var(--obs-panel-border);
   border-radius: 3px;
-  background: #3a393a;
+  background: var(--obs-background);
   box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 40%);
   transition: bottom 0.5s;
-  /*background: #1f1e1f;*/
 }
+
 #alt-preview.hide {
-  bottom: -213px;
+  bottom: -214px;
 }
 
 #toggle-preview {
@@ -791,37 +765,11 @@ select#alt-4-font {
   height: 203px;
   width: 360px;
   border-radius: 3px;
-  /*background: #1f1e1f;*/
-  background: linear-gradient(135deg, rgba(31,30,31,1) 0%,
-                                      rgba(31,30,31,1) 8%,
-                                      rgba(29,28,29,1) 10%,
-                                      rgba(29,28,29,1) 18%, 
-                                      rgba(31,30,31,1) 20%, 
-                                      rgba(31,30,31,1) 28%, 
-                                      rgba(29,28,29,1) 30%, 
-                                      rgba(29,28,29,1) 38%, 
-                                      rgba(31,30,31,1) 40%, 
-                                      rgba(31,30,31,1) 48%, 
-                                      rgba(29,28,29,1) 50%, 
-                                      rgba(29,28,29,1) 58%, 
-                                      rgba(31,30,31,1) 60%,
-                                      rgba(31,30,31,1) 68%, 
-                                      rgba(29,28,29,1) 70%, 
-                                      rgba(29,28,29,1) 78%, 
-                                      rgba(31,30,31,1) 80%, 
-                                      rgba(31,30,31,1) 88%, 
-                                      rgba(29,28,29,1) 90%, 
-                                      rgba(29,28,29,1) 98%, 
-                                      rgba(31,30,31,1) 100%);
-  box-shadow: inset 0px 0px 30px 10px rgb(29 28 29 / 100%);
+  border: var(--obs-field-border);
+  background: var(--alt-preview-background);
+  box-shadow: inset 0px 0px 30px 10px rgb(0 0 0 / 20%);
 }
 
-
-
-
-#alt-main-config-content > .accordion {
-    width: calc(100% - 30px);
-}
 .config-btn.preview-btn {
   float: right;
   margin: 0px 3px;
@@ -833,17 +781,28 @@ select#alt-4-font {
   font-size: 13px;
 }
 
+/*********************************/
 
 .sortees {
-  background: var(--obs-background);
+  background: var(--obs-background);  
+}
 
+.ui-sortable-helper {
+  /*border: 3px solid red;*/
+  box-shadow: -4px 8px 7px rgb(0 0 0 / 40%);
+  transform: rotate(-3deg);
+}
+
+.ui-sortable-placeholder {
+  visibility: visible!important;
+  border: 2px dashed var(--obs-field-background-disable);
+  margin-bottom: 11px;
 }
 
 .renameable {
   display: inline-block;
   min-width: 268px;
   position: relative;
-  /*top: -4px;*/
   top: 4px;
 }
 .renameable input {
@@ -869,6 +828,4 @@ i.alt-icon {
     position: absolute;
     transform: translate(-5px, -5px);
     height: 25px;
-    /*width: 298px;*/
-    /*background-color: #ffff0047;*/
 }

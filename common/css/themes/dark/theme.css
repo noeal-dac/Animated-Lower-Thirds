@@ -7,6 +7,31 @@
   --obs-button-hover-background: #7a797a;
   --obs-button-hover-border: none;
   --obs-button-active-background: #1f1e1f;
+  --obs-switch-active-background: #2196F3;
   --obs-button-color: #fff;
   --obs-field-background: #1f1e1f;
+  --obs-field-background-disable: #4c4c4c;
+  --obs-field-border: none;
+  --obs-panel-border: solid 1px #2f2f2f;
+  --alt-preview-background: linear-gradient(135deg, rgba(31,30,31,1) 0%,
+                                                    rgba(31,30,31,1) 8%,
+                                                    rgba(29,28,29,1) 10%,
+                                                    rgba(29,28,29,1) 18%, 
+                                                    rgba(31,30,31,1) 20%, 
+                                                    rgba(31,30,31,1) 28%, 
+                                                    rgba(29,28,29,1) 30%, 
+                                                    rgba(29,28,29,1) 38%, 
+                                                    rgba(31,30,31,1) 40%, 
+                                                    rgba(31,30,31,1) 48%, 
+                                                    rgba(29,28,29,1) 50%, 
+                                                    rgba(29,28,29,1) 58%, 
+                                                    rgba(31,30,31,1) 60%,
+                                                    rgba(31,30,31,1) 68%, 
+                                                    rgba(29,28,29,1) 70%, 
+                                                    rgba(29,28,29,1) 78%, 
+                                                    rgba(31,30,31,1) 80%, 
+                                                    rgba(31,30,31,1) 88%, 
+                                                    rgba(29,28,29,1) 90%, 
+                                                    rgba(29,28,29,1) 98%, 
+                                                    rgba(31,30,31,1) 100%);
 }
