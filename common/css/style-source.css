@@ -16,7 +16,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
 :root {
-	--animation-time: 4s;
+	/*--animation-time: 4s;*/
+	--alt-1-animation-time: 4s;
+	--alt-2-animation-time: 4s;
+	--alt-3-animation-time: 4s;
+	--alt-4-animation-time: 4s;
 }
 
 body {
@@ -249,11 +253,27 @@ body {
 /*Logo animation*/
 .animation-in > div:first-child img {
 	animation: cubic-bezier(0.19, 0.76, 0.32, 1) 1 normal both;
-	animation-duration: var(--animation-time);
+	/*animation-duration: var(--animation-time);*/
 }
 .animation-out > div:first-child img {
 	animation: cubic-bezier(0.19, 0.76, 0.32, 1) 1 reverse both;
-	animation-duration: var(--animation-time);
+	/*animation-duration: var(--animation-time);*/
+}
+#lower-third-1.animation-in > div:first-child img,
+#lower-third-1.animation-out > div:first-child img {
+	animation-duration: var(--alt-1-animation-time);
+}
+#lower-third-2.animation-in > div:first-child img,
+#lower-third-2.animation-out > div:first-child img {
+	animation-duration: var(--alt-2-animation-time);
+}
+#lower-third-3.animation-in > div:first-child img,
+#lower-third-3.animation-out > div:first-child img {
+	animation-duration: var(--alt-3-animation-time);
+}
+#lower-third-4.animation-in > div:first-child img,
+#lower-third-4.animation-out > div:first-child img {
+	animation-duration: var(--alt-4-animation-time);
 }
 /*left*/
 .animation-in.left > div:first-child img,
@@ -271,16 +291,32 @@ body {
 	animation-name: animation-center-logo;
 }
 
-/*Graph1 animation*/
+/*Graph1 and graph2 animation*/
 .animation-in > div:nth-child(2),
 .animation-in > div:nth-child(4) {
 	animation: cubic-bezier(0.19, 0.76, 0.32, 1) 1 normal both;
-	animation-duration: var(--animation-time);
+	/*animation-duration: var(--animation-time);*/
 }	
 .animation-out > div:nth-child(2),
 .animation-out > div:nth-child(4) {
 	animation: cubic-bezier(0.19, 0.76, 0.32, 1) 1 reverse both;
-	animation-duration: var(--animation-time);
+	/*animation-duration: var(--animation-time);*/
+}
+#lower-third-1.animation-in > div:nth-child(2), #lower-third-1.animation-in > div:nth-child(4),
+#lower-third-1.animation-out > div:nth-child(2), #lower-third-1.animation-out > div:nth-child(4) {
+	animation-duration: var(--alt-1-animation-time);
+}
+#lower-third-2.animation-in > div:nth-child(2), #lower-third-2.animation-in > div:nth-child(4),
+#lower-third-2.animation-out > div:nth-child(2), #lower-third-2.animation-out > div:nth-child(4) {
+	animation-duration: var(--alt-2-animation-time);
+}
+#lower-third-3.animation-in > div:nth-child(2), #lower-third-3.animation-in > div:nth-child(4),
+#lower-third-3.animation-out > div:nth-child(2), #lower-third-3.animation-out > div:nth-child(4) {
+	animation-duration: var(--alt-3-animation-time);
+}
+#lower-third-4.animation-in > div:nth-child(2), #lower-third-4.animation-in > div:nth-child(4),
+#lower-third-4.animation-out > div:nth-child(2), #lower-third-4.animation-out > div:nth-child(4) {
+	animation-duration: var(--alt-4-animation-time);
 }
 /*left*/
 .animation-in.left > div:nth-child(2),
@@ -312,12 +348,28 @@ body {
 .animation-in > .text-content > div:first-child div,
 .animation-in > .text-content > div:nth-child(2) div {
 	animation: cubic-bezier(0.19, 0.76, 0.32, 1) 1 normal both;
-	animation-duration: var(--animation-time);
+	/*animation-duration: var(--animation-time);*/
 }
 .animation-out > .text-content > div:first-child div,
 .animation-out > .text-content > div:nth-child(2) div {
 	animation: cubic-bezier(0.19, 0.76, 0.32, 1) 1 reverse both;
-	animation-duration: var(--animation-time);
+	/*animation-duration: var(--animation-time);*/
+}
+#lower-third-1.animation-in > .text-content > div:first-child div, #lower-third-1.animation-in > .text-content > div:nth-child(2) div,
+#lower-third-1.animation-out > .text-content > div:first-child div, #lower-third-1.animation-out > .text-content > div:nth-child(2) div {
+	animation-duration: var(--alt-1-animation-time);
+}
+#lower-third-2.animation-in > .text-content > div:first-child div, #lower-third-2.animation-in > .text-content > div:nth-child(2) div,
+#lower-third-2.animation-out > .text-content > div:first-child div, #lower-third-2.animation-out > .text-content > div:nth-child(2) div {
+	animation-duration: var(--alt-2-animation-time);
+}
+#lower-third-3.animation-in > .text-content > div:first-child div, #lower-third-3.animation-in > .text-content > div:nth-child(2) div,
+#lower-third-3.animation-out > .text-content > div:first-child div, #lower-third-3.animation-out > .text-content > div:nth-child(2) div {
+	animation-duration: var(--alt-3-animation-time);
+}
+#lower-third-4.animation-in > .text-content > div:first-child div, #lower-third-4.animation-in > .text-content > div:nth-child(2) div,
+#lower-third-4.animation-out > .text-content > div:first-child div, #lower-third-4.animation-out > .text-content > div:nth-child(2) div {
+	animation-duration: var(--alt-4-animation-time);
 }
 /*left*/
 .animation-in.left > .text-content > div:first-child div,

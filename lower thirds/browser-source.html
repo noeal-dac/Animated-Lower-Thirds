@@ -107,7 +107,7 @@
 		var alt_3_logo_image = "../logos/logo_3.png";
 		var alt_4_logo_image = "../logos/logo_4.png";
 
-		var animationTime;
+		var global_animation_time;
 		var activeTime;
 		var inactiveTime;
 
@@ -199,7 +199,7 @@
 
 		// Active time counter (Lower Third 1)
 		function activeCount1(i) {
-		  if (c1 <= activeTime){
+		  if (c1 <= alt_1_active_time){
 		    c1 = c1 + 1;
 		    t1 = setTimeout(activeCount1, 1000, i);
 		  } else {
@@ -210,7 +210,7 @@
 
 		// Inactive time counter (Lower Third 1)
 		function inactiveCount1(i) {
-		  if (d1 <= inactiveTime){
+		  if (d1 <= alt_1_inactive_time){
 		    d1 = d1 + 1;
 		    s1 = setTimeout(inactiveCount1, 1000, i);
 		  } else {
@@ -223,7 +223,7 @@
 
 		// Active time counter (Lower Third 2)
 		function activeCount2(i) {
-		  if (c2 <= activeTime){
+		  if (c2 <= alt_2_active_time){
 		    c2 = c2 + 1;
 		    t2 = setTimeout(activeCount2, 1000, i);
 		  } else {
@@ -234,7 +234,7 @@
 
 		// Inactive time counter (Lower Third 2)
 		function inactiveCount2(i) {
-		  if (d2 <= inactiveTime){
+		  if (d2 <= alt_2_inactive_time){
 		    d2 = d2 + 1;
 		    s2 = setTimeout(inactiveCount2, 1000, i);
 		  } else {
@@ -247,7 +247,7 @@
 
 		// Active time counter (Lower Third 3)
 		function activeCount3(i) {
-		  if (c3 <= activeTime){
+		  if (c3 <= alt_3_active_time){
 		    c3 = c3 + 1;
 		    t3 = setTimeout(activeCount3, 1000, i);
 		  } else {
@@ -258,7 +258,7 @@
 
 		// Inactive time counter (Lower Third 3)
 		function inactiveCount3(i) {
-		  if (d3 <= inactiveTime){
+		  if (d3 <= alt_3_inactive_time){
 		    d3 = d3 + 1;
 		    s3 = setTimeout(inactiveCount3, 1000, i);
 		  } else {
@@ -271,7 +271,7 @@
 
 		// Active time counter (Lower Third 4)
 		function activeCount4(i) {
-		  if (c4 <= activeTime){
+		  if (c4 <= alt_4_active_time){
 		    c4 = c4 + 1;
 		    t4 = setTimeout(activeCount4, 1000, i);
 		  } else {
@@ -282,7 +282,7 @@
 
 		// Inactive time counter (Lower Third 4)
 		function inactiveCount4(i) {
-		  if (d4 <= inactiveTime){
+		  if (d4 <= alt_4_inactive_time){
 		    d4 = d4 + 1;
 		    s4 = setTimeout(inactiveCount4, 1000, i);
 		  } else {
@@ -400,7 +400,7 @@
 
 		bcp.onmessage = function (ev) {
 			received_data=ev.data.split("|");
-			animationTime = received_data[0];
+			global_animation_time = received_data[0];
 			if (mode != "preview") {
 				activeTime = received_data[1];
 			} else {
@@ -506,13 +506,50 @@
 			alt_4_margin_h = received_data[91];
 			alt_4_margin_v = received_data[92];
 			alt_4_line_spacing = received_data[93] * 0.1;
-			alt_4_font = received_data [94];
+			alt_4_font = received_data[94];
 
+			//Use the global times settins if custom times is empty
+			alt_1_animation_time = (received_data [95]) ? received_data [95] : received_data[0];
+			alt_1_active_time = (received_data [96]) ? received_data [96] : received_data[1];
+			alt_1_inactive_time = (received_data [97]) ? received_data [97] : received_data[2];
+
+			alt_2_animation_time = (received_data [98]) ? received_data [98] : received_data[0];
+			alt_2_active_time = (received_data [99]) ? received_data [99] : received_data[1];
+			alt_2_inactive_time = (received_data [100]) ? received_data [100] : received_data[2];
+
+			alt_3_animation_time = (received_data [101]) ? received_data [101] : received_data[0];
+			alt_3_active_time = (received_data [102]) ? received_data [102] : received_data[1];
+			alt_3_inactive_time = (received_data [103]) ? received_data [103] : received_data[2];
+
+			alt_4_animation_time = (received_data [104]) ? received_data [104] : received_data[0];
+			alt_4_active_time = (received_data [105]) ? received_data [105] : received_data[1];
+			alt_4_inactive_time = (received_data [106]) ? received_data [106] : received_data[2];
+
+			//Set time infinite in the preview panel
+			if (mode == "preview"){
+				alt_1_active_time = "0";
+				alt_2_active_time = "0";
+				alt_3_active_time = "0";
+				alt_4_active_time = "0";
+			}
 
 			//If active time is 0 the lower thirds is always active (24hs actually)
 			if (activeTime == "0") {
 		    	activeTime = 86400;
-		  	}
+			}
+			if (alt_1_active_time == "0") {
+		    	alt_1_active_time = 86400;
+			}
+			if (alt_2_active_time == "0") {
+		    	alt_2_active_time = 86400;
+			}
+			if (alt_3_active_time == "0") {
+		    	alt_3_active_time = 86400;
+			}
+			if (alt_4_active_time == "0") {
+		    	alt_4_active_time = 86400;
+			}
+
 			//Isn't lower third empty? unhide it
 			if (canIn1) {
 				document.getElementById("lower-third-1").classList.remove("hide-anim");
@@ -749,7 +786,11 @@
 				root.style.setProperty('--alt-4-background', "0");
 			}
 
-			root.style.setProperty('--animation-time', animationTime + "s");
+			//root.style.setProperty('--animation-time', global_animation_time + "s"); no hace falta enviar el global
+			root.style.setProperty('--alt-1-animation-time', alt_1_animation_time + "s");
+			root.style.setProperty('--alt-2-animation-time', alt_2_animation_time + "s");
+			root.style.setProperty('--alt-3-animation-time', alt_3_animation_time + "s");
+			root.style.setProperty('--alt-4-animation-time', alt_4_animation_time + "s");												
 
 			//texts styling
 			root.style.setProperty('--alt-1-size', alt_1_size + "px");

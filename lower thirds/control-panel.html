@@ -17,14 +17,13 @@
 	<body class="lower-thirds-panel panel">
 		<div id="alt-panel" class="static-panel-top" style="margin-bottom: 0px">
 			
-			<!--// Main Settings//-->
-			<div id="alt-main-config-content">
+			<div id="alt-main-config-content"> <!--// Main Settings//-->
 				<label class="switch">
 				<input class="checkbox-storable" type="checkbox" id="lower-thirds-masterswitch"> <!--"checked" to active switch-->
 				<span class="slider round"></span>
 				</label>
 				<label class="accordion"><i class="fas">&#xf013;</i>Main settings</label>
-				<div id="times-configuration" class="hidable">
+				<div id="global-configuration" class="hidable">
 					<div id="time-options">
 						<div class="settings-title">Global times</div>
 						<div class="settings-inputs">
@@ -43,8 +42,7 @@
 			</div>
 
 			<div id="sortable">
-				<!--// Lower Third 1//-->
-				<div class="sortees" id="alt_1">
+				<div class="sortees" id="alt_1"> <!--// Lower Third 1//-->
 					<div id="alt-1-config-content">
 						<label class="switch">
 						<input class="checkbox-storable" type="checkbox" id="lower-thirds-switch1">
@@ -60,7 +58,7 @@
 						<label class="accordion"></label>
 						<div class="hidable">
 							<div class="grid-container">
-							  <div class="grid-row-1">
+								<div class="grid-row-1">
 							    <div>
 									<label class="config-btn">
 										<input class="checkbox-storable" type="checkbox" id="alt-1-logo">
@@ -91,8 +89,8 @@
 										<input class="storable" id="alt-1-style-color-2" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="222222">
 									</div>
 							    </div>
-							  </div>
-							  <div class="grid-row-2">
+								</div>
+								<div class="grid-row-2">
 							    <div>
 									<div class="number-input">
 										<input id="alt-1-style" class="storable" min="1" max="2" name="quantity" value="1" type="number" placeholder="1" readonly>
@@ -122,8 +120,8 @@
 										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 									</div>
 							    </div>
-							  </div>
-							  <div class="grid-row-3">
+								</div>
+								<div class="grid-row-3">
 							    <div>
 									<div class="number-input">
 									  <input id="alt-1-inverse-ratio" class="storable" min="0" max="10" name="quantity" value="9" type="number" placeholder="9">
@@ -156,7 +154,7 @@
 										<option value="'Fredoka One', cursive">Fredoka One</option>
 								    </select>
 							    </div>
-							  </div>
+								</div>
 							</div>					
 						</div>
 						<div class="textfields-container">
@@ -200,16 +198,26 @@
 									<li id="alt-1-slot-10"><div class="slot-storable stored-name" id="alt-1-name-10"></div><div class="slot-storable stored-info" id="alt-1-info-10"></div></li>
 								</ul>
 								<div class="time-bar">
-									<div id="alt-1-active-time">0</div>
-									<div id="alt-1-inactive-time">0</div>
+									<div id="alt-1-active-time-monitor">0</div>
+									<div id="alt-1-inactive-time-monitor">0</div>
+								</div>
+								<label id="alt-1-custom-times" class="accordion"><i class="fas">&#xf017;</i></label>
+								<div class="hidable">
+									<div class="alt-time-options">
+										<div class="settings-title">Custom times</div>
+										<div class="settings-inputs">
+											<input class="storable" id="alt-1-animation-time" placeholder="(in-out)" tabindex="12">
+											<input class="storable" id="alt-1-active-time" placeholder="(active)" tabindex="13">
+											<input class="storable" id="alt-1-inactive-time" placeholder="(inactive)" tabindex="14">
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 
-				<!--// Lower Third 2//-->
-				<div class="sortees" id="alt_2">
+				<div class="sortees" id="alt_2"> <!--// Lower Third 2//-->
 					<div id="alt-2-config-content">
 						<label class="switch">
 						<input class="checkbox-storable" type="checkbox" id="lower-thirds-switch2">
@@ -365,16 +373,26 @@
 									<li id="alt-2-slot-10"><div class="slot-storable stored-name" id="alt-2-name-10"></div><div class="slot-storable stored-info" id="alt-2-info-10"></div></li>
 								</ul>
 								<div class="time-bar">
-									<div id="alt-2-active-time">0</div>
-									<div id="alt-2-inactive-time">0</div>
+									<div id="alt-2-active-time-monitor">0</div>
+									<div id="alt-2-inactive-time-monitor">0</div>
 								</div>
+								<label id="alt-2-custom-times" class="accordion"><i class="fas">&#xf017;</i></label>
+								<div class="hidable">
+									<div class="alt-time-options">
+										<div class="settings-title">Custom times</div>
+										<div class="settings-inputs">
+											<input class="storable" id="alt-2-animation-time" placeholder="(in-out)" tabindex="15">
+											<input class="storable" id="alt-2-active-time" placeholder="(active)" tabindex="16">
+											<input class="storable" id="alt-2-inactive-time" placeholder="(inactive)" tabindex="17">
+										</div>
+									</div>
+								</div>								
 							</div>
 						</div>
 					</div>
 				</div>
 
-				<!--// Lower Third 3//-->
-				<div class="sortees" id="alt_3">
+				<div class="sortees" id="alt_3"> <!--// Lower Third 3//-->
 					<div id="alt-3-config-content">
 						<label class="switch">
 						<input class="checkbox-storable" type="checkbox" id="lower-thirds-switch3">
@@ -530,16 +548,26 @@
 									<li id="alt-3-slot-10"><div class="slot-storable stored-name" id="alt-3-name-10"></div><div class="slot-storable stored-info" id="alt-3-info-10"></div></li>
 								</ul>
 								<div class="time-bar">
-									<div id="alt-3-active-time">0</div>
-									<div id="alt-3-inactive-time">0</div>
+									<div id="alt-3-active-time-monitor">0</div>
+									<div id="alt-3-inactive-time-monitor">0</div>
 								</div>
+								<label id="alt-3-custom-times" class="accordion"><i class="fas">&#xf017;</i></label>
+								<div class="hidable">
+									<div class="alt-time-options">
+										<div class="settings-title">Custom times</div>
+										<div class="settings-inputs">
+											<input class="storable" id="alt-3-animation-time" placeholder="(in-out)" tabindex="18">
+											<input class="storable" id="alt-3-active-time" placeholder="(active)" tabindex="19">
+											<input class="storable" id="alt-3-inactive-time" placeholder="(inactive)" tabindex="20">
+										</div>
+									</div>
+								</div>								
 							</div>
 						</div>
 					</div>
 				</div>
 
-				<!--// Lower Third 4//-->
-				<div class="sortees" id="alt_4">
+				<div class="sortees" id="alt_4"> <!--// Lower Third 4//-->
 					<div id="alt-4-config-content">
 						<label class="switch">
 						<input class="checkbox-storable" type="checkbox" id="lower-thirds-switch4">
@@ -652,7 +680,7 @@
 								    </select>
 							    </div>
 							  </div>
-							</div>					
+							</div>
 						</div>
 						<div class="textfields-container">
 							<input class="storable" type="text" id="alt-4-name" placeholder="Name" tabindex="10">
@@ -695,16 +723,26 @@
 									<li id="alt-4-slot-10"><div class="slot-storable stored-name" id="alt-4-name-10"></div><div class="slot-storable stored-info" id="alt-4-info-10"></div></li>
 								</ul>
 								<div class="time-bar">
-									<div id="alt-4-active-time">0</div>
-									<div id="alt-4-inactive-time">0</div>
+									<div id="alt-4-active-time-monitor">0</div>
+									<div id="alt-4-inactive-time-monitor">0</div>
 								</div>
+								<label id="alt-4-custom-times" class="accordion"><i class="fas">&#xf017;</i></label>
+								<div class="hidable">
+									<div class="alt-time-options">
+										<div class="settings-title">Custom times</div>
+										<div class="settings-inputs">
+											<input class="storable" id="alt-4-animation-time" placeholder="(in-out)" tabindex="21">
+											<input class="storable" id="alt-4-active-time" placeholder="(active)" tabindex="22">
+											<input class="storable" id="alt-4-inactive-time" placeholder="(inactive)" tabindex="23">
+										</div>
+									</div>
+								</div>								
 							</div>
 						</div>
 					</div>
 				</div>
 
 			</div>
-
 
 			<div id="alt-preview" class="hide">
 				<label><i class="fas">&#xf002;</i>Preview</label>
@@ -723,14 +761,14 @@
 
 			var slotDeleted = false;
 
-			var alt_1_active_time;
-			var alt_1_inactive_time;
-			var alt_2_active_time;
-			var alt_2_inactive_time;
-			var alt_3_active_time;
-			var alt_3_inactive_time;
-			var alt_4_active_time;
-			var alt_4_inactive_time;
+			var alt_1_active_time_monitor;
+			var alt_1_inactive_time_monitor;
+			var alt_2_active_time_monitor;
+			var alt_2_inactive_time_monitor;
+			var alt_3_active_time_monitor;
+			var alt_3_inactive_time_monitor;
+			var alt_4_active_time_monitor;
+			var alt_4_inactive_time_monitor;
 
 			var alt_1_style = 1;
 			var alt_1_inverse_ratio = 9;
@@ -796,7 +834,7 @@
 			    } 
 			  }
 			}
-			acc[0].onclick() //Open the Main Settings accordion at startup.
+			//acc[0].onclick() //Open the Main Settings accordion at startup.
 			//acc[1].onclick()
 			//acc[2].onclick()
 			//acc[3].onclick()
@@ -858,8 +896,8 @@
 		    //Reset order button
 		    $("#clear").click(function(){
 		      window.localStorage.removeItem("sorted");
-
-		    });*/			
+		    });
+			*/			
 
 		    ////////////////////
 
@@ -1269,23 +1307,23 @@
 			//Receive data from the source
 			bcr.onmessage = function (ev) {
 				received_data=ev.data.split("|");
-				document.getElementById("alt-1-active-time").innerHTML = received_data[0];
-				document.getElementById("alt-1-inactive-time").innerHTML = received_data[1];
-				document.getElementById("alt-2-active-time").innerHTML = received_data[2];
-				document.getElementById("alt-2-inactive-time").innerHTML = received_data[3];
-				document.getElementById("alt-3-active-time").innerHTML = received_data[4];
-				document.getElementById("alt-3-inactive-time").innerHTML = received_data[5];
-				document.getElementById("alt-4-active-time").innerHTML = received_data[6];
-				document.getElementById("alt-4-inactive-time").innerHTML = received_data[7];
+				document.getElementById("alt-1-active-time-monitor").innerHTML = received_data[0];
+				document.getElementById("alt-1-inactive-time-monitor").innerHTML = received_data[1];
+				document.getElementById("alt-2-active-time-monitor").innerHTML = received_data[2];
+				document.getElementById("alt-2-inactive-time-monitor").innerHTML = received_data[3];
+				document.getElementById("alt-3-active-time-monitor").innerHTML = received_data[4];
+				document.getElementById("alt-3-inactive-time-monitor").innerHTML = received_data[5];
+				document.getElementById("alt-4-active-time-monitor").innerHTML = received_data[6];
+				document.getElementById("alt-4-inactive-time-monitor").innerHTML = received_data[7];
 
-				alt_1_active_time = received_data[0];
-				alt_1_inactive_time = received_data[1];
-				alt_2_active_time = received_data[2];
-				alt_2_inactive_time = received_data[3];
-				alt_3_active_time = received_data[4];
-				alt_3_inactive_time = received_data[5];
-				alt_4_active_time = received_data[6];
-				alt_4_inactive_time = received_data[7];
+				alt_1_active_time_monitor = received_data[0];
+				alt_1_inactive_time_monitor = received_data[1];
+				alt_2_active_time_monitor = received_data[2];
+				alt_2_inactive_time_monitor = received_data[3];
+				alt_3_active_time_monitor = received_data[4];
+				alt_3_inactive_time_monitor = received_data[5];
+				alt_4_active_time_monitor = received_data[6];
+				alt_4_inactive_time_monitor = received_data[7];
 			}
 
 			//////////////////////////////////////
@@ -1301,13 +1339,19 @@
 				alt_1_info_color = $("#alt-1-info-color:text").val();
 				alt_1_style_color_1 = $("#alt-1-style-color-1:text").val();
 				alt_1_style_color_2 = $("#alt-1-style-color-2:text").val();
-
+				alt_1_animation_time = $("#alt-1-animation-time:text").val();
+				alt_1_active_time = $("#alt-1-active-time:text").val();
+				alt_1_inactive_time = $("#alt-1-inactive-time:text").val();
+				
 				alt_2_name = $("#alt-2-name:text").val();
 				alt_2_info = $("#alt-2-info:text").val();				
 				alt_2_name_color = $("#alt-2-name-color:text").val();
 				alt_2_info_color = $("#alt-2-info-color:text").val();
 				alt_2_style_color_1 = $("#alt-2-style-color-1:text").val();
 				alt_2_style_color_2 = $("#alt-2-style-color-2:text").val();
+				alt_2_animation_time = $("#alt-2-animation-time:text").val();
+				alt_2_active_time = $("#alt-2-active-time:text").val();
+				alt_2_inactive_time = $("#alt-2-inactive-time:text").val();
 
 				alt_3_name = $("#alt-3-name:text").val();
 				alt_3_info = $("#alt-3-info:text").val();				
@@ -1315,6 +1359,9 @@
 				alt_3_info_color = $("#alt-3-info-color:text").val();
 				alt_3_style_color_1 = $("#alt-3-style-color-1:text").val();
 				alt_3_style_color_2 = $("#alt-3-style-color-2:text").val();
+				alt_3_animation_time = $("#alt-3-animation-time:text").val();
+				alt_3_active_time = $("#alt-3-active-time:text").val();
+				alt_3_inactive_time = $("#alt-3-inactive-time:text").val();
 
 				alt_4_name = $("#alt-4-name:text").val();
 				alt_4_info = $("#alt-4-info:text").val();				
@@ -1322,6 +1369,9 @@
 				alt_4_info_color = $("#alt-4-info-color:text").val();
 				alt_4_style_color_1 = $("#alt-4-style-color-1:text").val();
 				alt_4_style_color_2 = $("#alt-4-style-color-2:text").val();
+				alt_4_animation_time = $("#alt-4-animation-time:text").val();
+				alt_4_active_time = $("#alt-4-active-time:text").val();
+				alt_4_inactive_time = $("#alt-4-inactive-time:text").val();
 
 				//Check Master Switch
 				if (document.getElementById("lower-thirds-masterswitch").checked == true) {
@@ -1338,7 +1388,7 @@
 					//Switch 1
 					if (document.getElementById("lower-thirds-switch1").checked == true){
 						alt_1_switch = "true";
-						if (alt_1_active_time >= 0 && alt_1_inactive_time == 0 && alt_1_name && alt_1_info){
+						if (alt_1_active_time_monitor >= 0 && alt_1_inactive_time_monitor == 0 && alt_1_name && alt_1_info){
 							document.getElementById("alt-1-config-content").classList.remove("inactive");
 							document.getElementById("alt-1-config-content").classList.add("active");
 						} else {
@@ -1353,7 +1403,7 @@
 					//Switch 2
 					if (document.getElementById("lower-thirds-switch2").checked == true){
 						alt_2_switch = "true";
-						if (alt_2_active_time >= 0 && alt_2_inactive_time == 0 && alt_2_name && alt_2_info){
+						if (alt_2_active_time_monitor >= 0 && alt_2_inactive_time_monitor == 0 && alt_2_name && alt_2_info){
 							document.getElementById("alt-2-config-content").classList.remove("inactive");
 							document.getElementById("alt-2-config-content").classList.add("active");
 						} else {
@@ -1368,7 +1418,7 @@
 					//Switch 3
 					if (document.getElementById("lower-thirds-switch3").checked == true){
 						alt_3_switch = "true";
-						if (alt_3_active_time >= 0 && alt_3_inactive_time == 0 && alt_3_name && alt_3_info){
+						if (alt_3_active_time_monitor >= 0 && alt_3_inactive_time_monitor == 0 && alt_3_name && alt_3_info){
 							document.getElementById("alt-3-config-content").classList.remove("inactive");
 							document.getElementById("alt-3-config-content").classList.add("active");
 						} else {
@@ -1383,7 +1433,7 @@
 					//Switch 4
 					if (document.getElementById("lower-thirds-switch4").checked == true){
 						alt_4_switch = "true";
-						if (alt_4_active_time >= 0 && alt_4_inactive_time == 0 && alt_4_name && alt_4_info){
+						if (alt_4_active_time_monitor >= 0 && alt_4_inactive_time_monitor == 0 && alt_4_name && alt_4_info){
 							document.getElementById("alt-4-config-content").classList.remove("inactive");
 							document.getElementById("alt-4-config-content").classList.add("active");
 						} else {
@@ -1639,6 +1689,28 @@
 					document.getElementById("alt-4-align-left").checked = true;
 				}
 
+				//Shows if custom time settings is used
+				if (alt_1_animation_time || alt_1_active_time || alt_1_inactive_time) {
+					$("#alt-1-custom-times").children('i').addClass("active");
+				} else {
+					$("#alt-1-custom-times").children('i').removeClass("active");
+				}
+				if (alt_2_animation_time || alt_2_active_time || alt_2_inactive_time) {
+					$("#alt-2-custom-times").children('i').addClass("active");
+				} else {
+					$("#alt-2-custom-times").children('i').removeClass("active");
+				}
+				if (alt_3_animation_time || alt_3_active_time || alt_3_inactive_time) {
+					$("#alt-3-custom-times").children('i').addClass("active");
+				} else {
+					$("#alt-3-custom-times").children('i').removeClass("active");
+				}
+				if (alt_4_animation_time || alt_4_active_time || alt_4_inactive_time) {
+					$("#alt-4-custom-times").children('i').addClass("active");
+				} else {
+					$("#alt-4-custom-times").children('i').removeClass("active");
+				}
+
 				//Standard Main settings values
 				if(global_active_time == "") {
 					global_active_time = 25;
@@ -1650,10 +1722,10 @@
 					global_animation_time = 4;
 				}
 
-				bc.postMessage(global_animation_time + '|' + global_active_time + '|' + global_inactive_time + '|' + alt_1_switch + '|' + alt_1_style + '|' + alt_1_name + '|' + alt_1_info + '|' + alt_1_name_size + '|' + alt_1_info_size  + '|' + alt_1_name_transform + '|' + alt_1_info_transform + '|' + alt_1_name_weight + '|' + alt_1_info_weight + '|' + alt_1_name_color + '|' + alt_1_info_color + '|' + alt_1_style_color_1 + '|' + alt_1_style_color_2 + '|' + alt_1_logo_switch + '|' + alt_1_background_switch + '|' + alt_1_shadows + '|' + alt_1_align + '|' + alt_1_size + '|' + alt_1_margin_h + '|' + alt_1_margin_v + '|' + alt_1_line_spacing + '|' + alt_1_font + '|' + alt_2_switch + '|' + alt_2_style + '|' + alt_2_name + '|' + alt_2_info + '|' + alt_2_name_size + '|' + alt_2_info_size  + '|' + alt_2_name_transform + '|' + alt_2_info_transform + '|' + alt_2_name_weight + '|' + alt_2_info_weight + '|' + alt_2_name_color + '|' + alt_2_info_color + '|' + alt_2_style_color_1 + '|' + alt_2_style_color_2 + '|' + alt_2_logo_switch + '|' + alt_2_background_switch + '|' + alt_2_shadows + '|' + alt_2_align + '|' + alt_2_size + '|' + alt_2_margin_h + '|' + alt_2_margin_v + '|' + alt_2_line_spacing + '|' + alt_2_font + '|' + alt_3_switch + '|' + alt_3_style + '|' + alt_3_name + '|' + alt_3_info + '|' + alt_3_name_size + '|' + alt_3_info_size  + '|' + alt_3_name_transform + '|' + alt_3_info_transform + '|' + alt_3_name_weight + '|' + alt_3_info_weight + '|' + alt_3_name_color + '|' + alt_3_info_color + '|' + alt_3_style_color_1 + '|' + alt_3_style_color_2 + '|' + alt_3_logo_switch + '|' + alt_3_background_switch + '|' + alt_3_shadows + '|' + alt_3_align + '|' + alt_3_size + '|' + alt_3_margin_h + '|' + alt_3_margin_v + '|' + alt_3_line_spacing + '|' + alt_3_font + '|' + alt_4_switch + '|' + alt_4_style + '|' + alt_4_name + '|' + alt_4_info + '|' + alt_4_name_size + '|' + alt_4_info_size  + '|' + alt_4_name_transform + '|' + alt_4_info_transform + '|' + alt_4_name_weight + '|' + alt_4_info_weight + '|' + alt_4_name_color + '|' + alt_4_info_color + '|' + alt_4_style_color_1 + '|' + alt_4_style_color_2 + '|' + alt_4_logo_switch + '|' + alt_4_background_switch + '|' + alt_4_shadows + '|' + alt_4_align + '|' + alt_4_size + '|' + alt_4_margin_h + '|' + alt_4_margin_v + '|' + alt_4_line_spacing + '|' + alt_4_font);
+				bc.postMessage(global_animation_time + '|' + global_active_time + '|' + global_inactive_time + '|' + alt_1_switch + '|' + alt_1_style + '|' + alt_1_name + '|' + alt_1_info + '|' + alt_1_name_size + '|' + alt_1_info_size  + '|' + alt_1_name_transform + '|' + alt_1_info_transform + '|' + alt_1_name_weight + '|' + alt_1_info_weight + '|' + alt_1_name_color + '|' + alt_1_info_color + '|' + alt_1_style_color_1 + '|' + alt_1_style_color_2 + '|' + alt_1_logo_switch + '|' + alt_1_background_switch + '|' + alt_1_shadows + '|' + alt_1_align + '|' + alt_1_size + '|' + alt_1_margin_h + '|' + alt_1_margin_v + '|' + alt_1_line_spacing + '|' + alt_1_font + '|' + alt_2_switch + '|' + alt_2_style + '|' + alt_2_name + '|' + alt_2_info + '|' + alt_2_name_size + '|' + alt_2_info_size  + '|' + alt_2_name_transform + '|' + alt_2_info_transform + '|' + alt_2_name_weight + '|' + alt_2_info_weight + '|' + alt_2_name_color + '|' + alt_2_info_color + '|' + alt_2_style_color_1 + '|' + alt_2_style_color_2 + '|' + alt_2_logo_switch + '|' + alt_2_background_switch + '|' + alt_2_shadows + '|' + alt_2_align + '|' + alt_2_size + '|' + alt_2_margin_h + '|' + alt_2_margin_v + '|' + alt_2_line_spacing + '|' + alt_2_font + '|' + alt_3_switch + '|' + alt_3_style + '|' + alt_3_name + '|' + alt_3_info + '|' + alt_3_name_size + '|' + alt_3_info_size  + '|' + alt_3_name_transform + '|' + alt_3_info_transform + '|' + alt_3_name_weight + '|' + alt_3_info_weight + '|' + alt_3_name_color + '|' + alt_3_info_color + '|' + alt_3_style_color_1 + '|' + alt_3_style_color_2 + '|' + alt_3_logo_switch + '|' + alt_3_background_switch + '|' + alt_3_shadows + '|' + alt_3_align + '|' + alt_3_size + '|' + alt_3_margin_h + '|' + alt_3_margin_v + '|' + alt_3_line_spacing + '|' + alt_3_font + '|' + alt_4_switch + '|' + alt_4_style + '|' + alt_4_name + '|' + alt_4_info + '|' + alt_4_name_size + '|' + alt_4_info_size  + '|' + alt_4_name_transform + '|' + alt_4_info_transform + '|' + alt_4_name_weight + '|' + alt_4_info_weight + '|' + alt_4_name_color + '|' + alt_4_info_color + '|' + alt_4_style_color_1 + '|' + alt_4_style_color_2 + '|' + alt_4_logo_switch + '|' + alt_4_background_switch + '|' + alt_4_shadows + '|' + alt_4_align + '|' + alt_4_size + '|' + alt_4_margin_h + '|' + alt_4_margin_v + '|' + alt_4_line_spacing + '|' + alt_4_font + '|' + alt_1_animation_time + '|' + alt_1_active_time + '|' + alt_1_inactive_time + '|' + alt_2_animation_time + '|' + alt_2_active_time + '|' + alt_2_inactive_time + '|' + alt_3_animation_time + '|' + alt_3_active_time + '|' + alt_3_inactive_time + '|' + alt_4_animation_time + '|' + alt_4_active_time + '|' + alt_4_inactive_time);
 
 				//Previews
-				bcp.postMessage(global_animation_time + '|' + global_active_time + '|' + global_inactive_time + '|' + alt_1_preview + '|' + alt_1_style + '|' + alt_1_name + '|' + alt_1_info + '|' + alt_1_name_size + '|' + alt_1_info_size  + '|' + alt_1_name_transform + '|' + alt_1_info_transform + '|' + alt_1_name_weight + '|' + alt_1_info_weight + '|' + alt_1_name_color + '|' + alt_1_info_color + '|' + alt_1_style_color_1 + '|' + alt_1_style_color_2 + '|' + alt_1_logo_switch + '|' + alt_1_background_switch + '|' + alt_1_shadows + '|' + alt_1_align + '|' + alt_1_size + '|' + alt_1_margin_h + '|' + alt_1_margin_v + '|' + alt_1_line_spacing + '|' + alt_1_font + '|' + alt_2_preview + '|' + alt_2_style + '|' + alt_2_name + '|' + alt_2_info + '|' + alt_2_name_size + '|' + alt_2_info_size  + '|' + alt_2_name_transform + '|' + alt_2_info_transform + '|' + alt_2_name_weight + '|' + alt_2_info_weight + '|' + alt_2_name_color + '|' + alt_2_info_color + '|' + alt_2_style_color_1 + '|' + alt_2_style_color_2 + '|' + alt_2_logo_switch + '|' + alt_2_background_switch + '|' + alt_2_shadows + '|' + alt_2_align + '|' + alt_2_size + '|' + alt_2_margin_h + '|' + alt_2_margin_v + '|' + alt_2_line_spacing + '|' + alt_2_font + '|' + alt_3_preview + '|' + alt_3_style + '|' + alt_3_name + '|' + alt_3_info + '|' + alt_3_name_size + '|' + alt_3_info_size  + '|' + alt_3_name_transform + '|' + alt_3_info_transform + '|' + alt_3_name_weight + '|' + alt_3_info_weight + '|' + alt_3_name_color + '|' + alt_3_info_color + '|' + alt_3_style_color_1 + '|' + alt_3_style_color_2 + '|' + alt_3_logo_switch + '|' + alt_3_background_switch + '|' + alt_3_shadows + '|' + alt_3_align + '|' + alt_3_size + '|' + alt_3_margin_h + '|' + alt_3_margin_v + '|' + alt_3_line_spacing + '|' + alt_3_font + '|' + alt_4_preview + '|' + alt_4_style + '|' + alt_4_name + '|' + alt_4_info + '|' + alt_4_name_size + '|' + alt_4_info_size  + '|' + alt_4_name_transform + '|' + alt_4_info_transform + '|' + alt_4_name_weight + '|' + alt_4_info_weight + '|' + alt_4_name_color + '|' + alt_4_info_color + '|' + alt_4_style_color_1 + '|' + alt_4_style_color_2 + '|' + alt_4_logo_switch + '|' + alt_4_background_switch + '|' + alt_4_shadows + '|' + alt_4_align + '|' + alt_4_size + '|' + alt_4_margin_h + '|' + alt_4_margin_v + '|' + alt_4_line_spacing + '|' + alt_4_font);
+				bcp.postMessage(global_animation_time + '|' + global_active_time + '|' + global_inactive_time + '|' + alt_1_preview + '|' + alt_1_style + '|' + alt_1_name + '|' + alt_1_info + '|' + alt_1_name_size + '|' + alt_1_info_size  + '|' + alt_1_name_transform + '|' + alt_1_info_transform + '|' + alt_1_name_weight + '|' + alt_1_info_weight + '|' + alt_1_name_color + '|' + alt_1_info_color + '|' + alt_1_style_color_1 + '|' + alt_1_style_color_2 + '|' + alt_1_logo_switch + '|' + alt_1_background_switch + '|' + alt_1_shadows + '|' + alt_1_align + '|' + alt_1_size + '|' + alt_1_margin_h + '|' + alt_1_margin_v + '|' + alt_1_line_spacing + '|' + alt_1_font + '|' + alt_2_preview + '|' + alt_2_style + '|' + alt_2_name + '|' + alt_2_info + '|' + alt_2_name_size + '|' + alt_2_info_size  + '|' + alt_2_name_transform + '|' + alt_2_info_transform + '|' + alt_2_name_weight + '|' + alt_2_info_weight + '|' + alt_2_name_color + '|' + alt_2_info_color + '|' + alt_2_style_color_1 + '|' + alt_2_style_color_2 + '|' + alt_2_logo_switch + '|' + alt_2_background_switch + '|' + alt_2_shadows + '|' + alt_2_align + '|' + alt_2_size + '|' + alt_2_margin_h + '|' + alt_2_margin_v + '|' + alt_2_line_spacing + '|' + alt_2_font + '|' + alt_3_preview + '|' + alt_3_style + '|' + alt_3_name + '|' + alt_3_info + '|' + alt_3_name_size + '|' + alt_3_info_size  + '|' + alt_3_name_transform + '|' + alt_3_info_transform + '|' + alt_3_name_weight + '|' + alt_3_info_weight + '|' + alt_3_name_color + '|' + alt_3_info_color + '|' + alt_3_style_color_1 + '|' + alt_3_style_color_2 + '|' + alt_3_logo_switch + '|' + alt_3_background_switch + '|' + alt_3_shadows + '|' + alt_3_align + '|' + alt_3_size + '|' + alt_3_margin_h + '|' + alt_3_margin_v + '|' + alt_3_line_spacing + '|' + alt_3_font + '|' + alt_4_preview + '|' + alt_4_style + '|' + alt_4_name + '|' + alt_4_info + '|' + alt_4_name_size + '|' + alt_4_info_size  + '|' + alt_4_name_transform + '|' + alt_4_info_transform + '|' + alt_4_name_weight + '|' + alt_4_info_weight + '|' + alt_4_name_color + '|' + alt_4_info_color + '|' + alt_4_style_color_1 + '|' + alt_4_style_color_2 + '|' + alt_4_logo_switch + '|' + alt_4_background_switch + '|' + alt_4_shadows + '|' + alt_4_align + '|' + alt_4_size + '|' + alt_4_margin_h + '|' + alt_4_margin_v + '|' + alt_4_line_spacing + '|' + alt_4_font + '|' + alt_1_animation_time + '|' + alt_1_active_time + '|' + alt_1_inactive_time + '|' + alt_2_animation_time + '|' + alt_2_active_time + '|' + alt_2_inactive_time + '|' + alt_3_animation_time + '|' + alt_3_active_time + '|' + alt_3_inactive_time + '|' + alt_4_animation_time + '|' + alt_4_active_time + '|' + alt_4_inactive_time);
 			}
 
 			function loadData () {
