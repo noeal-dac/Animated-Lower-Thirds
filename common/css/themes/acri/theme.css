@@ -13,6 +13,9 @@
   --obs-field-background-disable: #28282a;
   --obs-field-border: none;
   --obs-panel-border: solid 1px #2f2f2f;
+  --obs-scrollbar-color: #2f2f2f;
+  --obs-scrollbar-thickness: 13px;
+  --obs-scrollbar-radius: 0px;
   --alt-preview-background: linear-gradient(135deg, #0b0b0c 0%,
                                                     #0b0b0c 8%,
                                                     #08080b 10%,

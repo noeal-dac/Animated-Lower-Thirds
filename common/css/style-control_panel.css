@@ -36,13 +36,13 @@ body.browser-source.lower-thirds{
 }
 
 .panel::-webkit-scrollbar {
-	width: 16px;
+  width: var(--obs-scrollbar-thickness);
 }
 
 .panel::-webkit-scrollbar-thumb {
-	border-radius: 16px;
-	border: solid 3px #3a393a;
-	background-color: #4c4c4c;
+	border-radius: var(--obs-scrollbar-radius);
+	border: solid 3px var(--obs-background);
+	background-color: var(--obs-scrollbar-color);
 }
 
 .panel-bottom {
