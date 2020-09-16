@@ -73,6 +73,22 @@ body.browser-source.lower-thirds{
 }
 #alt-main-config-content > .accordion {
   width: calc(100% - 30px);
+  /*margin: 0;*/
+}
+/*#alt-main-config-content > .accordion.active {
+  margin: 0 0 0.35em;
+}*/
+
+#alt-main-config-content i.fas {
+  margin: 1px 6px 0px 1px;
+  float: left;
+}
+
+#global-configuration{
+  margin-bottom: -4px;
+}
+.active + #global-configuration{
+  margin-bottom: 10px;
 }
 #global-configuration #time-options,
 #global-configuration #theme-options {
@@ -133,6 +149,21 @@ body.browser-source.lower-thirds{
 #alt-4-config-content > .accordion > i.fas {
     height: 10px;
     overflow: hidden;
+}
+.alt-number-icon {
+  /*position: relative;*/
+  float: left;
+  border-radius: 3px;
+  box-sizing: border-box;
+  background: var(--main-color);
+  color: var(--obs-background);
+  width: 15px;
+  height: 15px;
+  line-height: 14px;
+  font-size: 12px;
+  font-weight: 900;
+  margin: 5px 6px;
+  text-align: center;
 }
 
 /*********************/
