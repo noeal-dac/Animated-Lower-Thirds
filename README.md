@@ -33,3 +33,9 @@ Update v1.2 new features:
 - Change the name to better identify them.
 - Preview panel. By checking the magnifying glass you can see them on the panel before displaying them.
 - Change the opacity of the colors in the color picker.
+
+Update v1.3 new features:
+- Set timers for each panel. Keeping global times settings.
+- Number icons. To easily identify each panel with the hotkey settings.
+- Themes. Acri, Dark, Rachni.
+- Visual Fixes
