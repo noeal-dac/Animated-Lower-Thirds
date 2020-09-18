@@ -1,5 +1,5 @@
 hotkeyMasterSwitch = 0;
-hotkeySwitch1 = 0;
-hotkeySwitch2 = 0;
-hotkeySwitch3 = 0;
-hotkeySwitch4 = 0;
+hotkeySwitch1 = 1;
+hotkeySwitch2 = 1;
+hotkeySwitch3 = 1;
+hotkeySwitch4 = 1;

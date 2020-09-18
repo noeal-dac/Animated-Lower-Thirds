@@ -46,7 +46,6 @@ body.browser-source.lower-thirds{
 }
 
 .panel-bottom {
-  /*min-height: 9px;*/
   padding-bottom: 5px;
   display: flex;
   flex-direction: row;
@@ -227,14 +226,17 @@ li div {
 }
 li {
   display: block;
+  box-sizing: border-box;
   float: left;
   border: 1px solid var(--obs-field-background);
   background-color: var(--obs-field-background);
-  margin: 0 0 0 0.35em;
   cursor: pointer;
-  width: 22px;
-  height: 7px;
+  width: 22px; /*22px v1.3*/
+  height: 9px;
   border-radius: 3px;
+}
+li + li {
+  margin: 0 0 0 0.35em;
 }
 .stored {
   background: #666;
@@ -243,6 +245,15 @@ li {
 .active-slot {
   background: var(--main-color);
   border: 1px solid var(--main-color);
+}
+
+.next-to-load {
+  animation: blinker-white 0.25s ease-in infinite;
+}
+
+@keyframes blinker-white {  
+  0% { background-color: var(--main-color); border: 1px #666; }
+  50% { background-color: #666; border: 1px solid #666; }
 }
 
 #alt-1-name-color, #alt-1-info-color,
@@ -293,6 +304,18 @@ li {
     width: 9px;
     margin-top: -1px;
 }
+.panel-bottom > label.config-btn {
+  width: 11px;
+  height: 11px;
+  margin: 0;
+  line-height: 0;
+}
+.panel-bottom > label > .icon-btn > i.fas {
+  font-size: 10px;
+  margin: 0;
+  top: -1px;
+
+}
 
 .delete {
   animation: blinker-red 0.25s linear infinite;
@@ -307,20 +330,19 @@ li {
   /*float: right;*/
   display: flex;
 }
-#alt-1-active-time-monitor, #alt-1-inactive-time-monitor,
-#alt-2-active-time-monitor, #alt-2-inactive-time-monitor,
-#alt-3-active-time-monitor, #alt-3-inactive-time-monitor,
-#alt-4-active-time-monitor, #alt-4-inactive-time-monitor {
+.time-bar > div {
   float: left;
   font-size: 7px;
   padding: 1px 3px;
   line-height: 1em;
-  margin: 0 0 0 4px;
-  width: 17px;
+  width: 16px;
   height: 7px;
   background: var(--obs-field-background-disable);
   border-radius: 3px;
   text-align: right;
+}
+.time-bar > div + div {
+  margin: 0 0 0 4px;
 }
 
 label#alt-1-custom-times::after,
@@ -337,7 +359,7 @@ label#alt-4-custom-times {
   width: 10px;
   height: 10px;
   display: flex;
-  margin-left: 4px;
+  margin: 0 0 4px;
 }
 
 label#alt-1-custom-times i.fas,
@@ -866,6 +888,7 @@ select#alt-4-font {
   /*border: 3px solid red;*/
   box-shadow: -4px 8px 7px rgb(0 0 0 / 40%);
   transform: rotate(-3deg);
+  cursor: -webkit-grabbing; cursor: grabbing;
 }
 .ui-sortable-helper > div {
   box-shadow: none!important;

@@ -186,6 +186,10 @@
 							<div style="clear:both"></div>
 							<div class="panel-bottom">
 								<div id="alt-1-clean-inputs" class="clean"><i class="fas">&#xf00d;</i></div>
+								<label class="config-btn">
+									<input class="checkbox-storable" type="checkbox" id="alt-1-autoload">
+									<span class="icon-btn"><i class='fas'>&#xf2f1;</i></span>
+								</label>
 								<ul id="alt-1-memory-slots">
 									<li id="alt-1-slot-1"><div class="slot-storable stored-name" id="alt-1-name-1"></div><div class="slot-storable stored-info" id="alt-1-info-1"></div></li>
 									<li id="alt-1-slot-2"><div class="slot-storable stored-name" id="alt-1-name-2"></div><div class="slot-storable stored-info" id="alt-1-info-2"></div></li>
@@ -362,6 +366,10 @@
 							<div style="clear:both"></div>
 							<div class="panel-bottom">
 								<div id="alt-2-clean-inputs" class="clean"><i class="fas">&#xf00d;</i></div>
+								<label class="config-btn">
+									<input class="checkbox-storable" type="checkbox" id="alt-2-autoload">
+									<span class="icon-btn"><i class='fas'>&#xf2f1;</i></span>
+								</label>								
 								<ul id="alt-2-memory-slots">
 									<li id="alt-2-slot-1"><div class="slot-storable stored-name" id="alt-2-name-1"></div><div class="slot-storable stored-info" id="alt-2-info-1"></div></li>
 									<li id="alt-2-slot-2"><div class="slot-storable stored-name" id="alt-2-name-2"></div><div class="slot-storable stored-info" id="alt-2-info-2"></div></li>
@@ -538,6 +546,10 @@
 							<div style="clear:both"></div>
 							<div class="panel-bottom">
 								<div id="alt-3-clean-inputs" class="clean"><i class="fas">&#xf00d;</i></div>
+								<label class="config-btn">
+									<input class="checkbox-storable" type="checkbox" id="alt-3-autoload">
+									<span class="icon-btn"><i class='fas'>&#xf2f1;</i></span>
+								</label>
 								<ul id="alt-3-memory-slots">
 									<li id="alt-3-slot-1"><div class="slot-storable stored-name" id="alt-3-name-1"></div><div class="slot-storable stored-info" id="alt-3-info-1"></div></li>
 									<li id="alt-3-slot-2"><div class="slot-storable stored-name" id="alt-3-name-2"></div><div class="slot-storable stored-info" id="alt-3-info-2"></div></li>
@@ -714,6 +726,10 @@
 							<div style="clear:both"></div>
 							<div class="panel-bottom">
 								<div id="alt-4-clean-inputs" class="clean"><i class="fas">&#xf00d;</i></div>
+								<label class="config-btn">
+									<input class="checkbox-storable" type="checkbox" id="alt-4-autoload">
+									<span class="icon-btn"><i class='fas'>&#xf2f1;</i></span>
+								</label>
 								<ul id="alt-4-memory-slots">
 									<li id="alt-4-slot-1"><div class="slot-storable stored-name" id="alt-4-name-1"></div><div class="slot-storable stored-info" id="alt-4-info-1"></div></li>
 									<li id="alt-4-slot-2"><div class="slot-storable stored-name" id="alt-4-name-2"></div><div class="slot-storable stored-info" id="alt-4-info-2"></div></li>
@@ -773,6 +789,22 @@
 			var alt_3_inactive_time_monitor;
 			var alt_4_active_time_monitor;
 			var alt_4_inactive_time_monitor;
+
+			//var alt_1_animation_time;
+			//var alt_2_animation_time;
+			//var alt_3_animation_time;
+			//var alt_4_animation_time;
+
+
+			var alt_1_autoload;
+			var alt_1_jumpnext;
+			var alt_2_autoload;
+			var alt_2_jumpnext;
+			var alt_3_autoload;
+			var alt_3_jumpnext;
+			var alt_4_autoload;
+			var alt_4_jumpnext;
+
 
 			var alt_1_style = 1;
 			var alt_1_inverse_ratio = 9;
@@ -1001,6 +1033,7 @@
 					if ($(name).val() == name_value && $(info).val() == info_value){
 						if(name_value && info_value){
 							document.getElementById(check_slot_id).classList.add("active-slot");
+							document.getElementById(check_slot_id).classList.remove("next-to-load");
 						}
 					} else {
 						document.getElementById(check_slot_id).classList.remove("active-slot");
@@ -1046,6 +1079,89 @@
 			memorySlotsSystem("#alt-2-memory-slots", "#alt-2-name", "#alt-2-info");
 			memorySlotsSystem("#alt-3-memory-slots", "#alt-3-name", "#alt-3-info");
 			memorySlotsSystem("#alt-4-memory-slots", "#alt-4-name", "#alt-4-info");
+
+			//////////////////////////////////////
+
+			//Load the next memory slot when autoload is active
+			function jumpNextSlot(memory_slot, name, info, alt_waiting_time) {
+				var jumpToNext = false;
+				var loadedSlot = false;
+				var lastSlot = false;
+				
+				name_loaded = $(name + ":text").val();
+				info_loaded = $(info + ":text").val();
+
+				$("ul" + memory_slot + " li").each(function(){
+					slot_id = $(this).attr('id');
+					name_id = $(this).children('.stored-name').attr('id');
+					info_id = $(this).children('.stored-info').attr('id');
+					name_value = $(this).children('.stored-name').text();
+					info_value = $(this).children('.stored-info').text();							
+					emptySlot = ($('#' + name_id).is(':empty') && $('#' + info_id).is(':empty')) ? true : false;						
+
+					if (emptySlot && loadedSlot){
+						loadedSlot = false;
+						lastSlot = true;
+					}
+					if (!emptySlot){
+						jumpToNext = loadedSlot;
+						if (jumpToNext) {
+							name_to_load = $(this).children('#' + name_id).text();
+							info_to_load = $(this).children('#' + info_id).text();
+							loadSlot(name, info, name_to_load, info_to_load, alt_waiting_time);
+							$('#' + slot_id).addClass('next-to-load');
+
+							jumpToNext = false;
+						}
+						loadedSlot = (name_loaded == name_value && info_loaded == info_value) ? true : false;
+					}
+					//console.log (slot_id + "|" + name_id + "|" + info_id + "|" + name_value + "|" + info_value + "|" + emptySlot + "|" + loadedSlot);
+				});
+
+				if (lastSlot) {
+					lastSlot = false;
+					jumpToFirstSlot(memory_slot, name, info, alt_waiting_time);
+				}
+			}
+
+			//Load the fist stored slot when autoload is active
+			function jumpToFirstSlot(memory_slot, name, info, alt_waiting_time) {
+				var foundTheFirst = true;
+				
+				name_loaded = $(name + ":text").val();
+				info_loaded = $(info + ":text").val();
+				loadedSlot = (name_loaded == name_value && info_loaded == info_value) ? true : false;
+
+				$("ul" + memory_slot + " li").each(function(){
+					slot_id = $(this).attr('id');
+					name_id = $(this).children('.stored-name').attr('id');
+					info_id = $(this).children('.stored-info').attr('id');
+					name_value = $(this).children('.stored-name').text();
+					info_value = $(this).children('.stored-info').text();					
+		
+					emptySlot = ($('#' + name_id).is(':empty') && $('#' + info_id).is(':empty')) ? true : false;						
+
+					if (!emptySlot){
+						if (foundTheFirst && !loadedSlot) {
+							name_to_load = $(this).children('#' + name_id).text();
+							info_to_load = $(this).children('#' + info_id).text();
+							
+							loadSlot(name, info, name_to_load, info_to_load, alt_waiting_time);
+							$('#' + slot_id).addClass('next-to-load');
+
+							foundTheFirst = false;							
+						}
+					} 
+				});		
+			}
+
+			function loadSlot(name, info, name_to_load, info_to_load, alt_waiting_time) {
+				setTimeout(function (){
+					$(name + ":text").val(name_to_load);
+					$(info + ":text").val(info_to_load);
+				}, alt_waiting_time * 1000);
+				
+			}
 
 			//////////////////////////////////////
 
@@ -1377,6 +1493,22 @@
 				alt_4_active_time = $("#alt-4-active-time:text").val();
 				alt_4_inactive_time = $("#alt-4-inactive-time:text").val();
 
+				//Standard Main settings values
+				if(global_active_time == "") {
+					global_active_time = 25;
+				}
+				if(global_inactive_time == "") {
+					global_inactive_time = 420;
+				}
+				if(global_animation_time == "") {
+					global_animation_time = 4;
+				}
+
+				alt_1_waiting_time = (alt_1_animation_time) ? alt_1_animation_time : global_animation_time;
+				alt_2_waiting_time = (alt_2_animation_time) ? alt_2_animation_time : global_animation_time;
+				alt_3_waiting_time = (alt_3_animation_time) ? alt_3_animation_time : global_animation_time;
+				alt_4_waiting_time = (alt_4_animation_time) ? alt_4_animation_time : global_animation_time;
+
 				//Check Master Switch
 				if (document.getElementById("lower-thirds-masterswitch").checked == true) {
 					masterSwitchIsOn = true;
@@ -1395,9 +1527,15 @@
 						if (alt_1_active_time_monitor >= 0 && alt_1_inactive_time_monitor == 0 && alt_1_name && alt_1_info){
 							document.getElementById("alt-1-config-content").classList.remove("inactive");
 							document.getElementById("alt-1-config-content").classList.add("active");
+							alt_1_jumpnext = true;						
 						} else {
 							document.getElementById("alt-1-config-content").classList.remove("active");
 							document.getElementById("alt-1-config-content").classList.add("inactive");
+							//check if autoload is active and jump to next slot
+							if (alt_1_autoload && alt_1_jumpnext) {
+								jumpNextSlot("#alt-1-memory-slots", "#alt-1-name", "#alt-1-info", alt_1_waiting_time);
+								alt_1_jumpnext = false;
+							}
 						}
 					} else {
 						alt_1_switch = "false";
@@ -1410,9 +1548,15 @@
 						if (alt_2_active_time_monitor >= 0 && alt_2_inactive_time_monitor == 0 && alt_2_name && alt_2_info){
 							document.getElementById("alt-2-config-content").classList.remove("inactive");
 							document.getElementById("alt-2-config-content").classList.add("active");
+							alt_2_jumpnext = true;							
 						} else {
 							document.getElementById("alt-2-config-content").classList.remove("active");
 							document.getElementById("alt-2-config-content").classList.add("inactive");
+							//check if autoload is active and jump to next slot
+							if (alt_2_autoload && alt_2_jumpnext) {
+								jumpNextSlot("#alt-2-memory-slots", "#alt-2-name", "#alt-2-info", alt_2_waiting_time);
+								alt_2_jumpnext = false;
+							}
 						}
 					} else {
 						alt_2_switch = "false";
@@ -1425,9 +1569,15 @@
 						if (alt_3_active_time_monitor >= 0 && alt_3_inactive_time_monitor == 0 && alt_3_name && alt_3_info){
 							document.getElementById("alt-3-config-content").classList.remove("inactive");
 							document.getElementById("alt-3-config-content").classList.add("active");
+							alt_3_jumpnext = true;
 						} else {
 							document.getElementById("alt-3-config-content").classList.remove("active");
 							document.getElementById("alt-3-config-content").classList.add("inactive");
+							//check if autoload is active and jump to next slot
+							if (alt_3_autoload && alt_3_jumpnext) {
+								jumpNextSlot("#alt-3-memory-slots", "#alt-3-name", "#alt-3-info", alt_3_waiting_time);
+								alt_3_jumpnext = false;
+							}
 						}
 					} else {
 						alt_3_switch = "false";
@@ -1440,9 +1590,15 @@
 						if (alt_4_active_time_monitor >= 0 && alt_4_inactive_time_monitor == 0 && alt_4_name && alt_4_info){
 							document.getElementById("alt-4-config-content").classList.remove("inactive");
 							document.getElementById("alt-4-config-content").classList.add("active");
+							alt_4_jumpnext = true;
 						} else {
 							document.getElementById("alt-4-config-content").classList.remove("active");
 							document.getElementById("alt-4-config-content").classList.add("inactive");
+							//check if autoload is active and jump to next slot
+							if (alt_4_autoload && alt_4_jumpnext) {
+								jumpNextSlot("#alt-4-memory-slots", "#alt-4-name", "#alt-4-info", alt_4_waiting_time);
+								alt_4_jumpnext = false;
+							}
 						}
 					} else {
 						alt_4_switch = "false";
@@ -1488,6 +1644,14 @@
 					}
 
 				}
+
+				//////////////////////////////
+
+				//Switch Preview ALT ON/OFF
+				alt_1_autoload = (document.getElementById("alt-1-autoload").checked == true) ? true : false;
+				alt_2_autoload = (document.getElementById("alt-2-autoload").checked == true) ? true : false;
+				alt_3_autoload = (document.getElementById("alt-3-autoload").checked == true) ? true : false;
+				alt_4_autoload = (document.getElementById("alt-4-autoload").checked == true) ? true : false;
 
 				//////////////////////////////
 
@@ -1715,16 +1879,7 @@
 					$("#alt-4-custom-times").children('i').removeClass("active");
 				}
 
-				//Standard Main settings values
-				if(global_active_time == "") {
-					global_active_time = 25;
-				}
-				if(global_inactive_time == "") {
-					global_inactive_time = 420;
-				}
-				if(global_animation_time == "") {
-					global_animation_time = 4;
-				}
+
 
 				bc.postMessage(global_animation_time + '|' + global_active_time + '|' + global_inactive_time + '|' + alt_1_switch + '|' + alt_1_style + '|' + alt_1_name + '|' + alt_1_info + '|' + alt_1_name_size + '|' + alt_1_info_size  + '|' + alt_1_name_transform + '|' + alt_1_info_transform + '|' + alt_1_name_weight + '|' + alt_1_info_weight + '|' + alt_1_name_color + '|' + alt_1_info_color + '|' + alt_1_style_color_1 + '|' + alt_1_style_color_2 + '|' + alt_1_logo_switch + '|' + alt_1_background_switch + '|' + alt_1_shadows + '|' + alt_1_align + '|' + alt_1_size + '|' + alt_1_margin_h + '|' + alt_1_margin_v + '|' + alt_1_line_spacing + '|' + alt_1_font + '|' + alt_2_switch + '|' + alt_2_style + '|' + alt_2_name + '|' + alt_2_info + '|' + alt_2_name_size + '|' + alt_2_info_size  + '|' + alt_2_name_transform + '|' + alt_2_info_transform + '|' + alt_2_name_weight + '|' + alt_2_info_weight + '|' + alt_2_name_color + '|' + alt_2_info_color + '|' + alt_2_style_color_1 + '|' + alt_2_style_color_2 + '|' + alt_2_logo_switch + '|' + alt_2_background_switch + '|' + alt_2_shadows + '|' + alt_2_align + '|' + alt_2_size + '|' + alt_2_margin_h + '|' + alt_2_margin_v + '|' + alt_2_line_spacing + '|' + alt_2_font + '|' + alt_3_switch + '|' + alt_3_style + '|' + alt_3_name + '|' + alt_3_info + '|' + alt_3_name_size + '|' + alt_3_info_size  + '|' + alt_3_name_transform + '|' + alt_3_info_transform + '|' + alt_3_name_weight + '|' + alt_3_info_weight + '|' + alt_3_name_color + '|' + alt_3_info_color + '|' + alt_3_style_color_1 + '|' + alt_3_style_color_2 + '|' + alt_3_logo_switch + '|' + alt_3_background_switch + '|' + alt_3_shadows + '|' + alt_3_align + '|' + alt_3_size + '|' + alt_3_margin_h + '|' + alt_3_margin_v + '|' + alt_3_line_spacing + '|' + alt_3_font + '|' + alt_4_switch + '|' + alt_4_style + '|' + alt_4_name + '|' + alt_4_info + '|' + alt_4_name_size + '|' + alt_4_info_size  + '|' + alt_4_name_transform + '|' + alt_4_info_transform + '|' + alt_4_name_weight + '|' + alt_4_info_weight + '|' + alt_4_name_color + '|' + alt_4_info_color + '|' + alt_4_style_color_1 + '|' + alt_4_style_color_2 + '|' + alt_4_logo_switch + '|' + alt_4_background_switch + '|' + alt_4_shadows + '|' + alt_4_align + '|' + alt_4_size + '|' + alt_4_margin_h + '|' + alt_4_margin_v + '|' + alt_4_line_spacing + '|' + alt_4_font + '|' + alt_1_animation_time + '|' + alt_1_active_time + '|' + alt_1_inactive_time + '|' + alt_2_animation_time + '|' + alt_2_active_time + '|' + alt_2_inactive_time + '|' + alt_3_animation_time + '|' + alt_3_active_time + '|' + alt_3_inactive_time + '|' + alt_4_animation_time + '|' + alt_4_active_time + '|' + alt_4_inactive_time);
 
