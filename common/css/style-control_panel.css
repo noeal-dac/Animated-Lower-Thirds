@@ -184,6 +184,7 @@ body.browser-source.lower-thirds{
   float: unset!important;
   margin: 3px!important;
   font-size: 10px;
+  transition: transform 0.2s;
 }
 .more.active i.fas {
   transform: rotate(180deg);

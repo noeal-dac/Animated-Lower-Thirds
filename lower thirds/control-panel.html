@@ -949,14 +949,13 @@
 						var font_url_to_add = $(this).children('.font-url-added').text();
 						fontlist_names.push(font_name_to_add);
 						fontlist_urls.push(font_url_to_add);
-						//AddNewFont(font_name_to_add, font_url_to_add);
 					});				
 
 					//Clear selectors list to refresh
-					const fontNode = document.getElementById("alt-1-font");
+					/*const fontNode = document.getElementById("alt-1-font");
 					while (fontNode.firstChild) {
 						fontNode.removeChild(fontNode.lastChild);
-					}
+					}*/
 
 					//Refresh the font list
 					$.each(fontlist_names, function(i) {
@@ -979,6 +978,10 @@
 						var id = $(this).attr('id');
 						if(localStorage.getItem(id)){
 							$("#" + id).val(localStorage.getItem(id));
+						}
+						//If option doesn't exist check the first
+						if(fontlist_names.includes(localStorage.getItem(id)) == false){
+							$("#" + id).val("'Open Sans', sans-serif");
 						}
     				});
 
