@@ -32,10 +32,26 @@
 							<input class="storable" id="global-inactive-time" placeholder="420s (inactive)" tabindex="3">
 						</div>
 					</div>
-					<div id="theme-options">
-						<div class="settings-title">Theme</div>
-						<div class="settings-inputs">
-							<select name="theme" id="theme" class="select-settings-storable" onchange="changeTheme(this.value)"></select>
+					<label class="more"><i class="fas">&#xf078;</i></label>
+					<div id="more-settings" class="hide-more">
+						<div id="theme-options">
+							<div class="settings-title">Theme</div>
+							<div class="settings-inputs">
+								<select name="theme" id="theme" class="select-settings-storable" onchange="changeTheme(this.value)"></select>
+							</div>
+						</div>
+						<div id="fonts-options">
+							<div class="settings-title">Custom Font</div>
+							<div class="settings-inputs">
+								<input id="new-font-name" placeholder="Font Family" tabindex="51">
+								<input id="new-font-url" placeholder="@import url" tabindex="52">
+								<div id="add-new-font" class="add"><i class="fas">&#xf0fe;</i></div>
+							</div>
+						</div>
+						<div id="custom-font-list">
+							<ul>
+							<!--custom fonts-->
+							</ul>
 						</div>
 					</div>
 				</div>		
@@ -142,6 +158,7 @@
 							    <div class="font-config group">
 									<div class="input-icon"><i class="fas">&#xf031;</i></div>
 									<select id="alt-1-font" class="font-storable">
+<!-- 									
 										<option value="'Open Sans', sans-serif" selected="selected">Open Sans</option> 
 										<option value="'Poppins', sans-serif">Poppins</option>
 										<option value="'Raleway', sans-serif">Raleway</option> 
@@ -153,7 +170,8 @@
 										<option value="'Oleo Script', cursive">Oleo Script</option>
 										<option value="'Kalam', cursive">Kalam</option>
 										<option value="'Fredoka One', cursive">Fredoka One</option>
-								    </select>
+ -->
+									</select>
 							    </div>
 								</div>
 							</div>					
@@ -322,17 +340,7 @@
 							    <div class="font-config group">
 									<div class="input-icon"><i class="fas">&#xf031;</i></div>
 									<select id="alt-2-font" class="font-storable">
-										<option value="'Open Sans', sans-serif" selected="selected">Open Sans</option> 
-										<option value="'Poppins', sans-serif">Poppins</option>
-										<option value="'Raleway', sans-serif">Raleway</option> 
-										<option value="'Anonymous Pro', monospace">Anonymous Pro</option> 
-										<option value="'Patua One', cursive">Patua One</option>;
-										<option value="'Abril Fatface', cursive">Abril Fatface</option>
-										<option value="'Lora', serif">Lora</option>
-										<option value="'Cookie', cursive">Cookie</option>
-										<option value="'Oleo Script', cursive">Oleo Script</option>
-										<option value="'Kalam', cursive">Kalam</option>
-										<option value="'Fredoka One', cursive">Fredoka One</option>
+										<!--Fonts list-->
 								    </select>
 							    </div>
 							  </div>
@@ -502,17 +510,7 @@
 							    <div class="font-config group">
 									<div class="input-icon"><i class="fas">&#xf031;</i></div>
 									<select id="alt-3-font" class="font-storable">
-										<option value="'Open Sans', sans-serif" selected="selected">Open Sans</option> 
-										<option value="'Poppins', sans-serif">Poppins</option>
-										<option value="'Raleway', sans-serif">Raleway</option> 
-										<option value="'Anonymous Pro', monospace">Anonymous Pro</option> 
-										<option value="'Patua One', cursive">Patua One</option>;
-										<option value="'Abril Fatface', cursive">Abril Fatface</option>
-										<option value="'Lora', serif">Lora</option>
-										<option value="'Cookie', cursive">Cookie</option>
-										<option value="'Oleo Script', cursive">Oleo Script</option>
-										<option value="'Kalam', cursive">Kalam</option>
-										<option value="'Fredoka One', cursive">Fredoka One</option>
+										<!--Fonts list-->
 								    </select>
 							    </div>
 							  </div>
@@ -682,17 +680,7 @@
 							    <div class="font-config group">
 									<div class="input-icon"><i class="fas">&#xf031;</i></div>
 									<select id="alt-4-font" class="font-storable">
-										<option value="'Open Sans', sans-serif" selected="selected">Open Sans</option> 
-										<option value="'Poppins', sans-serif">Poppins</option>
-										<option value="'Raleway', sans-serif">Raleway</option> 
-										<option value="'Anonymous Pro', monospace">Anonymous Pro</option> 
-										<option value="'Patua One', cursive">Patua One</option>;
-										<option value="'Abril Fatface', cursive">Abril Fatface</option>
-										<option value="'Lora', serif">Lora</option>
-										<option value="'Cookie', cursive">Cookie</option>
-										<option value="'Oleo Script', cursive">Oleo Script</option>
-										<option value="'Kalam', cursive">Kalam</option>
-										<option value="'Fredoka One', cursive">Fredoka One</option>
+										<!--Fonts list-->
 								    </select>
 							    </div>
 							  </div>
@@ -777,9 +765,14 @@
 		<script>
 			var bc = new BroadcastChannel('obs-lower-thirds-channel'); //Send to browser source
 			var bcr = new BroadcastChannel('obs-lower-thirds-channel2'); //Receives from the source
-			var bcp = new BroadcastChannel('obs-lower-thirds-preview'); //Send to preview windows		
+			var bcp = new BroadcastChannel('obs-lower-thirds-preview'); //Send to preview windows
+			var bcf = new BroadcastChannel('obs-lower-thirds-fonts'); //Send custom fonts
+					
 
 			var slotDeleted = false;
+
+			var fontlist_urls;
+			var new_font_to_send;
 
 			var alt_1_active_time_monitor;
 			var alt_1_inactive_time_monitor;
@@ -876,6 +869,30 @@
 			//acc[3].onclick()
 			//acc[4].onclick()
 
+			var more = document.getElementsByClassName("more");
+			//var global_config_panel = document.getElementById("global-configuration");
+			var m;
+			
+			for (m = 0; m < more.length; m++) {
+			  more[m].onclick = function() {
+			    this.classList.toggle("active");
+			    var hideMore = this.nextElementSibling;
+			    if (hideMore.style.maxHeight){
+			      hideMore.style.maxHeight = null;
+			    } else {
+			      hideMore.style.maxHeight = hideMore.scrollHeight + "px";
+				  
+				  //Increase the heigh of the main settings panel
+				  var hidable = document.getElementById("global-configuration").style.maxHeight;
+				  hidable = Number(hidable.replace(/px/g,''));
+				  document.getElementById("global-configuration").style.maxHeight = hidable + hideMore.scrollHeight + "px";
+				  //global_config_panel.style.maxHeight = global_config_panel.scrollHeight + "px";
+			    } 
+			  }
+			}
+
+			//more[0].onclick()
+
 			////////////////////
 
 			//Load the theme style
@@ -904,6 +921,176 @@
 
 				$('#alt-main-config-content #theme').append('<option name="' + themes[i] + '"' + $selected + '>' + themes[i] + '</option>');
 			});
+
+			//////////////////
+
+			//Font options to settings
+			var fontlist_names = ["'Open Sans', sans-serif", "'Poppins', sans-serif", "'Raleway', sans-serif", "'Anonymous Pro', monospace", "'Patua One', cursive", "'Abril Fatface', cursive", "'Lora', serif", "'Cookie', cursive", "'Oleo Script', cursive", "'Kalam', cursive", "'Fredoka One', cursive"];
+			var fontlist_urls = [];
+
+
+			//Load the list of stored Custom Fonts in the Main settings
+		    if(localStorage.getItem("customFonts") == null){
+				customFonts = 0;
+			} else {
+				customFonts = Number(localStorage.getItem("customFonts"));
+			}
+	
+			for (i = 0; i < customFonts; i++) {
+				font_number = i + 1;
+				$('#custom-font-list ul').append('<li><div class="font-name-added slot-storable" id="font-name-added-' + font_number + '"></div><div class="font-url-added slot-storable" id="font-url-added-' + font_number + '"></div><div class="delete-font"><i class="fas">&#xf2ed;</i></div></li>');
+			}
+
+			//On load
+			function updateCustomFontList() {			
+					//Update the fontlist array (name and urls)
+					$('#custom-font-list ul li').each(function(){
+						var font_name_to_add = $(this).children('.font-name-added').text();
+						var font_url_to_add = $(this).children('.font-url-added').text();
+						fontlist_names.push(font_name_to_add);
+						fontlist_urls.push(font_url_to_add);
+						//AddNewFont(font_name_to_add, font_url_to_add);
+					});				
+
+					//Clear selectors list to refresh
+					const fontNode = document.getElementById("alt-1-font");
+					while (fontNode.firstChild) {
+						fontNode.removeChild(fontNode.lastChild);
+					}
+
+					//Refresh the font list
+					$.each(fontlist_names, function(i) {
+						//var $selectedfonts = '';
+
+						var fontlist_shortname = fontlist_names[i].substring(
+							fontlist_names[i].lastIndexOf("*'") + 2, 
+							fontlist_names[i].lastIndexOf("',")
+						);
+
+						//$('#alt-1-font').append('<option value="' + fontlist_names[i] + '"' + $selectedfonts + '>' + fontlist_shortname + '</option>');
+						$('.font-storable').each(function(){
+							$(this).append('<option value="' + fontlist_names[i] + '">' + fontlist_shortname + '</option>');
+						});
+
+					});
+
+					//Load the font stored in the localstorage
+					$('.font-storable').each(function(){
+						var id = $(this).attr('id');
+						if(localStorage.getItem(id)){
+							$("#" + id).val(localStorage.getItem(id));
+						}
+    				});
+
+					//Call function to send to the source
+					function_send_font();
+
+			}
+
+			//Add Custom Fonts to the panel Selectors
+			function AddNewFont(font_name, font_url) {
+				//Add to array
+				fontlist_names.push(font_name);
+				fontlist_urls.push(font_url);
+
+				var font_name_shortname = font_name.substring(
+					font_name.lastIndexOf("*'") + 2, 
+					font_name.lastIndexOf("',")
+				);
+
+				$('.font-storable').each(function(){
+					$(this).append('<option value="' + font_name + '">' + font_name_shortname + '</option>');
+				});
+
+				function_send_font();
+
+			}
+
+			//Remove Custom Fonts to the panel Selectors
+			function removeFont(font_name, font_url) {
+				//Remove from the array
+				fontlist_names = jQuery.grep(fontlist_names, function(value) {
+				return value != font_name;
+				});
+				fontlist_urls = jQuery.grep(fontlist_urls, function(value) {
+				return value != font_url;
+				});
+
+				var font_name_shortname = font_name.substring(
+					font_name.lastIndexOf("*'") + 2, 
+					font_name.lastIndexOf("',")
+				);
+				
+				$('.font-storable').each(function(){
+					$(this).children('option[value="' + font_name + '"]').remove();
+				});
+			}			
+
+
+			//Add new Font
+			$('#add-new-font').click(function() {
+				var howMany = $('#custom-font-list ul li').length;
+				howMany += 1;
+				var font_name_to_add = $('#new-font-name').val();
+				var font_url_to_add = $('#new-font-url').val();
+				if (font_name_to_add && font_url_to_add){
+					$("#new-font-name").val("");
+					$("#new-font-url").val("");
+
+					//Clean font name to add whit no "font-family" or ";"
+					var font_name_to_add_clean = font_name_to_add.replace("font-family: ", "");
+					var font_name_to_add_clean = font_name_to_add_clean.replace(";", "");
+
+					//Clean font name to add whit no "font-family" or ";"
+					var font_url_to_add_clean = font_url_to_add.replace("<style> ", "");
+					var font_url_to_add_clean = font_url_to_add_clean.replace(" </style>", "");
+
+
+					$('#custom-font-list ul').append('<li><div class="font-name-added slot-storable" id="font-name-added-' + howMany + '">' + font_name_to_add_clean + '</div><div class="font-url-added slot-storable" id="font-url-added-' + howMany + '">' + font_url_to_add_clean + '</div><div class="delete-font"><i class="fas">&#xf2ed;</i></div></li>');
+					AddNewFont(font_name_to_add_clean, font_url_to_add_clean);
+
+					//Increase the heigh of the main settings panel
+					var hidable = document.getElementById("global-configuration").style.maxHeight;
+					hidable = Number(hidable.replace(/px/g,''));
+					document.getElementById("global-configuration").style.maxHeight = hidable + 28 + "px";
+					document.getElementById("more-settings").style.maxHeight = hidable + 28 + "px";
+
+				}
+				
+				//Update the amount of custom fonts (+1)
+				id = "customFonts";
+				localStorage.setItem(id, howMany);
+
+			});
+
+			//Remove Font
+			$('#custom-font-list ul').on('click', 'li > .delete-font', function(e) {
+				var howMany = $('#custom-font-list ul li').length;
+				howMany -= 1;
+
+				var font_name_to_remove = $(this).closest('li').children('.font-name-added').text();
+				var font_url_to_remove = $(this).closest('li').children('.font-url-added').text();
+				//console.log("I will remove: " + font_name_to_remove + " and " + font_url_to_remove);
+
+				$(this).closest('li').remove();
+				
+				removeFont(font_name_to_remove, font_url_to_remove);
+
+				//Update the amount of custom fonts (-1)
+				id = "customFonts";
+				localStorage.setItem(id, howMany);
+				//console.log(howMany);
+
+			});
+
+			//Rename de IDs of Font to correct store
+			$('#custom-font-list ul').on('click', 'li', function(e) {
+				$('#custom-font-list ul li').each(function(i) {
+					$(this).children('.font-name-added').attr('id', 'font-name-added-'+(i+1));
+					$(this).children('.font-url-added').attr('id', 'font-url-added-'+(i+1));
+				});
+			});
+
 
 			//////////////////
 
@@ -1887,6 +2074,19 @@
 				bcp.postMessage(global_animation_time + '|' + global_active_time + '|' + global_inactive_time + '|' + alt_1_preview + '|' + alt_1_style + '|' + alt_1_name + '|' + alt_1_info + '|' + alt_1_name_size + '|' + alt_1_info_size  + '|' + alt_1_name_transform + '|' + alt_1_info_transform + '|' + alt_1_name_weight + '|' + alt_1_info_weight + '|' + alt_1_name_color + '|' + alt_1_info_color + '|' + alt_1_style_color_1 + '|' + alt_1_style_color_2 + '|' + alt_1_logo_switch + '|' + alt_1_background_switch + '|' + alt_1_shadows + '|' + alt_1_align + '|' + alt_1_size + '|' + alt_1_margin_h + '|' + alt_1_margin_v + '|' + alt_1_line_spacing + '|' + alt_1_font + '|' + alt_2_preview + '|' + alt_2_style + '|' + alt_2_name + '|' + alt_2_info + '|' + alt_2_name_size + '|' + alt_2_info_size  + '|' + alt_2_name_transform + '|' + alt_2_info_transform + '|' + alt_2_name_weight + '|' + alt_2_info_weight + '|' + alt_2_name_color + '|' + alt_2_info_color + '|' + alt_2_style_color_1 + '|' + alt_2_style_color_2 + '|' + alt_2_logo_switch + '|' + alt_2_background_switch + '|' + alt_2_shadows + '|' + alt_2_align + '|' + alt_2_size + '|' + alt_2_margin_h + '|' + alt_2_margin_v + '|' + alt_2_line_spacing + '|' + alt_2_font + '|' + alt_3_preview + '|' + alt_3_style + '|' + alt_3_name + '|' + alt_3_info + '|' + alt_3_name_size + '|' + alt_3_info_size  + '|' + alt_3_name_transform + '|' + alt_3_info_transform + '|' + alt_3_name_weight + '|' + alt_3_info_weight + '|' + alt_3_name_color + '|' + alt_3_info_color + '|' + alt_3_style_color_1 + '|' + alt_3_style_color_2 + '|' + alt_3_logo_switch + '|' + alt_3_background_switch + '|' + alt_3_shadows + '|' + alt_3_align + '|' + alt_3_size + '|' + alt_3_margin_h + '|' + alt_3_margin_v + '|' + alt_3_line_spacing + '|' + alt_3_font + '|' + alt_4_preview + '|' + alt_4_style + '|' + alt_4_name + '|' + alt_4_info + '|' + alt_4_name_size + '|' + alt_4_info_size  + '|' + alt_4_name_transform + '|' + alt_4_info_transform + '|' + alt_4_name_weight + '|' + alt_4_info_weight + '|' + alt_4_name_color + '|' + alt_4_info_color + '|' + alt_4_style_color_1 + '|' + alt_4_style_color_2 + '|' + alt_4_logo_switch + '|' + alt_4_background_switch + '|' + alt_4_shadows + '|' + alt_4_align + '|' + alt_4_size + '|' + alt_4_margin_h + '|' + alt_4_margin_v + '|' + alt_4_line_spacing + '|' + alt_4_font + '|' + alt_1_animation_time + '|' + alt_1_active_time + '|' + alt_1_inactive_time + '|' + alt_2_animation_time + '|' + alt_2_active_time + '|' + alt_2_inactive_time + '|' + alt_3_animation_time + '|' + alt_3_active_time + '|' + alt_3_inactive_time + '|' + alt_4_animation_time + '|' + alt_4_active_time + '|' + alt_4_inactive_time);
 			}
 
+			//Send New Fonts to source
+			function function_send_font() {
+
+				$.each(fontlist_urls, function(i) {
+					//setTimeout(function (){
+					new_font_to_send = fontlist_urls[i];
+					bcf.postMessage(new_font_to_send);
+					//}, 100);
+
+				});					
+			}
+			//function_send_font();
+
 			function loadData () {
 				$('.storable').each(function(){    
 					var id = $(this).attr('id');
@@ -1914,12 +2114,12 @@
     				document.getElementById(id).checked = checked;
     			});
 
-				$('.font-storable').each(function(){
-					var id = $(this).attr('id');
-				    if(localStorage.getItem(id)){
-				        $("#" + id).val(localStorage.getItem(id));
-				    }
-    			});
+				// $('.font-storable').each(function(){
+				// 	var id = $(this).attr('id');
+				//     if(localStorage.getItem(id)){
+				//         $("#" + id).val(localStorage.getItem(id));
+				//     }
+    			// });
 
 				$('.title-storable').each(function(){    
 					var id = $(this).attr('id');
@@ -1979,6 +2179,8 @@
 				    });
 				});
 
+
+
 				//localStorage.clear(); //To clear data fields
 	        	setTimeout(saveData, y*1000);
 			}
@@ -1994,12 +2196,15 @@
 			    getAppearance();
 			    updateHorkeys();
 
-			    function_send();
+				function_send();
+				
+				
 
 			    setTimeout(refreshData, x*1000);
 			}
 
 			loadData();
+			updateCustomFontList();
 			refreshData();
 			saveData();
 

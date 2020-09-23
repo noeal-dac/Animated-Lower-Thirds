@@ -87,7 +87,7 @@ body.browser-source.lower-thirds{
   margin-bottom: -4px;
 }
 .active + #global-configuration{
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 #global-configuration #time-options,
 #global-configuration #theme-options {
@@ -111,6 +111,7 @@ body.browser-source.lower-thirds{
 .settings-inputs > input,
 .settings-inputs > select {
   margin-left: 4px!important;
+  margin-bottom: 4px;
 }
 .alt-time-options > .settings-inputs input {
   margin: 0;
@@ -165,6 +166,41 @@ body.browser-source.lower-thirds{
   text-align: center;
 }
 
+#add-new-font i.fas {
+  font-size: 15px;
+  margin: 4px 4px 0 6px;
+}
+
+/*********************/
+
+.more {
+  cursor: pointer;
+  width: 100%;
+  height: 18px;
+  line-height: 17px;
+  text-align: right;
+}
+.more i.fas {
+  float: unset!important;
+  margin: 3px!important;
+  font-size: 10px;
+}
+.more.active i.fas {
+  transform: rotate(180deg);
+}
+.more:before {
+  content: 'Show more';
+}
+.more.active:before {
+  content: 'Show less';
+}
+
+.hide-more {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
 /*********************/
 
 #alt-1-config-content,
@@ -214,17 +250,17 @@ body.browser-source.lower-thirds{
   }
 }
 
-ul {
+.panel-bottom > ul {
   /*margin: 0 0 0 17px;*/
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
 }
-li div {
+.panel-bottom > ul > li div {
   visibility: hidden;
 }
-li {
+.panel-bottom > ul > li {
   display: block;
   box-sizing: border-box;
   float: left;
@@ -235,19 +271,19 @@ li {
   height: 9px;
   border-radius: 3px;
 }
-li + li {
+.panel-bottom > ul > li + li {
   margin: 0 0 0 0.35em;
 }
-.stored {
+.panel-bottom > ul > li.stored {
   background: #666;
   border: 1px solid #666;
 }
-.active-slot {
+.panel-bottom > ul > li.active-slot {
   background: var(--main-color);
   border: 1px solid var(--main-color);
 }
 
-.next-to-load {
+.panel-bottom > ul > li.next-to-load {
   animation: blinker-white 0.25s ease-in infinite;
 }
 
@@ -916,12 +952,10 @@ select#alt-4-font {
 
 i.alt-icon {
   font-size: 15px;
-  /*margin: 0 6px 0 2px;*/
   margin: 0 6px 0 7px;
   position: relative;
   height: 10px;
   overflow: hidden;
-  /*top: -3px;*/
   top: 5px;
 }
 
@@ -929,4 +963,54 @@ i.alt-icon {
     position: absolute;
     transform: translate(-5px, -5px);
     height: 25px;
+}
+
+
+#fonts-options {
+  display: flex;
+}
+
+#custom-font-list {
+  display: flex;
+    margin: 0 0 0 23%;
+    padding: 0;
+}
+
+#custom-font-list > ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#custom-font-list > ul > li {
+  display: flex;
+  box-sizing: border-box;
+  background: var(--obs-field-background);
+  border: var(--obs-field-border);
+  width: 100%;
+  height: 23px;
+  border-radius: 3px;
+  margin: 0 0 5px 8px;
+}
+
+.font-url-added {display: none;}
+
+.font-name-added {
+  width: calc(100% - 23px);
+  padding: 2px 4px;
+}
+
+.delete-font {
+  width: 23px;
+  height: 23px;
+  margin: 0 0 0 5px;
+  padding: 0;
+}
+
+.delete-font i.fas {
+  margin: 5px 5px 5px 6px!important;
+  padding: 0;
 }

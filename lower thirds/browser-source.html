@@ -101,6 +101,7 @@
 
 		var bcp = new BroadcastChannel(receiveChannel); //Receives from the source 
 		var bcr = new BroadcastChannel('obs-lower-thirds-channel2'); //Send to Control Panel
+		var bcf = new BroadcastChannel('obs-lower-thirds-fonts');
 
 		var alt_1_logo_image = "../logos/logo_1.png";
 		var alt_2_logo_image = "../logos/logo_2.png";
@@ -879,6 +880,14 @@
 			} else if (alt_4_shadows == "true") {
 				root.style.setProperty('--alt-4-shadows', "0.1rem 0.1rem 0.2rem #00000060");
 			}
+		}
+
+		bcf.onmessage = function (ev) {
+			received_data=ev.data.split("|");
+			new_font = received_data[0];
+			
+			//console.log(new_font);
+			$('head').append('<style>' + new_font + '</style>');
 		}
 
 		function loadLogo(alt,logo) {
