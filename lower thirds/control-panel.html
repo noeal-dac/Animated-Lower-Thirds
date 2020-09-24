@@ -22,7 +22,11 @@
 				<input class="checkbox-storable" type="checkbox" id="lower-thirds-masterswitch"> <!--"checked" to active switch-->
 				<span class="slider round"></span>
 				</label>
-				<label class="accordion"><i class="fas">&#xf013;</i>Main settings</label>
+				<div class="main-title">
+					<div class="main-icon"><i class="fas">&#xf013;</i></div>
+					<div>Main settings</div>					
+				</div>
+				<label class="accordion"></label>
 				<div id="global-configuration" class="hidable">
 					<div id="time-options">
 						<div class="settings-title">Global times</div>
@@ -52,6 +56,13 @@
 							<ul>
 							<!--custom fonts-->
 							</ul>
+						</div>
+						<div class="default-options">
+							<div class="settings-title"></div>
+							<div class="settings-inputs">
+								<label><input class="checkbox-storable" type="checkbox" id="set-preview">Active preview window</label>
+								<label><input class="checkbox-storable" type="checkbox" id="set-slot-numbers">Show the numbers of the slots</label>
+							</div>
 						</div>
 					</div>
 				</div>		
@@ -100,9 +111,9 @@
 							    </div>
 							    <div>
 									<div id="alt-1-style-color-appearance">
-										<div class="tool-tittle">Color 1</div>
+										<div class="tool-tittle">Clr 1</div>
 										<input class="storable" id="alt-1-style-color-1" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="D54141">
-										<div class="tool-tittle">Color 2</div>
+										<div class="tool-tittle">Clr 2</div>
 										<input class="storable" id="alt-1-style-color-2" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="222222">
 									</div>
 							    </div>
@@ -204,30 +215,30 @@
 							<div style="clear:both"></div>
 							<div class="panel-bottom">
 								<div id="alt-1-clean-inputs" class="clean"><i class="fas">&#xf00d;</i></div>
-								<label class="config-btn">
-									<input class="checkbox-storable" type="checkbox" id="alt-1-autoload">
-									<span class="icon-btn"><i class='fas'>&#xf2f1;</i></span>
-								</label>
 								<ul id="alt-1-memory-slots">
-									<li id="alt-1-slot-1"><div class="slot-storable stored-name" id="alt-1-name-1"></div><div class="slot-storable stored-info" id="alt-1-info-1"></div></li>
-									<li id="alt-1-slot-2"><div class="slot-storable stored-name" id="alt-1-name-2"></div><div class="slot-storable stored-info" id="alt-1-info-2"></div></li>
-									<li id="alt-1-slot-3"><div class="slot-storable stored-name" id="alt-1-name-3"></div><div class="slot-storable stored-info" id="alt-1-info-3"></div></li>
-									<li id="alt-1-slot-4"><div class="slot-storable stored-name" id="alt-1-name-4"></div><div class="slot-storable stored-info" id="alt-1-info-4"></div></li>
-									<li id="alt-1-slot-5"><div class="slot-storable stored-name" id="alt-1-name-5"></div><div class="slot-storable stored-info" id="alt-1-info-5"></div></li>
-									<li id="alt-1-slot-6"><div class="slot-storable stored-name" id="alt-1-name-6"></div><div class="slot-storable stored-info" id="alt-1-info-6"></div></li>
-									<li id="alt-1-slot-7"><div class="slot-storable stored-name" id="alt-1-name-7"></div><div class="slot-storable stored-info" id="alt-1-info-7"></div></li>
-									<li id="alt-1-slot-8"><div class="slot-storable stored-name" id="alt-1-name-8"></div><div class="slot-storable stored-info" id="alt-1-info-8"></div></li>
-									<li id="alt-1-slot-9"><div class="slot-storable stored-name" id="alt-1-name-9"></div><div class="slot-storable stored-info" id="alt-1-info-9"></div></li>
-									<li id="alt-1-slot-10"><div class="slot-storable stored-name" id="alt-1-name-10"></div><div class="slot-storable stored-info" id="alt-1-info-10"></div></li>
+									<li id="alt-1-slot-1"><div class="slot-number">1</div><div class="slot-storable stored-name" id="alt-1-name-1"></div><div class="slot-storable stored-info" id="alt-1-info-1"></div></li>
+									<li id="alt-1-slot-2"><div class="slot-number">2</div><div class="slot-storable stored-name" id="alt-1-name-2"></div><div class="slot-storable stored-info" id="alt-1-info-2"></div></li>
+									<li id="alt-1-slot-3"><div class="slot-number">3</div><div class="slot-storable stored-name" id="alt-1-name-3"></div><div class="slot-storable stored-info" id="alt-1-info-3"></div></li>
+									<li id="alt-1-slot-4"><div class="slot-number">4</div><div class="slot-storable stored-name" id="alt-1-name-4"></div><div class="slot-storable stored-info" id="alt-1-info-4"></div></li>
+									<li id="alt-1-slot-5"><div class="slot-number">5</div><div class="slot-storable stored-name" id="alt-1-name-5"></div><div class="slot-storable stored-info" id="alt-1-info-5"></div></li>
+									<li id="alt-1-slot-6"><div class="slot-number">6</div><div class="slot-storable stored-name" id="alt-1-name-6"></div><div class="slot-storable stored-info" id="alt-1-info-6"></div></li>
+									<li id="alt-1-slot-7"><div class="slot-number">7</div><div class="slot-storable stored-name" id="alt-1-name-7"></div><div class="slot-storable stored-info" id="alt-1-info-7"></div></li>
+									<li id="alt-1-slot-8"><div class="slot-number">8</div><div class="slot-storable stored-name" id="alt-1-name-8"></div><div class="slot-storable stored-info" id="alt-1-info-8"></div></li>
+									<li id="alt-1-slot-9"><div class="slot-number">9</div><div class="slot-storable stored-name" id="alt-1-name-9"></div><div class="slot-storable stored-info" id="alt-1-info-9"></div></li>
+									<li id="alt-1-slot-10"><div class="slot-number">10</div><div class="slot-storable stored-name" id="alt-1-name-10"></div><div class="slot-storable stored-info" id="alt-1-info-10"></div></li>
 								</ul>
 								<div class="time-bar">
 									<div id="alt-1-active-time-monitor">0</div>
 									<div id="alt-1-inactive-time-monitor">0</div>
 								</div>
+								<label class="config-btn">
+									<input class="checkbox-storable" type="checkbox" id="alt-1-autoload">
+									<span class="icon-btn"><i class='fas'>&#xf2f1;</i></span>
+								</label>
 								<label id="alt-1-custom-times" class="accordion"><i class="fas">&#xf017;</i></label>
 								<div class="hidable">
 									<div class="alt-time-options">
-										<div class="settings-title">Custom times</div>
+										<div class="settings-title">LT times</div>
 										<div class="settings-inputs">
 											<input class="storable" id="alt-1-animation-time" placeholder="(in-out)" tabindex="12">
 											<input class="storable" id="alt-1-active-time" placeholder="(active)" tabindex="13">
@@ -282,9 +293,9 @@
 							    </div>
 							    <div>
 									<div id="alt-2-style-color-appearance">
-										<div class="tool-tittle">Color 1</div>
+										<div class="tool-tittle">Clr 1</div>
 										<input class="storable" id="alt-2-style-color-1" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="D54141">
-										<div class="tool-tittle">Color 2</div>
+										<div class="tool-tittle">Clr 2</div>
 										<input class="storable" id="alt-2-style-color-2" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="222222">
 									</div>
 							    </div>
@@ -374,30 +385,30 @@
 							<div style="clear:both"></div>
 							<div class="panel-bottom">
 								<div id="alt-2-clean-inputs" class="clean"><i class="fas">&#xf00d;</i></div>
-								<label class="config-btn">
-									<input class="checkbox-storable" type="checkbox" id="alt-2-autoload">
-									<span class="icon-btn"><i class='fas'>&#xf2f1;</i></span>
-								</label>								
 								<ul id="alt-2-memory-slots">
-									<li id="alt-2-slot-1"><div class="slot-storable stored-name" id="alt-2-name-1"></div><div class="slot-storable stored-info" id="alt-2-info-1"></div></li>
-									<li id="alt-2-slot-2"><div class="slot-storable stored-name" id="alt-2-name-2"></div><div class="slot-storable stored-info" id="alt-2-info-2"></div></li>
-									<li id="alt-2-slot-3"><div class="slot-storable stored-name" id="alt-2-name-3"></div><div class="slot-storable stored-info" id="alt-2-info-3"></div></li>
-									<li id="alt-2-slot-4"><div class="slot-storable stored-name" id="alt-2-name-4"></div><div class="slot-storable stored-info" id="alt-2-info-4"></div></li>
-									<li id="alt-2-slot-5"><div class="slot-storable stored-name" id="alt-2-name-5"></div><div class="slot-storable stored-info" id="alt-2-info-5"></div></li>
-									<li id="alt-2-slot-6"><div class="slot-storable stored-name" id="alt-2-name-6"></div><div class="slot-storable stored-info" id="alt-2-info-6"></div></li>
-									<li id="alt-2-slot-7"><div class="slot-storable stored-name" id="alt-2-name-7"></div><div class="slot-storable stored-info" id="alt-2-info-7"></div></li>
-									<li id="alt-2-slot-8"><div class="slot-storable stored-name" id="alt-2-name-8"></div><div class="slot-storable stored-info" id="alt-2-info-8"></div></li>
-									<li id="alt-2-slot-9"><div class="slot-storable stored-name" id="alt-2-name-9"></div><div class="slot-storable stored-info" id="alt-2-info-9"></div></li>
-									<li id="alt-2-slot-10"><div class="slot-storable stored-name" id="alt-2-name-10"></div><div class="slot-storable stored-info" id="alt-2-info-10"></div></li>
+									<li id="alt-2-slot-1"><div class="slot-number">1</div><div class="slot-storable stored-name" id="alt-2-name-1"></div><div class="slot-storable stored-info" id="alt-2-info-1"></div></li>
+									<li id="alt-2-slot-2"><div class="slot-number">2</div><div class="slot-storable stored-name" id="alt-2-name-2"></div><div class="slot-storable stored-info" id="alt-2-info-2"></div></li>
+									<li id="alt-2-slot-3"><div class="slot-number">3</div><div class="slot-storable stored-name" id="alt-2-name-3"></div><div class="slot-storable stored-info" id="alt-2-info-3"></div></li>
+									<li id="alt-2-slot-4"><div class="slot-number">4</div><div class="slot-storable stored-name" id="alt-2-name-4"></div><div class="slot-storable stored-info" id="alt-2-info-4"></div></li>
+									<li id="alt-2-slot-5"><div class="slot-number">5</div><div class="slot-storable stored-name" id="alt-2-name-5"></div><div class="slot-storable stored-info" id="alt-2-info-5"></div></li>
+									<li id="alt-2-slot-6"><div class="slot-number">6</div><div class="slot-storable stored-name" id="alt-2-name-6"></div><div class="slot-storable stored-info" id="alt-2-info-6"></div></li>
+									<li id="alt-2-slot-7"><div class="slot-number">7</div><div class="slot-storable stored-name" id="alt-2-name-7"></div><div class="slot-storable stored-info" id="alt-2-info-7"></div></li>
+									<li id="alt-2-slot-8"><div class="slot-number">8</div><div class="slot-storable stored-name" id="alt-2-name-8"></div><div class="slot-storable stored-info" id="alt-2-info-8"></div></li>
+									<li id="alt-2-slot-9"><div class="slot-number">9</div><div class="slot-storable stored-name" id="alt-2-name-9"></div><div class="slot-storable stored-info" id="alt-2-info-9"></div></li>
+									<li id="alt-2-slot-10"><div class="slot-number">10</div><div class="slot-storable stored-name" id="alt-2-name-10"></div><div class="slot-storable stored-info" id="alt-2-info-10"></div></li>
 								</ul>
 								<div class="time-bar">
 									<div id="alt-2-active-time-monitor">0</div>
 									<div id="alt-2-inactive-time-monitor">0</div>
 								</div>
+								<label class="config-btn">
+									<input class="checkbox-storable" type="checkbox" id="alt-2-autoload">
+									<span class="icon-btn"><i class='fas'>&#xf2f1;</i></span>
+								</label>
 								<label id="alt-2-custom-times" class="accordion"><i class="fas">&#xf017;</i></label>
 								<div class="hidable">
 									<div class="alt-time-options">
-										<div class="settings-title">Custom times</div>
+										<div class="settings-title">LT times</div>
 										<div class="settings-inputs">
 											<input class="storable" id="alt-2-animation-time" placeholder="(in-out)" tabindex="15">
 											<input class="storable" id="alt-2-active-time" placeholder="(active)" tabindex="16">
@@ -544,30 +555,30 @@
 							<div style="clear:both"></div>
 							<div class="panel-bottom">
 								<div id="alt-3-clean-inputs" class="clean"><i class="fas">&#xf00d;</i></div>
-								<label class="config-btn">
-									<input class="checkbox-storable" type="checkbox" id="alt-3-autoload">
-									<span class="icon-btn"><i class='fas'>&#xf2f1;</i></span>
-								</label>
 								<ul id="alt-3-memory-slots">
-									<li id="alt-3-slot-1"><div class="slot-storable stored-name" id="alt-3-name-1"></div><div class="slot-storable stored-info" id="alt-3-info-1"></div></li>
-									<li id="alt-3-slot-2"><div class="slot-storable stored-name" id="alt-3-name-2"></div><div class="slot-storable stored-info" id="alt-3-info-2"></div></li>
-									<li id="alt-3-slot-3"><div class="slot-storable stored-name" id="alt-3-name-3"></div><div class="slot-storable stored-info" id="alt-3-info-3"></div></li>
-									<li id="alt-3-slot-4"><div class="slot-storable stored-name" id="alt-3-name-4"></div><div class="slot-storable stored-info" id="alt-3-info-4"></div></li>
-									<li id="alt-3-slot-5"><div class="slot-storable stored-name" id="alt-3-name-5"></div><div class="slot-storable stored-info" id="alt-3-info-5"></div></li>
-									<li id="alt-3-slot-6"><div class="slot-storable stored-name" id="alt-3-name-6"></div><div class="slot-storable stored-info" id="alt-3-info-6"></div></li>
-									<li id="alt-3-slot-7"><div class="slot-storable stored-name" id="alt-3-name-7"></div><div class="slot-storable stored-info" id="alt-3-info-7"></div></li>
-									<li id="alt-3-slot-8"><div class="slot-storable stored-name" id="alt-3-name-8"></div><div class="slot-storable stored-info" id="alt-3-info-8"></div></li>
-									<li id="alt-3-slot-9"><div class="slot-storable stored-name" id="alt-3-name-9"></div><div class="slot-storable stored-info" id="alt-3-info-9"></div></li>
-									<li id="alt-3-slot-10"><div class="slot-storable stored-name" id="alt-3-name-10"></div><div class="slot-storable stored-info" id="alt-3-info-10"></div></li>
+									<li id="alt-3-slot-1"><div class="slot-number">1</div><div class="slot-storable stored-name" id="alt-3-name-1"></div><div class="slot-storable stored-info" id="alt-3-info-1"></div></li>
+									<li id="alt-3-slot-2"><div class="slot-number">2</div><div class="slot-storable stored-name" id="alt-3-name-2"></div><div class="slot-storable stored-info" id="alt-3-info-2"></div></li>
+									<li id="alt-3-slot-3"><div class="slot-number">3</div><div class="slot-storable stored-name" id="alt-3-name-3"></div><div class="slot-storable stored-info" id="alt-3-info-3"></div></li>
+									<li id="alt-3-slot-4"><div class="slot-number">4</div><div class="slot-storable stored-name" id="alt-3-name-4"></div><div class="slot-storable stored-info" id="alt-3-info-4"></div></li>
+									<li id="alt-3-slot-5"><div class="slot-number">5</div><div class="slot-storable stored-name" id="alt-3-name-5"></div><div class="slot-storable stored-info" id="alt-3-info-5"></div></li>
+									<li id="alt-3-slot-6"><div class="slot-number">6</div><div class="slot-storable stored-name" id="alt-3-name-6"></div><div class="slot-storable stored-info" id="alt-3-info-6"></div></li>
+									<li id="alt-3-slot-7"><div class="slot-number">7</div><div class="slot-storable stored-name" id="alt-3-name-7"></div><div class="slot-storable stored-info" id="alt-3-info-7"></div></li>
+									<li id="alt-3-slot-8"><div class="slot-number">8</div><div class="slot-storable stored-name" id="alt-3-name-8"></div><div class="slot-storable stored-info" id="alt-3-info-8"></div></li>
+									<li id="alt-3-slot-9"><div class="slot-number">9</div><div class="slot-storable stored-name" id="alt-3-name-9"></div><div class="slot-storable stored-info" id="alt-3-info-9"></div></li>
+									<li id="alt-3-slot-10"><div class="slot-number">10</div><div class="slot-storable stored-name" id="alt-3-name-10"></div><div class="slot-storable stored-info" id="alt-3-info-10"></div></li>
 								</ul>
 								<div class="time-bar">
 									<div id="alt-3-active-time-monitor">0</div>
 									<div id="alt-3-inactive-time-monitor">0</div>
 								</div>
+								<label class="config-btn">
+									<input class="checkbox-storable" type="checkbox" id="alt-3-autoload">
+									<span class="icon-btn"><i class='fas'>&#xf2f1;</i></span>
+								</label>
 								<label id="alt-3-custom-times" class="accordion"><i class="fas">&#xf017;</i></label>
 								<div class="hidable">
 									<div class="alt-time-options">
-										<div class="settings-title">Custom times</div>
+										<div class="settings-title">LT times</div>
 										<div class="settings-inputs">
 											<input class="storable" id="alt-3-animation-time" placeholder="(in-out)" tabindex="18">
 											<input class="storable" id="alt-3-active-time" placeholder="(active)" tabindex="19">
@@ -714,30 +725,30 @@
 							<div style="clear:both"></div>
 							<div class="panel-bottom">
 								<div id="alt-4-clean-inputs" class="clean"><i class="fas">&#xf00d;</i></div>
-								<label class="config-btn">
-									<input class="checkbox-storable" type="checkbox" id="alt-4-autoload">
-									<span class="icon-btn"><i class='fas'>&#xf2f1;</i></span>
-								</label>
 								<ul id="alt-4-memory-slots">
-									<li id="alt-4-slot-1"><div class="slot-storable stored-name" id="alt-4-name-1"></div><div class="slot-storable stored-info" id="alt-4-info-1"></div></li>
-									<li id="alt-4-slot-2"><div class="slot-storable stored-name" id="alt-4-name-2"></div><div class="slot-storable stored-info" id="alt-4-info-2"></div></li>
-									<li id="alt-4-slot-3"><div class="slot-storable stored-name" id="alt-4-name-3"></div><div class="slot-storable stored-info" id="alt-4-info-3"></div></li>
-									<li id="alt-4-slot-4"><div class="slot-storable stored-name" id="alt-4-name-4"></div><div class="slot-storable stored-info" id="alt-4-info-4"></div></li>
-									<li id="alt-4-slot-5"><div class="slot-storable stored-name" id="alt-4-name-5"></div><div class="slot-storable stored-info" id="alt-4-info-5"></div></li>
-									<li id="alt-4-slot-6"><div class="slot-storable stored-name" id="alt-4-name-6"></div><div class="slot-storable stored-info" id="alt-4-info-6"></div></li>
-									<li id="alt-4-slot-7"><div class="slot-storable stored-name" id="alt-4-name-7"></div><div class="slot-storable stored-info" id="alt-4-info-7"></div></li>
-									<li id="alt-4-slot-8"><div class="slot-storable stored-name" id="alt-4-name-8"></div><div class="slot-storable stored-info" id="alt-4-info-8"></div></li>
-									<li id="alt-4-slot-9"><div class="slot-storable stored-name" id="alt-4-name-9"></div><div class="slot-storable stored-info" id="alt-4-info-9"></div></li>
-									<li id="alt-4-slot-10"><div class="slot-storable stored-name" id="alt-4-name-10"></div><div class="slot-storable stored-info" id="alt-4-info-10"></div></li>
+									<li id="alt-4-slot-1"><div class="slot-number">1</div><div class="slot-storable stored-name" id="alt-4-name-1"></div><div class="slot-storable stored-info" id="alt-4-info-1"></div></li>
+									<li id="alt-4-slot-2"><div class="slot-number">2</div><div class="slot-storable stored-name" id="alt-4-name-2"></div><div class="slot-storable stored-info" id="alt-4-info-2"></div></li>
+									<li id="alt-4-slot-3"><div class="slot-number">3</div><div class="slot-storable stored-name" id="alt-4-name-3"></div><div class="slot-storable stored-info" id="alt-4-info-3"></div></li>
+									<li id="alt-4-slot-4"><div class="slot-number">4</div><div class="slot-storable stored-name" id="alt-4-name-4"></div><div class="slot-storable stored-info" id="alt-4-info-4"></div></li>
+									<li id="alt-4-slot-5"><div class="slot-number">5</div><div class="slot-storable stored-name" id="alt-4-name-5"></div><div class="slot-storable stored-info" id="alt-4-info-5"></div></li>
+									<li id="alt-4-slot-6"><div class="slot-number">6</div><div class="slot-storable stored-name" id="alt-4-name-6"></div><div class="slot-storable stored-info" id="alt-4-info-6"></div></li>
+									<li id="alt-4-slot-7"><div class="slot-number">7</div><div class="slot-storable stored-name" id="alt-4-name-7"></div><div class="slot-storable stored-info" id="alt-4-info-7"></div></li>
+									<li id="alt-4-slot-8"><div class="slot-number">8</div><div class="slot-storable stored-name" id="alt-4-name-8"></div><div class="slot-storable stored-info" id="alt-4-info-8"></div></li>
+									<li id="alt-4-slot-9"><div class="slot-number">9</div><div class="slot-storable stored-name" id="alt-4-name-9"></div><div class="slot-storable stored-info" id="alt-4-info-9"></div></li>
+									<li id="alt-4-slot-10"><div class="slot-number">10</div><div class="slot-storable stored-name" id="alt-4-name-10"></div><div class="slot-storable stored-info" id="alt-4-info-10"></div></li>
 								</ul>
 								<div class="time-bar">
 									<div id="alt-4-active-time-monitor">0</div>
 									<div id="alt-4-inactive-time-monitor">0</div>
 								</div>
+								<label class="config-btn">
+									<input class="checkbox-storable" type="checkbox" id="alt-4-autoload">
+									<span class="icon-btn"><i class='fas'>&#xf2f1;</i></span>
+								</label>
 								<label id="alt-4-custom-times" class="accordion"><i class="fas">&#xf017;</i></label>
 								<div class="hidable">
 									<div class="alt-time-options">
-										<div class="settings-title">Custom times</div>
+										<div class="settings-title">LT times</div>
 										<div class="settings-inputs">
 											<input class="storable" id="alt-4-animation-time" placeholder="(in-out)" tabindex="21">
 											<input class="storable" id="alt-4-active-time" placeholder="(active)" tabindex="22">
@@ -752,9 +763,9 @@
 
 			</div>
 
-			<div id="alt-preview" class="hide">
+			<div id="alt-preview" class="active">
 				<label><i class="fas">&#xf002;</i>Preview</label>
-				<div id="toggle-preview" class="hide"><i class="fas">&#xf078;</i></div>
+				<div id="toggle-preview" class="active"><i class="fas">&#xf078;</i></div>
 				<div class="embed-container">
 				    <iframe id="myiframe" src="./browser-source.html?mode=preview" frameborder="0" allowfullscreen></iframe>
 				</div>
@@ -787,6 +798,7 @@
 			//var alt_2_animation_time;
 			//var alt_3_animation_time;
 			//var alt_4_animation_time;
+			var set_preview;
 
 
 			var alt_1_autoload;
@@ -863,7 +875,7 @@
 			    } 
 			  }
 			}
-			//acc[0].onclick() //Open the Main Settings accordion at startup.
+			acc[0].onclick() //Open the Main Settings accordion at startup.
 			//acc[1].onclick()
 			//acc[2].onclick()
 			//acc[3].onclick()
@@ -1086,7 +1098,7 @@
 
 			});
 
-			//Rename de IDs of Font to correct store
+			//<Rename> de IDs of Font to correct store
 			$('#custom-font-list ul').on('click', 'li', function(e) {
 				$('#custom-font-list ul li').each(function(i) {
 					$(this).children('.font-name-added').attr('id', 'font-name-added-'+(i+1));
@@ -1133,7 +1145,7 @@
 					oriVal = $(this).text();					
 				}
 				$(this).text("");
-				$("<input type='text' value='"+ oriVal + "'>").appendTo(this).focus();
+				$("<input type='text' value='"+ oriVal + "' maxlength='40'>").appendTo(this).focus();
 			});
 
 			$(".renameable").on('focusout', '> input', function () {
@@ -1377,14 +1389,16 @@
 
 			//Open Preview screen
 			$("#toggle-preview").click(function(){
-				document.getElementById("toggle-preview").classList.toggle("hide");
-				document.getElementById("alt-preview").classList.toggle("hide");
+				document.getElementById("toggle-preview").classList.toggle("active");
+				document.getElementById("alt-preview").classList.toggle("active");
 				if (document.getElementById("alt-panel").style.marginBottom == "0px") {
-					document.getElementById("alt-panel").style.marginBottom = "255px";
+					document.getElementById("alt-panel").style.marginBottom = "220px";
 				} else {
 					document.getElementById("alt-panel").style.marginBottom = "0px";
 				}
 			});
+
+
 
 			///////////////////////////////////////
 
@@ -1842,10 +1856,38 @@
 				alt_2_autoload = (document.getElementById("alt-2-autoload").checked == true) ? true : false;
 				alt_3_autoload = (document.getElementById("alt-3-autoload").checked == true) ? true : false;
 				alt_4_autoload = (document.getElementById("alt-4-autoload").checked == true) ? true : false;
+				
+				//////////////////////////////
+
+				//Show the slots numbers
+				if (document.getElementById("set-slot-numbers").checked == true) {
+					$('.slot-number').each(function(){    
+						$(this).removeClass("hide");
+	        		});
+				} else {
+					$('.slot-number').each(function(){    
+						$(this).addClass("hide");
+	        		});
+				}
 
 				//////////////////////////////
 
 				//Switch Preview ALT ON/OFF
+				//set_preview = (document.getElementById("set-preview").checked == true) ? true : false;
+				if (document.getElementById("set-preview").checked == true) {
+					$("#alt-preview").removeClass("hide");
+					//Hide preview butons
+					$('.preview-btn').each(function(){    
+						$(this).removeClass("hide");
+	        		});
+				} else {
+					//Unhide preview butons
+					$("#alt-preview").addClass("hide");
+					$('.preview-btn').each(function(){    
+						$(this).addClass("hide");
+	        		});
+				}
+								
 				if (document.getElementById("alt-1-preview").checked == false) {
 					alt_1_preview = "false";
 				} else {

@@ -29,7 +29,7 @@ body.browser-source.lower-thirds{
 }
 
 .static-panel-top {
-  width: 372px;
+  width: 330px;
   margin: 5px;
   display: flex;
   flex-direction: column;
@@ -41,9 +41,20 @@ body.browser-source.lower-thirds{
 
 .panel::-webkit-scrollbar-thumb {
 	border-radius: var(--obs-scrollbar-radius);
-	border: solid 3px var(--obs-background);
-	background-color: var(--obs-scrollbar-color);
+  border: solid 0px var(--obs-background);
+  /*border-right: 0px;
+  border-left: 0px;*/
+  background-color: var(--obs-scrollbar-color);
+  margin: 3px 0;
+  padding: 3px 0;
 }
+.panel::-webkit-scrollbar-button {
+  height: 3px;
+  display: inline-block;
+}
+/*::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}*/
 
 .panel-bottom {
   padding-bottom: 5px;
@@ -71,26 +82,36 @@ body.browser-source.lower-thirds{
   animation: gradient 10s ease infinite;
 }
 #alt-main-config-content > .accordion {
-  width: calc(100% - 30px);
+  /* width: calc(100% - 30px); */
   /*margin: 0;*/
 }
-/*#alt-main-config-content > .accordion.active {
-  margin: 0 0 0.35em;
-}*/
-
-#alt-main-config-content i.fas {
-  margin: 1px 6px 0px 1px;
+.main-title{
+  width: 275px;
+  position: absolute;
+}
+.main-icon {
   float: left;
+  box-sizing: border-box;
+  width: 15px;
+  height: 15px;
+  line-height: 15px;
+  font-size: 15px;
+  margin: 1px 6px 1px 1px;
+}
+#alt-main-config-content i.fas {
+  margin: 0px;
+  /* float: left; */
 }
 
 #global-configuration{
   margin-bottom: -4px;
 }
 .active + #global-configuration{
-  margin-bottom: 5px;
+  margin-bottom: 0px;
 }
 #global-configuration #time-options,
-#global-configuration #theme-options {
+#global-configuration #theme-options,
+#global-configuration .default-options {
   display: flex;
 }
 #global-configuration #theme-options #theme {
@@ -117,29 +138,51 @@ body.browser-source.lower-thirds{
   margin: 0;
 }
 
+.default-options > div > label {
+  float: left;
+  height: 23px;
+  padding: 3px;
+  box-sizing: border-box;
+}
+.default-options > div> label > input {
+  width: 12px;
+  margin: 3px 5px 3px 0;
+  float: left;
+  height: 12px;
+}
+.default-options > .settings-inputs {
+  flex-direction: column;
+}
+
 .accordion {
   cursor: pointer;
-  width: calc(100% - 50px);
+  /* width: calc(100% - 50px); */
   border: none;
   text-align: left;
   outline: none;
   transition: 0.4s;
+  position: relative;
+  float: right;
+  margin: 0px 3px!important;
 }
 .accordion:after {
   content: '\002B';
-  float: right;
+  /* float: right; */
   font-weight: bold;
-  margin-left: 5px;
+  /* margin-left: 5px; */
   font-size: 20px;
-  /*line-height: 0.6em;*/
-  line-height: 10px;
-  margin: 1px 0 2px;
+  line-height: 0px;
+  margin: 0px;
+  display: block;
+  top: 6px;
+  position: relative;
 }
 .accordion.active:after {
   content: "\2212";
 }
 .hidable {
   max-height: 0;
+  margin-top: 21px;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
 }
@@ -151,19 +194,19 @@ body.browser-source.lower-thirds{
     overflow: hidden;
 }
 .alt-number-icon {
-  /*position: relative;*/
   float: left;
   border-radius: 3px;
   box-sizing: border-box;
-  background: var(--main-color);
-  color: var(--obs-background);
+  /*background: var(--main-color);*/
+  color: var(--main-color);
   width: 15px;
   height: 15px;
-  line-height: 14px;
-  font-size: 12px;
+  line-height: 11px;
+  font-size: 9px;
   font-weight: 900;
   margin: 5px 6px;
   text-align: center;
+  border: 2px solid var(--main-color);
 }
 
 #add-new-font i.fas {
@@ -252,10 +295,9 @@ body.browser-source.lower-thirds{
 }
 
 .panel-bottom > ul {
-  /*margin: 0 0 0 17px;*/
+  margin: 0 0 0.35em;
   list-style: none;
   padding: 0;
-  margin: 0;
   display: flex;
 }
 .panel-bottom > ul > li div {
@@ -268,12 +310,12 @@ body.browser-source.lower-thirds{
   border: 1px solid var(--obs-field-background);
   background-color: var(--obs-field-background);
   cursor: pointer;
-  width: 22px; /*22px v1.3*/
-  height: 9px;
+  width: 18px; /*22px v1.3*/
+  height: 18px;
   border-radius: 3px;
 }
 .panel-bottom > ul > li + li {
-  margin: 0 0 0 0.35em;
+  margin: 0 0 0 4px;
 }
 .panel-bottom > ul > li.stored {
   background: #666;
@@ -297,7 +339,7 @@ body.browser-source.lower-thirds{
 #alt-2-name-color, #alt-2-info-color,
 #alt-3-name-color, #alt-3-info-color,
 #alt-4-name-color, #alt-4-info-color {
-  width: 50px;
+  width: 45px;
   height: 14px;
   border: none;
   border-radius: var(--element-radius);
@@ -319,7 +361,7 @@ body.browser-source.lower-thirds{
 #alt-2-style-color-1, #alt-2-style-color-2,
 #alt-3-style-color-1, #alt-3-style-color-2,
 #alt-4-style-color-1, #alt-4-style-color-2 {
-  width: 50px;
+  width: 45px;
   height: 14px;
   border: none;
   border-radius: var(--element-radius);
@@ -332,26 +374,22 @@ body.browser-source.lower-thirds{
 }
 
 .clean {
-    /*margin: -1px 0 -2px 4px;
-    float: left;*/
+    margin: 4px 5px 3px 5px;
     line-height: 0;
     font-size: 12px;
     cursor: pointer;
     display: flex;
     width: 9px;
-    margin-top: -1px;
 }
 .panel-bottom > label.config-btn {
-  width: 11px;
-  height: 11px;
-  margin: 0;
+  width: 12px;
+  height: 12px;
+  margin: 4px 4px 4px 7px;
   line-height: 0;
 }
 .panel-bottom > label > .icon-btn > i.fas {
-  font-size: 10px;
-  margin: 0;
-  top: -1px;
-
+  font-size: 12px;
+  margin: 0px;
 }
 
 .delete {
@@ -364,22 +402,25 @@ body.browser-source.lower-thirds{
 }
 
 .time-bar{
-  /*float: right;*/
   display: flex;
+  flex-direction: column;
+  margin: 0 0 0 1px;
 }
 .time-bar > div {
   float: left;
   font-size: 7px;
   padding: 1px 3px;
   line-height: 1em;
-  width: 16px;
-  height: 7px;
+  width: 24px;
+  height: 8px;
   background: var(--obs-field-background-disable);
   border-radius: 3px;
   text-align: right;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 .time-bar > div + div {
-  margin: 0 0 0 4px;
+  margin: 2px 0 0 0;
 }
 
 label#alt-1-custom-times::after,
@@ -393,25 +434,40 @@ label#alt-1-custom-times,
 label#alt-2-custom-times,
 label#alt-3-custom-times,
 label#alt-4-custom-times {
-  width: 10px;
-  height: 10px;
+  width: 13px;
+  height: 13px;
   display: flex;
-  margin: 0 0 4px;
+  margin: 4px 5px 3px 5px!important;
+}
+
+#alt-1-custom-times + .hidable,
+#alt-2-custom-times + .hidable,
+#alt-3-custom-times + .hidable,
+#alt-4-custom-times + .hidable {
+  margin-top: 0px;
 }
 
 label#alt-1-custom-times i.fas,
 label#alt-2-custom-times i.fas,
 label#alt-3-custom-times i.fas,
 label#alt-4-custom-times i.fas {
-  font-size: 9px;
+  font-size: 12px;
+  font-weight: 100;
   margin: 0;
-  color: #525252;
+  color: #666666;
+}
+label#alt-1-custom-times.active i.fas,
+label#alt-2-custom-times.active i.fas,
+label#alt-3-custom-times.active i.fas,
+label#alt-4-custom-times.active i.fas {
+  color: var(--main-color);
 }
 label#alt-1-custom-times i.fas.active,
 label#alt-2-custom-times i.fas.active,
 label#alt-3-custom-times i.fas.active,
 label#alt-4-custom-times i.fas.active {
-  color: #ffffff;
+  color: var(--main-color);
+  font-weight: 900;
 }
 
 
@@ -520,7 +576,7 @@ input#alt-2-name, input#alt-2-info,
 input#alt-3-name, input#alt-3-info,
 input#alt-4-name, input#alt-4-info {
     float: left;
-    width: calc(100% - 107px);
+    width: calc(100% - 100px);
     margin-right: 0px;
     border-radius: 2px 0 0 2px;
     border-right: 0;
@@ -537,7 +593,7 @@ input#alt-4-name, input#alt-4-info {
     box-sizing: border-box;
     padding: 0 0 0 3px;
     height: 23px;
-    width: 107px;
+    width: 100px;
 }
 
 #alt-1-name-appearance > .config-btn > .icon-btn > i.fas,
@@ -564,7 +620,7 @@ input#alt-4-name, input#alt-4-info {
     box-sizing: border-box;
     padding: 0 0 0 5px;
     height: 23px;
-    width: 215px;
+    width: 175px;
     display: inline-flex;
     justify-content: flex-end;
 }
@@ -573,7 +629,7 @@ input#alt-4-name, input#alt-4-info {
     font-size: 9px;
     text-transform: uppercase;
     font-weight: 600;
-    margin: 4px;
+    margin: 4px 3px;
     cursor: default;
 }
 #alt-1-style-color-1 + .tool-tittle,
@@ -867,9 +923,10 @@ select#alt-4-font {
 
 #alt-preview {
   position: fixed;
+  box-sizing: border-box;
   bottom: 0px;
-  height: 223px;
-  width: 360px;
+  height: 211px;
+  width: 330px;
   padding: 5px;
   margin: 5px 0px 5px;
   border: none;
@@ -880,8 +937,11 @@ select#alt-4-font {
   transition: bottom 0.5s;
 }
 
+#alt-preview.active {
+  bottom: -190px;
+}
 #alt-preview.hide {
-  bottom: -214px;
+  display: none;
 }
 
 #toggle-preview {
@@ -890,18 +950,27 @@ select#alt-4-font {
   top: 3px;
   cursor: pointer;
 }
-
-#toggle-preview.hide i.fas{
+#toggle-preview i.fas{
+  transition: transform 0.2s;
+}
+#toggle-preview.active i.fas{
     transform: rotate(-180deg);
 }
 
 .embed-container iframe {
-  height: 203px;
+  /*height: 203px;
   width: 360px;
   border-radius: var(--element-radius);
   border: var(--obs-field-border);
   background: var(--alt-preview-background);
+  box-shadow: inset 0px 0px 30px 10px rgb(0 0 0 / 20%);*/
+  height: 179px;
+  width: 318px;
+  border-radius: var(--element-radius);
+  border: var(--obs-field-border);
+  background: var(--alt-preview-background);
   box-shadow: inset 0px 0px 30px 10px rgb(0 0 0 / 20%);
+
 }
 
 .config-btn.preview-btn {
@@ -909,6 +978,10 @@ select#alt-4-font {
   margin: 0px 3px;
   width: 16px;
   height: 16px;
+  /* position: relative; */
+}
+.config-btn.preview-btn.hide {
+  display: none;
 }
 .config-btn.preview-btn > .icon-btn > i.fas {
   margin: 0px;
@@ -939,7 +1012,7 @@ select#alt-4-font {
 
 .renameable {
   display: inline-block;
-  min-width: 268px;
+  min-width: 230px;
   position: relative;
   top: 4px;
 }
@@ -964,6 +1037,7 @@ i.alt-icon {
     position: absolute;
     transform: translate(-5px, -5px);
     height: 25px;
+    width: 278px;
 }
 
 
@@ -1014,4 +1088,30 @@ i.alt-icon {
 .delete-font i.fas {
   margin: 5px 5px 5px 6px!important;
   padding: 0;
+}
+
+
+.slot-number {
+  visibility: visible!important;
+  color: var(--obs-field-background);
+  font-weight: 700;
+  width: 16px;
+  height: 16px;
+  margin: 0px;
+  padding: 0px;
+  font-size: 10px;
+  line-height: 15px;
+  box-sizing: border-box;
+  text-align: center;
+}
+.slot-number.hide{
+  display: none;
+}
+
+.stored .slot-number {
+  color: var(--main-color);
+}
+
+.stored.active-slot .slot-number {
+  color: var(--obs-field-background);
 }

@@ -805,9 +805,9 @@ body {
 
 .preview {
 	width: 1920px;
-	height: 350px;
-	transform: scale(0.1875);
-	left: -216.6%;
-	top: -5px;
+	height: 1080px;
+	transform: scale(0.1656);
+	left: -252%;
+	top: -252%;
 }
 
