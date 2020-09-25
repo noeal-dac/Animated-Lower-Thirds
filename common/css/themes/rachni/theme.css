@@ -41,4 +41,21 @@
 
 /*Fixing border issues*/
 select {background-size: 1px 100%, 26px 24px, 18px 20px, 20px 100%;}
-.tool-tittle {margin: 3px 4px 3px 0px;}
+#alt-1-name-appearance, #alt-1-info-appearance,
+#alt-2-name-appearance, #alt-2-info-appearance,
+#alt-3-name-appearance, #alt-3-info-appearance,
+#alt-4-name-appearance, #alt-4-info-appearance {
+  padding: 0 0 0 2px;
+}
+#alt-1-name-color, #alt-1-info-color,
+#alt-2-name-color, #alt-2-info-color,
+#alt-3-name-color, #alt-3-info-color,
+#alt-4-name-color, #alt-4-info-color {
+  margin: 3px;
+}
+#alt-1-style-color-1, #alt-1-style-color-2,
+#alt-2-style-color-1, #alt-2-style-color-2,
+#alt-3-style-color-1, #alt-3-style-color-2,
+#alt-4-style-color-1, #alt-4-style-color-2 {
+  margin: 3px;
+}

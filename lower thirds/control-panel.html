@@ -60,8 +60,9 @@
 						<div class="default-options">
 							<div class="settings-title"></div>
 							<div class="settings-inputs">
-								<label><input class="checkbox-storable" type="checkbox" id="set-preview">Active preview window</label>
-								<label><input class="checkbox-storable" type="checkbox" id="set-slot-numbers">Show the numbers of the slots</label>
+								<label><input class="checkbox-storable" type="checkbox" id="set-preview">Disable preview window</label>
+								<label><input class="checkbox-storable" type="checkbox" id="set-slot-numbers">Hide numbers of the memory slots</label>
+								<label><input class="checkbox-storable" type="checkbox" id="set-tooltips">Show tooltips with the stored content</label>
 							</div>
 						</div>
 					</div>
@@ -169,19 +170,7 @@
 							    <div class="font-config group">
 									<div class="input-icon"><i class="fas">&#xf031;</i></div>
 									<select id="alt-1-font" class="font-storable">
-<!-- 									
-										<option value="'Open Sans', sans-serif" selected="selected">Open Sans</option> 
-										<option value="'Poppins', sans-serif">Poppins</option>
-										<option value="'Raleway', sans-serif">Raleway</option> 
-										<option value="'Anonymous Pro', monospace">Anonymous Pro</option> 
-										<option value="'Patua One', cursive">Patua One</option>;
-										<option value="'Abril Fatface', cursive">Abril Fatface</option>
-										<option value="'Lora', serif">Lora</option>
-										<option value="'Cookie', cursive">Cookie</option>
-										<option value="'Oleo Script', cursive">Oleo Script</option>
-										<option value="'Kalam', cursive">Kalam</option>
-										<option value="'Fredoka One', cursive">Fredoka One</option>
- -->
+										<!--Fonts list-->
 									</select>
 							    </div>
 								</div>
@@ -794,12 +783,6 @@
 			var alt_4_active_time_monitor;
 			var alt_4_inactive_time_monitor;
 
-			//var alt_1_animation_time;
-			//var alt_2_animation_time;
-			//var alt_3_animation_time;
-			//var alt_4_animation_time;
-			var set_preview;
-
 
 			var alt_1_autoload;
 			var alt_1_jumpnext;
@@ -875,18 +858,16 @@
 			    } 
 			  }
 			}
-			acc[0].onclick() //Open the Main Settings accordion at startup.
+			//acc[0].onclick() //Open the Main Settings accordion at startup.
 			//acc[1].onclick()
 			//acc[2].onclick()
 			//acc[3].onclick()
 			//acc[4].onclick()
 
 			var more = document.getElementsByClassName("more");
-			//var global_config_panel = document.getElementById("global-configuration");
-			var m;
-			
-			for (m = 0; m < more.length; m++) {
-			  more[m].onclick = function() {
+			// var m;
+			for (i = 0; i < more.length; i++) {
+			  more[i].onclick = function() {
 			    this.classList.toggle("active");
 			    var hideMore = this.nextElementSibling;
 			    if (hideMore.style.maxHeight){
@@ -898,7 +879,6 @@
 				  var hidable = document.getElementById("global-configuration").style.maxHeight;
 				  hidable = Number(hidable.replace(/px/g,''));
 				  document.getElementById("global-configuration").style.maxHeight = hidable + hideMore.scrollHeight + "px";
-				  //global_config_panel.style.maxHeight = global_config_panel.scrollHeight + "px";
 			    } 
 			  }
 			}
@@ -963,22 +943,14 @@
 						fontlist_urls.push(font_url_to_add);
 					});				
 
-					//Clear selectors list to refresh
-					/*const fontNode = document.getElementById("alt-1-font");
-					while (fontNode.firstChild) {
-						fontNode.removeChild(fontNode.lastChild);
-					}*/
-
 					//Refresh the font list
 					$.each(fontlist_names, function(i) {
-						//var $selectedfonts = '';
 
 						var fontlist_shortname = fontlist_names[i].substring(
 							fontlist_names[i].lastIndexOf("*'") + 2, 
 							fontlist_names[i].lastIndexOf("',")
 						);
 
-						//$('#alt-1-font').append('<option value="' + fontlist_names[i] + '"' + $selectedfonts + '>' + fontlist_shortname + '</option>');
 						$('.font-storable').each(function(){
 							$(this).append('<option value="' + fontlist_names[i] + '">' + fontlist_shortname + '</option>');
 						});
@@ -1860,7 +1832,7 @@
 				//////////////////////////////
 
 				//Show the slots numbers
-				if (document.getElementById("set-slot-numbers").checked == true) {
+				if (document.getElementById("set-slot-numbers").checked == false) {
 					$('.slot-number').each(function(){    
 						$(this).removeClass("hide");
 	        		});
@@ -1872,9 +1844,37 @@
 
 				//////////////////////////////
 
+				//Create Tooltips to show the contect of the slots
+				if (document.getElementById("set-tooltips").checked == true) {
+					$('.panel-bottom > ul > li').each(function(){    
+						var name_to_tooltip = $(this).children('.stored-name').text();
+						var info_to_tooltip = $(this).children('.stored-info').text();
+						var isStored = (name_to_tooltip && info_to_tooltip) ? true : false;
+						var isTooltip = $(this).children(".tooltiptext")[0] ? true : false;
+
+					if (isTooltip){
+						if (!isStored) {
+							$(this).children(".tooltiptext").remove();
+						}
+					} else {
+						if (isStored) {
+							$(this).prepend('<span class="tooltiptext">' + name_to_tooltip + '<br>' + info_to_tooltip + '</span>');
+						}
+					}
+						
+	        		});
+				} else {
+					$('.tooltiptext').each(function(){
+						$(this).remove();
+					});
+				}
+
+				
+
+				//////////////////////////////
+
 				//Switch Preview ALT ON/OFF
-				//set_preview = (document.getElementById("set-preview").checked == true) ? true : false;
-				if (document.getElementById("set-preview").checked == true) {
+				if (document.getElementById("set-preview").checked == false) {
 					$("#alt-preview").removeClass("hide");
 					//Hide preview butons
 					$('.preview-btn').each(function(){    

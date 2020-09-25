@@ -81,10 +81,6 @@ body.browser-source.lower-thirds{
   background-size: 400% 400%;
   animation: gradient 10s ease infinite;
 }
-#alt-main-config-content > .accordion {
-  /* width: calc(100% - 30px); */
-  /*margin: 0;*/
-}
 .main-title{
   width: 275px;
   position: absolute;
@@ -618,7 +614,7 @@ input#alt-4-name, input#alt-4-info {
     border-radius: var(--element-radius);
     border: var(--obs-field-border);
     box-sizing: border-box;
-    padding: 0 0 0 5px;
+    padding: 0 0 0 4px;
     height: 23px;
     width: 175px;
     display: inline-flex;
@@ -1114,4 +1110,42 @@ i.alt-icon {
 
 .stored.active-slot .slot-number {
   color: var(--obs-field-background);
+}
+
+
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.panel-bottom > ul > li .tooltiptext {
+  visibility: hidden;
+  font-size: 11px;
+  max-width: 130px;
+  background-color: var(--obs-field-background);
+  color: var(--main-color);
+  text-align: center;
+  border-radius: 3px;
+  padding: 5px 8px;
+  position: absolute;
+  z-index: 1;
+  margin-top: 25px;
+  margin-left: -35px;
+  white-space: pre-line;
+  opacity: 0;
+  transition: opacity 1s;
+  box-shadow: 2px 2px 5px rgb(0 0 0 / 30%);
+}
+
+.panel-bottom > ul > li:hover .tooltiptext {
+  visibility: visible;
+animation: tooltip-anim 0.3s;
+animation-fill-mode: forwards;
+animation-delay: 0.6s;
+}
+@keyframes tooltip-anim {
+from {opacity: 0;}
+to {opacity: 1;}
 }
