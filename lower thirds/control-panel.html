@@ -227,7 +227,7 @@
 								<label id="alt-1-custom-times" class="accordion"><i class="fas">&#xf017;</i></label>
 								<div class="hidable">
 									<div class="alt-time-options">
-										<div class="settings-title">LT times</div>
+										<div class="settings-title">LT1 times</div>
 										<div class="settings-inputs">
 											<input class="storable" id="alt-1-animation-time" placeholder="(in-out)" tabindex="12">
 											<input class="storable" id="alt-1-active-time" placeholder="(active)" tabindex="13">
@@ -397,7 +397,7 @@
 								<label id="alt-2-custom-times" class="accordion"><i class="fas">&#xf017;</i></label>
 								<div class="hidable">
 									<div class="alt-time-options">
-										<div class="settings-title">LT times</div>
+										<div class="settings-title">LT2 times</div>
 										<div class="settings-inputs">
 											<input class="storable" id="alt-2-animation-time" placeholder="(in-out)" tabindex="15">
 											<input class="storable" id="alt-2-active-time" placeholder="(active)" tabindex="16">
@@ -567,7 +567,7 @@
 								<label id="alt-3-custom-times" class="accordion"><i class="fas">&#xf017;</i></label>
 								<div class="hidable">
 									<div class="alt-time-options">
-										<div class="settings-title">LT times</div>
+										<div class="settings-title">LT3 times</div>
 										<div class="settings-inputs">
 											<input class="storable" id="alt-3-animation-time" placeholder="(in-out)" tabindex="18">
 											<input class="storable" id="alt-3-active-time" placeholder="(active)" tabindex="19">
@@ -737,7 +737,7 @@
 								<label id="alt-4-custom-times" class="accordion"><i class="fas">&#xf017;</i></label>
 								<div class="hidable">
 									<div class="alt-time-options">
-										<div class="settings-title">LT times</div>
+										<div class="settings-title">LT4 times</div>
 										<div class="settings-inputs">
 											<input class="storable" id="alt-4-animation-time" placeholder="(in-out)" tabindex="21">
 											<input class="storable" id="alt-4-active-time" placeholder="(active)" tabindex="22">
@@ -844,6 +844,50 @@
 			var hotkeySwitch3Old = hotkeySwitch3;
 			var hotkeySwitch4Old = hotkeySwitch4;
 
+			var hotkeyAlt1Slot1Old = hotkeyAlt1Slot1;
+			var hotkeyAlt1Slot2Old = hotkeyAlt1Slot2;
+			var hotkeyAlt1Slot3Old = hotkeyAlt1Slot3;
+			var hotkeyAlt1Slot4Old = hotkeyAlt1Slot4;
+			var hotkeyAlt1Slot5Old = hotkeyAlt1Slot5;
+			var hotkeyAlt1Slot6Old = hotkeyAlt1Slot6;
+			var hotkeyAlt1Slot7Old = hotkeyAlt1Slot7;
+			var hotkeyAlt1Slot8Old = hotkeyAlt1Slot8;
+			var hotkeyAlt1Slot9Old = hotkeyAlt1Slot9;
+			var hotkeyAlt1Slot10Old = hotkeyAlt1Slot10;
+
+			var hotkeyAlt2Slot1Old = hotkeyAlt2Slot1;
+			var hotkeyAlt2Slot2Old = hotkeyAlt2Slot2;
+			var hotkeyAlt2Slot3Old = hotkeyAlt2Slot3;
+			var hotkeyAlt2Slot4Old = hotkeyAlt2Slot4;
+			var hotkeyAlt2Slot5Old = hotkeyAlt2Slot5;
+			var hotkeyAlt2Slot6Old = hotkeyAlt2Slot6;
+			var hotkeyAlt2Slot7Old = hotkeyAlt2Slot7;
+			var hotkeyAlt2Slot8Old = hotkeyAlt2Slot8;
+			var hotkeyAlt2Slot9Old = hotkeyAlt2Slot9;
+			var hotkeyAlt2Slot10Old = hotkeyAlt2Slot10;			
+			
+			var hotkeyAlt3Slot1Old = hotkeyAlt3Slot1;
+			var hotkeyAlt3Slot2Old = hotkeyAlt3Slot2;
+			var hotkeyAlt3Slot3Old = hotkeyAlt3Slot3;
+			var hotkeyAlt3Slot4Old = hotkeyAlt3Slot4;
+			var hotkeyAlt3Slot5Old = hotkeyAlt3Slot5;
+			var hotkeyAlt3Slot6Old = hotkeyAlt3Slot6;
+			var hotkeyAlt3Slot7Old = hotkeyAlt3Slot7;
+			var hotkeyAlt3Slot8Old = hotkeyAlt3Slot8;
+			var hotkeyAlt3Slot9Old = hotkeyAlt3Slot9;
+			var hotkeyAlt3Slot10Old = hotkeyAlt3Slot10;
+
+			var hotkeyAlt4Slot1Old = hotkeyAlt4Slot1;
+			var hotkeyAlt4Slot2Old = hotkeyAlt4Slot2;
+			var hotkeyAlt4Slot3Old = hotkeyAlt4Slot3;
+			var hotkeyAlt4Slot4Old = hotkeyAlt4Slot4;
+			var hotkeyAlt4Slot5Old = hotkeyAlt4Slot5;
+			var hotkeyAlt4Slot6Old = hotkeyAlt4Slot6;
+			var hotkeyAlt4Slot7Old = hotkeyAlt4Slot7;
+			var hotkeyAlt4Slot8Old = hotkeyAlt4Slot8;
+			var hotkeyAlt4Slot9Old = hotkeyAlt4Slot9;
+			var hotkeyAlt4Slot10Old = hotkeyAlt4Slot10;
+			
 			var acc = document.getElementsByClassName("accordion");
 			var i;
 
@@ -1188,6 +1232,177 @@
 					}
 					hotkeySwitch4Old = hotkeySwitch4;
 				}
+
+				//Memory Slots triggers LT1
+				if (hotkeyAlt1Slot1 != hotkeyAlt1Slot1Old) {
+					if ($("#alt-1-name-1").text() && $("#alt-1-info-1").text()){
+						loadSlot("#alt-1-name", "#alt-1-info", $("#alt-1-name-1").text(), $("#alt-1-info-1").text(), 0);
+					}
+					hotkeyAlt1Slot1Old = hotkeyAlt1Slot1;
+				}
+				if (hotkeyAlt1Slot2 != hotkeyAlt1Slot2Old) {
+					loadSlot("#alt-1-name", "#alt-1-info", $("#alt-1-name-2").text(), $("#alt-1-info-2").text(), 0);
+					hotkeyAlt1Slot2Old = hotkeyAlt1Slot2;
+				}
+				if (hotkeyAlt1Slot3 != hotkeyAlt1Slot3Old) {
+					loadSlot("#alt-1-name", "#alt-1-info", $("#alt-1-name-3").text(), $("#alt-1-info-3").text(), 0);
+					hotkeyAlt1Slot3Old = hotkeyAlt1Slot3;
+				}
+				if (hotkeyAlt1Slot4 != hotkeyAlt1Slot4Old) {
+					loadSlot("#alt-1-name", "#alt-1-info", $("#alt-1-name-4").text(), $("#alt-1-info-4").text(), 0);
+					hotkeyAlt1Slot4Old = hotkeyAlt1Slot4;
+				}
+				if (hotkeyAlt1Slot5 != hotkeyAlt1Slot5Old) {
+					loadSlot("#alt-1-name", "#alt-1-info", $("#alt-1-name-5").text(), $("#alt-1-info-5").text(), 0);
+					hotkeyAlt1Slot5Old = hotkeyAlt1Slot5;
+				}
+				if (hotkeyAlt1Slot6 != hotkeyAlt1Slot6Old) {
+					loadSlot("#alt-1-name", "#alt-1-info", $("#alt-1-name-6").text(), $("#alt-1-info-6").text(), 0);
+					hotkeyAlt1Slot6Old = hotkeyAlt1Slot6;
+				}
+				if (hotkeyAlt1Slot7 != hotkeyAlt1Slot7Old) {
+					loadSlot("#alt-1-name", "#alt-1-info", $("#alt-1-name-7").text(), $("#alt-1-info-7").text(), 0);
+					hotkeyAlt1Slot7Old = hotkeyAlt1Slot7;
+				}
+				if (hotkeyAlt1Slot8 != hotkeyAlt1Slot8Old) {
+					loadSlot("#alt-1-name", "#alt-1-info", $("#alt-1-name-8").text(), $("#alt-1-info-8").text(), 0);
+					hotkeyAlt1Slot8Old = hotkeyAlt1Slot8;
+				}
+				if (hotkeyAlt1Slot9 != hotkeyAlt1Slot9Old) {
+					loadSlot("#alt-1-name", "#alt-1-info", $("#alt-1-name-9").text(), $("#alt-1-info-9").text(), 0);
+					hotkeyAlt1Slot9Old = hotkeyAlt1Slot9;
+				}
+				if (hotkeyAlt1Slot10 != hotkeyAlt1Slot10Old) {
+					loadSlot("#alt-1-name", "#alt-1-info", $("#alt-1-name-10").text(), $("#alt-1-info-10").text(), 0);
+					hotkeyAlt1Slot10Old = hotkeyAlt1Slot10;
+				}
+
+				//Memory Slots triggers LT2
+				if (hotkeyAlt2Slot1 != hotkeyAlt2Slot1Old) {
+					loadSlot("#alt-2-name", "#alt-2-info", $("#alt-2-name-1").text(), $("#alt-2-info-1").text(), 0);
+					hotkeyAlt2Slot1Old = hotkeyAlt2Slot1;
+				}
+				if (hotkeyAlt2Slot2 != hotkeyAlt2Slot2Old) {
+					loadSlot("#alt-2-name", "#alt-2-info", $("#alt-2-name-2").text(), $("#alt-2-info-2").text(), 0);
+					hotkeyAlt2Slot2Old = hotkeyAlt2Slot2;
+				}
+				if (hotkeyAlt2Slot3 != hotkeyAlt2Slot3Old) {
+					loadSlot("#alt-2-name", "#alt-2-info", $("#alt-2-name-3").text(), $("#alt-2-info-3").text(), 0);
+					hotkeyAlt2Slot3Old = hotkeyAlt2Slot3;
+				}
+				if (hotkeyAlt2Slot4 != hotkeyAlt2Slot4Old) {
+					loadSlot("#alt-2-name", "#alt-2-info", $("#alt-2-name-4").text(), $("#alt-2-info-4").text(), 0);
+					hotkeyAlt2Slot4Old = hotkeyAlt2Slot4;
+				}
+				if (hotkeyAlt2Slot5 != hotkeyAlt2Slot5Old) {
+					loadSlot("#alt-2-name", "#alt-2-info", $("#alt-2-name-5").text(), $("#alt-2-info-5").text(), 0);
+					hotkeyAlt2Slot5Old = hotkeyAlt2Slot5;
+				}
+				if (hotkeyAlt2Slot6 != hotkeyAlt2Slot6Old) {
+					loadSlot("#alt-2-name", "#alt-2-info", $("#alt-2-name-6").text(), $("#alt-2-info-6").text(), 0);
+					hotkeyAlt2Slot6Old = hotkeyAlt2Slot6;
+				}
+				if (hotkeyAlt2Slot7 != hotkeyAlt2Slot7Old) {
+					loadSlot("#alt-2-name", "#alt-2-info", $("#alt-2-name-7").text(), $("#alt-2-info-7").text(), 0);
+					hotkeyAlt2Slot7Old = hotkeyAlt2Slot7;
+				}
+				if (hotkeyAlt2Slot8 != hotkeyAlt2Slot8Old) {
+					loadSlot("#alt-2-name", "#alt-2-info", $("#alt-2-name-8").text(), $("#alt-2-info-8").text(), 0);
+					hotkeyAlt2Slot8Old = hotkeyAlt2Slot8;
+				}
+				if (hotkeyAlt2Slot9 != hotkeyAlt2Slot9Old) {
+					loadSlot("#alt-2-name", "#alt-2-info", $("#alt-2-name-9").text(), $("#alt-2-info-9").text(), 0);
+					hotkeyAlt2Slot9Old = hotkeyAlt2Slot9;
+				}
+				if (hotkeyAlt2Slot10 != hotkeyAlt2Slot10Old) {
+					loadSlot("#alt-2-name", "#alt-2-info", $("#alt-2-name-10").text(), $("#alt-2-info-10").text(), 0);
+					hotkeyAlt2Slot10Old = hotkeyAlt2Slot10;
+				}
+
+				//Memory Slots triggers LT3
+				if (hotkeyAlt3Slot1 != hotkeyAlt3Slot1Old) {
+					loadSlot("#alt-3-name", "#alt-3-info", $("#alt-3-name-1").text(), $("#alt-3-info-1").text(), 0);
+					hotkeyAlt3Slot1Old = hotkeyAlt3Slot1;
+				}
+				if (hotkeyAlt3Slot2 != hotkeyAlt3Slot2Old) {
+					loadSlot("#alt-3-name", "#alt-3-info", $("#alt-3-name-2").text(), $("#alt-3-info-2").text(), 0);
+					hotkeyAlt3Slot2Old = hotkeyAlt3Slot2;
+				}
+				if (hotkeyAlt3Slot3 != hotkeyAlt3Slot3Old) {
+					loadSlot("#alt-3-name", "#alt-3-info", $("#alt-3-name-3").text(), $("#alt-3-info-3").text(), 0);
+					hotkeyAlt3Slot3Old = hotkeyAlt3Slot3;
+				}
+				if (hotkeyAlt3Slot4 != hotkeyAlt3Slot4Old) {
+					loadSlot("#alt-3-name", "#alt-3-info", $("#alt-3-name-4").text(), $("#alt-3-info-4").text(), 0);
+					hotkeyAlt3Slot4Old = hotkeyAlt3Slot4;
+				}
+				if (hotkeyAlt3Slot5 != hotkeyAlt3Slot5Old) {
+					loadSlot("#alt-3-name", "#alt-3-info", $("#alt-3-name-5").text(), $("#alt-3-info-5").text(), 0);
+					hotkeyAlt3Slot5Old = hotkeyAlt3Slot5;
+				}
+				if (hotkeyAlt3Slot6 != hotkeyAlt3Slot6Old) {
+					loadSlot("#alt-3-name", "#alt-3-info", $("#alt-3-name-6").text(), $("#alt-3-info-6").text(), 0);
+					hotkeyAlt3Slot6Old = hotkeyAlt3Slot6;
+				}
+				if (hotkeyAlt3Slot7 != hotkeyAlt3Slot7Old) {
+					loadSlot("#alt-3-name", "#alt-3-info", $("#alt-3-name-7").text(), $("#alt-3-info-7").text(), 0);
+					hotkeyAlt3Slot7Old = hotkeyAlt3Slot7;
+				}
+				if (hotkeyAlt3Slot8 != hotkeyAlt3Slot8Old) {
+					loadSlot("#alt-3-name", "#alt-3-info", $("#alt-3-name-8").text(), $("#alt-3-info-8").text(), 0);
+					hotkeyAlt3Slot8Old = hotkeyAlt3Slot8;
+				}
+				if (hotkeyAlt3Slot9 != hotkeyAlt3Slot9Old) {
+					loadSlot("#alt-3-name", "#alt-3-info", $("#alt-3-name-9").text(), $("#alt-3-info-9").text(), 0);
+					hotkeyAlt3Slot9Old = hotkeyAlt3Slot9;
+				}
+				if (hotkeyAlt3Slot10 != hotkeyAlt3Slot10Old) {
+					loadSlot("#alt-3-name", "#alt-3-info", $("#alt-3-name-10").text(), $("#alt-3-info-10").text(), 0);
+					hotkeyAlt3Slot10Old = hotkeyAlt3Slot10;
+				}
+
+				//Memory Slots triggers LT4
+				if (hotkeyAlt4Slot1 != hotkeyAlt4Slot1Old) {
+					loadSlot("#alt-4-name", "#alt-4-info", $("#alt-4-name-1").text(), $("#alt-4-info-1").text(), 0);
+					hotkeyAlt4Slot1Old = hotkeyAlt4Slot1;
+				}
+				if (hotkeyAlt4Slot2 != hotkeyAlt4Slot2Old) {
+					loadSlot("#alt-4-name", "#alt-4-info", $("#alt-4-name-2").text(), $("#alt-4-info-2").text(), 0);
+					hotkeyAlt4Slot2Old = hotkeyAlt4Slot2;
+				}
+				if (hotkeyAlt4Slot3 != hotkeyAlt4Slot3Old) {
+					loadSlot("#alt-4-name", "#alt-4-info", $("#alt-4-name-3").text(), $("#alt-4-info-3").text(), 0);
+					hotkeyAlt4Slot3Old = hotkeyAlt4Slot3;
+				}
+				if (hotkeyAlt4Slot4 != hotkeyAlt4Slot4Old) {
+					loadSlot("#alt-4-name", "#alt-4-info", $("#alt-4-name-4").text(), $("#alt-4-info-4").text(), 0);
+					hotkeyAlt4Slot4Old = hotkeyAlt4Slot4;
+				}
+				if (hotkeyAlt4Slot5 != hotkeyAlt4Slot5Old) {
+					loadSlot("#alt-4-name", "#alt-4-info", $("#alt-4-name-5").text(), $("#alt-4-info-5").text(), 0);
+					hotkeyAlt4Slot5Old = hotkeyAlt4Slot5;
+				}
+				if (hotkeyAlt4Slot6 != hotkeyAlt4Slot6Old) {
+					loadSlot("#alt-4-name", "#alt-4-info", $("#alt-4-name-6").text(), $("#alt-4-info-6").text(), 0);
+					hotkeyAlt4Slot6Old = hotkeyAlt4Slot6;
+				}
+				if (hotkeyAlt4Slot7 != hotkeyAlt4Slot7Old) {
+					loadSlot("#alt-4-name", "#alt-4-info", $("#alt-4-name-7").text(), $("#alt-4-info-7").text(), 0);
+					hotkeyAlt4Slot7Old = hotkeyAlt4Slot7;
+				}
+				if (hotkeyAlt4Slot8 != hotkeyAlt4Slot8Old) {
+					loadSlot("#alt-4-name", "#alt-4-info", $("#alt-4-name-8").text(), $("#alt-4-info-8").text(), 0);
+					hotkeyAlt4Slot8Old = hotkeyAlt4Slot8;
+				}
+				if (hotkeyAlt4Slot9 != hotkeyAlt4Slot9Old) {
+					loadSlot("#alt-4-name", "#alt-4-info", $("#alt-4-name-9").text(), $("#alt-4-info-9").text(), 0);
+					hotkeyAlt4Slot9Old = hotkeyAlt4Slot9;
+				}
+				if (hotkeyAlt4Slot10 != hotkeyAlt4Slot10Old) {
+					loadSlot("#alt-4-name", "#alt-4-info", $("#alt-4-name-10").text(), $("#alt-4-info-10").text(), 0);
+					hotkeyAlt4Slot10Old = hotkeyAlt4Slot10;
+				}
+
 			}
 
 			//Memory Slots System
@@ -1334,6 +1549,7 @@
 					$(name + ":text").val(name_to_load);
 					$(info + ":text").val(info_to_load);
 				}, alt_waiting_time * 1000);
+				console.log(name + "|" + info + "|" + name_to_load + "|" + info_to_load + "|" + alt_waiting_time);
 				
 			}
 
@@ -1829,6 +2045,9 @@
 				alt_3_autoload = (document.getElementById("alt-3-autoload").checked == true) ? true : false;
 				alt_4_autoload = (document.getElementById("alt-4-autoload").checked == true) ? true : false;
 				
+				//hotkeyAlt1Slot8 = (document.getElementById("alt-1-autoload").checked == true) ? true : false;
+				//console.log(hk_alt_1_slot_8);
+
 				//////////////////////////////
 
 				//Show the slots numbers
