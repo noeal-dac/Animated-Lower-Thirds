@@ -62,6 +62,7 @@
 							<div class="settings-inputs">
 								<label><input class="checkbox-storable" type="checkbox" id="set-preview">Disable preview window</label>
 								<label><input class="checkbox-storable" type="checkbox" id="set-slot-numbers">Hide numbers of the memory slots</label>
+								<label><input class="checkbox-storable" type="checkbox" id="set-switch-position">Switches on the left</label>
 								<label><input class="checkbox-storable" type="checkbox" id="set-tooltips">Show tooltips with the stored content</label>
 							</div>
 						</div>
@@ -452,9 +453,9 @@
 							    </div>
 							    <div>
 									<div id="alt-3-style-color-appearance">
-										<div class="tool-tittle">Color 1</div>
+										<div class="tool-tittle">Clr 1</div>
 										<input class="storable" id="alt-3-style-color-1" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="D54141">
-										<div class="tool-tittle">Color 2</div>
+										<div class="tool-tittle">Clr 2</div>
 										<input class="storable" id="alt-3-style-color-2" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="222222">
 									</div>
 							    </div>
@@ -622,9 +623,9 @@
 							    </div>
 							    <div>
 									<div id="alt-4-style-color-appearance">
-										<div class="tool-tittle">Color 1</div>
+										<div class="tool-tittle">Clr 1</div>
 										<input class="storable" id="alt-4-style-color-1" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="D54141">
-										<div class="tool-tittle">Color 2</div>
+										<div class="tool-tittle">Clr 2</div>
 										<input class="storable" id="alt-4-style-color-2" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="222222">
 									</div>
 							    </div>
@@ -2088,6 +2089,27 @@
 					});
 				}
 
+
+				//////////////////////////////				
+
+				if (document.getElementById("set-switch-position").checked == true) {
+					$('.switch').each(function(){    
+						$(this).addClass("switch-left");
+					});
+					$('.drag-handle').each(function(){    
+						$(this).addClass("switch-left");
+					});
+					$('.main-title').addClass("switch-left");
+					
+				} else {
+					$('.switch').each(function(){    
+						$(this).removeClass("switch-left");
+					});
+					$('.drag-handle').each(function(){    
+						$(this).removeClass("switch-left");
+					});
+					$('.main-title').removeClass("switch-left");
+				}
 				
 
 				//////////////////////////////

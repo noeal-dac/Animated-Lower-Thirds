@@ -85,6 +85,9 @@ body.browser-source.lower-thirds{
   width: 275px;
   position: absolute;
 }
+.main-title.switch-left {
+  margin-left: 30px;
+}
 .main-icon {
   float: left;
   box-sizing: border-box;
@@ -478,6 +481,9 @@ label#alt-4-custom-times i.fas.active {
   width: 24px;
   height: 14px;
   float: right;
+}
+.switch.switch-left {
+  float: left;
 }
 label i.fas {
     font-size: 15px;
@@ -1035,7 +1041,13 @@ i.alt-icon {
     height: 25px;
     width: 278px;
 }
-
+.drag-handle.switch-left {
+  margin-left: 30px;
+  width: 248px;
+}
+.drag-handle.switch-left > .renameable {
+  min-width: 220px;
+}
 
 #fonts-options {
   display: flex;
