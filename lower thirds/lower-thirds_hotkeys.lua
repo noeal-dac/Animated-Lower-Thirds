@@ -1,8 +1,8 @@
 --[[
       OBS Studio Lua script : Control the switches of the lower thirds with hotkeys
       Author: NoeAL
-      Version: 0.1
-      Released: 2020-09-02
+      Version: 0.2
+      Released: 2020-09-28
 --]]
 
 
