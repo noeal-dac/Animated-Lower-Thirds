@@ -617,7 +617,7 @@ body {
 .no-logo {
     opacity: 0;
     width: 0;
-    margin: 0!important;
+	margin: 0!important;
 }
 .left > .logo {
 	margin-right: 0.8em;

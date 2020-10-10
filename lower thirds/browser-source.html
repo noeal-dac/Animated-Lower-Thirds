@@ -103,10 +103,16 @@
 		var bcr = new BroadcastChannel('obs-lower-thirds-channel2'); //Send to Control Panel
 		var bcf = new BroadcastChannel('obs-lower-thirds-fonts');
 
-		var alt_1_logo_image = "../logos/logo_1.png";
-		var alt_2_logo_image = "../logos/logo_2.png";
-		var alt_3_logo_image = "../logos/logo_3.png";
-		var alt_4_logo_image = "../logos/logo_4.png";
+		var alt_1_logo_image;
+		var alt_1_logo_image_old = alt_1_logo_image;
+		var alt_2_logo_image;
+		var alt_2_logo_image_old = alt_2_logo_image;
+		var alt_3_logo_image;
+		var alt_3_logo_image_old = alt_3_logo_image;
+		var alt_4_logo_image;
+		var alt_4_logo_image_old = alt_4_logo_image;
+
+		var alt_1_animation_time;
 
 		var global_animation_time;
 		var activeTime;
@@ -182,6 +188,11 @@
 		var alt_4_align_old = alt_4_align;
 		var alt_4_style;
 		var alt_4_style_old = alt_4_style;
+
+		var hide_logo_1 = false;
+		var hide_logo_2 = false;
+		var hide_logo_3 = false;
+		var hide_logo_4 = false;
 
 
 		function animationIn(animation) {
@@ -526,6 +537,12 @@
 			alt_4_active_time = (received_data [105]) ? received_data [105] : received_data[1];
 			alt_4_inactive_time = (received_data [106]) ? received_data [106] : received_data[2];
 
+			alt_1_logo_image = received_data[107];
+			alt_2_logo_image = received_data[108];
+			alt_3_logo_image = received_data[109];
+			alt_4_logo_image = received_data[110];
+
+
 			//Set time infinite in the preview panel
 			if (mode == "preview"){
 				alt_1_active_time = "0";
@@ -705,63 +722,141 @@
 			}
 			alt_4_style_old = alt_4_style;
 
-			//Show or hide Logo
-			if (alt_1_logo_switch != alt_1_logo_switch_old){
-				if (alt_1_switch == "false"){
-					document.getElementById("lower-third-1").classList.add("hide-anim");
-				}
-				if (alt_1_logo_switch == "true"){
-					document.getElementById("alt-1-logo").classList.remove("no-logo");
-					loadLogo("alt-1-logo",alt_1_logo_image);
+
+			///////////////////////////
+
+			//Load logo when it change
+			if (alt_1_logo_image != alt_1_logo_image_old) {
+				loadLogo("alt-1-logo", alt_1_logo_image);
+			}
+			alt_1_logo_image_old = alt_1_logo_image;
+
+			if (alt_2_logo_image != alt_2_logo_image_old) {
+				loadLogo("alt-2-logo", alt_2_logo_image);
+			}
+			alt_2_logo_image_old = alt_2_logo_image;
+
+			if (alt_3_logo_image != alt_3_logo_image_old) {
+				loadLogo("alt-3-logo", alt_3_logo_image);
+			}
+			alt_3_logo_image_old = alt_3_logo_image;
+
+			if (alt_4_logo_image != alt_4_logo_image_old) {
+				loadLogo("alt-4-logo", alt_4_logo_image);
+			}
+			alt_4_logo_image_old = alt_4_logo_image;
+
+
+			//Show or hide if logo switch is ON.
+			if (alt_1_logo_switch == "true"){
+				//Show when change and is active
+				if ($("#lower-third-1").hasClass("animation-in")) {
+					if (!hide_logo_1) {
+						hide_logo_1 = true;
+						$("#alt-1-logo").removeClass("no-logo");
+						loadLogo("alt-1-logo", alt_1_logo_image);
+					}
 				} else {
-					document.getElementById("alt-1-logo").classList.add("no-logo");
-					loadLogo("alt-1-logo","");
+					//Hide when change and is inactive
+					if (hide_logo_1) {
+						hide_logo_1 = false;
+						setTimeout(function () {
+							$("#alt-1-logo").addClass("no-logo");
+							loadLogo("alt-1-logo", "");
+						}, alt_1_animation_time * 1000);
+					}
 				}
+			} else {
+				$("#alt-1-logo").addClass("no-logo");
+				loadLogo("alt-1-logo", "");
+			}
+
+			if (alt_2_logo_switch == "true"){
+				if ($("#lower-third-2").hasClass("animation-in")) {
+					if (!hide_logo_2) {
+						hide_logo_2 = true;
+						$("#alt-2-logo").removeClass("no-logo");
+						loadLogo("alt-2-logo", alt_2_logo_image);
+					}
+				} else {
+					if (hide_logo_2) {
+						hide_logo_2 = false;
+						setTimeout(function () {
+							$("#alt-2-logo").addClass("no-logo");
+							loadLogo("alt-2-logo", "");
+						}, alt_2_animation_time * 1000);
+					}
+				}
+			} else {
+				$("#alt-2-logo").addClass("no-logo");
+				loadLogo("alt-2-logo", "");
+			}
+
+			if (alt_3_logo_switch == "true"){
+				if ($("#lower-third-3").hasClass("animation-in")) {
+					if (!hide_logo_3) {
+						hide_logo_3 = true;
+						$("#alt-3-logo").removeClass("no-logo");
+						loadLogo("alt-3-logo", alt_3_logo_image);
+					}
+				} else {
+					if (hide_logo_3) {
+						hide_logo_3 = false;
+						setTimeout(function () {
+							$("#alt-3-logo").addClass("no-logo");
+							loadLogo("alt-3-logo", "");
+						}, alt_3_animation_time * 1000);
+					}
+				}
+			} else {
+				$("#alt-3-logo").addClass("no-logo");
+				loadLogo("alt-3-logo", "");
+			}
+
+			if (alt_4_logo_switch == "true"){
+				if ($("#lower-third-4").hasClass("animation-in")) {
+					if (!hide_logo_4) {
+						hide_logo_4 = true;
+						$("#alt-4-logo").removeClass("no-logo");
+						loadLogo("alt-4-logo", alt_4_logo_image);
+					}
+				} else {
+					if (hide_logo_4) {
+						hide_logo_4 = false;
+						setTimeout(function () {
+							$("#alt-4-logo").addClass("no-logo");
+							loadLogo("alt-4-logo", "");
+						}, alt_4_animation_time * 1000);
+					}
+				}
+			} else {
+				$("#alt-4-logo").addClass("no-logo");
+				loadLogo("alt-4-logo", "");
+			}
+
+			//Help to update logo when logo switch is ON
+			if (alt_1_logo_switch != alt_1_logo_switch_old){
+				hide_logo_1 = false;
 			}			
 			alt_1_logo_switch_old = alt_1_logo_switch;
 
 			if (alt_2_logo_switch != alt_2_logo_switch_old){
-				if (alt_2_switch == "false"){
-					document.getElementById("lower-third-2").classList.add("hide-anim");
-				}
-				if (alt_2_logo_switch == "true"){
-					document.getElementById("alt-2-logo").classList.remove("no-logo");
-					loadLogo("alt-2-logo",alt_2_logo_image);
-				} else {
-					document.getElementById("alt-2-logo").classList.add("no-logo");
-					loadLogo("alt-2-logo","");
-				}
+				hide_logo_2 = false;
 			}			
 			alt_2_logo_switch_old = alt_2_logo_switch;
 
 			if (alt_3_logo_switch != alt_3_logo_switch_old){
-				if (alt_3_switch == "false"){
-					document.getElementById("lower-third-3").classList.add("hide-anim");
-				}
-				if (alt_3_logo_switch == "true"){
-					document.getElementById("alt-3-logo").classList.remove("no-logo");
-					loadLogo("alt-3-logo",alt_3_logo_image);
-				} else {
-					document.getElementById("alt-3-logo").classList.add("no-logo");
-					loadLogo("alt-3-logo","");
-				}
+				hide_logo_3 = false;
 			}			
 			alt_3_logo_switch_old = alt_3_logo_switch;
 
 			if (alt_4_logo_switch != alt_4_logo_switch_old){
-				if (alt_4_switch == "false"){
-					document.getElementById("lower-third-4").classList.add("hide-anim");
-				}
-				if (alt_4_logo_switch == "true"){
-					document.getElementById("alt-4-logo").classList.remove("no-logo");
-					loadLogo("alt-4-logo",alt_4_logo_image);
-				} else {
-					document.getElementById("alt-4-logo").classList.add("no-logo");
-					loadLogo("alt-4-logo","");
-				}
+				hide_logo_4 = false;
 			}			
-			alt_4_logo_switch_old = alt_4_logo_switch;
+			alt_4_logo_switch_old = alt_4_logo_switch;									
 
+
+			///////////////////////////
 
 			let root = document.documentElement;
 
@@ -897,6 +992,7 @@
 				document.getElementById(alt).innerHTML = '';	
 			}
 		}
+
 
 		//Send data to Control Panel
 		function function_send() {
