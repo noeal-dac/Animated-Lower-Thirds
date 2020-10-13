@@ -189,6 +189,11 @@
 		var alt_4_style;
 		var alt_4_style_old = alt_4_style;
 
+		var alt_1_wait_hide_logo;
+		var alt_2_wait_hide_logo;
+		var alt_3_wait_hide_logo;
+		var alt_4_wait_hide_logo;
+		
 		var hide_logo_1 = false;
 		var hide_logo_2 = false;
 		var hide_logo_3 = false;
@@ -752,6 +757,7 @@
 				//Show when change and is active
 				if ($("#lower-third-1").hasClass("animation-in")) {
 					if (!hide_logo_1) {
+						clearTimeout(alt_1_wait_hide_logo);
 						hide_logo_1 = true;
 						$("#alt-1-logo").removeClass("no-logo");
 						loadLogo("alt-1-logo", alt_1_logo_image);
@@ -760,13 +766,14 @@
 					//Hide when change and is inactive
 					if (hide_logo_1) {
 						hide_logo_1 = false;
-						setTimeout(function () {
+						alt_1_wait_hide_logo = setTimeout(function () {
 							$("#alt-1-logo").addClass("no-logo");
 							loadLogo("alt-1-logo", "");
 						}, alt_1_animation_time * 1000);
 					}
 				}
 			} else {
+				hide_logo_1 = false;
 				$("#alt-1-logo").addClass("no-logo");
 				loadLogo("alt-1-logo", "");
 			}
@@ -774,6 +781,7 @@
 			if (alt_2_logo_switch == "true"){
 				if ($("#lower-third-2").hasClass("animation-in")) {
 					if (!hide_logo_2) {
+						clearTimeout(alt_2_wait_hide_logo);
 						hide_logo_2 = true;
 						$("#alt-2-logo").removeClass("no-logo");
 						loadLogo("alt-2-logo", alt_2_logo_image);
@@ -781,7 +789,7 @@
 				} else {
 					if (hide_logo_2) {
 						hide_logo_2 = false;
-						setTimeout(function () {
+						alt_2_wait_hide_logo = setTimeout(function () {
 							$("#alt-2-logo").addClass("no-logo");
 							loadLogo("alt-2-logo", "");
 						}, alt_2_animation_time * 1000);
@@ -795,6 +803,7 @@
 			if (alt_3_logo_switch == "true"){
 				if ($("#lower-third-3").hasClass("animation-in")) {
 					if (!hide_logo_3) {
+						clearTimeout(alt_3_wait_hide_logo);
 						hide_logo_3 = true;
 						$("#alt-3-logo").removeClass("no-logo");
 						loadLogo("alt-3-logo", alt_3_logo_image);
@@ -802,7 +811,7 @@
 				} else {
 					if (hide_logo_3) {
 						hide_logo_3 = false;
-						setTimeout(function () {
+						alt_3_wait_hide_logo = setTimeout(function () {
 							$("#alt-3-logo").addClass("no-logo");
 							loadLogo("alt-3-logo", "");
 						}, alt_3_animation_time * 1000);
@@ -816,6 +825,7 @@
 			if (alt_4_logo_switch == "true"){
 				if ($("#lower-third-4").hasClass("animation-in")) {
 					if (!hide_logo_4) {
+						clearTimeout(alt_4_wait_hide_logo);
 						hide_logo_4 = true;
 						$("#alt-4-logo").removeClass("no-logo");
 						loadLogo("alt-4-logo", alt_4_logo_image);
@@ -823,7 +833,7 @@
 				} else {
 					if (hide_logo_4) {
 						hide_logo_4 = false;
-						setTimeout(function () {
+						alt_4_wait_hide_logo = setTimeout(function () {
 							$("#alt-4-logo").addClass("no-logo");
 							loadLogo("alt-4-logo", "");
 						}, alt_4_animation_time * 1000);
@@ -839,6 +849,7 @@
 				hide_logo_1 = false;
 			}			
 			alt_1_logo_switch_old = alt_1_logo_switch;
+			
 
 			if (alt_2_logo_switch != alt_2_logo_switch_old){
 				hide_logo_2 = false;

@@ -1264,7 +1264,7 @@
 			////////////////////
 
 			//Reload the hotjeys.js file updated by the LUA script
-			function updateHorkeys() {
+			function updateHotkeys() {
 			    src = '../common/js/hotkeys.js';
 			    $('script[src="' + src + '"]').remove();
 			    var head= document.getElementsByTagName('head')[0];
@@ -1600,6 +1600,10 @@
 					name_value = $(this).children('.stored-name').text();
 					info_value = $(this).children('.stored-info').text();
 					logo_value = $(this).children('.stored-logo').text();
+					//If stored data has no logo, set to default
+					if (name_value && info_value && !logo_value) {
+						$(this).children('.stored-logo').text("default");
+					}
 					if ($('#' + check_name_id).is(':empty') && $('#' + check_info_id).is(':empty') && $('#' + check_logo_id).is(':empty')){
 			  			document.getElementById(check_slot_id).classList.remove("stored");
 					} else {
@@ -2649,20 +2653,21 @@
 					var id = $(this).attr('id');
 					var value = localStorage.getItem(id);
 					//console.log(id + ":" + value);
-					if(value != "undefined" && value != null){
+					if(value != "undefined" && value != ""){
 						$(this).attr('src', value);            
 					} else {
+						
 						//Set all to default the first time
-						if (id == "alt-1-logo-preview" && id == "alt-1-logo-default"){
+						if (id == "alt-1-logo-preview" || id == "alt-1-logo-default"){
 							$(this).attr('src', alt_1_logo_default);
 						}
-						if (id == "alt-2-logo-preview" && id == "alt-2-logo-default"){
+						if (id == "alt-2-logo-preview" || id == "alt-2-logo-default"){
 							$(this).attr('src', alt_2_logo_default);
 						}
-						if (id == "alt-3-logo-preview" && id == "alt-3-logo-default"){
+						if (id == "alt-3-logo-preview" || id == "alt-3-logo-default"){
 							$(this).attr('src', alt_3_logo_default);
 						}
-						if (id == "alt-4-logo-preview" && id == "alt-4-logo-default"){
+						if (id == "alt-4-logo-preview" || id == "alt-4-logo-default"){
 							$(this).attr('src', alt_4_logo_default);
 						}
 					}
@@ -2771,7 +2776,7 @@
 			    checkLogos();
 				checkHotkeys();
 			    getAppearance();
-			    updateHorkeys();
+			    updateHotkeys();
 
 				function_send();
 				
