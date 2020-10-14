@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<!--Animated Lower Thirds v1.4-->
+		<!--Animated Lower Thirds v1.5-->
 		<!--Author: NoeAL-->
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -91,11 +91,23 @@
 						<div class="divider"></div>
 
 						<div class="bottom-options">
-							<div class="settings-title">Reset</div>
+							<div class="settings-title">Restore Data</div>
 							<div class="settings-inputs">
-									<div class="btn-settings" onclick="openResetPopup()">Reset all settings</div>
+								<div class="import-file-btn">
+									<label for="importFile">Import</label>
+									<input id="importFile" type="file"/>
+								</div>
+								<input type="text" id="dataInput">
+								<div class="btn-settings" onclick="exportData()">Export</div>
+								<div class="btn-settings" onclick="openResetPopup()">Reset</div>
 							</div>
 						</div>
+						<!-- <div class="bottom-options">
+							<div class="settings-title">Reset</div>
+							<div class="settings-inputs">
+								<div class="btn-settings" onclick="openResetPopup()">Reset all settings</div>
+							</div>
+						</div> -->
 					</div>
 				</div>		
 			</div>
@@ -808,16 +820,29 @@
 				<div class="select-image-bg" onclick="cancelLogoPopup()"></div>
 				<div class="form-input">
 					<div class="file-btns">
-						<label for="file-ip-1">Choose image</label>
-						<input type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);">
+						<label for="logo-file">Choose image</label>
+						<input type="file" id="logo-file" accept="image/*" onchange="showPreview(event);">
 						<div class="btn-remove" onclick="removeLogoPopup()"><i class="fas">&#xf2ed;</i></div>
 					</div>
 					<div id="file-preview" class="no-image">
-						<img id="file-ip-1-preview">
+						<img id="logo-file-preview">
 					</div>
 					<div class="file-btns">
 						<div class="btn-ok" onclick="okLogoPopup()">Ok</div>
 						<div class="btn-cancel" onclick="cancelLogoPopup()">Cancel</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="export-data" class="center hide" >
+				<div class="export-data-bg" onclick="okExportPopup()"></div>
+				<div class="form-input">
+					<div>
+						<h1>Copied to clipboard</h1>
+						<p>For security reasons, the exported data has been copied to the clipboard. Please paste it into a text editor (e.g. Notepad) and save it as a TXT file.</p>
+					</div>
+					<div class="export-btns">
+						<div class="btn-ok-export" onclick="okExportPopup()">Ok</div>
 					</div>
 				</div>
 			</div>
@@ -1500,19 +1525,47 @@
 				document.getElementById("reset-all").classList.remove("hide");
 			}
 			function okResetPopup() {
-				//To clear data fields
-				localStorage.clear();
+				clearTimeout(refreshSaveData); //Stop saving data to localstorage
+				localStorage.clear(); //To clear data fields
+
+				//Restore logo default (fix missing logos in the reload)			
+				$('.logo-storable').each(function(){    
+					var id = $(this).attr('id');
+					if (id == "alt-1-logo-preview" || id == "alt-1-logo-default"){
+						var value = alt_1_logo_default;
+					}
+					if (id == "alt-2-logo-preview" || id == "alt-2-logo-default"){
+						var value = alt_2_logo_default;
+					}
+					if (id == "alt-3-logo-preview" || id == "alt-3-logo-default"){
+						var value = alt_3_logo_default;
+					}
+					if (id == "alt-4-logo-preview" || id == "alt-4-logo-default"){
+						var value = alt_4_logo_default;
+					}
+					localStorage.setItem(id, value);              
+				});	
+
 				location.reload();
+				
 			}
 			function cancelResetPopup() {
 				document.getElementById("reset-all").classList.add("hide");
+			}
+
+			//Export popup info
+			function openExportPopup() {
+				document.getElementById("export-data").classList.remove("hide");
+			}
+			function okExportPopup() {
+				document.getElementById("export-data").classList.add("hide");
 			}
 
 			//Load new logo image
 			function showPreview(event){
 				if(event.target.files.length > 0){
 					var src = URL.createObjectURL(event.target.files[0]);
-					var preview = document.getElementById("file-ip-1-preview");
+					var preview = document.getElementById("logo-file-preview");
 					document.getElementById("file-preview").classList.remove("no-image");
 					preview.src = src;
 					preview.style.display = "block";
@@ -1523,10 +1576,10 @@
 				document.getElementById("select-image").classList.remove("hide");
 				document.getElementById("file-preview").classList.remove("no-image");
 				var preview_to_change = $("#" + logo).attr("src");
-				var preview = document.getElementById("file-ip-1-preview");
+				var preview = document.getElementById("logo-file-preview");
 				preview.src = preview_to_change;
 				preview.style.display = "block";
-				$("#file-ip-1").val("");
+				$("#logo-file").val("");
 				
 				//Config ok button
 				$(".btn-ok").attr("onclick", "okLogoPopup('" + logo + "', '" + logo_default + "')");
@@ -1541,8 +1594,8 @@
 
 			//OK button
 			function okLogoPopup(logo, logo_default) {
-				var src = document.getElementById("file-ip-1").files[0];
-				var popup_preview = $("#file-ip-1-preview").attr("src");
+				var src = document.getElementById("logo-file").files[0];
+				var popup_preview = $("#logo-file-preview").attr("src");
 				var preview = document.getElementById(logo);
 				var alt_logo_preview = logo_default.replace("-default", "-preview");
 
@@ -1568,9 +1621,9 @@
 			}
 
 			function removeLogoPopup() {
-				var preview = document.getElementById("file-ip-1-preview");
+				var preview = document.getElementById("logo-file-preview");
 				document.getElementById("file-preview").classList.add("no-image");
-				$("#file-ip-1").val("");
+				$("#logo-file").val("");
 				preview.src = "";
 				preview.style.display = "none";
 			}
@@ -2630,16 +2683,62 @@
 
 			//Send New Fonts to source
 			function function_send_font() {
-
 				$.each(fontlist_urls, function(i) {
-					//setTimeout(function (){
 					new_font_to_send = fontlist_urls[i];
 					bcf.postMessage(new_font_to_send);
-					//}, 100);
-
 				});					
 			}
-			//function_send_font();
+
+			//Read txt file and call writeLocalStorage function
+			document.getElementById('importFile').onchange = function(){
+				var file = this.files[0];
+				var reader = new FileReader();
+				reader.onload = function(progressEvent){
+					clearTimeout(refreshSaveData); //Stop saving data to localstorage
+					localStorage.clear();
+					
+					writeLocalStorage(this.result);
+				};
+				reader.readAsText(file);
+			};
+
+			//Read all localstorage data
+			function getLocalStorage() {
+				var a = {};
+				for (var i = 0; i < localStorage.length; i++) {
+					var k = localStorage.key(i);
+					var v = localStorage.getItem(k);
+					a[k] = v;
+				}
+				var s = JSON.stringify(a);
+				return s;
+			}
+
+			//Save data to localStorage
+			function writeLocalStorage(data) {
+				var o = JSON.parse(data);
+				for (var property in o) {
+					if (o.hasOwnProperty(property)) {
+						localStorage.setItem(property, o[property]);
+					}
+				}
+				location.reload();
+        	}
+
+			//Copy all data to clipboard
+			function exportData() {
+				var allData = getLocalStorage();
+				document.getElementById("dataInput").value = allData;
+				var copyText = document.getElementById("dataInput");
+
+				//Select text input and copy to the clipboard
+				copyText.select();
+				document.execCommand("copy");
+
+				//Open the Popup "Copied to Clipboard"
+				openExportPopup();
+        	}
+
 
 			function loadData () {
 				$('.storable').each(function(){    
@@ -2691,13 +2790,6 @@
 					var checked = JSON.parse(localStorage.getItem(id));
     				document.getElementById(id).checked = checked;
     			});
-
-				// $('.font-storable').each(function(){
-				// 	var id = $(this).attr('id');
-				//     if(localStorage.getItem(id)){
-				//         $("#" + id).val(localStorage.getItem(id));
-				//     }
-    			// });
 
 				$('.title-storable').each(function(){    
 					var id = $(this).attr('id');
@@ -2763,7 +2855,7 @@
 				    });
 				});
 
-	        	setTimeout(saveData, y*1000);
+	        	refreshSaveData = setTimeout(saveData, y*1000);
 			}
 
 			function refreshData() {
@@ -2781,7 +2873,6 @@
 				function_send();
 				
 				
-
 			    setTimeout(refreshData, x*1000);
 			}
 

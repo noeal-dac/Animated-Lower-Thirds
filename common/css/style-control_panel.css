@@ -1,5 +1,5 @@
 /*********************************
-**  Animated Lower Thirds v1.4  **
+**  Animated Lower Thirds v1.5  **
 **  Author: NoeAL               **
 *********************************/
 
@@ -1187,7 +1187,8 @@ to {opacity: 1;}
 }
 
 .select-image-bg,
-.reset-all-bg {
+.reset-all-bg,
+.export-data-bg {
   position: fixed;
   /*width: 100%;
   height: 100%;*/
@@ -1253,7 +1254,8 @@ to {opacity: 1;}
 }
 
 .file-btns,
-.reset-btns {
+.reset-btns,
+.export-btns {
   display: flex;
 }
 .btn-remove {
@@ -1270,6 +1272,7 @@ to {opacity: 1;}
 }
 .btn-ok,
 .btn-ok-reset,
+.btn-ok-export,
 .btn-cancel,
 .btn-settings {
   display: block;
@@ -1291,6 +1294,34 @@ to {opacity: 1;}
   text-transform: capitalize;
 }
 .btn-cancel {
+  margin-left: 4px;
+}
+.btn-ok-export {
+  width: 100%;
+}
+#dataInput {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+  width: 10px;
+  height: 10px;
+}
+
+.import-file-btn input {
+  display: none;
+}
+.import-file-btn label {
+  display: block;
+  width: 76px;
+  height: 26px;
+  line-height: 26px;
+  text-align: center;
+  background: var(--obs-button-background);
+  color: var(--main-color);
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 3px;
+  cursor: pointer;
   margin-left: 4px;
 }
 
@@ -1376,6 +1407,12 @@ to {opacity: 1;}
 #alt-4-logo-preview {
   max-height: 100%;
   max-width: 100%;
+}
+#alt-1-logo-default,
+#alt-2-logo-default,
+#alt-3-logo-default,
+#alt-4-logo-default {
+  margin-left: 1px;
 }
 
 .divider {

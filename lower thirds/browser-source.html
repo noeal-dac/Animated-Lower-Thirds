@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  	<!--Animated Lower Thirds v1.4-->
+  	<!--Animated Lower Thirds v1.5-->
     <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -542,7 +542,7 @@
 			alt_4_active_time = (received_data [105]) ? received_data [105] : received_data[1];
 			alt_4_inactive_time = (received_data [106]) ? received_data [106] : received_data[2];
 
-			alt_1_logo_image = received_data[107];
+			alt_1_logo_image = (received_data[107]) ? received_data[107] : "../logos/logo_1.png";
 			alt_2_logo_image = received_data[108];
 			alt_3_logo_image = received_data[109];
 			alt_4_logo_image = received_data[110];
@@ -999,8 +999,8 @@
 		function loadLogo(alt,logo) {
 			if(logo){
 				document.getElementById(alt).innerHTML = '<img src="' + logo + '"></div>';				
-			} else {
-				document.getElementById(alt).innerHTML = '';	
+			} else {	
+				document.getElementById(alt).innerHTML = '';
 			}
 		}
 
