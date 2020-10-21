@@ -49,3 +49,9 @@ Update v1.4 new features:
 - Tooltips with the memory slot content.
 - More Hotkeys. Now you can load any memory slot.
 - Some fixes.
+
+Update v1.5 new features:
+- You can choose default Logos for each Lower Thirds panel. Or use different ones in each memory slot you store.
+- Backup data is avaible. Now you can Import, Export or Reset all the data.
+- Autoload fixes. When it reaches the last one, it starts over correctly.
+- Some fixes.
