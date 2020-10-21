@@ -608,6 +608,7 @@ body {
 	order: 0;
 	overflow: hidden;
 	transition: margin 0.5s;
+	min-width: fit-content;
 }
 .logo img {
     max-height: 3.5em;
@@ -637,8 +638,9 @@ body {
 
 .style-1 > .graph-1 {
     order: 1;
-    position: relative;
-    width: 0.3em;
+	position: relative;
+	min-width: 0.3em;
+    /* width: 0.3em; */
     height: 3.5em;
 }
 
@@ -811,3 +813,44 @@ body {
 	top: -252%;
 }
 
+/*********************************/
+
+
+/*Uncomment to avaible multiple lines*/
+/* .logo {
+    align-self: start;
+}
+.style-1 > .graph-1 {
+	align-self: start;
+}
+.alt > div.text-content > div:nth-child(2) div {
+    line-height: 1.25em;
+}
+.alt > div.text-content > div:nth-child(2) {
+	height: auto!important;
+}
+.alt.style-1.left > .text-content {
+	margin-right: 1em;
+} 
+.alt.style-1.right > .text-content {
+	margin-left: 1em;
+} */
+
+
+/*Uncomment to invenrt vertical position*/
+/* #lower-third-1 {
+	top: var(--alt-1-margin-v);
+	bottom: unset!important;
+}
+#lower-third-2 {
+	top: var(--alt-2-margin-v);
+	bottom: unset!important;
+}
+#lower-third-3 {
+	top: var(--alt-3-margin-v);
+	bottom: unset!important;
+}
+#lower-third-4 {
+	top: var(--alt-4-margin-v);
+	bottom: unset!important;
+} */

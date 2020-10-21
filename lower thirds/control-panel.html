@@ -1739,102 +1739,70 @@
 
 			//////////////////////////////////////
 
-			//Load the next memory slot when autoload is active
 			function jumpNextSlot(memory_slot, name, info, logo, alt_waiting_time) {
-				var jumpToNext = false;
 				var loadedSlot = false;
-				var lastSlot = false;
-				
+				var find_next = false;
+				var find_first = false;
+
 				name_loaded = $(name + ":text").val();
 				info_loaded = $(info + ":text").val();
-				logo_loaded = $(logo).attr("src");
+				logo_loaded = $(logo).attr("src");				
 
+				//Find actual and search the next slot to load
 				$("ul" + memory_slot + " li").each(function(){
-					slot_id = $(this).attr('id');
 					name_id = $(this).children('.stored-name').attr('id');
 					info_id = $(this).children('.stored-info').attr('id');
 					logo_id = $(this).children('.stored-logo').attr('id');
 					name_value = $(this).children('.stored-name').text();
 					info_value = $(this).children('.stored-info').text();
 					logo_value = $(this).children('.stored-logo').text();
-					
-					// default_logo = logo.replace("-preview", "-default");
-					// default_logo_value = $(default_logo).attr("src");
+					slot_number = Number($(this).children('.slot-number').text());
 
+					loadedSlot = (name_loaded == name_value && info_loaded == info_value && (logo_loaded == logo_value || $(logo).hasClass(logo_value))) ? true : false;
 					emptySlot = ($('#' + name_id).is(':empty') && $('#' + info_id).is(':empty') && $('#' + logo_id).is(':empty')) ? true : false;
 
-					if (emptySlot && loadedSlot){
-						loadedSlot = false;
-						lastSlot = true;
+					if(!find_first && !emptySlot) {
+						find_first = true;
+						first_stored_slot = slot_number;
 					}
-					if (!emptySlot){
-						jumpToNext = loadedSlot;
-						if (jumpToNext) {
-							name_to_load = $(this).children('#' + name_id).text();
-							info_to_load = $(this).children('#' + info_id).text();
-							logo_to_load = $(this).children('#' + logo_id).text();
-							// if (logo_to_load == "default") {
-							// 	logo_to_load = default_logo_value;
-							// }
-
-							loadSlot(name, info, logo, name_to_load, info_to_load, logo_to_load, alt_waiting_time);
-							$('#' + slot_id).addClass('next-to-load');
-
-							jumpToNext = false;
-						}
-						
-						loadedSlot = (name_loaded == name_value && info_loaded == info_value && (logo_loaded == logo_value || $(logo).hasClass(logo_value))) ? true : false;
+					if (loadedSlot) {
+						find_next = true;
+						loaded_slot_num = slot_number;
+						next_slot_num = loaded_slot_num + 1;
 					}
-					//console.log (slot_id + "|" + name_id + "|" + info_id + "|" + name_value + "|" + info_value + "|" + emptySlot + "|" + loadedSlot);
+					if (find_next && slot_number == next_slot_num && !emptySlot) {
+						find_next = false;
+						to_load = slot_number;
+					}
+					if (find_next && (next_slot_num > 10 || emptySlot)) {
+						find_next = false;
+						to_load = first_stored_slot;
+					}
 				});
 
-				if (lastSlot) {
-					lastSlot = false;
-					jumpToFirstSlot(memory_slot, name, info, logo, alt_waiting_time);
-				}
-			}
+				//console.log(loaded_slot_num + " -> " + to_load);
 
-			//Load the fist stored slot when autoload is active
-			function jumpToFirstSlot(memory_slot, name, info, logo, alt_waiting_time) {
-				var foundTheFirst = true;
-				
-				name_loaded = $(name + ":text").val();
-				info_loaded = $(info + ":text").val();
-				logo_loaded = $(logo).attr("src");
-
-				loadedSlot = (name_loaded == name_value && info_loaded == info_value && (logo_loaded == logo_value || $(logo).hasClass(logo_value))) ? true : false;
-
+				//Get all the data of the next slot and load it
 				$("ul" + memory_slot + " li").each(function(){
-					slot_id = $(this).attr('id');
-					name_id = $(this).children('.stored-name').attr('id');
-					info_id = $(this).children('.stored-info').attr('id');
-					logo_id = $(this).children('.stored-logo').attr('id');
-					name_value = $(this).children('.stored-name').text();
-					info_value = $(this).children('.stored-info').text();					
-					logo_value = $(this).children('.stored-logo').text();
-					
-					// default_logo = logo.replace("-preview", "-default");
-					// default_logo_value = $(default_logo).attr("src");
+					slot_number = Number($(this).children('.slot-number').text());
 
-					emptySlot = ($('#' + name_id).is(':empty') && $('#' + info_id).is(':empty') && $('#' + logo_id).is(':empty')) ? true : false;						
+					if (to_load == slot_number) {
+						slot_id = ($(this).attr('id'));
+						name_id = $(this).children('.stored-name').attr('id');
+						info_id = $(this).children('.stored-info').attr('id');
+						logo_id = $(this).children('.stored-logo').attr('id');
 
-					if (!emptySlot){
-						if (foundTheFirst && !loadedSlot) {
-							name_to_load = $(this).children('#' + name_id).text();
-							info_to_load = $(this).children('#' + info_id).text();
-							logo_to_load = $(this).children('#' + logo_id).text();
-							// if (logo_to_load == "default") {
-							// 	logo_to_load = default_logo_value;
-							// }
+						name_to_load = $(this).children('#' + name_id).text();
+						info_to_load = $(this).children('#' + info_id).text();
+						logo_to_load = $(this).children('#' + logo_id).text();
 
-							loadSlot(name, info, logo, name_to_load, info_to_load, logo_to_load, alt_waiting_time);
-							$('#' + slot_id).addClass('next-to-load');
-
-							foundTheFirst = false;							
-						}
-					} 
-				});		
+						loadSlot(name, info, logo, name_to_load, info_to_load, logo_to_load, alt_waiting_time);
+						$('#' + slot_id).addClass('next-to-load');
+					}
+				});
 			}
+
+			//////////////////////////////////////
 
 			function loadSlot(name, info, logo, name_to_load, info_to_load, logo_to_load, alt_waiting_time) {
 				setTimeout(function (){
@@ -1848,8 +1816,8 @@
 					}
 					$(logo).attr("src", logo_to_load);
 				}, alt_waiting_time * 1000);
+
 				//console.log(name + "|" + info + "|" + logo + "|" + name_to_load + "|" + info_to_load + "|" + logo_to_load + "|" + alt_waiting_time);
-				
 			}
 
 			//////////////////////////////////////
@@ -1892,8 +1860,6 @@
 					document.getElementById("alt-panel").style.marginBottom = "0px";
 				}
 			});
-
-
 
 			///////////////////////////////////////
 
