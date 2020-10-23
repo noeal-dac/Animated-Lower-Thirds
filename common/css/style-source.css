@@ -613,7 +613,9 @@ body {
 .logo img {
     max-height: 3.5em;
     display: flex;
-    position: relative;
+	position: relative;
+	filter: blur(0);
+	-webkit-filter: blur(0);
 }
 .no-logo {
     opacity: 0;
