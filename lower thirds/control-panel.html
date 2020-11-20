@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<!--Animated Lower Thirds v1.2-->
+		<!--Animated Lower Thirds v1.5-->
 		<!--Author: NoeAL-->
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -22,10 +22,14 @@
 				<input class="checkbox-storable" type="checkbox" id="lower-thirds-masterswitch"> <!--"checked" to active switch-->
 				<span class="slider round"></span>
 				</label>
-				<label class="accordion"><i class="fas">&#xf013;</i>Main settings</label>
+				<div class="main-title">
+					<div class="main-icon"><i class="fas">&#xf013;</i></div>
+					<div>Main settings</div>					
+				</div>
+				<label class="accordion"></label>
 				<div id="global-configuration" class="hidable">
 					<div id="time-options">
-						<div class="settings-title">Global times</div>
+						<div class="settings-title">Global Times</div>
 						<div class="settings-inputs">
 							<input class="storable" id="global-animation-time" placeholder="4s (in-out)" tabindex="1">
 							<input class="storable" id="global-active-time" placeholder="25s (active)" tabindex="2">
@@ -52,6 +56,51 @@
 							<ul>
 							<!--custom fonts-->
 							</ul>
+						</div>
+						<div class="default-options">
+							<div class="settings-title"></div>
+							<div class="settings-inputs">
+								<label><input class="checkbox-storable" type="checkbox" id="set-preview">Disable preview window</label>
+								<label><input class="checkbox-storable" type="checkbox" id="set-slot-numbers">Hide numbers of the memory slots</label>
+								<label><input class="checkbox-storable" type="checkbox" id="set-switch-position">Switches on the left</label>
+								<label><input class="checkbox-storable" type="checkbox" id="set-tooltips">Show tooltips with the stored content</label>
+							</div>
+						</div>
+						<div class="logos-options">
+							<div class="settings-title">Default Logos</div>
+							<div class="settings-inputs">
+								<div class="logo-container default" onclick="openLogoPopup('alt-1-logo-default', 'alt-1-logo-default')">
+									<div class="logo-numbers">1</div>
+									<img id="alt-1-logo-default" class="logo-storable alt-logo-default" >
+								</div>
+								<div class="logo-container default" onclick="openLogoPopup('alt-2-logo-default', 'alt-2-logo-default')">
+									<div class="logo-numbers">2</div>
+									<img id="alt-2-logo-default" class="logo-storable alt-logo-default" >
+								</div>
+								<div class="logo-container default" onclick="openLogoPopup('alt-3-logo-default', 'alt-3-logo-default')">
+									<div class="logo-numbers">3</div>
+									<img id="alt-3-logo-default" class="logo-storable alt-logo-default" >
+								</div>
+								<div class="logo-container default" onclick="openLogoPopup('alt-4-logo-default', 'alt-4-logo-default')">
+									<div class="logo-numbers">4</div>
+									<img id="alt-4-logo-default" class="logo-storable alt-logo-default" >
+								</div>
+							</div>
+						</div>
+
+						<div class="divider"></div>
+
+						<div class="bottom-options">
+							<div class="settings-title">Backup Data</div>
+							<div class="settings-inputs">
+								<div class="import-file-btn">
+									<label for="importFile">Import</label>
+									<input id="importFile" type="file"/>
+								</div>
+								<input type="text" id="dataInput">
+								<div class="btn-settings" onclick="exportData()">Export</div>
+								<div class="btn-settings" onclick="openResetPopup()">Reset</div>
+							</div>
 						</div>
 					</div>
 				</div>		
@@ -100,9 +149,9 @@
 							    </div>
 							    <div>
 									<div id="alt-1-style-color-appearance">
-										<div class="tool-tittle">Color 1</div>
+										<div class="tool-tittle">Clr 1</div>
 										<input class="storable" id="alt-1-style-color-1" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="D54141">
-										<div class="tool-tittle">Color 2</div>
+										<div class="tool-tittle">Clr 2</div>
 										<input class="storable" id="alt-1-style-color-2" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="222222">
 									</div>
 							    </div>
@@ -158,85 +207,79 @@
 							    <div class="font-config group">
 									<div class="input-icon"><i class="fas">&#xf031;</i></div>
 									<select id="alt-1-font" class="font-storable">
-<!-- 									
-										<option value="'Open Sans', sans-serif" selected="selected">Open Sans</option> 
-										<option value="'Poppins', sans-serif">Poppins</option>
-										<option value="'Raleway', sans-serif">Raleway</option> 
-										<option value="'Anonymous Pro', monospace">Anonymous Pro</option> 
-										<option value="'Patua One', cursive">Patua One</option>;
-										<option value="'Abril Fatface', cursive">Abril Fatface</option>
-										<option value="'Lora', serif">Lora</option>
-										<option value="'Cookie', cursive">Cookie</option>
-										<option value="'Oleo Script', cursive">Oleo Script</option>
-										<option value="'Kalam', cursive">Kalam</option>
-										<option value="'Fredoka One', cursive">Fredoka One</option>
- -->
+										<!--Fonts list-->
 									</select>
 							    </div>
 								</div>
 							</div>					
 						</div>
-						<div class="textfields-container">
-							<input class="storable" type="text" id="alt-1-name" placeholder="Name" tabindex="4">
-							<div id="alt-1-name-appearance">
-								<label class="config-btn">
-								<input class="checkbox-storable" type="checkbox" id="alt-1-name-transform" checked>
-								<span class="icon-btn"><i class='fas'>&#xf031;</i><p>a</p></span>
-								</label>
-								<label class="config-btn">
-									<input class="checkbox-storable" type="checkbox" id="alt-1-name-weight" checked>
-									<span class="icon-btn"><i class='fas'>&#xf032;</i></span>
-								</label>
-								<input class="storable" id="alt-1-name-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="f2f2f2">
+						<div class="first-edit-container">
+							<div class="logo-container" onclick="openLogoPopup('alt-1-logo-preview', 'alt-1-logo-default')">
+								<img id="alt-1-logo-preview" class="logo-storable alt-logo-preview" >
 							</div>
-							<input class="storable" type="text" id="alt-1-info" placeholder="Info" tabindex="5">
-							<div id="alt-1-info-appearance">
-								<label class="config-btn">
-									<input class="checkbox-storable" type="checkbox" id="alt-1-info-transform">
+							<div class="textfields-container">
+								<input class="storable" type="text" id="alt-1-name" placeholder="Name" tabindex="4">
+								<div id="alt-1-name-appearance">
+									<label class="config-btn">
+									<input class="checkbox-storable" type="checkbox" id="alt-1-name-transform" checked>
 									<span class="icon-btn"><i class='fas'>&#xf031;</i><p>a</p></span>
-								</label>
-								<label class="config-btn">
-									<input class="checkbox-storable" type="checkbox" id="alt-1-info-weight">
-									<span class="icon-btn"><i class='fas'>&#xf032;</i></span>
-								</label>
-								<input class="storable" id="alt-1-info-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="555555">
-							</div>	
-							<div style="clear:both"></div>
-							<div class="panel-bottom">
-								<div id="alt-1-clean-inputs" class="clean"><i class="fas">&#xf00d;</i></div>
-								<label class="config-btn">
-									<input class="checkbox-storable" type="checkbox" id="alt-1-autoload">
-									<span class="icon-btn"><i class='fas'>&#xf2f1;</i></span>
-								</label>
-								<ul id="alt-1-memory-slots">
-									<li id="alt-1-slot-1"><div class="slot-storable stored-name" id="alt-1-name-1"></div><div class="slot-storable stored-info" id="alt-1-info-1"></div></li>
-									<li id="alt-1-slot-2"><div class="slot-storable stored-name" id="alt-1-name-2"></div><div class="slot-storable stored-info" id="alt-1-info-2"></div></li>
-									<li id="alt-1-slot-3"><div class="slot-storable stored-name" id="alt-1-name-3"></div><div class="slot-storable stored-info" id="alt-1-info-3"></div></li>
-									<li id="alt-1-slot-4"><div class="slot-storable stored-name" id="alt-1-name-4"></div><div class="slot-storable stored-info" id="alt-1-info-4"></div></li>
-									<li id="alt-1-slot-5"><div class="slot-storable stored-name" id="alt-1-name-5"></div><div class="slot-storable stored-info" id="alt-1-info-5"></div></li>
-									<li id="alt-1-slot-6"><div class="slot-storable stored-name" id="alt-1-name-6"></div><div class="slot-storable stored-info" id="alt-1-info-6"></div></li>
-									<li id="alt-1-slot-7"><div class="slot-storable stored-name" id="alt-1-name-7"></div><div class="slot-storable stored-info" id="alt-1-info-7"></div></li>
-									<li id="alt-1-slot-8"><div class="slot-storable stored-name" id="alt-1-name-8"></div><div class="slot-storable stored-info" id="alt-1-info-8"></div></li>
-									<li id="alt-1-slot-9"><div class="slot-storable stored-name" id="alt-1-name-9"></div><div class="slot-storable stored-info" id="alt-1-info-9"></div></li>
-									<li id="alt-1-slot-10"><div class="slot-storable stored-name" id="alt-1-name-10"></div><div class="slot-storable stored-info" id="alt-1-info-10"></div></li>
-								</ul>
-								<div class="time-bar">
-									<div id="alt-1-active-time-monitor">0</div>
-									<div id="alt-1-inactive-time-monitor">0</div>
+									</label>
+									<label class="config-btn">
+										<input class="checkbox-storable" type="checkbox" id="alt-1-name-weight" checked>
+										<span class="icon-btn"><i class='fas'>&#xf032;</i></span>
+									</label>
+									<input class="storable" id="alt-1-name-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="f2f2f2">
 								</div>
-								<label id="alt-1-custom-times" class="accordion"><i class="fas">&#xf017;</i></label>
-								<div class="hidable">
-									<div class="alt-time-options">
-										<div class="settings-title">Custom times</div>
-										<div class="settings-inputs">
-											<input class="storable" id="alt-1-animation-time" placeholder="(in-out)" tabindex="12">
-											<input class="storable" id="alt-1-active-time" placeholder="(active)" tabindex="13">
-											<input class="storable" id="alt-1-inactive-time" placeholder="(inactive)" tabindex="14">
-										</div>
+								<input class="storable" type="text" id="alt-1-info" placeholder="Info" tabindex="5">
+								<div id="alt-1-info-appearance">
+									<label class="config-btn">
+										<input class="checkbox-storable" type="checkbox" id="alt-1-info-transform">
+										<span class="icon-btn"><i class='fas'>&#xf031;</i><p>a</p></span>
+									</label>
+									<label class="config-btn">
+										<input class="checkbox-storable" type="checkbox" id="alt-1-info-weight">
+										<span class="icon-btn"><i class='fas'>&#xf032;</i></span>
+									</label>
+									<input class="storable" id="alt-1-info-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="555555">
+								</div>	
+								<div style="clear:both"></div>
+							</div>
+						</div>
+						<div class="panel-bottom">
+							<div id="alt-1-clean-inputs" class="clean"><i class="fas">&#xf00d;</i></div>
+							<ul id="alt-1-memory-slots">
+								<li id="alt-1-slot-1"><div class="slot-number">1</div><div class="slot-storable stored-name" id="alt-1-name-1"></div><div class="slot-storable stored-info" id="alt-1-info-1"></div><div class="slot-storable stored-logo" id="alt-1-logo-1"></div></li>
+								<li id="alt-1-slot-2"><div class="slot-number">2</div><div class="slot-storable stored-name" id="alt-1-name-2"></div><div class="slot-storable stored-info" id="alt-1-info-2"></div><div class="slot-storable stored-logo" id="alt-1-logo-2"></div></li>
+								<li id="alt-1-slot-3"><div class="slot-number">3</div><div class="slot-storable stored-name" id="alt-1-name-3"></div><div class="slot-storable stored-info" id="alt-1-info-3"></div><div class="slot-storable stored-logo" id="alt-1-logo-3"></div></li>
+								<li id="alt-1-slot-4"><div class="slot-number">4</div><div class="slot-storable stored-name" id="alt-1-name-4"></div><div class="slot-storable stored-info" id="alt-1-info-4"></div><div class="slot-storable stored-logo" id="alt-1-logo-4"></div></li>
+								<li id="alt-1-slot-5"><div class="slot-number">5</div><div class="slot-storable stored-name" id="alt-1-name-5"></div><div class="slot-storable stored-info" id="alt-1-info-5"></div><div class="slot-storable stored-logo" id="alt-1-logo-5"></div></li>
+								<li id="alt-1-slot-6"><div class="slot-number">6</div><div class="slot-storable stored-name" id="alt-1-name-6"></div><div class="slot-storable stored-info" id="alt-1-info-6"></div><div class="slot-storable stored-logo" id="alt-1-logo-6"></div></li>
+								<li id="alt-1-slot-7"><div class="slot-number">7</div><div class="slot-storable stored-name" id="alt-1-name-7"></div><div class="slot-storable stored-info" id="alt-1-info-7"></div><div class="slot-storable stored-logo" id="alt-1-logo-7"></div></li>
+								<li id="alt-1-slot-8"><div class="slot-number">8</div><div class="slot-storable stored-name" id="alt-1-name-8"></div><div class="slot-storable stored-info" id="alt-1-info-8"></div><div class="slot-storable stored-logo" id="alt-1-logo-8"></div></li>
+								<li id="alt-1-slot-9"><div class="slot-number">9</div><div class="slot-storable stored-name" id="alt-1-name-9"></div><div class="slot-storable stored-info" id="alt-1-info-9"></div><div class="slot-storable stored-logo" id="alt-1-logo-9"></div></li>
+								<li id="alt-1-slot-10"><div class="slot-number">10</div><div class="slot-storable stored-name" id="alt-1-name-10"></div><div class="slot-storable stored-info" id="alt-1-info-10"></div><div class="slot-storable stored-logo" id="alt-1-logo-10"></div></li>
+							</ul>
+							<div class="time-bar">
+								<div id="alt-1-active-time-monitor">0</div>
+								<div id="alt-1-inactive-time-monitor">0</div>
+							</div>
+							<label class="config-btn">
+								<input class="checkbox-storable" type="checkbox" id="alt-1-autoload">
+								<span class="icon-btn"><i class='fas'>&#xf2f1;</i></span>
+							</label>
+							<label id="alt-1-custom-times" class="accordion"><i class="fas">&#xf017;</i></label>
+							<div class="hidable">
+								<div class="alt-time-options">
+									<div class="settings-title">LT1 times</div>
+									<div class="settings-inputs">
+										<input class="storable" id="alt-1-animation-time" placeholder="(in-out)" tabindex="12">
+										<input class="storable" id="alt-1-active-time" placeholder="(active)" tabindex="13">
+										<input class="storable" id="alt-1-inactive-time" placeholder="(inactive)" tabindex="14">
 									</div>
 								</div>
 							</div>
 						</div>
+						
 					</div>
 				</div>
 
@@ -282,9 +325,9 @@
 							    </div>
 							    <div>
 									<div id="alt-2-style-color-appearance">
-										<div class="tool-tittle">Color 1</div>
+										<div class="tool-tittle">Clr 1</div>
 										<input class="storable" id="alt-2-style-color-1" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="D54141">
-										<div class="tool-tittle">Color 2</div>
+										<div class="tool-tittle">Clr 2</div>
 										<input class="storable" id="alt-2-style-color-2" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="222222">
 									</div>
 							    </div>
@@ -346,66 +389,71 @@
 							  </div>
 							</div>					
 						</div>
-						<div class="textfields-container">
-							<input class="storable" type="text" id="alt-2-name" placeholder="Name" tabindex="6">
-							<div id="alt-2-name-appearance">
-								<label class="config-btn">
-								<input class="checkbox-storable" type="checkbox" id="alt-2-name-transform" checked>
-								<span class="icon-btn"><i class='fas'>&#xf031;</i><p>a</p></span>
-								</label>
-								<label class="config-btn">
-									<input class="checkbox-storable" type="checkbox" id="alt-2-name-weight" checked>
-									<span class="icon-btn"><i class='fas'>&#xf032;</i></span>
-								</label>
-								<input class="storable" id="alt-2-name-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="f2f2f2">
+						<div class="first-edit-container">
+							<div class="logo-container" onclick="openLogoPopup('alt-2-logo-preview', 'alt-2-logo-default')">
+								<img id="alt-2-logo-preview" class="logo-storable alt-logo-preview" >
 							</div>
-							<input class="storable" type="text" id="alt-2-info" placeholder="Info" tabindex="7">
-							<div id="alt-2-info-appearance">
-								<label class="config-btn">
-									<input class="checkbox-storable" type="checkbox" id="alt-2-info-transform">
+							<div class="textfields-container">
+								<input class="storable" type="text" id="alt-2-name" placeholder="Name" tabindex="6">
+								<div id="alt-2-name-appearance">
+									<label class="config-btn">
+									<input class="checkbox-storable" type="checkbox" id="alt-2-name-transform" checked>
 									<span class="icon-btn"><i class='fas'>&#xf031;</i><p>a</p></span>
-								</label>
-								<label class="config-btn">
-									<input class="checkbox-storable" type="checkbox" id="alt-2-info-weight">
-									<span class="icon-btn"><i class='fas'>&#xf032;</i></span>
-								</label>
-								<input class="storable" id="alt-2-info-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="555555">
-							</div>	
-							<div style="clear:both"></div>
-							<div class="panel-bottom">
-								<div id="alt-2-clean-inputs" class="clean"><i class="fas">&#xf00d;</i></div>
-								<label class="config-btn">
-									<input class="checkbox-storable" type="checkbox" id="alt-2-autoload">
-									<span class="icon-btn"><i class='fas'>&#xf2f1;</i></span>
-								</label>								
-								<ul id="alt-2-memory-slots">
-									<li id="alt-2-slot-1"><div class="slot-storable stored-name" id="alt-2-name-1"></div><div class="slot-storable stored-info" id="alt-2-info-1"></div></li>
-									<li id="alt-2-slot-2"><div class="slot-storable stored-name" id="alt-2-name-2"></div><div class="slot-storable stored-info" id="alt-2-info-2"></div></li>
-									<li id="alt-2-slot-3"><div class="slot-storable stored-name" id="alt-2-name-3"></div><div class="slot-storable stored-info" id="alt-2-info-3"></div></li>
-									<li id="alt-2-slot-4"><div class="slot-storable stored-name" id="alt-2-name-4"></div><div class="slot-storable stored-info" id="alt-2-info-4"></div></li>
-									<li id="alt-2-slot-5"><div class="slot-storable stored-name" id="alt-2-name-5"></div><div class="slot-storable stored-info" id="alt-2-info-5"></div></li>
-									<li id="alt-2-slot-6"><div class="slot-storable stored-name" id="alt-2-name-6"></div><div class="slot-storable stored-info" id="alt-2-info-6"></div></li>
-									<li id="alt-2-slot-7"><div class="slot-storable stored-name" id="alt-2-name-7"></div><div class="slot-storable stored-info" id="alt-2-info-7"></div></li>
-									<li id="alt-2-slot-8"><div class="slot-storable stored-name" id="alt-2-name-8"></div><div class="slot-storable stored-info" id="alt-2-info-8"></div></li>
-									<li id="alt-2-slot-9"><div class="slot-storable stored-name" id="alt-2-name-9"></div><div class="slot-storable stored-info" id="alt-2-info-9"></div></li>
-									<li id="alt-2-slot-10"><div class="slot-storable stored-name" id="alt-2-name-10"></div><div class="slot-storable stored-info" id="alt-2-info-10"></div></li>
-								</ul>
-								<div class="time-bar">
-									<div id="alt-2-active-time-monitor">0</div>
-									<div id="alt-2-inactive-time-monitor">0</div>
+									</label>
+									<label class="config-btn">
+										<input class="checkbox-storable" type="checkbox" id="alt-2-name-weight" checked>
+										<span class="icon-btn"><i class='fas'>&#xf032;</i></span>
+									</label>
+									<input class="storable" id="alt-2-name-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="f2f2f2">
 								</div>
-								<label id="alt-2-custom-times" class="accordion"><i class="fas">&#xf017;</i></label>
-								<div class="hidable">
-									<div class="alt-time-options">
-										<div class="settings-title">Custom times</div>
-										<div class="settings-inputs">
-											<input class="storable" id="alt-2-animation-time" placeholder="(in-out)" tabindex="15">
-											<input class="storable" id="alt-2-active-time" placeholder="(active)" tabindex="16">
-											<input class="storable" id="alt-2-inactive-time" placeholder="(inactive)" tabindex="17">
-										</div>
-									</div>
-								</div>								
+								<input class="storable" type="text" id="alt-2-info" placeholder="Info" tabindex="7">
+								<div id="alt-2-info-appearance">
+									<label class="config-btn">
+										<input class="checkbox-storable" type="checkbox" id="alt-2-info-transform">
+										<span class="icon-btn"><i class='fas'>&#xf031;</i><p>a</p></span>
+									</label>
+									<label class="config-btn">
+										<input class="checkbox-storable" type="checkbox" id="alt-2-info-weight">
+										<span class="icon-btn"><i class='fas'>&#xf032;</i></span>
+									</label>
+									<input class="storable" id="alt-2-info-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="555555">
+								</div>	
+								<div style="clear:both"></div>
 							</div>
+						</div>	
+						<div class="panel-bottom">
+							<div id="alt-2-clean-inputs" class="clean"><i class="fas">&#xf00d;</i></div>
+							<ul id="alt-2-memory-slots">
+								<li id="alt-2-slot-1"><div class="slot-number">1</div><div class="slot-storable stored-name" id="alt-2-name-1"></div><div class="slot-storable stored-info" id="alt-2-info-1"></div><div class="slot-storable stored-logo" id="alt-2-logo-1"></div></li>
+								<li id="alt-2-slot-2"><div class="slot-number">2</div><div class="slot-storable stored-name" id="alt-2-name-2"></div><div class="slot-storable stored-info" id="alt-2-info-2"></div><div class="slot-storable stored-logo" id="alt-2-logo-2"></div></li>
+								<li id="alt-2-slot-3"><div class="slot-number">3</div><div class="slot-storable stored-name" id="alt-2-name-3"></div><div class="slot-storable stored-info" id="alt-2-info-3"></div><div class="slot-storable stored-logo" id="alt-2-logo-3"></div></li>
+								<li id="alt-2-slot-4"><div class="slot-number">4</div><div class="slot-storable stored-name" id="alt-2-name-4"></div><div class="slot-storable stored-info" id="alt-2-info-4"></div><div class="slot-storable stored-logo" id="alt-2-logo-4"></div></li>
+								<li id="alt-2-slot-5"><div class="slot-number">5</div><div class="slot-storable stored-name" id="alt-2-name-5"></div><div class="slot-storable stored-info" id="alt-2-info-5"></div><div class="slot-storable stored-logo" id="alt-2-logo-5"></div></li>
+								<li id="alt-2-slot-6"><div class="slot-number">6</div><div class="slot-storable stored-name" id="alt-2-name-6"></div><div class="slot-storable stored-info" id="alt-2-info-6"></div><div class="slot-storable stored-logo" id="alt-2-logo-6"></div></li>
+								<li id="alt-2-slot-7"><div class="slot-number">7</div><div class="slot-storable stored-name" id="alt-2-name-7"></div><div class="slot-storable stored-info" id="alt-2-info-7"></div><div class="slot-storable stored-logo" id="alt-2-logo-7"></div></li>
+								<li id="alt-2-slot-8"><div class="slot-number">8</div><div class="slot-storable stored-name" id="alt-2-name-8"></div><div class="slot-storable stored-info" id="alt-2-info-8"></div><div class="slot-storable stored-logo" id="alt-2-logo-8"></div></li>
+								<li id="alt-2-slot-9"><div class="slot-number">9</div><div class="slot-storable stored-name" id="alt-2-name-9"></div><div class="slot-storable stored-info" id="alt-2-info-9"></div><div class="slot-storable stored-logo" id="alt-2-logo-9"></div></li>
+								<li id="alt-2-slot-10"><div class="slot-number">10</div><div class="slot-storable stored-name" id="alt-2-name-10"></div><div class="slot-storable stored-info" id="alt-2-info-10"></div><div class="slot-storable stored-logo" id="alt-2-logo-10"></div></li>
+							</ul>
+							<div class="time-bar">
+								<div id="alt-2-active-time-monitor">0</div>
+								<div id="alt-2-inactive-time-monitor">0</div>
+							</div>
+							<label class="config-btn">
+								<input class="checkbox-storable" type="checkbox" id="alt-2-autoload">
+								<span class="icon-btn"><i class='fas'>&#xf2f1;</i></span>
+							</label>
+							<label id="alt-2-custom-times" class="accordion"><i class="fas">&#xf017;</i></label>
+							<div class="hidable">
+								<div class="alt-time-options">
+									<div class="settings-title">LT2 times</div>
+									<div class="settings-inputs">
+										<input class="storable" id="alt-2-animation-time" placeholder="(in-out)" tabindex="15">
+										<input class="storable" id="alt-2-active-time" placeholder="(active)" tabindex="16">
+										<input class="storable" id="alt-2-inactive-time" placeholder="(inactive)" tabindex="17">
+									</div>
+								</div>
+							</div>								
 						</div>
 					</div>
 				</div>
@@ -452,9 +500,9 @@
 							    </div>
 							    <div>
 									<div id="alt-3-style-color-appearance">
-										<div class="tool-tittle">Color 1</div>
+										<div class="tool-tittle">Clr 1</div>
 										<input class="storable" id="alt-3-style-color-1" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="D54141">
-										<div class="tool-tittle">Color 2</div>
+										<div class="tool-tittle">Clr 2</div>
 										<input class="storable" id="alt-3-style-color-2" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="222222">
 									</div>
 							    </div>
@@ -516,65 +564,70 @@
 							  </div>
 							</div>					
 						</div>
-						<div class="textfields-container">
-							<input class="storable" type="text" id="alt-3-name" placeholder="Name" tabindex="8">
-							<div id="alt-3-name-appearance">
-								<label class="config-btn">
-								<input class="checkbox-storable" type="checkbox" id="alt-3-name-transform" checked>
-								<span class="icon-btn"><i class='fas'>&#xf031;</i><p>a</p></span>
-								</label>
-								<label class="config-btn">
-									<input class="checkbox-storable" type="checkbox" id="alt-3-name-weight" checked>
-									<span class="icon-btn"><i class='fas'>&#xf032;</i></span>
-								</label>
-								<input class="storable" id="alt-3-name-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="f2f2f2">
+						<div class="first-edit-container">
+							<div class="logo-container" onclick="openLogoPopup('alt-3-logo-preview', 'alt-3-logo-default')">
+								<img id="alt-3-logo-preview" class="logo-storable alt-logo-preview" >
 							</div>
-							<input class="storable" type="text" id="alt-3-info" placeholder="Info" tabindex="9">
-							<div id="alt-3-info-appearance">
-								<label class="config-btn">
-									<input class="checkbox-storable" type="checkbox" id="alt-3-info-transform">
+							<div class="textfields-container">
+								<input class="storable" type="text" id="alt-3-name" placeholder="Name" tabindex="8">
+								<div id="alt-3-name-appearance">
+									<label class="config-btn">
+									<input class="checkbox-storable" type="checkbox" id="alt-3-name-transform" checked>
 									<span class="icon-btn"><i class='fas'>&#xf031;</i><p>a</p></span>
-								</label>
-								<label class="config-btn">
-									<input class="checkbox-storable" type="checkbox" id="alt-3-info-weight">
-									<span class="icon-btn"><i class='fas'>&#xf032;</i></span>
-								</label>
-								<input class="storable" id="alt-3-info-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="555555">
-							</div>	
-							<div style="clear:both"></div>
-							<div class="panel-bottom">
-								<div id="alt-3-clean-inputs" class="clean"><i class="fas">&#xf00d;</i></div>
-								<label class="config-btn">
-									<input class="checkbox-storable" type="checkbox" id="alt-3-autoload">
-									<span class="icon-btn"><i class='fas'>&#xf2f1;</i></span>
-								</label>
-								<ul id="alt-3-memory-slots">
-									<li id="alt-3-slot-1"><div class="slot-storable stored-name" id="alt-3-name-1"></div><div class="slot-storable stored-info" id="alt-3-info-1"></div></li>
-									<li id="alt-3-slot-2"><div class="slot-storable stored-name" id="alt-3-name-2"></div><div class="slot-storable stored-info" id="alt-3-info-2"></div></li>
-									<li id="alt-3-slot-3"><div class="slot-storable stored-name" id="alt-3-name-3"></div><div class="slot-storable stored-info" id="alt-3-info-3"></div></li>
-									<li id="alt-3-slot-4"><div class="slot-storable stored-name" id="alt-3-name-4"></div><div class="slot-storable stored-info" id="alt-3-info-4"></div></li>
-									<li id="alt-3-slot-5"><div class="slot-storable stored-name" id="alt-3-name-5"></div><div class="slot-storable stored-info" id="alt-3-info-5"></div></li>
-									<li id="alt-3-slot-6"><div class="slot-storable stored-name" id="alt-3-name-6"></div><div class="slot-storable stored-info" id="alt-3-info-6"></div></li>
-									<li id="alt-3-slot-7"><div class="slot-storable stored-name" id="alt-3-name-7"></div><div class="slot-storable stored-info" id="alt-3-info-7"></div></li>
-									<li id="alt-3-slot-8"><div class="slot-storable stored-name" id="alt-3-name-8"></div><div class="slot-storable stored-info" id="alt-3-info-8"></div></li>
-									<li id="alt-3-slot-9"><div class="slot-storable stored-name" id="alt-3-name-9"></div><div class="slot-storable stored-info" id="alt-3-info-9"></div></li>
-									<li id="alt-3-slot-10"><div class="slot-storable stored-name" id="alt-3-name-10"></div><div class="slot-storable stored-info" id="alt-3-info-10"></div></li>
-								</ul>
-								<div class="time-bar">
-									<div id="alt-3-active-time-monitor">0</div>
-									<div id="alt-3-inactive-time-monitor">0</div>
+									</label>
+									<label class="config-btn">
+										<input class="checkbox-storable" type="checkbox" id="alt-3-name-weight" checked>
+										<span class="icon-btn"><i class='fas'>&#xf032;</i></span>
+									</label>
+									<input class="storable" id="alt-3-name-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="f2f2f2">
 								</div>
-								<label id="alt-3-custom-times" class="accordion"><i class="fas">&#xf017;</i></label>
-								<div class="hidable">
-									<div class="alt-time-options">
-										<div class="settings-title">Custom times</div>
-										<div class="settings-inputs">
-											<input class="storable" id="alt-3-animation-time" placeholder="(in-out)" tabindex="18">
-											<input class="storable" id="alt-3-active-time" placeholder="(active)" tabindex="19">
-											<input class="storable" id="alt-3-inactive-time" placeholder="(inactive)" tabindex="20">
-										</div>
+								<input class="storable" type="text" id="alt-3-info" placeholder="Info" tabindex="9">
+								<div id="alt-3-info-appearance">
+									<label class="config-btn">
+										<input class="checkbox-storable" type="checkbox" id="alt-3-info-transform">
+										<span class="icon-btn"><i class='fas'>&#xf031;</i><p>a</p></span>
+									</label>
+									<label class="config-btn">
+										<input class="checkbox-storable" type="checkbox" id="alt-3-info-weight">
+										<span class="icon-btn"><i class='fas'>&#xf032;</i></span>
+									</label>
+									<input class="storable" id="alt-3-info-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="555555">
+								</div>	
+								<div style="clear:both"></div>
+							</div>
+						</div>
+						<div class="panel-bottom">
+							<div id="alt-3-clean-inputs" class="clean"><i class="fas">&#xf00d;</i></div>
+							<ul id="alt-3-memory-slots">
+								<li id="alt-3-slot-1"><div class="slot-number">1</div><div class="slot-storable stored-name" id="alt-3-name-1"></div><div class="slot-storable stored-info" id="alt-3-info-1"></div><div class="slot-storable stored-logo" id="alt-3-logo-1"></div></li>
+								<li id="alt-3-slot-2"><div class="slot-number">2</div><div class="slot-storable stored-name" id="alt-3-name-2"></div><div class="slot-storable stored-info" id="alt-3-info-2"></div><div class="slot-storable stored-logo" id="alt-3-logo-2"></div></li>
+								<li id="alt-3-slot-3"><div class="slot-number">3</div><div class="slot-storable stored-name" id="alt-3-name-3"></div><div class="slot-storable stored-info" id="alt-3-info-3"></div><div class="slot-storable stored-logo" id="alt-3-logo-3"></div></li>
+								<li id="alt-3-slot-4"><div class="slot-number">4</div><div class="slot-storable stored-name" id="alt-3-name-4"></div><div class="slot-storable stored-info" id="alt-3-info-4"></div><div class="slot-storable stored-logo" id="alt-3-logo-4"></div></li>
+								<li id="alt-3-slot-5"><div class="slot-number">5</div><div class="slot-storable stored-name" id="alt-3-name-5"></div><div class="slot-storable stored-info" id="alt-3-info-5"></div><div class="slot-storable stored-logo" id="alt-3-logo-5"></div></li>
+								<li id="alt-3-slot-6"><div class="slot-number">6</div><div class="slot-storable stored-name" id="alt-3-name-6"></div><div class="slot-storable stored-info" id="alt-3-info-6"></div><div class="slot-storable stored-logo" id="alt-3-logo-6"></div></li>
+								<li id="alt-3-slot-7"><div class="slot-number">7</div><div class="slot-storable stored-name" id="alt-3-name-7"></div><div class="slot-storable stored-info" id="alt-3-info-7"></div><div class="slot-storable stored-logo" id="alt-3-logo-7"></div></li>
+								<li id="alt-3-slot-8"><div class="slot-number">8</div><div class="slot-storable stored-name" id="alt-3-name-8"></div><div class="slot-storable stored-info" id="alt-3-info-8"></div><div class="slot-storable stored-logo" id="alt-3-logo-8"></div></li>
+								<li id="alt-3-slot-9"><div class="slot-number">9</div><div class="slot-storable stored-name" id="alt-3-name-9"></div><div class="slot-storable stored-info" id="alt-3-info-9"></div><div class="slot-storable stored-logo" id="alt-3-logo-9"></div></li>
+								<li id="alt-3-slot-10"><div class="slot-number">10</div><div class="slot-storable stored-name" id="alt-3-name-10"></div><div class="slot-storable stored-info" id="alt-3-info-10"></div><div class="slot-storable stored-logo" id="alt-3-logo-10"></div></li>
+							</ul>
+							<div class="time-bar">
+								<div id="alt-3-active-time-monitor">0</div>
+								<div id="alt-3-inactive-time-monitor">0</div>
+							</div>
+							<label class="config-btn">
+								<input class="checkbox-storable" type="checkbox" id="alt-3-autoload">
+								<span class="icon-btn"><i class='fas'>&#xf2f1;</i></span>
+							</label>
+							<label id="alt-3-custom-times" class="accordion"><i class="fas">&#xf017;</i></label>
+							<div class="hidable">
+								<div class="alt-time-options">
+									<div class="settings-title">LT3 times</div>
+									<div class="settings-inputs">
+										<input class="storable" id="alt-3-animation-time" placeholder="(in-out)" tabindex="18">
+										<input class="storable" id="alt-3-active-time" placeholder="(active)" tabindex="19">
+										<input class="storable" id="alt-3-inactive-time" placeholder="(inactive)" tabindex="20">
 									</div>
-								</div>								
+								</div>
 							</div>
 						</div>
 					</div>
@@ -622,9 +675,9 @@
 							    </div>
 							    <div>
 									<div id="alt-4-style-color-appearance">
-										<div class="tool-tittle">Color 1</div>
+										<div class="tool-tittle">Clr 1</div>
 										<input class="storable" id="alt-4-style-color-1" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="D54141">
-										<div class="tool-tittle">Color 2</div>
+										<div class="tool-tittle">Clr 2</div>
 										<input class="storable" id="alt-4-style-color-2" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="222222">
 									</div>
 							    </div>
@@ -686,75 +739,127 @@
 							  </div>
 							</div>
 						</div>
-						<div class="textfields-container">
-							<input class="storable" type="text" id="alt-4-name" placeholder="Name" tabindex="10">
-							<div id="alt-4-name-appearance">
-								<label class="config-btn">
-								<input class="checkbox-storable" type="checkbox" id="alt-4-name-transform" checked>
-								<span class="icon-btn"><i class='fas'>&#xf031;</i><p>a</p></span>
-								</label>
-								<label class="config-btn">
-									<input class="checkbox-storable" type="checkbox" id="alt-4-name-weight" checked>
-									<span class="icon-btn"><i class='fas'>&#xf032;</i></span>
-								</label>
-								<input class="storable" id="alt-4-name-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="f2f2f2">
+						<div class="first-edit-container">
+							<div class="logo-container" onclick="openLogoPopup('alt-4-logo-preview', 'alt-4-logo-default')">
+								<img id="alt-4-logo-preview" class="logo-storable alt-logo-preview" >
 							</div>
-							<input class="storable" type="text" id="alt-4-info" placeholder="Info" tabindex="11">
-							<div id="alt-4-info-appearance">
-								<label class="config-btn">
-									<input class="checkbox-storable" type="checkbox" id="alt-4-info-transform">
+							<div class="textfields-container">
+								<input class="storable" type="text" id="alt-4-name" placeholder="Name" tabindex="10">
+								<div id="alt-4-name-appearance">
+									<label class="config-btn">
+									<input class="checkbox-storable" type="checkbox" id="alt-4-name-transform" checked>
 									<span class="icon-btn"><i class='fas'>&#xf031;</i><p>a</p></span>
-								</label>
-								<label class="config-btn">
-									<input class="checkbox-storable" type="checkbox" id="alt-4-info-weight">
-									<span class="icon-btn"><i class='fas'>&#xf032;</i></span>
-								</label>
-								<input class="storable" id="alt-4-info-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="555555">
-							</div>	
-							<div style="clear:both"></div>
-							<div class="panel-bottom">
-								<div id="alt-4-clean-inputs" class="clean"><i class="fas">&#xf00d;</i></div>
-								<label class="config-btn">
-									<input class="checkbox-storable" type="checkbox" id="alt-4-autoload">
-									<span class="icon-btn"><i class='fas'>&#xf2f1;</i></span>
-								</label>
-								<ul id="alt-4-memory-slots">
-									<li id="alt-4-slot-1"><div class="slot-storable stored-name" id="alt-4-name-1"></div><div class="slot-storable stored-info" id="alt-4-info-1"></div></li>
-									<li id="alt-4-slot-2"><div class="slot-storable stored-name" id="alt-4-name-2"></div><div class="slot-storable stored-info" id="alt-4-info-2"></div></li>
-									<li id="alt-4-slot-3"><div class="slot-storable stored-name" id="alt-4-name-3"></div><div class="slot-storable stored-info" id="alt-4-info-3"></div></li>
-									<li id="alt-4-slot-4"><div class="slot-storable stored-name" id="alt-4-name-4"></div><div class="slot-storable stored-info" id="alt-4-info-4"></div></li>
-									<li id="alt-4-slot-5"><div class="slot-storable stored-name" id="alt-4-name-5"></div><div class="slot-storable stored-info" id="alt-4-info-5"></div></li>
-									<li id="alt-4-slot-6"><div class="slot-storable stored-name" id="alt-4-name-6"></div><div class="slot-storable stored-info" id="alt-4-info-6"></div></li>
-									<li id="alt-4-slot-7"><div class="slot-storable stored-name" id="alt-4-name-7"></div><div class="slot-storable stored-info" id="alt-4-info-7"></div></li>
-									<li id="alt-4-slot-8"><div class="slot-storable stored-name" id="alt-4-name-8"></div><div class="slot-storable stored-info" id="alt-4-info-8"></div></li>
-									<li id="alt-4-slot-9"><div class="slot-storable stored-name" id="alt-4-name-9"></div><div class="slot-storable stored-info" id="alt-4-info-9"></div></li>
-									<li id="alt-4-slot-10"><div class="slot-storable stored-name" id="alt-4-name-10"></div><div class="slot-storable stored-info" id="alt-4-info-10"></div></li>
-								</ul>
-								<div class="time-bar">
-									<div id="alt-4-active-time-monitor">0</div>
-									<div id="alt-4-inactive-time-monitor">0</div>
+									</label>
+									<label class="config-btn">
+										<input class="checkbox-storable" type="checkbox" id="alt-4-name-weight" checked>
+										<span class="icon-btn"><i class='fas'>&#xf032;</i></span>
+									</label>
+									<input class="storable" id="alt-4-name-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="f2f2f2">
 								</div>
-								<label id="alt-4-custom-times" class="accordion"><i class="fas">&#xf017;</i></label>
-								<div class="hidable">
-									<div class="alt-time-options">
-										<div class="settings-title">Custom times</div>
-										<div class="settings-inputs">
-											<input class="storable" id="alt-4-animation-time" placeholder="(in-out)" tabindex="21">
-											<input class="storable" id="alt-4-active-time" placeholder="(active)" tabindex="22">
-											<input class="storable" id="alt-4-inactive-time" placeholder="(inactive)" tabindex="23">
-										</div>
-									</div>
-								</div>								
+								<input class="storable" type="text" id="alt-4-info" placeholder="Info" tabindex="11">
+								<div id="alt-4-info-appearance">
+									<label class="config-btn">
+										<input class="checkbox-storable" type="checkbox" id="alt-4-info-transform">
+										<span class="icon-btn"><i class='fas'>&#xf031;</i><p>a</p></span>
+									</label>
+									<label class="config-btn">
+										<input class="checkbox-storable" type="checkbox" id="alt-4-info-weight">
+										<span class="icon-btn"><i class='fas'>&#xf032;</i></span>
+									</label>
+									<input class="storable" id="alt-4-info-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="555555">
+								</div>	
+								<div style="clear:both"></div>
 							</div>
+						</div>
+						<div class="panel-bottom">
+							<div id="alt-4-clean-inputs" class="clean"><i class="fas">&#xf00d;</i></div>
+							<ul id="alt-4-memory-slots">
+								<li id="alt-4-slot-1"><div class="slot-number">1</div><div class="slot-storable stored-name" id="alt-4-name-1"></div><div class="slot-storable stored-info" id="alt-4-info-1"></div><div class="slot-storable stored-logo" id="alt-4-logo-1"></div></li>
+								<li id="alt-4-slot-2"><div class="slot-number">2</div><div class="slot-storable stored-name" id="alt-4-name-2"></div><div class="slot-storable stored-info" id="alt-4-info-2"></div><div class="slot-storable stored-logo" id="alt-4-logo-2"></div></li>
+								<li id="alt-4-slot-3"><div class="slot-number">3</div><div class="slot-storable stored-name" id="alt-4-name-3"></div><div class="slot-storable stored-info" id="alt-4-info-3"></div><div class="slot-storable stored-logo" id="alt-4-logo-3"></div></li>
+								<li id="alt-4-slot-4"><div class="slot-number">4</div><div class="slot-storable stored-name" id="alt-4-name-4"></div><div class="slot-storable stored-info" id="alt-4-info-4"></div><div class="slot-storable stored-logo" id="alt-4-logo-4"></div></li>
+								<li id="alt-4-slot-5"><div class="slot-number">5</div><div class="slot-storable stored-name" id="alt-4-name-5"></div><div class="slot-storable stored-info" id="alt-4-info-5"></div><div class="slot-storable stored-logo" id="alt-4-logo-5"></div></li>
+								<li id="alt-4-slot-6"><div class="slot-number">6</div><div class="slot-storable stored-name" id="alt-4-name-6"></div><div class="slot-storable stored-info" id="alt-4-info-6"></div><div class="slot-storable stored-logo" id="alt-4-logo-6"></div></li>
+								<li id="alt-4-slot-7"><div class="slot-number">7</div><div class="slot-storable stored-name" id="alt-4-name-7"></div><div class="slot-storable stored-info" id="alt-4-info-7"></div><div class="slot-storable stored-logo" id="alt-4-logo-7"></div></li>
+								<li id="alt-4-slot-8"><div class="slot-number">8</div><div class="slot-storable stored-name" id="alt-4-name-8"></div><div class="slot-storable stored-info" id="alt-4-info-8"></div><div class="slot-storable stored-logo" id="alt-4-logo-8"></div></li>
+								<li id="alt-4-slot-9"><div class="slot-number">9</div><div class="slot-storable stored-name" id="alt-4-name-9"></div><div class="slot-storable stored-info" id="alt-4-info-9"></div><div class="slot-storable stored-logo" id="alt-4-logo-9"></div></li>
+								<li id="alt-4-slot-10"><div class="slot-number">10</div><div class="slot-storable stored-name" id="alt-4-name-10"></div><div class="slot-storable stored-info" id="alt-4-info-10"></div><div class="slot-storable stored-logo" id="alt-4-logo-10"></div></li>
+							</ul>
+							<div class="time-bar">
+								<div id="alt-4-active-time-monitor">0</div>
+								<div id="alt-4-inactive-time-monitor">0</div>
+							</div>
+							<label class="config-btn">
+								<input class="checkbox-storable" type="checkbox" id="alt-4-autoload">
+								<span class="icon-btn"><i class='fas'>&#xf2f1;</i></span>
+							</label>
+							<label id="alt-4-custom-times" class="accordion"><i class="fas">&#xf017;</i></label>
+							<div class="hidable">
+								<div class="alt-time-options">
+									<div class="settings-title">LT4 times</div>
+									<div class="settings-inputs">
+										<input class="storable" id="alt-4-animation-time" placeholder="(in-out)" tabindex="21">
+										<input class="storable" id="alt-4-active-time" placeholder="(active)" tabindex="22">
+										<input class="storable" id="alt-4-inactive-time" placeholder="(inactive)" tabindex="23">
+									</div>
+								</div>
+							</div>								
 						</div>
 					</div>
 				</div>
 
 			</div>
 
-			<div id="alt-preview" class="hide">
+			<div id="select-image" class="center hide" >
+				<div class="select-image-bg" onclick="cancelLogoPopup()"></div>
+				<div class="form-input">
+					<div class="file-btns">
+						<label for="logo-file">Choose image</label>
+						<input type="file" id="logo-file" accept="image/*" onchange="showPreview(event);">
+						<div class="btn-remove" onclick="removeLogoPopup()"><i class="fas">&#xf2ed;</i></div>
+					</div>
+					<div id="file-preview" class="no-image">
+						<img id="logo-file-preview">
+					</div>
+					<div class="file-btns">
+						<div class="btn-ok" onclick="okLogoPopup()">Ok</div>
+						<div class="btn-cancel" onclick="cancelLogoPopup()">Cancel</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="export-data" class="center hide" >
+				<div class="export-data-bg" onclick="okExportPopup()"></div>
+				<div class="form-input">
+					<div>
+						<h1>Copied to clipboard</h1>
+						<p>For security reasons, the exported data has been copied to the clipboard. Please paste it into a text editor (e.g. Notepad) and save it as a TXT file.</p>
+					</div>
+					<div class="export-btns">
+						<div class="btn-ok-export" onclick="okExportPopup()">Ok</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="reset-all" class="center hide" >
+				<div class="reset-all-bg" onclick="cancelResetPopup()"></div>
+				<div class="form-input">
+					<div>
+						<h1>Reset all settings</h1>
+						<p>You are going to reset all configuration and memory slots ¿Are you sure?</p>
+					</div>
+					<div class="reset-btns">
+						<div class="btn-ok-reset" onclick="okResetPopup()">Ok</div>
+						<div class="btn-cancel" onclick="cancelResetPopup()">Cancel</div>
+					</div>
+				</div>
+			</div>
+
+			<div id='fileNames'> </div>
+
+			<div id="alt-preview" class="active">
 				<label><i class="fas">&#xf002;</i>Preview</label>
-				<div id="toggle-preview" class="hide"><i class="fas">&#xf078;</i></div>
+				<div id="toggle-preview" class="active"><i class="fas">&#xf078;</i></div>
 				<div class="embed-container">
 				    <iframe id="myiframe" src="./browser-source.html?mode=preview" frameborder="0" allowfullscreen></iframe>
 				</div>
@@ -783,11 +888,6 @@
 			var alt_4_active_time_monitor;
 			var alt_4_inactive_time_monitor;
 
-			//var alt_1_animation_time;
-			//var alt_2_animation_time;
-			//var alt_3_animation_time;
-			//var alt_4_animation_time;
-
 
 			var alt_1_autoload;
 			var alt_1_jumpnext;
@@ -798,6 +898,11 @@
 			var alt_4_autoload;
 			var alt_4_jumpnext;
 
+
+			var alt_1_logo_default = "../logos/logo_1.png";
+			var alt_2_logo_default = "../logos/logo_2.png";
+			var alt_3_logo_default = "../logos/logo_3.png";
+			var alt_4_logo_default = "../logos/logo_4.png";
 
 			var alt_1_style = 1;
 			var alt_1_inverse_ratio = 9;
@@ -849,6 +954,50 @@
 			var hotkeySwitch3Old = hotkeySwitch3;
 			var hotkeySwitch4Old = hotkeySwitch4;
 
+			var hotkeyAlt1Slot1Old = hotkeyAlt1Slot1;
+			var hotkeyAlt1Slot2Old = hotkeyAlt1Slot2;
+			var hotkeyAlt1Slot3Old = hotkeyAlt1Slot3;
+			var hotkeyAlt1Slot4Old = hotkeyAlt1Slot4;
+			var hotkeyAlt1Slot5Old = hotkeyAlt1Slot5;
+			var hotkeyAlt1Slot6Old = hotkeyAlt1Slot6;
+			var hotkeyAlt1Slot7Old = hotkeyAlt1Slot7;
+			var hotkeyAlt1Slot8Old = hotkeyAlt1Slot8;
+			var hotkeyAlt1Slot9Old = hotkeyAlt1Slot9;
+			var hotkeyAlt1Slot10Old = hotkeyAlt1Slot10;
+
+			var hotkeyAlt2Slot1Old = hotkeyAlt2Slot1;
+			var hotkeyAlt2Slot2Old = hotkeyAlt2Slot2;
+			var hotkeyAlt2Slot3Old = hotkeyAlt2Slot3;
+			var hotkeyAlt2Slot4Old = hotkeyAlt2Slot4;
+			var hotkeyAlt2Slot5Old = hotkeyAlt2Slot5;
+			var hotkeyAlt2Slot6Old = hotkeyAlt2Slot6;
+			var hotkeyAlt2Slot7Old = hotkeyAlt2Slot7;
+			var hotkeyAlt2Slot8Old = hotkeyAlt2Slot8;
+			var hotkeyAlt2Slot9Old = hotkeyAlt2Slot9;
+			var hotkeyAlt2Slot10Old = hotkeyAlt2Slot10;			
+			
+			var hotkeyAlt3Slot1Old = hotkeyAlt3Slot1;
+			var hotkeyAlt3Slot2Old = hotkeyAlt3Slot2;
+			var hotkeyAlt3Slot3Old = hotkeyAlt3Slot3;
+			var hotkeyAlt3Slot4Old = hotkeyAlt3Slot4;
+			var hotkeyAlt3Slot5Old = hotkeyAlt3Slot5;
+			var hotkeyAlt3Slot6Old = hotkeyAlt3Slot6;
+			var hotkeyAlt3Slot7Old = hotkeyAlt3Slot7;
+			var hotkeyAlt3Slot8Old = hotkeyAlt3Slot8;
+			var hotkeyAlt3Slot9Old = hotkeyAlt3Slot9;
+			var hotkeyAlt3Slot10Old = hotkeyAlt3Slot10;
+
+			var hotkeyAlt4Slot1Old = hotkeyAlt4Slot1;
+			var hotkeyAlt4Slot2Old = hotkeyAlt4Slot2;
+			var hotkeyAlt4Slot3Old = hotkeyAlt4Slot3;
+			var hotkeyAlt4Slot4Old = hotkeyAlt4Slot4;
+			var hotkeyAlt4Slot5Old = hotkeyAlt4Slot5;
+			var hotkeyAlt4Slot6Old = hotkeyAlt4Slot6;
+			var hotkeyAlt4Slot7Old = hotkeyAlt4Slot7;
+			var hotkeyAlt4Slot8Old = hotkeyAlt4Slot8;
+			var hotkeyAlt4Slot9Old = hotkeyAlt4Slot9;
+			var hotkeyAlt4Slot10Old = hotkeyAlt4Slot10;
+			
 			var acc = document.getElementsByClassName("accordion");
 			var i;
 
@@ -870,11 +1019,9 @@
 			//acc[4].onclick()
 
 			var more = document.getElementsByClassName("more");
-			//var global_config_panel = document.getElementById("global-configuration");
-			var m;
-			
-			for (m = 0; m < more.length; m++) {
-			  more[m].onclick = function() {
+			// var m;
+			for (i = 0; i < more.length; i++) {
+			  more[i].onclick = function() {
 			    this.classList.toggle("active");
 			    var hideMore = this.nextElementSibling;
 			    if (hideMore.style.maxHeight){
@@ -886,7 +1033,6 @@
 				  var hidable = document.getElementById("global-configuration").style.maxHeight;
 				  hidable = Number(hidable.replace(/px/g,''));
 				  document.getElementById("global-configuration").style.maxHeight = hidable + hideMore.scrollHeight + "px";
-				  //global_config_panel.style.maxHeight = global_config_panel.scrollHeight + "px";
 			    } 
 			  }
 			}
@@ -949,25 +1095,16 @@
 						var font_url_to_add = $(this).children('.font-url-added').text();
 						fontlist_names.push(font_name_to_add);
 						fontlist_urls.push(font_url_to_add);
-						//AddNewFont(font_name_to_add, font_url_to_add);
 					});				
-
-					//Clear selectors list to refresh
-					const fontNode = document.getElementById("alt-1-font");
-					while (fontNode.firstChild) {
-						fontNode.removeChild(fontNode.lastChild);
-					}
 
 					//Refresh the font list
 					$.each(fontlist_names, function(i) {
-						//var $selectedfonts = '';
 
 						var fontlist_shortname = fontlist_names[i].substring(
 							fontlist_names[i].lastIndexOf("*'") + 2, 
 							fontlist_names[i].lastIndexOf("',")
 						);
 
-						//$('#alt-1-font').append('<option value="' + fontlist_names[i] + '"' + $selectedfonts + '>' + fontlist_shortname + '</option>');
 						$('.font-storable').each(function(){
 							$(this).append('<option value="' + fontlist_names[i] + '">' + fontlist_shortname + '</option>');
 						});
@@ -979,6 +1116,10 @@
 						var id = $(this).attr('id');
 						if(localStorage.getItem(id)){
 							$("#" + id).val(localStorage.getItem(id));
+						}
+						//If option doesn't exist check the first
+						if(fontlist_names.includes(localStorage.getItem(id)) == false){
+							$("#" + id).val("'Open Sans', sans-serif");
 						}
     				});
 
@@ -1083,7 +1224,7 @@
 
 			});
 
-			//Rename de IDs of Font to correct store
+			//<Rename> de IDs of Font to correct store
 			$('#custom-font-list ul').on('click', 'li', function(e) {
 				$('#custom-font-list ul li').each(function(i) {
 					$(this).children('.font-name-added').attr('id', 'font-name-added-'+(i+1));
@@ -1130,7 +1271,7 @@
 					oriVal = $(this).text();					
 				}
 				$(this).text("");
-				$("<input type='text' value='"+ oriVal + "'>").appendTo(this).focus();
+				$("<input type='text' value='"+ oriVal + "' maxlength='40'>").appendTo(this).focus();
 			});
 
 			$(".renameable").on('focusout', '> input', function () {
@@ -1142,7 +1283,7 @@
 			////////////////////
 
 			//Reload the hotjeys.js file updated by the LUA script
-			function updateHorkeys() {
+			function updateHotkeys() {
 			    src = '../common/js/hotkeys.js';
 			    $('script[src="' + src + '"]').remove();
 			    var head= document.getElementsByTagName('head')[0];
@@ -1201,153 +1342,482 @@
 					}
 					hotkeySwitch4Old = hotkeySwitch4;
 				}
+
+				//Memory Slots triggers LT1
+				if (hotkeyAlt1Slot1 != hotkeyAlt1Slot1Old) {
+					if ($("#alt-1-name-1").text() && $("#alt-1-info-1").text()){
+						loadSlot("#alt-1-name", "#alt-1-info", "#alt-1-logo-preview", $("#alt-1-name-1").text(), $("#alt-1-info-1").text(), $("#alt-1-logo-1").text(), 0);
+					}
+					hotkeyAlt1Slot1Old = hotkeyAlt1Slot1;
+				}
+				if (hotkeyAlt1Slot2 != hotkeyAlt1Slot2Old) {
+					loadSlot("#alt-1-name", "#alt-1-info", "#alt-1-logo-preview", $("#alt-1-name-2").text(), $("#alt-1-info-2").text(), $("#alt-1-logo-2").text(), 0);
+					hotkeyAlt1Slot2Old = hotkeyAlt1Slot2;
+				}
+				if (hotkeyAlt1Slot3 != hotkeyAlt1Slot3Old) {
+					loadSlot("#alt-1-name", "#alt-1-info", "#alt-1-logo-preview", $("#alt-1-name-3").text(), $("#alt-1-info-3").text(), $("#alt-1-logo-3").text(), 0);
+					hotkeyAlt1Slot3Old = hotkeyAlt1Slot3;
+				}
+				if (hotkeyAlt1Slot4 != hotkeyAlt1Slot4Old) {
+					loadSlot("#alt-1-name", "#alt-1-info", "#alt-1-logo-preview", $("#alt-1-name-4").text(), $("#alt-1-info-4").text(), $("#alt-1-logo-4").text(), 0);
+					hotkeyAlt1Slot4Old = hotkeyAlt1Slot4;
+				}
+				if (hotkeyAlt1Slot5 != hotkeyAlt1Slot5Old) {
+					loadSlot("#alt-1-name", "#alt-1-info", "#alt-1-logo-preview", $("#alt-1-name-5").text(), $("#alt-1-info-5").text(), $("#alt-1-logo-5").text(), 0);
+					hotkeyAlt1Slot5Old = hotkeyAlt1Slot5;
+				}
+				if (hotkeyAlt1Slot6 != hotkeyAlt1Slot6Old) {
+					loadSlot("#alt-1-name", "#alt-1-info", "#alt-1-logo-preview", $("#alt-1-name-6").text(), $("#alt-1-info-6").text(), $("#alt-1-logo-6").text(), 0);
+					hotkeyAlt1Slot6Old = hotkeyAlt1Slot6;
+				}
+				if (hotkeyAlt1Slot7 != hotkeyAlt1Slot7Old) {
+					loadSlot("#alt-1-name", "#alt-1-info", "#alt-1-logo-preview", $("#alt-1-name-7").text(), $("#alt-1-info-7").text(), $("#alt-1-logo-7").text(), 0);
+					hotkeyAlt1Slot7Old = hotkeyAlt1Slot7;
+				}
+				if (hotkeyAlt1Slot8 != hotkeyAlt1Slot8Old) {
+					loadSlot("#alt-1-name", "#alt-1-info", "#alt-1-logo-preview", $("#alt-1-name-8").text(), $("#alt-1-info-8").text(), $("#alt-1-logo-8").text(), 0);
+					hotkeyAlt1Slot8Old = hotkeyAlt1Slot8;
+				}
+				if (hotkeyAlt1Slot9 != hotkeyAlt1Slot9Old) {
+					loadSlot("#alt-1-name", "#alt-1-info", "#alt-1-logo-preview", $("#alt-1-name-9").text(), $("#alt-1-info-9").text(), $("#alt-1-logo-9").text(), 0);
+					hotkeyAlt1Slot9Old = hotkeyAlt1Slot9;
+				}
+				if (hotkeyAlt1Slot10 != hotkeyAlt1Slot10Old) {
+					loadSlot("#alt-1-name", "#alt-1-info", "#alt-1-logo-preview", $("#alt-1-name-10").text(), $("#alt-1-info-10").text(), $("#alt-1-logo-10").text(), 0);
+					hotkeyAlt1Slot10Old = hotkeyAlt1Slot10;
+				}
+
+				//Memory Slots triggers LT2
+				if (hotkeyAlt2Slot1 != hotkeyAlt2Slot1Old) {
+					loadSlot("#alt-2-name", "#alt-2-info", "#alt-2-logo-preview", $("#alt-2-name-1").text(), $("#alt-2-info-1").text(), $("#alt-2-logo-1").text(), 0);
+					hotkeyAlt2Slot1Old = hotkeyAlt2Slot1;
+				}
+				if (hotkeyAlt2Slot2 != hotkeyAlt2Slot2Old) {
+					loadSlot("#alt-2-name", "#alt-2-info", "#alt-2-logo-preview", $("#alt-2-name-2").text(), $("#alt-2-info-2").text(), $("#alt-2-logo-2").text(), 0);
+					hotkeyAlt2Slot2Old = hotkeyAlt2Slot2;
+				}
+				if (hotkeyAlt2Slot3 != hotkeyAlt2Slot3Old) {
+					loadSlot("#alt-2-name", "#alt-2-info", "#alt-2-logo-preview", $("#alt-2-name-3").text(), $("#alt-2-info-3").text(), $("#alt-2-logo-3").text(), 0);
+					hotkeyAlt2Slot3Old = hotkeyAlt2Slot3;
+				}
+				if (hotkeyAlt2Slot4 != hotkeyAlt2Slot4Old) {
+					loadSlot("#alt-2-name", "#alt-2-info", "#alt-2-logo-preview", $("#alt-2-name-4").text(), $("#alt-2-info-4").text(), $("#alt-2-logo-4").text(), 0);
+					hotkeyAlt2Slot4Old = hotkeyAlt2Slot4;
+				}
+				if (hotkeyAlt2Slot5 != hotkeyAlt2Slot5Old) {
+					loadSlot("#alt-2-name", "#alt-2-info", "#alt-2-logo-preview", $("#alt-2-name-5").text(), $("#alt-2-info-5").text(), $("#alt-2-logo-5").text(), 0);
+					hotkeyAlt2Slot5Old = hotkeyAlt2Slot5;
+				}
+				if (hotkeyAlt2Slot6 != hotkeyAlt2Slot6Old) {
+					loadSlot("#alt-2-name", "#alt-2-info", "#alt-2-logo-preview", $("#alt-2-name-6").text(), $("#alt-2-info-6").text(), $("#alt-2-logo-6").text(), 0);
+					hotkeyAlt2Slot6Old = hotkeyAlt2Slot6;
+				}
+				if (hotkeyAlt2Slot7 != hotkeyAlt2Slot7Old) {
+					loadSlot("#alt-2-name", "#alt-2-info", "#alt-2-logo-preview", $("#alt-2-name-7").text(), $("#alt-2-info-7").text(), $("#alt-2-logo-7").text(), 0);
+					hotkeyAlt2Slot7Old = hotkeyAlt2Slot7;
+				}
+				if (hotkeyAlt2Slot8 != hotkeyAlt2Slot8Old) {
+					loadSlot("#alt-2-name", "#alt-2-info", "#alt-2-logo-preview", $("#alt-2-name-8").text(), $("#alt-2-info-8").text(), $("#alt-2-logo-8").text(), 0);
+					hotkeyAlt2Slot8Old = hotkeyAlt2Slot8;
+				}
+				if (hotkeyAlt2Slot9 != hotkeyAlt2Slot9Old) {
+					loadSlot("#alt-2-name", "#alt-2-info", "#alt-2-logo-preview", $("#alt-2-name-9").text(), $("#alt-2-info-9").text(), $("#alt-2-logo-9").text(), 0);
+					hotkeyAlt2Slot9Old = hotkeyAlt2Slot9;
+				}
+				if (hotkeyAlt2Slot10 != hotkeyAlt2Slot10Old) {
+					loadSlot("#alt-2-name", "#alt-2-info", "#alt-2-logo-preview", $("#alt-2-name-10").text(), $("#alt-2-info-10").text(), $("#alt-2-logo-10").text(), 0);
+					hotkeyAlt2Slot10Old = hotkeyAlt2Slot10;
+				}
+
+				//Memory Slots triggers LT3
+				if (hotkeyAlt3Slot1 != hotkeyAlt3Slot1Old) {
+					loadSlot("#alt-3-name", "#alt-3-info", "#alt-3-logo-preview", $("#alt-3-name-1").text(), $("#alt-3-info-1").text(), $("#alt-3-logo-1").text(), 0);
+					hotkeyAlt3Slot1Old = hotkeyAlt3Slot1;
+				}
+				if (hotkeyAlt3Slot2 != hotkeyAlt3Slot2Old) {
+					loadSlot("#alt-3-name", "#alt-3-info", "#alt-3-logo-preview", $("#alt-3-name-2").text(), $("#alt-3-info-2").text(), $("#alt-3-logo-2").text(), 0);
+					hotkeyAlt3Slot2Old = hotkeyAlt3Slot2;
+				}
+				if (hotkeyAlt3Slot3 != hotkeyAlt3Slot3Old) {
+					loadSlot("#alt-3-name", "#alt-3-info", "#alt-3-logo-preview", $("#alt-3-name-3").text(), $("#alt-3-info-3").text(), $("#alt-3-logo-3").text(), 0);
+					hotkeyAlt3Slot3Old = hotkeyAlt3Slot3;
+				}
+				if (hotkeyAlt3Slot4 != hotkeyAlt3Slot4Old) {
+					loadSlot("#alt-3-name", "#alt-3-info", "#alt-3-logo-preview", $("#alt-3-name-4").text(), $("#alt-3-info-4").text(), $("#alt-3-logo-4").text(), 0);
+					hotkeyAlt3Slot4Old = hotkeyAlt3Slot4;
+				}
+				if (hotkeyAlt3Slot5 != hotkeyAlt3Slot5Old) {
+					loadSlot("#alt-3-name", "#alt-3-info", "#alt-3-logo-preview", $("#alt-3-name-5").text(), $("#alt-3-info-5").text(), $("#alt-3-logo-5").text(), 0);
+					hotkeyAlt3Slot5Old = hotkeyAlt3Slot5;
+				}
+				if (hotkeyAlt3Slot6 != hotkeyAlt3Slot6Old) {
+					loadSlot("#alt-3-name", "#alt-3-info", "#alt-3-logo-preview", $("#alt-3-name-6").text(), $("#alt-3-info-6").text(), $("#alt-3-logo-6").text(), 0);
+					hotkeyAlt3Slot6Old = hotkeyAlt3Slot6;
+				}
+				if (hotkeyAlt3Slot7 != hotkeyAlt3Slot7Old) {
+					loadSlot("#alt-3-name", "#alt-3-info", "#alt-3-logo-preview", $("#alt-3-name-7").text(), $("#alt-3-info-7").text(), $("#alt-3-logo-7").text(), 0);
+					hotkeyAlt3Slot7Old = hotkeyAlt3Slot7;
+				}
+				if (hotkeyAlt3Slot8 != hotkeyAlt3Slot8Old) {
+					loadSlot("#alt-3-name", "#alt-3-info", "#alt-3-logo-preview", $("#alt-3-name-8").text(), $("#alt-3-info-8").text(), $("#alt-3-logo-8").text(), 0);
+					hotkeyAlt3Slot8Old = hotkeyAlt3Slot8;
+				}
+				if (hotkeyAlt3Slot9 != hotkeyAlt3Slot9Old) {
+					loadSlot("#alt-3-name", "#alt-3-info", "#alt-3-logo-preview", $("#alt-3-name-9").text(), $("#alt-3-info-9").text(), $("#alt-3-logo-9").text(), 0);
+					hotkeyAlt3Slot9Old = hotkeyAlt3Slot9;
+				}
+				if (hotkeyAlt3Slot10 != hotkeyAlt3Slot10Old) {
+					loadSlot("#alt-3-name", "#alt-3-info", "#alt-3-logo-preview", $("#alt-3-name-10").text(), $("#alt-3-info-10").text(), $("#alt-3-logo-10").text(), 0);
+					hotkeyAlt3Slot10Old = hotkeyAlt3Slot10;
+				}
+
+				//Memory Slots triggers LT4
+				if (hotkeyAlt4Slot1 != hotkeyAlt4Slot1Old) {
+					loadSlot("#alt-4-name", "#alt-4-info", "#alt-4-logo-preview", $("#alt-4-name-1").text(), $("#alt-4-info-1").text(), $("#alt-4-logo-1").text(), 0);
+					hotkeyAlt4Slot1Old = hotkeyAlt4Slot1;
+				}
+				if (hotkeyAlt4Slot2 != hotkeyAlt4Slot2Old) {
+					loadSlot("#alt-4-name", "#alt-4-info", "#alt-4-logo-preview", $("#alt-4-name-2").text(), $("#alt-4-info-2").text(), $("#alt-4-logo-2").text(), 0);
+					hotkeyAlt4Slot2Old = hotkeyAlt4Slot2;
+				}
+				if (hotkeyAlt4Slot3 != hotkeyAlt4Slot3Old) {
+					loadSlot("#alt-4-name", "#alt-4-info", "#alt-4-logo-preview", $("#alt-4-name-3").text(), $("#alt-4-info-3").text(), $("#alt-4-logo-3").text(), 0);
+					hotkeyAlt4Slot3Old = hotkeyAlt4Slot3;
+				}
+				if (hotkeyAlt4Slot4 != hotkeyAlt4Slot4Old) {
+					loadSlot("#alt-4-name", "#alt-4-info", "#alt-4-logo-preview", $("#alt-4-name-4").text(), $("#alt-4-info-4").text(), $("#alt-4-logo-4").text(), 0);
+					hotkeyAlt4Slot4Old = hotkeyAlt4Slot4;
+				}
+				if (hotkeyAlt4Slot5 != hotkeyAlt4Slot5Old) {
+					loadSlot("#alt-4-name", "#alt-4-info", "#alt-4-logo-preview", $("#alt-4-name-5").text(), $("#alt-4-info-5").text(), $("#alt-4-logo-5").text(), 0);
+					hotkeyAlt4Slot5Old = hotkeyAlt4Slot5;
+				}
+				if (hotkeyAlt4Slot6 != hotkeyAlt4Slot6Old) {
+					loadSlot("#alt-4-name", "#alt-4-info", "#alt-4-logo-preview", $("#alt-4-name-6").text(), $("#alt-4-info-6").text(), $("#alt-4-logo-6").text(), 0);
+					hotkeyAlt4Slot6Old = hotkeyAlt4Slot6;
+				}
+				if (hotkeyAlt4Slot7 != hotkeyAlt4Slot7Old) {
+					loadSlot("#alt-4-name", "#alt-4-info", "#alt-4-logo-preview", $("#alt-4-name-7").text(), $("#alt-4-info-7").text(), $("#alt-4-logo-7").text(), 0);
+					hotkeyAlt4Slot7Old = hotkeyAlt4Slot7;
+				}
+				if (hotkeyAlt4Slot8 != hotkeyAlt4Slot8Old) {
+					loadSlot("#alt-4-name", "#alt-4-info", "#alt-4-logo-preview", $("#alt-4-name-8").text(), $("#alt-4-info-8").text(), $("#alt-4-logo-8").text(), 0);
+					hotkeyAlt4Slot8Old = hotkeyAlt4Slot8;
+				}
+				if (hotkeyAlt4Slot9 != hotkeyAlt4Slot9Old) {
+					loadSlot("#alt-4-name", "#alt-4-info", "#alt-4-logo-preview", $("#alt-4-name-9").text(), $("#alt-4-info-9").text(), $("#alt-4-logo-9").text(), 0);
+					hotkeyAlt4Slot9Old = hotkeyAlt4Slot9;
+				}
+				if (hotkeyAlt4Slot10 != hotkeyAlt4Slot10Old) {
+					loadSlot("#alt-4-name", "#alt-4-info", "#alt-4-logo-preview", $("#alt-4-name-10").text(), $("#alt-4-info-10").text(), $("#alt-4-logo-10").text(), 0);
+					hotkeyAlt4Slot10Old = hotkeyAlt4Slot10;
+				}
+
+			}
+
+			function openResetPopup() {
+				document.getElementById("reset-all").classList.remove("hide");
+			}
+			function okResetPopup() {
+				clearTimeout(refreshSaveData); //Stop saving data to localstorage
+				localStorage.clear(); //To clear data fields
+
+				//Restore logo default (fix missing logos in the reload)			
+				$('.logo-storable').each(function(){    
+					var id = $(this).attr('id');
+					if (id == "alt-1-logo-preview" || id == "alt-1-logo-default"){
+						var value = alt_1_logo_default;
+					}
+					if (id == "alt-2-logo-preview" || id == "alt-2-logo-default"){
+						var value = alt_2_logo_default;
+					}
+					if (id == "alt-3-logo-preview" || id == "alt-3-logo-default"){
+						var value = alt_3_logo_default;
+					}
+					if (id == "alt-4-logo-preview" || id == "alt-4-logo-default"){
+						var value = alt_4_logo_default;
+					}
+					localStorage.setItem(id, value);              
+				});	
+
+				location.reload();
+				
+			}
+			function cancelResetPopup() {
+				document.getElementById("reset-all").classList.add("hide");
+			}
+
+			//Export popup info
+			function openExportPopup() {
+				document.getElementById("export-data").classList.remove("hide");
+			}
+			function okExportPopup() {
+				document.getElementById("export-data").classList.add("hide");
+			}
+
+			//Load new logo image
+			function showPreview(event){
+				if(event.target.files.length > 0){
+					var src = URL.createObjectURL(event.target.files[0]);
+					var preview = document.getElementById("logo-file-preview");
+					document.getElementById("file-preview").classList.remove("no-image");
+					preview.src = src;
+					preview.style.display = "block";
+				}
+			}
+
+			function openLogoPopup(logo, logo_default) {
+				document.getElementById("select-image").classList.remove("hide");
+				document.getElementById("file-preview").classList.remove("no-image");
+				var preview_to_change = $("#" + logo).attr("src");
+				var preview = document.getElementById("logo-file-preview");
+				preview.src = preview_to_change;
+				preview.style.display = "block";
+				$("#logo-file").val("");
+				
+				//Config ok button
+				$(".btn-ok").attr("onclick", "okLogoPopup('" + logo + "', '" + logo_default + "')");
+				
+				//Hide remove button if it's a default logo
+				if (logo == logo_default){
+					$(".btn-remove").attr('style','display: none');
+				} else {
+					$(".btn-remove").attr('style','display: block');
+				}
+			}
+
+			//OK button
+			function okLogoPopup(logo, logo_default) {
+				var src = document.getElementById("logo-file").files[0];
+				var popup_preview = $("#logo-file-preview").attr("src");
+				var preview = document.getElementById(logo);
+				var alt_logo_preview = logo_default.replace("-default", "-preview");
+
+				if(src){
+					preview.src = "../logos/" + src.name;
+					//Change the lt logo if it use default
+					if (logo == logo_default && $("#" + alt_logo_preview).hasClass('default')){
+						$("#" + alt_logo_preview).attr("src", "../logos/" + src.name);
+					}
+				} else {
+					if (!popup_preview) {
+						var alt_logo_default = $("#" + logo_default).attr("src");
+						preview.src = alt_logo_default;
+					}
+				}
+				
+				document.getElementById("select-image").classList.add("hide");
+			}
+
+			//Cancel button
+			function cancelLogoPopup() {
+				document.getElementById("select-image").classList.add("hide");
+			}
+
+			function removeLogoPopup() {
+				var preview = document.getElementById("logo-file-preview");
+				document.getElementById("file-preview").classList.add("no-image");
+				$("#logo-file").val("");
+				preview.src = "";
+				preview.style.display = "none";
+			}
+
+			function checkLogos() {
+				$(".alt-logo-preview").each(function(){
+					check_logo_id = $(this).attr('id');
+					check_default_logo_id = check_logo_id.replace("-preview", "-default");
+					check_is_default_logo = ($("#" + check_logo_id).attr("src") == $("#" + check_default_logo_id).attr("src"))? true : false;
+					
+					if (check_is_default_logo) {
+						$("#" + check_logo_id).addClass('default');
+					} else {
+						$("#" + check_logo_id).removeClass('default');
+					}
+				});
 			}
 
 			//Memory Slots System
-			function checkSlots (memory_slot, name, info) {
+			function checkSlots (memory_slot, name, info, logo) {
 				$("ul" + memory_slot + " li").each(function(){
 					check_slot_id = $(this).attr('id');
 					check_name_id = $(this).children('.stored-name').attr('id');
 					check_info_id = $(this).children('.stored-info').attr('id');
+					check_logo_id = $(this).children('.stored-logo').attr('id');
+					check_is_default_logo = $(logo).hasClass('default');
 					name_value = $(this).children('.stored-name').text();
 					info_value = $(this).children('.stored-info').text();
-					if ($('#' + check_name_id).is(':empty') && $('#' + check_info_id).is(':empty')){
+					logo_value = $(this).children('.stored-logo').text();
+					//If stored data has no logo, set to default
+					if (name_value && info_value && !logo_value) {
+						$(this).children('.stored-logo').text("default");
+					}
+					if ($('#' + check_name_id).is(':empty') && $('#' + check_info_id).is(':empty') && $('#' + check_logo_id).is(':empty')){
 			  			document.getElementById(check_slot_id).classList.remove("stored");
 					} else {
 						document.getElementById(check_slot_id).classList.add("stored");
 					}
 					//Check active slots
-					if ($(name).val() == name_value && $(info).val() == info_value){
-						if(name_value && info_value){
+					if ($(name).val() == name_value && $(info).val() == info_value && ($(logo).attr("src") == logo_value || (check_is_default_logo && logo_value == "default"))){
+						if(name_value && info_value && logo_value){
 							document.getElementById(check_slot_id).classList.add("active-slot");
 							document.getElementById(check_slot_id).classList.remove("next-to-load");
 						}
 					} else {
 						document.getElementById(check_slot_id).classList.remove("active-slot");
-					}					
+					}
+
+					//Check if it has default logo
+					if (logo_value && logo_value != "default"){
+						document.getElementById(check_slot_id).classList.add("custom-logo");
+					} else {
+						document.getElementById(check_slot_id).classList.remove("custom-logo");
+					}
+
 				});
 			}
 
-			function memorySlotsSystem (memory_slot, name, info) {
+			function memorySlotsSystem (memory_slot, name, info, logo) {
 				$("ul" + memory_slot + " li").mousedown(function(e){
 					slot_id = $(this).attr('id');
 					name_id = $(this).children('.stored-name').attr('id');
 					info_id = $(this).children('.stored-info').attr('id');
+					logo_id = $(this).children('.stored-logo').attr('id');
 					name_value = $(this).children('.stored-name').text();
 					info_value = $(this).children('.stored-info').text();
+					default_logo = logo.replace("-preview", "-default");
+					is_default_logo = ($(logo).attr("src") == $(default_logo).attr("src")) ? true : false;
 					clearTimeout(this.downTimer);
 					this.downTimer = setTimeout(function() {
-						    document.getElementById(slot_id).classList.add("delete");
+						    //Delete
+							document.getElementById(slot_id).classList.add("delete");
 							$('#' + name_id)[0].innerHTML = "";
 							$('#' + info_id)[0].innerHTML = "";
+							$('#' + logo_id)[0].innerHTML = "";
 							slotDeleted = true;
 					}, 600);
 				}).mouseup(function(e) {
 					clearTimeout(this.downTimer);
 				    document.getElementById(slot_id).classList.remove("delete");
 				    	if (!slotDeleted){
-				    		if ($('#' + name_id).is(':empty') && $('#' + info_id).is(':empty')){
+				    		if ($('#' + name_id).is(':empty') && $('#' + info_id).is(':empty') && $('#' + logo_id).is(':empty')){
+								//Save
 								name_to_save = $(name + ":text").val();
 								info_to_save = $(info + ":text").val();
-								$('#' + name_id)[0].innerHTML = name_to_save;
-								$('#' + info_id)[0].innerHTML = info_to_save;
+								logo_to_save = $(logo).attr("src");
+								if (name_to_save && info_to_save){
+									$('#' + name_id)[0].innerHTML = name_to_save;
+									$('#' + info_id)[0].innerHTML = info_to_save;
+									if (is_default_logo){
+										$('#' + logo_id)[0].innerHTML = "default";
+									} else {
+										$('#' + logo_id)[0].innerHTML = logo_to_save;
+									}
+								}
 							} else {
+								//Load
 								name_to_load = $(this).children('#' + name_id).text();
 								info_to_load = $(this).children('#' + info_id).text();
+								logo_to_load = $(this).children('#' + logo_id).text();
+								defaul_logo_to_load = $(default_logo).attr("src");
 								$(name + ":text").val(name_to_load);
-								$(info + ":text").val(info_to_load);							
+								$(info + ":text").val(info_to_load);
+								if (logo_to_load == "default"){
+									$(logo).attr("src", defaul_logo_to_load);
+								} else {
+									$(logo).attr("src", logo_to_load);
+								}
 							}
 				    	} else {
 							slotDeleted = false;
 				    	}
 				});
 			}
-			memorySlotsSystem("#alt-1-memory-slots", "#alt-1-name", "#alt-1-info");
-			memorySlotsSystem("#alt-2-memory-slots", "#alt-2-name", "#alt-2-info");
-			memorySlotsSystem("#alt-3-memory-slots", "#alt-3-name", "#alt-3-info");
-			memorySlotsSystem("#alt-4-memory-slots", "#alt-4-name", "#alt-4-info");
+			memorySlotsSystem("#alt-1-memory-slots", "#alt-1-name", "#alt-1-info" , "#alt-1-logo-preview");
+			memorySlotsSystem("#alt-2-memory-slots", "#alt-2-name", "#alt-2-info" , "#alt-2-logo-preview");
+			memorySlotsSystem("#alt-3-memory-slots", "#alt-3-name", "#alt-3-info" , "#alt-3-logo-preview");
+			memorySlotsSystem("#alt-4-memory-slots", "#alt-4-name", "#alt-4-info" , "#alt-4-logo-preview");
 
 			//////////////////////////////////////
 
-			//Load the next memory slot when autoload is active
-			function jumpNextSlot(memory_slot, name, info, alt_waiting_time) {
-				var jumpToNext = false;
+			function jumpNextSlot(memory_slot, name, info, logo, alt_waiting_time) {
 				var loadedSlot = false;
-				var lastSlot = false;
-				
+				var find_next = false;
+				var find_first = false;
+
 				name_loaded = $(name + ":text").val();
 				info_loaded = $(info + ":text").val();
+				logo_loaded = $(logo).attr("src");				
 
+				//Find actual and search the next slot to load
 				$("ul" + memory_slot + " li").each(function(){
-					slot_id = $(this).attr('id');
 					name_id = $(this).children('.stored-name').attr('id');
 					info_id = $(this).children('.stored-info').attr('id');
+					logo_id = $(this).children('.stored-logo').attr('id');
 					name_value = $(this).children('.stored-name').text();
-					info_value = $(this).children('.stored-info').text();							
-					emptySlot = ($('#' + name_id).is(':empty') && $('#' + info_id).is(':empty')) ? true : false;						
+					info_value = $(this).children('.stored-info').text();
+					logo_value = $(this).children('.stored-logo').text();
+					slot_number = Number($(this).children('.slot-number').text());
 
-					if (emptySlot && loadedSlot){
-						loadedSlot = false;
-						lastSlot = true;
-					}
-					if (!emptySlot){
-						jumpToNext = loadedSlot;
-						if (jumpToNext) {
-							name_to_load = $(this).children('#' + name_id).text();
-							info_to_load = $(this).children('#' + info_id).text();
-							loadSlot(name, info, name_to_load, info_to_load, alt_waiting_time);
-							$('#' + slot_id).addClass('next-to-load');
+					loadedSlot = (name_loaded == name_value && info_loaded == info_value && (logo_loaded == logo_value || $(logo).hasClass(logo_value))) ? true : false;
+					emptySlot = ($('#' + name_id).is(':empty') && $('#' + info_id).is(':empty') && $('#' + logo_id).is(':empty')) ? true : false;
 
-							jumpToNext = false;
-						}
-						loadedSlot = (name_loaded == name_value && info_loaded == info_value) ? true : false;
+					if(!find_first && !emptySlot) {
+						find_first = true;
+						first_stored_slot = slot_number;
 					}
-					//console.log (slot_id + "|" + name_id + "|" + info_id + "|" + name_value + "|" + info_value + "|" + emptySlot + "|" + loadedSlot);
+					if (loadedSlot) {
+						find_next = true;
+						loaded_slot_num = slot_number;
+						next_slot_num = loaded_slot_num + 1;
+					}
+					if (find_next && slot_number == next_slot_num && !emptySlot) {
+						find_next = false;
+						to_load = slot_number;
+					}
+					if (find_next && (next_slot_num > 10 || emptySlot)) {
+						find_next = false;
+						to_load = first_stored_slot;
+					}
 				});
 
-				if (lastSlot) {
-					lastSlot = false;
-					jumpToFirstSlot(memory_slot, name, info, alt_waiting_time);
-				}
-			}
+				//console.log(loaded_slot_num + " -> " + to_load);
 
-			//Load the fist stored slot when autoload is active
-			function jumpToFirstSlot(memory_slot, name, info, alt_waiting_time) {
-				var foundTheFirst = true;
-				
-				name_loaded = $(name + ":text").val();
-				info_loaded = $(info + ":text").val();
-				loadedSlot = (name_loaded == name_value && info_loaded == info_value) ? true : false;
-
+				//Get all the data of the next slot and load it
 				$("ul" + memory_slot + " li").each(function(){
-					slot_id = $(this).attr('id');
-					name_id = $(this).children('.stored-name').attr('id');
-					info_id = $(this).children('.stored-info').attr('id');
-					name_value = $(this).children('.stored-name').text();
-					info_value = $(this).children('.stored-info').text();					
-		
-					emptySlot = ($('#' + name_id).is(':empty') && $('#' + info_id).is(':empty')) ? true : false;						
+					slot_number = Number($(this).children('.slot-number').text());
 
-					if (!emptySlot){
-						if (foundTheFirst && !loadedSlot) {
-							name_to_load = $(this).children('#' + name_id).text();
-							info_to_load = $(this).children('#' + info_id).text();
-							
-							loadSlot(name, info, name_to_load, info_to_load, alt_waiting_time);
-							$('#' + slot_id).addClass('next-to-load');
+					if (to_load == slot_number) {
+						slot_id = ($(this).attr('id'));
+						name_id = $(this).children('.stored-name').attr('id');
+						info_id = $(this).children('.stored-info').attr('id');
+						logo_id = $(this).children('.stored-logo').attr('id');
 
-							foundTheFirst = false;							
-						}
-					} 
-				});		
+						name_to_load = $(this).children('#' + name_id).text();
+						info_to_load = $(this).children('#' + info_id).text();
+						logo_to_load = $(this).children('#' + logo_id).text();
+
+						loadSlot(name, info, logo, name_to_load, info_to_load, logo_to_load, alt_waiting_time);
+						$('#' + slot_id).addClass('next-to-load');
+					}
+				});
 			}
 
-			function loadSlot(name, info, name_to_load, info_to_load, alt_waiting_time) {
+			//////////////////////////////////////
+
+			function loadSlot(name, info, logo, name_to_load, info_to_load, logo_to_load, alt_waiting_time) {
 				setTimeout(function (){
+					default_logo = logo.replace("-preview", "-default");
+					default_logo_value = $(default_logo).attr("src");
+
 					$(name + ":text").val(name_to_load);
 					$(info + ":text").val(info_to_load);
+					if (logo_to_load == "default") {
+						logo_to_load = default_logo_value;
+					}
+					$(logo).attr("src", logo_to_load);
 				}, alt_waiting_time * 1000);
-				
+
+				//console.log(name + "|" + info + "|" + logo + "|" + name_to_load + "|" + info_to_load + "|" + logo_to_load + "|" + alt_waiting_time);
 			}
 
 			//////////////////////////////////////
@@ -1356,28 +1826,36 @@
 			$("#alt-1-clean-inputs").click(function(){
 				$("#alt-1-name:text").val("");
 				$("#alt-1-info:text").val("");
+				var alt_logo_default = $("#alt-1-logo-default").attr("src");
+				$("#alt-1-logo-preview").attr("src", alt_logo_default);
 			});
 			$("#alt-2-clean-inputs").click(function(){
 				$("#alt-2-name:text").val("");
 				$("#alt-2-info:text").val("");
+				var alt_logo_default = $("#alt-2-logo-default").attr("src");
+				$("#alt-2-logo-preview").attr("src", alt_logo_default);
 			});
 			$("#alt-3-clean-inputs").click(function(){
 				$("#alt-3-name:text").val("");
 				$("#alt-3-info:text").val("");
+				var alt_logo_default = $("#alt-3-logo-default").attr("src");
+				$("#alt-3-logo-preview").attr("src", alt_logo_default);
 			});
 			$("#alt-4-clean-inputs").click(function(){
 				$("#alt-4-name:text").val("");
 				$("#alt-4-info:text").val("");
+				var alt_logo_default = $("#alt-4-logo-default").attr("src");
+				$("#alt-4-logo-preview").attr("src", alt_logo_default);
 			});
 
 			///////////////////////////////////////
 
 			//Open Preview screen
 			$("#toggle-preview").click(function(){
-				document.getElementById("toggle-preview").classList.toggle("hide");
-				document.getElementById("alt-preview").classList.toggle("hide");
+				document.getElementById("toggle-preview").classList.toggle("active");
+				document.getElementById("alt-preview").classList.toggle("active");
 				if (document.getElementById("alt-panel").style.marginBottom == "0px") {
-					document.getElementById("alt-panel").style.marginBottom = "255px";
+					document.getElementById("alt-panel").style.marginBottom = "220px";
 				} else {
 					document.getElementById("alt-panel").style.marginBottom = "0px";
 				}
@@ -1649,7 +2127,8 @@
 				alt_1_animation_time = $("#alt-1-animation-time:text").val();
 				alt_1_active_time = $("#alt-1-active-time:text").val();
 				alt_1_inactive_time = $("#alt-1-inactive-time:text").val();
-				
+				alt_1_logo = $("#alt-1-logo-preview").attr("src");
+
 				alt_2_name = $("#alt-2-name:text").val();
 				alt_2_info = $("#alt-2-info:text").val();				
 				alt_2_name_color = $("#alt-2-name-color:text").val();
@@ -1659,6 +2138,7 @@
 				alt_2_animation_time = $("#alt-2-animation-time:text").val();
 				alt_2_active_time = $("#alt-2-active-time:text").val();
 				alt_2_inactive_time = $("#alt-2-inactive-time:text").val();
+				alt_2_logo = $("#alt-2-logo-preview").attr("src");
 
 				alt_3_name = $("#alt-3-name:text").val();
 				alt_3_info = $("#alt-3-info:text").val();				
@@ -1669,6 +2149,7 @@
 				alt_3_animation_time = $("#alt-3-animation-time:text").val();
 				alt_3_active_time = $("#alt-3-active-time:text").val();
 				alt_3_inactive_time = $("#alt-3-inactive-time:text").val();
+				alt_3_logo = $("#alt-3-logo-preview").attr("src");
 
 				alt_4_name = $("#alt-4-name:text").val();
 				alt_4_info = $("#alt-4-info:text").val();				
@@ -1679,6 +2160,7 @@
 				alt_4_animation_time = $("#alt-4-animation-time:text").val();
 				alt_4_active_time = $("#alt-4-active-time:text").val();
 				alt_4_inactive_time = $("#alt-4-inactive-time:text").val();
+				alt_4_logo = $("#alt-4-logo-preview").attr("src");
 
 				//Standard Main settings values
 				if(global_active_time == "") {
@@ -1720,7 +2202,7 @@
 							document.getElementById("alt-1-config-content").classList.add("inactive");
 							//check if autoload is active and jump to next slot
 							if (alt_1_autoload && alt_1_jumpnext) {
-								jumpNextSlot("#alt-1-memory-slots", "#alt-1-name", "#alt-1-info", alt_1_waiting_time);
+								jumpNextSlot("#alt-1-memory-slots", "#alt-1-name", "#alt-1-info", "#alt-1-logo-preview", alt_1_waiting_time);
 								alt_1_jumpnext = false;
 							}
 						}
@@ -1741,7 +2223,7 @@
 							document.getElementById("alt-2-config-content").classList.add("inactive");
 							//check if autoload is active and jump to next slot
 							if (alt_2_autoload && alt_2_jumpnext) {
-								jumpNextSlot("#alt-2-memory-slots", "#alt-2-name", "#alt-2-info", alt_2_waiting_time);
+								jumpNextSlot("#alt-2-memory-slots", "#alt-2-name", "#alt-2-info", "#alt-2-logo-preview", alt_2_waiting_time);
 								alt_2_jumpnext = false;
 							}
 						}
@@ -1762,7 +2244,7 @@
 							document.getElementById("alt-3-config-content").classList.add("inactive");
 							//check if autoload is active and jump to next slot
 							if (alt_3_autoload && alt_3_jumpnext) {
-								jumpNextSlot("#alt-3-memory-slots", "#alt-3-name", "#alt-3-info", alt_3_waiting_time);
+								jumpNextSlot("#alt-3-memory-slots", "#alt-3-name", "#alt-3-info", "#alt-3-logo-preview", alt_3_waiting_time);
 								alt_3_jumpnext = false;
 							}
 						}
@@ -1783,7 +2265,7 @@
 							document.getElementById("alt-4-config-content").classList.add("inactive");
 							//check if autoload is active and jump to next slot
 							if (alt_4_autoload && alt_4_jumpnext) {
-								jumpNextSlot("#alt-4-memory-slots", "#alt-4-name", "#alt-4-info", alt_4_waiting_time);
+								jumpNextSlot("#alt-4-memory-slots", "#alt-4-name", "#alt-4-info", "#alt-4-logo-preview", alt_4_waiting_time);
 								alt_4_jumpnext = false;
 							}
 						}
@@ -1839,10 +2321,87 @@
 				alt_2_autoload = (document.getElementById("alt-2-autoload").checked == true) ? true : false;
 				alt_3_autoload = (document.getElementById("alt-3-autoload").checked == true) ? true : false;
 				alt_4_autoload = (document.getElementById("alt-4-autoload").checked == true) ? true : false;
+				
+				//////////////////////////////
+
+				//Show the slots numbers
+				if (document.getElementById("set-slot-numbers").checked == false) {
+					$('.slot-number').each(function(){    
+						$(this).removeClass("hide");
+	        		});
+				} else {
+					$('.slot-number').each(function(){    
+						$(this).addClass("hide");
+	        		});
+				}
+
+				//////////////////////////////
+
+				//Create Tooltips to show the contect of the slots
+				if (document.getElementById("set-tooltips").checked == true) {
+					$('.panel-bottom > ul > li').each(function(){    
+						var name_to_tooltip = $(this).children('.stored-name').text();
+						var info_to_tooltip = $(this).children('.stored-info').text();
+						var isStored = (name_to_tooltip && info_to_tooltip) ? true : false;
+						var isTooltip = $(this).children(".tooltiptext")[0] ? true : false;
+
+					if (isTooltip){
+						if (!isStored) {
+							$(this).children(".tooltiptext").remove();
+						}
+					} else {
+						if (isStored) {
+							$(this).prepend('<span class="tooltiptext">' + name_to_tooltip + '<br>' + info_to_tooltip + '</span>');
+						}
+					}
+						
+	        		});
+				} else {
+					$('.tooltiptext').each(function(){
+						$(this).remove();
+					});
+				}
+
+
+				//////////////////////////////				
+
+				if (document.getElementById("set-switch-position").checked == true) {
+					$('.switch').each(function(){    
+						$(this).addClass("switch-left");
+					});
+					$('.drag-handle').each(function(){    
+						$(this).addClass("switch-left");
+					});
+					$('.main-title').addClass("switch-left");
+					
+				} else {
+					$('.switch').each(function(){    
+						$(this).removeClass("switch-left");
+					});
+					$('.drag-handle').each(function(){    
+						$(this).removeClass("switch-left");
+					});
+					$('.main-title').removeClass("switch-left");
+				}
+				
 
 				//////////////////////////////
 
 				//Switch Preview ALT ON/OFF
+				if (document.getElementById("set-preview").checked == false) {
+					$("#alt-preview").removeClass("hide");
+					//Hide preview butons
+					$('.preview-btn').each(function(){    
+						$(this).removeClass("hide");
+	        		});
+				} else {
+					//Unhide preview butons
+					$("#alt-preview").addClass("hide");
+					$('.preview-btn').each(function(){    
+						$(this).addClass("hide");
+	        		});
+				}
+								
 				if (document.getElementById("alt-1-preview").checked == false) {
 					alt_1_preview = "false";
 				} else {
@@ -1870,23 +2429,31 @@
 				//Switch Logo ON/OFF
 				if (document.getElementById("alt-1-logo").checked == false) {
 					alt_1_logo_switch = "false";
+					$("#alt-1-config-content > .first-edit-container > .logo-container").addClass("hide");
 				} else {
 					alt_1_logo_switch = "true";
+					$("#alt-1-config-content > .first-edit-container > .logo-container").removeClass("hide");
 				}
 				if (document.getElementById("alt-2-logo").checked == false) {
 					alt_2_logo_switch = "false";
+					$("#alt-2-config-content > .first-edit-container > .logo-container").addClass("hide");
 				} else {
 					alt_2_logo_switch = "true";
+					$("#alt-2-config-content > .first-edit-container > .logo-container").removeClass("hide");
 				}
 				if (document.getElementById("alt-3-logo").checked == false) {
 					alt_3_logo_switch = "false";
+					$("#alt-3-config-content > .first-edit-container > .logo-container").addClass("hide");
 				} else {
 					alt_3_logo_switch = "true";
+					$("#alt-3-config-content > .first-edit-container > .logo-container").removeClass("hide");
 				}
 				if (document.getElementById("alt-4-logo").checked == false) {
 					alt_4_logo_switch = "false";
+					$("#alt-4-config-content > .first-edit-container > .logo-container").addClass("hide");
 				} else {
 					alt_4_logo_switch = "true";
+					$("#alt-4-config-content > .first-edit-container > .logo-container").removeClass("hide");
 				}
 
 				//Switch Background ON/OFF
@@ -2068,24 +2635,70 @@
 
 
 
-				bc.postMessage(global_animation_time + '|' + global_active_time + '|' + global_inactive_time + '|' + alt_1_switch + '|' + alt_1_style + '|' + alt_1_name + '|' + alt_1_info + '|' + alt_1_name_size + '|' + alt_1_info_size  + '|' + alt_1_name_transform + '|' + alt_1_info_transform + '|' + alt_1_name_weight + '|' + alt_1_info_weight + '|' + alt_1_name_color + '|' + alt_1_info_color + '|' + alt_1_style_color_1 + '|' + alt_1_style_color_2 + '|' + alt_1_logo_switch + '|' + alt_1_background_switch + '|' + alt_1_shadows + '|' + alt_1_align + '|' + alt_1_size + '|' + alt_1_margin_h + '|' + alt_1_margin_v + '|' + alt_1_line_spacing + '|' + alt_1_font + '|' + alt_2_switch + '|' + alt_2_style + '|' + alt_2_name + '|' + alt_2_info + '|' + alt_2_name_size + '|' + alt_2_info_size  + '|' + alt_2_name_transform + '|' + alt_2_info_transform + '|' + alt_2_name_weight + '|' + alt_2_info_weight + '|' + alt_2_name_color + '|' + alt_2_info_color + '|' + alt_2_style_color_1 + '|' + alt_2_style_color_2 + '|' + alt_2_logo_switch + '|' + alt_2_background_switch + '|' + alt_2_shadows + '|' + alt_2_align + '|' + alt_2_size + '|' + alt_2_margin_h + '|' + alt_2_margin_v + '|' + alt_2_line_spacing + '|' + alt_2_font + '|' + alt_3_switch + '|' + alt_3_style + '|' + alt_3_name + '|' + alt_3_info + '|' + alt_3_name_size + '|' + alt_3_info_size  + '|' + alt_3_name_transform + '|' + alt_3_info_transform + '|' + alt_3_name_weight + '|' + alt_3_info_weight + '|' + alt_3_name_color + '|' + alt_3_info_color + '|' + alt_3_style_color_1 + '|' + alt_3_style_color_2 + '|' + alt_3_logo_switch + '|' + alt_3_background_switch + '|' + alt_3_shadows + '|' + alt_3_align + '|' + alt_3_size + '|' + alt_3_margin_h + '|' + alt_3_margin_v + '|' + alt_3_line_spacing + '|' + alt_3_font + '|' + alt_4_switch + '|' + alt_4_style + '|' + alt_4_name + '|' + alt_4_info + '|' + alt_4_name_size + '|' + alt_4_info_size  + '|' + alt_4_name_transform + '|' + alt_4_info_transform + '|' + alt_4_name_weight + '|' + alt_4_info_weight + '|' + alt_4_name_color + '|' + alt_4_info_color + '|' + alt_4_style_color_1 + '|' + alt_4_style_color_2 + '|' + alt_4_logo_switch + '|' + alt_4_background_switch + '|' + alt_4_shadows + '|' + alt_4_align + '|' + alt_4_size + '|' + alt_4_margin_h + '|' + alt_4_margin_v + '|' + alt_4_line_spacing + '|' + alt_4_font + '|' + alt_1_animation_time + '|' + alt_1_active_time + '|' + alt_1_inactive_time + '|' + alt_2_animation_time + '|' + alt_2_active_time + '|' + alt_2_inactive_time + '|' + alt_3_animation_time + '|' + alt_3_active_time + '|' + alt_3_inactive_time + '|' + alt_4_animation_time + '|' + alt_4_active_time + '|' + alt_4_inactive_time);
+				bc.postMessage(global_animation_time + '|' + global_active_time + '|' + global_inactive_time + '|' + alt_1_switch + '|' + alt_1_style + '|' + alt_1_name + '|' + alt_1_info + '|' + alt_1_name_size + '|' + alt_1_info_size  + '|' + alt_1_name_transform + '|' + alt_1_info_transform + '|' + alt_1_name_weight + '|' + alt_1_info_weight + '|' + alt_1_name_color + '|' + alt_1_info_color + '|' + alt_1_style_color_1 + '|' + alt_1_style_color_2 + '|' + alt_1_logo_switch + '|' + alt_1_background_switch + '|' + alt_1_shadows + '|' + alt_1_align + '|' + alt_1_size + '|' + alt_1_margin_h + '|' + alt_1_margin_v + '|' + alt_1_line_spacing + '|' + alt_1_font + '|' + alt_2_switch + '|' + alt_2_style + '|' + alt_2_name + '|' + alt_2_info + '|' + alt_2_name_size + '|' + alt_2_info_size  + '|' + alt_2_name_transform + '|' + alt_2_info_transform + '|' + alt_2_name_weight + '|' + alt_2_info_weight + '|' + alt_2_name_color + '|' + alt_2_info_color + '|' + alt_2_style_color_1 + '|' + alt_2_style_color_2 + '|' + alt_2_logo_switch + '|' + alt_2_background_switch + '|' + alt_2_shadows + '|' + alt_2_align + '|' + alt_2_size + '|' + alt_2_margin_h + '|' + alt_2_margin_v + '|' + alt_2_line_spacing + '|' + alt_2_font + '|' + alt_3_switch + '|' + alt_3_style + '|' + alt_3_name + '|' + alt_3_info + '|' + alt_3_name_size + '|' + alt_3_info_size  + '|' + alt_3_name_transform + '|' + alt_3_info_transform + '|' + alt_3_name_weight + '|' + alt_3_info_weight + '|' + alt_3_name_color + '|' + alt_3_info_color + '|' + alt_3_style_color_1 + '|' + alt_3_style_color_2 + '|' + alt_3_logo_switch + '|' + alt_3_background_switch + '|' + alt_3_shadows + '|' + alt_3_align + '|' + alt_3_size + '|' + alt_3_margin_h + '|' + alt_3_margin_v + '|' + alt_3_line_spacing + '|' + alt_3_font + '|' + alt_4_switch + '|' + alt_4_style + '|' + alt_4_name + '|' + alt_4_info + '|' + alt_4_name_size + '|' + alt_4_info_size  + '|' + alt_4_name_transform + '|' + alt_4_info_transform + '|' + alt_4_name_weight + '|' + alt_4_info_weight + '|' + alt_4_name_color + '|' + alt_4_info_color + '|' + alt_4_style_color_1 + '|' + alt_4_style_color_2 + '|' + alt_4_logo_switch + '|' + alt_4_background_switch + '|' + alt_4_shadows + '|' + alt_4_align + '|' + alt_4_size + '|' + alt_4_margin_h + '|' + alt_4_margin_v + '|' + alt_4_line_spacing + '|' + alt_4_font + '|' + alt_1_animation_time + '|' + alt_1_active_time + '|' + alt_1_inactive_time + '|' + alt_2_animation_time + '|' + alt_2_active_time + '|' + alt_2_inactive_time + '|' + alt_3_animation_time + '|' + alt_3_active_time + '|' + alt_3_inactive_time + '|' + alt_4_animation_time + '|' + alt_4_active_time + '|' + alt_4_inactive_time + '|' + alt_1_logo + '|' + alt_2_logo + '|' + alt_3_logo + '|' + alt_4_logo);
 
 				//Previews
-				bcp.postMessage(global_animation_time + '|' + global_active_time + '|' + global_inactive_time + '|' + alt_1_preview + '|' + alt_1_style + '|' + alt_1_name + '|' + alt_1_info + '|' + alt_1_name_size + '|' + alt_1_info_size  + '|' + alt_1_name_transform + '|' + alt_1_info_transform + '|' + alt_1_name_weight + '|' + alt_1_info_weight + '|' + alt_1_name_color + '|' + alt_1_info_color + '|' + alt_1_style_color_1 + '|' + alt_1_style_color_2 + '|' + alt_1_logo_switch + '|' + alt_1_background_switch + '|' + alt_1_shadows + '|' + alt_1_align + '|' + alt_1_size + '|' + alt_1_margin_h + '|' + alt_1_margin_v + '|' + alt_1_line_spacing + '|' + alt_1_font + '|' + alt_2_preview + '|' + alt_2_style + '|' + alt_2_name + '|' + alt_2_info + '|' + alt_2_name_size + '|' + alt_2_info_size  + '|' + alt_2_name_transform + '|' + alt_2_info_transform + '|' + alt_2_name_weight + '|' + alt_2_info_weight + '|' + alt_2_name_color + '|' + alt_2_info_color + '|' + alt_2_style_color_1 + '|' + alt_2_style_color_2 + '|' + alt_2_logo_switch + '|' + alt_2_background_switch + '|' + alt_2_shadows + '|' + alt_2_align + '|' + alt_2_size + '|' + alt_2_margin_h + '|' + alt_2_margin_v + '|' + alt_2_line_spacing + '|' + alt_2_font + '|' + alt_3_preview + '|' + alt_3_style + '|' + alt_3_name + '|' + alt_3_info + '|' + alt_3_name_size + '|' + alt_3_info_size  + '|' + alt_3_name_transform + '|' + alt_3_info_transform + '|' + alt_3_name_weight + '|' + alt_3_info_weight + '|' + alt_3_name_color + '|' + alt_3_info_color + '|' + alt_3_style_color_1 + '|' + alt_3_style_color_2 + '|' + alt_3_logo_switch + '|' + alt_3_background_switch + '|' + alt_3_shadows + '|' + alt_3_align + '|' + alt_3_size + '|' + alt_3_margin_h + '|' + alt_3_margin_v + '|' + alt_3_line_spacing + '|' + alt_3_font + '|' + alt_4_preview + '|' + alt_4_style + '|' + alt_4_name + '|' + alt_4_info + '|' + alt_4_name_size + '|' + alt_4_info_size  + '|' + alt_4_name_transform + '|' + alt_4_info_transform + '|' + alt_4_name_weight + '|' + alt_4_info_weight + '|' + alt_4_name_color + '|' + alt_4_info_color + '|' + alt_4_style_color_1 + '|' + alt_4_style_color_2 + '|' + alt_4_logo_switch + '|' + alt_4_background_switch + '|' + alt_4_shadows + '|' + alt_4_align + '|' + alt_4_size + '|' + alt_4_margin_h + '|' + alt_4_margin_v + '|' + alt_4_line_spacing + '|' + alt_4_font + '|' + alt_1_animation_time + '|' + alt_1_active_time + '|' + alt_1_inactive_time + '|' + alt_2_animation_time + '|' + alt_2_active_time + '|' + alt_2_inactive_time + '|' + alt_3_animation_time + '|' + alt_3_active_time + '|' + alt_3_inactive_time + '|' + alt_4_animation_time + '|' + alt_4_active_time + '|' + alt_4_inactive_time);
+				bcp.postMessage(global_animation_time + '|' + global_active_time + '|' + global_inactive_time + '|' + alt_1_preview + '|' + alt_1_style + '|' + alt_1_name + '|' + alt_1_info + '|' + alt_1_name_size + '|' + alt_1_info_size  + '|' + alt_1_name_transform + '|' + alt_1_info_transform + '|' + alt_1_name_weight + '|' + alt_1_info_weight + '|' + alt_1_name_color + '|' + alt_1_info_color + '|' + alt_1_style_color_1 + '|' + alt_1_style_color_2 + '|' + alt_1_logo_switch + '|' + alt_1_background_switch + '|' + alt_1_shadows + '|' + alt_1_align + '|' + alt_1_size + '|' + alt_1_margin_h + '|' + alt_1_margin_v + '|' + alt_1_line_spacing + '|' + alt_1_font + '|' + alt_2_preview + '|' + alt_2_style + '|' + alt_2_name + '|' + alt_2_info + '|' + alt_2_name_size + '|' + alt_2_info_size  + '|' + alt_2_name_transform + '|' + alt_2_info_transform + '|' + alt_2_name_weight + '|' + alt_2_info_weight + '|' + alt_2_name_color + '|' + alt_2_info_color + '|' + alt_2_style_color_1 + '|' + alt_2_style_color_2 + '|' + alt_2_logo_switch + '|' + alt_2_background_switch + '|' + alt_2_shadows + '|' + alt_2_align + '|' + alt_2_size + '|' + alt_2_margin_h + '|' + alt_2_margin_v + '|' + alt_2_line_spacing + '|' + alt_2_font + '|' + alt_3_preview + '|' + alt_3_style + '|' + alt_3_name + '|' + alt_3_info + '|' + alt_3_name_size + '|' + alt_3_info_size  + '|' + alt_3_name_transform + '|' + alt_3_info_transform + '|' + alt_3_name_weight + '|' + alt_3_info_weight + '|' + alt_3_name_color + '|' + alt_3_info_color + '|' + alt_3_style_color_1 + '|' + alt_3_style_color_2 + '|' + alt_3_logo_switch + '|' + alt_3_background_switch + '|' + alt_3_shadows + '|' + alt_3_align + '|' + alt_3_size + '|' + alt_3_margin_h + '|' + alt_3_margin_v + '|' + alt_3_line_spacing + '|' + alt_3_font + '|' + alt_4_preview + '|' + alt_4_style + '|' + alt_4_name + '|' + alt_4_info + '|' + alt_4_name_size + '|' + alt_4_info_size  + '|' + alt_4_name_transform + '|' + alt_4_info_transform + '|' + alt_4_name_weight + '|' + alt_4_info_weight + '|' + alt_4_name_color + '|' + alt_4_info_color + '|' + alt_4_style_color_1 + '|' + alt_4_style_color_2 + '|' + alt_4_logo_switch + '|' + alt_4_background_switch + '|' + alt_4_shadows + '|' + alt_4_align + '|' + alt_4_size + '|' + alt_4_margin_h + '|' + alt_4_margin_v + '|' + alt_4_line_spacing + '|' + alt_4_font + '|' + alt_1_animation_time + '|' + alt_1_active_time + '|' + alt_1_inactive_time + '|' + alt_2_animation_time + '|' + alt_2_active_time + '|' + alt_2_inactive_time + '|' + alt_3_animation_time + '|' + alt_3_active_time + '|' + alt_3_inactive_time + '|' + alt_4_animation_time + '|' + alt_4_active_time + '|' + alt_4_inactive_time + '|' + alt_1_logo + '|' + alt_2_logo + '|' + alt_3_logo + '|' + alt_4_logo);
 			}
 
 			//Send New Fonts to source
 			function function_send_font() {
-
 				$.each(fontlist_urls, function(i) {
-					//setTimeout(function (){
 					new_font_to_send = fontlist_urls[i];
 					bcf.postMessage(new_font_to_send);
-					//}, 100);
-
 				});					
 			}
-			//function_send_font();
+
+			//Read txt file and call writeLocalStorage function
+			document.getElementById('importFile').onchange = function(){
+				var file = this.files[0];
+				var reader = new FileReader();
+				reader.onload = function(progressEvent){
+					clearTimeout(refreshSaveData); //Stop saving data to localstorage
+					localStorage.clear();
+					
+					writeLocalStorage(this.result);
+				};
+				reader.readAsText(file);
+			};
+
+			//Read all localstorage data
+			function getLocalStorage() {
+				var a = {};
+				for (var i = 0; i < localStorage.length; i++) {
+					var k = localStorage.key(i);
+					var v = localStorage.getItem(k);
+					a[k] = v;
+				}
+				var s = JSON.stringify(a);
+				return s;
+			}
+
+			//Save data to localStorage
+			function writeLocalStorage(data) {
+				var o = JSON.parse(data);
+				for (var property in o) {
+					if (o.hasOwnProperty(property)) {
+						localStorage.setItem(property, o[property]);
+					}
+				}
+				location.reload();
+        	}
+
+			//Copy all data to clipboard
+			function exportData() {
+				var allData = getLocalStorage();
+				document.getElementById("dataInput").value = allData;
+				var copyText = document.getElementById("dataInput");
+
+				//Select text input and copy to the clipboard
+				copyText.select();
+				document.execCommand("copy");
+
+				//Open the Popup "Copied to Clipboard"
+				openExportPopup();
+        	}
+
 
 			function loadData () {
 				$('.storable').each(function(){    
@@ -2093,6 +2706,30 @@
 					var value = localStorage.getItem(id);
 					
 					$(this).val(value);              
+				});
+
+				$('.logo-storable').each(function(){    
+					var id = $(this).attr('id');
+					var value = localStorage.getItem(id);
+					//console.log(id + ":" + value);
+					if(value != "undefined" && value != ""){
+						$(this).attr('src', value);            
+					} else {
+						
+						//Set all to default the first time
+						if (id == "alt-1-logo-preview" || id == "alt-1-logo-default"){
+							$(this).attr('src', alt_1_logo_default);
+						}
+						if (id == "alt-2-logo-preview" || id == "alt-2-logo-default"){
+							$(this).attr('src', alt_2_logo_default);
+						}
+						if (id == "alt-3-logo-preview" || id == "alt-3-logo-default"){
+							$(this).attr('src', alt_3_logo_default);
+						}
+						if (id == "alt-4-logo-preview" || id == "alt-4-logo-default"){
+							$(this).attr('src', alt_4_logo_default);
+						}
+					}
 				});
 
 				$('.slot-storable').each(function(){    
@@ -2114,13 +2751,6 @@
     				document.getElementById(id).checked = checked;
     			});
 
-				// $('.font-storable').each(function(){
-				// 	var id = $(this).attr('id');
-				//     if(localStorage.getItem(id)){
-				//         $("#" + id).val(localStorage.getItem(id));
-				//     }
-    			// });
-
 				$('.title-storable').each(function(){    
 					var id = $(this).attr('id');
 					var value = localStorage.getItem(id);
@@ -2138,6 +2768,12 @@
 	        	$('.storable').each(function(){    
 					var id = $(this).attr('id');
 					var value = $(this).val();
+					localStorage.setItem(id, value);              
+	        	});
+
+	        	$('.logo-storable').each(function(){    
+					var id = $(this).attr('id');
+					var value = $(this).attr('src');
 					localStorage.setItem(id, value);              
 	        	});
 
@@ -2179,27 +2815,24 @@
 				    });
 				});
 
-
-
-				//localStorage.clear(); //To clear data fields
-	        	setTimeout(saveData, y*1000);
+	        	refreshSaveData = setTimeout(saveData, y*1000);
 			}
 
 			function refreshData() {
 			    x = 0.05; // Refresh time multiplier
 
-			    checkSlots("#alt-1-memory-slots", "#alt-1-name", "#alt-1-info");
-				checkSlots("#alt-2-memory-slots", "#alt-2-name", "#alt-2-info");
-				checkSlots("#alt-3-memory-slots", "#alt-3-name", "#alt-3-info");
-				checkSlots("#alt-4-memory-slots", "#alt-4-name", "#alt-4-info");
-			    checkHotkeys();
+				checkSlots("#alt-1-memory-slots", "#alt-1-name", "#alt-1-info", "#alt-1-logo-preview");
+				checkSlots("#alt-2-memory-slots", "#alt-2-name", "#alt-2-info", "#alt-2-logo-preview");
+				checkSlots("#alt-3-memory-slots", "#alt-3-name", "#alt-3-info", "#alt-3-logo-preview");
+				checkSlots("#alt-4-memory-slots", "#alt-4-name", "#alt-4-info", "#alt-4-logo-preview");
+			    checkLogos();
+				checkHotkeys();
 			    getAppearance();
-			    updateHorkeys();
+			    updateHotkeys();
 
 				function_send();
 				
 				
-
 			    setTimeout(refreshData, x*1000);
 			}
 

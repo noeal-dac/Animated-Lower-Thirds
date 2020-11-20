@@ -1,5 +1,5 @@
 /*********************************
-**	Animated Lower Thirds v1.2	**
+**	Animated Lower Thirds v1.4	**
 **	Author: NoeAL				**
 *********************************/
 
@@ -608,16 +608,19 @@ body {
 	order: 0;
 	overflow: hidden;
 	transition: margin 0.5s;
+	min-width: fit-content;
 }
 .logo img {
     max-height: 3.5em;
     display: flex;
-    position: relative;
+	position: relative;
+	filter: blur(0);
+	-webkit-filter: blur(0);
 }
 .no-logo {
     opacity: 0;
     width: 0;
-    margin: 0!important;
+	margin: 0!important;
 }
 .left > .logo {
 	margin-right: 0.8em;
@@ -637,8 +640,9 @@ body {
 
 .style-1 > .graph-1 {
     order: 1;
-    position: relative;
-    width: 0.3em;
+	position: relative;
+	min-width: 0.3em;
+    /* width: 0.3em; */
     height: 3.5em;
 }
 
@@ -805,9 +809,50 @@ body {
 
 .preview {
 	width: 1920px;
-	height: 350px;
-	transform: scale(0.1875);
-	left: -216.6%;
-	top: -5px;
+	height: 1080px;
+	transform: scale(0.1656);
+	left: -252%;
+	top: -252%;
 }
 
+/*********************************/
+
+
+/*Uncomment to avaible multiple lines*/
+/* .logo {
+    align-self: start;
+}
+.style-1 > .graph-1 {
+	align-self: start;
+}
+.alt > div.text-content > div:nth-child(2) div {
+    line-height: 1.25em;
+}
+.alt > div.text-content > div:nth-child(2) {
+	height: auto!important;
+}
+.alt.style-1.left > .text-content {
+	margin-right: 1em;
+} 
+.alt.style-1.right > .text-content {
+	margin-left: 1em;
+} */
+
+
+/*Uncomment to invenrt vertical position*/
+/* #lower-third-1 {
+	top: var(--alt-1-margin-v);
+	bottom: unset!important;
+}
+#lower-third-2 {
+	top: var(--alt-2-margin-v);
+	bottom: unset!important;
+}
+#lower-third-3 {
+	top: var(--alt-3-margin-v);
+	bottom: unset!important;
+}
+#lower-third-4 {
+	top: var(--alt-4-margin-v);
+	bottom: unset!important;
+} */

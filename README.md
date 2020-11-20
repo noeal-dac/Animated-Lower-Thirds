@@ -5,7 +5,8 @@ With this tool you can use a control panel to add and change your own lower thir
 For communication between control panel and browser layer it use BroadcastChannel API.
 
 1. Download the Zip file, unzip it.
-2. See how to install and how it works: https://youtu.be/DIpslG-u7k0 and https://youtu.be/cQ0_1GwpwB0
+2. See how to install and new features: https://youtu.be/tddMYWya7O0
+3. See previus features: https://youtu.be/cQ0_1GwpwB0
 
 Unfortunately, OBS doesn't support browser panels on macOs. It only works on Windows.
 
@@ -39,3 +40,18 @@ Update v1.3 new features:
 - Number icons. To easily identify each panel with the hotkey settings.
 - Themes. Acri, Dark, Rachni.
 - Visual Fixes
+
+Update v1.4 new features:
+- New memory slots design and more compact panel.
+- Customization options for the control panel.
+- Autoload. Automatically load the next memory slot.
+- Add custom Fonts from Google Fonts
+- Tooltips with the memory slot content.
+- More Hotkeys. Now you can load any memory slot.
+- Some fixes.
+
+Update v1.5 new features:
+- You can choose default Logos for each Lower Thirds panel. Or use different ones in each memory slot you store.
+- Backup data is avaible. Now you can Import, Export or Reset all the data.
+- Autoload fixes. When it reaches the last one, it starts over correctly.
+- Some fixes.
