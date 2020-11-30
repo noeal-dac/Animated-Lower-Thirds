@@ -668,13 +668,19 @@ body {
 	z-index: -1;
 	position: absolute;
 	width: 100%;
-	height: 100%;
+    height: calc(100% + 2em);
+    margin: 0 -1em;
+    padding: 0 1em;
+
+	/* height: 100%;
 	margin: -1em;
-	padding: 1em;
+	padding: 1em; */
+
+	/* transform: translateY(1em); OBS background position fix ¯\_(ツ)_/¯ */
 	/*margin: -1em -5em;
 	padding: 1em 400%;	Full with background */
-	transform: translateY(1em); /*OBS background position fix ¯\_(ツ)_/¯*/
 }
+
 #lower-third-1.style-1 > .graph-2 {
 	background: var(--alt-1-style-color-2);
 	opacity: var(--alt-1-background);
@@ -839,7 +845,7 @@ body {
 } */
 
 
-/*Uncomment to invenrt vertical position*/
+/*Uncomment to invert vertical position*/
 /* #lower-third-1 {
 	top: var(--alt-1-margin-v);
 	bottom: unset!important;
@@ -856,3 +862,138 @@ body {
 	top: var(--alt-4-margin-v);
 	bottom: unset!important;
 } */
+
+/*FIX HEIGHT LINE ISSUES AND MULTIPLE LINES*/
+/* .alt > div.text-content > div:first-child, .alt > div.text-content > div:nth-child(2) {height: auto!important;}
+.alt > div.text-content > div:first-child div, .alt > div.text-content > div:nth-child(2) div {line-height: 1.25em;} */
+
+
+/***Con esto no puedo quitar el fondo***/
+/* .style-3 > .logo {
+	border-radius: 50%;
+	min-width: 5.5em;
+	min-height: 5.5em;
+	margin: 0;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+}
+#lower-third-1.style-3 > .logo {
+    background: var(--alt-1-style-color-1);
+	box-shadow: var(--alt-1-shadows);
+	opacity: var(--alt-1-background);
+} */
+/*repetir */
+
+/* .style-3 > .graph-1 {
+	display: none;
+} */
+/******/
+
+
+/*Uncomment to full with background in the style 1*/
+/* .style-1.alt {
+	width: 105%;
+}
+.style-1.left {
+	justify-content: left;
+}
+.style-1.right {
+	justify-content: right;
+}
+.style-1 > .graph-2 {
+	margin-left: -4em;
+	margin-right: -4em;
+} */
+
+
+.style-3 > .logo img{
+	/*logo size var*/
+	max-height: 4.5em;
+	max-width: 4.5em;
+}
+
+/*******/
+.style-3 > .logo {
+    z-index: 1;
+    margin: 0;
+}
+.style-3 > .logo.no-logo {
+	min-width: 5.5em;
+	min-height: 5.5em;
+}
+
+.style-3 > .graph-1 {
+	border-radius: 50%;
+	min-width: 5.5em;
+	min-height: 5.5em;
+	position: relative;
+	z-index: 0;
+
+	/* border: 0.3em solid #000; */
+	box-sizing: border-box;
+}
+.style-3.left > .graph-1 {
+	margin-left: -5em;
+}
+.style-3.left > .logo.no-logo + .graph-1 {
+	margin-left: -6em;
+}
+.style-3.right > .graph-1 {
+	margin-right: -5em;
+}
+.style-3.right > .logo.no-logo + .graph-1 {
+	margin-right: -6em;
+}
+ #lower-third-1.style-3 > .graph-1 {
+    background: var(--alt-1-style-color-1);
+	box-shadow: var(--alt-1-shadows);
+	opacity: var(--alt-1-background);
+}
+/*******/
+
+.style-3 > .graph-2 {
+	order: 3;
+	z-index: -1;
+	position: absolute;
+	border-radius: 2.5em;
+
+	/* border: 0.3em solid #000; */
+    box-sizing: border-box;
+}
+.style-3 > .graph-2 {
+	height: calc(100% - 0.5em);
+	/* filter: blur(5px); */
+}
+#lower-third-1.style-3 > .graph-2 {
+	background: var(--alt-1-style-color-2);
+	box-shadow: var(--alt-1-shadows);
+    opacity: var(--alt-1-background);
+} /*repetir*/
+
+.style-3.left > .graph-2 {
+    left: 0em;
+	padding: 0 1em;
+
+	clip-path: inset(0% 0% 0% 2.25em);
+}
+.style-3.right > .graph-2 {
+	right: 0em;
+	padding: 0 1em;
+	
+	clip-path: inset(0% 2.25em 0% 0%);
+}
+.style-3.left > .text-content {
+	margin-right: 2.5em;
+	/* margin: 1em 2.5em 1em 0; FOR MULTI LINES */
+	left: 0.75em;
+	position: relative;
+}
+.style-3.right > .text-content {
+	margin-left: 2.5em;
+		/* margin: 1em 0 1em 2.5em; FOR MULTI LINES */
+	right: 0.75em;
+	position: relative;
+}
+
+
