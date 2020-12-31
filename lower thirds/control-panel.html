@@ -1877,6 +1877,7 @@
 
 				if(src){
 					preview.src = "../logos/" + src.name;
+					$(preview).change();
 					//Change the lt logo if it use default
 					if (logo == logo_default && $("#" + alt_logo_preview).hasClass('default')){
 						$("#" + alt_logo_preview).attr("src", "../logos/" + src.name).change();
@@ -1885,6 +1886,7 @@
 					if (!popup_preview) {
 						var alt_logo_default = $("#" + logo_default).attr("src");
 						preview.src = alt_logo_default;
+						$(preview).change();
 					}
 				}
 				
@@ -3261,7 +3263,7 @@
 					var value = localStorage.getItem(id);
 					//console.log(id + ":" + value);
 					if(value != "undefined" && value != ""){
-						$(this).attr('src', value);            
+						$(this).attr('src', value);
 					} else {
 						
 						//Set all to default the first time
@@ -3312,6 +3314,7 @@
 
 			function saveData () {
 	        	$('.storable').change(function(){
+					refreshData();
 					var id = $(this).attr('id');
 					var value = $(this).val();
 					localStorage.setItem(id, value);
@@ -3319,35 +3322,42 @@
 
 	        	// Update while input (text or number) is changed
 				$(':input[type=text], :input[type=number]').on('input',function(e){
+					refreshData();
 					var id = $(this).attr('id');
 					var value = $(this).val();
 					localStorage.setItem(id, value);
 				});
 
 	        	$('.logo-storable').change(function(){
+					refreshData();
 					var id = $(this).attr('id');
 					var value = $(this).attr('src');
 					localStorage.setItem(id, value);              
 	        	});
 
 	        	$('.slot-storable, .title-storable').change(function(){
+					refreshData();
 					var id = $(this).attr('id');
 					var value = $(this).text();
 					localStorage.setItem(id, value);
 	        	});
 
 				$('.checkbox-storable, .radio-storable').change(function(){
+					refreshData();
 					var id = $(this).attr('id');
 					var checkbox = document.getElementById(id);
 					localStorage.setItem(id, checkbox.checked);
     			});
 
 				$('.font-storable, .select-settings-storable').change(function(){
+					refreshData();
 					var id =  $(this).attr('id');
 					localStorage.setItem(id, this.value);
 				});
 
-				// Indirect changes
+				/**
+				 * Indirect changes
+ 				 */
 				$(':button').on('click',function(e){
 					// Lanza evento de cambio del input superior
 					$(this).parent().find('input').change()
@@ -3360,25 +3370,30 @@
 			}
 
 			function refreshData() {
-			    x = 0.1; // Refresh time multiplier
-
+				console.log('refreshData');
 				checkSlots("#alt-1-memory-slots", "#alt-1-name", "#alt-1-info", "#alt-1-logo-preview");
 				checkSlots("#alt-2-memory-slots", "#alt-2-name", "#alt-2-info", "#alt-2-logo-preview");
 				checkSlots("#alt-3-memory-slots", "#alt-3-name", "#alt-3-info", "#alt-3-logo-preview");
 				checkSlots("#alt-4-memory-slots", "#alt-4-name", "#alt-4-info", "#alt-4-logo-preview");
 				checkLogos();
-				checkHotkeys();
+
 				getAppearance();
-				updateHotkeys();
 
 				function_send();
-				setTimeout(refreshData, x*1000);
+				// setTimeout(refreshData, x*1000);
+			}
+
+			function checkUpdates() {
+				checkHotkeys();
+				updateHotkeys();
+				setTimeout(checkUpdates, 1000);
 			}
 
 			// localStorage.clear();
 			loadData();
 			updateCustomFontList();
 			refreshData();
+			checkUpdates();
 			saveData();
 
 		</script>
