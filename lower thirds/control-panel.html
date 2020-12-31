@@ -1546,16 +1546,20 @@
 
 			var oriVal;
 			$(".renameable").on('dblclick', function () {
-				if ($(this).text()){
-					oriVal = $(this).text();					
+				var titleDiv = $(this);
+				if (titleDiv.text()){
+					oriVal = titleDiv.text();
 				}
-				$(this).text("");
-				$("<input type='text' value='"+ oriVal + "' maxlength='40'>").appendTo(this).focus();
+				titleDiv.text("");
+				$("<input type='text' value='"+ oriVal + "' maxlength='40'>").appendTo(this).focus().change(function() {
+					titleDiv.text($(this).val());
+				});
+
 			});
 
 			$(".renameable").on('focusout', '> input', function () {
 				var newAltTitle = $(this);
-				newAltTitle.parent().text(newAltTitle.val() || oriVal);
+				// newAltTitle.parent().text(newAltTitle.val() || oriVal);
 				newAltTitle.remove();
 			});
 
@@ -3309,63 +3313,56 @@
 			}
 
 			function saveData () {
-				y = 0.05; // Refresh time multiplier
-
-	        	$('.storable').each(function(){    
+	        	$('.storable').change(function(){
 					var id = $(this).attr('id');
 					var value = $(this).val();
-					localStorage.setItem(id, value);              
+					localStorage.setItem(id, value);
 	        	});
 
-	        	$('.logo-storable').each(function(){    
+	        	// Update while input (text or number) is changed
+				$(':input[type=text], :input[type=number]').on('input',function(e){
+					var id = $(this).attr('id');
+					var value = $(this).val();
+					localStorage.setItem(id, value);
+				});
+
+	        	$('.logo-storable').change(function(){
 					var id = $(this).attr('id');
 					var value = $(this).attr('src');
 					localStorage.setItem(id, value);              
 	        	});
 
-	        	$('.slot-storable').each(function(){    
+	        	$('.slot-storable, .title-storable').change(function(){
 					var id = $(this).attr('id');
 					var value = $(this).text();
 					localStorage.setItem(id, value);
 	        	});
 
-				$('.checkbox-storable').each(function(){
+				$('.checkbox-storable, .radio-storable').change(function(){
 					var id = $(this).attr('id');
 					var checkbox = document.getElementById(id);
 					localStorage.setItem(id, checkbox.checked);
     			});
 
-				$('.radio-storable').each(function(){
-					var id = $(this).attr('id');
-					var checkbox = document.getElementById(id);	
-					localStorage.setItem(id, checkbox.checked);
-    			});
-
-				$('.font-storable').each(function(){
+				$('.font-storable, .select-settings-storable').change(function(){
 					var id =  $(this).attr('id');
-					$("#" + id).change(function() {
-				        localStorage.setItem(id, this.value);
-				    });
+					localStorage.setItem(id, this.value);
 				});
 
-	        	$('.title-storable').each(function(){    
-					var id = $(this).attr('id');
-					var value = $(this).text();
-					localStorage.setItem(id, value);              
-	        	});
-
-				$('.select-settings-storable').each(function(){
-					var id =  $(this).attr('id');
-					$("#" + id).change(function() {
-				        localStorage.setItem(id, this.value);
-				    });
+				// Indirect changes
+				$(':button').on('click',function(e){
+					// Lanza evento de cambio del input superior
+					$(this).parent().find('input').change()
 				});
 
-	        	refreshSaveData = setTimeout(saveData, y*1000);
+				$('.slot-number').on('click',function(e){
+					// Lanza evento de cambio de los divs hermanos
+					$(this).siblings('.slot-storable').change();
+				});
 			}
 
 			function refreshData() {
-			    x = 0.05; // Refresh time multiplier
+			    x = 0.1; // Refresh time multiplier
 
 				checkSlots("#alt-1-memory-slots", "#alt-1-name", "#alt-1-info", "#alt-1-logo-preview");
 				checkSlots("#alt-2-memory-slots", "#alt-2-name", "#alt-2-info", "#alt-2-logo-preview");
@@ -3377,7 +3374,6 @@
 				updateHotkeys();
 
 				function_send();
-				
 				setTimeout(refreshData, x*1000);
 			}
 
