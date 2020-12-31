@@ -1,5 +1,5 @@
 /*********************************
-**	Animated Lower Thirds v1.4	**
+**	Animated Lower Thirds v1.6	**
 **	Author: NoeAL				**
 *********************************/
 
@@ -16,7 +16,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
 :root {
-	/*--animation-time: 4s;*/
 	--alt-1-animation-time: 4s;
 	--alt-2-animation-time: 4s;
 	--alt-3-animation-time: 4s;
@@ -87,7 +86,8 @@ body {
 		padding-right: 0;
 	}	
 	100% {
-		width: 100%
+		width: calc(100% + 2em);
+		/* width: 100% */
 	}
 }
 @keyframes animation-left-text-1 {
@@ -607,15 +607,17 @@ body {
 .logo{
 	order: 0;
 	overflow: hidden;
-	transition: margin 0.5s;
+	transition: margin 0.1s;
 	min-width: fit-content;
 }
 .logo img {
-    max-height: 3.5em;
+    /* max-height: 3.5em; */
+    max-height: var(--alt-1-logo-size);
     display: flex;
 	position: relative;
 	filter: blur(0);
 	-webkit-filter: blur(0);
+	transition: max-height 0.1s;
 }
 .no-logo {
     opacity: 0;
@@ -684,7 +686,14 @@ body {
 #lower-third-1.style-1 > .graph-2 {
 	background: var(--alt-1-style-color-2);
 	opacity: var(--alt-1-background);
-	/*opacity: 0.5;*/		
+	
+	box-sizing: border-box;
+	border: solid var(--alt-1-border_thickness_amount);
+    border-color: var(--alt-1-style-color-3);
+	border-radius: var(--alt-1-corners);
+	/* box-shadow: var(--alt-1-shadows); */
+	/* box-shadow: var(--alt-1-shadows), inset var(--alt-1-shadows); */
+
 }
 #lower-third-2.style-1 > .graph-2 {
 	background: var(--alt-2-style-color-2);

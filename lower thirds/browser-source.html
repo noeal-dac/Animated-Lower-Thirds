@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  	<!--Animated Lower Thirds v1.5-->
+  	<!--Animated Lower Thirds v1.6-->
     <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -112,7 +112,6 @@
 		var alt_4_logo_image;
 		var alt_4_logo_image_old = alt_4_logo_image;
 
-		var alt_1_animation_time;
 
 		var global_animation_time;
 		var activeTime;
@@ -198,6 +197,11 @@
 		var hide_logo_2 = false;
 		var hide_logo_3 = false;
 		var hide_logo_4 = false;
+
+		var alt_1_turnoff;
+		var alt_2_turnoff;
+		var alt_3_turnoff;
+		var alt_4_turnoff;
 
 
 		function animationIn(animation) {
@@ -347,28 +351,45 @@
 		  if (!inactive1IsOn) {
 		    inactive1IsOn = true;
 		    if (i == "lower-third-1"){
-			    inactiveCount1(i);
-			    animationOut(i);
+				if (!alt_1_oneshot){
+					inactiveCount1(i);
+				} else {
+					alt_1_turnoff = true;
+				}
+				animationOut(i);
+				// alt_1_turnoff = false;
 			}
 		  }
 		  if (!inactive2IsOn) {
 		    inactive2IsOn = true;
 			if (i == "lower-third-2"){
-			    inactiveCount2(i);
+				if (!alt_2_oneshot){
+					inactiveCount2(i);
+				} else {
+					alt_2_turnoff = true;
+				}				
 			    animationOut(i);
 			}
 		  }
 		  if (!inactive3IsOn) {
 		    inactive3IsOn = true;
 			if (i == "lower-third-3"){
-			    inactiveCount3(i);
+				if (!alt_3_oneshot){
+					inactiveCount3(i);
+				} else {
+					alt_3_turnoff = true;
+				}
 			    animationOut(i);
 			}
 		  }
 		  if (!inactive4IsOn) {
 		    inactive4IsOn = true;
 			if (i == "lower-third-4"){
-			    inactiveCount4(i);
+				if (!alt_4_oneshot){
+					inactiveCount4(i);
+				} else {
+					alt_4_turnoff = true;
+				}
 			    animationOut(i);
 			}
 		  }
@@ -421,7 +442,7 @@
 			if (mode != "preview") {
 				activeTime = received_data[1];
 			} else {
-				activeTime = "0";				
+				activeTime = Infinity;				
 			}
 			inactiveTime = received_data[2];
 
@@ -438,10 +459,17 @@
 			alt_1_info_weight = received_data[12];
 			alt_1_name_color = received_data[13];
 			alt_1_info_color = received_data[14];
-			alt_1_style_color_1 = received_data[15];
-			alt_1_style_color_2 = received_data[16];
+
 			alt_1_logo_switch = received_data[17];
 			alt_1_background_switch = received_data[18];
+			if (alt_1_background_switch == "false"){
+				alt_1_style_color_1 = "none";
+				alt_1_style_color_2 = "none";
+			} else {
+				alt_1_style_color_1 = received_data[15];
+				alt_1_style_color_2 = received_data[16];
+			}
+
 			alt_1_shadows = received_data[19];
 			alt_1_align = received_data[20];
 			alt_1_size = received_data[21];
@@ -526,51 +554,81 @@
 			alt_4_font = received_data[94];
 
 			//Use the global times settins if custom times is empty
-			alt_1_animation_time = (received_data [95]) ? received_data [95] : received_data[0];
-			alt_1_active_time = (received_data [96]) ? received_data [96] : received_data[1];
-			alt_1_inactive_time = (received_data [97]) ? received_data [97] : received_data[2];
+			alt_1_animation_time = Number((received_data [95]) ? received_data [95] : received_data[0]);
+			alt_1_active_time = Number((received_data [96]) ? received_data [96] : received_data[1]);
+			alt_1_inactive_time = Number((received_data [97]) ? received_data [97] : received_data[2]);
 
-			alt_2_animation_time = (received_data [98]) ? received_data [98] : received_data[0];
-			alt_2_active_time = (received_data [99]) ? received_data [99] : received_data[1];
-			alt_2_inactive_time = (received_data [100]) ? received_data [100] : received_data[2];
+			alt_2_animation_time = Number((received_data [98]) ? received_data [98] : received_data[0]);
+			alt_2_active_time = Number((received_data [99]) ? received_data [99] : received_data[1]);
+			alt_2_inactive_time = Number((received_data [100]) ? received_data [100] : received_data[2]);
 
-			alt_3_animation_time = (received_data [101]) ? received_data [101] : received_data[0];
-			alt_3_active_time = (received_data [102]) ? received_data [102] : received_data[1];
-			alt_3_inactive_time = (received_data [103]) ? received_data [103] : received_data[2];
+			alt_3_animation_time = Number((received_data [101]) ? received_data [101] : received_data[0]);
+			alt_3_active_time = Number((received_data [102]) ? received_data [102] : received_data[1]);
+			alt_3_inactive_time = Number((received_data [103]) ? received_data [103] : received_data[2]);
 
-			alt_4_animation_time = (received_data [104]) ? received_data [104] : received_data[0];
-			alt_4_active_time = (received_data [105]) ? received_data [105] : received_data[1];
-			alt_4_inactive_time = (received_data [106]) ? received_data [106] : received_data[2];
+			alt_4_animation_time = Number((received_data [104]) ? received_data [104] : received_data[0]);
+			alt_4_active_time = Number((received_data [105]) ? received_data [105] : received_data[1]);
+			alt_4_inactive_time = Number((received_data [106]) ? received_data [106] : received_data[2]);
 
 			alt_1_logo_image = (received_data[107]) ? received_data[107] : "../logos/logo_1.png";
 			alt_2_logo_image = received_data[108];
 			alt_3_logo_image = received_data[109];
 			alt_4_logo_image = received_data[110];
 
+			global_oneshot = (received_data[111] === 'true');
+			//Use the global oneshot setting if oneshot switch is off or inactive field is empty
+			alt_1_oneshot = (received_data[112] === 'true' || (global_oneshot && !received_data [97]));
+			alt_2_oneshot = (received_data[113] === 'true' || (global_oneshot && !received_data [100]));
+			alt_3_oneshot = (received_data[114] === 'true' || (global_oneshot && !received_data [103]));
+			alt_4_oneshot = (received_data[115] === 'true' || (global_oneshot && !received_data [106]));
+
+			alt_1_logo_size = received_data[116];
+			alt_1_shadow_amount = received_data[117];
+			alt_1_corners = received_data[118];
+			alt_1_border_switch = received_data[119];
+			if (alt_1_border_switch == "false"){
+				alt_1_style_color_3 = "none";
+				alt_1_style_color_4 = "none";
+				alt_1_border_thickness_amount = 0;
+			} else {
+				alt_1_border_thickness_amount = received_data[120];
+				alt_1_style_color_3 = received_data[121];
+				alt_1_style_color_4 = received_data[122];
+			}
+
+
+			if (alt_1_inactive_time < alt_1_animation_time){
+				alt_1_inactive_time = alt_1_animation_time;
+			}
+			if (alt_2_inactive_time < alt_2_animation_time){
+				alt_2_inactive_time = alt_2_animation_time;
+			}
+			if (alt_3_inactive_time < alt_3_animation_time){
+				alt_3_inactive_time = alt_3_animation_time;
+			}
+			if (alt_4_inactive_time < alt_4_animation_time){
+				alt_4_inactive_time = alt_4_animation_time;
+			}
+
+			if (alt_1_active_time < alt_1_animation_time){
+				alt_1_active_time = alt_1_animation_time;
+			}
+			if (alt_2_active_time < alt_2_animation_time){
+				alt_2_active_time = alt_2_animation_time;
+			}
+			if (alt_3_active_time < alt_3_animation_time){
+				alt_3_active_time = alt_3_animation_time;
+			}
+			if (alt_4_active_time < alt_4_animation_time){
+				alt_4_active_time = alt_4_animation_time;
+			}
 
 			//Set time infinite in the preview panel
 			if (mode == "preview"){
-				alt_1_active_time = "0";
-				alt_2_active_time = "0";
-				alt_3_active_time = "0";
-				alt_4_active_time = "0";
-			}
-
-			//If active time is 0 the lower thirds is always active (24hs actually)
-			if (activeTime == "0") {
-		    	activeTime = 86400;
-			}
-			if (alt_1_active_time == "0") {
-		    	alt_1_active_time = 86400;
-			}
-			if (alt_2_active_time == "0") {
-		    	alt_2_active_time = 86400;
-			}
-			if (alt_3_active_time == "0") {
-		    	alt_3_active_time = 86400;
-			}
-			if (alt_4_active_time == "0") {
-		    	alt_4_active_time = 86400;
+				alt_1_active_time = Infinity;
+				alt_2_active_time = Infinity;
+				alt_3_active_time = Infinity;
+				alt_4_active_time = Infinity;
 			}
 
 			//Isn't lower third empty? unhide it
@@ -872,11 +930,12 @@
 			let root = document.documentElement;
 
 			//Show or hide Background
-			if (alt_1_background_switch == "true"){
-				root.style.setProperty('--alt-1-background', "1");
-			} else {
-				root.style.setProperty('--alt-1-background', "0");
-			}
+			// if (alt_1_background_switch == "true"){
+			// 	root.style.setProperty('--alt-1-background', "1");
+			// } else {
+			// 	root.style.setProperty('--alt-1-background', "0");
+			// }
+
 			if (alt_2_background_switch == "true"){
 				root.style.setProperty('--alt-2-background', "1");
 			} else {
@@ -914,7 +973,15 @@
 			root.style.setProperty('--alt-1-info-color', alt_1_info_color);
 			root.style.setProperty('--alt-1-style-color-1', alt_1_style_color_1);
 			root.style.setProperty('--alt-1-style-color-2', alt_1_style_color_2);
+			root.style.setProperty('--alt-1-style-color-3', alt_1_style_color_3);
+			root.style.setProperty('--alt-1-style-color-4', alt_1_style_color_4);
 			root.style.setProperty('--alt-1-font', alt_1_font);
+
+			root.style.setProperty('--alt-1-logo-size', alt_1_logo_size + "em");
+			// root.style.setProperty('--alt-1-shadow-amount', alt_1_shadow_amount);
+			root.style.setProperty('--alt-1-corners', alt_1_corners + "em");
+			root.style.setProperty('--alt-1-border-switch', alt_1_border_switch);
+			root.style.setProperty('--alt-1-border_thickness_amount', alt_1_border_thickness_amount + "px");
 
 			root.style.setProperty('--alt-2-size', alt_2_size + "px");
 			root.style.setProperty('--alt-2-margin-h', alt_2_margin_h + "rem");
@@ -969,7 +1036,8 @@
 			if (alt_1_shadows == "false") {
 				root.style.setProperty('--alt-1-shadows', "none");
 			} else if (alt_1_shadows == "true") {
-				root.style.setProperty('--alt-1-shadows', "0.1rem 0.1rem 0.2rem #00000060");
+				// root.style.setProperty('--alt-1-shadows', "0.1rem 0.1rem 0.2rem #000000" + alt_1_shadow_amount + "0");
+				root.style.setProperty('--alt-1-shadows', "0.1rem 0.1rem 0.2rem rgba(0,0,0," + alt_1_shadow_amount + ")");
 			}
 			if (alt_2_shadows == "false") {
 				root.style.setProperty('--alt-2-shadows', "none");
@@ -1042,7 +1110,12 @@
 			}
 
 
-			bcr.postMessage(activeTime1_to_send + '|' + inactiveTime1_to_send + '|' + activeTime2_to_send + '|' + inactiveTime2_to_send + '|' + activeTime3_to_send + '|' + inactiveTime3_to_send + '|' + activeTime4_to_send + '|' + inactiveTime4_to_send);
+			bcr.postMessage(activeTime1_to_send + '|' + inactiveTime1_to_send + '|' + activeTime2_to_send + '|' + inactiveTime2_to_send + '|' + activeTime3_to_send + '|' + inactiveTime3_to_send + '|' + activeTime4_to_send + '|' + inactiveTime4_to_send + '|' + alt_1_turnoff + '|' + alt_2_turnoff + '|' + alt_3_turnoff + '|' + alt_4_turnoff);
+
+			alt_1_turnoff = false;
+			alt_2_turnoff = false;
+			alt_3_turnoff = false;
+			alt_4_turnoff = false;
 		}
 
 		function refreshData() {
