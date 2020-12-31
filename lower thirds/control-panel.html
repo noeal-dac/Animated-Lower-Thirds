@@ -2002,12 +2002,12 @@
 								info_to_load = $(this).children('#' + info_id).text();
 								logo_to_load = $(this).children('#' + logo_id).text();
 								defaul_logo_to_load = $(default_logo).attr("src");
-								$(name + ":text").val(name_to_load);
-								$(info + ":text").val(info_to_load);
+								$(name + ":text").val(name_to_load).change();
+								$(info + ":text").val(info_to_load).change();
 								if (logo_to_load == "default"){
-									$(logo).attr("src", defaul_logo_to_load);
+									$(logo).attr("src", defaul_logo_to_load).change();
 								} else {
-									$(logo).attr("src", logo_to_load);
+									$(logo).attr("src", logo_to_load).change();
 								}
 
 								//Switch ON the panel if the autotrigger is ON
@@ -2101,12 +2101,12 @@
 					default_logo = logo.replace("-preview", "-default");
 					default_logo_value = $(default_logo).attr("src");
 
-					$(name + ":text").val(name_to_load);
-					$(info + ":text").val(info_to_load);
+					$(name + ":text").val(name_to_load).change();
+					$(info + ":text").val(info_to_load).change();
 					if (logo_to_load == "default") {
 						logo_to_load = default_logo_value;
 					}
-					$(logo).attr("src", logo_to_load);
+					$(logo).attr("src", logo_to_load).change();
 				}, alt_waiting_time * 1000);
 
 				//Switch ON the panel if the autotrigger is ON
