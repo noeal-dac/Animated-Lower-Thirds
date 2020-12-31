@@ -335,13 +335,13 @@
 								<div class="alt-time-options">
 									<div class="settings-title">LT1 Times</div>
 									<div class="settings-inputs">
-										<input class="storable" id="alt-1-animation-time" placeholder="(in-out)" tabindex="12">
-										<input class="storable" id="alt-1-active-time" placeholder="(active)" tabindex="13">
+										<input class="storable" id="alt-1-animation-time" type="number" placeholder="(in-out)" tabindex="12">
+										<input class="storable" id="alt-1-active-time" type="number" placeholder="(active)" tabindex="13">
 										<label class="config-btn lock-input">
 											<input class="checkbox-storable" type="checkbox" id="alt-1-lock-active">
 											<div class="icon-btn icon icon-lock"></div>
 										</label>
-										<input class="storable" id="alt-1-inactive-time" placeholder="(inactive)" tabindex="14">
+										<input class="storable" id="alt-1-inactive-time" type="number" placeholder="(inactive)" tabindex="14">
 										<label class="config-btn lock-input">
 											<input class="checkbox-storable" type="checkbox" id="alt-1-oneshot">
 											<div class="icon-btn icon icon-oneshot"></div>
@@ -571,13 +571,13 @@
 								<div class="alt-time-options">
 									<div class="settings-title">LT2 Times</div>
 									<div class="settings-inputs">
-										<input class="storable" id="alt-2-animation-time" placeholder="(in-out)" tabindex="15">
-										<input class="storable" id="alt-2-active-time" placeholder="(active)" tabindex="16">
+										<input class="storable" id="alt-2-animation-time" type="number" placeholder="(in-out)" tabindex="15">
+										<input class="storable" id="alt-2-active-time" type="number" placeholder="(active)" tabindex="16">
 										<label class="config-btn lock-input">
 											<input class="checkbox-storable" type="checkbox" id="alt-2-lock-active">
 											<div class="icon-btn icon icon-lock"></div>
 										</label>
-										<input class="storable" id="alt-2-inactive-time" placeholder="(inactive)" tabindex="17">
+										<input class="storable" id="alt-2-inactive-time" type="number" placeholder="(inactive)" tabindex="17">
 										<label class="config-btn lock-input">
 											<input class="checkbox-storable" type="checkbox" id="alt-2-oneshot">
 											<div class="icon-btn icon icon-oneshot"></div>
@@ -807,13 +807,13 @@
 								<div class="alt-time-options">
 									<div class="settings-title">LT3 Times</div>
 									<div class="settings-inputs">
-										<input class="storable" id="alt-3-animation-time" placeholder="(in-out)" tabindex="18">
-										<input class="storable" id="alt-3-active-time" placeholder="(active)" tabindex="19">
+										<input class="storable" id="alt-3-animation-time" type="number" placeholder="(in-out)" tabindex="18">
+										<input class="storable" id="alt-3-active-time" type="number" placeholder="(active)" tabindex="19">
 										<label class="config-btn lock-input">
 											<input class="checkbox-storable" type="checkbox" id="alt-3-lock-active">
 											<div class="icon-btn icon icon-lock"></div>
 										</label>
-										<input class="storable" id="alt-3-inactive-time" placeholder="(inactive)" tabindex="20">
+										<input class="storable" id="alt-3-inactive-time" type="number" placeholder="(inactive)" tabindex="20">
 										<label class="config-btn lock-input">
 											<input class="checkbox-storable" type="checkbox" id="alt-3-oneshot">
 											<div class="icon-btn icon icon-oneshot"></div>
@@ -1043,13 +1043,13 @@
 								<div class="alt-time-options">
 									<div class="settings-title">LT4 Times</div>
 									<div class="settings-inputs">
-										<input class="storable" id="alt-4-animation-time" placeholder="(in-out)" tabindex="21">
-										<input class="storable" id="alt-4-active-time" placeholder="(active)" tabindex="22">
+										<input class="storable" id="alt-4-animation-time" type="number" placeholder="(in-out)" tabindex="21">
+										<input class="storable" id="alt-4-active-time" type="number" placeholder="(active)" tabindex="22">
 										<label class="config-btn lock-input">
 											<input class="checkbox-storable" type="checkbox" id="alt-4-lock-active">
 											<div class="icon-btn icon icon-lock"></div>
 										</label>
-										<input class="storable" id="alt-4-inactive-time" placeholder="(inactive)" tabindex="23">
+										<input class="storable" id="alt-4-inactive-time" type="number" placeholder="(inactive)" tabindex="23">
 										<label class="config-btn lock-input">
 											<input class="checkbox-storable" type="checkbox" id="alt-4-oneshot">
 											<div class="icon-btn icon icon-oneshot"></div>
@@ -1802,7 +1802,6 @@
 				document.getElementById("reset-all").classList.remove("hide");
 			}
 			function okResetPopup() {
-				clearTimeout(refreshSaveData); //Stop saving data to localstorage
 				localStorage.clear(); //To clear data fields
 
 				//Restore logo default (fix missing logos in the reload)			
@@ -2505,9 +2504,9 @@
 				if (global_lock_active){
 					global_active_time = Infinity;
 				} else {
-					global_active_time = $("#global-active-time:text").val();
+					global_active_time = $("#global-active-time").val();
 				}
-				global_inactive_time = $("#global-inactive-time:text").val();
+				global_inactive_time = $("#global-inactive-time").val();
 
 				alt_1_name = $("#alt-1-name:text").val();
 				alt_1_info = $("#alt-1-info:text").val();				
@@ -2518,13 +2517,13 @@
 				alt_1_style_color_3 = $("#alt-1-style-color-3:text").val();
 				alt_1_style_color_4 = $("#alt-1-style-color-4:text").val();
 
-				alt_1_animation_time = $("#alt-1-animation-time:text").val();
+				alt_1_animation_time = $("#alt-1-animation-time").val();
 				if (alt_1_lock_active){
 					alt_1_active_time = Infinity;
 				} else {
-					alt_1_active_time = $("#alt-1-active-time:text").val();
+					alt_1_active_time = $("#alt-1-active-time").val();
 				}
-				alt_1_inactive_time = $("#alt-1-inactive-time:text").val();
+				alt_1_inactive_time = $("#alt-1-inactive-time").val();
 				alt_1_logo = $("#alt-1-logo-preview").attr("src");
 
 				alt_2_name = $("#alt-2-name:text").val();
@@ -2533,13 +2532,13 @@
 				alt_2_info_color = $("#alt-2-info-color:text").val();
 				alt_2_style_color_1 = $("#alt-2-style-color-1:text").val();
 				alt_2_style_color_2 = $("#alt-2-style-color-2:text").val();
-				alt_2_animation_time = $("#alt-2-animation-time:text").val();
+				alt_2_animation_time = $("#alt-2-animation-time").val();
 				if (alt_2_lock_active){
 					alt_2_active_time = Infinity;
 				} else {
-					alt_2_active_time = $("#alt-2-active-time:text").val();
+					alt_2_active_time = $("#alt-2-active-time").val();
 				}
-				alt_2_inactive_time = $("#alt-2-inactive-time:text").val();
+				alt_2_inactive_time = $("#alt-2-inactive-time").val();
 				alt_2_logo = $("#alt-2-logo-preview").attr("src");
 
 				alt_3_name = $("#alt-3-name:text").val();
@@ -2548,13 +2547,13 @@
 				alt_3_info_color = $("#alt-3-info-color:text").val();
 				alt_3_style_color_1 = $("#alt-3-style-color-1:text").val();
 				alt_3_style_color_2 = $("#alt-3-style-color-2:text").val();
-				alt_3_animation_time = $("#alt-3-animation-time:text").val();
+				alt_3_animation_time = $("#alt-3-animation-time").val();
 				if (alt_3_lock_active){
 					alt_3_active_time = Infinity;
 				} else {
-					alt_3_active_time = $("#alt-3-active-time:text").val();
+					alt_3_active_time = $("#alt-3-active-time").val();
 				}				
-				alt_3_inactive_time = $("#alt-3-inactive-time:text").val();
+				alt_3_inactive_time = $("#alt-3-inactive-time").val();
 				alt_3_logo = $("#alt-3-logo-preview").attr("src");
 
 				alt_4_name = $("#alt-4-name:text").val();
@@ -2563,13 +2562,13 @@
 				alt_4_info_color = $("#alt-4-info-color:text").val();
 				alt_4_style_color_1 = $("#alt-4-style-color-1:text").val();
 				alt_4_style_color_2 = $("#alt-4-style-color-2:text").val();
-				alt_4_animation_time = $("#alt-4-animation-time:text").val();
+				alt_4_animation_time = $("#alt-4-animation-time").val();
 				if (alt_4_lock_active){
 					alt_4_active_time = Infinity;
 				} else {
-					alt_4_active_time = $("#alt-4-active-time:text").val();
+					alt_4_active_time = $("#alt-4-active-time").val();
 				}				
-				alt_4_inactive_time = $("#alt-4-inactive-time:text").val();
+				alt_4_inactive_time = $("#alt-4-inactive-time").val();
 				alt_4_logo = $("#alt-4-logo-preview").attr("src");
 
 				//Standard Main settings values
@@ -3204,7 +3203,6 @@
 				var file = this.files[0];
 				var reader = new FileReader();
 				reader.onload = function(progressEvent){
-					clearTimeout(refreshSaveData); //Stop saving data to localstorage
 					localStorage.clear();
 					
 					writeLocalStorage(this.result);
