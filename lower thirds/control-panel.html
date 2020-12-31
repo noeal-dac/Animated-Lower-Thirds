@@ -32,13 +32,13 @@
 					<div id="time-options">
 						<div class="settings-title">Global Times</div>
 						<div class="settings-inputs">
-							<input class="storable" id="global-animation-time" placeholder="4s (in-out)" tabindex="1">
-							<input class="storable" id="global-active-time" placeholder="25s (active)" tabindex="2">
+							<input class="storable" id="global-animation-time" type="number" placeholder="4s (in-out)" tabindex="1">
+							<input class="storable" id="global-active-time" type="number" placeholder="25s (active)" tabindex="2">
 							<label class="config-btn lock-input">
 								<input class="checkbox-storable" type="checkbox" id="global-lock-active">
 								<div class="icon-btn icon icon-lock"></div>
 							</label>
-							<input class="storable" id="global-inactive-time" placeholder="420s (inactive)" tabindex="3">
+							<input class="storable" id="global-inactive-time" type="number" placeholder="420s (inactive)" tabindex="3">
 							<label class="config-btn lock-input">
 								<input class="checkbox-storable" type="checkbox" id="global-oneshot">
 								<div class="icon-btn icon icon-oneshot"></div>
@@ -2121,26 +2121,26 @@
 
 			//Button to clear fields
 			$("#alt-1-clean-inputs").click(function(){
-				$("#alt-1-name:text").val("");
-				$("#alt-1-info:text").val("");
+				$("#alt-1-name:text").val("").change();
+				$("#alt-1-info:text").val("").change();
 				var alt_logo_default = $("#alt-1-logo-default").attr("src");
 				$("#alt-1-logo-preview").attr("src", alt_logo_default);
 			});
 			$("#alt-2-clean-inputs").click(function(){
-				$("#alt-2-name:text").val("");
-				$("#alt-2-info:text").val("");
+				$("#alt-2-name:text").val("").change();
+				$("#alt-2-info:text").val("").change();
 				var alt_logo_default = $("#alt-2-logo-default").attr("src");
 				$("#alt-2-logo-preview").attr("src", alt_logo_default);
 			});
 			$("#alt-3-clean-inputs").click(function(){
-				$("#alt-3-name:text").val("");
-				$("#alt-3-info:text").val("");
+				$("#alt-3-name:text").val("").change();
+				$("#alt-3-info:text").val("").change();
 				var alt_logo_default = $("#alt-3-logo-default").attr("src");
 				$("#alt-3-logo-preview").attr("src", alt_logo_default);
 			});
 			$("#alt-4-clean-inputs").click(function(){
-				$("#alt-4-name:text").val("");
-				$("#alt-4-info:text").val("");
+				$("#alt-4-name:text").val("").change();
+				$("#alt-4-info:text").val("").change();
 				var alt_logo_default = $("#alt-4-logo-default").attr("src");
 				$("#alt-4-logo-preview").attr("src", alt_logo_default);
 			});
