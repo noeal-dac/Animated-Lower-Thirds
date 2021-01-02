@@ -1564,6 +1564,145 @@
 			});
 
 			////////////////////
+			
+			function checkSwitches (){
+				//Check Master Switch
+				if (document.getElementById("lower-thirds-masterswitch").checked == true) {
+					masterSwitchIsOn = true;
+					document.getElementById("alt-main-config-content").classList.add("active");
+				} else {
+					masterSwitchIsOn = false;
+					document.getElementById("alt-main-config-content").classList.remove("active");
+				}
+
+				//Check switches and blue and red lights in the background to see active and inactive times
+				if (masterSwitchIsOn) {
+					//When the Main Switch is ON the lower thirds can be Active, Inactive or OFF.
+					//Switch 1
+					if (document.getElementById("lower-thirds-switch1").checked == true){
+						alt_1_switch = "true";
+						if (alt_1_active_time_monitor >= 0 && alt_1_inactive_time_monitor == 0 && alt_1_name && alt_1_info){
+							document.getElementById("alt-1-config-content").classList.remove("inactive");
+							document.getElementById("alt-1-config-content").classList.add("active");
+							alt_1_jumpnext = true;
+						} else {
+							document.getElementById("alt-1-config-content").classList.remove("active");
+							document.getElementById("alt-1-config-content").classList.add("inactive");
+							//check if autoload is active and jump to next slot
+							if (alt_1_autoload && alt_1_jumpnext) {
+								jumpNextSlot("#alt-1-memory-slots", "#alt-1-name", "#alt-1-info", "#alt-1-logo-preview", alt_1_waiting_time);
+								alt_1_jumpnext = false;
+							}
+						}
+					} else {
+						alt_1_switch = "false";
+						document.getElementById("alt-1-config-content").className = '';
+					}
+
+					//Switch 2
+					if (document.getElementById("lower-thirds-switch2").checked == true){
+						alt_2_switch = "true";
+						if (alt_2_active_time_monitor >= 0 && alt_2_inactive_time_monitor == 0 && alt_2_name && alt_2_info){
+							document.getElementById("alt-2-config-content").classList.remove("inactive");
+							document.getElementById("alt-2-config-content").classList.add("active");
+							alt_2_jumpnext = true;
+						} else {
+							document.getElementById("alt-2-config-content").classList.remove("active");
+							document.getElementById("alt-2-config-content").classList.add("inactive");
+							//check if autoload is active and jump to next slot
+							if (alt_2_autoload && alt_2_jumpnext) {
+								jumpNextSlot("#alt-2-memory-slots", "#alt-2-name", "#alt-2-info", "#alt-2-logo-preview", alt_2_waiting_time);
+								alt_2_jumpnext = false;
+							}
+						}
+					} else {
+						alt_2_switch = "false";
+						document.getElementById("alt-2-config-content").className = '';
+					}
+
+					//Switch 3
+					if (document.getElementById("lower-thirds-switch3").checked == true){
+						alt_3_switch = "true";
+						if (alt_3_active_time_monitor >= 0 && alt_3_inactive_time_monitor == 0 && alt_3_name && alt_3_info){
+							document.getElementById("alt-3-config-content").classList.remove("inactive");
+							document.getElementById("alt-3-config-content").classList.add("active");
+							alt_3_jumpnext = true;
+						} else {
+							document.getElementById("alt-3-config-content").classList.remove("active");
+							document.getElementById("alt-3-config-content").classList.add("inactive");
+							//check if autoload is active and jump to next slot
+							if (alt_3_autoload && alt_3_jumpnext) {
+								jumpNextSlot("#alt-3-memory-slots", "#alt-3-name", "#alt-3-info", "#alt-3-logo-preview", alt_3_waiting_time);
+								alt_3_jumpnext = false;
+							}
+						}
+					} else {
+						alt_3_switch = "false";
+						document.getElementById("alt-3-config-content").className = '';
+					}
+
+					//Switch 4
+					if (document.getElementById("lower-thirds-switch4").checked == true){
+						alt_4_switch = "true";
+						if (alt_4_active_time_monitor >= 0 && alt_4_inactive_time_monitor == 0 && alt_4_name && alt_4_info){
+							document.getElementById("alt-4-config-content").classList.remove("inactive");
+							document.getElementById("alt-4-config-content").classList.add("active");
+							alt_4_jumpnext = true;
+						} else {
+							document.getElementById("alt-4-config-content").classList.remove("active");
+							document.getElementById("alt-4-config-content").classList.add("inactive");
+							//check if autoload is active and jump to next slot
+							if (alt_4_autoload && alt_4_jumpnext) {
+								jumpNextSlot("#alt-4-memory-slots", "#alt-4-name", "#alt-4-info", "#alt-4-logo-preview", alt_4_waiting_time);
+								alt_4_jumpnext = false;
+							}
+						}
+					} else {
+						alt_4_switch = "false";
+						document.getElementById("alt-4-config-content").className = '';
+					}
+
+				} else {
+					//When the Main Switch is OFF all the Lower Thirds area Inactives or OFF.
+					//Switch 1
+					alt_1_switch = "false";
+					if (document.getElementById("lower-thirds-switch1").checked == true) {
+						document.getElementById("alt-1-config-content").classList.add("inactive");
+						document.getElementById("alt-1-config-content").classList.remove("active");
+					} else {
+						document.getElementById("alt-1-config-content").className = '';
+					}
+
+					//Switch 2
+					alt_2_switch = "false";
+					if (document.getElementById("lower-thirds-switch2").checked == true) {
+						document.getElementById("alt-2-config-content").classList.add("inactive");
+						document.getElementById("alt-2-config-content").classList.remove("active");
+					} else {
+						document.getElementById("alt-2-config-content").className = '';
+					}
+
+					//Switch 3
+					alt_3_switch = "false";
+					if (document.getElementById("lower-thirds-switch3").checked == true) {
+						document.getElementById("alt-3-config-content").classList.add("inactive");
+						document.getElementById("alt-3-config-content").classList.remove("active");
+					} else {
+						document.getElementById("alt-3-config-content").className = '';
+					}
+
+					//Switch 4
+					alt_4_switch = "false";
+					if (document.getElementById("lower-thirds-switch4").checked == true) {
+						document.getElementById("alt-4-config-content").classList.add("inactive");
+						document.getElementById("alt-4-config-content").classList.remove("active");
+					} else {
+						document.getElementById("alt-4-config-content").className = '';
+					}
+				}
+			}
+
+			////////////////////
 
 			//Reload the hotjeys.js file updated by the LUA script
 			function updateHotkeys() {
@@ -2589,142 +2728,6 @@
 				alt_3_waiting_time = alt_3_animation_time || global_animation_time;
 				alt_4_waiting_time = alt_4_animation_time || global_animation_time;
 
-				//Check Master Switch
-				if (document.getElementById("lower-thirds-masterswitch").checked == true) {
-					masterSwitchIsOn = true;
-					document.getElementById("alt-main-config-content").classList.add("active");
-				} else {
-					masterSwitchIsOn = false;
-					document.getElementById("alt-main-config-content").classList.remove("active");
-				}
-
-				//Check switches and blue and red lights in the background to see active and inactive times
-				if (masterSwitchIsOn) {
-					//When the Main Switch is ON the lower thirds can be Active, Inactive or OFF.
-					//Switch 1
-					if (document.getElementById("lower-thirds-switch1").checked == true){
-						alt_1_switch = "true";
-						if (alt_1_active_time_monitor >= 0 && alt_1_inactive_time_monitor == 0 && alt_1_name && alt_1_info){
-							document.getElementById("alt-1-config-content").classList.remove("inactive");
-							document.getElementById("alt-1-config-content").classList.add("active");
-							alt_1_jumpnext = true;
-						} else {
-							document.getElementById("alt-1-config-content").classList.remove("active");
-							document.getElementById("alt-1-config-content").classList.add("inactive");
-							//check if autoload is active and jump to next slot
-							if (alt_1_autoload && alt_1_jumpnext) {
-								jumpNextSlot("#alt-1-memory-slots", "#alt-1-name", "#alt-1-info", "#alt-1-logo-preview", alt_1_waiting_time);
-								alt_1_jumpnext = false;
-							}
-						}
-					} else {
-						alt_1_switch = "false";
-						document.getElementById("alt-1-config-content").className = '';
-					}
-
-					//Switch 2
-					if (document.getElementById("lower-thirds-switch2").checked == true){
-						alt_2_switch = "true";
-						if (alt_2_active_time_monitor >= 0 && alt_2_inactive_time_monitor == 0 && alt_2_name && alt_2_info){
-							document.getElementById("alt-2-config-content").classList.remove("inactive");
-							document.getElementById("alt-2-config-content").classList.add("active");
-							alt_2_jumpnext = true;
-						} else {
-							document.getElementById("alt-2-config-content").classList.remove("active");
-							document.getElementById("alt-2-config-content").classList.add("inactive");
-							//check if autoload is active and jump to next slot
-							if (alt_2_autoload && alt_2_jumpnext) {
-								jumpNextSlot("#alt-2-memory-slots", "#alt-2-name", "#alt-2-info", "#alt-2-logo-preview", alt_2_waiting_time);
-								alt_2_jumpnext = false;
-							}
-						}
-					} else {
-						alt_2_switch = "false";
-						document.getElementById("alt-2-config-content").className = '';
-					}
-
-					//Switch 3
-					if (document.getElementById("lower-thirds-switch3").checked == true){
-						alt_3_switch = "true";
-						if (alt_3_active_time_monitor >= 0 && alt_3_inactive_time_monitor == 0 && alt_3_name && alt_3_info){
-							document.getElementById("alt-3-config-content").classList.remove("inactive");
-							document.getElementById("alt-3-config-content").classList.add("active");
-							alt_3_jumpnext = true;
-						} else {
-							document.getElementById("alt-3-config-content").classList.remove("active");
-							document.getElementById("alt-3-config-content").classList.add("inactive");
-							//check if autoload is active and jump to next slot
-							if (alt_3_autoload && alt_3_jumpnext) {
-								jumpNextSlot("#alt-3-memory-slots", "#alt-3-name", "#alt-3-info", "#alt-3-logo-preview", alt_3_waiting_time);
-								alt_3_jumpnext = false;
-							}
-						}
-					} else {
-						alt_3_switch = "false";
-						document.getElementById("alt-3-config-content").className = '';
-					}
-
-					//Switch 4
-					if (document.getElementById("lower-thirds-switch4").checked == true){
-						alt_4_switch = "true";
-						if (alt_4_active_time_monitor >= 0 && alt_4_inactive_time_monitor == 0 && alt_4_name && alt_4_info){
-							document.getElementById("alt-4-config-content").classList.remove("inactive");
-							document.getElementById("alt-4-config-content").classList.add("active");
-							alt_4_jumpnext = true;
-						} else {
-							document.getElementById("alt-4-config-content").classList.remove("active");
-							document.getElementById("alt-4-config-content").classList.add("inactive");
-							//check if autoload is active and jump to next slot
-							if (alt_4_autoload && alt_4_jumpnext) {
-								jumpNextSlot("#alt-4-memory-slots", "#alt-4-name", "#alt-4-info", "#alt-4-logo-preview", alt_4_waiting_time);
-								alt_4_jumpnext = false;
-							}
-						}
-					} else {
-						alt_4_switch = "false";
-						document.getElementById("alt-4-config-content").className = '';
-					}
-
-				} else {
-					//When the Main Switch is OFF all the Lower Thirds area Inactives or OFF.
-					//Switch 1
-					alt_1_switch = "false";
-					if (document.getElementById("lower-thirds-switch1").checked == true) {
-						document.getElementById("alt-1-config-content").classList.add("inactive");
-						document.getElementById("alt-1-config-content").classList.remove("active");
-					} else {
-						document.getElementById("alt-1-config-content").className = '';
-					}
-
-					//Switch 2
-					alt_2_switch = "false";
-					if (document.getElementById("lower-thirds-switch2").checked == true) {
-						document.getElementById("alt-2-config-content").classList.add("inactive");
-						document.getElementById("alt-2-config-content").classList.remove("active");
-					} else {
-						document.getElementById("alt-2-config-content").className = '';
-					}
-
-					//Switch 3
-					alt_3_switch = "false";
-					if (document.getElementById("lower-thirds-switch3").checked == true) {
-						document.getElementById("alt-3-config-content").classList.add("inactive");
-						document.getElementById("alt-3-config-content").classList.remove("active");
-					} else {
-						document.getElementById("alt-3-config-content").className = '';
-					}
-
-					//Switch 4
-					alt_4_switch = "false";
-					if (document.getElementById("lower-thirds-switch4").checked == true) {
-						document.getElementById("alt-4-config-content").classList.add("inactive");
-						document.getElementById("alt-4-config-content").classList.remove("active");
-					} else {
-						document.getElementById("alt-4-config-content").className = '';
-					}
-
-				}
-
 				//////////////////////////////
 
 				//Switch Autoload ALT ON/OFF
@@ -3289,17 +3292,10 @@
 					$(this).text(value);
 				});
 
-				$('.checkbox-storable').each(function(){
-					var id = $(this).attr('id');
-					var checked = JSON.parse(localStorage.getItem(id));
-    				document.getElementById(id).checked = checked;
-    			});
-
-				$('.radio-storable').each(function(){
-					var id = $(this).attr('id');
-					var checked = JSON.parse(localStorage.getItem(id));
-    				document.getElementById(id).checked = checked;
-    			});
+				$('.checkbox-storable, .radio-storable').each(function(){
+                    var id = $(this).attr('id');
+                    $(this).prop('checked', localStorage.getItem(id));
+                });
 
 				$('.title-storable').each(function(){    
 					var id = $(this).attr('id');
@@ -3345,8 +3341,7 @@
 				$('.checkbox-storable').change(function(){
 					refreshData();
 					var id = $(this).attr('id');
-					var checkbox = document.getElementById(id);
-					localStorage.setItem(id, checkbox.checked);
+					localStorage.setItem(id, $(this).is(':checked'));
 				});
 
 				$('.radio-storable').change(function(){
@@ -3354,8 +3349,7 @@
 					var radio_name = $(this).attr('name');
 					$(':input[name=' + radio_name + ']').each(function(){
 						var id = $(this).attr('id');
-						var checkbox = document.getElementById(id);
-						localStorage.setItem(id, checkbox.checked);
+                        localStorage.setItem(id, $(this).is(':checked'));
 					});
 				});
 
@@ -3394,16 +3388,17 @@
 			}
 
 			function checkUpdates() {
-				checkHotkeys();
-				updateHotkeys();
-				setTimeout(checkUpdates, 1000);
+				// checkHotkeys();
+				// updateHotkeys();
+				checkSwitches();
+				setTimeout(checkUpdates, 100);
 			}
 
 			// localStorage.clear();
 			loadData();
 			updateCustomFontList();
-			refreshData();
 			checkUpdates();
+			refreshData();
 			saveData();
 
 		</script>
