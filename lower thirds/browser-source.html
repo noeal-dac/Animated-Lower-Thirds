@@ -536,20 +536,6 @@
 				alt_4_active_time = Infinity;
 			}
 
-			//Isn't lower third empty? unhide it
-			if (canIn1) {
-				document.getElementById("lower-third-1").classList.remove("hide-anim");
-			}
-			if (canIn2) {
-				document.getElementById("lower-third-2").classList.remove("hide-anim");
-			}
-			if (canIn3) {
-				document.getElementById("lower-third-3").classList.remove("hide-anim");
-			}
-			if (canIn4) {
-				document.getElementById("lower-third-4").classList.remove("hide-anim");
-			}
-
 			//Check the switches
 			if (alt_1_switch == "false" || alt_1_name.length == 0 || alt_1_info.length == 0) {
 				if(canIn1){
@@ -561,6 +547,7 @@
 			} else {
 				if(!canIn1){
 					canIn1 = true;
+					document.getElementById("lower-third-1").classList.remove("hide-anim");
 					startActiveCount("lower-third-1");
 				}
 			};
@@ -575,6 +562,7 @@
 			} else {
 				if(!canIn2){
 					canIn2 = true;
+					document.getElementById("lower-third-2").classList.remove("hide-anim");
 					startActiveCount("lower-third-2");
 				}
 			};
@@ -589,6 +577,7 @@
 			} else {
 				if(!canIn3){
 					canIn3 = true;
+					document.getElementById("lower-third-3").classList.remove("hide-anim");
 					startActiveCount("lower-third-3");
 				}
 			};
@@ -602,6 +591,7 @@
 			} else {
 				if(!canIn4){
 					canIn4 = true;
+					document.getElementById("lower-third-4").classList.remove("hide-anim");
 					startActiveCount("lower-third-4");
 				}
 			};

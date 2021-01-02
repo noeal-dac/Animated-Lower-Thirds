@@ -161,7 +161,7 @@ body {
 		padding-right: 0;
 	}	
 	100% {
-		width: 100%
+		width: calc(100% + 2em);
 	}
 }
 @keyframes animation-right-text-1 {

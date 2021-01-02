@@ -1110,13 +1110,13 @@
 
 			<div id='fileNames'> </div>
 
-			<div id="alt-preview" class="active">
+			<!-- <div id="alt-preview" class="active">
 				<label><div class="icon icon-search"></div></label>
 				<div id="toggle-preview" class="active"><div class="icon icon-chevron-down"></div></div>
 				<div class="embed-container">
 				    <iframe id="myiframe" src="./browser-source.html?mode=preview" frameborder="0" allowfullscreen></iframe>
 				</div>
-			</div>
+			</div> -->
 
 		</div>
 
@@ -3342,12 +3342,22 @@
 					localStorage.setItem(id, value);
 	        	});
 
-				$('.checkbox-storable, .radio-storable').change(function(){
+				$('.checkbox-storable').change(function(){
 					refreshData();
 					var id = $(this).attr('id');
 					var checkbox = document.getElementById(id);
 					localStorage.setItem(id, checkbox.checked);
-    			});
+				});
+
+				$('.radio-storable').change(function(){
+					refreshData();
+					var radio_name = $(this).attr('name');
+					$(':input[name=' + radio_name + ']').each(function(){
+						var id = $(this).attr('id');
+						var checkbox = document.getElementById(id);
+						localStorage.setItem(id, checkbox.checked);
+					});
+				});
 
 				$('.font-storable, .select-settings-storable').change(function(){
 					refreshData();
