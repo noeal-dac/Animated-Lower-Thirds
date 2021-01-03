@@ -2605,10 +2605,10 @@
 				document.getElementById("alt-4-active-time-monitor").innerHTML = alt_4_active_time_monitor
 				document.getElementById("alt-4-inactive-time-monitor").innerHTML = alt_4_inactive_time_monitor;
 
-				alt_1_turnoff = (received_data.alt_1_turnoff == "true");
-				alt_2_turnoff = (received_data.alt_2_turnoff == "true");
-				alt_3_turnoff = (received_data.alt_3_turnoff == "true");
-				alt_4_turnoff = (received_data.alt_4_turnoff == "true");
+				alt_1_turnoff = (received_data.alt_1_turnoff);
+				alt_2_turnoff = (received_data.alt_2_turnoff);
+				alt_3_turnoff = (received_data.alt_3_turnoff);
+				alt_4_turnoff = (received_data.alt_4_turnoff);
 
 				if (alt_1_turnoff){
 					document.getElementById("lower-thirds-switch1").checked = false;
