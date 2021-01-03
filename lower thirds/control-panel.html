@@ -3294,7 +3294,7 @@
 
 				$('.checkbox-storable, .radio-storable').each(function(){
                     var id = $(this).attr('id');
-                    $(this).prop('checked', localStorage.getItem(id));
+                    $(this).prop('checked', localStorage.getItem(id) === 'true');
                 });
 
 				$('.title-storable').each(function(){    
