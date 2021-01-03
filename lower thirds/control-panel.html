@@ -1573,6 +1573,13 @@
 					document.getElementById("alt-main-config-content").classList.remove("active");
 				}
 
+				//Check Master Switch
+				if (document.getElementById("lower-thirds-masterswitch").checked == true) {
+					masterSwitchIsOn = true;
+				} else {
+					masterSwitchIsOn = false;
+				}
+
 				//Check switches and blue and red lights in the background to see active and inactive times
 				if (masterSwitchIsOn) {
 					//When the Main Switch is ON the lower thirds can be Active, Inactive or OFF.
@@ -2628,6 +2635,17 @@
 			//////////////////////////////////////
 
 			function function_send() {
+				//Switch Lock Active Mode ALT ON/OFF
+				global_lock_active = (document.getElementById("global-lock-active").checked == true) ? true : false;
+
+				alt_1_lock_active = (document.getElementById("alt-1-lock-active").checked == true) ? true : false;
+				alt_2_lock_active = (document.getElementById("alt-2-lock-active").checked == true) ? true : false;
+				alt_3_lock_active = (document.getElementById("alt-3-lock-active").checked == true) ? true : false;
+				alt_4_lock_active = (document.getElementById("alt-4-lock-active").checked == true) ? true : false;
+
+
+				//////////////////////////////
+
 				global_animation_time = $("#global-animation-time").val();
 				if (global_lock_active){
 					global_active_time = Infinity;
@@ -2785,17 +2803,6 @@
 				alt_2_oneshot = (document.getElementById("alt-2-oneshot").checked == true) ? true : false;
 				alt_3_oneshot = (document.getElementById("alt-3-oneshot").checked == true) ? true : false;
 				alt_4_oneshot = (document.getElementById("alt-4-oneshot").checked == true) ? true : false;
-
-				//////////////////////////////
-
-				//Switch Lock Active Mode ALT ON/OFF
-				global_lock_active = (document.getElementById("global-lock-active").checked == true) ? true : false;
-
-				alt_1_lock_active = (document.getElementById("alt-1-lock-active").checked == true) ? true : false;
-				alt_2_lock_active = (document.getElementById("alt-2-lock-active").checked == true) ? true : false;
-				alt_3_lock_active = (document.getElementById("alt-3-lock-active").checked == true) ? true : false;
-				alt_4_lock_active = (document.getElementById("alt-4-lock-active").checked == true) ? true : false;
-
 
 				//////////////////////////////
 
@@ -3414,7 +3421,7 @@
 
 				getAppearance();
 
-
+				checkSwitches();
 				function_send();
 				// setTimeout(refreshData, x*1000);
 			}
@@ -3422,8 +3429,7 @@
 			function checkUpdates() {
 				checkHotkeys();
 				updateHotkeys();
-				checkSwitches();
-				setTimeout(checkUpdates, 100);
+				setTimeout(checkUpdates, 1000);
 			}
 
 			// localStorage.clear();
