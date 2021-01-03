@@ -429,7 +429,7 @@
 				alt_1_shadows, alt_1_align = "left", alt_1_size, alt_1_margin_h, alt_1_margin_v, alt_1_font ,alt_1_logo_size,
 				alt_1_shadow_amount, alt_1_corners, alt_1_border_switch} = received_data;
 			let {alt_1_style_color_1, alt_1_style_color_2, alt_1_line_spacing, alt_1_border_thickness_amount, alt_1_style_color_3, alt_1_style_color_4} = received_data;
-			
+
 			document.getElementById("alt-1-name").innerHTML = alt_1_name;
 			document.getElementById("alt-1-info").innerHTML = alt_1_info;
 
@@ -456,7 +456,7 @@
 				alt_2_name_weight, alt_2_info_weight, alt_2_name_color, alt_2_info_color, alt_2_logo_switch, alt_2_background_switch,
 				alt_2_shadows, alt_2_align = "left", alt_2_size, alt_2_margin_h, alt_2_margin_v, alt_2_font, alt_2_logo_image} = received_data;
 			let {alt_2_style_color_1, alt_2_style_color_2, alt_2_line_spacing} = received_data;
-			
+
 			document.getElementById("alt-2-name").innerHTML = alt_2_name;
 			document.getElementById("alt-2-info").innerHTML = alt_2_info;
 			alt_2_line_spacing = alt_2_line_spacing * 0.1;
@@ -470,7 +470,7 @@
 				alt_3_name_weight, alt_3_info_weight, alt_3_name_color, alt_3_info_color, alt_3_logo_switch, alt_3_background_switch,
 				alt_3_shadows, alt_3_align = "left", alt_3_size, alt_3_margin_h, alt_3_margin_v, alt_3_font, alt_3_logo_image} = received_data;
 			let {alt_3_style_color_1, alt_3_style_color_2, alt_3_line_spacing} = received_data;
-			
+
 			document.getElementById("alt-3-name").innerHTML = alt_3_name;
 			document.getElementById("alt-3-info").innerHTML = alt_3_info;
 			alt_3_line_spacing = alt_3_line_spacing * 0.1;
@@ -484,7 +484,7 @@
 				alt_4_name_weight, alt_4_info_weight, alt_4_name_color, alt_4_info_color, alt_4_logo_switch, alt_4_background_switch,
 				alt_4_shadows, alt_4_align = "left", alt_4_size, alt_4_margin_h, alt_4_margin_v, alt_4_font, alt_4_logo_image} = received_data;
 			let {alt_4_style_color_1, alt_4_style_color_2, alt_4_line_spacing} = received_data;
-			
+
 			document.getElementById("alt-4-name").innerHTML = alt_4_name;
 			document.getElementById("alt-4-info").innerHTML = alt_4_info;
 			alt_4_line_spacing = alt_4_line_spacing * 0.1;
@@ -1005,7 +1005,7 @@
 			}
 
 
-			bcr.postMessage(activeTime1_to_send + '|' + inactiveTime1_to_send + '|' + activeTime2_to_send + '|' + inactiveTime2_to_send + '|' + activeTime3_to_send + '|' + inactiveTime3_to_send + '|' + activeTime4_to_send + '|' + inactiveTime4_to_send + '|' + alt_1_turnoff + '|' + alt_2_turnoff + '|' + alt_3_turnoff + '|' + alt_4_turnoff);
+			bcr.postMessage({activeTime1_to_send, inactiveTime1_to_send, activeTime2_to_send, inactiveTime2_to_send, activeTime3_to_send, inactiveTime3_to_send, activeTime4_to_send, inactiveTime4_to_send, alt_1_turnoff, alt_2_turnoff, alt_3_turnoff, alt_4_turnoff});
 
 			alt_1_turnoff = false;
 			alt_2_turnoff = false;
