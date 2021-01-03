@@ -497,10 +497,10 @@
 			alt_1_logo_image = received_data.alt_1_logo_image || "../logos/logo_1.png";
 
 			//Use the global oneshot setting if oneshot switch is off or inactive field is empty
-			alt_1_oneshot = received_data.alt_1_oneshot || (global_oneshot && !alt_1_inactive_time);
-			alt_2_oneshot = received_data.alt_2_oneshot || (global_oneshot && !alt_2_inactive_time);
-			alt_3_oneshot = received_data.alt_3_oneshot || (global_oneshot && !alt_3_inactive_time);
-			alt_4_oneshot = received_data.alt_4_oneshot || (global_oneshot && !alt_4_inactive_time);
+			alt_1_oneshot = received_data.alt_1_oneshot || (global_oneshot && !received_data.alt_1_inactive_time);
+			alt_2_oneshot = received_data.alt_2_oneshot || (global_oneshot && !received_data.alt_2_inactive_time);
+			alt_3_oneshot = received_data.alt_3_oneshot || (global_oneshot && !received_data.alt_3_inactive_time);
+			alt_4_oneshot = received_data.alt_4_oneshot || (global_oneshot && !received_data.alt_4_inactive_time);
 
 			if (alt_1_inactive_time < alt_1_animation_time){
 				alt_1_inactive_time = alt_1_animation_time;
