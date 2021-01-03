@@ -2723,21 +2723,11 @@
 					masterSwitchIsOn = false;
 				}
 
-				//Check switches and blue and red lights in the background to see active and inactive times
+				//Check switches
 				if (masterSwitchIsOn) {
-					//When the Main Switch is ON the lower thirds can be Active, Inactive or OFF.
 					//Switch 1
 					if (document.getElementById("lower-thirds-switch1").checked == true){
 						alt_1_switch = "true";
-						// if (alt_1_active_time_monitor >= 0 && alt_1_inactive_time_monitor == 0 && alt_1_name && alt_1_info){
-						// 	alt_1_jumpnext = true;
-						// } else {
-						// 	//check if autoload is active and jump to next slot
-						// 	if (alt_1_autoload && alt_1_jumpnext) {
-						// 		jumpNextSlot("#alt-1-memory-slots", "#alt-1-name", "#alt-1-info", "#alt-1-logo-preview", alt_1_waiting_time);
-						// 		alt_1_jumpnext = false;
-						// 	}
-						// }
 					} else {
 						alt_1_switch = "false";
 					}
@@ -2745,15 +2735,6 @@
 					//Switch 2
 					if (document.getElementById("lower-thirds-switch2").checked == true){
 						alt_2_switch = "true";
-						// if (alt_2_active_time_monitor >= 0 && alt_2_inactive_time_monitor == 0 && alt_2_name && alt_2_info){
-						// 	alt_2_jumpnext = true;
-						// } else {
-						// 	//check if autoload is active and jump to next slot
-						// 	if (alt_2_autoload && alt_2_jumpnext) {
-						// 		jumpNextSlot("#alt-2-memory-slots", "#alt-2-name", "#alt-2-info", "#alt-2-logo-preview", alt_2_waiting_time);
-						// 		alt_2_jumpnext = false;
-						// 	}
-						// }
 					} else {
 						alt_2_switch = "false";
 					}
@@ -2761,15 +2742,6 @@
 					//Switch 3
 					if (document.getElementById("lower-thirds-switch3").checked == true){
 						alt_3_switch = "true";
-						// if (alt_3_active_time_monitor >= 0 && alt_3_inactive_time_monitor == 0 && alt_3_name && alt_3_info){
-						// 	alt_3_jumpnext = true;
-						// } else {
-						// 	//check if autoload is active and jump to next slot
-						// 	if (alt_3_autoload && alt_3_jumpnext) {
-						// 		jumpNextSlot("#alt-3-memory-slots", "#alt-3-name", "#alt-3-info", "#alt-3-logo-preview", alt_3_waiting_time);
-						// 		alt_3_jumpnext = false;
-						// 	}
-						// }
 					} else {
 						alt_3_switch = "false";
 					}
@@ -2777,19 +2749,9 @@
 					//Switch 4
 					if (document.getElementById("lower-thirds-switch4").checked == true){
 						alt_4_switch = "true";
-						// if (alt_4_active_time_monitor >= 0 && alt_4_inactive_time_monitor == 0 && alt_4_name && alt_4_info){
-						// 	alt_4_jumpnext = true;
-						// } else {
-						// 	//check if autoload is active and jump to next slot
-						// 	if (alt_4_autoload && alt_4_jumpnext) {
-						// 		jumpNextSlot("#alt-4-memory-slots", "#alt-4-name", "#alt-4-info", "#alt-4-logo-preview", alt_4_waiting_time);
-						// 		alt_4_jumpnext = false;
-						// 	}
-						// }
 					} else {
 						alt_4_switch = "false";
 					}
-
 				} else {
 					//When the Main Switch is OFF all the Lower Thirds area Inactives or OFF.
 					alt_1_switch = "false";
