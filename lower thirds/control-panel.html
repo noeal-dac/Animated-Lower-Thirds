@@ -1568,10 +1568,8 @@
 			function checkSwitches (){
 				//Check Master Switch
 				if (document.getElementById("lower-thirds-masterswitch").checked == true) {
-					masterSwitchIsOn = true;
 					document.getElementById("alt-main-config-content").classList.add("active");
 				} else {
-					masterSwitchIsOn = false;
 					document.getElementById("alt-main-config-content").classList.remove("active");
 				}
 
@@ -1580,7 +1578,6 @@
 					//When the Main Switch is ON the lower thirds can be Active, Inactive or OFF.
 					//Switch 1
 					if (document.getElementById("lower-thirds-switch1").checked == true){
-						alt_1_switch = "true";
 						if (alt_1_active_time_monitor >= 0 && alt_1_inactive_time_monitor == 0 && alt_1_name && alt_1_info){
 							document.getElementById("alt-1-config-content").classList.remove("inactive");
 							document.getElementById("alt-1-config-content").classList.add("active");
@@ -1595,13 +1592,11 @@
 							}
 						}
 					} else {
-						alt_1_switch = "false";
 						document.getElementById("alt-1-config-content").className = '';
 					}
 
 					//Switch 2
 					if (document.getElementById("lower-thirds-switch2").checked == true){
-						alt_2_switch = "true";
 						if (alt_2_active_time_monitor >= 0 && alt_2_inactive_time_monitor == 0 && alt_2_name && alt_2_info){
 							document.getElementById("alt-2-config-content").classList.remove("inactive");
 							document.getElementById("alt-2-config-content").classList.add("active");
@@ -1616,13 +1611,11 @@
 							}
 						}
 					} else {
-						alt_2_switch = "false";
 						document.getElementById("alt-2-config-content").className = '';
 					}
 
 					//Switch 3
 					if (document.getElementById("lower-thirds-switch3").checked == true){
-						alt_3_switch = "true";
 						if (alt_3_active_time_monitor >= 0 && alt_3_inactive_time_monitor == 0 && alt_3_name && alt_3_info){
 							document.getElementById("alt-3-config-content").classList.remove("inactive");
 							document.getElementById("alt-3-config-content").classList.add("active");
@@ -1637,13 +1630,11 @@
 							}
 						}
 					} else {
-						alt_3_switch = "false";
 						document.getElementById("alt-3-config-content").className = '';
 					}
 
 					//Switch 4
 					if (document.getElementById("lower-thirds-switch4").checked == true){
-						alt_4_switch = "true";
 						if (alt_4_active_time_monitor >= 0 && alt_4_inactive_time_monitor == 0 && alt_4_name && alt_4_info){
 							document.getElementById("alt-4-config-content").classList.remove("inactive");
 							document.getElementById("alt-4-config-content").classList.add("active");
@@ -1658,14 +1649,12 @@
 							}
 						}
 					} else {
-						alt_4_switch = "false";
 						document.getElementById("alt-4-config-content").className = '';
 					}
 
 				} else {
 					//When the Main Switch is OFF all the Lower Thirds area Inactives or OFF.
 					//Switch 1
-					alt_1_switch = "false";
 					if (document.getElementById("lower-thirds-switch1").checked == true) {
 						document.getElementById("alt-1-config-content").classList.add("inactive");
 						document.getElementById("alt-1-config-content").classList.remove("active");
@@ -1674,7 +1663,6 @@
 					}
 
 					//Switch 2
-					alt_2_switch = "false";
 					if (document.getElementById("lower-thirds-switch2").checked == true) {
 						document.getElementById("alt-2-config-content").classList.add("inactive");
 						document.getElementById("alt-2-config-content").classList.remove("active");
@@ -1683,7 +1671,6 @@
 					}
 
 					//Switch 3
-					alt_3_switch = "false";
 					if (document.getElementById("lower-thirds-switch3").checked == true) {
 						document.getElementById("alt-3-config-content").classList.add("inactive");
 						document.getElementById("alt-3-config-content").classList.remove("active");
@@ -1692,7 +1679,6 @@
 					}
 
 					//Switch 4
-					alt_4_switch = "false";
 					if (document.getElementById("lower-thirds-switch4").checked == true) {
 						document.getElementById("alt-4-config-content").classList.add("inactive");
 						document.getElementById("alt-4-config-content").classList.remove("active");
@@ -2731,6 +2717,52 @@
 
 				//////////////////////////////
 
+				//Check Master Switch
+				if (document.getElementById("lower-thirds-masterswitch").checked == true) {
+					masterSwitchIsOn = true;
+				} else {
+					masterSwitchIsOn = false;
+				}
+
+				//Check switches
+				if (masterSwitchIsOn) {
+					//Switch 1
+					if (document.getElementById("lower-thirds-switch1").checked == true){
+						alt_1_switch = "true";
+					} else {
+						alt_1_switch = "false";
+					}
+
+					//Switch 2
+					if (document.getElementById("lower-thirds-switch2").checked == true){
+						alt_2_switch = "true";
+					} else {
+						alt_2_switch = "false";
+					}
+
+					//Switch 3
+					if (document.getElementById("lower-thirds-switch3").checked == true){
+						alt_3_switch = "true";
+					} else {
+						alt_3_switch = "false";
+					}
+
+					//Switch 4
+					if (document.getElementById("lower-thirds-switch4").checked == true){
+						alt_4_switch = "true";
+					} else {
+						alt_4_switch = "false";
+					}
+				} else {
+					//When the Main Switch is OFF all the Lower Thirds area Inactives or OFF.
+					alt_1_switch = "false";
+					alt_2_switch = "false";
+					alt_3_switch = "false";
+					alt_4_switch = "false";
+				}
+
+				//////////////////////////////
+
 				//Shows if custom time settings is used
 				if (alt_1_animation_time || alt_1_active_time || alt_1_inactive_time || alt_1_lock_active || alt_1_oneshot) {
 					$("#alt-1-custom-times").children(".icon-btn").addClass("active");
@@ -3383,8 +3415,8 @@
 			}
 
 			function checkUpdates() {
-				// checkHotkeys();
-				// updateHotkeys();
+				checkHotkeys();
+				updateHotkeys();
 				checkSwitches();
 				setTimeout(checkUpdates, 100);
 			}
@@ -3392,8 +3424,8 @@
 			// localStorage.clear();
 			loadData();
 			updateCustomFontList();
-			checkUpdates();
 			refreshData();
+			checkUpdates();
 			saveData();
 
 		</script>
