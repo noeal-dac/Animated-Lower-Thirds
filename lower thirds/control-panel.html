@@ -1711,49 +1711,49 @@
 			function checkHotkeys (){
 				if (hotkeyMasterSwitch != hotkeyMasterSwitchOld){
 					if (document.getElementById("lower-thirds-masterswitch").checked == true) {
-		            	document.getElementById("lower-thirds-masterswitch").checked = false;
+						$('#lower-thirds-masterswitch').prop('checked', false).change();
 		            }
 		            else {
-		            	document.getElementById("lower-thirds-masterswitch").checked = true;
+						$('#lower-thirds-masterswitch').prop('checked', true).change();
 		            }
 					hotkeyMasterSwitchOld = hotkeyMasterSwitch;
 				}
 
 				if (hotkeySwitch1 != hotkeySwitch1Old){
 					if (document.getElementById("lower-thirds-switch1").checked == true) {
-						document.getElementById("lower-thirds-switch1").checked = false;
+						$('#lower-thirds-switch1').prop('checked', false).change();
 					}
 					else {
-						document.getElementById("lower-thirds-switch1").checked = true;
+						$('#lower-thirds-switch1').prop('checked', true).change();
 					}
 					hotkeySwitch1Old = hotkeySwitch1;
 				}
 
 				if (hotkeySwitch2 != hotkeySwitch2Old){
 					if (document.getElementById("lower-thirds-switch2").checked == true) {
-						document.getElementById("lower-thirds-switch2").checked = false;
+						$('#lower-thirds-switch2').prop('checked', false).change();
 					}
 					else {
-						document.getElementById("lower-thirds-switch2").checked = true;
+						$('#lower-thirds-switch2').prop('checked', true).change();
 					}
 					hotkeySwitch2Old = hotkeySwitch2;
 				}
 
 				if (hotkeySwitch3 != hotkeySwitch3Old){
 					if (document.getElementById("lower-thirds-switch3").checked == true) {
-						document.getElementById("lower-thirds-switch3").checked = false;
+						$('#lower-thirds-switch3').prop('checked', false).change();
 					}
 					else {
-						document.getElementById("lower-thirds-switch3").checked = true;
+						$('#lower-thirds-switch3').prop('checked', true).change();
 					}
 					hotkeySwitch3Old = hotkeySwitch3;
 				}
 				if (hotkeySwitch4 != hotkeySwitch4Old){
 					if (document.getElementById("lower-thirds-switch4").checked == true) {
-						document.getElementById("lower-thirds-switch4").checked = false;
+						$('#lower-thirds-switch4').prop('checked', false).change();
 					}
 					else {
-						document.getElementById("lower-thirds-switch4").checked = true;
+						$('#lower-thirds-switch4').prop('checked', true).change();
 					}
 					hotkeySwitch4Old = hotkeySwitch4;
 				}
@@ -2149,7 +2149,7 @@
 								alt_switch = slot_id.replace("alt-", "");
 								alt_switch = alt_switch.replace("-slot-" + slot_number_called, "");
 								if (document.getElementById(auto_trigger).checked == true) {
-									document.getElementById("lower-thirds-switch" + alt_switch).checked = true;
+									$("#lower-thirds-switch" + alt_switch).prop('checked', true).change();
 								}
 							}
 				    	} else {
@@ -2249,7 +2249,7 @@
 				alt_switch = alt_switch.replace("-name", "");
 
 				if (document.getElementById(auto_trigger).checked == true) {
-					document.getElementById("lower-thirds-switch" + alt_switch).checked = true;
+					$("#lower-thirds-switch" + alt_switch).prop('checked', true).change();
 				}
 				//console.log(name + "|" + info + "|" + logo + "|" + name_to_load + "|" + info_to_load + "|" + logo_to_load + "|" + alt_waiting_time);
 			}
@@ -2491,7 +2491,7 @@
 						//Disable: align center | Enable: logo;
 						document.getElementById("alt-1-align-center").disabled = true;
 						if (document.getElementById("alt-1-align-center").checked == true){
-							document.getElementById("alt-1-align-left").checked = true;
+							$("#alt-1-align-left").prop('checked', true).change();
 						}
 						document.getElementById("alt-1-logo").disabled = false;
 						document.getElementById("alt-1-background").classList.remove("locked");
@@ -2502,7 +2502,7 @@
 						document.getElementById("alt-1-align-center").disabled = false;
 						document.getElementById("alt-1-logo").disabled = true;
 						if (document.getElementById("alt-1-logo").checked == true){
-							document.getElementById("alt-1-logo").checked = false;
+							$("#alt-1-logo").prop('checked', false).change();
 						}
 						document.getElementById("alt-1-background").classList.remove("locked");
 
@@ -2511,7 +2511,7 @@
 						//Disable: - | Enable: Logo, align center;
 						document.getElementById("alt-1-align-center").disabled = false;
 						document.getElementById("alt-1-logo").disabled = false;
-						document.getElementById("alt-1-background").checked = true;
+						$("#alt-1-background").prop('checked', true).change();
 						// document.getElementById("alt-1-background").setAttribute("style", "cursor:not-allowed");
 						document.getElementById("alt-1-background").classList.add("locked");
 
@@ -2522,7 +2522,7 @@
 						//Disable: align center | Enable: logo;
 						document.getElementById("alt-2-align-center").disabled = true;
 						if (document.getElementById("alt-2-align-center").checked == true){
-							document.getElementById("alt-2-align-left").checked = true;
+							$("#alt-2-align-left").prop('checked', true).change();
 						}
 						document.getElementById("alt-2-logo").disabled = false;
 						break;
@@ -2531,7 +2531,7 @@
 						document.getElementById("alt-2-align-center").disabled = false;
 						document.getElementById("alt-2-logo").disabled = true;
 						if (document.getElementById("alt-2-logo").checked == true){
-							document.getElementById("alt-2-logo").checked = false;
+							$("#alt-2-logo").prop('checked', false).change();
 						}
 						break;
 					case "3":
@@ -2545,7 +2545,7 @@
 						//Disable: align center | Enable: logo;
 						document.getElementById("alt-3-align-center").disabled = true;
 						if (document.getElementById("alt-3-align-center").checked == true){
-							document.getElementById("alt-3-align-left").checked = true;
+							$("#alt-3-align-left").prop('checked', true).change();
 						}
 						document.getElementById("alt-3-logo").disabled = false;
 						break;
@@ -2554,7 +2554,7 @@
 						document.getElementById("alt-3-align-center").disabled = false;
 						document.getElementById("alt-3-logo").disabled = true;
 						if (document.getElementById("alt-3-logo").checked == true){
-							document.getElementById("alt-3-logo").checked = false;
+							$("#alt-3-logo").prop('checked', false).change();
 						}
 						break;
 					case "3":
@@ -2568,7 +2568,7 @@
 						//Disable: align center | Enable: logo;
 						document.getElementById("alt-4-align-center").disabled = true;
 						if (document.getElementById("alt-4-align-center").checked == true){
-							document.getElementById("alt-4-align-left").checked = true;
+							$("#alt-4-align-left").prop('checked', true).change();
 						}
 						document.getElementById("alt-4-logo").disabled = false;
 						break;
@@ -2577,7 +2577,7 @@
 						document.getElementById("alt-4-align-center").disabled = false;
 						document.getElementById("alt-4-logo").disabled = true;
 						if (document.getElementById("alt-4-logo").checked == true){
-							document.getElementById("alt-4-logo").checked = false;
+							$("#alt-4-logo").prop('checked', false).change();
 						}
 						break;
 					case "3":
@@ -2618,16 +2618,16 @@
 				alt_4_turnoff = (received_data.alt_4_turnoff);
 
 				if (alt_1_turnoff){
-					document.getElementById("lower-thirds-switch1").checked = false;
+					$("#lower-thirds-switch1").prop('checked', false).change();
 				}
 				if (alt_2_turnoff){
-					document.getElementById("lower-thirds-switch2").checked = false;
+					$('#lower-thirds-switch2').prop('checked', false).change();
 				}
 				if (alt_3_turnoff){
-					document.getElementById("lower-thirds-switch3").checked = false;
+					$('#lower-thirds-switch3').prop('checked', false).change();
 				}
 				if (alt_4_turnoff){
-					document.getElementById("lower-thirds-switch4").checked = false;
+					$('#lower-thirds-switch4').prop('checked', false).change();
 				}
 				// console.log(alt_1_turnoff);
 				checkSwitches();
@@ -3132,19 +3132,19 @@
 				//Alignment of the Lower Third
 				var alt_1_align = $('input[name=alt-1-align]:checked').val();
 				if (!alt_1_align) {
-					document.getElementById("alt-1-align-left").checked = true;
+					$('#alt-1-align-left').prop('checked', true).change();
 				}
 				var alt_2_align = $('input[name=alt-2-align]:checked').val();
 				if (!alt_2_align) {
-					document.getElementById("alt-2-align-left").checked = true;
+					$('#alt-2-align-left').prop('checked', true).change();
 				}
 				var alt_3_align = $('input[name=alt-3-align]:checked').val();
 				if (!alt_3_align) {
-					document.getElementById("alt-3-align-left").checked = true;
+					$('#alt-3-align-left').prop('checked', true).change();
 				}
 				var alt_4_align = $('input[name=alt-4-align]:checked').val();
 				if (!alt_4_align) {
-					document.getElementById("alt-4-align-left").checked = true;
+					$('#alt-4-align-left').prop('checked', true).change();
 				}
 
 				//
