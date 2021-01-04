@@ -73,8 +73,8 @@
 
 	 <script type="text/javascript">
 		//Check preview
-		var getUrlParameter = function getUrlParameter(sParam) {
-		    var sPageURL = window.location.search.substring(1),
+		function getUrlParameter(sParam) {
+		    let sPageURL = window.location.search.substring(1),
 		        sURLVariables = sPageURL.split('&'),
 		        sParameterName,
 		        i;
@@ -88,97 +88,98 @@
 		    }
 		};
 
-		var mode = getUrlParameter('mode');
+		const mode = getUrlParameter('mode');
 
 		//Check mode and change de channel to receive switches orders or preview orders
+		let receiveChannel;
 		if (mode == "preview") {
 			document.body.classList.add('preview');
-			var receiveChannel = 'obs-lower-thirds-preview'; //Preview channel
+			receiveChannel = 'obs-lower-thirds-preview'; //Preview channel
 		} else {
-			var receiveChannel = 'obs-lower-thirds-channel';
+			receiveChannel = 'obs-lower-thirds-channel';
 		}
 
-		var bcp = new BroadcastChannel(receiveChannel); //Receives from the source
-		var bcr = new BroadcastChannel('obs-lower-thirds-channel2'); //Send to Control Panel
-		var bcf = new BroadcastChannel('obs-lower-thirds-fonts');
+		const bcp = new BroadcastChannel(receiveChannel); //Receives from the source
+		const bcr = new BroadcastChannel('obs-lower-thirds-channel2'); //Send to Control Panel
+		const bcf = new BroadcastChannel('obs-lower-thirds-fonts');
 
-		var alt_1_logo_image_old;
-		var alt_2_logo_image_old;
-		var alt_3_logo_image_old;
-		var alt_4_logo_image_old;
+		let alt_1_logo_image_old;
+		let alt_2_logo_image_old;
+		let alt_3_logo_image_old;
+		let alt_4_logo_image_old;
 
-		var alt_1_logo_switch_old;
-		var alt_2_logo_switch_old;
-		var alt_3_logo_switch_old;
-		var alt_4_logo_switch_old;
+		let alt_1_logo_switch_old;
+		let alt_2_logo_switch_old;
+		let alt_3_logo_switch_old;
+		let alt_4_logo_switch_old;
 
-		var alt_1_align_old = "left";
-		var alt_2_align_old = "left";
-		var alt_3_align_old = "left";
-		var alt_4_align_old = "left";
+		let alt_1_align_old = "left";
+		let alt_2_align_old = "left";
+		let alt_3_align_old = "left";
+		let alt_4_align_old = "left";
 
-		var alt_1_style_old;
-		var alt_2_style_old;
-		var alt_3_style_old;
-		var alt_4_style_old;
+		let alt_1_style_old;
+		let alt_2_style_old;
+		let alt_3_style_old;
+		let alt_4_style_old;
 
-		var canIn1 = false;
-		var canIn2 = false;
-		var canIn3 = false;
-		var canIn4 = false;
+		let canIn1 = false;
+		let canIn2 = false;
+		let canIn3 = false;
+		let canIn4 = false;
 
-		var c1 = 0;
-		var d1 = 0;
-		var t1;
-		var s1;
+		let c1 = 0;
+		let d1 = 0;
+		let t1;
+		let s1;
 
-		var c2 = 0;
-		var d2 = 0;
-		var t2;
-		var s2;
+		let c2 = 0;
+		let d2 = 0;
+		let t2;
+		let s2;
 
-		var c3 = 0;
-		var d3 = 0;
-		var t3;
-		var s3;
+		let c3 = 0;
+		let d3 = 0;
+		let t3;
+		let s3;
 
-		var c4 = 0;
-		var d4 = 0;
-		var t4;
-		var s4;
+		let c4 = 0;
+		let d4 = 0;
+		let t4;
+		let s4;
 
-		var activeTime1_to_send;
-		var inactiveTime1_to_send;
-		var activeTime2_to_send;
-		var inactiveTime2_to_send;
-		var activeTime3_to_send;
-		var inactiveTime3_to_send;
-		var activeTime4_to_send;
-		var inactiveTime4_to_send;
+		let activeTime1_to_send;
+		let inactiveTime1_to_send;
+		let activeTime2_to_send;
+		let inactiveTime2_to_send;
+		let activeTime3_to_send;
+		let inactiveTime3_to_send;
+		let activeTime4_to_send;
+		let inactiveTime4_to_send;
 
-		var active1IsOn = 0;
-		var inactive1IsOn = 0;
-		var active2IsOn = 0;
-		var inactive2IsOn = 0;
-		var active3IsOn = 0;
-		var inactive3IsOn = 0;
-		var active4IsOn = 0;
-		var inactive4IsOn = 0;
+		let active1IsOn = 0;
+		let inactive1IsOn = 0;
+		let active2IsOn = 0;
+		let inactive2IsOn = 0;
+		let active3IsOn = 0;
+		let inactive3IsOn = 0;
+		let active4IsOn = 0;
+		let inactive4IsOn = 0;
 
-		var alt_1_wait_hide_logo;
-		var alt_2_wait_hide_logo;
-		var alt_3_wait_hide_logo;
-		var alt_4_wait_hide_logo;
+		let alt_1_wait_hide_logo;
+		let alt_2_wait_hide_logo;
+		let alt_3_wait_hide_logo;
+		let alt_4_wait_hide_logo;
 
-		var hide_logo_1 = false;
-		var hide_logo_2 = false;
-		var hide_logo_3 = false;
-		var hide_logo_4 = false;
+		let hide_logo_1 = false;
+		let hide_logo_2 = false;
+		let hide_logo_3 = false;
+		let hide_logo_4 = false;
 
-		var alt_1_turnoff;
-		var alt_2_turnoff;
-		var alt_3_turnoff;
-		var alt_4_turnoff;
+		let alt_1_turnoff;
+		let alt_2_turnoff;
+		let alt_3_turnoff;
+		let alt_4_turnoff;
 
 
 		function animationIn(animation) {
@@ -195,180 +196,169 @@
 			document.getElementById(animation).classList.add("animation-out");
 		}
 
-		// Active time counter (Lower Third 1)
-		function activeCount1(i) {
-		  if (c1 <= alt_1_active_time){
-		    c1 = c1 + 1;
-		    t1 = setTimeout(activeCount1, 1000, i);
-		  } else {
-		      stopTimeCount(i);
-		      startInactiveCount(i);
-		  }
+		function activeCount(i) {
+			switch (i) {
+				case "lower-third-1": {
+					if (c1 <= alt_1_active_time){
+						c1 = c1 + 1;
+						t1 = setTimeout(activeCount, 1000, i);
+					} else {
+						stopTimeCount(i);
+						startInactiveCount(i);
+					}
+				}
+					break;
+				case "lower-third-2": {
+					if (c2 <= alt_2_active_time){
+						c2 = c2 + 1;
+						t2 = setTimeout(activeCount, 1000, i);
+					} else {
+						stopTimeCount(i);
+						startInactiveCount(i);
+					}
+				}
+					break;
+				case "lower-third-3": {
+					if (c3 <= alt_3_active_time){
+						c3 = c3 + 1;
+						t3 = setTimeout(activeCount, 1000, i);
+					} else {
+						stopTimeCount(i);
+						startInactiveCount(i);
+					}
+				}
+					break;
+				case "lower-third-4": {
+					if (c4 <= alt_4_active_time){
+						c4 = c4 + 1;
+						t4 = setTimeout(activeCount, 1000, i);
+					} else {
+						stopTimeCount(i);
+						startInactiveCount(i);
+					}
+				}
+					break;
+				default:
+					break;
+			}
 		}
 
-		// Inactive time counter (Lower Third 1)
-		function inactiveCount1(i) {
-		  if (d1 <= alt_1_inactive_time){
-		    d1 = d1 + 1;
-		    s1 = setTimeout(inactiveCount1, 1000, i);
-		  } else {
-		      startActiveCount(i);
-		      d1 = 0;
-		      clearTimeout(s1);
-		      inactive1IsOn = 0;
-		  }
-		}
-
-		// Active time counter (Lower Third 2)
-		function activeCount2(i) {
-		  if (c2 <= alt_2_active_time){
-		    c2 = c2 + 1;
-		    t2 = setTimeout(activeCount2, 1000, i);
-		  } else {
-		      stopTimeCount(i);
-		      startInactiveCount(i);
-		  }
-		}
-
-		// Inactive time counter (Lower Third 2)
-		function inactiveCount2(i) {
-		  if (d2 <= alt_2_inactive_time){
-		    d2 = d2 + 1;
-		    s2 = setTimeout(inactiveCount2, 1000, i);
-		  } else {
-		      startActiveCount(i);
-		      d2 = 0;
-		      clearTimeout(s2);
-		      inactive2IsOn = 0;
-		  }
-		}
-
-		// Active time counter (Lower Third 3)
-		function activeCount3(i) {
-		  if (c3 <= alt_3_active_time){
-		    c3 = c3 + 1;
-		    t3 = setTimeout(activeCount3, 1000, i);
-		  } else {
-		      stopTimeCount(i);
-		      startInactiveCount(i);
-		  }
-		}
-
-		// Inactive time counter (Lower Third 3)
-		function inactiveCount3(i) {
-		  if (d3 <= alt_3_inactive_time){
-		    d3 = d3 + 1;
-		    s3 = setTimeout(inactiveCount3, 1000, i);
-		  } else {
-		      startActiveCount(i);
-		      d3 = 0;
-		      clearTimeout(s3);
-		      inactive3IsOn = 0;
-		  }
-		}
-
-		// Active time counter (Lower Third 4)
-		function activeCount4(i) {
-		  if (c4 <= alt_4_active_time){
-		    c4 = c4 + 1;
-		    t4 = setTimeout(activeCount4, 1000, i);
-		  } else {
-		      stopTimeCount(i);
-		      startInactiveCount(i);
-		  }
-		}
-
-		// Inactive time counter (Lower Third 4)
-		function inactiveCount4(i) {
-		  if (d4 <= alt_4_inactive_time){
-		    d4 = d4 + 1;
-		    s4 = setTimeout(inactiveCount4, 1000, i);
-		  } else {
-		      startActiveCount(i);
-		      d4 = 0;
-		      clearTimeout(s4);
-		      inactive4IsOn = 0;
-		  }
+		function inactiveCount(i) {
+			switch (i) {
+				case "lower-third-1": {
+					if (d1 <= alt_1_inactive_time){
+						d1 = d1 + 1;
+						s1 = setTimeout(inactiveCount, 1000, i);
+					} else {
+						startActiveCount(i);
+						d1 = 0;
+						clearTimeout(s1);
+						inactive1IsOn = 0;
+					}
+				}
+					break;
+				case "lower-third-2": {
+					if (d2 <= alt_2_inactive_time){
+						d2 = d2 + 1;
+						s2 = setTimeout(inactiveCount, 1000, i);
+					} else {
+						startActiveCount(i);
+						d2 = 0;
+						clearTimeout(s2);
+						inactive2IsOn = 0;
+					}
+				}
+					break;
+				case "lower-third-3": {
+					if (d3 <= alt_3_inactive_time){
+						d3 = d3 + 1;
+						s3 = setTimeout(inactiveCount, 1000, i);
+					} else {
+						startActiveCount(i);
+						d3 = 0;
+						clearTimeout(s3);
+						inactive3IsOn = 0;
+					}
+				}
+					break;
+				case "lower-third-4": {
+					if (d4 <= alt_4_inactive_time){
+						d4 = d4 + 1;
+						s4 = setTimeout(inactiveCount, 1000, i);
+					} else {
+						startActiveCount(i);
+						d4 = 0;
+						clearTimeout(s4);
+						inactive4IsOn = 0;
+					}
+				}
+					break;
+				default:
+					break;
+			}
 		}
 
 		// Can start Active time counter? Start Animation In
 		function startActiveCount(i) {
-		  if (!active1IsOn) {
-		  	activeIs1On = true;
-			if (i == "lower-third-1"){
-				activeCount1(i);
-				animationIn(i);
-			}
+		  if (!active1IsOn && i == "lower-third-1") {
+		  	active1IsOn = true;
+			activeCount(i);
+			animationIn(i);
 		  }
-		  if (!active2IsOn) {
-		  	activeIs2On = true;
-			if (i == "lower-third-2"){
-				activeCount2(i);
-				animationIn(i);
-			}
+		  if (!active2IsOn && i == "lower-third-2") {
+		  	active2IsOn = true;
+			activeCount(i);
+			animationIn(i);
 		  }
-		  if (!active3IsOn) {
-		  	activeIs3On = true;
-			if (i == "lower-third-3"){
-				activeCount3(i);
-				animationIn(i);
-			}
+		  if (!active3IsOn && i == "lower-third-3") {
+		  	active3IsOn = true;
+			activeCount(i);
+			animationIn(i);
 		  }
-		  if (!active4IsOn) {
-		  	activeIs4On = true;
-			if (i == "lower-third-4"){
-				activeCount4(i);
-				animationIn(i);
-			}
+		  if (!active4IsOn && i == "lower-third-4") {
+		  	active4IsOn = true;
+			activeCount(i);
+			animationIn(i);
 		  }
 		}
 
 		// Can start Inactive time counter? Start Animation Out
 		function startInactiveCount(i) {
-		  if (!inactive1IsOn) {
+		  if (!inactive1IsOn && i == "lower-third-1") {
 		    inactive1IsOn = true;
-		    if (i == "lower-third-1"){
-				if (!alt_1_oneshot){
-					inactiveCount1(i);
-				} else {
-					alt_1_turnoff = true;
-				}
-				animationOut(i);
-				// alt_1_turnoff = false;
+			if (!alt_1_oneshot){
+				inactiveCount(i);
+			} else {
+				alt_1_turnoff = true;
 			}
+			animationOut(i);
 		  }
-		  if (!inactive2IsOn) {
+		  if (!inactive2IsOn && i == "lower-third-2") {
 		    inactive2IsOn = true;
-			if (i == "lower-third-2"){
-				if (!alt_2_oneshot){
-					inactiveCount2(i);
-				} else {
-					alt_2_turnoff = true;
-				}
-			    animationOut(i);
+			if (!alt_2_oneshot){
+				inactiveCount(i);
+			} else {
+				alt_2_turnoff = true;
 			}
+			animationOut(i);
 		  }
-		  if (!inactive3IsOn) {
+		  if (!inactive3IsOn && i == "lower-third-3") {
 		    inactive3IsOn = true;
-			if (i == "lower-third-3"){
-				if (!alt_3_oneshot){
-					inactiveCount3(i);
-				} else {
-					alt_3_turnoff = true;
-				}
-			    animationOut(i);
+			if (!alt_3_oneshot){
+				inactiveCount(i);
+			} else {
+				alt_3_turnoff = true;
 			}
+			animationOut(i);
 		  }
-		  if (!inactive4IsOn) {
+		  if (!inactive4IsOn && i == "lower-third-4") {
 		    inactive4IsOn = true;
-			if (i == "lower-third-4"){
-				if (!alt_4_oneshot){
-					inactiveCount4(i);
-				} else {
-					alt_4_turnoff = true;
-				}
-			    animationOut(i);
+			if (!alt_4_oneshot){
+				inactiveCount(i);
+			} else {
+				alt_4_turnoff = true;
 			}
+			animationOut(i);
 		  }
 		}
 
@@ -376,36 +366,35 @@
 		function stopTimeCount(i) {
 		  if (i == "lower-third-1"){
 			c1 = 0;
-			clearTimeout(t1);
-			active1IsOn = 0;
 			d1 = 0;
-			clearTimeout(s1);
+			active1IsOn = 0;
 			inactive1IsOn = 0;
+			clearTimeout(s1);
+			clearTimeout(t1);
 		  }
 		  if (i == "lower-third-2"){
 			c2 = 0;
-
-			clearTimeout(t2);
-			active2IsOn = 0;
 			d2 = 0;
-			clearTimeout(s2);
+			active2IsOn = 0;
 			inactive2IsOn = 0;
+			clearTimeout(s2);
+			clearTimeout(t2);
 		  }
 		  if (i == "lower-third-3"){
 			c3 = 0;
-			clearTimeout(t3);
-			active3IsOn = 0;
 			d3 = 0;
-			clearTimeout(s3);
+			active3IsOn = 0;
 			inactive3IsOn = 0;
+			clearTimeout(s3);
+			clearTimeout(t3);
 		  }
 		  if (i == "lower-third-4"){
 			c4 = 0;
-			clearTimeout(t4);
-			active4IsOn = 0;
 			d4 = 0;
-			clearTimeout(s4);
+			active4IsOn = 0;
 			inactive4IsOn = 0;
+			clearTimeout(s4);
+			clearTimeout(t4);
 		  }
 
 		  animationOut(i);
@@ -1014,13 +1003,13 @@
 		}
 
 		function refreshData() {
-		    x = 1; // Refresh time miltiplier
+		    x = 1; // Refresh time multiplier
 
 		    if (mode != "preview"){
 		    	function_send();
 		    }
 
-		    setTimeout(refreshData, x*1000);
+		    setTimeout(refreshData, x * 1000);
 		}
 		refreshData();
 
