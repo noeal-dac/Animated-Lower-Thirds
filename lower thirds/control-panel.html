@@ -2168,6 +2168,8 @@
 				var loadedSlot = false;
 				var find_next = false;
 				var find_first = false;
+				let to_load;
+				let slot_number = 0;
 
 				name_loaded = $(name + ":text").val();
 				info_loaded = $(info + ":text").val();
@@ -2205,13 +2207,9 @@
 					}
 				});
 
-				//console.log(loaded_slot_num + " -> " + to_load);
-
-				//Get all the data of the next slot and load it
-				$("ul" + memory_slot + " li").each(function(){
-					slot_number = Number($(this).children('.slot-number').text());
-
-					if (to_load == slot_number) {
+				// Si hay un slot para cargar
+				if (to_load && to_load > 0) {
+					$("ul" + memory_slot + " li:nth-child("+to_load+")").each(function () {
 						slot_id = ($(this).attr('id'));
 						name_id = $(this).children('.stored-name').attr('id');
 						info_id = $(this).children('.stored-info').attr('id');
@@ -2223,8 +2221,8 @@
 
 						loadSlot(name, info, logo, name_to_load, info_to_load, logo_to_load, alt_waiting_time);
 						$('#' + slot_id).addClass('next-to-load');
-					}
-				});
+					});
+				}
 			}
 
 			//////////////////////////////////////

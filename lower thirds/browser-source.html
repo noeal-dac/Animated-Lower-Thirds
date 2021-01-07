@@ -481,8 +481,6 @@
 			const received_data = ev.data;
 			const {global_animation_time, global_oneshot} = received_data;
 
-			console.log(received_data);
-
 			if (mode != "preview") {
 				activeTime = received_data.global_active_time;
 			} else {
@@ -749,7 +747,7 @@
 
 			//Load logo when it change
 			if (alt_1_logo_image != alt_1_logo_image_old) {
-				loadLogo("alt-1-logo", alt_1_logo_image);
+				loadLogo("alt-1-logo-image", alt_1_logo_image);
 			}
 			alt_1_logo_image_old = alt_1_logo_image;
 
