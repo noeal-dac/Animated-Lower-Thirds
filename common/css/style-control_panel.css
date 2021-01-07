@@ -881,6 +881,12 @@ input[type=number]::-webkit-outer-spin-button {
     transform: translateY(-1px);
 } */
 
+/* CSS :invalid pseudo selector */
+input:invalid {
+  border: 1px solid;
+  border-color: red;
+}
+
 label.config-btn {
     width: 23px;
     height: 23px;
@@ -895,6 +901,7 @@ label.config-btn.small {
   height: 0;
   margin: 0;
   padding: 0;
+  position: absolute; /* Firefox fix */
 }
 .icon-btn {
   color: #666666;

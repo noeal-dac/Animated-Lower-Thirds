@@ -3297,8 +3297,10 @@
 				$('.storable').each(function(){    
 					var id = $(this).attr('id');
 					var value = localStorage.getItem(id);
-					
-					$(this).val(value);              
+
+					if(value) {
+						$(this).val(value);
+					}
 				});
 
 				$('.logo-storable').each(function(){    
