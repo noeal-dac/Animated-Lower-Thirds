@@ -30,7 +30,9 @@
 
 		<!--Lower third 2-->
 		<div id="lower-third-2" class="alt left style-1 hide-anim">
-			<div id="alt-2-logo" class="logo no-logo"></div>
+			<div id="alt-2-logo" class="logo no-logo">
+				<img id="alt-2-logo-image" src="//:0" />
+			</div>
 			<div class="graph-1"></div>
 			<div class="text-content">
 				<div class="text-mask">
@@ -45,7 +47,9 @@
 
 		<!--Lower third 3-->
 		<div id="lower-third-3" class="alt left style-1 hide-anim">
-			<div id="alt-3-logo" class="logo no-logo"></div>
+			<div id="alt-3-logo" class="logo no-logo">
+				<img id="alt-3-logo-image" src="//:0" />
+			</div>
 			<div class="graph-1"></div>
 			<div class="text-content">
 				<div class="text-mask">
@@ -60,7 +64,9 @@
 
 		<!--Lower third 4-->
 		<div id="lower-third-4" class="alt left style-1 hide-anim">
-			<div id="alt-4-logo" class="logo no-logo"></div>
+			<div id="alt-4-logo" class="logo no-logo">
+				<img id="alt-4-logo-image" src="//:0" />
+			</div>
 			<div class="graph-1"></div>
 			<div class="text-content">
 				<div class="text-mask">
@@ -109,10 +115,6 @@
 		let alt_2_logo_image_old;
 		let alt_3_logo_image_old;
 		let alt_4_logo_image_old;
-
-		let alt_2_logo_switch_old;
-		let alt_3_logo_switch_old;
-		let alt_4_logo_switch_old;
 
 		let alt_1_align_old = "left";
 		let alt_2_align_old = "left";
@@ -410,69 +412,27 @@
 			}
 
 			if (alt_2_logo_switch == "true") {
-				if ($("#lower-third-2").hasClass("animation-in")) {
-					if (!hide_logo_2) {
-						clearTimeout(alt_2_wait_hide_logo);
-						hide_logo_2 = true;
-						$("#alt-2-logo").removeClass("no-logo");
-						loadLogo("alt-2-logo", alt_2_logo_image);
-					}
-				} else {
-					if (hide_logo_2) {
-						hide_logo_2 = false;
-						alt_2_wait_hide_logo = setTimeout(function () {
-							$("#alt-2-logo").addClass("no-logo");
-							loadLogo("alt-2-logo", "");
-						}, alt_2_animation_time * 1000);
-					}
-				}
+				$("#alt-2-logo").removeClass("no-logo");
+				loadLogo("alt-2-logo-image", alt_2_logo_image);
 			} else {
 				$("#alt-2-logo").addClass("no-logo");
-				loadLogo("alt-2-logo", "");
+				loadLogo("alt-2-logo-image");
 			}
 
 			if (alt_3_logo_switch == "true") {
-				if ($("#lower-third-3").hasClass("animation-in")) {
-					if (!hide_logo_3) {
-						clearTimeout(alt_3_wait_hide_logo);
-						hide_logo_3 = true;
-						$("#alt-3-logo").removeClass("no-logo");
-						loadLogo("alt-3-logo", alt_3_logo_image);
-					}
-				} else {
-					if (hide_logo_3) {
-						hide_logo_3 = false;
-						alt_3_wait_hide_logo = setTimeout(function () {
-							$("#alt-3-logo").addClass("no-logo");
-							loadLogo("alt-3-logo", "");
-						}, alt_3_animation_time * 1000);
-					}
-				}
+				$("#alt-3-logo").removeClass("no-logo");
+				loadLogo("alt-3-logo-image", alt_3_logo_image);
 			} else {
 				$("#alt-3-logo").addClass("no-logo");
-				loadLogo("alt-3-logo", "");
+				loadLogo("alt-3-logo-image");
 			}
 
 			if (alt_4_logo_switch == "true") {
-				if ($("#lower-third-4").hasClass("animation-in")) {
-					if (!hide_logo_4) {
-						clearTimeout(alt_4_wait_hide_logo);
-						hide_logo_4 = true;
-						$("#alt-4-logo").removeClass("no-logo");
-						loadLogo("alt-4-logo", alt_4_logo_image);
-					}
-				} else {
-					if (hide_logo_4) {
-						hide_logo_4 = false;
-						alt_4_wait_hide_logo = setTimeout(function () {
-							$("#alt-4-logo").addClass("no-logo");
-							loadLogo("alt-4-logo", "");
-						}, alt_4_animation_time * 1000);
-					}
-				}
+				$("#alt-4-logo").removeClass("no-logo");
+				loadLogo("alt-4-logo-image", alt_4_logo_image);
 			} else {
 				$("#alt-4-logo").addClass("no-logo");
-				loadLogo("alt-4-logo", "");
+				loadLogo("alt-4-logo-image");
 			}
 		}
 
@@ -752,39 +712,22 @@
 			alt_1_logo_image_old = alt_1_logo_image;
 
 			if (alt_2_logo_image != alt_2_logo_image_old) {
-				loadLogo("alt-2-logo", alt_2_logo_image);
+				loadLogo("alt-2-logo-image", alt_2_logo_image);
 			}
 			alt_2_logo_image_old = alt_2_logo_image;
 
 			if (alt_3_logo_image != alt_3_logo_image_old) {
-				loadLogo("alt-3-logo", alt_3_logo_image);
+				loadLogo("alt-3-logo-image", alt_3_logo_image);
 			}
 			alt_3_logo_image_old = alt_3_logo_image;
 
 			if (alt_4_logo_image != alt_4_logo_image_old) {
-				loadLogo("alt-4-logo", alt_4_logo_image);
+				loadLogo("alt-4-logo-image", alt_4_logo_image);
 			}
 			alt_4_logo_image_old = alt_4_logo_image;
 
 			//Show or hide if logo switch is ON.
 			changeLogoVisibility(alt_1_logo_switch, alt_1_logo_image, alt_2_logo_switch, alt_2_logo_image, alt_3_logo_switch, alt_3_logo_image, alt_4_logo_switch, alt_4_logo_image);
-
-			//Help to update logo when logo switch is ON
-			if (alt_2_logo_switch != alt_2_logo_switch_old){
-				hide_logo_2 = false;
-			}
-			alt_2_logo_switch_old = alt_2_logo_switch;
-
-			if (alt_3_logo_switch != alt_3_logo_switch_old){
-				hide_logo_3 = false;
-			}
-			alt_3_logo_switch_old = alt_3_logo_switch;
-
-			if (alt_4_logo_switch != alt_4_logo_switch_old){
-				hide_logo_4 = false;
-			}
-			alt_4_logo_switch_old = alt_4_logo_switch;
-
 
 			///////////////////////////
 
@@ -928,9 +871,7 @@
 		function loadLogo(alt,logo) {
 			if(logo){
 				$('#'+alt).attr("src", logo);
-				// document.getElementById(alt).innerHTML = '<img src="' + logo + '"></div>';
 			} else {
-				// document.getElementById(alt).innerHTML = '';
 				$('#'+alt).attr("src", '//:0');
 			}
 		}
