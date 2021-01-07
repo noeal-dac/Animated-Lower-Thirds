@@ -13,7 +13,9 @@
   <body class="browser-source lower-thirds">
 		<!--Lower third 1-->
 		<div id="lower-third-1" class="alt left style-1 hide-anim">
-			<div id="alt-1-logo" class="logo no-logo"></div>
+			<div id="alt-1-logo" class="logo no-logo">
+				<img src="" />
+			</div>
 			<div class="graph-1"></div>
 			<div class="text-content">
 				<div class="text-mask">
@@ -184,16 +186,16 @@
 
 		function animationIn(animation) {
 			elementAnim = document.getElementById(animation);
-			document.getElementById(animation).classList.remove("animation-out");
+			elementAnim.classList.remove("animation-out");
 			void elementAnim.offsetWidth;
-			document.getElementById(animation).classList.add("animation-in");
+			elementAnim.classList.add("animation-in");
 		}
 
 		function animationOut(animation) {
 			elementAnim = document.getElementById(animation);
-			document.getElementById(animation).classList.remove("animation-in");
+			elementAnim.classList.remove("animation-in");
 			void elementAnim.offsetWidth;
-			document.getElementById(animation).classList.add("animation-out");
+			elementAnim.classList.add("animation-out");
 		}
 
 		function activeCount(i) {
@@ -400,10 +402,112 @@
 		  animationOut(i);
 		}
 
+		function changeLogoVisibility(alt_1_logo_switch, alt_2_logo_switch, alt_2_logo_image, alt_3_logo_switch, alt_3_logo_image, alt_4_logo_switch, alt_4_logo_image) {
+			if (alt_1_logo_switch == "true") {
+				//Show when change and is active
+				// console.log($("#lower-third-1").hasClass("animation-in"));
+				// if ($("#lower-third-1").hasClass("animation-in")) {
+					// if (!hide_logo_1) {
+					// 	console.log('hide_logo a true');
+					// 	clearTimeout(alt_1_wait_hide_logo);
+					// 	hide_logo_1 = true;
+						$("#alt-1-logo").removeClass("no-logo");
+						loadLogo("alt-1-logo", alt_1_logo_image);
+					// }
+				// } else {
+				// 	Hide when change and is inactive
+				// 	if (hide_logo_1) {
+				// 		console.log('hide_logo a false');
+				// 		hide_logo_1 = false;
+				// 		alt_1_wait_hide_logo = setTimeout(function () {
+				// 			$("#alt-1-logo").addClass("no-logo");
+				// 			loadLogo("alt-1-logo", "");
+				// 		}, alt_1_animation_time * 1000);
+				// 	}
+				// 	hide_logo_1 = false;
+				// 	$("#alt-1-logo").addClass("no-logo");
+				// 	loadLogo("alt-1-logo", "");
+				// }
+			} else {
+				console.log('hide_logo a false FUERA');
+				hide_logo_1 = false;
+				$("#alt-1-logo").addClass("no-logo");
+				loadLogo("alt-1-logo", "");
+			}
+
+			if (alt_2_logo_switch == "true") {
+				if ($("#lower-third-2").hasClass("animation-in")) {
+					if (!hide_logo_2) {
+						clearTimeout(alt_2_wait_hide_logo);
+						hide_logo_2 = true;
+						$("#alt-2-logo").removeClass("no-logo");
+						loadLogo("alt-2-logo", alt_2_logo_image);
+					}
+				} else {
+					if (hide_logo_2) {
+						hide_logo_2 = false;
+						alt_2_wait_hide_logo = setTimeout(function () {
+							$("#alt-2-logo").addClass("no-logo");
+							loadLogo("alt-2-logo", "");
+						}, alt_2_animation_time * 1000);
+					}
+				}
+			} else {
+				$("#alt-2-logo").addClass("no-logo");
+				loadLogo("alt-2-logo", "");
+			}
+
+			if (alt_3_logo_switch == "true") {
+				if ($("#lower-third-3").hasClass("animation-in")) {
+					if (!hide_logo_3) {
+						clearTimeout(alt_3_wait_hide_logo);
+						hide_logo_3 = true;
+						$("#alt-3-logo").removeClass("no-logo");
+						loadLogo("alt-3-logo", alt_3_logo_image);
+					}
+				} else {
+					if (hide_logo_3) {
+						hide_logo_3 = false;
+						alt_3_wait_hide_logo = setTimeout(function () {
+							$("#alt-3-logo").addClass("no-logo");
+							loadLogo("alt-3-logo", "");
+						}, alt_3_animation_time * 1000);
+					}
+				}
+			} else {
+				$("#alt-3-logo").addClass("no-logo");
+				loadLogo("alt-3-logo", "");
+			}
+
+			if (alt_4_logo_switch == "true") {
+				if ($("#lower-third-4").hasClass("animation-in")) {
+					if (!hide_logo_4) {
+						clearTimeout(alt_4_wait_hide_logo);
+						hide_logo_4 = true;
+						$("#alt-4-logo").removeClass("no-logo");
+						loadLogo("alt-4-logo", alt_4_logo_image);
+					}
+				} else {
+					if (hide_logo_4) {
+						hide_logo_4 = false;
+						alt_4_wait_hide_logo = setTimeout(function () {
+							$("#alt-4-logo").addClass("no-logo");
+							loadLogo("alt-4-logo", "");
+						}, alt_4_animation_time * 1000);
+					}
+				}
+			} else {
+				$("#alt-4-logo").addClass("no-logo");
+				loadLogo("alt-4-logo", "");
+			}
+		}
+
 		///////////////////////////
 		bcp.onmessage = function (ev) {
 			const received_data = ev.data;
 			const {global_animation_time, global_oneshot} = received_data;
+
+			console.log(received_data);
 
 			if (mode != "preview") {
 				activeTime = received_data.global_active_time;
@@ -693,101 +797,12 @@
 			}
 			alt_4_logo_image_old = alt_4_logo_image;
 
-
 			//Show or hide if logo switch is ON.
-			if (alt_1_logo_switch == "true"){
-				//Show when change and is active
-				if ($("#lower-third-1").hasClass("animation-in")) {
-					if (!hide_logo_1) {
-						clearTimeout(alt_1_wait_hide_logo);
-						hide_logo_1 = true;
-						$("#alt-1-logo").removeClass("no-logo");
-						loadLogo("alt-1-logo", alt_1_logo_image);
-					}
-				} else {
-					//Hide when change and is inactive
-					if (hide_logo_1) {
-						hide_logo_1 = false;
-						alt_1_wait_hide_logo = setTimeout(function () {
-							$("#alt-1-logo").addClass("no-logo");
-							loadLogo("alt-1-logo", "");
-						}, alt_1_animation_time * 1000);
-					}
-				}
-			} else {
-				hide_logo_1 = false;
-				$("#alt-1-logo").addClass("no-logo");
-				loadLogo("alt-1-logo", "");
-			}
-
-			if (alt_2_logo_switch == "true"){
-				if ($("#lower-third-2").hasClass("animation-in")) {
-					if (!hide_logo_2) {
-						clearTimeout(alt_2_wait_hide_logo);
-						hide_logo_2 = true;
-						$("#alt-2-logo").removeClass("no-logo");
-						loadLogo("alt-2-logo", alt_2_logo_image);
-					}
-				} else {
-					if (hide_logo_2) {
-						hide_logo_2 = false;
-						alt_2_wait_hide_logo = setTimeout(function () {
-							$("#alt-2-logo").addClass("no-logo");
-							loadLogo("alt-2-logo", "");
-						}, alt_2_animation_time * 1000);
-					}
-				}
-			} else {
-				$("#alt-2-logo").addClass("no-logo");
-				loadLogo("alt-2-logo", "");
-			}
-
-			if (alt_3_logo_switch == "true"){
-				if ($("#lower-third-3").hasClass("animation-in")) {
-					if (!hide_logo_3) {
-						clearTimeout(alt_3_wait_hide_logo);
-						hide_logo_3 = true;
-						$("#alt-3-logo").removeClass("no-logo");
-						loadLogo("alt-3-logo", alt_3_logo_image);
-					}
-				} else {
-					if (hide_logo_3) {
-						hide_logo_3 = false;
-						alt_3_wait_hide_logo = setTimeout(function () {
-							$("#alt-3-logo").addClass("no-logo");
-							loadLogo("alt-3-logo", "");
-						}, alt_3_animation_time * 1000);
-					}
-				}
-			} else {
-				$("#alt-3-logo").addClass("no-logo");
-				loadLogo("alt-3-logo", "");
-			}
-
-			if (alt_4_logo_switch == "true"){
-				if ($("#lower-third-4").hasClass("animation-in")) {
-					if (!hide_logo_4) {
-						clearTimeout(alt_4_wait_hide_logo);
-						hide_logo_4 = true;
-						$("#alt-4-logo").removeClass("no-logo");
-						loadLogo("alt-4-logo", alt_4_logo_image);
-					}
-				} else {
-					if (hide_logo_4) {
-						hide_logo_4 = false;
-						alt_4_wait_hide_logo = setTimeout(function () {
-							$("#alt-4-logo").addClass("no-logo");
-							loadLogo("alt-4-logo", "");
-						}, alt_4_animation_time * 1000);
-					}
-				}
-			} else {
-				$("#alt-4-logo").addClass("no-logo");
-				loadLogo("alt-4-logo", "");
-			}
+			changeLogoVisibility(alt_1_logo_switch, alt_2_logo_switch, alt_2_logo_image, alt_3_logo_switch, alt_3_logo_image, alt_4_logo_switch, alt_4_logo_image);
 
 			//Help to update logo when logo switch is ON
 			if (alt_1_logo_switch != alt_1_logo_switch_old){
+				console.log('hide_logo a false por diferente del OLD');
 				hide_logo_1 = false;
 			}
 			alt_1_logo_switch_old = alt_1_logo_switch;
@@ -950,9 +965,11 @@
 
 		function loadLogo(alt,logo) {
 			if(logo){
-				document.getElementById(alt).innerHTML = '<img src="' + logo + '"></div>';
+				$('#'+alt+' img').attr("src",logo);
+				// document.getElementById(alt).innerHTML = '<img src="' + logo + '"></div>';
 			} else {
-				document.getElementById(alt).innerHTML = '';
+				// document.getElementById(alt).innerHTML = '';
+				$('#'+alt+' img').attr("src",'');
 			}
 		}
 
