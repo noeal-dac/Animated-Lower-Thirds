@@ -14,7 +14,7 @@
 		<!--Lower third 1-->
 		<div id="lower-third-1" class="alt left style-1 hide-anim">
 			<div id="alt-1-logo" class="logo no-logo">
-				<img src="" />
+				<img id="alt-1-logo-image" src="//:0" />
 			</div>
 			<div class="graph-1"></div>
 			<div class="text-content">
@@ -110,7 +110,6 @@
 		let alt_3_logo_image_old;
 		let alt_4_logo_image_old;
 
-		let alt_1_logo_switch_old;
 		let alt_2_logo_switch_old;
 		let alt_3_logo_switch_old;
 		let alt_4_logo_switch_old;
@@ -173,7 +172,6 @@
 		let alt_3_wait_hide_logo;
 		let alt_4_wait_hide_logo;
 
-		let hide_logo_1 = false;
 		let hide_logo_2 = false;
 		let hide_logo_3 = false;
 		let hide_logo_4 = false;
@@ -402,37 +400,13 @@
 		  animationOut(i);
 		}
 
-		function changeLogoVisibility(alt_1_logo_switch, alt_2_logo_switch, alt_2_logo_image, alt_3_logo_switch, alt_3_logo_image, alt_4_logo_switch, alt_4_logo_image) {
+		function changeLogoVisibility(alt_1_logo_switch, alt_1_logo_image, alt_2_logo_switch, alt_2_logo_image, alt_3_logo_switch, alt_3_logo_image, alt_4_logo_switch, alt_4_logo_image) {
 			if (alt_1_logo_switch == "true") {
-				//Show when change and is active
-				// console.log($("#lower-third-1").hasClass("animation-in"));
-				// if ($("#lower-third-1").hasClass("animation-in")) {
-					// if (!hide_logo_1) {
-					// 	console.log('hide_logo a true');
-					// 	clearTimeout(alt_1_wait_hide_logo);
-					// 	hide_logo_1 = true;
-						$("#alt-1-logo").removeClass("no-logo");
-						loadLogo("alt-1-logo", alt_1_logo_image);
-					// }
-				// } else {
-				// 	Hide when change and is inactive
-				// 	if (hide_logo_1) {
-				// 		console.log('hide_logo a false');
-				// 		hide_logo_1 = false;
-				// 		alt_1_wait_hide_logo = setTimeout(function () {
-				// 			$("#alt-1-logo").addClass("no-logo");
-				// 			loadLogo("alt-1-logo", "");
-				// 		}, alt_1_animation_time * 1000);
-				// 	}
-				// 	hide_logo_1 = false;
-				// 	$("#alt-1-logo").addClass("no-logo");
-				// 	loadLogo("alt-1-logo", "");
-				// }
+				$("#alt-1-logo").removeClass("no-logo");
+				loadLogo("alt-1-logo-image", alt_1_logo_image);
 			} else {
-				console.log('hide_logo a false FUERA');
-				hide_logo_1 = false;
 				$("#alt-1-logo").addClass("no-logo");
-				loadLogo("alt-1-logo", "");
+				loadLogo("alt-1-logo-image");
 			}
 
 			if (alt_2_logo_switch == "true") {
@@ -519,8 +493,8 @@
 			//Animated Lower Thirds 1
 			const {alt_1_switch, alt_1_style, alt_1_name, alt_1_info, alt_1_name_size, alt_1_info_size, alt_1_name_transform, alt_1_info_transform,
 				alt_1_name_weight, alt_1_info_weight, alt_1_name_color, alt_1_info_color, alt_1_logo_switch, alt_1_background_switch,
-				alt_1_shadows, alt_1_align = "left", alt_1_size, alt_1_margin_h, alt_1_margin_v, alt_1_font ,alt_1_logo_size,
-				alt_1_shadow_amount, alt_1_corners, alt_1_border_switch} = received_data;
+				alt_1_shadows, alt_1_align = "left", alt_1_size, alt_1_margin_h, alt_1_margin_v, alt_1_font , alt_1_logo_image = "../logos/logo_1.png",
+				alt_1_logo_size, alt_1_shadow_amount, alt_1_corners, alt_1_border_switch} = received_data;
 			let {alt_1_style_color_1, alt_1_style_color_2, alt_1_line_spacing, alt_1_border_thickness_amount, alt_1_style_color_3, alt_1_style_color_4} = received_data;
 
 			document.getElementById("alt-1-name").innerHTML = alt_1_name;
@@ -547,7 +521,7 @@
 			//Animated Lower Thirds 2
 			const {alt_2_switch, alt_2_style, alt_2_name, alt_2_info, alt_2_name_size, alt_2_info_size, alt_2_name_transform, alt_2_info_transform,
 				alt_2_name_weight, alt_2_info_weight, alt_2_name_color, alt_2_info_color, alt_2_logo_switch, alt_2_background_switch,
-				alt_2_shadows, alt_2_align = "left", alt_2_size, alt_2_margin_h, alt_2_margin_v, alt_2_font, alt_2_logo_image} = received_data;
+				alt_2_shadows, alt_2_align = "left", alt_2_size, alt_2_margin_h, alt_2_margin_v, alt_2_font, alt_2_logo_image = "../logos/logo_2.png"} = received_data;
 			let {alt_2_style_color_1, alt_2_style_color_2, alt_2_line_spacing} = received_data;
 
 			document.getElementById("alt-2-name").innerHTML = alt_2_name;
@@ -561,7 +535,7 @@
 			//Animated Lower Thirds 3
 			const {alt_3_switch, alt_3_style, alt_3_name, alt_3_info, alt_3_name_size, alt_3_info_size, alt_3_name_transform, alt_3_info_transform,
 				alt_3_name_weight, alt_3_info_weight, alt_3_name_color, alt_3_info_color, alt_3_logo_switch, alt_3_background_switch,
-				alt_3_shadows, alt_3_align = "left", alt_3_size, alt_3_margin_h, alt_3_margin_v, alt_3_font, alt_3_logo_image} = received_data;
+				alt_3_shadows, alt_3_align = "left", alt_3_size, alt_3_margin_h, alt_3_margin_v, alt_3_font, alt_3_logo_image = '../logos/logo_3.png'} = received_data;
 			let {alt_3_style_color_1, alt_3_style_color_2, alt_3_line_spacing} = received_data;
 
 			document.getElementById("alt-3-name").innerHTML = alt_3_name;
@@ -575,7 +549,7 @@
 			//Animated Lower Thirds 4
 			const {alt_4_switch, alt_4_style, alt_4_name, alt_4_info, alt_4_name_size, alt_4_info_size, alt_4_name_transform, alt_4_info_transform,
 				alt_4_name_weight, alt_4_info_weight, alt_4_name_color, alt_4_info_color, alt_4_logo_switch, alt_4_background_switch,
-				alt_4_shadows, alt_4_align = "left", alt_4_size, alt_4_margin_h, alt_4_margin_v, alt_4_font, alt_4_logo_image} = received_data;
+				alt_4_shadows, alt_4_align = "left", alt_4_size, alt_4_margin_h, alt_4_margin_v, alt_4_font, alt_4_logo_image = "../logos/logo_4.png"} = received_data;
 			let {alt_4_style_color_1, alt_4_style_color_2, alt_4_line_spacing} = received_data;
 
 			document.getElementById("alt-4-name").innerHTML = alt_4_name;
@@ -585,9 +559,6 @@
 			alt_4_animation_time = received_data.alt_4_animation_time || global_animation_time;
 			alt_4_active_time = received_data.alt_4_active_time || activeTime;
 			alt_4_inactive_time = received_data.alt_4_inactive_time || inactiveTime;
-
-			// TODO: porque en este si no viene de le pone uno y en los otros no?
-			alt_1_logo_image = received_data.alt_1_logo_image || "../logos/logo_1.png";
 
 			//Use the global oneshot setting if oneshot switch is off or inactive field is empty
 			alt_1_oneshot = received_data.alt_1_oneshot || (global_oneshot && !received_data.alt_1_inactive_time);
@@ -798,16 +769,9 @@
 			alt_4_logo_image_old = alt_4_logo_image;
 
 			//Show or hide if logo switch is ON.
-			changeLogoVisibility(alt_1_logo_switch, alt_2_logo_switch, alt_2_logo_image, alt_3_logo_switch, alt_3_logo_image, alt_4_logo_switch, alt_4_logo_image);
+			changeLogoVisibility(alt_1_logo_switch, alt_1_logo_image, alt_2_logo_switch, alt_2_logo_image, alt_3_logo_switch, alt_3_logo_image, alt_4_logo_switch, alt_4_logo_image);
 
 			//Help to update logo when logo switch is ON
-			if (alt_1_logo_switch != alt_1_logo_switch_old){
-				console.log('hide_logo a false por diferente del OLD');
-				hide_logo_1 = false;
-			}
-			alt_1_logo_switch_old = alt_1_logo_switch;
-
-
 			if (alt_2_logo_switch != alt_2_logo_switch_old){
 				hide_logo_2 = false;
 			}
@@ -965,11 +929,11 @@
 
 		function loadLogo(alt,logo) {
 			if(logo){
-				$('#'+alt+' img').attr("src",logo);
+				$('#'+alt).attr("src", logo);
 				// document.getElementById(alt).innerHTML = '<img src="' + logo + '"></div>';
 			} else {
 				// document.getElementById(alt).innerHTML = '';
-				$('#'+alt+' img').attr("src",'');
+				$('#'+alt).attr("src", '//:0');
 			}
 		}
 
