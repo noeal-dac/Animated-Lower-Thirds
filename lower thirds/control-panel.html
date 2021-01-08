@@ -1650,6 +1650,7 @@
 							document.getElementById("alt-1-config-content").classList.remove("active");
 							document.getElementById("alt-1-config-content").classList.add("inactive");
 							//check if autoload is active and jump to next slot
+							console.log(alt_1_autoload, alt_1_jumpnext)
 							if (alt_1_autoload && alt_1_jumpnext) {
 								alt_1_jumpnext = false;
 								jumpNextSlot("#alt-1-memory-slots", "#alt-1-name", "#alt-1-info", "#alt-1-logo-preview", alt_1_waiting_time);
@@ -1657,6 +1658,10 @@
 						}
 					} else {
 						document.getElementById("alt-1-config-content").className = '';
+						if (alt_1_turnoff && alt_1_autoload && alt_1_jumpnext) {
+							alt_1_jumpnext = false;
+							jumpNextSlot("#alt-1-memory-slots", "#alt-1-name", "#alt-1-info", "#alt-1-logo-preview", alt_1_waiting_time);
+						}
 					}
 
 					//Switch 2
@@ -2595,6 +2600,7 @@
 				alt_2_turnoff = (received_data.alt_2_turnoff);
 				alt_3_turnoff = (received_data.alt_3_turnoff);
 				alt_4_turnoff = (received_data.alt_4_turnoff);
+
 
 				if (alt_1_turnoff && $("#lower-thirds-switch1").is(':checked')){
 					$("#lower-thirds-switch1").prop('checked', false).change();
