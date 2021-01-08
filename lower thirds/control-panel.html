@@ -69,7 +69,7 @@
 						<div class="default-options">
 							<div class="settings-title"></div>
 							<div class="settings-inputs">
-								<label><input class="checkbox-storable" type="checkbox" id="set-preview">Disable preview window</label>
+								<label><input class="checkbox-storable" type="checkbox" id="set-preview">Enable preview window</label>
 								<label><input class="checkbox-storable" type="checkbox" id="set-slot-numbers">Hide numbers of the memory slots</label>
 								<label><input class="checkbox-storable" type="checkbox" id="set-switch-position">Switches on the left</label>
 								<label><input class="checkbox-storable" type="checkbox" id="set-tooltips">Show tooltips with the stored content</label>
@@ -2872,7 +2872,7 @@
 				//////////////////////////////
 
 				//Switch Preview ALT ON/OFF
-				if (document.getElementById("set-preview").checked == false) {
+				if (document.getElementById("set-preview").checked) {
 					$("#alt-preview").removeClass("hide");
 					//Hide preview butons
 					$('.preview-btn').each(function(){
@@ -3336,7 +3336,11 @@
 
 				$('.checkbox-storable, .radio-storable').each(function(){
                     var id = $(this).attr('id');
-                    $(this).prop('checked', localStorage.getItem(id) === 'true');
+					var value = localStorage.getItem(id);
+
+					if (value) {
+						$(this).prop('checked', localStorage.getItem(id) === 'true');
+					}
                 });
 
 				$('.title-storable').each(function(){    
