@@ -2505,7 +2505,8 @@
 						//Disable: - | Enable: Logo, align center;
 						document.getElementById("alt-1-align-center").disabled = false;
 						document.getElementById("alt-1-logo").disabled = false;
-						$("#alt-1-background").prop('checked', true).change();
+						// $("#alt-1-background").prop('checked', true).change();
+						$("#alt-1-background").prop('checked', true);
 						// document.getElementById("alt-1-background").setAttribute("style", "cursor:not-allowed");
 						document.getElementById("alt-1-background").classList.add("locked");
 
@@ -3412,6 +3413,8 @@
 
 			function refreshData() {
 				console.log('refreshData');
+
+				checkLogos();
 				checkSlots("#alt-1-memory-slots", "#alt-1-name", "#alt-1-info", "#alt-1-logo-preview");
 				checkSlots("#alt-2-memory-slots", "#alt-2-name", "#alt-2-info", "#alt-2-logo-preview");
 				checkSlots("#alt-3-memory-slots", "#alt-3-name", "#alt-3-info", "#alt-3-logo-preview");
