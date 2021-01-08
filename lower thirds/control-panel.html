@@ -2287,7 +2287,7 @@
 						const info_to_load = $(this).children('#' + info_id).text();
 						const logo_to_load = $(this).children('#' + logo_id).text();
 
-						loadSlot(name, info, logo, name_to_load, info_to_load, logo_to_load, alt_waiting_time);
+						loadSlot(name, info, logo, name_to_load, info_to_load, logo_to_load, alt_waiting_time, false);
 						$('#' + slot_id).addClass('next-to-load');
 					});
 				}
@@ -2295,7 +2295,7 @@
 
 			//////////////////////////////////////
 
-			function loadSlot(name, info, logo, name_to_load, info_to_load, logo_to_load, alt_waiting_time) {
+			function loadSlot(name, info, logo, name_to_load, info_to_load, logo_to_load, alt_waiting_time, from_hotkey = true) {
 				setTimeout(function (){
 					const default_logo = logo.replace("-preview", "-default");
 					const default_logo_value = $(default_logo).attr("src");
@@ -2314,7 +2314,7 @@
 				let alt_switch = name.replace("#alt-", "");
 				alt_switch = alt_switch.replace("-name", "");
 
-				if (document.getElementById(auto_trigger).checked && $("#lower-thirds-switch" + alt_switch).is(':not(:checked)')) {
+				if (from_hotkey && document.getElementById(auto_trigger).checked && $("#lower-thirds-switch" + alt_switch).is(':not(:checked)')) {
 					$("#lower-thirds-switch" + alt_switch).prop('checked', true).change();
 				}
 				//console.log(name + "|" + info + "|" + logo + "|" + name_to_load + "|" + info_to_load + "|" + logo_to_load + "|" + alt_waiting_time);
