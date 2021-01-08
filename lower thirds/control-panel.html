@@ -1135,9 +1135,11 @@
 			const default_line_spacing = 0;
 
 			const default_logo = true;
-			const default_logo_size = 1;
+			const default_logo_size = 0;
+			const default_logo_size_em = 3.5;
 			const default_shadow = false;
 			const default_shadow_amount = 5;
+			const default_shadow_amount_em = 0.5;
 			const default_background = true;
 			const default_style_color_1 = '#D54141';
 			const default_style_color_2 = '#222222';
@@ -2396,16 +2398,11 @@
 				alt_4_size = $("#alt-4-size").val() || default_size;
 
 				//Logo Size
-				alt_1_logo_size = Number($("#alt-1-logo-size").val()) * 0.25 + 3.5 || default_logo_size; // 3.5???
-				if (!alt_1_logo_size){
-					alt_1_logo_size = 3.5;
-				}
+				alt_1_logo_size = Number($("#alt-1-logo-size").val()) * 0.25 + 3.5 || default_logo_size_em;
 
 				//Shadow Amount
-				alt_1_shadow_amount = $("#alt-1-shadow-amount").val() * 0.1 || default_shadow_amount; // 0.5????
-				if (!alt_1_shadow_amount){
-					alt_1_shadow_amount = 0.5;
-				}
+				alt_1_shadow_amount = $("#alt-1-shadow-amount").val() * 0.1 || default_shadow_amount_em;
+
 				// alt_2_shadow_amount = $("#alt-2-shadow-amount").val() * 0.1;
 				// if (!alt_2_shadow_amount){
 				// 	alt_2_shadow_amount = 0.5;
