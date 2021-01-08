@@ -2227,10 +2227,11 @@
 			//////////////////////////////////////
 
 			function jumpNextSlot(memory_slot, name, info, logo, alt_waiting_time) {
-				let loadedSlot = false;
 				let find_next = false;
 				let find_first = false;
-				let to_load;
+				let first_stored_slot;
+				let next_slot_num;
+				let to_load = 0;
 
 				const name_loaded = $(name + ":text").val();
 				const info_loaded = $(info + ":text").val();
@@ -2245,9 +2246,8 @@
 					const info_value = $(this).children('.stored-info').text();
 					const logo_value = $(this).children('.stored-logo').text();
 					const slot_number = Number($(this).children('.slot-number').text());
-					let first_stored_slot, next_slot_num;
 
-					loadedSlot = (name_loaded == name_value && info_loaded == info_value && (logo_loaded == logo_value || $(logo).hasClass(logo_value))) ? true : false;
+					const loadedSlot = (name_loaded == name_value && info_loaded == info_value && (logo_loaded == logo_value || $(logo).hasClass(logo_value))) ? true : false;
 					const emptySlot = ($('#' + name_id).is(':empty') && $('#' + info_id).is(':empty') && $('#' + logo_id).is(':empty')) ? true : false;
 
 					if(!find_first && !emptySlot) {
@@ -2259,6 +2259,7 @@
 						const loaded_slot_num = slot_number;
 						next_slot_num = loaded_slot_num + 1;
 					}
+
 					if (find_next && slot_number == next_slot_num && !emptySlot) {
 						find_next = false;
 						to_load = slot_number;
