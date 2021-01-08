@@ -1490,7 +1490,6 @@
 
 				var font_name_to_remove = $(this).closest('li').children('.font-name-added').text();
 				var font_url_to_remove = $(this).closest('li').children('.font-url-added').text();
-				//console.log("I will remove: " + font_name_to_remove + " and " + font_url_to_remove);
 
 				$(this).closest('li').remove();
 				
@@ -1499,8 +1498,6 @@
 				//Update the amount of custom fonts (-1)
 				id = "customFonts";
 				localStorage.setItem(id, howMany);
-				//console.log(howMany);
-
 			});
 
 			//<Rename> de IDs of Font to correct store
@@ -1517,7 +1514,6 @@
 		    $( "#sortable" ).sortable({handle: ".drag-handle"});
 		    $( "#sortable" ).on("sortupdate",function( event, ui ) {
 		        var sorted = $( this ).sortable( "serialize");
-		        //console.log(sorted);
 		        localStorage.setItem('sorted', sorted);
 		    });
 		    
@@ -1567,24 +1563,19 @@
 
 			function checkSwitches (){
 				//Check Master Switch
-				if (document.getElementById("lower-thirds-masterswitch").checked == true) {
+				if (document.getElementById("lower-thirds-masterswitch").checked) {
+					masterSwitchIsOn = true;
 					document.getElementById("alt-main-config-content").classList.add("active");
 				} else {
-					document.getElementById("alt-main-config-content").classList.remove("active");
-				}
-
-				//Check Master Switch
-				if (document.getElementById("lower-thirds-masterswitch").checked == true) {
-					masterSwitchIsOn = true;
-				} else {
 					masterSwitchIsOn = false;
+					document.getElementById("alt-main-config-content").classList.remove("active");
 				}
 
 				//Check switches and blue and red lights in the background to see active and inactive times
 				if (masterSwitchIsOn) {
 					//When the Main Switch is ON the lower thirds can be Active, Inactive or OFF.
 					//Switch 1
-					if (document.getElementById("lower-thirds-switch1").checked == true){
+					if (document.getElementById("lower-thirds-switch1").checked){
 						if (alt_1_active_time_monitor >= 0 && alt_1_inactive_time_monitor == 0 && alt_1_name && alt_1_info){
 							document.getElementById("alt-1-config-content").classList.remove("inactive");
 							document.getElementById("alt-1-config-content").classList.add("active");
@@ -1594,8 +1585,8 @@
 							document.getElementById("alt-1-config-content").classList.add("inactive");
 							//check if autoload is active and jump to next slot
 							if (alt_1_autoload && alt_1_jumpnext) {
-								jumpNextSlot("#alt-1-memory-slots", "#alt-1-name", "#alt-1-info", "#alt-1-logo-preview", alt_1_waiting_time);
 								alt_1_jumpnext = false;
+								jumpNextSlot("#alt-1-memory-slots", "#alt-1-name", "#alt-1-info", "#alt-1-logo-preview", alt_1_waiting_time);
 							}
 						}
 					} else {
@@ -1603,7 +1594,7 @@
 					}
 
 					//Switch 2
-					if (document.getElementById("lower-thirds-switch2").checked == true){
+					if (document.getElementById("lower-thirds-switch2").checked){
 						if (alt_2_active_time_monitor >= 0 && alt_2_inactive_time_monitor == 0 && alt_2_name && alt_2_info){
 							document.getElementById("alt-2-config-content").classList.remove("inactive");
 							document.getElementById("alt-2-config-content").classList.add("active");
@@ -1613,8 +1604,8 @@
 							document.getElementById("alt-2-config-content").classList.add("inactive");
 							//check if autoload is active and jump to next slot
 							if (alt_2_autoload && alt_2_jumpnext) {
-								jumpNextSlot("#alt-2-memory-slots", "#alt-2-name", "#alt-2-info", "#alt-2-logo-preview", alt_2_waiting_time);
 								alt_2_jumpnext = false;
+								jumpNextSlot("#alt-2-memory-slots", "#alt-2-name", "#alt-2-info", "#alt-2-logo-preview", alt_2_waiting_time);
 							}
 						}
 					} else {
@@ -1622,7 +1613,7 @@
 					}
 
 					//Switch 3
-					if (document.getElementById("lower-thirds-switch3").checked == true){
+					if (document.getElementById("lower-thirds-switch3").checked){
 						if (alt_3_active_time_monitor >= 0 && alt_3_inactive_time_monitor == 0 && alt_3_name && alt_3_info){
 							document.getElementById("alt-3-config-content").classList.remove("inactive");
 							document.getElementById("alt-3-config-content").classList.add("active");
@@ -1632,8 +1623,8 @@
 							document.getElementById("alt-3-config-content").classList.add("inactive");
 							//check if autoload is active and jump to next slot
 							if (alt_3_autoload && alt_3_jumpnext) {
-								jumpNextSlot("#alt-3-memory-slots", "#alt-3-name", "#alt-3-info", "#alt-3-logo-preview", alt_3_waiting_time);
 								alt_3_jumpnext = false;
+								jumpNextSlot("#alt-3-memory-slots", "#alt-3-name", "#alt-3-info", "#alt-3-logo-preview", alt_3_waiting_time);
 							}
 						}
 					} else {
@@ -1641,7 +1632,7 @@
 					}
 
 					//Switch 4
-					if (document.getElementById("lower-thirds-switch4").checked == true){
+					if (document.getElementById("lower-thirds-switch4").checked){
 						if (alt_4_active_time_monitor >= 0 && alt_4_inactive_time_monitor == 0 && alt_4_name && alt_4_info){
 							document.getElementById("alt-4-config-content").classList.remove("inactive");
 							document.getElementById("alt-4-config-content").classList.add("active");
@@ -1651,8 +1642,8 @@
 							document.getElementById("alt-4-config-content").classList.add("inactive");
 							//check if autoload is active and jump to next slot
 							if (alt_4_autoload && alt_4_jumpnext) {
-								jumpNextSlot("#alt-4-memory-slots", "#alt-4-name", "#alt-4-info", "#alt-4-logo-preview", alt_4_waiting_time);
 								alt_4_jumpnext = false;
+								jumpNextSlot("#alt-4-memory-slots", "#alt-4-name", "#alt-4-info", "#alt-4-logo-preview", alt_4_waiting_time);
 							}
 						}
 					} else {
@@ -1662,7 +1653,7 @@
 				} else {
 					//When the Main Switch is OFF all the Lower Thirds area Inactives or OFF.
 					//Switch 1
-					if (document.getElementById("lower-thirds-switch1").checked == true) {
+					if (document.getElementById("lower-thirds-switch1").checked) {
 						document.getElementById("alt-1-config-content").classList.add("inactive");
 						document.getElementById("alt-1-config-content").classList.remove("active");
 					} else {
@@ -1670,7 +1661,7 @@
 					}
 
 					//Switch 2
-					if (document.getElementById("lower-thirds-switch2").checked == true) {
+					if (document.getElementById("lower-thirds-switch2").checked) {
 						document.getElementById("alt-2-config-content").classList.add("inactive");
 						document.getElementById("alt-2-config-content").classList.remove("active");
 					} else {
@@ -1678,7 +1669,7 @@
 					}
 
 					//Switch 3
-					if (document.getElementById("lower-thirds-switch3").checked == true) {
+					if (document.getElementById("lower-thirds-switch3").checked) {
 						document.getElementById("alt-3-config-content").classList.add("inactive");
 						document.getElementById("alt-3-config-content").classList.remove("active");
 					} else {
@@ -1686,7 +1677,7 @@
 					}
 
 					//Switch 4
-					if (document.getElementById("lower-thirds-switch4").checked == true) {
+					if (document.getElementById("lower-thirds-switch4").checked) {
 						document.getElementById("alt-4-config-content").classList.add("inactive");
 						document.getElementById("alt-4-config-content").classList.remove("active");
 					} else {
@@ -1710,7 +1701,7 @@
 			//Toggle the switches if a hotkey is pressed
 			function checkHotkeys (){
 				if (hotkeyMasterSwitch != hotkeyMasterSwitchOld){
-					if (document.getElementById("lower-thirds-masterswitch").checked == true) {
+					if (document.getElementById("lower-thirds-masterswitch").checked) {
 						$('#lower-thirds-masterswitch').prop('checked', false).change();
 		            }
 		            else {
@@ -1720,7 +1711,7 @@
 				}
 
 				if (hotkeySwitch1 != hotkeySwitch1Old){
-					if (document.getElementById("lower-thirds-switch1").checked == true) {
+					if (document.getElementById("lower-thirds-switch1").checked) {
 						$('#lower-thirds-switch1').prop('checked', false).change();
 					}
 					else {
@@ -1730,7 +1721,7 @@
 				}
 
 				if (hotkeySwitch2 != hotkeySwitch2Old){
-					if (document.getElementById("lower-thirds-switch2").checked == true) {
+					if (document.getElementById("lower-thirds-switch2").checked) {
 						$('#lower-thirds-switch2').prop('checked', false).change();
 					}
 					else {
@@ -1740,7 +1731,7 @@
 				}
 
 				if (hotkeySwitch3 != hotkeySwitch3Old){
-					if (document.getElementById("lower-thirds-switch3").checked == true) {
+					if (document.getElementById("lower-thirds-switch3").checked) {
 						$('#lower-thirds-switch3').prop('checked', false).change();
 					}
 					else {
@@ -1749,7 +1740,7 @@
 					hotkeySwitch3Old = hotkeySwitch3;
 				}
 				if (hotkeySwitch4 != hotkeySwitch4Old){
-					if (document.getElementById("lower-thirds-switch4").checked == true) {
+					if (document.getElementById("lower-thirds-switch4").checked) {
 						$('#lower-thirds-switch4').prop('checked', false).change();
 					}
 					else {
@@ -1939,17 +1930,18 @@
 				//Restore logo default (fix missing logos in the reload)			
 				$('.logo-storable').each(function(){    
 					var id = $(this).attr('id');
+					var value
 					if (id == "alt-1-logo-preview" || id == "alt-1-logo-default"){
-						var value = alt_1_logo_default;
+						value = alt_1_logo_default;
 					}
 					if (id == "alt-2-logo-preview" || id == "alt-2-logo-default"){
-						var value = alt_2_logo_default;
+						value = alt_2_logo_default;
 					}
 					if (id == "alt-3-logo-preview" || id == "alt-3-logo-default"){
-						var value = alt_3_logo_default;
+						value = alt_3_logo_default;
 					}
 					if (id == "alt-4-logo-preview" || id == "alt-4-logo-default"){
-						var value = alt_4_logo_default;
+						value = alt_4_logo_default;
 					}
 					localStorage.setItem(id, value);              
 				});	
@@ -2096,13 +2088,14 @@
 			}
 
 			function memorySlotsSystem (memory_slot, name, info, logo) {
+				let slot_id, name_id, info_id, logo_id, default_logo, is_default_logo;
 				$("ul" + memory_slot + " li").mousedown(function(e){
 					slot_id = $(this).attr('id');
 					name_id = $(this).children('.stored-name').attr('id');
 					info_id = $(this).children('.stored-info').attr('id');
 					logo_id = $(this).children('.stored-logo').attr('id');
-					name_value = $(this).children('.stored-name').text();
-					info_value = $(this).children('.stored-info').text();
+					// name_value = $(this).children('.stored-name').text();
+					// info_value = $(this).children('.stored-info').text();
 					default_logo = logo.replace("-preview", "-default");
 					is_default_logo = ($(logo).attr("src") == $(default_logo).attr("src")) ? true : false;
 					clearTimeout(this.downTimer);
@@ -2120,9 +2113,9 @@
 				    	if (!slotDeleted){
 				    		if ($('#' + name_id).is(':empty') && $('#' + info_id).is(':empty') && $('#' + logo_id).is(':empty')){
 								//Save
-								name_to_save = $(name + ":text").val();
-								info_to_save = $(info + ":text").val();
-								logo_to_save = $(logo).attr("src");
+								const name_to_save = $(name + ":text").val();
+								const info_to_save = $(info + ":text").val();
+								const logo_to_save = $(logo).attr("src");
 								if (name_to_save && info_to_save){
 									$('#' + name_id)[0].innerHTML = name_to_save;
 									$('#' + info_id)[0].innerHTML = info_to_save;
@@ -2134,10 +2127,10 @@
 								}
 							} else {
 								//Load
-								name_to_load = $(this).children('#' + name_id).text();
-								info_to_load = $(this).children('#' + info_id).text();
-								logo_to_load = $(this).children('#' + logo_id).text();
-								defaul_logo_to_load = $(default_logo).attr("src");
+								const name_to_load = $(this).children('#' + name_id).text();
+								const info_to_load = $(this).children('#' + info_id).text();
+								const logo_to_load = $(this).children('#' + logo_id).text();
+								const defaul_logo_to_load = $(default_logo).attr("src");
 								$(name + ":text").val(name_to_load).change();
 								$(info + ":text").val(info_to_load).change();
 								if (logo_to_load == "default"){
@@ -2147,11 +2140,11 @@
 								}
 
 								//Switch ON the panel if the autotrigger is ON
-								slot_number_called = $(this).children('.slot-number').text();
-								auto_trigger = slot_id.replace("-slot-" + slot_number_called, "-autotrigger");
-								alt_switch = slot_id.replace("alt-", "");
+								const slot_number_called = $(this).children('.slot-number').text();
+								const auto_trigger = slot_id.replace("-slot-" + slot_number_called, "-autotrigger");
+								let alt_switch = slot_id.replace("alt-", "");
 								alt_switch = alt_switch.replace("-slot-" + slot_number_called, "");
-								if (document.getElementById(auto_trigger).checked == true) {
+								if (document.getElementById(auto_trigger).checked  && $("#lower-thirds-switch" + alt_switch).is(':not(:checked)')) {
 									$("#lower-thirds-switch" + alt_switch).prop('checked', true).change();
 								}
 							}
@@ -2168,28 +2161,28 @@
 			//////////////////////////////////////
 
 			function jumpNextSlot(memory_slot, name, info, logo, alt_waiting_time) {
-				var loadedSlot = false;
-				var find_next = false;
-				var find_first = false;
+				let loadedSlot = false;
+				let find_next = false;
+				let find_first = false;
 				let to_load;
-				let slot_number = 0;
 
-				name_loaded = $(name + ":text").val();
-				info_loaded = $(info + ":text").val();
-				logo_loaded = $(logo).attr("src");				
+				const name_loaded = $(name + ":text").val();
+				const info_loaded = $(info + ":text").val();
+				const logo_loaded = $(logo).attr("src");
 
 				//Find actual and search the next slot to load
 				$("ul" + memory_slot + " li").each(function(){
-					name_id = $(this).children('.stored-name').attr('id');
-					info_id = $(this).children('.stored-info').attr('id');
-					logo_id = $(this).children('.stored-logo').attr('id');
-					name_value = $(this).children('.stored-name').text();
-					info_value = $(this).children('.stored-info').text();
-					logo_value = $(this).children('.stored-logo').text();
-					slot_number = Number($(this).children('.slot-number').text());
+					const name_id = $(this).children('.stored-name').attr('id');
+					const info_id = $(this).children('.stored-info').attr('id');
+					const logo_id = $(this).children('.stored-logo').attr('id');
+					const name_value = $(this).children('.stored-name').text();
+					const info_value = $(this).children('.stored-info').text();
+					const logo_value = $(this).children('.stored-logo').text();
+					const slot_number = Number($(this).children('.slot-number').text());
+					let first_stored_slot, next_slot_num;
 
 					loadedSlot = (name_loaded == name_value && info_loaded == info_value && (logo_loaded == logo_value || $(logo).hasClass(logo_value))) ? true : false;
-					emptySlot = ($('#' + name_id).is(':empty') && $('#' + info_id).is(':empty') && $('#' + logo_id).is(':empty')) ? true : false;
+					const emptySlot = ($('#' + name_id).is(':empty') && $('#' + info_id).is(':empty') && $('#' + logo_id).is(':empty')) ? true : false;
 
 					if(!find_first && !emptySlot) {
 						find_first = true;
@@ -2197,7 +2190,7 @@
 					}
 					if (loadedSlot) {
 						find_next = true;
-						loaded_slot_num = slot_number;
+						const loaded_slot_num = slot_number;
 						next_slot_num = loaded_slot_num + 1;
 					}
 					if (find_next && slot_number == next_slot_num && !emptySlot) {
@@ -2213,14 +2206,14 @@
 				// Si hay un slot para cargar
 				if (to_load && to_load > 0) {
 					$("ul" + memory_slot + " li:nth-child("+to_load+")").each(function () {
-						slot_id = ($(this).attr('id'));
-						name_id = $(this).children('.stored-name').attr('id');
-						info_id = $(this).children('.stored-info').attr('id');
-						logo_id = $(this).children('.stored-logo').attr('id');
+						const slot_id = ($(this).attr('id'));
+						const name_id = $(this).children('.stored-name').attr('id');
+						const info_id = $(this).children('.stored-info').attr('id');
+						const logo_id = $(this).children('.stored-logo').attr('id');
 
-						name_to_load = $(this).children('#' + name_id).text();
-						info_to_load = $(this).children('#' + info_id).text();
-						logo_to_load = $(this).children('#' + logo_id).text();
+						const name_to_load = $(this).children('#' + name_id).text();
+						const info_to_load = $(this).children('#' + info_id).text();
+						const logo_to_load = $(this).children('#' + logo_id).text();
 
 						loadSlot(name, info, logo, name_to_load, info_to_load, logo_to_load, alt_waiting_time);
 						$('#' + slot_id).addClass('next-to-load');
@@ -2232,8 +2225,8 @@
 
 			function loadSlot(name, info, logo, name_to_load, info_to_load, logo_to_load, alt_waiting_time) {
 				setTimeout(function (){
-					default_logo = logo.replace("-preview", "-default");
-					default_logo_value = $(default_logo).attr("src");
+					const default_logo = logo.replace("-preview", "-default");
+					const default_logo_value = $(default_logo).attr("src");
 
 					$(name + ":text").val(name_to_load).change();
 					$(info + ":text").val(info_to_load).change();
@@ -2244,12 +2237,12 @@
 				}, alt_waiting_time * 1000);
 
 				//Switch ON the panel if the autotrigger is ON
-				auto_trigger = name.replace("#", "");
+				let auto_trigger = name.replace("#", "");
 				auto_trigger = auto_trigger.replace("-name", "-autotrigger");
-				alt_switch = name.replace("#alt-", "");
+				let alt_switch = name.replace("#alt-", "");
 				alt_switch = alt_switch.replace("-name", "");
 
-				if (document.getElementById(auto_trigger).checked == true) {
+				if (document.getElementById(auto_trigger).checked && $("#lower-thirds-switch" + alt_switch).is(':not(:checked)')) {
 					$("#lower-thirds-switch" + alt_switch).prop('checked', true).change();
 				}
 				//console.log(name + "|" + info + "|" + logo + "|" + name_to_load + "|" + info_to_load + "|" + logo_to_load + "|" + alt_waiting_time);
@@ -2491,7 +2484,7 @@
 					case "1":
 						//Disable: align center | Enable: logo;
 						document.getElementById("alt-1-align-center").disabled = true;
-						if (document.getElementById("alt-1-align-center").checked == true){
+						if (document.getElementById("alt-1-align-center").checked){
 							$("#alt-1-align-left").prop('checked', true).change();
 						}
 						document.getElementById("alt-1-logo").disabled = false;
@@ -2502,7 +2495,7 @@
 						//Disable: logo | Enable: align center;
 						document.getElementById("alt-1-align-center").disabled = false;
 						document.getElementById("alt-1-logo").disabled = true;
-						if (document.getElementById("alt-1-logo").checked == true){
+						if (document.getElementById("alt-1-logo").checked){
 							$("#alt-1-logo").prop('checked', false).change();
 						}
 						document.getElementById("alt-1-background").classList.remove("locked");
@@ -2522,7 +2515,7 @@
 					case "1":
 						//Disable: align center | Enable: logo;
 						document.getElementById("alt-2-align-center").disabled = true;
-						if (document.getElementById("alt-2-align-center").checked == true){
+						if (document.getElementById("alt-2-align-center").checked){
 							$("#alt-2-align-left").prop('checked', true).change();
 						}
 						document.getElementById("alt-2-logo").disabled = false;
@@ -2531,7 +2524,7 @@
 						//Disable: logo | Enable: align center;
 						document.getElementById("alt-2-align-center").disabled = false;
 						document.getElementById("alt-2-logo").disabled = true;
-						if (document.getElementById("alt-2-logo").checked == true){
+						if (document.getElementById("alt-2-logo").checked){
 							$("#alt-2-logo").prop('checked', false).change();
 						}
 						break;
@@ -2545,7 +2538,7 @@
 					case "1":
 						//Disable: align center | Enable: logo;
 						document.getElementById("alt-3-align-center").disabled = true;
-						if (document.getElementById("alt-3-align-center").checked == true){
+						if (document.getElementById("alt-3-align-center").checked){
 							$("#alt-3-align-left").prop('checked', true).change();
 						}
 						document.getElementById("alt-3-logo").disabled = false;
@@ -2554,7 +2547,7 @@
 						//Disable: logo | Enable: align center;
 						document.getElementById("alt-3-align-center").disabled = false;
 						document.getElementById("alt-3-logo").disabled = true;
-						if (document.getElementById("alt-3-logo").checked == true){
+						if (document.getElementById("alt-3-logo").checked){
 							$("#alt-3-logo").prop('checked', false).change();
 						}
 						break;
@@ -2568,7 +2561,7 @@
 					case "1":
 						//Disable: align center | Enable: logo;
 						document.getElementById("alt-4-align-center").disabled = true;
-						if (document.getElementById("alt-4-align-center").checked == true){
+						if (document.getElementById("alt-4-align-center").checked){
 							$("#alt-4-align-left").prop('checked', true).change();
 						}
 						document.getElementById("alt-4-logo").disabled = false;
@@ -2577,7 +2570,7 @@
 						//Disable: logo | Enable: align center;
 						document.getElementById("alt-4-align-center").disabled = false;
 						document.getElementById("alt-4-logo").disabled = true;
-						if (document.getElementById("alt-4-logo").checked == true){
+						if (document.getElementById("alt-4-logo").checked){
 							$("#alt-4-logo").prop('checked', false).change();
 						}
 						break;
@@ -2618,19 +2611,19 @@
 				alt_3_turnoff = (received_data.alt_3_turnoff);
 				alt_4_turnoff = (received_data.alt_4_turnoff);
 
-				if (alt_1_turnoff){
+				if (alt_1_turnoff && $("#lower-thirds-switch1").is(':checked)')){
 					$("#lower-thirds-switch1").prop('checked', false).change();
 				}
-				if (alt_2_turnoff){
+				if (alt_2_turnoff && $("#lower-thirds-switch2").is(':checked)')){
 					$('#lower-thirds-switch2').prop('checked', false).change();
 				}
-				if (alt_3_turnoff){
+				if (alt_3_turnoff && $("#lower-thirds-switch3").is(':checked)')){
 					$('#lower-thirds-switch3').prop('checked', false).change();
 				}
-				if (alt_4_turnoff){
+				if (alt_4_turnoff && $("#lower-thirds-switch4").is(':checked)')){
 					$('#lower-thirds-switch4').prop('checked', false).change();
 				}
-				// console.log(alt_1_turnoff);
+
 				checkSwitches();
 			}
 
@@ -2638,12 +2631,12 @@
 
 			function function_send() {
 				//Switch Lock Active Mode ALT ON/OFF
-				global_lock_active = (document.getElementById("global-lock-active").checked == true) ? true : false;
+				global_lock_active = (document.getElementById("global-lock-active").checked) ? true : false;
 
-				alt_1_lock_active = (document.getElementById("alt-1-lock-active").checked == true) ? true : false;
-				alt_2_lock_active = (document.getElementById("alt-2-lock-active").checked == true) ? true : false;
-				alt_3_lock_active = (document.getElementById("alt-3-lock-active").checked == true) ? true : false;
-				alt_4_lock_active = (document.getElementById("alt-4-lock-active").checked == true) ? true : false;
+				alt_1_lock_active = (document.getElementById("alt-1-lock-active").checked) ? true : false;
+				alt_2_lock_active = (document.getElementById("alt-2-lock-active").checked) ? true : false;
+				alt_3_lock_active = (document.getElementById("alt-3-lock-active").checked) ? true : false;
+				alt_4_lock_active = (document.getElementById("alt-4-lock-active").checked) ? true : false;
 
 
 				//////////////////////////////
@@ -2731,7 +2724,7 @@
 				}
 
 				//Check Master Switch
-				if (document.getElementById("lower-thirds-masterswitch").checked == true) {
+				if (document.getElementById("lower-thirds-masterswitch").checked) {
 					masterSwitchIsOn = true;
 				} else {
 					masterSwitchIsOn = false;
@@ -2740,28 +2733,28 @@
 				//Check switches
 				if (masterSwitchIsOn) {
 					//Switch 1
-					if (document.getElementById("lower-thirds-switch1").checked == true){
+					if (document.getElementById("lower-thirds-switch1").checked){
 						alt_1_switch = "true";
 					} else {
 						alt_1_switch = "false";
 					}
 
 					//Switch 2
-					if (document.getElementById("lower-thirds-switch2").checked == true){
+					if (document.getElementById("lower-thirds-switch2").checked){
 						alt_2_switch = "true";
 					} else {
 						alt_2_switch = "false";
 					}
 
 					//Switch 3
-					if (document.getElementById("lower-thirds-switch3").checked == true){
+					if (document.getElementById("lower-thirds-switch3").checked){
 						alt_3_switch = "true";
 					} else {
 						alt_3_switch = "false";
 					}
 
 					//Switch 4
-					if (document.getElementById("lower-thirds-switch4").checked == true){
+					if (document.getElementById("lower-thirds-switch4").checked){
 						alt_4_switch = "true";
 					} else {
 						alt_4_switch = "false";
@@ -2782,29 +2775,29 @@
 				//////////////////////////////
 
 				//Switch Autoload ALT ON/OFF
-				alt_1_autoload = (document.getElementById("alt-1-autoload").checked == true) ? true : false;
-				alt_2_autoload = (document.getElementById("alt-2-autoload").checked == true) ? true : false;
-				alt_3_autoload = (document.getElementById("alt-3-autoload").checked == true) ? true : false;
-				alt_4_autoload = (document.getElementById("alt-4-autoload").checked == true) ? true : false;
+				alt_1_autoload = (document.getElementById("alt-1-autoload").checked) ? true : false;
+				alt_2_autoload = (document.getElementById("alt-2-autoload").checked) ? true : false;
+				alt_3_autoload = (document.getElementById("alt-3-autoload").checked) ? true : false;
+				alt_4_autoload = (document.getElementById("alt-4-autoload").checked) ? true : false;
 
 				//////////////////////////////
 
 				//Switch Autotrigger ALT ON/OFF
-				alt_1_autotrigger = (document.getElementById("alt-1-autotrigger").checked == true) ? true : false;
-				alt_2_autotrigger = (document.getElementById("alt-2-autotrigger").checked == true) ? true : false;
-				alt_3_autotrigger = (document.getElementById("alt-3-autotrigger").checked == true) ? true : false;
-				alt_4_autotrigger = (document.getElementById("alt-4-autotrigger").checked == true) ? true : false;
+				alt_1_autotrigger = document.getElementById("alt-1-autotrigger").checked;
+				alt_2_autotrigger = document.getElementById("alt-2-autotrigger").checked;
+				alt_3_autotrigger = document.getElementById("alt-3-autotrigger").checked;
+				alt_4_autotrigger = document.getElementById("alt-4-autotrigger").checked;
 
 
 				//////////////////////////////
 
 				//Switch One-shot Mode ALT ON/OFF
-				global_oneshot = (document.getElementById("global-oneshot").checked == true) ? true : false;
+				global_oneshot = (document.getElementById("global-oneshot").checked) ? true : false;
 
-				alt_1_oneshot = (document.getElementById("alt-1-oneshot").checked == true) ? true : false;
-				alt_2_oneshot = (document.getElementById("alt-2-oneshot").checked == true) ? true : false;
-				alt_3_oneshot = (document.getElementById("alt-3-oneshot").checked == true) ? true : false;
-				alt_4_oneshot = (document.getElementById("alt-4-oneshot").checked == true) ? true : false;
+				alt_1_oneshot = (document.getElementById("alt-1-oneshot").checked) ? true : false;
+				alt_2_oneshot = (document.getElementById("alt-2-oneshot").checked) ? true : false;
+				alt_3_oneshot = (document.getElementById("alt-3-oneshot").checked) ? true : false;
+				alt_4_oneshot = (document.getElementById("alt-4-oneshot").checked) ? true : false;
 
 				//////////////////////////////
 
@@ -2822,7 +2815,7 @@
 				//////////////////////////////
 
 				//Create Tooltips to show the contect of the slots
-				if (document.getElementById("set-tooltips").checked == true) {
+				if (document.getElementById("set-tooltips").checked) {
 					$('.panel-bottom > ul > li').each(function(){
 						var name_to_tooltip = $(this).children('.stored-name').text();
 						var info_to_tooltip = $(this).children('.stored-info').text();
@@ -2849,7 +2842,7 @@
 
 				//////////////////////////////
 
-				if (document.getElementById("set-switch-position").checked == true) {
+				if (document.getElementById("set-switch-position").checked) {
 					$('.switch').each(function(){
 						$(this).addClass("switch-left");
 					});
@@ -3306,11 +3299,9 @@
 				$('.logo-storable').each(function(){    
 					var id = $(this).attr('id');
 					var value = localStorage.getItem(id);
-					//console.log(id + ":" + value);
 					if(value != "undefined" && value != ""){
 						$(this).attr('src', value);
 					} else {
-						
 						//Set all to default the first time
 						if (id == "alt-1-logo-preview" || id == "alt-1-logo-default"){
 							$(this).attr('src', alt_1_logo_default);
@@ -3426,10 +3417,8 @@
 				checkSlots("#alt-3-memory-slots", "#alt-3-name", "#alt-3-info", "#alt-3-logo-preview");
 				checkSlots("#alt-4-memory-slots", "#alt-4-name", "#alt-4-info", "#alt-4-logo-preview");
 				checkLogos();
-
 				getAppearance();
-
-				checkSwitches();
+				// checkSwitches();
 				function_send();
 			}
 
@@ -3438,12 +3427,12 @@
 				updateHotkeys();
 			}
 
-			// localStorage.clear();
 			loadData();
 			updateCustomFontList();
 			refreshData();
-			setInterval(() => checkUpdates(), 1000);
+			checkSwitches();
 			saveData();
+			setInterval(() => checkUpdates(), 1000);
 
 		</script>
 
