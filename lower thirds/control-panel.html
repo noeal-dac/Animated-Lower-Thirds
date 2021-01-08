@@ -1254,6 +1254,10 @@
 			var alt_1_margin_v;
 			var alt_1_shadows;
 			var alt_1_font;
+			var alt_1_logo_size;
+			var alt_1_shadow_amount;
+			var alt_1_corners;
+			var alt_1_border_thickness_amount;
 
 			var alt_1_corners;
 			var alt_1_border_thickness_amount;
@@ -1268,6 +1272,10 @@
 			var alt_2_margin_v;
 			var alt_2_shadows;
 			var alt_2_font;
+			var alt_2_logo_size;
+			var alt_2_shadow_amount;
+			var alt_2_corners;
+			var alt_2_border_thickness_amount;
 
 			var alt_3_style = default_style;
 			var alt_3_inverse_ratio = default_inverse_ratio;
@@ -1279,6 +1287,10 @@
 			var alt_3_margin_v;
 			var alt_3_shadows;
 			var alt_3_font;
+			var alt_3_logo_size;
+			var alt_3_shadow_amount;
+			var alt_3_corners;
+			var alt_3_border_thickness_amount;
 
 			var alt_4_style = default_style;
 			var alt_4_inverse_ratio = default_inverse_ratio;
@@ -1290,6 +1302,10 @@
 			var alt_4_margin_v;
 			var alt_4_shadows;
 			var alt_4_font;
+			var alt_4_logo_size;
+			var alt_4_shadow_amount;
+			var alt_4_corners;
+			var alt_4_border_thickness_amount;
 
 			var hotkeyMasterSwitchOld = hotkeyMasterSwitch;
 			var hotkeySwitch1Old = hotkeySwitch1;
@@ -2405,53 +2421,28 @@
 
 				//Logo Size
 				alt_1_logo_size = Number($("#alt-1-logo-size").val()) * 0.25 + 3.5 || default_logo_size_em;
+				alt_2_logo_size = Number($("#alt-2-logo-size").val()) * 0.25 + 3.5 || default_logo_size_em;
+				alt_3_logo_size = Number($("#alt-3-logo-size").val()) * 0.25 + 3.5 || default_logo_size_em;
+				alt_4_logo_size = Number($("#alt-4-logo-size").val()) * 0.25 + 3.5 || default_logo_size_em;
 
 				//Shadow Amount
 				alt_1_shadow_amount = $("#alt-1-shadow-amount").val() * 0.1 || default_shadow_amount_em;
-
-				// alt_2_shadow_amount = $("#alt-2-shadow-amount").val() * 0.1;
-				// if (!alt_2_shadow_amount){
-				// 	alt_2_shadow_amount = 0.5;
-				// }
-				// alt_3_shadow_amount = $("#alt-3-shadow-amount").val() * 0.1;
-				// if (!alt_3_shadow_amount){
-				// 	alt_3_shadow_amount = 0.5;
-				// }
-				// alt_4_shadow_amount = $("#alt-4-shadow-amount").val() * 0.1;
-				// if (!alt_4_shadow_amount){
-				// 	alt_4_shadow_amount = 0.5;
-				// }
+				alt_2_shadow_amount = $("#alt-2-shadow-amount").val() * 0.1 || default_shadow_amount_em;
+				alt_3_shadow_amount = $("#alt-3-shadow-amount").val() * 0.1 || default_shadow_amount_em;
+				alt_4_shadow_amount = $("#alt-4-shadow-amount").val() * 0.1 || default_shadow_amount_em;
 
 				//Background Corners
 				alt_1_corners = (Number($("#alt-1-corners").val()) * 0.25) || default_corners;
-				// alt_2_corners = $("#alt-2-corners").val();
-				// if (!alt_2_corners){
-				// 	alt_2_corners = 0;
-				// }
-				// alt_3_corners = $("#alt-3-corners").val();
-				// if (!alt_3_corners){
-				// 	alt_3_corners = 0;
-				// }
-				// alt_4_corners = $("#alt-4-corners").val();
-				// if (!alt_4_corners){
-				// 	alt_4_corners = 0;
-				// }
+				alt_2_corners = (Number($("#alt-2-corners").val()) * 0.25) || default_corners;
+				alt_3_corners = (Number($("#alt-3-corners").val()) * 0.25) || default_corners;
+				alt_4_corners = (Number($("#alt-4-corners").val()) * 0.25) || default_corners;
 
 				//Border Thickness amount
 				alt_1_border_thickness_amount = $("#alt-1-border-thickness-amount").val() || default_border_thickness_amount;
-				// alt_2_border_thickness_amount = $("#alt-2-border-thickness-amount").val();
-				// if (!alt_2_border_thickness_amount){
-				// 	alt_2_border_thickness_amount = 0;
-				// }
-				// alt_3_border_thickness_amount = $("#alt-3-border-thickness-amount").val();
-				// if (!alt_3_border_thickness_amount){
-				// 	alt_3_border_thickness_amount = 0;
-				// }
-				// alt_4_border_thickness_amount = $("#alt-4-border-thickness-amount").val();
-				// if (!alt_4_border_thickness_amount){
-				// 	alt_4_border_thickness_amount = 0;
-				// }
-			
+				alt_2_border_thickness_amount = $("#alt-2-border-thickness-amount").val() || default_border_thickness_amount;
+				alt_3_border_thickness_amount = $("#alt-3-border-thickness-amount").val() || default_border_thickness_amount;
+				alt_4_border_thickness_amount = $("#alt-4-border-thickness-amount").val() || default_border_thickness_amount;
+
 				//Margin from de borders Horizontal and Vertical
 				alt_1_margin_h = $("#alt-1-margin-h").val() || default_margin_h;
 				alt_1_margin_v = $("#alt-1-margin-v").val() || default_margin_v;
