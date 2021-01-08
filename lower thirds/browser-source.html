@@ -151,15 +151,6 @@
 		let t4;
 		let s4;
 
-		let activeTime1_to_send;
-		let inactiveTime1_to_send;
-		let activeTime2_to_send;
-		let inactiveTime2_to_send;
-		let activeTime3_to_send;
-		let inactiveTime3_to_send;
-		let activeTime4_to_send;
-		let inactiveTime4_to_send;
-
 		let active1IsOn = 0;
 		let inactive1IsOn = 0;
 		let active2IsOn = 0;
@@ -169,15 +160,6 @@
 		let active4IsOn = 0;
 		let inactive4IsOn = 0;
 
-		let alt_1_wait_hide_logo;
-		let alt_2_wait_hide_logo;
-		let alt_3_wait_hide_logo;
-		let alt_4_wait_hide_logo;
-
-		let hide_logo_2 = false;
-		let hide_logo_3 = false;
-		let hide_logo_4 = false;
-
 		let alt_1_turnoff;
 		let alt_2_turnoff;
 		let alt_3_turnoff;
@@ -185,14 +167,14 @@
 
 
 		function animationIn(animation) {
-			elementAnim = document.getElementById(animation);
+			const elementAnim = document.getElementById(animation);
 			elementAnim.classList.remove("animation-out");
 			void elementAnim.offsetWidth;
 			elementAnim.classList.add("animation-in");
 		}
 
 		function animationOut(animation) {
-			elementAnim = document.getElementById(animation);
+			const elementAnim = document.getElementById(animation);
 			elementAnim.classList.remove("animation-in");
 			void elementAnim.offsetWidth;
 			elementAnim.classList.add("animation-out");
@@ -879,14 +861,14 @@
 
 		//Send data to Control Panel
 		function function_send() {
-			activeTime1_to_send = c1 - 1;
-			inactiveTime1_to_send = d1 - 1;
-			activeTime2_to_send = c2 - 1;
-			inactiveTime2_to_send = d2 - 1;
-			activeTime3_to_send = c3 - 1;
-			inactiveTime3_to_send = d3 - 1;
-			activeTime4_to_send = c4 - 1;
-			inactiveTime4_to_send = d4 - 1;
+			let activeTime1_to_send = c1 - 1;
+			let inactiveTime1_to_send = d1 - 1;
+			let activeTime2_to_send = c2 - 1;
+			let inactiveTime2_to_send = d2 - 1;
+			let activeTime3_to_send = c3 - 1;
+			let inactiveTime3_to_send = d3 - 1;
+			let activeTime4_to_send = c4 - 1;
+			let inactiveTime4_to_send = d4 - 1;
 
 			if (activeTime1_to_send < 0){
 				activeTime1_to_send = 0;
@@ -923,15 +905,13 @@
 		}
 
 		function refreshData() {
-		    x = 1; // Refresh time multiplier
-
 		    if (mode != "preview"){
 		    	function_send();
 		    }
-
-		    setTimeout(refreshData, x * 1000);
 		}
-		refreshData();
+
+		const x = 1; // Refresh time multiplier
+		setInterval(refreshData, x * 1000);
 
 	</script>
 

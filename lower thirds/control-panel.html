@@ -69,7 +69,7 @@
 						<div class="default-options">
 							<div class="settings-title"></div>
 							<div class="settings-inputs">
-								<label><input class="checkbox-storable" type="checkbox" id="set-preview">Disable preview window</label>
+								<label><input class="checkbox-storable" type="checkbox" id="set-preview">Enable preview window</label>
 								<label><input class="checkbox-storable" type="checkbox" id="set-slot-numbers">Hide numbers of the memory slots</label>
 								<label><input class="checkbox-storable" type="checkbox" id="set-switch-position">Switches on the left</label>
 								<label><input class="checkbox-storable" type="checkbox" id="set-tooltips">Show tooltips with the stored content</label>
@@ -2055,38 +2055,41 @@
 			//Memory Slots System
 			function checkSlots (memory_slot, name, info, logo) {
 				$("ul" + memory_slot + " li").each(function(){
-					check_slot_id = $(this).attr('id');
-					check_name_id = $(this).children('.stored-name').attr('id');
-					check_info_id = $(this).children('.stored-info').attr('id');
-					check_logo_id = $(this).children('.stored-logo').attr('id');
-					check_is_default_logo = $(logo).hasClass('default');
-					name_value = $(this).children('.stored-name').text();
-					info_value = $(this).children('.stored-info').text();
-					logo_value = $(this).children('.stored-logo').text();
+					const check_slot_id = $(this).attr('id');
+					const check_name_id = $(this).children('.stored-name').attr('id');
+					const check_info_id = $(this).children('.stored-info').attr('id');
+					const check_logo_id = $(this).children('.stored-logo').attr('id');
+					const check_is_default_logo = $(logo).hasClass('default');
+					const name_value = $(this).children('.stored-name').text();
+					const info_value = $(this).children('.stored-info').text();
+					const logo_value = $(this).children('.stored-logo').text();
+
+					let check_slot_id_element = document.getElementById(check_slot_id);
+
 					//If stored data has no logo, set to default
 					if (name_value && info_value && !logo_value) {
 						$(this).children('.stored-logo').text("default");
 					}
 					if ($('#' + check_name_id).is(':empty') && $('#' + check_info_id).is(':empty') && $('#' + check_logo_id).is(':empty')){
-			  			document.getElementById(check_slot_id).classList.remove("stored");
+						check_slot_id_element.classList.remove("stored");
 					} else {
-						document.getElementById(check_slot_id).classList.add("stored");
+						check_slot_id_element.classList.add("stored");
 					}
 					//Check active slots
 					if ($(name).val() == name_value && $(info).val() == info_value && ($(logo).attr("src") == logo_value || (check_is_default_logo && logo_value == "default"))){
 						if(name_value && info_value && logo_value){
-							document.getElementById(check_slot_id).classList.add("active-slot");
-							document.getElementById(check_slot_id).classList.remove("next-to-load");
+							check_slot_id_element.classList.add("active-slot");
+							check_slot_id_element.classList.remove("next-to-load");
 						}
 					} else {
-						document.getElementById(check_slot_id).classList.remove("active-slot");
+						check_slot_id_element.classList.remove("active-slot");
 					}
 
 					//Check if it has default logo
 					if (logo_value && logo_value != "default"){
-						document.getElementById(check_slot_id).classList.add("custom-logo");
+						check_slot_id_element.classList.add("custom-logo");
 					} else {
-						document.getElementById(check_slot_id).classList.remove("custom-logo");
+						check_slot_id_element.classList.remove("custom-logo");
 					}
 
 				});
@@ -2869,7 +2872,7 @@
 				//////////////////////////////
 
 				//Switch Preview ALT ON/OFF
-				if (document.getElementById("set-preview").checked == false) {
+				if (document.getElementById("set-preview").checked) {
 					$("#alt-preview").removeClass("hide");
 					//Hide preview butons
 					$('.preview-btn').each(function(){
@@ -3294,8 +3297,10 @@
 				$('.storable').each(function(){    
 					var id = $(this).attr('id');
 					var value = localStorage.getItem(id);
-					
-					$(this).val(value);              
+
+					if(value) {
+						$(this).val(value);
+					}
 				});
 
 				$('.logo-storable').each(function(){    
@@ -3331,7 +3336,11 @@
 
 				$('.checkbox-storable, .radio-storable').each(function(){
                     var id = $(this).attr('id');
-                    $(this).prop('checked', localStorage.getItem(id) === 'true');
+					var value = localStorage.getItem(id);
+
+					if (value) {
+						$(this).prop('checked', localStorage.getItem(id) === 'true');
+					}
                 });
 
 				$('.title-storable').each(function(){    
@@ -3422,20 +3431,18 @@
 
 				checkSwitches();
 				function_send();
-				// setTimeout(refreshData, x*1000);
 			}
 
 			function checkUpdates() {
 				checkHotkeys();
 				updateHotkeys();
-				setTimeout(checkUpdates, 1000);
 			}
 
 			// localStorage.clear();
 			loadData();
 			updateCustomFontList();
 			refreshData();
-			checkUpdates();
+			setInterval(() => checkUpdates(), 1000);
 			saveData();
 
 		</script>
