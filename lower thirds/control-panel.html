@@ -1121,6 +1121,76 @@
 		</div>
 
 		<script>
+			/**
+			 *
+			 * DEFAULT VALUES
+			 *
+			 */
+			const default_style = 1;
+			const default_size = 24;
+			const default_margin_h = 4;
+			const default_margin_v = 4;
+
+			const default_inverse_ratio = 9;
+			const default_line_spacing = 0;
+
+			const default_logo = true;
+			const default_logo_size = 1;
+			const default_shadow = false;
+			const default_shadow_amount = 5;
+			const default_background = true;
+			const default_style_color_1 = '#D54141';
+			const default_style_color_2 = '#222222';
+
+			const default_corners = 0;
+			const default_border_thickness = false;
+			const default_border_thickness_amount = 0;
+			const default_border_color = false;
+			const default_style_color_3 = '#D54141';
+			const default_style_color_4 = '#222222';
+
+			const default_name_transform = true;
+			const default_name_weight = true;
+			const default_name_color = '#F2F2F2';
+
+			const default_info_transform = false;
+			const default_info_weight = false;
+			const default_info_color = '#8A8A8A';
+
+			function loadDefaultValues() {
+				$("[id^=alt-][id$=-style]").val(default_style);
+				$("[id^=alt-][id$=-size]").val(default_size);
+				$("[id^=alt-][id$=-margin-h]").val(default_margin_h);
+				$("[id^=alt-][id$=-margin-v]").val(default_margin_v);
+
+				$("[id^=alt-][id$=-inverse-ratio]").val(default_inverse_ratio);
+				$("[id^=alt-][id$=-line-spacing]").val(default_line_spacing);
+
+				$("[id^=alt-][id$=-logo]").prop('checked', default_logo);
+				$("[id^=alt-][id$=-logo-size]").val(default_logo_size);
+				$("[id^=alt-][id$=-shadow]").prop('checked', default_shadow);
+				$("[id^=alt-][id$=-shadow-amount]").val(default_shadow_amount);
+				$("[id^=alt-][id$=-background]").val('checked', default_background);
+				$("[id^=alt-][id$=-style-color-1]").val(default_style_color_1);
+				$("[id^=alt-][id$=-style-color-2]").val(default_style_color_2);
+
+				$("[id^=alt-][id$=-corners]").val(default_corners);
+				$("[id^=alt-][id$=-border-thickness]").prop('checked', default_border_thickness);
+				$("[id^=alt-][id$=-border-thickness-amount]").val(default_border_thickness_amount);
+				$("[id^=alt-][id$=-border-color]").prop('checked', default_border_color);
+				$("[id^=alt-][id$=-style-color-3]").val(default_style_color_3);
+				$("[id^=alt-][id$=-style-color-4]").val(default_style_color_4);
+
+				$("[id^=alt-][id$=-name-transform]").prop('checked', default_name_transform);
+				$("[id^=alt-][id$=-name-weight]").prop('checked', default_name_weight);
+				$("[id^=alt-][id$=-name-color]").val(default_name_color);
+
+				$("[id^=alt-][id$=-info-transform]").prop('checked', default_info_transform);
+				$("[id^=alt-][id$=-info-weight]").prop('checked', default_info_weight);
+				$("[id^=alt-][id$=-info-color]").val(default_info_color);
+			}
+
+
 			var bc = new BroadcastChannel('obs-lower-thirds-channel'); //Send to browser source
 			var bcr = new BroadcastChannel('obs-lower-thirds-channel2'); //Receives from the source
 			var bcp = new BroadcastChannel('obs-lower-thirds-preview'); //Send to preview windows
@@ -1129,7 +1199,6 @@
 
 			var slotDeleted = false;
 
-			var fontlist_urls;
 			var new_font_to_send;
 
 			var alt_1_active_time_monitor;
@@ -1168,14 +1237,13 @@
 			var alt_3_lock_active;
 			var alt_4_lock_active;
 
-
 			var alt_1_logo_default = "../logos/logo_1.png";
 			var alt_2_logo_default = "../logos/logo_2.png";
 			var alt_3_logo_default = "../logos/logo_3.png";
 			var alt_4_logo_default = "../logos/logo_4.png";
 
-			var alt_1_style = 1;
-			var alt_1_inverse_ratio = 9;
+			var alt_1_style = default_style;
+			var alt_1_inverse_ratio = default_inverse_ratio;
 			var alt_1_name_size;
 			var alt_1_info_size;
 			var alt_1_size;
@@ -1188,8 +1256,8 @@
 			var alt_1_corners;
 			var alt_1_border_thickness_amount;
 
-			var alt_2_style = 1;
-			var alt_2_inverse_ratio = 9;
+			var alt_2_style = default_style;
+			var alt_2_inverse_ratio = default_inverse_ratio;
 			var alt_2_name_size;
 			var alt_2_info_size;
 			var alt_2_size;
@@ -1199,8 +1267,8 @@
 			var alt_2_shadows;
 			var alt_2_font;
 
-			var alt_3_style = 1;
-			var alt_3_inverse_ratio = 9;
+			var alt_3_style = default_style;
+			var alt_3_inverse_ratio = default_inverse_ratio;
 			var alt_3_name_size;
 			var alt_3_info_size;
 			var alt_3_size;
@@ -1210,8 +1278,8 @@
 			var alt_3_shadows;
 			var alt_3_font;
 
-			var alt_4_style = 1;
-			var alt_4_inverse_ratio = 9;
+			var alt_4_style = default_style;
+			var alt_4_inverse_ratio = default_inverse_ratio;
 			var alt_4_name_size;
 			var alt_4_info_size;
 			var alt_4_size;
@@ -1276,11 +1344,8 @@
 			var alt_3_turnoff = false;
 			var alt_4_turnoff = false;
 
-
 			var acc = document.getElementsByClassName("accordion");
-			var i;
-
-			for (i = 0; i < acc.length; i++) {
+			for (var i = 0; i < acc.length; i++) {
 			  acc[i].onclick = function() {
 			    this.classList.toggle("active");
 			    var hidable = this.nextElementSibling;
@@ -1298,8 +1363,7 @@
 			//acc[4].onclick()
 
 			var more = document.getElementsByClassName("more");
-			// var m;
-			for (i = 0; i < more.length; i++) {
+			for (var i = 0; i < more.length; i++) {
 			  more[i].onclick = function() {
 			    this.classList.toggle("active");
 			    var hideMore = this.nextElementSibling;
@@ -1361,7 +1425,7 @@
 				customFonts = Number(localStorage.getItem("customFonts"));
 			}
 	
-			for (i = 0; i < customFonts; i++) {
+			for (var i = 0; i < customFonts; i++) {
 				font_number = i + 1;
 				$('#custom-font-list ul').append('<li><div class="font-name-added slot-storable" id="font-name-added-' + font_number + '"></div><div class="font-url-added slot-storable" id="font-url-added-' + font_number + '"></div><div class="delete-font"><div class="icon icon-trash"></div></div></li>');
 			}
@@ -2293,100 +2357,52 @@
 
 			function getAppearance () {
 				//Lower Third Style
-				alt_1_style = $("#alt-1-style").val();
-				if (!alt_1_style){
-					alt_1_style = 1;
-					$("#alt-1-style").val("1");
-				}
-				alt_2_style = $("#alt-2-style").val();
-				if (!alt_2_style){
-					alt_2_style = 1;
-					$("#alt-2-style").val("1");
-				}
-				alt_3_style = $("#alt-3-style").val();
-				if (!alt_3_style){
-					alt_3_style = 1;
-					$("#alt-3-style").val("1");
-				}
-				alt_4_style = $("#alt-4-style").val();
-				if (!alt_4_style){
-					alt_4_style = 1;
-					$("#alt-4-style").val("1");
-				}
+				alt_1_style = $("#alt-1-style").val() || default_style;
+				$("#alt-1-style").val(alt_1_style);
+				alt_2_style = $("#alt-2-style").val() || default_style;
+				$("#alt-2-style").val(alt_2_style);
+				alt_3_style = $("#alt-3-style").val() || default_style;
+				$("#alt-3-style").val(alt_3_style);
+				alt_4_style = $("#alt-4-style").val()  || default_style;
+				$("#alt-4-style").val(alt_4_style);
 
 				//Calculate Text Sizes using the inverse ratio
-				alt_1_inverse_ratio = $("#alt-1-inverse-ratio").val();
-				if (!alt_1_inverse_ratio){
-					alt_1_inverse_ratio = 9;
-				}
+				alt_1_inverse_ratio = $("#alt-1-inverse-ratio").val() || default_inverse_ratio;
 				alt_1_name_size = 1 + alt_1_inverse_ratio * 0.1;
 				alt_1_info_size = 2 - alt_1_inverse_ratio * 0.1;
 
-				alt_2_inverse_ratio = $("#alt-2-inverse-ratio").val();
-				if (!alt_2_inverse_ratio){
-					alt_2_inverse_ratio = 9;
-				}
+				alt_2_inverse_ratio = $("#alt-2-inverse-ratio").val() || default_inverse_ratio;
 				alt_2_name_size = 1 + alt_2_inverse_ratio * 0.1;
 				alt_2_info_size = 2 - alt_2_inverse_ratio * 0.1;				
 
-				alt_3_inverse_ratio = $("#alt-3-inverse-ratio").val();
-				if (!alt_3_inverse_ratio){
-					alt_3_inverse_ratio = 9;
-				}
+				alt_3_inverse_ratio = $("#alt-3-inverse-ratio").val() || default_inverse_ratio;
 				alt_3_name_size = 1 + alt_3_inverse_ratio * 0.1;
 				alt_3_info_size = 2 - alt_3_inverse_ratio * 0.1;
 
-				alt_4_inverse_ratio = $("#alt-4-inverse-ratio").val();
-				if (!alt_4_inverse_ratio){
-					alt_4_inverse_ratio = 9;
-				}
+				alt_4_inverse_ratio = $("#alt-4-inverse-ratio").val() || default_inverse_ratio;
 				alt_4_name_size = 1 + alt_4_inverse_ratio * 0.1;
 				alt_4_info_size = 2 - alt_4_inverse_ratio * 0.1;				
 
 				//Line Spacing
-				alt_1_line_spacing = $("#alt-1-line-spacing").val();
-				if (!alt_1_line_spacing){
-					alt_1_line_spacing = 0;
-				}
-				alt_2_line_spacing = $("#alt-2-line-spacing").val();
-				if (!alt_2_line_spacing){
-					alt_2_line_spacing = 0;
-				}
-				alt_3_line_spacing = $("#alt-3-line-spacing").val();
-				if (!alt_3_line_spacing){
-					alt_3_line_spacing = 0;
-				}
-				alt_4_line_spacing = $("#alt-4-line-spacing").val();
-				if (!alt_4_line_spacing){
-					alt_4_line_spacing = 0;
-				}
+				alt_1_line_spacing = $("#alt-1-line-spacing").val() || default_line_spacing;
+				alt_2_line_spacing = $("#alt-2-line-spacing").val() || default_line_spacing;
+				alt_3_line_spacing = $("#alt-3-line-spacing").val() || default_line_spacing;
+				alt_4_line_spacing = $("#alt-4-line-spacing").val() || default_line_spacing;
 
 				//Lower Third Size
-				alt_1_size = $("#alt-1-size").val();
-				if (!alt_1_size){
-					alt_1_size = 24;
-				}
-				alt_2_size = $("#alt-2-size").val();
-				if (!alt_2_size){
-					alt_2_size = 24;
-				}
-				alt_3_size = $("#alt-3-size").val();
-				if (!alt_3_size){
-					alt_3_size = 24;
-				}
-				alt_4_size = $("#alt-4-size").val();
-				if (!alt_4_size){
-					alt_4_size = 24;
-				}
+				alt_1_size = $("#alt-1-size").val() || default_size;
+				alt_2_size = $("#alt-2-size").val() || default_size;
+				alt_3_size = $("#alt-3-size").val() || default_size;
+				alt_4_size = $("#alt-4-size").val() || default_size;
 
 				//Logo Size
-				alt_1_logo_size = Number($("#alt-1-logo-size").val()) * 0.25 + 3.5;
+				alt_1_logo_size = Number($("#alt-1-logo-size").val()) * 0.25 + 3.5 || default_logo_size; // 3.5???
 				if (!alt_1_logo_size){
 					alt_1_logo_size = 3.5;
 				}
 
 				//Shadow Amount
-				alt_1_shadow_amount = $("#alt-1-shadow-amount").val() * 0.1;
+				alt_1_shadow_amount = $("#alt-1-shadow-amount").val() * 0.1 || default_shadow_amount; // 0.5????
 				if (!alt_1_shadow_amount){
 					alt_1_shadow_amount = 0.5;
 				}
@@ -2404,10 +2420,7 @@
 				// }
 
 				//Background Corners
-				alt_1_corners = Number($("#alt-1-corners").val()) * 0.25;
-				if (!alt_1_corners){
-					alt_1_corners = 0;
-				}
+				alt_1_corners = (Number($("#alt-1-corners").val()) * 0.25) || default_corners;
 				// alt_2_corners = $("#alt-2-corners").val();
 				// if (!alt_2_corners){
 				// 	alt_2_corners = 0;
@@ -2422,10 +2435,7 @@
 				// }
 
 				//Border Thickness amount
-				alt_1_border_thickness_amount = $("#alt-1-border-thickness-amount").val();
-				if (!alt_1_border_thickness_amount){
-					alt_1_border_thickness_amount = 0;
-				}
+				alt_1_border_thickness_amount = $("#alt-1-border-thickness-amount").val() || default_border_thickness_amount;
 				// alt_2_border_thickness_amount = $("#alt-2-border-thickness-amount").val();
 				// if (!alt_2_border_thickness_amount){
 				// 	alt_2_border_thickness_amount = 0;
@@ -2440,41 +2450,17 @@
 				// }
 			
 				//Margin from de borders Horizontal and Vertical
-				alt_1_margin_h = $("#alt-1-margin-h").val();
-				if (!alt_1_margin_h){
-					alt_1_margin_h = 4;
-				}
-				alt_1_margin_v = $("#alt-1-margin-v").val();
-				if (!alt_1_margin_v){
-					alt_1_margin_v = 4;
-				}
+				alt_1_margin_h = $("#alt-1-margin-h").val() || default_margin_h;
+				alt_1_margin_v = $("#alt-1-margin-v").val() || default_margin_v;
 
-				alt_2_margin_h = $("#alt-2-margin-h").val();
-				if (!alt_2_margin_h){
-					alt_2_margin_h = 4;
-				}
-				alt_2_margin_v = $("#alt-2-margin-v").val();
-				if (!alt_2_margin_v){
-					alt_2_margin_v = 4;
-				}
+				alt_2_margin_h = $("#alt-2-margin-h").val() || default_margin_h;
+				alt_2_margin_v = $("#alt-2-margin-v").val() || default_margin_v;
 
-				alt_3_margin_h = $("#alt-3-margin-h").val();
-				if (!alt_3_margin_h){
-					alt_3_margin_h = 4;
-				}
-				alt_3_margin_v = $("#alt-3-margin-v").val();
-				if (!alt_3_margin_v){
-					alt_3_margin_v = 4;
-				}
+				alt_3_margin_h = $("#alt-3-margin-h").val() || default_margin_h;
+				alt_3_margin_v = $("#alt-3-margin-v").val() || default_margin_v;
 
-				alt_4_margin_h = $("#alt-4-margin-h").val();
-				if (!alt_4_margin_h){
-					alt_4_margin_h = 4;
-				}
-				alt_4_margin_v = $("#alt-4-margin-v").val();
-				if (!alt_4_margin_v){
-					alt_4_margin_v = 4;
-				}
+				alt_4_margin_h = $("#alt-4-margin-h").val() || default_margin_h;
+				alt_4_margin_v = $("#alt-4-margin-v").val() || default_margin_v;
 
 				styleRestrictions();
 			}
@@ -3443,6 +3429,7 @@
 				updateHotkeys();
 			}
 
+			loadDefaultValues();
 			loadData();
 			updateCustomFontList();
 			refreshData();
