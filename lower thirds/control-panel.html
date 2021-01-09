@@ -3415,7 +3415,7 @@
 				checkSlots("#alt-3-memory-slots", "#alt-3-name", "#alt-3-info", "#alt-3-logo-preview");
 				checkSlots("#alt-4-memory-slots", "#alt-4-name", "#alt-4-info", "#alt-4-logo-preview");
 				getAppearance();
-				// checkSwitches();
+				checkSwitches();
 				function_send();
 			}
 
@@ -3430,7 +3430,7 @@
 			refreshData();
 			checkSwitches();
 			saveData();
-			setInterval(() => checkUpdates(), 1000);
+			setInterval(() => checkUpdates(), 200);
 
 		</script>
 
