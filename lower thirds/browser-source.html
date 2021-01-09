@@ -912,6 +912,7 @@
 
 		const x = 1; // Refresh time multiplier
 		setInterval(refreshData, x * 1000);
+		bcr.postMessage({resend: true});
 
 	</script>
 
