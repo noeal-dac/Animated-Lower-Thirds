@@ -3376,6 +3376,13 @@
 					refreshData();
 					var id = $(this).attr('id');
 					localStorage.setItem(id, $(this).is(':checked'));
+
+					// Check for a twin chekcbox
+					if ($(this).hasClass('twin-checkbox')) {
+						const twin =$(this).parents('.grid-row').find('.twin-checkbox').not(this);
+						id = twin.attr('id');
+						localStorage.setItem(id, twin.is(':checked'));
+					}
 				});
 
 				$('.radio-storable').change(function(){
