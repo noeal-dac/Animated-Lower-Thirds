@@ -47,68 +47,79 @@
 					</div>
 					<label class="more"><div class="icon icon-angle-down"></div></label>
 					<div id="more-settings" class="hide-more">
-						<div id="theme-options">
-							<div class="settings-title">Theme</div>
-							<div class="settings-inputs">
-								<select name="theme" id="theme" class="select-settings-storable" onchange="changeTheme(this.value)"></select>
-							</div>
+						<div class="tab">
+							<button id="defaultTab" class="tablinks" onclick="openTab(this, 'appearance')">Appearance</button>
+							<button class="tablinks" onclick="openTab(this, 'customs')">Customs</button>
+							<button class="tablinks" onclick="openTab(this, 'system')">System</button>
 						</div>
-						<div id="fonts-options">
-							<div class="settings-title">Custom Font</div>
-							<div class="settings-inputs">
-								<input id="new-font-name" placeholder="Font Family" tabindex="51">
-								<input id="new-font-url" placeholder="@import url" tabindex="52">
-								<div id="add-new-font" class="add"><div class="icon icon-plus-square"></div></div>
-							</div>
-						</div>
-						<div id="custom-font-list">
-							<ul>
-							<!--custom fonts-->
-							</ul>
-						</div>
-						<div class="default-options">
-							<div class="settings-title"></div>
-							<div class="settings-inputs">
-								<label><input class="checkbox-storable" type="checkbox" id="set-preview">Enable preview window</label>
-								<label><input class="checkbox-storable" type="checkbox" id="set-slot-numbers">Hide numbers of the memory slots</label>
-								<label><input class="checkbox-storable" type="checkbox" id="set-switch-position">Switches on the left</label>
-								<label><input class="checkbox-storable" type="checkbox" id="set-tooltips">Show tooltips with the stored content</label>
-							</div>
-						</div>
-						<div class="logos-options">
-							<div class="settings-title">Default Logos</div>
-							<div class="settings-inputs">
-								<div class="logo-container default" onclick="openLogoPopup('alt-1-logo-default', 'alt-1-logo-default')">
-									<div class="logo-numbers">1</div>
-									<img id="alt-1-logo-default" class="logo-storable alt-logo-default" >
+						<!-- Tab content -->
+						<div id="tab-appearance" class="tabcontent" >
+							<div id="theme-options">
+								<div class="settings-title">Theme</div>
+								<div class="settings-inputs">
+									<select name="theme" id="theme" class="select-settings-storable" onchange="changeTheme(this.value)"></select>
 								</div>
-								<div class="logo-container default" onclick="openLogoPopup('alt-2-logo-default', 'alt-2-logo-default')">
-									<div class="logo-numbers">2</div>
-									<img id="alt-2-logo-default" class="logo-storable alt-logo-default" >
-								</div>
-								<div class="logo-container default" onclick="openLogoPopup('alt-3-logo-default', 'alt-3-logo-default')">
-									<div class="logo-numbers">3</div>
-									<img id="alt-3-logo-default" class="logo-storable alt-logo-default" >
-								</div>
-								<div class="logo-container default" onclick="openLogoPopup('alt-4-logo-default', 'alt-4-logo-default')">
-									<div class="logo-numbers">4</div>
-									<img id="alt-4-logo-default" class="logo-storable alt-logo-default" >
+							</div>
+							<div class="default-options">
+								<div class="settings-title"></div>
+								<div class="settings-inputs">
+									<label><input class="checkbox-storable" type="checkbox" id="set-preview">Enable preview window</label>
+									<label><input class="checkbox-storable" type="checkbox" id="set-slot-numbers">Hide numbers of the memory slots</label>
+									<label><input class="checkbox-storable" type="checkbox" id="set-switch-position">Switches on the left</label>
+									<label><input class="checkbox-storable" type="checkbox" id="set-tooltips">Show tooltips with the stored content</label>
 								</div>
 							</div>
 						</div>
 
-						<div class="divider"></div>
-
-						<div class="bottom-options">
-							<div class="settings-title">Backup Data</div>
-							<div class="settings-inputs">
-								<div class="import-file-btn">
-									<label for="importFile">Import</label>
-									<input id="importFile" type="file"/>
+						<div id="tab-customs" class="tabcontent" >
+							<div id="fonts-options">
+								<div class="settings-title">Custom Font</div>
+								<div class="settings-inputs">
+									<input id="new-font-name" placeholder="Font Family" tabindex="51">
+									<input id="new-font-url" placeholder="@import url" tabindex="52">
+									<div id="add-new-font" class="add"><div class="icon icon-plus-square"></div></div>
 								</div>
-								<input type="text" id="dataInput">
-								<div class="btn-settings" onclick="exportData()">Export</div>
-								<div class="btn-settings" onclick="openResetPopup()">Reset</div>
+							</div>
+							<div id="custom-font-list">
+								<ul>
+									<!--custom fonts-->
+								</ul>
+							</div>
+							<div class="logos-options">
+								<div class="settings-title">Default Logos</div>
+								<div class="settings-inputs">
+									<div class="logo-container default" onclick="openLogoPopup('alt-1-logo-default', 'alt-1-logo-default')">
+										<div class="logo-numbers">1</div>
+										<img id="alt-1-logo-default" class="logo-storable alt-logo-default" >
+									</div>
+									<div class="logo-container default" onclick="openLogoPopup('alt-2-logo-default', 'alt-2-logo-default')">
+										<div class="logo-numbers">2</div>
+										<img id="alt-2-logo-default" class="logo-storable alt-logo-default" >
+									</div>
+									<div class="logo-container default" onclick="openLogoPopup('alt-3-logo-default', 'alt-3-logo-default')">
+										<div class="logo-numbers">3</div>
+										<img id="alt-3-logo-default" class="logo-storable alt-logo-default" >
+									</div>
+									<div class="logo-container default" onclick="openLogoPopup('alt-4-logo-default', 'alt-4-logo-default')">
+										<div class="logo-numbers">4</div>
+										<img id="alt-4-logo-default" class="logo-storable alt-logo-default" >
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div id="tab-system" class="tabcontent" >
+							<div class="bottom-options">
+								<div class="settings-title">Backup Data</div>
+								<div class="settings-inputs">
+									<div class="import-file-btn">
+										<label for="importFile">Import</label>
+										<input id="importFile" type="file"/>
+									</div>
+									<input type="text" id="dataInput">
+									<div class="btn-settings" onclick="exportData()">Export</div>
+									<div class="btn-settings" onclick="openResetPopup()">Reset</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -1068,7 +1079,7 @@
 				<div class="form-input">
 					<div class="file-btns">
 						<label for="logo-file">Choose image</label>
-						<input type="file" id="logo-file" accept="image/*" onchange="showPreview(event);">
+						<input type="file" id="logo-file" accept="image/*" onchange="showPreview(this);">
 						<div class="btn-remove" onclick="removeLogoPopup()"><div class="icon-btn icon icon-trash"></div></div>
 					</div>
 					<div id="file-preview" class="no-image">
@@ -1110,13 +1121,13 @@
 
 			<div id='fileNames'> </div>
 
-			<!-- <div id="alt-preview" class="active">
+			<div id="alt-preview" class="active">
 				<label><div class="icon icon-search"></div></label>
 				<div id="toggle-preview" class="active"><div class="icon icon-chevron-down"></div></div>
 				<div class="embed-container">
 				    <iframe id="myiframe" src="./browser-source.html?mode=preview" frameborder="0" allowfullscreen></iframe>
 				</div>
-			</div> -->
+			</div>
 
 		</div>
 
@@ -1364,41 +1375,47 @@
 
 			var acc = document.getElementsByClassName("accordion");
 			for (var i = 0; i < acc.length; i++) {
-			  acc[i].onclick = function() {
-			    this.classList.toggle("active");
-			    var hidable = this.nextElementSibling;
-			    if (hidable.style.maxHeight){
-			      hidable.style.maxHeight = null;
-			    } else {
-			      hidable.style.maxHeight = hidable.scrollHeight + "px";
-			    } 
-			  }
+				acc[i].onclick = function () {
+					this.classList.toggle("active");
+					var hidable = this.nextElementSibling;
+					if (hidable.style.maxHeight) {
+						hidable.style.maxHeight = null;
+					} else {
+						hidable.style.maxHeight = hidable.scrollHeight + "px";
+					}
+				}
 			}
-			//acc[0].onclick() //Open the Main Settings accordion at startup.
-			//acc[1].onclick()
-			//acc[2].onclick()
-			//acc[3].onclick()
-			//acc[4].onclick()
 
 			var more = document.getElementsByClassName("more");
 			for (var i = 0; i < more.length; i++) {
-			  more[i].onclick = function() {
-			    this.classList.toggle("active");
-			    var hideMore = this.nextElementSibling;
-			    if (hideMore.style.maxHeight){
-			      hideMore.style.maxHeight = null;
-			    } else {
-			      hideMore.style.maxHeight = hideMore.scrollHeight + "px";
-				  
-				  //Increase the heigh of the main settings panel
-				  var hidable = document.getElementById("global-configuration").style.maxHeight;
-				  hidable = Number(hidable.replace(/px/g,''));
-				  document.getElementById("global-configuration").style.maxHeight = hidable + hideMore.scrollHeight + "px";
-			    } 
-			  }
+				more[i].onclick = function () {
+					this.classList.toggle("active");
+					var hideMore = this.nextElementSibling;
+					if (hideMore.style.maxHeight) {
+						hideMore.style.maxHeight = null;
+					} else {
+						hideMore.style.maxHeight = hideMore.scrollHeight + "px";
+
+						//Increase the heigh of the main settings panel
+						var hidable = document.getElementById("global-configuration").style.maxHeight;
+						hidable = Number(hidable.replace(/px/g, ''));
+						document.getElementById("global-configuration").style.maxHeight = hidable + hideMore.scrollHeight + "px";
+					}
+				}
 			}
 
-			//more[0].onclick()
+			function updateMoreMaxHeight() {
+				const element = document.getElementsByClassName("more")[0];
+				if ($('#more-settings').css('max-height') != "0px") {
+					var hideMore = element.nextElementSibling;
+					hideMore.style.maxHeight = hideMore.scrollHeight + "px";
+
+					//Increase the heigh of the main settings panel
+					var hidable = document.getElementById("global-configuration").style.maxHeight;
+					hidable = Number(hidable.replace(/px/g, ''));
+					document.getElementById("global-configuration").style.maxHeight = hidable + hideMore.scrollHeight + "px";
+				}
+			}
 
 			////////////////////
 
@@ -1666,7 +1683,6 @@
 							document.getElementById("alt-1-config-content").classList.remove("active");
 							document.getElementById("alt-1-config-content").classList.add("inactive");
 							//check if autoload is active and jump to next slot
-							console.log(alt_1_autoload, alt_1_jumpnext)
 							if (alt_1_autoload && alt_1_jumpnext) {
 								alt_1_jumpnext = false;
 								jumpNextSlot("#alt-1-memory-slots", "#alt-1-name", "#alt-1-info", "#alt-1-logo-preview", alt_1_waiting_time);
@@ -2014,8 +2030,8 @@
 			function okResetPopup() {
 				localStorage.clear(); //To clear data fields
 
-				//Restore logo default (fix missing logos in the reload)			
-				$('.logo-storable').each(function(){    
+				//Restore logo default (fix missing logos in the reload)
+				$('.logo-storable').each(function(){
 					var id = $(this).attr('id');
 					var value
 					if (id == "alt-1-logo-preview" || id == "alt-1-logo-default"){
@@ -2030,12 +2046,12 @@
 					if (id == "alt-4-logo-preview" || id == "alt-4-logo-default"){
 						value = alt_4_logo_default;
 					}
-					localStorage.setItem(id, value);              
-				});	
+					localStorage.setItem(id, value);
+				});
 
 				location.reload();
-				
 			}
+
 			function cancelResetPopup() {
 				document.getElementById("reset-all").classList.add("hide");
 			}
@@ -2049,9 +2065,9 @@
 			}
 
 			//Load new logo image
-			function showPreview(event){
-				if(event.target.files.length > 0){
-					var src = URL.createObjectURL(event.target.files[0]);
+			function showPreview(element){
+				if(element.files.length > 0){
+					var src = URL.createObjectURL(element.files[0]);
 					var preview = document.getElementById("logo-file-preview");
 					document.getElementById("file-preview").classList.remove("no-image");
 					preview.src = src;
@@ -2853,15 +2869,11 @@
 
 				//Switch Preview ALT ON/OFF
 				if (document.getElementById("set-preview").checked) {
-					$("#alt-preview").removeClass("hide");
-					//Hide preview butons
-					$('.preview-btn').each(function(){
+					$('#alt-preview, .preview-btn').each(function(){
 						$(this).removeClass("hide");
 					});
 				} else {
-					//Unhide preview butons
-					$("#alt-preview").addClass("hide");
-					$('.preview-btn').each(function(){
+					$('#alt-preview, .preview-btn').each(function(){
 						$(this).addClass("hide");
 					});
 				}
@@ -3247,6 +3259,28 @@
 				reader.readAsText(file);
 			};
 
+			function openTab(element, cityName) {
+				// Declare all variables
+				var i, tabcontent, tablinks;
+
+				// Get all elements with class="tabcontent" and hide them
+				tabcontent = document.getElementsByClassName("tabcontent");
+				for (i = 0; i < tabcontent.length; i++) {
+					tabcontent[i].style.display = "none";
+				}
+
+				// Get all elements with class="tablinks" and remove the class "active"
+				tablinks = document.getElementsByClassName("tablinks");
+				for (i = 0; i < tablinks.length; i++) {
+					tablinks[i].className = tablinks[i].className.replace(" active", "");
+				}
+
+				// Show the current tab, and add an "active" class to the button that opened the tab
+				document.getElementById('tab-'+cityName).style.display = "block";
+				element.className += " active";
+				updateMoreMaxHeight()
+			}
+
 			//Read all localstorage data
 			function getLocalStorage() {
 				var a = {};
@@ -3348,6 +3382,11 @@
 			}
 
 			function saveData () {
+				// If local storage is empty, call reset to reinitialize
+				if (localStorage.length === 0) {
+					okResetPopup();
+				}
+
 	        	$('.storable').change(function(){
 					refreshData();
 					var id = $(this).attr('id');
@@ -3436,13 +3475,18 @@
 				updateHotkeys();
 			}
 
-			loadDefaultValues();
-			loadData();
-			updateCustomFontList();
-			refreshData();
-			checkSwitches();
-			saveData();
-			setInterval(() => checkUpdates(), 200);
+			// Wait document to be ready to do some stuff
+			$( document ).ready(function() {
+				loadDefaultValues();
+				loadData();
+				updateCustomFontList();
+				refreshData();
+				checkSwitches();
+				saveData();
+				setInterval(() => checkUpdates(), 200);
+
+				$('#defaultTab').click();
+			});
 
 		</script>
 
