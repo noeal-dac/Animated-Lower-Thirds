@@ -1535,6 +1535,25 @@ input.locked + .icon-btn {
   background-color: var(--main-color);
 }
 
+.tab {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.tablinks {
+  cursor: pointer;
+}
+
+.tablinks:not(:last-child) {
+  margin-right: 5px;
+}
+
+.tablinks.active {
+  background: var(--obs-button-hover-background);
+  border-color: var(--obs-button-hover-border);
+}
+
 
 /* #dataInput { opacity: 1;position: relative; z-index: 0; width: 56px; margin: 0px; height: 26px; order: 2;}
 .import-file-btn label { width: 56px;} */
