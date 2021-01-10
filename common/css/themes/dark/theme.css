@@ -16,6 +16,12 @@
   --obs-scrollbar-color: #4c4c4c;
   --obs-scrollbar-thickness: 10px;
   --obs-scrollbar-radius: 16px;
+  --obs-tab-background:  #4c4c4c;
+  --obs-tab-border:  none;
+  --obs-tab-active-background: #1f1e1f;
+  --obs-tab-active-border: none;
+  --obs-tabs-separator: #1f1e1f;
+
   --alt-preview-background: linear-gradient(135deg, rgba(31,30,31,1) 0%,
                                                     rgba(31,30,31,1) 8%,
                                                     rgba(29,28,29,1) 10%,

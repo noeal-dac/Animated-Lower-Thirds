@@ -118,8 +118,10 @@ body.browser-source.lower-thirds{
 #global-configuration .bottom-options {
   display: flex;
 }
+#global-configuration .logos-options,
+#global-configuration .default-options,
 #global-configuration .bottom-options {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 #global-configuration #theme-options #theme {
   width: 100%;
@@ -710,9 +712,9 @@ input#alt-4-name, input#alt-4-info {
 }
 	
 .panel button{
-	background: var(--obs-button-background);
-	border: 1px solid var(--obs-button-border);
-	color: var(--obs-button-color);
+	/* background: var(--obs-button-background);
+	border: 1px solid var(--obs-button-border); */
+	/* color: var(--obs-button-color); */
 	padding:.75em;
 	margin:0 0 1em;
 	text-align:center;
@@ -731,7 +733,7 @@ input#alt-4-name, input#alt-4-info {
 	border-color: var(--obs-button-hover-border);
 }
 .panel button:active{
-	background: var(--obs-button-active-background);
+	/* background: var(--obs-button-active-background); */
 }
 
 .panel .radio-position{float: right;text-align:center}
@@ -1482,7 +1484,7 @@ to {opacity: 1;}
   /*width: 51px;*/
   width: 56px;
   height: 56px;
-  margin: 0 0 4px 4px;
+  margin: 0 0 0 4px;
   border: var(--obs-field-border);
 }
 .logo-numbers {
@@ -1539,19 +1541,31 @@ input.locked + .icon-btn {
   display: flex;
   justify-content: space-between;
   margin-top: 5px;
+  gap: 2px;
+  border-bottom: 1px solid var(--obs-tabs-separator);
+  margin-bottom: 10px;
 }
 
 .tablinks {
   cursor: pointer;
+  height: 26px;
+  padding: 0px!important;
+  margin: 0px!important;
+  border-radius: 3px 3px 0 0;
+  font: unset;
+  color: var(--main-color);
+  background: var(--obs-tab-background);
+  border: 1px solid var(--obs-tab-border);
+  border-bottom: none;
 }
 
-.tablinks:not(:last-child) {
+/* .tablinks:not(:last-child) {
   margin-right: 5px;
-}
+} */
 
 .tablinks.active {
-  background: var(--obs-button-hover-background);
-  border-color: var(--obs-button-hover-border);
+  background: var(--obs-tab-active-background);
+  border-color: var(--obs-tab-active-border);
 }
 
 
