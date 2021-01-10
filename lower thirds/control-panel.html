@@ -1502,7 +1502,7 @@
     				});
 
 					//Call function to send to the source
-					function_send_font();
+					// function_send_font();
 
 			}
 
@@ -1574,12 +1574,14 @@
 					document.getElementById("global-configuration").style.maxHeight = hidable + 28 + "px";
 					document.getElementById("more-settings").style.maxHeight = hidable + 28 + "px";
 
+					//Update the amount of custom fonts (+1)
+					id = "customFonts";
+					localStorage.setItem(id, howMany);
+					
+					//Save localStorage
+					localStorage.setItem('font-name-added-' + howMany, font_name_to_add_clean);
+					localStorage.setItem('font-url-added-' + howMany, font_url_to_add_clean);
 				}
-				
-				//Update the amount of custom fonts (+1)
-				id = "customFonts";
-				localStorage.setItem(id, howMany);
-
 			});
 
 			//Remove Font
@@ -1597,13 +1599,26 @@
 				//Update the amount of custom fonts (-1)
 				id = "customFonts";
 				localStorage.setItem(id, howMany);
+
+				//Clean localStorage of fonts that are no longer used.
+				for (var i = 20; i > howMany; i--) {
+					localStorage.removeItem('font-name-added-' + i);
+					localStorage.removeItem('font-url-added-' + i);
+				}
 			});
 
 			//<Rename> de IDs of Font to correct store
 			$('#custom-font-list ul').on('click', 'li', function(e) {
 				$('#custom-font-list ul li').each(function(i) {
-					$(this).children('.font-name-added').attr('id', 'font-name-added-'+(i+1));
-					$(this).children('.font-url-added').attr('id', 'font-url-added-'+(i+1));
+					i++;
+					var font_name_added = 'font-name-added-' + i;
+					var font_url_added = 'font-url-added-' + i;
+
+					$(this).children('.font-name-added').attr('id', font_name_added);
+					$(this).children('.font-url-added').attr('id', font_url_added);
+
+					localStorage.setItem(font_name_added, $('#' + font_name_added).text());
+					localStorage.setItem(font_url_added, $('#' + font_url_added).text());
 				});
 			});
 
@@ -2587,6 +2602,7 @@
 
 				if (received_data.resend) {
 					refreshData();
+					function_send_font();
 				} else {
 
 					alt_1_active_time_monitor = received_data.activeTime1_to_send;
@@ -3475,9 +3491,10 @@
 				updateHotkeys();
 			}
 
+			loadDefaultValues();
+			
 			// Wait document to be ready to do some stuff
 			$( document ).ready(function() {
-				loadDefaultValues();
 				loadData();
 				updateCustomFontList();
 				refreshData();
