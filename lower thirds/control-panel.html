@@ -3492,16 +3492,15 @@
 			}
 
 			loadDefaultValues();
-			
+			loadData();
+			updateCustomFontList();
+			refreshData();
+			checkSwitches();
+			saveData();
+			setInterval(() => checkUpdates(), 200);
+
 			// Wait document to be ready to do some stuff
 			$( document ).ready(function() {
-				loadData();
-				updateCustomFontList();
-				refreshData();
-				checkSwitches();
-				saveData();
-				setInterval(() => checkUpdates(), 200);
-
 				$('#defaultTab').click();
 			});
 
