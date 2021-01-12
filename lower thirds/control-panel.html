@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<!--Animated Lower Thirds v1.5-->
+		<!--Animated Lower Thirds v1.6-->
 		<!--Author: NoeAL-->
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<title>Lower Thirds Control Panel</title>
 		<link rel="stylesheet" href="../common/css/style-control_panel.css">
-		<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+		<link rel="stylesheet" href="../common/css/cp-icons.css">
+		<!-- <script src='https://kit.fontawesome.com/a076d05399.js'></script> -->
 		<script src="../common/js/jquery.js"></script>
 		<script src="../common/js/jscolor.js"></script>
 		<script src="../common/js/hotkeys.js"></script>
@@ -23,7 +24,7 @@
 				<span class="slider round"></span>
 				</label>
 				<div class="main-title">
-					<div class="main-icon"><i class="fas">&#xf013;</i></div>
+					<div class="main-icon icon icon-settings"></div>
 					<div>Main settings</div>					
 				</div>
 				<label class="accordion"></label>
@@ -33,10 +34,18 @@
 						<div class="settings-inputs">
 							<input class="storable" id="global-animation-time" placeholder="4s (in-out)" tabindex="1">
 							<input class="storable" id="global-active-time" placeholder="25s (active)" tabindex="2">
+							<label class="config-btn lock-input">
+								<input class="checkbox-storable" type="checkbox" id="global-lock-active">
+								<div class="icon-btn icon icon-lock"></div>
+							</label>
 							<input class="storable" id="global-inactive-time" placeholder="420s (inactive)" tabindex="3">
+							<label class="config-btn lock-input">
+								<input class="checkbox-storable" type="checkbox" id="global-oneshot">
+								<div class="icon-btn icon icon-oneshot"></div>
+							</label>
 						</div>
 					</div>
-					<label class="more"><i class="fas">&#xf078;</i></label>
+					<label class="more"><div class="icon icon-angle-down"></div></label>
 					<div id="more-settings" class="hide-more">
 						<div id="theme-options">
 							<div class="settings-title">Theme</div>
@@ -49,7 +58,7 @@
 							<div class="settings-inputs">
 								<input id="new-font-name" placeholder="Font Family" tabindex="51">
 								<input id="new-font-url" placeholder="@import url" tabindex="52">
-								<div id="add-new-font" class="add"><i class="fas">&#xf0fe;</i></div>
+								<div id="add-new-font" class="add"><div class="icon icon-plus-square"></div></div>
 							</div>
 						</div>
 						<div id="custom-font-list">
@@ -103,7 +112,7 @@
 							</div>
 						</div>
 					</div>
-				</div>		
+				</div>
 			</div>
 
 			<div id="sortable">
@@ -115,7 +124,7 @@
 						</label>
 						<label class="config-btn preview-btn">
 							<input class="checkbox-storable" type="checkbox" id="alt-1-preview">
-							<span class="icon-btn"><i class='fas'>&#xf002;</i></span>
+							<div class="icon-btn icon icon-search"></div>
 						</label>
 						<div class="drag-handle">
 							<div class="alt-number-icon">1</div>
@@ -124,92 +133,140 @@
 						<label class="accordion"></label>
 						<div class="hidable">
 							<div class="grid-container">
-								<div class="grid-row-1">
-							    <div>
-									<label class="config-btn">
-										<input class="checkbox-storable" type="checkbox" id="alt-1-logo">
-										<span class="icon-btn"><i class='fas'>&#xf03e;</i></span>
-									</label>
-									<label class="config-btn">
-										<input class="checkbox-storable" type="checkbox" id="alt-1-background">
-										<span class="icon-btn"><i class='fas'>&#xf576;</i></span>
-									</label>
-									<label class="config-btn">
-										<input class="checkbox-storable" type="checkbox" id="alt-1-shadows">
-										<span class="icon-btn"><i class='fas fa-rotate-270'>&#xf24d;</i></span>
-									</label>
-									<div class="align-toggle">
-									  <input class="radio-storable" id="alt-1-align-left" name="alt-1-align" type="radio" value="left" checked/>
-									  <label for="alt-1-align-left" onclick=""><i class="fas">&#xf036;</i></label>
-									  <input class="radio-storable" id="alt-1-align-center" name="alt-1-align" type="radio" value="center" />
-									  <label for="alt-1-align-center" onclick=""><i class="fas">&#xf037;</i></label>
-									  <input class="radio-storable" id="alt-1-align-right" name="alt-1-align" type="radio" value="right" />
-									  <label for="alt-1-align-right" onclick=""><i class="fas">&#xf038;</i></label>
+								<div class="grid-row">
+									<div>
+										<div class="align-toggle">
+										<input class="radio-storable" id="alt-1-align-left" name="alt-1-align" type="radio" value="left" checked/>
+										<label for="alt-1-align-left" onclick=""><div class="icon icon-aling-left"></div></label>
+										<input class="radio-storable" id="alt-1-align-center" name="alt-1-align" type="radio" value="center" />
+										<label for="alt-1-align-center" onclick=""><div class="icon icon-aling-center"></div></label>
+										<input class="radio-storable" id="alt-1-align-right" name="alt-1-align" type="radio" value="right" />
+										<label for="alt-1-align-right" onclick=""><div class="icon icon-aling-right"></div></label>
+										</div>
 									</div>
-							    </div>
-							    <div>
-									<div id="alt-1-style-color-appearance">
-										<div class="tool-tittle">Clr 1</div>
-										<input class="storable" id="alt-1-style-color-1" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="D54141">
-										<div class="tool-tittle">Clr 2</div>
-										<input class="storable" id="alt-1-style-color-2" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="222222">
+									<div>
+										<div class="input-icon icon icon-paint-brush"></div>
+										<div class="number-input">
+											<input id="alt-1-style" class="storable" min="1" max="3" name="quantity" value="1" type="number" placeholder="1" readonly>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
 									</div>
-							    </div>
+									<div>
+										<div class="input-icon icon icon-size"></div>
+										<div class="number-input">
+											<input id="alt-1-size" class="storable" min="10" max="50" name="quantity" value="24" type="number" placeholder="24">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>							
+									<div class="margin-config group">
+										<div class="input-icon icon icon-position"></div>
+										<div class="number-input">
+											<input id="alt-1-margin-h" class="storable" min="0" max="100" name="quantity" value="4" type="number" placeholder="4">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+										<div class="number-input input-no-icon">
+											<input id="alt-1-margin-v" class="storable" min="0" max="55" name="quantity" value="4" type="number" placeholder="4">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>
 								</div>
-								<div class="grid-row-2">
-							    <div>
-									<div class="number-input">
-										<input id="alt-1-style" class="storable" min="1" max="2" name="quantity" value="1" type="number" placeholder="1" readonly>
+								<div class="grid-row">
+									<div>
+										<div class="input-icon icon icon-text-height"></div>
+										<div class="number-input">
+										<input id="alt-1-inverse-ratio" class="storable" min="0" max="10" name="quantity" value="9" type="number" placeholder="9">
 										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
 										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
-										<div class="input-icon"><i class="fas">&#xf1fc;</i></div>
+										</div>
 									</div>
-							    </div>
-							    <div>
-									<div class="number-input">
-										<input id="alt-1-size" class="storable" min="10" max="50" name="quantity" value="24" type="number" placeholder="24">
+									<div>
+										<div class="input-icon icon icon-line-spacing"></div>
+										<div class="number-input">
+										<input id="alt-1-line-spacing" class="storable" min="-5" max="5" name="quantity" value="2" type="number" placeholder="0">
 										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
 										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
-										<div class="input-icon"><i class="fas">&#xf424;</i></div>
+										</div>
+									</div>									
+									<div class="font-config group">
+										<div class="input-icon icon icon-font"></div>
+										<select id="alt-1-font" class="font-storable">
+											<!--Fonts list-->
+										</select>
 									</div>
-							    </div>
-							    <div class="margin-config group">
-									<div class="number-input">
-										<input id="alt-1-margin-h" class="storable" min="0" max="100" name="quantity" value="4" type="number" placeholder="4">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
-										<div class="input-icon"><i class="fas">&#xf31e;</i></div>
-									</div>
-									<div class="number-input input-no-icon">
-										<input id="alt-1-margin-v" class="storable" min="0" max="55" name="quantity" value="4" type="number" placeholder="4">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
-									</div>
-							    </div>
 								</div>
-								<div class="grid-row-3">
-							    <div>
-									<div class="number-input">
-									  <input id="alt-1-inverse-ratio" class="storable" min="0" max="10" name="quantity" value="9" type="number" placeholder="9">
-									  <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-									  <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
-									  <div class="input-icon"><i class="fas">&#xf034;</i></div>
+								<div class="grid-row">
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable" type="checkbox" id="alt-1-logo">
+											<div class="icon-btn icon icon-image"></div>
+										</label>									
+										<div class="number-input">
+										<input id="alt-1-logo-size" class="storable" min="-10" max="10" name="quantity" value="0" type="number" placeholder="0">
+										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>										
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable" type="checkbox" id="alt-1-shadows">
+											<div class="icon-btn icon icon-shadow"></div>
+										</label>
+										<div class="number-input">
+											<input id="alt-1-shadow-amount" class="storable" min="1" max="10" name="quantity" value="5" type="number" placeholder="5">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
 									</div>
-							    </div>
-							    <div>
-									<div class="number-input">
-									   <input id="alt-1-line-spacing" class="storable" min="-5" max="5" name="quantity" value="2" type="number" placeholder="0">
-									  <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-									  <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
-									  <div class="input-icon"><i class="fas fa-rotate-270">&#xf362;</i></div>
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable" type="checkbox" id="alt-1-background">
+											<div class="icon-btn icon icon-fill-drip"></div>
+										</label>
+										<div id="alt-1-style-color-appearance" class="fill-color-appearance">
+											<div class="tool-tittle">Clr 1</div>
+											<input class="storable" id="alt-1-style-color-1" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="D54141">
+											<div class="tool-tittle">Clr 2</div>
+											<input class="storable" id="alt-1-style-color-2" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="222222">
+										</div>
 									</div>
-							    </div>
-							    <div class="font-config group">
-									<div class="input-icon"><i class="fas">&#xf031;</i></div>
-									<select id="alt-1-font" class="font-storable">
-										<!--Fonts list-->
-									</select>
-							    </div>
+								</div>
+								<div class="grid-row">
+									<div>
+										<div class="input-icon icon icon-corner"></div>
+										<div class="number-input">
+										<input id="alt-1-corners" class="storable" min="0" max="10" name="quantity" value="0" type="number" placeholder="0">
+										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable twin-checkbox" type="checkbox" name="alt-1-border" id="alt-1-border-thickness">
+											<div class="icon-btn icon icon-thickness"></div>
+										</label>
+										<!-- <div class="input-icon icon icon-thickness"></div> -->
+										<div class="number-input">
+										<input id="alt-1-border-thickness-amount" class="storable" min="0" max="10" name="quantity" value="0" type="number" placeholder="0">
+										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable twin-checkbox" type="checkbox" name="alt-1-border" id="alt-1-border-color">
+											<div class="icon-btn icon icon-pen"></div>
+										</label>
+										<div id="alt-1-style-border-color-appearance" class="border-color-appearance">
+											<div class="tool-tittle">Clr 3</div>
+											<input class="storable" id="alt-1-style-color-3" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="D54141">
+											<div class="tool-tittle">Clr 4</div>
+											<input class="storable" id="alt-1-style-color-4" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="222222">
+										</div>
+									</div>
 								</div>
 							</div>					
 						</div>
@@ -220,25 +277,25 @@
 							<div class="textfields-container">
 								<input class="storable" type="text" id="alt-1-name" placeholder="Name" tabindex="4">
 								<div id="alt-1-name-appearance">
-									<label class="config-btn">
-									<input class="checkbox-storable" type="checkbox" id="alt-1-name-transform" checked>
-									<span class="icon-btn"><i class='fas'>&#xf031;</i><p>a</p></span>
+									<label class="config-btn small">
+										<input class="checkbox-storable" type="checkbox" id="alt-1-name-transform" checked>
+										<div class="icon-btn icon small icon-uppercase"></div>
 									</label>
-									<label class="config-btn">
+									<label class="config-btn small">
 										<input class="checkbox-storable" type="checkbox" id="alt-1-name-weight" checked>
-										<span class="icon-btn"><i class='fas'>&#xf032;</i></span>
+										<div class="icon-btn icon small icon-bold"></div>
 									</label>
 									<input class="storable" id="alt-1-name-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="f2f2f2">
 								</div>
 								<input class="storable" type="text" id="alt-1-info" placeholder="Info" tabindex="5">
 								<div id="alt-1-info-appearance">
-									<label class="config-btn">
+									<label class="config-btn small">
 										<input class="checkbox-storable" type="checkbox" id="alt-1-info-transform">
-										<span class="icon-btn"><i class='fas'>&#xf031;</i><p>a</p></span>
+										<div class="icon-btn icon small icon-uppercase"></div>
 									</label>
-									<label class="config-btn">
+									<label class="config-btn small">
 										<input class="checkbox-storable" type="checkbox" id="alt-1-info-weight">
-										<span class="icon-btn"><i class='fas'>&#xf032;</i></span>
+										<div class="icon-btn icon small icon-bold"></div>
 									</label>
 									<input class="storable" id="alt-1-info-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="555555">
 								</div>	
@@ -246,7 +303,7 @@
 							</div>
 						</div>
 						<div class="panel-bottom">
-							<div id="alt-1-clean-inputs" class="clean"><i class="fas">&#xf00d;</i></div>
+							<div id="alt-1-clean-inputs" class="clean"><div class="icon icon-cross"></div></div>
 							<ul id="alt-1-memory-slots">
 								<li id="alt-1-slot-1"><div class="slot-number">1</div><div class="slot-storable stored-name" id="alt-1-name-1"></div><div class="slot-storable stored-info" id="alt-1-info-1"></div><div class="slot-storable stored-logo" id="alt-1-logo-1"></div></li>
 								<li id="alt-1-slot-2"><div class="slot-number">2</div><div class="slot-storable stored-name" id="alt-1-name-2"></div><div class="slot-storable stored-info" id="alt-1-info-2"></div><div class="slot-storable stored-logo" id="alt-1-logo-2"></div></li>
@@ -264,22 +321,35 @@
 								<div id="alt-1-inactive-time-monitor">0</div>
 							</div>
 							<label class="config-btn">
-								<input class="checkbox-storable" type="checkbox" id="alt-1-autoload">
-								<span class="icon-btn"><i class='fas'>&#xf2f1;</i></span>
+								<input class="checkbox-storable" type="checkbox" id="alt-1-autotrigger">
+								<div class="icon-btn icon icon-autotrigger"></div>
 							</label>
-							<label id="alt-1-custom-times" class="accordion"><i class="fas">&#xf017;</i></label>
+							<label class="config-btn">
+								<input class="checkbox-storable" type="checkbox" id="alt-1-autoload">
+								<div class="icon-btn icon icon-sync"></div>
+							</label>
+							<label id="alt-1-custom-times" class="accordion">
+								<div class="icon-btn icon icon-clock"></div>
+							</label>
 							<div class="hidable">
 								<div class="alt-time-options">
-									<div class="settings-title">LT1 times</div>
+									<div class="settings-title">LT1 Times</div>
 									<div class="settings-inputs">
 										<input class="storable" id="alt-1-animation-time" placeholder="(in-out)" tabindex="12">
 										<input class="storable" id="alt-1-active-time" placeholder="(active)" tabindex="13">
+										<label class="config-btn lock-input">
+											<input class="checkbox-storable" type="checkbox" id="alt-1-lock-active">
+											<div class="icon-btn icon icon-lock"></div>
+										</label>
 										<input class="storable" id="alt-1-inactive-time" placeholder="(inactive)" tabindex="14">
+										<label class="config-btn lock-input">
+											<input class="checkbox-storable" type="checkbox" id="alt-1-oneshot">
+											<div class="icon-btn icon icon-oneshot"></div>
+										</label>
 									</div>
 								</div>
 							</div>
 						</div>
-						
 					</div>
 				</div>
 
@@ -291,7 +361,7 @@
 						</label>
 						<label class="config-btn preview-btn">
 							<input class="checkbox-storable" type="checkbox" id="alt-2-preview">
-							<span class="icon-btn"><i class='fas'>&#xf002;</i></span>
+							<div class="icon-btn icon icon-search"></div>
 						</label>
 						<div class="drag-handle">
 							<div class="alt-number-icon">2</div>
@@ -300,93 +370,140 @@
 						<label class="accordion"></label>
 						<div class="hidable">
 							<div class="grid-container">
-							  <div class="grid-row-1">
-							    <div>
-									<label class="config-btn">
-										<input class="checkbox-storable" type="checkbox" id="alt-2-logo">
-										<span class="icon-btn"><i class='fas'>&#xf03e;</i></span>
-									</label>
-									<label class="config-btn">
-										<input class="checkbox-storable" type="checkbox" id="alt-2-background">
-										<span class="icon-btn"><i class='fas'>&#xf576;</i></span>
-									</label>
-									<label class="config-btn">
-										<input class="checkbox-storable" type="checkbox" id="alt-2-shadows">
-										<span class="icon-btn"><i class='fas fa-rotate-270'>&#xf24d;</i></span>
-									</label>
-									<div class="align-toggle">
-									  <input class="radio-storable" id="alt-2-align-left" name="alt-2-align" type="radio" value="left" checked/>
-									  <label for="alt-2-align-left" onclick=""><i class="fas">&#xf036;</i></label>
-									  <input class="radio-storable" id="alt-2-align-center" name="alt-2-align" type="radio" value="center" />
-									  <label for="alt-2-align-center" onclick=""><i class="fas">&#xf037;</i></label>
-									  <input class="radio-storable" id="alt-2-align-right" name="alt-2-align" type="radio" value="right" />
-									  <label for="alt-2-align-right" onclick=""><i class="fas">&#xf038;</i></label>
+								<div class="grid-row">
+									<div>
+										<div class="align-toggle">
+										<input class="radio-storable" id="alt-2-align-left" name="alt-2-align" type="radio" value="left" checked/>
+										<label for="alt-2-align-left" onclick=""><div class="icon icon-aling-left"></div></label>
+										<input class="radio-storable" id="alt-2-align-center" name="alt-2-align" type="radio" value="center" />
+										<label for="alt-2-align-center" onclick=""><div class="icon icon-aling-center"></div></label>
+										<input class="radio-storable" id="alt-2-align-right" name="alt-2-align" type="radio" value="right" />
+										<label for="alt-2-align-right" onclick=""><div class="icon icon-aling-right"></div></label>
+										</div>
 									</div>
-							    </div>
-							    <div>
-									<div id="alt-2-style-color-appearance">
-										<div class="tool-tittle">Clr 1</div>
-										<input class="storable" id="alt-2-style-color-1" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="D54141">
-										<div class="tool-tittle">Clr 2</div>
-										<input class="storable" id="alt-2-style-color-2" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="222222">
+									<div>
+										<div class="input-icon icon icon-paint-brush"></div>
+										<div class="number-input">
+											<input id="alt-2-style" class="storable" min="1" max="3" name="quantity" value="1" type="number" placeholder="1" readonly>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
 									</div>
-							    </div>
-							  </div>
-							  <div class="grid-row-2">
-							    <div>
-									<div class="number-input">
-										<input id="alt-2-style" class="storable" min="1" max="2" name="quantity" value="1" type="number" placeholder="1" readonly>
+									<div>
+										<div class="input-icon icon icon-size"></div>
+										<div class="number-input">
+											<input id="alt-2-size" class="storable" min="10" max="50" name="quantity" value="24" type="number" placeholder="24">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>							
+									<div class="margin-config group">
+										<div class="input-icon icon icon-position"></div>
+										<div class="number-input">
+											<input id="alt-2-margin-h" class="storable" min="0" max="100" name="quantity" value="4" type="number" placeholder="4">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+										<div class="number-input input-no-icon">
+											<input id="alt-2-margin-v" class="storable" min="0" max="55" name="quantity" value="4" type="number" placeholder="4">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>
+								</div>
+								<div class="grid-row">
+									<div>
+										<div class="input-icon icon icon-text-height"></div>
+										<div class="number-input">
+										<input id="alt-2-inverse-ratio" class="storable" min="0" max="10" name="quantity" value="9" type="number" placeholder="9">
 										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
 										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
-										<div class="input-icon"><i class="fas">&#xf1fc;</i></div>
+										</div>
 									</div>
-							    </div>
-							    <div>
-									<div class="number-input">
-										<input id="alt-2-size" class="storable" min="10" max="50" name="quantity" value="24" type="number" placeholder="24">
+									<div>
+										<div class="input-icon icon icon-line-spacing"></div>
+										<div class="number-input">
+										<input id="alt-2-line-spacing" class="storable" min="-5" max="5" name="quantity" value="2" type="number" placeholder="0">
 										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
 										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
-										<div class="input-icon"><i class="fas">&#xf424;</i></div>
+										</div>
+									</div>									
+									<div class="font-config group">
+										<div class="input-icon icon icon-font"></div>
+										<select id="alt-2-font" class="font-storable">
+											<!--Fonts list-->
+										</select>
 									</div>
-							    </div>
-							    <div class="margin-config group">
-									<div class="number-input">
-										<input id="alt-2-margin-h" class="storable" min="0" max="100" name="quantity" value="4" type="number" placeholder="4">
+								</div>
+								<div class="grid-row">
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable" type="checkbox" id="alt-2-logo">
+											<div class="icon-btn icon icon-image"></div>
+										</label>									
+										<div class="number-input">
+										<input id="alt-2-logo-size" class="storable" min="-10" max="10" name="quantity" value="0" type="number" placeholder="0">
 										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
 										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
-										<div class="input-icon"><i class="fas">&#xf31e;</i></div>
+										</div>
+									</div>										
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable" type="checkbox" id="alt-2-shadows">
+											<div class="icon-btn icon icon-shadow"></div>
+										</label>
+										<div class="number-input">
+											<input id="alt-2-shadow-amount" class="storable" min="1" max="10" name="quantity" value="5" type="number" placeholder="5">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
 									</div>
-									<div class="number-input input-no-icon">
-										<input id="alt-2-margin-v" class="storable" min="0" max="55" name="quantity" value="4" type="number" placeholder="4">
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable" type="checkbox" id="alt-2-background">
+											<div class="icon-btn icon icon-fill-drip"></div>
+										</label>
+										<div id="alt-2-style-color-appearance" class="fill-color-appearance">
+											<div class="tool-tittle">Clr 1</div>
+											<input class="storable" id="alt-2-style-color-1" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="D54141">
+											<div class="tool-tittle">Clr 2</div>
+											<input class="storable" id="alt-2-style-color-2" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="222222">
+										</div>
+									</div>
+								</div>
+								<div class="grid-row">
+									<div>
+										<div class="input-icon icon icon-corner"></div>
+										<div class="number-input">
+										<input id="alt-2-corners" class="storable" min="0" max="10" name="quantity" value="0" type="number" placeholder="0">
 										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
 										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
 									</div>
-							    </div>
-							  </div>
-							  <div class="grid-row-3">
-							    <div>
-									<div class="number-input">
-									  <input id="alt-2-inverse-ratio" class="storable" min="0" max="10" name="quantity" value="9" type="number" placeholder="9">
-									  <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-									  <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
-									  <div class="input-icon"><i class="fas">&#xf034;</i></div>
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable twin-checkbox" type="checkbox" name="alt-2-border" id="alt-2-border-thickness">
+											<div class="icon-btn icon icon-thickness"></div>
+										</label>
+										<div class="number-input">
+										<input id="alt-2-border-thickness-amount" class="storable" min="0" max="10" name="quantity" value="0" type="number" placeholder="0">
+										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
 									</div>
-							    </div>
-							    <div>
-									<div class="number-input">
-									   <input id="alt-2-line-spacing" class="storable" min="-5" max="5" name="quantity" value="2" type="number" placeholder="0">
-									  <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-									  <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
-									  <div class="input-icon"><i class="fas fa-rotate-270">&#xf362;</i></div>
-									</div>
-							    </div>
-							    <div class="font-config group">
-									<div class="input-icon"><i class="fas">&#xf031;</i></div>
-									<select id="alt-2-font" class="font-storable">
-										<!--Fonts list-->
-								    </select>
-							    </div>
-							  </div>
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable twin-checkbox" type="checkbox" name="alt-2-border" id="alt-2-border-color">
+											<div class="icon-btn icon icon-pen"></div>
+										</label>
+										<div id="alt-2-style-border-color-appearance" class="border-color-appearance">
+											<div class="tool-tittle">Clr 3</div>
+											<input class="storable" id="alt-2-style-color-3" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="D54141">
+											<div class="tool-tittle">Clr 4</div>
+											<input class="storable" id="alt-2-style-color-4" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="222222">
+										</div>
+									</div>									
+								</div>
 							</div>					
 						</div>
 						<div class="first-edit-container">
@@ -396,33 +513,33 @@
 							<div class="textfields-container">
 								<input class="storable" type="text" id="alt-2-name" placeholder="Name" tabindex="6">
 								<div id="alt-2-name-appearance">
-									<label class="config-btn">
-									<input class="checkbox-storable" type="checkbox" id="alt-2-name-transform" checked>
-									<span class="icon-btn"><i class='fas'>&#xf031;</i><p>a</p></span>
+									<label class="config-btn small">
+										<input class="checkbox-storable" type="checkbox" id="alt-2-name-transform" checked>
+										<div class="icon-btn icon small icon-uppercase"></div>
 									</label>
-									<label class="config-btn">
+									<label class="config-btn small">
 										<input class="checkbox-storable" type="checkbox" id="alt-2-name-weight" checked>
-										<span class="icon-btn"><i class='fas'>&#xf032;</i></span>
+										<div class="icon-btn icon small icon-bold"></div>
 									</label>
 									<input class="storable" id="alt-2-name-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="f2f2f2">
 								</div>
 								<input class="storable" type="text" id="alt-2-info" placeholder="Info" tabindex="7">
 								<div id="alt-2-info-appearance">
-									<label class="config-btn">
+									<label class="config-btn small">
 										<input class="checkbox-storable" type="checkbox" id="alt-2-info-transform">
-										<span class="icon-btn"><i class='fas'>&#xf031;</i><p>a</p></span>
+										<div class="icon-btn icon small icon-uppercase"></div>
 									</label>
-									<label class="config-btn">
+									<label class="config-btn small">
 										<input class="checkbox-storable" type="checkbox" id="alt-2-info-weight">
-										<span class="icon-btn"><i class='fas'>&#xf032;</i></span>
+										<div class="icon-btn icon small icon-bold"></div>
 									</label>
 									<input class="storable" id="alt-2-info-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="555555">
 								</div>	
 								<div style="clear:both"></div>
 							</div>
-						</div>	
+						</div>
 						<div class="panel-bottom">
-							<div id="alt-2-clean-inputs" class="clean"><i class="fas">&#xf00d;</i></div>
+							<div id="alt-2-clean-inputs" class="clean"><div class="icon icon-cross"></div></div>
 							<ul id="alt-2-memory-slots">
 								<li id="alt-2-slot-1"><div class="slot-number">1</div><div class="slot-storable stored-name" id="alt-2-name-1"></div><div class="slot-storable stored-info" id="alt-2-info-1"></div><div class="slot-storable stored-logo" id="alt-2-logo-1"></div></li>
 								<li id="alt-2-slot-2"><div class="slot-number">2</div><div class="slot-storable stored-name" id="alt-2-name-2"></div><div class="slot-storable stored-info" id="alt-2-info-2"></div><div class="slot-storable stored-logo" id="alt-2-logo-2"></div></li>
@@ -440,20 +557,34 @@
 								<div id="alt-2-inactive-time-monitor">0</div>
 							</div>
 							<label class="config-btn">
-								<input class="checkbox-storable" type="checkbox" id="alt-2-autoload">
-								<span class="icon-btn"><i class='fas'>&#xf2f1;</i></span>
+								<input class="checkbox-storable" type="checkbox" id="alt-2-autotrigger">
+								<div class="icon-btn icon icon-autotrigger"></div>
 							</label>
-							<label id="alt-2-custom-times" class="accordion"><i class="fas">&#xf017;</i></label>
+							<label class="config-btn">
+								<input class="checkbox-storable" type="checkbox" id="alt-2-autoload">
+								<div class="icon-btn icon icon-sync"></div>
+							</label>
+							<label id="alt-2-custom-times" class="accordion">
+								<div class="icon-btn icon icon-clock"></div>
+							</label>
 							<div class="hidable">
 								<div class="alt-time-options">
-									<div class="settings-title">LT2 times</div>
+									<div class="settings-title">LT2 Times</div>
 									<div class="settings-inputs">
 										<input class="storable" id="alt-2-animation-time" placeholder="(in-out)" tabindex="15">
 										<input class="storable" id="alt-2-active-time" placeholder="(active)" tabindex="16">
+										<label class="config-btn lock-input">
+											<input class="checkbox-storable" type="checkbox" id="alt-2-lock-active">
+											<div class="icon-btn icon icon-lock"></div>
+										</label>
 										<input class="storable" id="alt-2-inactive-time" placeholder="(inactive)" tabindex="17">
+										<label class="config-btn lock-input">
+											<input class="checkbox-storable" type="checkbox" id="alt-2-oneshot">
+											<div class="icon-btn icon icon-oneshot"></div>
+										</label>
 									</div>
 								</div>
-							</div>								
+							</div>
 						</div>
 					</div>
 				</div>
@@ -466,7 +597,7 @@
 						</label>
 						<label class="config-btn preview-btn">
 							<input class="checkbox-storable" type="checkbox" id="alt-3-preview">
-							<span class="icon-btn"><i class='fas'>&#xf002;</i></span>
+							<div class="icon-btn icon icon-search"></div>
 						</label>
 						<div class="drag-handle">
 							<div class="alt-number-icon">3</div>
@@ -475,93 +606,140 @@
 						<label class="accordion"></label>
 						<div class="hidable">
 							<div class="grid-container">
-							  <div class="grid-row-1">
-							    <div>
-									<label class="config-btn">
-										<input class="checkbox-storable" type="checkbox" id="alt-3-logo">
-										<span class="icon-btn"><i class='fas'>&#xf03e;</i></span>
-									</label>
-									<label class="config-btn">
-										<input class="checkbox-storable" type="checkbox" id="alt-3-background">
-										<span class="icon-btn"><i class='fas'>&#xf576;</i></span>
-									</label>
-									<label class="config-btn">
-										<input class="checkbox-storable" type="checkbox" id="alt-3-shadows">
-										<span class="icon-btn"><i class='fas fa-rotate-270'>&#xf24d;</i></span>
-									</label>
-									<div class="align-toggle">
-									  <input class="radio-storable" id="alt-3-align-left" name="alt-3-align" type="radio" value="left" checked/>
-									  <label for="alt-3-align-left" onclick=""><i class="fas">&#xf036;</i></label>
-									  <input class="radio-storable" id="alt-3-align-center" name="alt-3-align" type="radio" value="center" />
-									  <label for="alt-3-align-center" onclick=""><i class="fas">&#xf037;</i></label>
-									  <input class="radio-storable" id="alt-3-align-right" name="alt-3-align" type="radio" value="right" />
-									  <label for="alt-3-align-right" onclick=""><i class="fas">&#xf038;</i></label>
+								<div class="grid-row">
+									<div>
+										<div class="align-toggle">
+										<input class="radio-storable" id="alt-3-align-left" name="alt-3-align" type="radio" value="left" checked/>
+										<label for="alt-3-align-left" onclick=""><div class="icon icon-aling-left"></div></label>
+										<input class="radio-storable" id="alt-3-align-center" name="alt-3-align" type="radio" value="center" />
+										<label for="alt-3-align-center" onclick=""><div class="icon icon-aling-center"></div></label>
+										<input class="radio-storable" id="alt-3-align-right" name="alt-3-align" type="radio" value="right" />
+										<label for="alt-3-align-right" onclick=""><div class="icon icon-aling-right"></div></label>
+										</div>
 									</div>
-							    </div>
-							    <div>
-									<div id="alt-3-style-color-appearance">
-										<div class="tool-tittle">Clr 1</div>
-										<input class="storable" id="alt-3-style-color-1" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="D54141">
-										<div class="tool-tittle">Clr 2</div>
-										<input class="storable" id="alt-3-style-color-2" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="222222">
+									<div>
+										<div class="input-icon icon icon-paint-brush"></div>
+										<div class="number-input">
+											<input id="alt-3-style" class="storable" min="1" max="3" name="quantity" value="1" type="number" placeholder="1" readonly>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
 									</div>
-							    </div>
-							  </div>
-							  <div class="grid-row-2">
-							    <div>
-									<div class="number-input">
-										<input id="alt-3-style" class="storable" min="1" max="2" name="quantity" value="1" type="number" placeholder="1" readonly>
+									<div>
+										<div class="input-icon icon icon-size"></div>
+										<div class="number-input">
+											<input id="alt-3-size" class="storable" min="10" max="50" name="quantity" value="24" type="number" placeholder="24">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>							
+									<div class="margin-config group">
+										<div class="input-icon icon icon-position"></div>
+										<div class="number-input">
+											<input id="alt-3-margin-h" class="storable" min="0" max="100" name="quantity" value="4" type="number" placeholder="4">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+										<div class="number-input input-no-icon">
+											<input id="alt-3-margin-v" class="storable" min="0" max="55" name="quantity" value="4" type="number" placeholder="4">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>
+								</div>
+								<div class="grid-row">
+									<div>
+										<div class="input-icon icon icon-text-height"></div>
+										<div class="number-input">
+										<input id="alt-3-inverse-ratio" class="storable" min="0" max="10" name="quantity" value="9" type="number" placeholder="9">
 										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
 										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
-										<div class="input-icon"><i class="fas">&#xf1fc;</i></div>
+										</div>
 									</div>
-							    </div>
-							    <div>
-									<div class="number-input">
-										<input id="alt-3-size" class="storable" min="10" max="50" name="quantity" value="24" type="number" placeholder="24">
+									<div>
+										<div class="input-icon icon icon-line-spacing"></div>
+										<div class="number-input">
+										<input id="alt-3-line-spacing" class="storable" min="-5" max="5" name="quantity" value="2" type="number" placeholder="0">
 										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
 										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
-										<div class="input-icon"><i class="fas">&#xf424;</i></div>
+										</div>
+									</div>									
+									<div class="font-config group">
+										<div class="input-icon icon icon-font"></div>
+										<select id="alt-3-font" class="font-storable">
+											<!--Fonts list-->
+										</select>
 									</div>
-							    </div>
-							    <div class="margin-config group">
-									<div class="number-input">
-										<input id="alt-3-margin-h" class="storable" min="0" max="100" name="quantity" value="4" type="number" placeholder="4">
+								</div>
+								<div class="grid-row">
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable" type="checkbox" id="alt-3-logo">
+											<div class="icon-btn icon icon-image"></div>
+										</label>									
+										<div class="number-input">
+										<input id="alt-3-logo-size" class="storable" min="-10" max="10" name="quantity" value="0" type="number" placeholder="0">
 										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
 										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
-										<div class="input-icon"><i class="fas">&#xf31e;</i></div>
+										</div>
+									</div>										
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable" type="checkbox" id="alt-3-shadows">
+											<div class="icon-btn icon icon-shadow"></div>
+										</label>
+										<div class="number-input">
+											<input id="alt-3-shadow-amount" class="storable" min="1" max="10" name="quantity" value="5" type="number" placeholder="5">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
 									</div>
-									<div class="number-input input-no-icon">
-										<input id="alt-3-margin-v" class="storable" min="0" max="55" name="quantity" value="4" type="number" placeholder="4">
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable" type="checkbox" id="alt-3-background">
+											<div class="icon-btn icon icon-fill-drip"></div>
+										</label>
+										<div id="alt-3-style-color-appearance" class="fill-color-appearance">
+											<div class="tool-tittle">Clr 1</div>
+											<input class="storable" id="alt-3-style-color-1" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="D54141">
+											<div class="tool-tittle">Clr 2</div>
+											<input class="storable" id="alt-3-style-color-2" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="222222">
+										</div>
+									</div>
+								</div>
+								<div class="grid-row">
+									<div>
+										<div class="input-icon icon icon-corner"></div>
+										<div class="number-input">
+										<input id="alt-3-corners" class="storable" min="0" max="10" name="quantity" value="0" type="number" placeholder="0">
 										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
 										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
 									</div>
-							    </div>
-							  </div>
-							  <div class="grid-row-3">
-							    <div>
-									<div class="number-input">
-									  <input id="alt-3-inverse-ratio" class="storable" min="0" max="10" name="quantity" value="9" type="number" placeholder="9">
-									  <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-									  <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
-									  <div class="input-icon"><i class="fas">&#xf034;</i></div>
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable twin-checkbox" type="checkbox" name="alt-3-border" id="alt-3-border-thickness">
+											<div class="icon-btn icon icon-thickness"></div>
+										</label>
+										<div class="number-input">
+										<input id="alt-3-border-thickness-amount" class="storable" min="0" max="10" name="quantity" value="0" type="number" placeholder="0">
+										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
 									</div>
-							    </div>
-							    <div>
-									<div class="number-input">
-									   <input id="alt-3-line-spacing" class="storable" min="-5" max="5" name="quantity" value="2" type="number" placeholder="0">
-									  <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-									  <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
-									  <div class="input-icon"><i class="fas fa-rotate-270">&#xf362;</i></div>
-									</div>
-							    </div>
-							    <div class="font-config group">
-									<div class="input-icon"><i class="fas">&#xf031;</i></div>
-									<select id="alt-3-font" class="font-storable">
-										<!--Fonts list-->
-								    </select>
-							    </div>
-							  </div>
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable twin-checkbox" type="checkbox" name="alt-3-border" id="alt-3-border-color">
+											<div class="icon-btn icon icon-pen"></div>
+										</label>
+										<div id="alt-3-style-border-color-appearance" class="border-color-appearance">
+											<div class="tool-tittle">Clr 3</div>
+											<input class="storable" id="alt-3-style-color-3" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="D54141">
+											<div class="tool-tittle">Clr 4</div>
+											<input class="storable" id="alt-3-style-color-4" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="222222">
+										</div>
+									</div>									
+								</div>
 							</div>					
 						</div>
 						<div class="first-edit-container">
@@ -571,25 +749,25 @@
 							<div class="textfields-container">
 								<input class="storable" type="text" id="alt-3-name" placeholder="Name" tabindex="8">
 								<div id="alt-3-name-appearance">
-									<label class="config-btn">
-									<input class="checkbox-storable" type="checkbox" id="alt-3-name-transform" checked>
-									<span class="icon-btn"><i class='fas'>&#xf031;</i><p>a</p></span>
+									<label class="config-btn small">
+										<input class="checkbox-storable" type="checkbox" id="alt-3-name-transform" checked>
+										<div class="icon-btn icon small icon-uppercase"></div>
 									</label>
-									<label class="config-btn">
+									<label class="config-btn small">
 										<input class="checkbox-storable" type="checkbox" id="alt-3-name-weight" checked>
-										<span class="icon-btn"><i class='fas'>&#xf032;</i></span>
+										<div class="icon-btn icon small icon-bold"></div>
 									</label>
 									<input class="storable" id="alt-3-name-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="f2f2f2">
 								</div>
 								<input class="storable" type="text" id="alt-3-info" placeholder="Info" tabindex="9">
 								<div id="alt-3-info-appearance">
-									<label class="config-btn">
+									<label class="config-btn small">
 										<input class="checkbox-storable" type="checkbox" id="alt-3-info-transform">
-										<span class="icon-btn"><i class='fas'>&#xf031;</i><p>a</p></span>
+										<div class="icon-btn icon small icon-uppercase"></div>
 									</label>
-									<label class="config-btn">
+									<label class="config-btn small">
 										<input class="checkbox-storable" type="checkbox" id="alt-3-info-weight">
-										<span class="icon-btn"><i class='fas'>&#xf032;</i></span>
+										<div class="icon-btn icon small icon-bold"></div>
 									</label>
 									<input class="storable" id="alt-3-info-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="555555">
 								</div>	
@@ -597,7 +775,7 @@
 							</div>
 						</div>
 						<div class="panel-bottom">
-							<div id="alt-3-clean-inputs" class="clean"><i class="fas">&#xf00d;</i></div>
+							<div id="alt-3-clean-inputs" class="clean"><div class="icon icon-cross"></div></div>
 							<ul id="alt-3-memory-slots">
 								<li id="alt-3-slot-1"><div class="slot-number">1</div><div class="slot-storable stored-name" id="alt-3-name-1"></div><div class="slot-storable stored-info" id="alt-3-info-1"></div><div class="slot-storable stored-logo" id="alt-3-logo-1"></div></li>
 								<li id="alt-3-slot-2"><div class="slot-number">2</div><div class="slot-storable stored-name" id="alt-3-name-2"></div><div class="slot-storable stored-info" id="alt-3-info-2"></div><div class="slot-storable stored-logo" id="alt-3-logo-2"></div></li>
@@ -615,17 +793,31 @@
 								<div id="alt-3-inactive-time-monitor">0</div>
 							</div>
 							<label class="config-btn">
-								<input class="checkbox-storable" type="checkbox" id="alt-3-autoload">
-								<span class="icon-btn"><i class='fas'>&#xf2f1;</i></span>
+								<input class="checkbox-storable" type="checkbox" id="alt-3-autotrigger">
+								<div class="icon-btn icon icon-autotrigger"></div>
 							</label>
-							<label id="alt-3-custom-times" class="accordion"><i class="fas">&#xf017;</i></label>
+							<label class="config-btn">
+								<input class="checkbox-storable" type="checkbox" id="alt-3-autoload">
+								<div class="icon-btn icon icon-sync"></div>
+							</label>
+							<label id="alt-3-custom-times" class="accordion">
+								<div class="icon-btn icon icon-clock"></div>
+							</label>
 							<div class="hidable">
 								<div class="alt-time-options">
-									<div class="settings-title">LT3 times</div>
+									<div class="settings-title">LT3 Times</div>
 									<div class="settings-inputs">
 										<input class="storable" id="alt-3-animation-time" placeholder="(in-out)" tabindex="18">
 										<input class="storable" id="alt-3-active-time" placeholder="(active)" tabindex="19">
+										<label class="config-btn lock-input">
+											<input class="checkbox-storable" type="checkbox" id="alt-3-lock-active">
+											<div class="icon-btn icon icon-lock"></div>
+										</label>
 										<input class="storable" id="alt-3-inactive-time" placeholder="(inactive)" tabindex="20">
+										<label class="config-btn lock-input">
+											<input class="checkbox-storable" type="checkbox" id="alt-3-oneshot">
+											<div class="icon-btn icon icon-oneshot"></div>
+										</label>
 									</div>
 								</div>
 							</div>
@@ -641,103 +833,150 @@
 						</label>
 						<label class="config-btn preview-btn">
 							<input class="checkbox-storable" type="checkbox" id="alt-4-preview">
-							<span class="icon-btn"><i class='fas'>&#xf002;</i></span>
+							<div class="icon-btn icon icon-search"></div>
 						</label>
 						<div class="drag-handle">
 							<div class="alt-number-icon">4</div>
 							<div id="alt-4-title" class="renameable title-storable">Lower Third 4</div>
-						</div>						
+						</div>
 						<label class="accordion"></label>
 						<div class="hidable">
 							<div class="grid-container">
-							  <div class="grid-row-1">
-							    <div>
-									<label class="config-btn">
-										<input class="checkbox-storable" type="checkbox" id="alt-4-logo">
-										<span class="icon-btn"><i class='fas'>&#xf03e;</i></span>
-									</label>
-									<label class="config-btn">
-										<input class="checkbox-storable" type="checkbox" id="alt-4-background">
-										<span class="icon-btn"><i class='fas'>&#xf576;</i></span>
-									</label>
-									<label class="config-btn">
-										<input class="checkbox-storable" type="checkbox" id="alt-4-shadows">
-										<span class="icon-btn"><i class='fas fa-rotate-270'>&#xf24d;</i></span>
-									</label>
-									<div class="align-toggle">
-									  <input class="radio-storable" id="alt-4-align-left" name="alt-4-align" type="radio" value="left" checked/>
-									  <label for="alt-4-align-left" onclick=""><i class="fas">&#xf036;</i></label>
-									  <input class="radio-storable" id="alt-4-align-center" name="alt-4-align" type="radio" value="center" />
-									  <label for="alt-4-align-center" onclick=""><i class="fas">&#xf037;</i></label>
-									  <input class="radio-storable" id="alt-4-align-right" name="alt-4-align" type="radio" value="right" />
-									  <label for="alt-4-align-right" onclick=""><i class="fas">&#xf038;</i></label>
+								<div class="grid-row">
+									<div>
+										<div class="align-toggle">
+										<input class="radio-storable" id="alt-4-align-left" name="alt-4-align" type="radio" value="left" checked/>
+										<label for="alt-4-align-left" onclick=""><div class="icon icon-aling-left"></div></label>
+										<input class="radio-storable" id="alt-4-align-center" name="alt-4-align" type="radio" value="center" />
+										<label for="alt-4-align-center" onclick=""><div class="icon icon-aling-center"></div></label>
+										<input class="radio-storable" id="alt-4-align-right" name="alt-4-align" type="radio" value="right" />
+										<label for="alt-4-align-right" onclick=""><div class="icon icon-aling-right"></div></label>
+										</div>
 									</div>
-							    </div>
-							    <div>
-									<div id="alt-4-style-color-appearance">
-										<div class="tool-tittle">Clr 1</div>
-										<input class="storable" id="alt-4-style-color-1" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="D54141">
-										<div class="tool-tittle">Clr 2</div>
-										<input class="storable" id="alt-4-style-color-2" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="222222">
+									<div>
+										<div class="input-icon icon icon-paint-brush"></div>
+										<div class="number-input">
+											<input id="alt-4-style" class="storable" min="1" max="3" name="quantity" value="1" type="number" placeholder="1" readonly>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
 									</div>
-							    </div>
-							  </div>
-							  <div class="grid-row-2">
-							    <div>
-									<div class="number-input">
-										<input id="alt-4-style" class="storable" min="1" max="2" name="quantity" value="1" type="number" placeholder="1" readonly>
+									<div>
+										<div class="input-icon icon icon-size"></div>
+										<div class="number-input">
+											<input id="alt-4-size" class="storable" min="10" max="50" name="quantity" value="24" type="number" placeholder="24">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>							
+									<div class="margin-config group">
+										<div class="input-icon icon icon-position"></div>
+										<div class="number-input">
+											<input id="alt-4-margin-h" class="storable" min="0" max="100" name="quantity" value="4" type="number" placeholder="4">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+										<div class="number-input input-no-icon">
+											<input id="alt-4-margin-v" class="storable" min="0" max="55" name="quantity" value="4" type="number" placeholder="4">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>
+								</div>
+								<div class="grid-row">
+									<div>
+										<div class="input-icon icon icon-text-height"></div>
+										<div class="number-input">
+										<input id="alt-4-inverse-ratio" class="storable" min="0" max="10" name="quantity" value="9" type="number" placeholder="9">
 										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
 										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
-										<div class="input-icon"><i class="fas">&#xf1fc;</i></div>
+										</div>
 									</div>
-							    </div>
-							    <div>
-									<div class="number-input">
-										<input id="alt-4-size" class="storable" min="10" max="50" name="quantity" value="24" type="number" placeholder="24">
+									<div>
+										<div class="input-icon icon icon-line-spacing"></div>
+										<div class="number-input">
+										<input id="alt-4-line-spacing" class="storable" min="-5" max="5" name="quantity" value="2" type="number" placeholder="0">
 										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
 										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
-										<div class="input-icon"><i class="fas">&#xf424;</i></div>
+										</div>
+									</div>									
+									<div class="font-config group">
+										<div class="input-icon icon icon-font"></div>
+										<select id="alt-4-font" class="font-storable">
+											<!--Fonts list-->
+										</select>
 									</div>
-							    </div>
-							    <div class="margin-config group">
-									<div class="number-input">
-										<input id="alt-4-margin-h" class="storable" min="0" max="100" name="quantity" value="4" type="number" placeholder="4">
+								</div>
+								<div class="grid-row">
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable" type="checkbox" id="alt-4-logo">
+											<div class="icon-btn icon icon-image"></div>
+										</label>									
+										<div class="number-input">
+										<input id="alt-4-logo-size" class="storable" min="-10" max="10" name="quantity" value="0" type="number" placeholder="0">
 										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
 										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
-										<div class="input-icon"><i class="fas">&#xf31e;</i></div>
+										</div>
+									</div>										
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable" type="checkbox" id="alt-4-shadows">
+											<div class="icon-btn icon icon-shadow"></div>
+										</label>
+										<div class="number-input">
+											<input id="alt-4-shadow-amount" class="storable" min="1" max="10" name="quantity" value="5" type="number" placeholder="5">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
 									</div>
-									<div class="number-input input-no-icon">
-										<input id="alt-4-margin-v" class="storable" min="0" max="55" name="quantity" value="4" type="number" placeholder="4">
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable" type="checkbox" id="alt-4-background">
+											<div class="icon-btn icon icon-fill-drip"></div>
+										</label>
+										<div id="alt-4-style-color-appearance" class="fill-color-appearance">
+											<div class="tool-tittle">Clr 1</div>
+											<input class="storable" id="alt-4-style-color-1" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="D54141">
+											<div class="tool-tittle">Clr 2</div>
+											<input class="storable" id="alt-4-style-color-2" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="222222">
+										</div>
+									</div>
+								</div>
+								<div class="grid-row">
+									<div>
+										<div class="input-icon icon icon-corner"></div>
+										<div class="number-input">
+										<input id="alt-4-corners" class="storable" min="0" max="10" name="quantity" value="0" type="number" placeholder="0">
 										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
 										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
 									</div>
-							    </div>
-							  </div>
-							  <div class="grid-row-3">
-							    <div>
-									<div class="number-input">
-									  <input id="alt-4-inverse-ratio" class="storable" min="0" max="10" name="quantity" value="9" type="number" placeholder="9">
-									  <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-									  <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
-									  <div class="input-icon"><i class="fas">&#xf034;</i></div>
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable twin-checkbox" type="checkbox" name="alt-4-border" id="alt-4-border-thickness">
+											<div class="icon-btn icon icon-thickness"></div>
+										</label>
+										<div class="number-input">
+										<input id="alt-4-border-thickness-amount" class="storable" min="0" max="10" name="quantity" value="0" type="number" placeholder="0">
+										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
 									</div>
-							    </div>
-							    <div>
-									<div class="number-input">
-									   <input id="alt-4-line-spacing" class="storable" min="-5" max="5" name="quantity" value="2" type="number" placeholder="0">
-									  <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-									  <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
-									  <div class="input-icon"><i class="fas fa-rotate-270">&#xf362;</i></div>
-									</div>
-							    </div>
-							    <div class="font-config group">
-									<div class="input-icon"><i class="fas">&#xf031;</i></div>
-									<select id="alt-4-font" class="font-storable">
-										<!--Fonts list-->
-								    </select>
-							    </div>
-							  </div>
-							</div>
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable twin-checkbox" type="checkbox" name="alt-4-border" id="alt-4-border-color">
+											<div class="icon-btn icon icon-pen"></div>
+										</label>
+										<div id="alt-4-style-border-color-appearance" class="border-color-appearance">
+											<div class="tool-tittle">Clr 3</div>
+											<input class="storable" id="alt-4-style-color-3" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="D54141">
+											<div class="tool-tittle">Clr 4</div>
+											<input class="storable" id="alt-4-style-color-4" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="222222">
+										</div>
+									</div>									
+								</div>
+							</div>					
 						</div>
 						<div class="first-edit-container">
 							<div class="logo-container" onclick="openLogoPopup('alt-4-logo-preview', 'alt-4-logo-default')">
@@ -746,25 +985,25 @@
 							<div class="textfields-container">
 								<input class="storable" type="text" id="alt-4-name" placeholder="Name" tabindex="10">
 								<div id="alt-4-name-appearance">
-									<label class="config-btn">
-									<input class="checkbox-storable" type="checkbox" id="alt-4-name-transform" checked>
-									<span class="icon-btn"><i class='fas'>&#xf031;</i><p>a</p></span>
+									<label class="config-btn small">
+										<input class="checkbox-storable" type="checkbox" id="alt-4-name-transform" checked>
+										<div class="icon-btn icon small icon-uppercase"></div>
 									</label>
-									<label class="config-btn">
+									<label class="config-btn small">
 										<input class="checkbox-storable" type="checkbox" id="alt-4-name-weight" checked>
-										<span class="icon-btn"><i class='fas'>&#xf032;</i></span>
+										<div class="icon-btn icon small icon-bold"></div>
 									</label>
 									<input class="storable" id="alt-4-name-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="f2f2f2">
 								</div>
 								<input class="storable" type="text" id="alt-4-info" placeholder="Info" tabindex="11">
 								<div id="alt-4-info-appearance">
-									<label class="config-btn">
+									<label class="config-btn small">
 										<input class="checkbox-storable" type="checkbox" id="alt-4-info-transform">
-										<span class="icon-btn"><i class='fas'>&#xf031;</i><p>a</p></span>
+										<div class="icon-btn icon small icon-uppercase"></div>
 									</label>
-									<label class="config-btn">
+									<label class="config-btn small">
 										<input class="checkbox-storable" type="checkbox" id="alt-4-info-weight">
-										<span class="icon-btn"><i class='fas'>&#xf032;</i></span>
+										<div class="icon-btn icon small icon-bold"></div>
 									</label>
 									<input class="storable" id="alt-4-info-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="555555">
 								</div>	
@@ -772,7 +1011,7 @@
 							</div>
 						</div>
 						<div class="panel-bottom">
-							<div id="alt-4-clean-inputs" class="clean"><i class="fas">&#xf00d;</i></div>
+							<div id="alt-4-clean-inputs" class="clean"><div class="icon icon-cross"></div></div>
 							<ul id="alt-4-memory-slots">
 								<li id="alt-4-slot-1"><div class="slot-number">1</div><div class="slot-storable stored-name" id="alt-4-name-1"></div><div class="slot-storable stored-info" id="alt-4-info-1"></div><div class="slot-storable stored-logo" id="alt-4-logo-1"></div></li>
 								<li id="alt-4-slot-2"><div class="slot-number">2</div><div class="slot-storable stored-name" id="alt-4-name-2"></div><div class="slot-storable stored-info" id="alt-4-info-2"></div><div class="slot-storable stored-logo" id="alt-4-logo-2"></div></li>
@@ -790,20 +1029,34 @@
 								<div id="alt-4-inactive-time-monitor">0</div>
 							</div>
 							<label class="config-btn">
-								<input class="checkbox-storable" type="checkbox" id="alt-4-autoload">
-								<span class="icon-btn"><i class='fas'>&#xf2f1;</i></span>
+								<input class="checkbox-storable" type="checkbox" id="alt-4-autotrigger">
+								<div class="icon-btn icon icon-autotrigger"></div>
 							</label>
-							<label id="alt-4-custom-times" class="accordion"><i class="fas">&#xf017;</i></label>
+							<label class="config-btn">
+								<input class="checkbox-storable" type="checkbox" id="alt-4-autoload">
+								<div class="icon-btn icon icon-sync"></div>
+							</label>
+							<label id="alt-4-custom-times" class="accordion">
+								<div class="icon-btn icon icon-clock"></div>
+							</label>
 							<div class="hidable">
 								<div class="alt-time-options">
-									<div class="settings-title">LT4 times</div>
+									<div class="settings-title">LT4 Times</div>
 									<div class="settings-inputs">
 										<input class="storable" id="alt-4-animation-time" placeholder="(in-out)" tabindex="21">
 										<input class="storable" id="alt-4-active-time" placeholder="(active)" tabindex="22">
+										<label class="config-btn lock-input">
+											<input class="checkbox-storable" type="checkbox" id="alt-4-lock-active">
+											<div class="icon-btn icon icon-lock"></div>
+										</label>
 										<input class="storable" id="alt-4-inactive-time" placeholder="(inactive)" tabindex="23">
+										<label class="config-btn lock-input">
+											<input class="checkbox-storable" type="checkbox" id="alt-4-oneshot">
+											<div class="icon-btn icon icon-oneshot"></div>
+										</label>
 									</div>
 								</div>
-							</div>								
+							</div>
 						</div>
 					</div>
 				</div>
@@ -816,7 +1069,7 @@
 					<div class="file-btns">
 						<label for="logo-file">Choose image</label>
 						<input type="file" id="logo-file" accept="image/*" onchange="showPreview(event);">
-						<div class="btn-remove" onclick="removeLogoPopup()"><i class="fas">&#xf2ed;</i></div>
+						<div class="btn-remove" onclick="removeLogoPopup()"><div class="icon-btn icon icon-trash"></div></div>
 					</div>
 					<div id="file-preview" class="no-image">
 						<img id="logo-file-preview">
@@ -858,8 +1111,8 @@
 			<div id='fileNames'> </div>
 
 			<div id="alt-preview" class="active">
-				<label><i class="fas">&#xf002;</i>Preview</label>
-				<div id="toggle-preview" class="active"><i class="fas">&#xf078;</i></div>
+				<label><div class="icon icon-search"></div></label>
+				<div id="toggle-preview" class="active"><div class="icon icon-chevron-down"></div></div>
 				<div class="embed-container">
 				    <iframe id="myiframe" src="./browser-source.html?mode=preview" frameborder="0" allowfullscreen></iframe>
 				</div>
@@ -898,6 +1151,23 @@
 			var alt_4_autoload;
 			var alt_4_jumpnext;
 
+			var alt_1_autotrigger;
+			var alt_2_autotrigger;
+			var alt_3_autotrigger;
+			var alt_4_autotrigger;
+
+			var global_oneshot;
+			var alt_1_oneshot;
+			var alt_2_oneshot;
+			var alt_3_oneshot;
+			var alt_4_oneshot;
+
+			var global_lock_active;
+			var alt_1_lock_active;
+			var alt_2_lock_active;
+			var alt_3_lock_active;
+			var alt_4_lock_active;
+
 
 			var alt_1_logo_default = "../logos/logo_1.png";
 			var alt_2_logo_default = "../logos/logo_2.png";
@@ -914,6 +1184,9 @@
 			var alt_1_margin_v;
 			var alt_1_shadows;
 			var alt_1_font;
+
+			var alt_1_corners;
+			var alt_1_border_thickness_amount;
 
 			var alt_2_style = 1;
 			var alt_2_inverse_ratio = 9;
@@ -997,6 +1270,12 @@
 			var hotkeyAlt4Slot8Old = hotkeyAlt4Slot8;
 			var hotkeyAlt4Slot9Old = hotkeyAlt4Slot9;
 			var hotkeyAlt4Slot10Old = hotkeyAlt4Slot10;
+
+			var alt_1_turnoff = false;
+			var alt_2_turnoff = false;
+			var alt_3_turnoff = false;
+			var alt_4_turnoff = false;
+
 			
 			var acc = document.getElementsByClassName("accordion");
 			var i;
@@ -1084,7 +1363,7 @@
 	
 			for (i = 0; i < customFonts; i++) {
 				font_number = i + 1;
-				$('#custom-font-list ul').append('<li><div class="font-name-added slot-storable" id="font-name-added-' + font_number + '"></div><div class="font-url-added slot-storable" id="font-url-added-' + font_number + '"></div><div class="delete-font"><i class="fas">&#xf2ed;</i></div></li>');
+				$('#custom-font-list ul').append('<li><div class="font-name-added slot-storable" id="font-name-added-' + font_number + '"></div><div class="font-url-added slot-storable" id="font-url-added-' + font_number + '"></div><div class="delete-font"><div class="icon icon-trash"></div></div></li>');
 			}
 
 			//On load
@@ -1187,7 +1466,7 @@
 					var font_url_to_add_clean = font_url_to_add_clean.replace(" </style>", "");
 
 
-					$('#custom-font-list ul').append('<li><div class="font-name-added slot-storable" id="font-name-added-' + howMany + '">' + font_name_to_add_clean + '</div><div class="font-url-added slot-storable" id="font-url-added-' + howMany + '">' + font_url_to_add_clean + '</div><div class="delete-font"><i class="fas">&#xf2ed;</i></div></li>');
+					$('#custom-font-list ul').append('<li><div class="font-name-added slot-storable" id="font-name-added-' + howMany + '">' + font_name_to_add_clean + '</div><div class="font-url-added slot-storable" id="font-url-added-' + howMany + '">' + font_url_to_add_clean + '</div><div class="delete-font"><div class="icon icon-trash"></div></div></li>');
 					AddNewFont(font_name_to_add_clean, font_url_to_add_clean);
 
 					//Increase the heigh of the main settings panel
@@ -1726,6 +2005,15 @@
 								} else {
 									$(logo).attr("src", logo_to_load);
 								}
+
+								//Switch ON the panel if the autotrigger is ON
+								slot_number_called = $(this).children('.slot-number').text();
+								auto_trigger = slot_id.replace("-slot-" + slot_number_called, "-autotrigger");
+								alt_switch = slot_id.replace("alt-", "");
+								alt_switch = alt_switch.replace("-slot-" + slot_number_called, "");
+								if (document.getElementById(auto_trigger).checked == true) {
+									document.getElementById("lower-thirds-switch" + alt_switch).checked = true;
+								}
 							}
 				    	} else {
 							slotDeleted = false;
@@ -1817,6 +2105,15 @@
 					$(logo).attr("src", logo_to_load);
 				}, alt_waiting_time * 1000);
 
+				//Switch ON the panel if the autotrigger is ON
+				auto_trigger = name.replace("#", "");
+				auto_trigger = auto_trigger.replace("-name", "-autotrigger");
+				alt_switch = name.replace("#alt-", "");
+				alt_switch = alt_switch.replace("-name", "");
+
+				if (document.getElementById(auto_trigger).checked == true) {
+					document.getElementById("lower-thirds-switch" + alt_switch).checked = true;
+				}
 				//console.log(name + "|" + info + "|" + logo + "|" + name_to_load + "|" + info_to_load + "|" + logo_to_load + "|" + alt_waiting_time);
 			}
 
@@ -1951,6 +2248,66 @@
 					alt_4_size = 24;
 				}
 
+				//Logo Size
+				alt_1_logo_size = Number($("#alt-1-logo-size").val()) * 0.25 + 3.5;
+				if (!alt_1_logo_size){
+					alt_1_logo_size = 3.5;
+				}
+
+				//Shadow Amount
+				alt_1_shadow_amount = $("#alt-1-shadow-amount").val() * 0.1;
+				if (!alt_1_shadow_amount){
+					alt_1_shadow_amount = 0.5;
+				}
+				// alt_2_shadow_amount = $("#alt-2-shadow-amount").val() * 0.1;
+				// if (!alt_2_shadow_amount){
+				// 	alt_2_shadow_amount = 0.5;
+				// }
+				// alt_3_shadow_amount = $("#alt-3-shadow-amount").val() * 0.1;
+				// if (!alt_3_shadow_amount){
+				// 	alt_3_shadow_amount = 0.5;
+				// }
+				// alt_4_shadow_amount = $("#alt-4-shadow-amount").val() * 0.1;
+				// if (!alt_4_shadow_amount){
+				// 	alt_4_shadow_amount = 0.5;
+				// }
+
+				//Background Corners
+				alt_1_corners = Number($("#alt-1-corners").val()) * 0.25;
+				if (!alt_1_corners){
+					alt_1_corners = 0;
+				}
+				// alt_2_corners = $("#alt-2-corners").val();
+				// if (!alt_2_corners){
+				// 	alt_2_corners = 0;
+				// }
+				// alt_3_corners = $("#alt-3-corners").val();
+				// if (!alt_3_corners){
+				// 	alt_3_corners = 0;
+				// }
+				// alt_4_corners = $("#alt-4-corners").val();
+				// if (!alt_4_corners){
+				// 	alt_4_corners = 0;
+				// }
+
+				//Border Thickness amount
+				alt_1_border_thickness_amount = $("#alt-1-border-thickness-amount").val();
+				if (!alt_1_border_thickness_amount){
+					alt_1_border_thickness_amount = 0;
+				}
+				// alt_2_border_thickness_amount = $("#alt-2-border-thickness-amount").val();
+				// if (!alt_2_border_thickness_amount){
+				// 	alt_2_border_thickness_amount = 0;
+				// }
+				// alt_3_border_thickness_amount = $("#alt-3-border-thickness-amount").val();
+				// if (!alt_3_border_thickness_amount){
+				// 	alt_3_border_thickness_amount = 0;
+				// }
+				// alt_4_border_thickness_amount = $("#alt-4-border-thickness-amount").val();
+				// if (!alt_4_border_thickness_amount){
+				// 	alt_4_border_thickness_amount = 0;
+				// }
+			
 				//Margin from de borders Horizontal and Vertical
 				alt_1_margin_h = $("#alt-1-margin-h").val();
 				if (!alt_1_margin_h){
@@ -2000,6 +2357,8 @@
 							document.getElementById("alt-1-align-left").checked = true;
 						}
 						document.getElementById("alt-1-logo").disabled = false;
+						document.getElementById("alt-1-background").classList.remove("locked");
+
 						break;
 					case "2":
 						//Disable: logo | Enable: align center;
@@ -2008,12 +2367,17 @@
 						if (document.getElementById("alt-1-logo").checked == true){
 							document.getElementById("alt-1-logo").checked = false;
 						}
+						document.getElementById("alt-1-background").classList.remove("locked");
 
 						break;
 					case "3":
 						//Disable: - | Enable: Logo, align center;
 						document.getElementById("alt-1-align-center").disabled = false;
 						document.getElementById("alt-1-logo").disabled = false;
+						document.getElementById("alt-1-background").checked = true;
+						// document.getElementById("alt-1-background").setAttribute("style", "cursor:not-allowed");
+						document.getElementById("alt-1-background").classList.add("locked");
+
 						break;
 				}
 				switch (alt_2_style){
@@ -2109,13 +2473,36 @@
 				alt_3_inactive_time_monitor = received_data[5];
 				alt_4_active_time_monitor = received_data[6];
 				alt_4_inactive_time_monitor = received_data[7];
+
+				alt_1_turnoff = (received_data[8] == "true");
+				alt_2_turnoff = (received_data[9] == "true");
+				alt_3_turnoff = (received_data[10] == "true");
+				alt_4_turnoff = (received_data[11] == "true");
+
+				if (alt_1_turnoff){
+					document.getElementById("lower-thirds-switch1").checked = false;
+				}
+				if (alt_2_turnoff){
+					document.getElementById("lower-thirds-switch2").checked = false;
+				}
+				if (alt_3_turnoff){
+					document.getElementById("lower-thirds-switch3").checked = false;
+				}
+				if (alt_4_turnoff){
+					document.getElementById("lower-thirds-switch4").checked = false;
+				}
+				// console.log(alt_1_turnoff);
 			}
 
 			//////////////////////////////////////
 
 			function function_send() {
 				global_animation_time = $("#global-animation-time").val();
-				global_active_time = $("#global-active-time:text").val();
+				if (global_lock_active){
+					global_active_time = Infinity;
+				} else {
+					global_active_time = $("#global-active-time:text").val();
+				}
 				global_inactive_time = $("#global-inactive-time:text").val();
 
 				alt_1_name = $("#alt-1-name:text").val();
@@ -2124,8 +2511,15 @@
 				alt_1_info_color = $("#alt-1-info-color:text").val();
 				alt_1_style_color_1 = $("#alt-1-style-color-1:text").val();
 				alt_1_style_color_2 = $("#alt-1-style-color-2:text").val();
+				alt_1_style_color_3 = $("#alt-1-style-color-3:text").val();
+				alt_1_style_color_4 = $("#alt-1-style-color-4:text").val();
+
 				alt_1_animation_time = $("#alt-1-animation-time:text").val();
-				alt_1_active_time = $("#alt-1-active-time:text").val();
+				if (alt_1_lock_active){
+					alt_1_active_time = Infinity;
+				} else {
+					alt_1_active_time = $("#alt-1-active-time:text").val();
+				}
 				alt_1_inactive_time = $("#alt-1-inactive-time:text").val();
 				alt_1_logo = $("#alt-1-logo-preview").attr("src");
 
@@ -2136,7 +2530,11 @@
 				alt_2_style_color_1 = $("#alt-2-style-color-1:text").val();
 				alt_2_style_color_2 = $("#alt-2-style-color-2:text").val();
 				alt_2_animation_time = $("#alt-2-animation-time:text").val();
-				alt_2_active_time = $("#alt-2-active-time:text").val();
+				if (alt_2_lock_active){
+					alt_2_active_time = Infinity;
+				} else {
+					alt_2_active_time = $("#alt-2-active-time:text").val();
+				}
 				alt_2_inactive_time = $("#alt-2-inactive-time:text").val();
 				alt_2_logo = $("#alt-2-logo-preview").attr("src");
 
@@ -2147,7 +2545,11 @@
 				alt_3_style_color_1 = $("#alt-3-style-color-1:text").val();
 				alt_3_style_color_2 = $("#alt-3-style-color-2:text").val();
 				alt_3_animation_time = $("#alt-3-animation-time:text").val();
-				alt_3_active_time = $("#alt-3-active-time:text").val();
+				if (alt_3_lock_active){
+					alt_3_active_time = Infinity;
+				} else {
+					alt_3_active_time = $("#alt-3-active-time:text").val();
+				}				
 				alt_3_inactive_time = $("#alt-3-inactive-time:text").val();
 				alt_3_logo = $("#alt-3-logo-preview").attr("src");
 
@@ -2158,12 +2560,16 @@
 				alt_4_style_color_1 = $("#alt-4-style-color-1:text").val();
 				alt_4_style_color_2 = $("#alt-4-style-color-2:text").val();
 				alt_4_animation_time = $("#alt-4-animation-time:text").val();
-				alt_4_active_time = $("#alt-4-active-time:text").val();
+				if (alt_4_lock_active){
+					alt_4_active_time = Infinity;
+				} else {
+					alt_4_active_time = $("#alt-4-active-time:text").val();
+				}				
 				alt_4_inactive_time = $("#alt-4-inactive-time:text").val();
 				alt_4_logo = $("#alt-4-logo-preview").attr("src");
 
 				//Standard Main settings values
-				if(global_active_time == "") {
+				if(!global_lock_active && global_active_time == "") {
 					global_active_time = 25;
 				}
 				if(global_inactive_time == "") {
@@ -2196,7 +2602,7 @@
 						if (alt_1_active_time_monitor >= 0 && alt_1_inactive_time_monitor == 0 && alt_1_name && alt_1_info){
 							document.getElementById("alt-1-config-content").classList.remove("inactive");
 							document.getElementById("alt-1-config-content").classList.add("active");
-							alt_1_jumpnext = true;						
+							alt_1_jumpnext = true;
 						} else {
 							document.getElementById("alt-1-config-content").classList.remove("active");
 							document.getElementById("alt-1-config-content").classList.add("inactive");
@@ -2316,12 +2722,42 @@
 
 				//////////////////////////////
 
-				//Switch Preview ALT ON/OFF
+				//Switch Autoload ALT ON/OFF
 				alt_1_autoload = (document.getElementById("alt-1-autoload").checked == true) ? true : false;
 				alt_2_autoload = (document.getElementById("alt-2-autoload").checked == true) ? true : false;
 				alt_3_autoload = (document.getElementById("alt-3-autoload").checked == true) ? true : false;
 				alt_4_autoload = (document.getElementById("alt-4-autoload").checked == true) ? true : false;
+
+				//////////////////////////////
+
+				//Switch Autotrigger ALT ON/OFF
+				alt_1_autotrigger = (document.getElementById("alt-1-autotrigger").checked == true) ? true : false;
+				alt_2_autotrigger = (document.getElementById("alt-2-autotrigger").checked == true) ? true : false;
+				alt_3_autotrigger = (document.getElementById("alt-3-autotrigger").checked == true) ? true : false;
+				alt_4_autotrigger = (document.getElementById("alt-4-autotrigger").checked == true) ? true : false;
 				
+
+				//////////////////////////////
+
+				//Switch One-shot Mode ALT ON/OFF
+				global_oneshot = (document.getElementById("global-oneshot").checked == true) ? true : false;
+				
+				alt_1_oneshot = (document.getElementById("alt-1-oneshot").checked == true) ? true : false;
+				alt_2_oneshot = (document.getElementById("alt-2-oneshot").checked == true) ? true : false;
+				alt_3_oneshot = (document.getElementById("alt-3-oneshot").checked == true) ? true : false;
+				alt_4_oneshot = (document.getElementById("alt-4-oneshot").checked == true) ? true : false;
+				
+				//////////////////////////////
+
+				//Switch Lock Active Mode ALT ON/OFF
+				global_lock_active = (document.getElementById("global-lock-active").checked == true) ? true : false;
+
+				alt_1_lock_active = (document.getElementById("alt-1-lock-active").checked == true) ? true : false;
+				alt_2_lock_active = (document.getElementById("alt-2-lock-active").checked == true) ? true : false;
+				alt_3_lock_active = (document.getElementById("alt-3-lock-active").checked == true) ? true : false;
+				alt_4_lock_active = (document.getElementById("alt-4-lock-active").checked == true) ? true : false;
+				
+
 				//////////////////////////////
 
 				//Show the slots numbers
@@ -2429,9 +2865,11 @@
 				//Switch Logo ON/OFF
 				if (document.getElementById("alt-1-logo").checked == false) {
 					alt_1_logo_switch = "false";
+					$("#alt-1-logo-size").addClass("disable");
 					$("#alt-1-config-content > .first-edit-container > .logo-container").addClass("hide");
 				} else {
 					alt_1_logo_switch = "true";
+					$("#alt-1-logo-size").removeClass("disable");
 					$("#alt-1-config-content > .first-edit-container > .logo-container").removeClass("hide");
 				}
 				if (document.getElementById("alt-2-logo").checked == false) {
@@ -2456,33 +2894,84 @@
 					$("#alt-4-config-content > .first-edit-container > .logo-container").removeClass("hide");
 				}
 
-				//Switch Background ON/OFF
+				//Switch Background color ON/OFF
 				if (document.getElementById("alt-1-background").checked == false) {
 					alt_1_background_switch = "false";
+					$("#alt-1-style-color-appearance").addClass("disable");
 				} else {
 					alt_1_background_switch = "true";
+					$("#alt-1-style-color-appearance").removeClass("disable");
 				}
 				if (document.getElementById("alt-2-background").checked == false) {
 					alt_2_background_switch = "false";
+					$("#alt-2-style-color-appearance").addClass("disable");
 				} else {
 					alt_2_background_switch = "true";
+					$("#alt-2-style-color-appearance").removeClass("disable");
 				}
 				if (document.getElementById("alt-3-background").checked == false) {
 					alt_3_background_switch = "false";
+					$("#alt-3-style-color-appearance").addClass("disable");
 				} else {
 					alt_3_background_switch = "true";
+					$("#alt-3-style-color-appearance").removeClass("disable");
 				}
 				if (document.getElementById("alt-4-background").checked == false) {
 					alt_4_background_switch = "false";
+					$("#alt-4-style-color-appearance").addClass("disable");
 				} else {
 					alt_4_background_switch = "true";
+					$("#alt-4-style-color-appearance").removeClass("disable");
+				}
+
+				//Multiple/Twins checkbox
+				$('.twin-checkbox').each(function(){    
+					twin_name = $(this).attr('name');
+					var twin_checkboxes = $("input[type=checkbox][name="+ twin_name +"]");
+					twin_checkboxes.on("click", function(e) {
+						twin_checkboxes.prop("checked", this.checked);
+					});
+				});
+
+				//Switch Border color and Border thickness ON/OFF
+				if (document.getElementById("alt-1-border-color").checked == false) {
+					alt_1_border_switch = "false";
+					$("#alt-1-border-thickness-amount").addClass("disable");
+					$("#alt-1-style-border-color-appearance").addClass("disable");
+				} else {
+					alt_1_border_switch = "true";
+					$("#alt-1-border-thickness-amount").removeClass("disable");
+					$("#alt-1-style-border-color-appearance").removeClass("disable");
+				}
+				if (document.getElementById("alt-2-border-color").checked == false) {
+					$("#alt-2-border-thickness-amount").addClass("disable");
+					$("#alt-2-style-border-color-appearance").addClass("disable");
+				} else {
+					$("#alt-2-border-thickness-amount").removeClass("disable");
+					$("#alt-2-style-border-color-appearance").removeClass("disable");
+				}
+				if (document.getElementById("alt-3-border-color").checked == false) {
+					$("#alt-3-border-thickness-amount").addClass("disable");
+					$("#alt-3-style-border-color-appearance").addClass("disable");
+				} else {
+					$("#alt-3-border-thickness-amount").removeClass("disable");
+					$("#alt-3-style-border-color-appearance").removeClass("disable");
+				}
+				if (document.getElementById("alt-4-border-color").checked == false) {
+					$("#alt-4-border-thickness-amount").addClass("disable");
+					$("#alt-4-style-border-color-appearance").addClass("disable");
+				} else {
+					$("#alt-4-border-thickness-amount").removeClass("disable");
+					$("#alt-4-style-border-color-appearance").removeClass("disable");
 				}
 
 				//Switch Shadows ON/OFF
 				if (document.getElementById("alt-1-shadows").checked == false) {
 					alt_1_shadows = "false";
+					$("#alt-1-shadow-amount").addClass("disable");
 				} else {
 					alt_1_shadows = "true";
+					$("#alt-1-shadow-amount").removeClass("disable");
 				}
 				if (document.getElementById("alt-2-shadows").checked == false) {
 					alt_2_shadows = "false";
@@ -2611,34 +3100,91 @@
 					document.getElementById("alt-4-align-left").checked = true;
 				}
 
+				//
+				if (global_oneshot){
+					document.getElementById("global-inactive-time").classList.add("disable");
+				} else {
+					document.getElementById("global-inactive-time").classList.remove("disable");
+				}
+				if (alt_1_oneshot){
+					document.getElementById("alt-1-inactive-time").classList.add("disable");
+				} else {
+					document.getElementById("alt-1-inactive-time").classList.remove("disable");
+				}
+				if (alt_2_oneshot){
+					document.getElementById("alt-2-inactive-time").classList.add("disable");
+				} else {
+					document.getElementById("alt-2-inactive-time").classList.remove("disable");
+				}
+				if (alt_3_oneshot){
+					document.getElementById("alt-3-inactive-time").classList.add("disable");
+				} else {
+					document.getElementById("alt-3-inactive-time").classList.remove("disable");
+				}
+				if (alt_4_oneshot){
+					document.getElementById("alt-4-inactive-time").classList.add("disable");
+				} else {
+					document.getElementById("alt-4-inactive-time").classList.remove("disable");
+				}
+
+				//
+				if (global_lock_active){
+					document.getElementById("global-active-time").classList.add("disable");
+				} else {
+					document.getElementById("global-active-time").classList.remove("disable");
+				}
+				if (alt_1_lock_active){
+					document.getElementById("alt-1-active-time").classList.add("disable");
+					// document.getElementById("alt-1-active-time").value = "Locked";
+				} else {
+					document.getElementById("alt-1-active-time").classList.remove("disable");
+					// document.getElementById("alt-1-active-time").value = "";
+				}
+				if (alt_2_lock_active){
+					document.getElementById("alt-2-active-time").classList.add("disable");
+				} else {
+					document.getElementById("alt-2-active-time").classList.remove("disable");
+				}
+				if (alt_3_lock_active){
+					document.getElementById("alt-3-active-time").classList.add("disable");
+				} else {
+					document.getElementById("alt-3-active-time").classList.remove("disable");
+				}
+				if (alt_4_lock_active){
+					document.getElementById("alt-4-active-time").classList.add("disable");
+				} else {
+					document.getElementById("alt-4-active-time").classList.remove("disable");
+				}				
+
 				//Shows if custom time settings is used
-				if (alt_1_animation_time || alt_1_active_time || alt_1_inactive_time) {
-					$("#alt-1-custom-times").children('i').addClass("active");
+				if (alt_1_animation_time || alt_1_active_time || alt_1_inactive_time || alt_1_lock_active || alt_1_oneshot) {
+					$("#alt-1-custom-times").children(".icon-btn").addClass("active");
 				} else {
-					$("#alt-1-custom-times").children('i').removeClass("active");
+					$("#alt-1-custom-times").children(".icon-btn").removeClass("active");
 				}
-				if (alt_2_animation_time || alt_2_active_time || alt_2_inactive_time) {
-					$("#alt-2-custom-times").children('i').addClass("active");
+				if (alt_2_animation_time || alt_2_active_time || alt_2_inactive_time || alt_2_lock_active || alt_2_oneshot) {
+					$("#alt-2-custom-times").children(".icon-btn").addClass("active");
 				} else {
-					$("#alt-2-custom-times").children('i').removeClass("active");
+					$("#alt-2-custom-times").children(".icon-btn").removeClass("active");
 				}
-				if (alt_3_animation_time || alt_3_active_time || alt_3_inactive_time) {
-					$("#alt-3-custom-times").children('i').addClass("active");
+				if (alt_3_animation_time || alt_3_active_time || alt_3_inactive_time || alt_3_lock_active || alt_3_oneshot) {
+					$("#alt-3-custom-times").children(".icon-btn").addClass("active");
 				} else {
-					$("#alt-3-custom-times").children('i').removeClass("active");
+					$("#alt-3-custom-times").children(".icon-btn").removeClass("active");
 				}
-				if (alt_4_animation_time || alt_4_active_time || alt_4_inactive_time) {
-					$("#alt-4-custom-times").children('i').addClass("active");
+				if (alt_4_animation_time || alt_4_active_time || alt_4_inactive_time || alt_4_lock_active || alt_4_oneshot) {
+					$("#alt-4-custom-times").children(".icon-btn").addClass("active");
 				} else {
-					$("#alt-4-custom-times").children('i').removeClass("active");
+					$("#alt-4-custom-times").children(".icon-btn").removeClass("active");
 				}
 
-
-
-				bc.postMessage(global_animation_time + '|' + global_active_time + '|' + global_inactive_time + '|' + alt_1_switch + '|' + alt_1_style + '|' + alt_1_name + '|' + alt_1_info + '|' + alt_1_name_size + '|' + alt_1_info_size  + '|' + alt_1_name_transform + '|' + alt_1_info_transform + '|' + alt_1_name_weight + '|' + alt_1_info_weight + '|' + alt_1_name_color + '|' + alt_1_info_color + '|' + alt_1_style_color_1 + '|' + alt_1_style_color_2 + '|' + alt_1_logo_switch + '|' + alt_1_background_switch + '|' + alt_1_shadows + '|' + alt_1_align + '|' + alt_1_size + '|' + alt_1_margin_h + '|' + alt_1_margin_v + '|' + alt_1_line_spacing + '|' + alt_1_font + '|' + alt_2_switch + '|' + alt_2_style + '|' + alt_2_name + '|' + alt_2_info + '|' + alt_2_name_size + '|' + alt_2_info_size  + '|' + alt_2_name_transform + '|' + alt_2_info_transform + '|' + alt_2_name_weight + '|' + alt_2_info_weight + '|' + alt_2_name_color + '|' + alt_2_info_color + '|' + alt_2_style_color_1 + '|' + alt_2_style_color_2 + '|' + alt_2_logo_switch + '|' + alt_2_background_switch + '|' + alt_2_shadows + '|' + alt_2_align + '|' + alt_2_size + '|' + alt_2_margin_h + '|' + alt_2_margin_v + '|' + alt_2_line_spacing + '|' + alt_2_font + '|' + alt_3_switch + '|' + alt_3_style + '|' + alt_3_name + '|' + alt_3_info + '|' + alt_3_name_size + '|' + alt_3_info_size  + '|' + alt_3_name_transform + '|' + alt_3_info_transform + '|' + alt_3_name_weight + '|' + alt_3_info_weight + '|' + alt_3_name_color + '|' + alt_3_info_color + '|' + alt_3_style_color_1 + '|' + alt_3_style_color_2 + '|' + alt_3_logo_switch + '|' + alt_3_background_switch + '|' + alt_3_shadows + '|' + alt_3_align + '|' + alt_3_size + '|' + alt_3_margin_h + '|' + alt_3_margin_v + '|' + alt_3_line_spacing + '|' + alt_3_font + '|' + alt_4_switch + '|' + alt_4_style + '|' + alt_4_name + '|' + alt_4_info + '|' + alt_4_name_size + '|' + alt_4_info_size  + '|' + alt_4_name_transform + '|' + alt_4_info_transform + '|' + alt_4_name_weight + '|' + alt_4_info_weight + '|' + alt_4_name_color + '|' + alt_4_info_color + '|' + alt_4_style_color_1 + '|' + alt_4_style_color_2 + '|' + alt_4_logo_switch + '|' + alt_4_background_switch + '|' + alt_4_shadows + '|' + alt_4_align + '|' + alt_4_size + '|' + alt_4_margin_h + '|' + alt_4_margin_v + '|' + alt_4_line_spacing + '|' + alt_4_font + '|' + alt_1_animation_time + '|' + alt_1_active_time + '|' + alt_1_inactive_time + '|' + alt_2_animation_time + '|' + alt_2_active_time + '|' + alt_2_inactive_time + '|' + alt_3_animation_time + '|' + alt_3_active_time + '|' + alt_3_inactive_time + '|' + alt_4_animation_time + '|' + alt_4_active_time + '|' + alt_4_inactive_time + '|' + alt_1_logo + '|' + alt_2_logo + '|' + alt_3_logo + '|' + alt_4_logo);
+				//New settings to add
+				//alt_1_logo_size, alt_1_shadow_amount, alt_1_corners, alt_1_border_switch, alt_1_border_thickness_amount, alt_1_style_color_3, alt_1_style_color_4
+				
+				bc.postMessage(global_animation_time + '|' + global_active_time + '|' + global_inactive_time + '|' + alt_1_switch + '|' + alt_1_style + '|' + alt_1_name + '|' + alt_1_info + '|' + alt_1_name_size + '|' + alt_1_info_size  + '|' + alt_1_name_transform + '|' + alt_1_info_transform + '|' + alt_1_name_weight + '|' + alt_1_info_weight + '|' + alt_1_name_color + '|' + alt_1_info_color + '|' + alt_1_style_color_1 + '|' + alt_1_style_color_2 + '|' + alt_1_logo_switch + '|' + alt_1_background_switch + '|' + alt_1_shadows + '|' + alt_1_align + '|' + alt_1_size + '|' + alt_1_margin_h + '|' + alt_1_margin_v + '|' + alt_1_line_spacing + '|' + alt_1_font + '|' + alt_2_switch + '|' + alt_2_style + '|' + alt_2_name + '|' + alt_2_info + '|' + alt_2_name_size + '|' + alt_2_info_size  + '|' + alt_2_name_transform + '|' + alt_2_info_transform + '|' + alt_2_name_weight + '|' + alt_2_info_weight + '|' + alt_2_name_color + '|' + alt_2_info_color + '|' + alt_2_style_color_1 + '|' + alt_2_style_color_2 + '|' + alt_2_logo_switch + '|' + alt_2_background_switch + '|' + alt_2_shadows + '|' + alt_2_align + '|' + alt_2_size + '|' + alt_2_margin_h + '|' + alt_2_margin_v + '|' + alt_2_line_spacing + '|' + alt_2_font + '|' + alt_3_switch + '|' + alt_3_style + '|' + alt_3_name + '|' + alt_3_info + '|' + alt_3_name_size + '|' + alt_3_info_size  + '|' + alt_3_name_transform + '|' + alt_3_info_transform + '|' + alt_3_name_weight + '|' + alt_3_info_weight + '|' + alt_3_name_color + '|' + alt_3_info_color + '|' + alt_3_style_color_1 + '|' + alt_3_style_color_2 + '|' + alt_3_logo_switch + '|' + alt_3_background_switch + '|' + alt_3_shadows + '|' + alt_3_align + '|' + alt_3_size + '|' + alt_3_margin_h + '|' + alt_3_margin_v + '|' + alt_3_line_spacing + '|' + alt_3_font + '|' + alt_4_switch + '|' + alt_4_style + '|' + alt_4_name + '|' + alt_4_info + '|' + alt_4_name_size + '|' + alt_4_info_size  + '|' + alt_4_name_transform + '|' + alt_4_info_transform + '|' + alt_4_name_weight + '|' + alt_4_info_weight + '|' + alt_4_name_color + '|' + alt_4_info_color + '|' + alt_4_style_color_1 + '|' + alt_4_style_color_2 + '|' + alt_4_logo_switch + '|' + alt_4_background_switch + '|' + alt_4_shadows + '|' + alt_4_align + '|' + alt_4_size + '|' + alt_4_margin_h + '|' + alt_4_margin_v + '|' + alt_4_line_spacing + '|' + alt_4_font + '|' + alt_1_animation_time + '|' + alt_1_active_time + '|' + alt_1_inactive_time + '|' + alt_2_animation_time + '|' + alt_2_active_time + '|' + alt_2_inactive_time + '|' + alt_3_animation_time + '|' + alt_3_active_time + '|' + alt_3_inactive_time + '|' + alt_4_animation_time + '|' + alt_4_active_time + '|' + alt_4_inactive_time + '|' + alt_1_logo + '|' + alt_2_logo + '|' + alt_3_logo + '|' + alt_4_logo + '|' + global_oneshot + '|' + alt_1_oneshot + '|' + alt_2_oneshot + '|' + alt_3_oneshot + '|' + alt_4_oneshot + '|' + alt_1_logo_size + '|' + alt_1_shadow_amount + '|' + alt_1_corners + '|' + alt_1_border_switch + '|' + alt_1_border_thickness_amount + '|' + alt_1_style_color_3 + '|' + alt_1_style_color_4);
 
 				//Previews
-				bcp.postMessage(global_animation_time + '|' + global_active_time + '|' + global_inactive_time + '|' + alt_1_preview + '|' + alt_1_style + '|' + alt_1_name + '|' + alt_1_info + '|' + alt_1_name_size + '|' + alt_1_info_size  + '|' + alt_1_name_transform + '|' + alt_1_info_transform + '|' + alt_1_name_weight + '|' + alt_1_info_weight + '|' + alt_1_name_color + '|' + alt_1_info_color + '|' + alt_1_style_color_1 + '|' + alt_1_style_color_2 + '|' + alt_1_logo_switch + '|' + alt_1_background_switch + '|' + alt_1_shadows + '|' + alt_1_align + '|' + alt_1_size + '|' + alt_1_margin_h + '|' + alt_1_margin_v + '|' + alt_1_line_spacing + '|' + alt_1_font + '|' + alt_2_preview + '|' + alt_2_style + '|' + alt_2_name + '|' + alt_2_info + '|' + alt_2_name_size + '|' + alt_2_info_size  + '|' + alt_2_name_transform + '|' + alt_2_info_transform + '|' + alt_2_name_weight + '|' + alt_2_info_weight + '|' + alt_2_name_color + '|' + alt_2_info_color + '|' + alt_2_style_color_1 + '|' + alt_2_style_color_2 + '|' + alt_2_logo_switch + '|' + alt_2_background_switch + '|' + alt_2_shadows + '|' + alt_2_align + '|' + alt_2_size + '|' + alt_2_margin_h + '|' + alt_2_margin_v + '|' + alt_2_line_spacing + '|' + alt_2_font + '|' + alt_3_preview + '|' + alt_3_style + '|' + alt_3_name + '|' + alt_3_info + '|' + alt_3_name_size + '|' + alt_3_info_size  + '|' + alt_3_name_transform + '|' + alt_3_info_transform + '|' + alt_3_name_weight + '|' + alt_3_info_weight + '|' + alt_3_name_color + '|' + alt_3_info_color + '|' + alt_3_style_color_1 + '|' + alt_3_style_color_2 + '|' + alt_3_logo_switch + '|' + alt_3_background_switch + '|' + alt_3_shadows + '|' + alt_3_align + '|' + alt_3_size + '|' + alt_3_margin_h + '|' + alt_3_margin_v + '|' + alt_3_line_spacing + '|' + alt_3_font + '|' + alt_4_preview + '|' + alt_4_style + '|' + alt_4_name + '|' + alt_4_info + '|' + alt_4_name_size + '|' + alt_4_info_size  + '|' + alt_4_name_transform + '|' + alt_4_info_transform + '|' + alt_4_name_weight + '|' + alt_4_info_weight + '|' + alt_4_name_color + '|' + alt_4_info_color + '|' + alt_4_style_color_1 + '|' + alt_4_style_color_2 + '|' + alt_4_logo_switch + '|' + alt_4_background_switch + '|' + alt_4_shadows + '|' + alt_4_align + '|' + alt_4_size + '|' + alt_4_margin_h + '|' + alt_4_margin_v + '|' + alt_4_line_spacing + '|' + alt_4_font + '|' + alt_1_animation_time + '|' + alt_1_active_time + '|' + alt_1_inactive_time + '|' + alt_2_animation_time + '|' + alt_2_active_time + '|' + alt_2_inactive_time + '|' + alt_3_animation_time + '|' + alt_3_active_time + '|' + alt_3_inactive_time + '|' + alt_4_animation_time + '|' + alt_4_active_time + '|' + alt_4_inactive_time + '|' + alt_1_logo + '|' + alt_2_logo + '|' + alt_3_logo + '|' + alt_4_logo);
+				bcp.postMessage(global_animation_time + '|' + global_active_time + '|' + global_inactive_time + '|' + alt_1_preview + '|' + alt_1_style + '|' + alt_1_name + '|' + alt_1_info + '|' + alt_1_name_size + '|' + alt_1_info_size  + '|' + alt_1_name_transform + '|' + alt_1_info_transform + '|' + alt_1_name_weight + '|' + alt_1_info_weight + '|' + alt_1_name_color + '|' + alt_1_info_color + '|' + alt_1_style_color_1 + '|' + alt_1_style_color_2 + '|' + alt_1_logo_switch + '|' + alt_1_background_switch + '|' + alt_1_shadows + '|' + alt_1_align + '|' + alt_1_size + '|' + alt_1_margin_h + '|' + alt_1_margin_v + '|' + alt_1_line_spacing + '|' + alt_1_font + '|' + alt_2_preview + '|' + alt_2_style + '|' + alt_2_name + '|' + alt_2_info + '|' + alt_2_name_size + '|' + alt_2_info_size  + '|' + alt_2_name_transform + '|' + alt_2_info_transform + '|' + alt_2_name_weight + '|' + alt_2_info_weight + '|' + alt_2_name_color + '|' + alt_2_info_color + '|' + alt_2_style_color_1 + '|' + alt_2_style_color_2 + '|' + alt_2_logo_switch + '|' + alt_2_background_switch + '|' + alt_2_shadows + '|' + alt_2_align + '|' + alt_2_size + '|' + alt_2_margin_h + '|' + alt_2_margin_v + '|' + alt_2_line_spacing + '|' + alt_2_font + '|' + alt_3_preview + '|' + alt_3_style + '|' + alt_3_name + '|' + alt_3_info + '|' + alt_3_name_size + '|' + alt_3_info_size  + '|' + alt_3_name_transform + '|' + alt_3_info_transform + '|' + alt_3_name_weight + '|' + alt_3_info_weight + '|' + alt_3_name_color + '|' + alt_3_info_color + '|' + alt_3_style_color_1 + '|' + alt_3_style_color_2 + '|' + alt_3_logo_switch + '|' + alt_3_background_switch + '|' + alt_3_shadows + '|' + alt_3_align + '|' + alt_3_size + '|' + alt_3_margin_h + '|' + alt_3_margin_v + '|' + alt_3_line_spacing + '|' + alt_3_font + '|' + alt_4_preview + '|' + alt_4_style + '|' + alt_4_name + '|' + alt_4_info + '|' + alt_4_name_size + '|' + alt_4_info_size  + '|' + alt_4_name_transform + '|' + alt_4_info_transform + '|' + alt_4_name_weight + '|' + alt_4_info_weight + '|' + alt_4_name_color + '|' + alt_4_info_color + '|' + alt_4_style_color_1 + '|' + alt_4_style_color_2 + '|' + alt_4_logo_switch + '|' + alt_4_background_switch + '|' + alt_4_shadows + '|' + alt_4_align + '|' + alt_4_size + '|' + alt_4_margin_h + '|' + alt_4_margin_v + '|' + alt_4_line_spacing + '|' + alt_4_font + '|' + alt_1_animation_time + '|' + alt_1_active_time + '|' + alt_1_inactive_time + '|' + alt_2_animation_time + '|' + alt_2_active_time + '|' + alt_2_inactive_time + '|' + alt_3_animation_time + '|' + alt_3_active_time + '|' + alt_3_inactive_time + '|' + alt_4_animation_time + '|' + alt_4_active_time + '|' + alt_4_inactive_time + '|' + alt_1_logo + '|' + alt_2_logo + '|' + alt_3_logo + '|' + alt_4_logo + '|' + global_oneshot + '|' + alt_1_oneshot + '|' + alt_2_oneshot + '|' + alt_3_oneshot + '|' + alt_4_oneshot);
 			}
 
 			//Send New Fonts to source
@@ -2825,17 +3371,17 @@
 				checkSlots("#alt-2-memory-slots", "#alt-2-name", "#alt-2-info", "#alt-2-logo-preview");
 				checkSlots("#alt-3-memory-slots", "#alt-3-name", "#alt-3-info", "#alt-3-logo-preview");
 				checkSlots("#alt-4-memory-slots", "#alt-4-name", "#alt-4-info", "#alt-4-logo-preview");
-			    checkLogos();
+				checkLogos();
 				checkHotkeys();
-			    getAppearance();
-			    updateHotkeys();
+				getAppearance();
+				updateHotkeys();
 
 				function_send();
 				
-				
-			    setTimeout(refreshData, x*1000);
+				setTimeout(refreshData, x*1000);
 			}
 
+			// localStorage.clear();
 			loadData();
 			updateCustomFontList();
 			refreshData();
