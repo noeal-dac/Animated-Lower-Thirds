@@ -116,7 +116,7 @@
 										<label for="importFile">Import</label>
 										<input id="importFile" type="file"/>
 									</div>
-									<input type="text" id="dataInput">
+									<!-- <input type="text" id="dataInput"> -->
 									<div class="btn-settings" onclick="exportData()">Export</div>
 									<div class="btn-settings" onclick="openResetPopup()">Reset</div>
 								</div>
@@ -1098,6 +1098,8 @@
 					<div>
 						<h1>Copied to clipboard</h1>
 						<p>For security reasons, the exported data has been copied to the clipboard. Please paste it into a text editor (e.g. Notepad) and save it as a TXT file.</p>
+						<p>If you prefer, you can copy it manually:</p>
+						<textarea id="dataInput" rows="4" cols="50" onclick="this.focus();this.select()"></textarea>
 					</div>
 					<div class="export-btns">
 						<div class="btn-ok-export" onclick="okExportPopup()">Ok</div>
