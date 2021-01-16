@@ -392,6 +392,18 @@ body.browser-source.lower-thirds{
 #alt-4-name-color.jscolor-active, #alt-4-info-color.jscolor-active {
   cursor: text;
 }
+.tool-tittle.disabled {
+  opacity: 0.2;
+}
+.tool-tittle.disabled + .jscolor {
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+/* .jscolor:disabled {
+  opacity: 0.2;
+  pointer-events: none;
+} */
 #alt-1-style-color-1, #alt-1-style-color-2, #alt-1-style-color-3, #alt-1-style-color-4,
 #alt-2-style-color-1, #alt-2-style-color-2, #alt-2-style-color-3, #alt-2-style-color-4,
 #alt-3-style-color-1, #alt-3-style-color-2, #alt-3-style-color-3, #alt-3-style-color-4,

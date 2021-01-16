@@ -455,51 +455,93 @@
 			}
 
 			//Use the global times settins if custom times is empty
-			alt_1_animation_time = received_data.alt_1_animation_time || global_animation_time;
-			alt_1_active_time = received_data.alt_1_active_time || activeTime;
-			alt_1_inactive_time = received_data.alt_1_inactive_time || inactiveTime;
+			alt_1_animation_time = Number(received_data.alt_1_animation_time || global_animation_time);
+			alt_1_active_time = Number(received_data.alt_1_active_time || activeTime);
+			alt_1_inactive_time = Number(received_data.alt_1_inactive_time || inactiveTime);
 
 			//Animated Lower Thirds 2
 			const {alt_2_switch, alt_2_style, alt_2_name, alt_2_info, alt_2_name_size, alt_2_info_size, alt_2_name_transform, alt_2_info_transform,
 				alt_2_name_weight, alt_2_info_weight, alt_2_name_color, alt_2_info_color, alt_2_logo_switch, alt_2_background_switch,
-				alt_2_shadows, alt_2_align = "left", alt_2_size, alt_2_margin_h, alt_2_margin_v, alt_2_font, alt_2_logo_image = "../logos/logo_2.png"} = received_data;
-			let {alt_2_style_color_1, alt_2_style_color_2, alt_2_line_spacing} = received_data;
+				alt_2_shadows, alt_2_align = "left", alt_2_size, alt_2_margin_h, alt_2_margin_v, alt_2_font, alt_2_logo_image = "../logos/logo_2.png",
+				alt_2_logo_size, alt_2_shadow_amount, alt_2_corners, alt_2_border_switch} = received_data;
+			let {alt_2_style_color_1, alt_2_style_color_2, alt_2_line_spacing, alt_2_border_thickness_amount, alt_2_style_color_3, alt_2_style_color_4} = received_data;
 
 			document.getElementById("alt-2-name").innerHTML = alt_2_name;
 			document.getElementById("alt-2-info").innerHTML = alt_2_info;
-			alt_2_line_spacing = alt_2_line_spacing * 0.1;
 
-			alt_2_animation_time = received_data.alt_2_animation_time || global_animation_time;
-			alt_2_active_time = received_data.alt_2_active_time || activeTime;
-			alt_2_inactive_time = received_data.alt_2_inactive_time || inactiveTime;
+			if (alt_2_background_switch == "false"){
+				alt_2_style_color_1 = "none";
+				alt_2_style_color_2 = "none";
+			}
+
+			alt_2_line_spacing = alt_2_line_spacing * 0.1;
+			alt_2_border_thickness_amount = alt_2_border_thickness_amount * 0.1;
+
+			if (alt_2_border_switch == "false"){
+				alt_2_style_color_3 = "none";
+				alt_2_style_color_4 = "none";
+				alt_2_border_thickness_amount = 0;
+			}
+
+			alt_2_animation_time = Number(received_data.alt_2_animation_time || global_animation_time);
+			alt_2_active_time = Number(received_data.alt_2_active_time || activeTime);
+			alt_2_inactive_time = Number(received_data.alt_2_inactive_time || inactiveTime);
 
 			//Animated Lower Thirds 3
 			const {alt_3_switch, alt_3_style, alt_3_name, alt_3_info, alt_3_name_size, alt_3_info_size, alt_3_name_transform, alt_3_info_transform,
 				alt_3_name_weight, alt_3_info_weight, alt_3_name_color, alt_3_info_color, alt_3_logo_switch, alt_3_background_switch,
-				alt_3_shadows, alt_3_align = "left", alt_3_size, alt_3_margin_h, alt_3_margin_v, alt_3_font, alt_3_logo_image = '../logos/logo_3.png'} = received_data;
-			let {alt_3_style_color_1, alt_3_style_color_2, alt_3_line_spacing} = received_data;
+				alt_3_shadows, alt_3_align = "left", alt_3_size, alt_3_margin_h, alt_3_margin_v, alt_3_font, alt_3_logo_image = "../logos/logo_3.png",
+				alt_3_logo_size, alt_3_shadow_amount, alt_3_corners, alt_3_border_switch} = received_data;
+			let {alt_3_style_color_1, alt_3_style_color_2, alt_3_line_spacing, alt_3_border_thickness_amount, alt_3_style_color_3, alt_3_style_color_4} = received_data;
 
 			document.getElementById("alt-3-name").innerHTML = alt_3_name;
 			document.getElementById("alt-3-info").innerHTML = alt_3_info;
-			alt_3_line_spacing = alt_3_line_spacing * 0.1;
 
-			alt_3_animation_time = received_data.alt_3_animation_time || global_animation_time;
-			alt_3_active_time = received_data.alt_3_active_time || activeTime;
-			alt_3_inactive_time = received_data.alt_3_inactive_time || inactiveTime;
+			if (alt_3_background_switch == "false"){
+				alt_3_style_color_1 = "none";
+				alt_3_style_color_2 = "none";
+			}
+
+			alt_3_line_spacing = alt_3_line_spacing * 0.1;
+			alt_3_border_thickness_amount = alt_3_border_thickness_amount * 0.1;
+
+			if (alt_3_border_switch == "false"){
+				alt_3_style_color_3 = "none";
+				alt_3_style_color_4 = "none";
+				alt_3_border_thickness_amount = 0;
+			}
+
+			alt_3_animation_time = Number(received_data.alt_3_animation_time || global_animation_time);
+			alt_3_active_time = Number(received_data.alt_3_active_time || activeTime);
+			alt_3_inactive_time = Number(received_data.alt_3_inactive_time || inactiveTime);
 
 			//Animated Lower Thirds 4
 			const {alt_4_switch, alt_4_style, alt_4_name, alt_4_info, alt_4_name_size, alt_4_info_size, alt_4_name_transform, alt_4_info_transform,
 				alt_4_name_weight, alt_4_info_weight, alt_4_name_color, alt_4_info_color, alt_4_logo_switch, alt_4_background_switch,
-				alt_4_shadows, alt_4_align = "left", alt_4_size, alt_4_margin_h, alt_4_margin_v, alt_4_font, alt_4_logo_image = "../logos/logo_4.png"} = received_data;
-			let {alt_4_style_color_1, alt_4_style_color_2, alt_4_line_spacing} = received_data;
+				alt_4_shadows, alt_4_align = "left", alt_4_size, alt_4_margin_h, alt_4_margin_v, alt_4_font, alt_4_logo_image = "../logos/logo_4.png",
+				alt_4_logo_size, alt_4_shadow_amount, alt_4_corners, alt_4_border_switch} = received_data;
+			let {alt_4_style_color_1, alt_4_style_color_2, alt_4_line_spacing, alt_4_border_thickness_amount, alt_4_style_color_3, alt_4_style_color_4} = received_data;
 
 			document.getElementById("alt-4-name").innerHTML = alt_4_name;
 			document.getElementById("alt-4-info").innerHTML = alt_4_info;
-			alt_4_line_spacing = alt_4_line_spacing * 0.1;
 
-			alt_4_animation_time = received_data.alt_4_animation_time || global_animation_time;
-			alt_4_active_time = received_data.alt_4_active_time || activeTime;
-			alt_4_inactive_time = received_data.alt_4_inactive_time || inactiveTime;
+			if (alt_4_background_switch == "false"){
+				alt_4_style_color_1 = "none";
+				alt_4_style_color_2 = "none";
+			}			
+
+			alt_4_line_spacing = alt_4_line_spacing * 0.1;
+			alt_4_border_thickness_amount = alt_4_border_thickness_amount * 0.1;
+
+			if (alt_4_border_switch == "false"){
+				alt_4_style_color_3 = "none";
+				alt_4_style_color_4 = "none";
+				alt_4_border_thickness_amount = 0;
+			}			
+
+			alt_4_animation_time = Number(received_data.alt_4_animation_time || global_animation_time);
+			alt_4_active_time = Number(received_data.alt_4_active_time || activeTime);
+			alt_4_inactive_time = Number(received_data.alt_4_inactive_time || inactiveTime);
 
 			//Use the global oneshot setting if oneshot switch is off or inactive field is empty
 			alt_1_oneshot = received_data.alt_1_oneshot || (global_oneshot && !received_data.alt_1_inactive_time);
@@ -723,21 +765,21 @@
 			// 	root.style.setProperty('--alt-1-background', "0");
 			// }
 
-			if (alt_2_background_switch == "true"){
-				root.style.setProperty('--alt-2-background', "1");
-			} else {
-				root.style.setProperty('--alt-2-background', "0");
-			}
-			if (alt_3_background_switch == "true"){
-				root.style.setProperty('--alt-3-background', "1");
-			} else {
-				root.style.setProperty('--alt-3-background', "0");
-			}
-			if (alt_4_background_switch == "true"){
-				root.style.setProperty('--alt-4-background', "1");
-			} else {
-				root.style.setProperty('--alt-4-background', "0");
-			}
+			// if (alt_2_background_switch == "true"){
+			// 	root.style.setProperty('--alt-2-background', "1");
+			// } else {
+			// 	root.style.setProperty('--alt-2-background', "0");
+			// }
+			// if (alt_3_background_switch == "true"){
+			// 	root.style.setProperty('--alt-3-background', "1");
+			// } else {
+			// 	root.style.setProperty('--alt-3-background', "0");
+			// }
+			// if (alt_4_background_switch == "true"){
+			// 	root.style.setProperty('--alt-4-background', "1");
+			// } else {
+			// 	root.style.setProperty('--alt-4-background', "0");
+			// }
 
 			//root.style.setProperty('--animation-time', global_animation_time + "s"); no hace falta enviar el global
 			root.style.setProperty('--alt-1-animation-time', alt_1_animation_time + "s");
@@ -763,9 +805,7 @@
 			root.style.setProperty('--alt-1-style-color-3', alt_1_style_color_3);
 			root.style.setProperty('--alt-1-style-color-4', alt_1_style_color_4);
 			root.style.setProperty('--alt-1-font', alt_1_font);
-
 			root.style.setProperty('--alt-1-logo-size', alt_1_logo_size + "em");
-			// root.style.setProperty('--alt-1-shadow-amount', alt_1_shadow_amount);
 			root.style.setProperty('--alt-1-corners', alt_1_corners + "em");
 			root.style.setProperty('--alt-1-border-switch', alt_1_border_switch);
 			root.style.setProperty('--alt-1-border_thickness_amount', alt_1_border_thickness_amount + "rem");
@@ -784,7 +824,13 @@
 			root.style.setProperty('--alt-2-info-color', alt_2_info_color);
 			root.style.setProperty('--alt-2-style-color-1', alt_2_style_color_1);
 			root.style.setProperty('--alt-2-style-color-2', alt_2_style_color_2);
+			root.style.setProperty('--alt-2-style-color-3', alt_2_style_color_3);
+			root.style.setProperty('--alt-2-style-color-4', alt_2_style_color_4);
 			root.style.setProperty('--alt-2-font', alt_2_font);
+			root.style.setProperty('--alt-2-logo-size', alt_2_logo_size + "em");
+			root.style.setProperty('--alt-2-corners', alt_2_corners + "em");
+			root.style.setProperty('--alt-2-border-switch', alt_2_border_switch);
+			root.style.setProperty('--alt-2-border_thickness_amount', alt_2_border_thickness_amount + "rem");			
 
 			root.style.setProperty('--alt-3-size', alt_3_size + "px");
 			root.style.setProperty('--alt-3-margin-h', alt_3_margin_h + "rem");
@@ -800,7 +846,13 @@
 			root.style.setProperty('--alt-3-info-color', alt_3_info_color);
 			root.style.setProperty('--alt-3-style-color-1', alt_3_style_color_1);
 			root.style.setProperty('--alt-3-style-color-2', alt_3_style_color_2);
+			root.style.setProperty('--alt-3-style-color-3', alt_3_style_color_3);
+			root.style.setProperty('--alt-3-style-color-4', alt_3_style_color_4);
 			root.style.setProperty('--alt-3-font', alt_3_font);
+			root.style.setProperty('--alt-3-logo-size', alt_3_logo_size + "em");
+			root.style.setProperty('--alt-3-corners', alt_3_corners + "em");
+			root.style.setProperty('--alt-3-border-switch', alt_3_border_switch);
+			root.style.setProperty('--alt-3-border_thickness_amount', alt_3_border_thickness_amount + "rem");
 
 			root.style.setProperty('--alt-4-size', alt_4_size + "px");
 			root.style.setProperty('--alt-4-margin-h', alt_4_margin_h + "rem");
@@ -816,20 +868,38 @@
 			root.style.setProperty('--alt-4-info-color', alt_4_info_color);
 			root.style.setProperty('--alt-4-style-color-1', alt_4_style_color_1);
 			root.style.setProperty('--alt-4-style-color-2', alt_4_style_color_2);
+			root.style.setProperty('--alt-4-style-color-3', alt_3_style_color_3);
+			root.style.setProperty('--alt-4-style-color-4', alt_3_style_color_4);			
 			root.style.setProperty('--alt-4-font', alt_4_font);
+			root.style.setProperty('--alt-4-logo-size', alt_4_logo_size + "em");
+			root.style.setProperty('--alt-4-corners', alt_4_corners + "em");
+			root.style.setProperty('--alt-4-border-switch', alt_4_border_switch);
+			root.style.setProperty('--alt-4-border_thickness_amount', alt_4_border_thickness_amount + "rem");			
 
 
-			//alt_1_shadows
-			// if (alt_1_shadows == "false") {
-			// 	root.style.setProperty('--alt-1-shadows', "none");
-			// 	root.style.setProperty('--alt-1-shadows-graph', "none");
-			// } else if (alt_1_shadows == "true") {
-			// 	// root.style.setProperty('--alt-1-shadows', "0.1rem 0.1rem 0.2rem #000000" + alt_1_shadow_amount + "0");
-			// 	root.style.setProperty('--alt-1-shadows', "0.1rem 0.1rem 0.2rem rgba(0,0,0," + alt_1_shadow_amount + ")");
-			// 	// if (alt_1_border_switch) {
-			// 	// 	root.style.setProperty('--alt-1-shadows-graph', "0.1rem 0.1rem 0.2rem rgba(0,0,0," + alt_1_shadow_amount + ")");
-			// 	// }
-			// }
+			//Hide the background shadow if color is transparent (end with ",0)")
+			if (alt_1_style_color_2.match(/,0\)$/)) {
+				root.style.setProperty('--alt-1-background', "0");
+			} else {
+				root.style.setProperty('--alt-1-background', "1");
+			}
+			if (alt_2_style_color_2.match(/,0\)$/)) {
+				root.style.setProperty('--alt-2-background', "0");
+			} else {
+				root.style.setProperty('--alt-2-background', "1");
+			}
+			if (alt_3_style_color_2.match(/,0\)$/)) {
+				root.style.setProperty('--alt-3-background', "0");
+			} else {
+				root.style.setProperty('--alt-3-background', "1");
+			}
+			if (alt_4_style_color_2.match(/,0\)$/)) {
+				root.style.setProperty('--alt-4-background', "0");
+			} else {
+				root.style.setProperty('--alt-4-background', "1");
+			}
+
+
 			if (alt_1_shadows == "false"){
 				root.style.setProperty('--alt-1-shadows', "none");
 				root.style.setProperty('--alt-1-shadows-graph', "none");
@@ -842,24 +912,44 @@
 					root.style.setProperty('--alt-1-shadows-graph', "0.1rem 0.1rem 0.2rem rgba(0,0,0," + alt_1_shadow_amount + ")");
 				} 
 			}
-			
-
-
 
 			if (alt_2_shadows == "false") {
 				root.style.setProperty('--alt-2-shadows', "none");
-			} else if (alt_2_shadows == "true") {
-				root.style.setProperty('--alt-2-shadows', "0.1rem 0.1rem 0.2rem #00000060");
+				root.style.setProperty('--alt-2-shadows-graph', "none");
 			}
+			if (alt_2_shadows == "true") {
+				root.style.setProperty('--alt-2-shadows', "0.1rem 0.1rem 0.2rem rgba(0,0,0," + alt_2_shadow_amount + ")");
+				if (alt_2_background_switch == "false"){
+					root.style.setProperty('--alt-2-shadows-graph', "none");
+				} else {
+					root.style.setProperty('--alt-2-shadows-graph', "0.1rem 0.1rem 0.2rem rgba(0,0,0," + alt_2_shadow_amount + ")");
+				} 
+			}
+
 			if (alt_3_shadows == "false") {
 				root.style.setProperty('--alt-3-shadows', "none");
-			} else if (alt_3_shadows == "true") {
-				root.style.setProperty('--alt-3-shadows', "0.1rem 0.1rem 0.2rem #00000060");
+				root.style.setProperty('--alt-3-shadows-graph', "none");
 			}
+			if (alt_3_shadows == "true") {
+				root.style.setProperty('--alt-3-shadows', "0.1rem 0.1rem 0.2rem rgba(0,0,0," + alt_3_shadow_amount + ")");
+				if (alt_3_background_switch == "false"){
+					root.style.setProperty('--alt-3-shadows-graph', "none");
+				} else {
+					root.style.setProperty('--alt-3-shadows-graph', "0.1rem 0.1rem 0.2rem rgba(0,0,0," + alt_3_shadow_amount + ")");
+				} 
+			}
+			
 			if (alt_4_shadows == "false") {
 				root.style.setProperty('--alt-4-shadows', "none");
-			} else if (alt_4_shadows == "true") {
-				root.style.setProperty('--alt-4-shadows', "0.1rem 0.1rem 0.2rem #00000060");
+				root.style.setProperty('--alt-4-shadows-graph', "none");
+			}
+			if (alt_4_shadows == "true") {
+				root.style.setProperty('--alt-4-shadows', "0.1rem 0.1rem 0.2rem rgba(0,0,0," + alt_4_shadow_amount + ")");
+				if (alt_4_background_switch == "false"){
+					root.style.setProperty('--alt-4-shadows-graph', "none");
+				} else {
+					root.style.setProperty('--alt-4-shadows-graph', "0.1rem 0.1rem 0.2rem rgba(0,0,0," + alt_4_shadow_amount + ")");
+				} 
 			}
 		}
 
