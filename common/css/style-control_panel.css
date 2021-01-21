@@ -1004,7 +1004,7 @@ input:disabled + .icon-btn {
     background-color: var(--obs-field-background);
 }
 .align-toggle input:disabled + label {
-  pointer-events: none;
+  /* pointer-events: none; */
   cursor: default;
 }
 .lock-input{
@@ -1272,11 +1272,11 @@ i.alt-icon {
   color: var(--obs-field-background);
 }
 
-.tooltip {
+/* .tooltip {
   position: relative;
   display: inline-block;
   border-bottom: 1px dotted black;
-}
+} */
 
 .panel-bottom > ul > li .tooltiptext {
   visibility: hidden;
@@ -1297,15 +1297,65 @@ i.alt-icon {
   box-shadow: 2px 2px 5px rgb(0 0 0 / 30%);
 }
 
+/* .settingtooltip {
+  visibility: hidden;
+  box-sizing: border-box;
+  font-size: 11px;
+  min-width: 65px;
+  max-width: 145px;
+  background-color: #ffffff;
+  color: #1f1e1f;
+  border-radius: 3px;
+  padding: 5px 8px;
+  position: absolute;
+  z-index: 1;
+  white-space: pre-line;
+  opacity: 0;
+  transition: opacity 1s;
+  box-shadow: 2px 2px 5px rgb(0 0 0 / 30%);
+} */
+
+/*Settings Tooltips*/
+.ui-helper-hidden-accessible {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+.ui-tooltip {
+  padding: 5px 8px;
+  max-width: 250px;
+	position: absolute;
+  z-index: 9999;
+  white-space: pre-line;
+}
+.ui-corner-all {
+	border-radius: 3px;
+}
+.ui-widget-content {
+	border: 1px solid #c5c5c5;
+	background: #ffffff;
+	color: var(--obs-field-background);
+}
+.ui-widget-shadow {
+  -webkit-box-shadow: 2px 2px 5px rgb(0 0 0 / 30%);
+  box-shadow: 2px 2px 5px rgb(0 0 0 / 30%);
+}
+
+/* [settingtooltip]:hover + .settingtooltip, */
 .panel-bottom > ul > li:hover .tooltiptext {
   visibility: visible;
-animation: tooltip-anim 0.3s;
-animation-fill-mode: forwards;
-animation-delay: 0.6s;
+  animation: tooltip-anim 0.3s;
+  animation-fill-mode: forwards;
+  animation-delay: 0.6s;
 }
 @keyframes tooltip-anim {
-from {opacity: 0;}
-to {opacity: 1;}
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
 
 /************/

@@ -9,11 +9,10 @@
 		<title>Lower Thirds Control Panel</title>
 		<link rel="stylesheet" href="../common/css/style-control_panel.css">
 		<link rel="stylesheet" href="../common/css/cp-icons.css">
-		<!-- <script src='https://kit.fontawesome.com/a076d05399.js'></script> -->
 		<script src="../common/js/jquery.js"></script>
 		<script src="../common/js/jscolor.js"></script>
 		<script src="../common/js/hotkeys.js"></script>
-		<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+		<script src="../common/js/jquery-ui.js"></script>
 	</head>
 	<body class="lower-thirds-panel panel">
 		<div id="alt-panel" class="static-panel-top" style="margin-bottom: 0px">
@@ -32,13 +31,13 @@
 					<div id="time-options">
 						<div class="settings-title">Global Times</div>
 						<div class="settings-inputs">
-							<input class="storable" id="global-animation-time" type="number" placeholder="4s (in-out)" tabindex="1">
-							<input class="storable" id="global-active-time" type="number" placeholder="25s (active)" tabindex="2">
+							<input class="storable" id="global-animation-time" type="number" placeholder="in-out" tabindex="1">
+							<input class="storable" id="global-active-time" type="number" placeholder="active"  tabindex="2">
 							<label class="config-btn lock-input">
 								<input class="checkbox-storable" type="checkbox" id="global-lock-active">
 								<div class="icon-btn icon icon-lock"></div>
 							</label>
-							<input class="storable" id="global-inactive-time" type="number" placeholder="420s (inactive)" tabindex="3">
+							<input class="storable" id="global-inactive-time" type="number" placeholder="inactive" tabindex="3">
 							<label class="config-btn lock-input">
 								<input class="checkbox-storable" type="checkbox" id="global-oneshot">
 								<div class="icon-btn icon icon-oneshot"></div>
@@ -188,18 +187,18 @@
 								<div class="grid-row">
 									<div>
 										<div class="input-icon icon icon-text-height"></div>
-										<div class="number-input">
-										<input id="alt-1-inverse-ratio" class="storable" min="0" max="10" name="quantity" value="9" type="number" placeholder="9">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<div class="number-input">
+											<input id="alt-1-inverse-ratio" class="storable" min="0" max="10" name="quantity" value="9" type="number" placeholder="9">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>
 									<div>
 										<div class="input-icon icon icon-line-spacing"></div>
-										<div class="number-input">
-										<input id="alt-1-line-spacing" class="storable" min="-5" max="5" name="quantity" value="0" type="number" placeholder="0">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<div class="number-input">
+											<input id="alt-1-line-spacing" class="storable" min="-5" max="5" name="quantity" value="0" type="number" placeholder="0">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>									
 									<div class="font-config group">
@@ -216,9 +215,9 @@
 											<div class="icon-btn icon icon-image"></div>
 										</label>									
 										<div class="number-input">
-										<input id="alt-1-logo-size" class="storable" min="-10" max="10" name="quantity" value="0" type="number" placeholder="0">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-1-logo-size" class="storable" min="-10" max="10" name="quantity" value="0" type="number" placeholder="0">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>										
 									<div>
@@ -249,9 +248,9 @@
 									<div>
 										<div class="input-icon icon icon-corner"></div>
 										<div class="number-input">
-										<input id="alt-1-corners" class="storable" min="0" max="10" name="quantity" value="0" type="number" placeholder="0">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-1-corners" class="storable" min="0" max="10" name="quantity" value="0" type="number" placeholder="0">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>
 									<div>
@@ -259,11 +258,10 @@
 											<input class="checkbox-storable twin-checkbox" type="checkbox" name="alt-1-border" id="alt-1-border-thickness">
 											<div class="icon-btn icon icon-thickness"></div>
 										</label>
-										<!-- <div class="input-icon icon icon-thickness"></div> -->
 										<div class="number-input">
-										<input id="alt-1-border-thickness-amount" class="storable" min="1" max="10" name="quantity" value="4" type="number" placeholder="4">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-1-border-thickness-amount" class="storable" min="1" max="10" name="quantity" value="4" type="number" placeholder="4">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>
 									<div>
@@ -346,13 +344,13 @@
 								<div class="alt-time-options">
 									<div class="settings-title">LT1 Times</div>
 									<div class="settings-inputs">
-										<input class="storable" id="alt-1-animation-time" type="number" placeholder="(in-out)" tabindex="12">
-										<input class="storable" id="alt-1-active-time" type="number" placeholder="(active)" tabindex="13">
+										<input class="storable" id="alt-1-animation-time" type="number" placeholder="in-out" tabindex="12">
+										<input class="storable" id="alt-1-active-time" type="number" placeholder="active" tabindex="13">
 										<label class="config-btn lock-input">
 											<input class="checkbox-storable" type="checkbox" id="alt-1-lock-active">
 											<div class="icon-btn icon icon-lock"></div>
 										</label>
-										<input class="storable" id="alt-1-inactive-time" type="number" placeholder="(inactive)" tabindex="14">
+										<input class="storable" id="alt-1-inactive-time" type="number" placeholder="inactive" tabindex="14">
 										<label class="config-btn lock-input">
 											<input class="checkbox-storable" type="checkbox" id="alt-1-oneshot">
 											<div class="icon-btn icon icon-oneshot"></div>
@@ -426,17 +424,17 @@
 									<div>
 										<div class="input-icon icon icon-text-height"></div>
 										<div class="number-input">
-										<input id="alt-2-inverse-ratio" class="storable" min="0" max="10" name="quantity" value="9" type="number" placeholder="9">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-2-inverse-ratio" class="storable" min="0" max="10" name="quantity" value="9" type="number" placeholder="9">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>
 									<div>
 										<div class="input-icon icon icon-line-spacing"></div>
 										<div class="number-input">
-										<input id="alt-2-line-spacing" class="storable" min="-5" max="5" name="quantity" value="2" type="number" placeholder="0">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-2-line-spacing" class="storable" min="-5" max="5" name="quantity" value="2" type="number" placeholder="0">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>									
 									<div class="font-config group">
@@ -453,9 +451,9 @@
 											<div class="icon-btn icon icon-image"></div>
 										</label>									
 										<div class="number-input">
-										<input id="alt-2-logo-size" class="storable" min="-10" max="10" name="quantity" value="0" type="number" placeholder="0">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-2-logo-size" class="storable" min="-10" max="10" name="quantity" value="0" type="number" placeholder="0">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>										
 									<div>
@@ -486,9 +484,9 @@
 									<div>
 										<div class="input-icon icon icon-corner"></div>
 										<div class="number-input">
-										<input id="alt-2-corners" class="storable" min="0" max="10" name="quantity" value="0" type="number" placeholder="0">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-2-corners" class="storable" min="0" max="10" name="quantity" value="0" type="number" placeholder="0">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>
 									<div>
@@ -497,9 +495,9 @@
 											<div class="icon-btn icon icon-thickness"></div>
 										</label>
 										<div class="number-input">
-										<input id="alt-2-border-thickness-amount" class="storable" min="1" max="10" name="quantity" value="4" type="number" placeholder="4">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-2-border-thickness-amount" class="storable" min="1" max="10" name="quantity" value="4" type="number" placeholder="4">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>
 									<div>
@@ -582,13 +580,13 @@
 								<div class="alt-time-options">
 									<div class="settings-title">LT2 Times</div>
 									<div class="settings-inputs">
-										<input class="storable" id="alt-2-animation-time" type="number" placeholder="(in-out)" tabindex="15">
-										<input class="storable" id="alt-2-active-time" type="number" placeholder="(active)" tabindex="16">
+										<input class="storable" id="alt-2-animation-time" type="number" placeholder="in-out" tabindex="15">
+										<input class="storable" id="alt-2-active-time" type="number" placeholder="active" tabindex="16">
 										<label class="config-btn lock-input">
 											<input class="checkbox-storable" type="checkbox" id="alt-2-lock-active">
 											<div class="icon-btn icon icon-lock"></div>
 										</label>
-										<input class="storable" id="alt-2-inactive-time" type="number" placeholder="(inactive)" tabindex="17">
+										<input class="storable" id="alt-2-inactive-time" type="number" placeholder="inactive" tabindex="17">
 										<label class="config-btn lock-input">
 											<input class="checkbox-storable" type="checkbox" id="alt-2-oneshot">
 											<div class="icon-btn icon icon-oneshot"></div>
@@ -662,17 +660,17 @@
 									<div>
 										<div class="input-icon icon icon-text-height"></div>
 										<div class="number-input">
-										<input id="alt-3-inverse-ratio" class="storable" min="0" max="10" name="quantity" value="9" type="number" placeholder="9">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-3-inverse-ratio" class="storable" min="0" max="10" name="quantity" value="9" type="number" placeholder="9">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>
 									<div>
 										<div class="input-icon icon icon-line-spacing"></div>
 										<div class="number-input">
-										<input id="alt-3-line-spacing" class="storable" min="-5" max="5" name="quantity" value="2" type="number" placeholder="0">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-3-line-spacing" class="storable" min="-5" max="5" name="quantity" value="2" type="number" placeholder="0">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>									
 									<div class="font-config group">
@@ -689,9 +687,9 @@
 											<div class="icon-btn icon icon-image"></div>
 										</label>									
 										<div class="number-input">
-										<input id="alt-3-logo-size" class="storable" min="-10" max="10" name="quantity" value="0" type="number" placeholder="0">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-3-logo-size" class="storable" min="-10" max="10" name="quantity" value="0" type="number" placeholder="0">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>										
 									<div>
@@ -722,9 +720,9 @@
 									<div>
 										<div class="input-icon icon icon-corner"></div>
 										<div class="number-input">
-										<input id="alt-3-corners" class="storable" min="0" max="10" name="quantity" value="0" type="number" placeholder="0">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-3-corners" class="storable" min="0" max="10" name="quantity" value="0" type="number" placeholder="0">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>
 									<div>
@@ -733,9 +731,9 @@
 											<div class="icon-btn icon icon-thickness"></div>
 										</label>
 										<div class="number-input">
-										<input id="alt-3-border-thickness-amount" class="storable" min="1" max="10" name="quantity" value="4" type="number" placeholder="4">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-3-border-thickness-amount" class="storable" min="1" max="10" name="quantity" value="4" type="number" placeholder="4">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>
 									<div>
@@ -818,13 +816,13 @@
 								<div class="alt-time-options">
 									<div class="settings-title">LT3 Times</div>
 									<div class="settings-inputs">
-										<input class="storable" id="alt-3-animation-time" type="number" placeholder="(in-out)" tabindex="18">
-										<input class="storable" id="alt-3-active-time" type="number" placeholder="(active)" tabindex="19">
+										<input class="storable" id="alt-3-animation-time" type="number" placeholder="in-out" tabindex="18">
+										<input class="storable" id="alt-3-active-time" type="number" placeholder="active" tabindex="19">
 										<label class="config-btn lock-input">
 											<input class="checkbox-storable" type="checkbox" id="alt-3-lock-active">
 											<div class="icon-btn icon icon-lock"></div>
 										</label>
-										<input class="storable" id="alt-3-inactive-time" type="number" placeholder="(inactive)" tabindex="20">
+										<input class="storable" id="alt-3-inactive-time" type="number" placeholder="inactive" tabindex="20">
 										<label class="config-btn lock-input">
 											<input class="checkbox-storable" type="checkbox" id="alt-3-oneshot">
 											<div class="icon-btn icon icon-oneshot"></div>
@@ -898,17 +896,17 @@
 									<div>
 										<div class="input-icon icon icon-text-height"></div>
 										<div class="number-input">
-										<input id="alt-4-inverse-ratio" class="storable" min="0" max="10" name="quantity" value="9" type="number" placeholder="9">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-4-inverse-ratio" class="storable" min="0" max="10" name="quantity" value="9" type="number" placeholder="9">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>
 									<div>
 										<div class="input-icon icon icon-line-spacing"></div>
 										<div class="number-input">
-										<input id="alt-4-line-spacing" class="storable" min="-5" max="5" name="quantity" value="2" type="number" placeholder="0">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-4-line-spacing" class="storable" min="-5" max="5" name="quantity" value="2" type="number" placeholder="0">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>									
 									<div class="font-config group">
@@ -925,9 +923,9 @@
 											<div class="icon-btn icon icon-image"></div>
 										</label>									
 										<div class="number-input">
-										<input id="alt-4-logo-size" class="storable" min="-10" max="10" name="quantity" value="0" type="number" placeholder="0">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-4-logo-size" class="storable" min="-10" max="10" name="quantity" value="0" type="number" placeholder="0">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>										
 									<div>
@@ -958,9 +956,9 @@
 									<div>
 										<div class="input-icon icon icon-corner"></div>
 										<div class="number-input">
-										<input id="alt-4-corners" class="storable" min="0" max="10" name="quantity" value="0" type="number" placeholder="0">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-4-corners" class="storable" min="0" max="10" name="quantity" value="0" type="number" placeholder="0">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>
 									<div>
@@ -969,9 +967,9 @@
 											<div class="icon-btn icon icon-thickness"></div>
 										</label>
 										<div class="number-input">
-										<input id="alt-4-border-thickness-amount" class="storable" min="1" max="10" name="quantity" value="4" type="number" placeholder="4">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-4-border-thickness-amount" class="storable" min="1" max="10" name="quantity" value="4" type="number" placeholder="4">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>
 									<div>
@@ -1054,13 +1052,13 @@
 								<div class="alt-time-options">
 									<div class="settings-title">LT4 Times</div>
 									<div class="settings-inputs">
-										<input class="storable" id="alt-4-animation-time" type="number" placeholder="(in-out)" tabindex="21">
-										<input class="storable" id="alt-4-active-time" type="number" placeholder="(active)" tabindex="22">
+										<input class="storable" id="alt-4-animation-time" type="number" placeholder="in-out" tabindex="21">
+										<input class="storable" id="alt-4-active-time" type="number" placeholder="active" tabindex="22">
 										<label class="config-btn lock-input">
 											<input class="checkbox-storable" type="checkbox" id="alt-4-lock-active">
 											<div class="icon-btn icon icon-lock"></div>
 										</label>
-										<input class="storable" id="alt-4-inactive-time" type="number" placeholder="(inactive)" tabindex="23">
+										<input class="storable" id="alt-4-inactive-time" type="number" placeholder="inactive" tabindex="23">
 										<label class="config-btn lock-input">
 											<input class="checkbox-storable" type="checkbox" id="alt-4-oneshot">
 											<div class="icon-btn icon icon-oneshot"></div>
@@ -3336,6 +3334,92 @@
 				updateMoreMaxHeight()
 			}
 
+			//Create Tooltips to show settings info
+			function settingsTooltips (){
+				const tooltip = {
+					"global_animation_time" : "Length of the in and out animation.<br>Default: 4 sec.",
+					"global_active_time" : "How long the LT is active.<br>Default: 25 sec.",
+					"global_inactive_time" : "How long the LT is inactive.<br>Default: 420 sec." ,
+					"lock_active" : "Lock the time: Always active.",
+					"oneshot" : "Oneshot: Turn off the LT Switch when it goes into inactive state.",
+					"preview" : "Show/hide the LT in the preview window",
+					"align_left" : "Left alignment.",
+					"align_center" : "Center alignment.",
+					"align_right" : "Right alignment.",
+					"style" : "Style: Changes the look of the LT.",
+					"size" : "Size of the LT.",
+					"margin" : "Horizontal and vertical margin.",
+					"text_size" : "Ratio between the size of the texts.",
+					"line_spacing" : "Space between texts.",					
+					"font" : "LT Text font.",
+					"logo" : "Show/hide the logo image.",
+					"logo_size" : "Size of the logo image.",
+					"shadow" : "Show/hide shadows.",
+					"shadow_opacity" : "Shadows opacity.",
+					"fill_colors" : "Enable/disable fill or background colors.",
+					"corners" : "Round corners.",
+					"borders" : "Enable/disable borders.",
+					"borders_thinkness" : "Border thickness.",
+					"uppercase" : "Enable/disable uppercase.",
+					"bold" : "Enable/disable bold.",
+					"clean" : "Clear the text fields and set the logo to default.",
+					"autotrigger" : "Autotrigger: Turns on the switch automatically when a slot memory is loaded.",
+					"autoload" : "Autoload: Loads automatically the next memory slot every time it goes to the inactive state. Ready to display in the next cycle.",
+					"custom_times" : "Show/hide custom time settings.",
+					"animation_time" : "Length of the in and out animation.",
+					"active_time" : "How long the LT is active.",
+					"inactive_time" : "How long the LT is inactive.",
+				};
+
+				$("#global-animation-time").attr("title", tooltip.global_animation_time);
+				$("#global-active-time").attr("title", tooltip.global_active_time);
+				$("#global-inactive-time").attr("title", tooltip.global_inactive_time);
+				$("#alt-1-animation-time, #alt-2-animation-time, #alt-3-animation-time, #alt-4-animation-time").attr("title", tooltip.animation_time);
+				$("#alt-1-active-time, #alt-2-active-time, #alt-3-active-time, #alt-4-active-time").attr("title", tooltip.active_time);
+				$("#alt-1-inactive-time, #alt-2-inactive-time, #alt-3-inactive-time, #alt-4-inactive-time").attr("title", tooltip.inactive_time);
+				$("#global-lock-active, #alt-1-lock-active, #alt-2-lock-active, #alt-3-lock-active, #alt-4-lock-active").parent().attr("title", tooltip.lock_active);
+				$("#global-oneshot, #alt-1-oneshot, #alt-2-oneshot, #alt-3-oneshot, #alt-4-oneshot").parent().attr("title", tooltip.oneshot);
+				
+				$("#alt-1-preview, #alt-2-preview, #alt-3-preview, #alt-4-preview").parent().attr("title", tooltip.preview);
+				$("#alt-1-align-left, #alt-2-align-left, #alt-3-align-left, #alt-4-align-left").next().attr("title", tooltip.align_left);
+				$("#alt-1-align-center, #alt-2-align-center, #alt-3-align-center, #alt-4-align-center").next().attr("title", tooltip.align_center);
+				$("#alt-1-align-right, #alt-2-align-right, #alt-3-align-right, #alt-4-align-right").next().attr("title", tooltip.align_right);
+				$("#alt-1-style, #alt-2-style, #alt-3-style, #alt-4-style").parent().parent().attr("title", tooltip.style);
+				$("#alt-1-size, #alt-2-size, #alt-3-size, #alt-4-size").parent().parent().attr("title", tooltip.size);
+				$("#alt-1-margin-h, #alt-2-margin-h, #alt-3-margin-h, #alt-4-margin-h").parent().parent().attr("title", tooltip.margin);
+				$("#alt-1-inverse-ratio, #alt-2-inverse-ratio, #alt-3-inverse-ratio, #alt-4-inverse-ratio").parent().parent().attr("title", tooltip.text_size);
+				$("#alt-1-line-spacing, #alt-2-line-spacing, #alt-3-line-spacing, #alt-4-line-spacing").parent().parent().attr("title", tooltip.line_spacing);
+				$("#alt-1-font, #alt-2-font, #alt-3-font, #alt-4-font").parent().attr("title", tooltip.font);
+				$("#alt-1-logo, #alt-2-logo, #alt-3-logo, #alt-4-logo").parent().attr("title", tooltip.logo);
+				$("#alt-1-logo-size, #alt-2-logo-size, #alt-3-logo-size, #alt-4-logo-size").parent().attr("title", tooltip.logo_size);
+				$("#alt-1-shadows, #alt-2-shadows, #alt-3-shadows, #alt-4-shadows").parent().attr("title", tooltip.shadow);
+				$("#alt-1-shadow-amount, #alt-2-shadow-amount, #alt-3-shadow-amount, #alt-4-shadow-amount").parent().attr("title", tooltip.shadow_opacity);
+				$("#alt-1-background, #alt-2-background, #alt-3-background, #alt-4-background").parent().attr("title", tooltip.fill_colors);
+				$("#alt-1-corners, #alt-2-corners, #alt-3-corners, #alt-4-corners").parent().parent().attr("title", tooltip.corners);
+				$("#alt-1-border-thickness, #alt-2-border-thickness, #alt-3-border-thickness #alt-4-border-thickness").parent().attr("title", tooltip.borders);
+				$("#alt-1-border-color, #alt-2-border-color, #alt-3-border-color, #alt-4-border-color").parent().attr("title", tooltip.borders);
+				$("#alt-1-border-thickness-amount, #alt-2-border-thickness-amount, #alt-3-border-thickness-amount, #alt-4-border-thickness-amount").parent().attr("title", tooltip.borders_thinkness);
+
+				$("#alt-1-clean-inputs, #alt-2-clean-inputs, #alt-3-clean-inputs, #alt-4-clean-inputs").attr("title", tooltip.clean);
+				$("#alt-1-autotrigger, #alt-2-autotrigger, #alt-3-autotrigger, #alt-4-autotrigger").parent().attr("title", tooltip.autotrigger);
+				$("#alt-1-autoload, #alt-2-autoload, #alt-3-autoload, #alt-4-autoload").parent().attr("title", tooltip.autoload);
+				$("#alt-1-custom-times, #alt-2-custom-times, #alt-3-custom-times, #alt-4-custom-times").attr("title", tooltip.custom_times);
+
+				$(document).tooltip({  
+					show: { delay: 1800, duration: 200 },
+					open: function(event, ui)  
+					{  
+						ui.tooltip.hover(  
+						function () {  
+							$(this).fadeTo("slow", 0.2);  
+						});  
+					},
+					content: function() {
+						return $(this).attr("title");
+					}
+				});
+			}
+
 			//Read all localstorage data
 			function getLocalStorage() {
 				var a = {};
@@ -3530,6 +3614,7 @@
 				updateHotkeys();
 			}
 
+			settingsTooltips();
 			loadDefaultValues();
 			loadData();
 			updateCustomFontList();
