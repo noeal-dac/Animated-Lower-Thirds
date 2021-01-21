@@ -1619,7 +1619,6 @@ input.locked + .icon-btn {
   display: flex;
   justify-content: space-between;
   margin-top: 5px;
-  gap: 2px;
   border-bottom: 1px solid var(--obs-tabs-separator);
   margin-bottom: 10px;
 }
@@ -1637,9 +1636,9 @@ input.locked + .icon-btn {
   border-bottom: none;
 }
 
-/* .tablinks:not(:last-child) {
-  margin-right: 5px;
-} */
+.tablinks:not(:last-child) {
+  margin-right: 2px!important;
+}
 
 .tablinks.active {
   background: var(--obs-tab-active-background);
