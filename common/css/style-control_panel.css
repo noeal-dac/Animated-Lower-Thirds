@@ -280,7 +280,7 @@ body.browser-source.lower-thirds{
 #alt-4-config-content.inactive {
   box-shadow: 0px 0px 2px 0px rgb(255,231,231),
               0px 0px 12px 0px rgb(255,13,13);
-  border-radius: 3px;  
+  border-radius: 3px;
 }
 
 .panel-bottom > ul {
@@ -1241,7 +1241,7 @@ i.alt-icon {
 
 .panel-bottom > ul > li:hover .tooltiptext {
   visibility: visible;
-  animation: tooltip-anim 0.3s;
+  animation: tooltip-anim 0.2s;
   animation-fill-mode: forwards;
   animation-delay: 0.6s;
 }

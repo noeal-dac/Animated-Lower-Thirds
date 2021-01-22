@@ -3340,8 +3340,8 @@
 					"global_animation_time" : "Length of the in and out animation.<br>Default: 4 sec.",
 					"global_active_time" : "How long the LT is active.<br>Default: 25 sec.",
 					"global_inactive_time" : "How long the LT is inactive.<br>Default: 420 sec." ,
-					"lock_active" : "Lock the time: Always active.",
-					"oneshot" : "Oneshot: Turn off the LT Switch when it goes into inactive state.",
+					"lock_active" : "Lock the active state: Always active.",
+					"oneshot" : "Oneshot: Turns off the LT Switch when it goes into inactive state.",
 					"preview" : "Show/hide the LT in the preview window",
 					"align_left" : "Left alignment.",
 					"align_center" : "Center alignment.",
@@ -3413,7 +3413,7 @@
 				$("#toggle-preview").attr("title", tooltip.preview_window);
 				
 				$(document).tooltip({  
-					show: { delay: 1800, duration: 200 },
+					show: { delay: 600, duration: 200 },
 					open: function(event, ui)  
 					{  
 						ui.tooltip.hover(  
