@@ -3369,6 +3369,9 @@
 					"animation_time" : "Length of the in and out animation.",
 					"active_time" : "How long the LT is active.",
 					"inactive_time" : "How long the LT is inactive.",
+					"preview_window" : "Show/hide preview window.",
+					"custom_fonts" : "Add fonts from Google Fonts.",
+					"default_logos" : "Change the default logos of each LT.<br>Make sure to copy the logo files into the logos folder.<br>You can use JPG, PNG, TIFF, GIF, etc.<br>With transparency or animated.",
 				};
 
 				$("#global-animation-time").attr("title", tooltip.global_animation_time);
@@ -3405,6 +3408,10 @@
 				$("#alt-1-autoload, #alt-2-autoload, #alt-3-autoload, #alt-4-autoload").parent().attr("title", tooltip.autoload);
 				$("#alt-1-custom-times, #alt-2-custom-times, #alt-3-custom-times, #alt-4-custom-times").attr("title", tooltip.custom_times);
 
+				$("#fonts-options").children().first().attr("title", tooltip.custom_fonts);
+				$(".logos-options").children().first().attr("title", tooltip.default_logos);
+				$("#toggle-preview").attr("title", tooltip.preview_window);
+				
 				$(document).tooltip({  
 					show: { delay: 1800, duration: 200 },
 					open: function(event, ui)  
