@@ -73,12 +73,9 @@ body.browser-source.lower-thirds{
   transition: background 0.5s;
 }
 #alt-main-config-content.active {
-  box-shadow: inset 0px 0px 2px 0px rgba(0,136,255,1);
+  box-shadow: 0px 0px 2px 0px rgb(222, 240, 255),
+              0px 0px 12px 0px rgb(0,149,255);
   border-radius: 3px;
-  border: 1px solid #2196f340;
-  background: linear-gradient(-45deg, rgba(33,150,243,0.1) 0%, rgba(66,149,227,0) 25%, rgba(33,150,243,0.1) 50%, rgba(33,150,243,0) 75%, rgba(33,150,243,0.1) 100%);
-  background-size: 400% 400%;
-  animation: gradient 10s ease infinite;
 }
 .main-title{
   width: 275px;
@@ -285,35 +282,17 @@ body.browser-source.lower-thirds{
 #alt-2-config-content.active,
 #alt-3-config-content.active,
 #alt-4-config-content.active {
-  box-shadow: inset 0px 0px 2px 0px rgba(0,136,255,1);
+  box-shadow: 0px 0px 2px 0px rgb(222, 240, 255),
+              0px 0px 12px 0px rgb(0,149,255);
   border-radius: 3px;
-  border: 1px solid #2196f340;
-  background: linear-gradient(-45deg, rgba(33,150,243,0.1) 0%, rgba(66,149,227,0) 25%, rgba(33,150,243,0.1) 50%, rgba(33,150,243,0) 75%, rgba(33,150,243,0.1) 100%);
-  background-size: 300% 300%;
-  animation: gradient 10s ease infinite;
 }
 #alt-1-config-content.inactive,
 #alt-2-config-content.inactive,
 #alt-3-config-content.inactive,
 #alt-4-config-content.inactive {
-  box-shadow: inset 0px 0px 2px 0px rgba(255,0,0,1);
+  box-shadow: 0px 0px 2px 0px rgb(255,231,231),
+              0px 0px 12px 0px rgb(255,13,13);
   border-radius: 3px;  
-  border: 1px solid #f3215b40;
-  background: linear-gradient(-45deg, rgba(242,34,62,0.1) 0%, rgba(242,34,62,0) 25%, rgba(242,34,62,0.1) 50%, rgba(242,34,62,0) 75%, rgba(242,34,62,0.1) 100%);
-  background-size: 300% 300%;
-  animation: gradient 10s ease infinite;
-}
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 0%;
-  }
-  50% {
-    background-position: 100% 100%;
-  }
-  100% {
-    background-position: 0% 0%;
-  }
 }
 
 .panel-bottom > ul {
@@ -1151,7 +1130,7 @@ select#alt-4-font {
   cursor: -webkit-grabbing; cursor: grabbing;
 }
 .ui-sortable-helper > div {
-  box-shadow: none!important;
+  /* box-shadow: none!important; */
 }
 
 .ui-sortable-placeholder {
