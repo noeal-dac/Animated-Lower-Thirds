@@ -2346,12 +2346,13 @@
 					const default_logo = logo.replace("-preview", "-default");
 					const default_logo_value = $(default_logo).attr("src");
 
-					$(name + ":text").val(name_to_load).change();
-					$(info + ":text").val(info_to_load).change();
+					$(name + ":text").val(name_to_load);
+					$(info + ":text").val(info_to_load);
 					if (logo_to_load == "default") {
 						logo_to_load = default_logo_value;
 					}
-					$(logo).attr("src", logo_to_load).change();
+					$(logo).attr("src", logo_to_load);
+					refreshData();
 				}, alt_waiting_time * 1000);
 
 				//Switch ON the panel if the autotrigger is ON
@@ -3456,10 +3457,10 @@
 				var allData = getLocalStorage();
 				document.getElementById("dataInput").value = allData;
 				var copyText = document.getElementById("dataInput");
-				
+
 				//Open the Popup "Copied to Clipboard"
 				openExportPopup();
-				
+
 				//Select text input and copy to the clipboard
 				copyText.select();
 				document.execCommand("copy");
