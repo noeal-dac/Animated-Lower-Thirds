@@ -1206,6 +1206,17 @@ i.alt-icon {
   opacity: 0;
   transition: opacity 1s;
   box-shadow: 2px 2px 5px rgb(0 0 0 / 30%);
+  border: 1px solid #252525;
+}
+.tooltiptext > hr {
+  border: none;
+  border-top: 1px solid #333333;
+  margin: 7px 0 4px;
+}
+.tooltiptext > p {
+  margin: 0 0 2px 0;
+  color: #888888;
+  font-size: 0.8em;
 }
 
 /*Settings Tooltips*/

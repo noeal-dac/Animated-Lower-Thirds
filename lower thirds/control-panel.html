@@ -2881,10 +2881,11 @@
 						if (isTooltip){
 							if (!isStored) {
 								$(this).children(".tooltiptext").remove();
+								// $(this).prepend('<span class="tooltiptext"><p>Empty. Click to save.</p></span>');
 							}
 						} else {
 							if (isStored) {
-								$(this).prepend('<span class="tooltiptext">' + name_to_tooltip + '<br>' + info_to_tooltip + '</span>');
+								$(this).prepend('<span class="tooltiptext">' + name_to_tooltip + '<br>' + info_to_tooltip + '<hr><p>Click and hold to delete.</p></span>');
 							}
 						}
 
@@ -3455,13 +3456,13 @@
 				var allData = getLocalStorage();
 				document.getElementById("dataInput").value = allData;
 				var copyText = document.getElementById("dataInput");
-
+				
+				//Open the Popup "Copied to Clipboard"
+				openExportPopup();
+				
 				//Select text input and copy to the clipboard
 				copyText.select();
 				document.execCommand("copy");
-
-				//Open the Popup "Copied to Clipboard"
-				openExportPopup();
         	}
 
 
