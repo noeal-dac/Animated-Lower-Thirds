@@ -12,7 +12,7 @@ This project is based on Lower thirds in HTML/CSS https://obsproject.com/forum/r
 - 4 differents Lower Thirds at same time
 - 10 slots for each Lower Third (Same configuration but with different title, description and logo)
 - 3 predefined styles
-- Hihgly customizable (colors, fonts, times, ...)
+- Hihgly customizable (colors, fonts, timing, automation, ...)
 
 ## Installation
 1. Download the Zip file, unzip it.
