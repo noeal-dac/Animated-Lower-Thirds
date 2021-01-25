@@ -7,6 +7,8 @@ For communication between control panel and browser layer it use BroadcastChanne
 
 This project is based on Lower thirds in HTML/CSS https://obsproject.com/forum/resources/lower-thirds-in-html-css.928/, and Animated lower thirds with control panel https://obsproject.com/forum/resources/animated-lower-thirds-with-control-panel.922/.
 
+![Lower Third Screenshot](https://obsproject.com/forum/attachments/screen-jpg.61515/)
+
 ### Features
 - Include dynamic content to streaming app with browser support (like OBS)
 - 4 differents Lower Thirds at same time
