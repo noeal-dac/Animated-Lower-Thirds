@@ -26,6 +26,9 @@ Unfortunately, OBS doesn't support browser panels on MacOs. It only works on Win
 ## Usage 
 See previus features: https://youtu.be/cQ0_1GwpwB0
 
+## Support
+You can find all videotutorials on this [Youtube Channel](https://www.youtube.com/channel/UCUYiOIl-DHn8B1eRzUfDyyw)
+
 ## Contributing
 I am a designer and my scripting knowledge is few. I made this tool (Frankenststool) because I needed it and I want to share it. You are welcome to improve it. I am aware that many parts of the code can make any expert cry. I'm really sorry :P
 
