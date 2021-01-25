@@ -5,7 +5,7 @@ Animated Lower Thirds with dockable Control Panel - OBS Tool
 With this tool you can use a control panel to add and change your own lower thirds on the fly. Feel free to customize. Basic knowledge of HTML, Javascript and CSS is required.
 For communication between control panel and browser layer it use BroadcastChannel API.
 
-This project is based on Lower thirds in HTML/CSS https://obsproject.com/forum/resources/lower-thirds-in-html-css.928/, and Animated lower thirds with control panel https://obsproject.com/forum/resources/animated-lower-thirds-with-control-panel.922/.
+This project is based on [Lower thirds in HTML/CSS](https://obsproject.com/forum/resources/lower-thirds-in-html-css.928/), and [Animated lower thirds with control panel](https://obsproject.com/forum/resources/animated-lower-thirds-with-control-panel.922/).
 
 ![Lower Third Screenshot](https://obsproject.com/forum/attachments/screen-jpg.61515/)
 
