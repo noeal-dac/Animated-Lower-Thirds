@@ -1,57 +1,39 @@
 # Animated-Lower-Thrids
 Animated Lower Thirds with dockable Control Panel - OBS Tool
 
+## Description
 With this tool you can use a control panel to add and change your own lower thirds on the fly. Feel free to customize. Basic knowledge of HTML, Javascript and CSS is required.
 For communication between control panel and browser layer it use BroadcastChannel API.
 
+This project is based on [Lower thirds in HTML/CSS](https://obsproject.com/forum/resources/lower-thirds-in-html-css.928/), and [Animated lower thirds with control panel](https://obsproject.com/forum/resources/animated-lower-thirds-with-control-panel.922/).
+
+![Lower Third Screenshot](https://obsproject.com/forum/attachments/screen-jpg.61515/)
+
+### Features
+- Include dynamic content to streaming app with browser support (like OBS)
+- 4 differents Lower Thirds at same time
+- 10 slots for each Lower Third (Same configuration but with different title, description and logo)
+- 3 predefined styles
+- Highly customizable (colors, fonts, timing, automation, ...)
+
+## Installation
 1. Download the Zip file, unzip it.
 2. See how to install and new features: https://youtu.be/tddMYWya7O0
-3. See previus features: https://youtu.be/cQ0_1GwpwB0
 
-Unfortunately, OBS doesn't support browser panels on macOs. It only works on Windows.
+### Requiriments 
+Unfortunately, OBS doesn't support browser panels on MacOs. It only works on Windows.
 
-This project is based on Lower thirds in HTML/CSS https://obsproject.com/forum/resources/lower-thirds-in-html-css.928/, and Animated lower thirds with control panel https://obsproject.com/forum/resources/animated-lower-thirds-with-control-panel.922/.
+## Usage 
+See previus features: https://youtu.be/cQ0_1GwpwB0
 
+## Support
+You can find all videotutorials on this [Youtube Channel](https://www.youtube.com/channel/UCUYiOIl-DHn8B1eRzUfDyyw)
 
+## Contributing
 I am a designer and my scripting knowledge is few. I made this tool (Frankenststool) because I needed it and I want to share it. You are welcome to improve it. I am aware that many parts of the code can make any expert cry. I'm really sorry :P
 
+## Donations
+If you like the extension and you want to support the development - please consider to donate by [Paypal](https://paypal.me/noealdac). Any donations are greatly appreciated.
 
-Update v1.1 new features:
-- Each lower third has 10 memory slots.
-- 4 lower thirds to use simultaneously.
-- Hotkeys to turn on/off switches to show and hide the lower thirds (watch the video)
-- Edit panel:
-    - They glow blue or red to know if they are active or inactive.
-    - Styles - At the moment there are only 2. but they are very versatile. ;)
-    - Logos - You can customize it by changing the png file.
-    - Alignment - Any lower third can now be aligned however you want.
-    - Colors - You can choose the colors that are used for the styles and the text.
-    - You can change the position and the size of the lower third. The size of the texts and the line spacing.
-    - Can change the font, uppercase and bold.
-    
-Update v1.2 new features:
-- Sort the position of the edit panel for each lower third.
-- Change the name to better identify them.
-- Preview panel. By checking the magnifying glass you can see them on the panel before displaying them.
-- Change the opacity of the colors in the color picker.
-
-Update v1.3 new features:
-- Set timers for each panel. Keeping global times settings.
-- Number icons. To easily identify each panel with the hotkey settings.
-- Themes. Acri, Dark, Rachni.
-- Visual Fixes
-
-Update v1.4 new features:
-- New memory slots design and more compact panel.
-- Customization options for the control panel.
-- Autoload. Automatically load the next memory slot.
-- Add custom Fonts from Google Fonts
-- Tooltips with the memory slot content.
-- More Hotkeys. Now you can load any memory slot.
-- Some fixes.
-
-Update v1.5 new features:
-- You can choose default Logos for each Lower Thirds panel. Or use different ones in each memory slot you store.
-- Backup data is avaible. Now you can Import, Export or Reset all the data.
-- Autoload fixes. When it reaches the last one, it starts over correctly.
-- Some fixes.
+## License
+The Animated Lower Thirds source code is made available under the [MIT license](https://github.com/noeal-dac/Animated-Lower-Thrids/blob/master/LICENSE).

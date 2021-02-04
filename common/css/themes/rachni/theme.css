@@ -5,7 +5,7 @@
   --obs-button-background: #00BCD4;
   --obs-button-border: #76797C;
   --obs-button-hover-background: #914C67;
-  --obs-button-hover-border: #0f0408;
+  --obs-button-hover-border: #76797c;
   --obs-button-active-background: #1f1e1f;
   --obs-switch-active-background: #00BCD4;
   --obs-button-color: #fff;
@@ -16,6 +16,11 @@
   --obs-scrollbar-color: #76797c;
   --obs-scrollbar-thickness: 8px;
   --obs-scrollbar-radius: 14px;
+  --obs-tab-background: #54575b;
+  --obs-tab-border: #76797c;
+  --obs-tab-active-background: #914c67;
+  --obs-tab-active-border: #76797c;
+  --obs-tabs-separator: #76797c;
   --alt-preview-background: linear-gradient(135deg, #25282c 0%,
                                                     #25282c 8%,
                                                     #232629 10%,

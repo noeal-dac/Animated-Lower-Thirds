@@ -9,11 +9,10 @@
 		<title>Lower Thirds Control Panel</title>
 		<link rel="stylesheet" href="../common/css/style-control_panel.css">
 		<link rel="stylesheet" href="../common/css/cp-icons.css">
-		<!-- <script src='https://kit.fontawesome.com/a076d05399.js'></script> -->
 		<script src="../common/js/jquery.js"></script>
 		<script src="../common/js/jscolor.js"></script>
 		<script src="../common/js/hotkeys.js"></script>
-		<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+		<script src="../common/js/jquery-ui.js"></script>
 	</head>
 	<body class="lower-thirds-panel panel">
 		<div id="alt-panel" class="static-panel-top" style="margin-bottom: 0px">
@@ -32,13 +31,13 @@
 					<div id="time-options">
 						<div class="settings-title">Global Times</div>
 						<div class="settings-inputs">
-							<input class="storable" id="global-animation-time" placeholder="4s (in-out)" tabindex="1">
-							<input class="storable" id="global-active-time" placeholder="25s (active)" tabindex="2">
+							<input class="storable" id="global-animation-time" type="number" placeholder="in-out" tabindex="1">
+							<input class="storable" id="global-active-time" type="number" placeholder="active"  tabindex="2">
 							<label class="config-btn lock-input">
 								<input class="checkbox-storable" type="checkbox" id="global-lock-active">
 								<div class="icon-btn icon icon-lock"></div>
 							</label>
-							<input class="storable" id="global-inactive-time" placeholder="420s (inactive)" tabindex="3">
+							<input class="storable" id="global-inactive-time" type="number" placeholder="inactive" tabindex="3">
 							<label class="config-btn lock-input">
 								<input class="checkbox-storable" type="checkbox" id="global-oneshot">
 								<div class="icon-btn icon icon-oneshot"></div>
@@ -47,68 +46,79 @@
 					</div>
 					<label class="more"><div class="icon icon-angle-down"></div></label>
 					<div id="more-settings" class="hide-more">
-						<div id="theme-options">
-							<div class="settings-title">Theme</div>
-							<div class="settings-inputs">
-								<select name="theme" id="theme" class="select-settings-storable" onchange="changeTheme(this.value)"></select>
-							</div>
+						<div class="tab">
+							<button id="defaultTab" class="tablinks" onclick="openTab(this, 'appearance')">Appearance</button>
+							<button class="tablinks" onclick="openTab(this, 'customs')">Customs</button>
+							<button class="tablinks" onclick="openTab(this, 'system')">System</button>
 						</div>
-						<div id="fonts-options">
-							<div class="settings-title">Custom Font</div>
-							<div class="settings-inputs">
-								<input id="new-font-name" placeholder="Font Family" tabindex="51">
-								<input id="new-font-url" placeholder="@import url" tabindex="52">
-								<div id="add-new-font" class="add"><div class="icon icon-plus-square"></div></div>
-							</div>
-						</div>
-						<div id="custom-font-list">
-							<ul>
-							<!--custom fonts-->
-							</ul>
-						</div>
-						<div class="default-options">
-							<div class="settings-title"></div>
-							<div class="settings-inputs">
-								<label><input class="checkbox-storable" type="checkbox" id="set-preview">Disable preview window</label>
-								<label><input class="checkbox-storable" type="checkbox" id="set-slot-numbers">Hide numbers of the memory slots</label>
-								<label><input class="checkbox-storable" type="checkbox" id="set-switch-position">Switches on the left</label>
-								<label><input class="checkbox-storable" type="checkbox" id="set-tooltips">Show tooltips with the stored content</label>
-							</div>
-						</div>
-						<div class="logos-options">
-							<div class="settings-title">Default Logos</div>
-							<div class="settings-inputs">
-								<div class="logo-container default" onclick="openLogoPopup('alt-1-logo-default', 'alt-1-logo-default')">
-									<div class="logo-numbers">1</div>
-									<img id="alt-1-logo-default" class="logo-storable alt-logo-default" >
+						<!-- Tab content -->
+						<div id="tab-appearance" class="tabcontent" >
+							<div id="theme-options">
+								<div class="settings-title">Theme</div>
+								<div class="settings-inputs">
+									<select name="theme" id="theme" class="select-settings-storable" onchange="changeTheme(this.value)"></select>
 								</div>
-								<div class="logo-container default" onclick="openLogoPopup('alt-2-logo-default', 'alt-2-logo-default')">
-									<div class="logo-numbers">2</div>
-									<img id="alt-2-logo-default" class="logo-storable alt-logo-default" >
-								</div>
-								<div class="logo-container default" onclick="openLogoPopup('alt-3-logo-default', 'alt-3-logo-default')">
-									<div class="logo-numbers">3</div>
-									<img id="alt-3-logo-default" class="logo-storable alt-logo-default" >
-								</div>
-								<div class="logo-container default" onclick="openLogoPopup('alt-4-logo-default', 'alt-4-logo-default')">
-									<div class="logo-numbers">4</div>
-									<img id="alt-4-logo-default" class="logo-storable alt-logo-default" >
+							</div>
+							<div class="default-options">
+								<div class="settings-title"></div>
+								<div class="settings-inputs">
+									<label><input class="checkbox-storable" type="checkbox" id="set-preview">Enable preview window</label>
+									<label><input class="checkbox-storable" type="checkbox" id="set-slot-numbers">Hide numbers of the memory slots</label>
+									<label><input class="checkbox-storable" type="checkbox" id="set-switch-position">Switches on the left</label>
+									<label><input class="checkbox-storable" type="checkbox" id="set-tooltips">Show tooltips with the stored content</label>
 								</div>
 							</div>
 						</div>
 
-						<div class="divider"></div>
-
-						<div class="bottom-options">
-							<div class="settings-title">Backup Data</div>
-							<div class="settings-inputs">
-								<div class="import-file-btn">
-									<label for="importFile">Import</label>
-									<input id="importFile" type="file"/>
+						<div id="tab-customs" class="tabcontent" >
+							<div id="fonts-options">
+								<div class="settings-title">Custom Font</div>
+								<div class="settings-inputs">
+									<input id="new-font-name" placeholder="Font Family" tabindex="51">
+									<input id="new-font-url" placeholder="@import url" tabindex="52">
+									<div id="add-new-font" class="add"><div class="icon icon-plus-square"></div></div>
 								</div>
-								<input type="text" id="dataInput">
-								<div class="btn-settings" onclick="exportData()">Export</div>
-								<div class="btn-settings" onclick="openResetPopup()">Reset</div>
+							</div>
+							<div id="custom-font-list">
+								<ul>
+									<!--custom fonts-->
+								</ul>
+							</div>
+							<div class="logos-options">
+								<div class="settings-title">Default Logos</div>
+								<div class="settings-inputs">
+									<div class="logo-container default" onclick="openLogoPopup('alt-1-logo-default', 'alt-1-logo-default')">
+										<div class="logo-numbers">1</div>
+										<img id="alt-1-logo-default" class="logo-storable alt-logo-default" >
+									</div>
+									<div class="logo-container default" onclick="openLogoPopup('alt-2-logo-default', 'alt-2-logo-default')">
+										<div class="logo-numbers">2</div>
+										<img id="alt-2-logo-default" class="logo-storable alt-logo-default" >
+									</div>
+									<div class="logo-container default" onclick="openLogoPopup('alt-3-logo-default', 'alt-3-logo-default')">
+										<div class="logo-numbers">3</div>
+										<img id="alt-3-logo-default" class="logo-storable alt-logo-default" >
+									</div>
+									<div class="logo-container default" onclick="openLogoPopup('alt-4-logo-default', 'alt-4-logo-default')">
+										<div class="logo-numbers">4</div>
+										<img id="alt-4-logo-default" class="logo-storable alt-logo-default" >
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div id="tab-system" class="tabcontent" >
+							<div class="bottom-options">
+								<div class="settings-title">Backup Data</div>
+								<div class="settings-inputs">
+									<div class="import-file-btn">
+										<label for="importFile">Import</label>
+										<input id="importFile" type="file"/>
+									</div>
+									<!-- <input type="text" id="dataInput"> -->
+									<div class="btn-settings" onclick="exportData()">Export</div>
+									<div class="btn-settings" onclick="openResetPopup()">Reset</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -177,18 +187,18 @@
 								<div class="grid-row">
 									<div>
 										<div class="input-icon icon icon-text-height"></div>
-										<div class="number-input">
-										<input id="alt-1-inverse-ratio" class="storable" min="0" max="10" name="quantity" value="9" type="number" placeholder="9">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<div class="number-input">
+											<input id="alt-1-inverse-ratio" class="storable" min="0" max="10" name="quantity" value="9" type="number" placeholder="9">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>
 									<div>
 										<div class="input-icon icon icon-line-spacing"></div>
-										<div class="number-input">
-										<input id="alt-1-line-spacing" class="storable" min="-5" max="5" name="quantity" value="2" type="number" placeholder="0">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<div class="number-input">
+											<input id="alt-1-line-spacing" class="storable" min="-5" max="5" name="quantity" value="0" type="number" placeholder="0">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>									
 									<div class="font-config group">
@@ -201,13 +211,13 @@
 								<div class="grid-row">
 									<div>
 										<label class="config-btn">
-											<input class="checkbox-storable" type="checkbox" id="alt-1-logo">
+											<input class="checkbox-storable" type="checkbox" id="alt-1-logo" checked>
 											<div class="icon-btn icon icon-image"></div>
 										</label>									
 										<div class="number-input">
-										<input id="alt-1-logo-size" class="storable" min="-10" max="10" name="quantity" value="0" type="number" placeholder="0">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-1-logo-size" class="storable" min="-10" max="10" name="quantity" value="0" type="number" placeholder="0">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>										
 									<div>
@@ -223,14 +233,14 @@
 									</div>
 									<div>
 										<label class="config-btn">
-											<input class="checkbox-storable" type="checkbox" id="alt-1-background">
+											<input class="checkbox-storable" type="checkbox" id="alt-1-background" checked>
 											<div class="icon-btn icon icon-fill-drip"></div>
 										</label>
 										<div id="alt-1-style-color-appearance" class="fill-color-appearance">
 											<div class="tool-tittle">Clr 1</div>
-											<input class="storable" id="alt-1-style-color-1" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="D54141">
+											<input class="storable" id="alt-1-style-color-1" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
 											<div class="tool-tittle">Clr 2</div>
-											<input class="storable" id="alt-1-style-color-2" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="222222">
+											<input class="storable" id="alt-1-style-color-2" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
 										</div>
 									</div>
 								</div>
@@ -238,9 +248,9 @@
 									<div>
 										<div class="input-icon icon icon-corner"></div>
 										<div class="number-input">
-										<input id="alt-1-corners" class="storable" min="0" max="10" name="quantity" value="0" type="number" placeholder="0">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-1-corners" class="storable" min="0" max="10" name="quantity" value="0" type="number" placeholder="0">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>
 									<div>
@@ -248,11 +258,10 @@
 											<input class="checkbox-storable twin-checkbox" type="checkbox" name="alt-1-border" id="alt-1-border-thickness">
 											<div class="icon-btn icon icon-thickness"></div>
 										</label>
-										<!-- <div class="input-icon icon icon-thickness"></div> -->
 										<div class="number-input">
-										<input id="alt-1-border-thickness-amount" class="storable" min="0" max="10" name="quantity" value="0" type="number" placeholder="0">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-1-border-thickness-amount" class="storable" min="1" max="10" name="quantity" value="4" type="number" placeholder="4">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>
 									<div>
@@ -262,9 +271,9 @@
 										</label>
 										<div id="alt-1-style-border-color-appearance" class="border-color-appearance">
 											<div class="tool-tittle">Clr 3</div>
-											<input class="storable" id="alt-1-style-color-3" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="D54141">
+											<input class="storable" id="alt-1-style-color-3" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
 											<div class="tool-tittle">Clr 4</div>
-											<input class="storable" id="alt-1-style-color-4" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="222222">
+											<input class="storable" id="alt-1-style-color-4" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
 										</div>
 									</div>
 								</div>
@@ -285,7 +294,7 @@
 										<input class="checkbox-storable" type="checkbox" id="alt-1-name-weight" checked>
 										<div class="icon-btn icon small icon-bold"></div>
 									</label>
-									<input class="storable" id="alt-1-name-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="f2f2f2">
+									<input class="storable" id="alt-1-name-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
 								</div>
 								<input class="storable" type="text" id="alt-1-info" placeholder="Info" tabindex="5">
 								<div id="alt-1-info-appearance">
@@ -297,7 +306,7 @@
 										<input class="checkbox-storable" type="checkbox" id="alt-1-info-weight">
 										<div class="icon-btn icon small icon-bold"></div>
 									</label>
-									<input class="storable" id="alt-1-info-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="555555">
+									<input class="storable" id="alt-1-info-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
 								</div>	
 								<div style="clear:both"></div>
 							</div>
@@ -335,13 +344,13 @@
 								<div class="alt-time-options">
 									<div class="settings-title">LT1 Times</div>
 									<div class="settings-inputs">
-										<input class="storable" id="alt-1-animation-time" placeholder="(in-out)" tabindex="12">
-										<input class="storable" id="alt-1-active-time" placeholder="(active)" tabindex="13">
+										<input class="storable" id="alt-1-animation-time" type="number" placeholder="in-out" tabindex="12">
+										<input class="storable" id="alt-1-active-time" type="number" placeholder="active" tabindex="13">
 										<label class="config-btn lock-input">
 											<input class="checkbox-storable" type="checkbox" id="alt-1-lock-active">
 											<div class="icon-btn icon icon-lock"></div>
 										</label>
-										<input class="storable" id="alt-1-inactive-time" placeholder="(inactive)" tabindex="14">
+										<input class="storable" id="alt-1-inactive-time" type="number" placeholder="inactive" tabindex="14">
 										<label class="config-btn lock-input">
 											<input class="checkbox-storable" type="checkbox" id="alt-1-oneshot">
 											<div class="icon-btn icon icon-oneshot"></div>
@@ -415,17 +424,17 @@
 									<div>
 										<div class="input-icon icon icon-text-height"></div>
 										<div class="number-input">
-										<input id="alt-2-inverse-ratio" class="storable" min="0" max="10" name="quantity" value="9" type="number" placeholder="9">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-2-inverse-ratio" class="storable" min="0" max="10" name="quantity" value="9" type="number" placeholder="9">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>
 									<div>
 										<div class="input-icon icon icon-line-spacing"></div>
 										<div class="number-input">
-										<input id="alt-2-line-spacing" class="storable" min="-5" max="5" name="quantity" value="2" type="number" placeholder="0">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-2-line-spacing" class="storable" min="-5" max="5" name="quantity" value="2" type="number" placeholder="0">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>									
 									<div class="font-config group">
@@ -438,13 +447,13 @@
 								<div class="grid-row">
 									<div>
 										<label class="config-btn">
-											<input class="checkbox-storable" type="checkbox" id="alt-2-logo">
+											<input class="checkbox-storable" type="checkbox" id="alt-2-logo" checked>
 											<div class="icon-btn icon icon-image"></div>
 										</label>									
 										<div class="number-input">
-										<input id="alt-2-logo-size" class="storable" min="-10" max="10" name="quantity" value="0" type="number" placeholder="0">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-2-logo-size" class="storable" min="-10" max="10" name="quantity" value="0" type="number" placeholder="0">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>										
 									<div>
@@ -460,14 +469,14 @@
 									</div>
 									<div>
 										<label class="config-btn">
-											<input class="checkbox-storable" type="checkbox" id="alt-2-background">
+											<input class="checkbox-storable" type="checkbox" id="alt-2-background" checked>
 											<div class="icon-btn icon icon-fill-drip"></div>
 										</label>
 										<div id="alt-2-style-color-appearance" class="fill-color-appearance">
 											<div class="tool-tittle">Clr 1</div>
-											<input class="storable" id="alt-2-style-color-1" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="D54141">
+											<input class="storable" id="alt-2-style-color-1" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
 											<div class="tool-tittle">Clr 2</div>
-											<input class="storable" id="alt-2-style-color-2" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="222222">
+											<input class="storable" id="alt-2-style-color-2" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
 										</div>
 									</div>
 								</div>
@@ -475,9 +484,9 @@
 									<div>
 										<div class="input-icon icon icon-corner"></div>
 										<div class="number-input">
-										<input id="alt-2-corners" class="storable" min="0" max="10" name="quantity" value="0" type="number" placeholder="0">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-2-corners" class="storable" min="0" max="10" name="quantity" value="0" type="number" placeholder="0">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>
 									<div>
@@ -486,9 +495,9 @@
 											<div class="icon-btn icon icon-thickness"></div>
 										</label>
 										<div class="number-input">
-										<input id="alt-2-border-thickness-amount" class="storable" min="0" max="10" name="quantity" value="0" type="number" placeholder="0">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-2-border-thickness-amount" class="storable" min="1" max="10" name="quantity" value="4" type="number" placeholder="4">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>
 									<div>
@@ -498,9 +507,9 @@
 										</label>
 										<div id="alt-2-style-border-color-appearance" class="border-color-appearance">
 											<div class="tool-tittle">Clr 3</div>
-											<input class="storable" id="alt-2-style-color-3" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="D54141">
+											<input class="storable" id="alt-2-style-color-3" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
 											<div class="tool-tittle">Clr 4</div>
-											<input class="storable" id="alt-2-style-color-4" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="222222">
+											<input class="storable" id="alt-2-style-color-4" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
 										</div>
 									</div>									
 								</div>
@@ -521,7 +530,7 @@
 										<input class="checkbox-storable" type="checkbox" id="alt-2-name-weight" checked>
 										<div class="icon-btn icon small icon-bold"></div>
 									</label>
-									<input class="storable" id="alt-2-name-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="f2f2f2">
+									<input class="storable" id="alt-2-name-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
 								</div>
 								<input class="storable" type="text" id="alt-2-info" placeholder="Info" tabindex="7">
 								<div id="alt-2-info-appearance">
@@ -533,7 +542,7 @@
 										<input class="checkbox-storable" type="checkbox" id="alt-2-info-weight">
 										<div class="icon-btn icon small icon-bold"></div>
 									</label>
-									<input class="storable" id="alt-2-info-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="555555">
+									<input class="storable" id="alt-2-info-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
 								</div>	
 								<div style="clear:both"></div>
 							</div>
@@ -571,13 +580,13 @@
 								<div class="alt-time-options">
 									<div class="settings-title">LT2 Times</div>
 									<div class="settings-inputs">
-										<input class="storable" id="alt-2-animation-time" placeholder="(in-out)" tabindex="15">
-										<input class="storable" id="alt-2-active-time" placeholder="(active)" tabindex="16">
+										<input class="storable" id="alt-2-animation-time" type="number" placeholder="in-out" tabindex="15">
+										<input class="storable" id="alt-2-active-time" type="number" placeholder="active" tabindex="16">
 										<label class="config-btn lock-input">
 											<input class="checkbox-storable" type="checkbox" id="alt-2-lock-active">
 											<div class="icon-btn icon icon-lock"></div>
 										</label>
-										<input class="storable" id="alt-2-inactive-time" placeholder="(inactive)" tabindex="17">
+										<input class="storable" id="alt-2-inactive-time" type="number" placeholder="inactive" tabindex="17">
 										<label class="config-btn lock-input">
 											<input class="checkbox-storable" type="checkbox" id="alt-2-oneshot">
 											<div class="icon-btn icon icon-oneshot"></div>
@@ -651,17 +660,17 @@
 									<div>
 										<div class="input-icon icon icon-text-height"></div>
 										<div class="number-input">
-										<input id="alt-3-inverse-ratio" class="storable" min="0" max="10" name="quantity" value="9" type="number" placeholder="9">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-3-inverse-ratio" class="storable" min="0" max="10" name="quantity" value="9" type="number" placeholder="9">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>
 									<div>
 										<div class="input-icon icon icon-line-spacing"></div>
 										<div class="number-input">
-										<input id="alt-3-line-spacing" class="storable" min="-5" max="5" name="quantity" value="2" type="number" placeholder="0">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-3-line-spacing" class="storable" min="-5" max="5" name="quantity" value="2" type="number" placeholder="0">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>									
 									<div class="font-config group">
@@ -674,13 +683,13 @@
 								<div class="grid-row">
 									<div>
 										<label class="config-btn">
-											<input class="checkbox-storable" type="checkbox" id="alt-3-logo">
+											<input class="checkbox-storable" type="checkbox" id="alt-3-logo" checked>
 											<div class="icon-btn icon icon-image"></div>
 										</label>									
 										<div class="number-input">
-										<input id="alt-3-logo-size" class="storable" min="-10" max="10" name="quantity" value="0" type="number" placeholder="0">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-3-logo-size" class="storable" min="-10" max="10" name="quantity" value="0" type="number" placeholder="0">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>										
 									<div>
@@ -696,14 +705,14 @@
 									</div>
 									<div>
 										<label class="config-btn">
-											<input class="checkbox-storable" type="checkbox" id="alt-3-background">
+											<input class="checkbox-storable" type="checkbox" id="alt-3-background" checked>
 											<div class="icon-btn icon icon-fill-drip"></div>
 										</label>
 										<div id="alt-3-style-color-appearance" class="fill-color-appearance">
 											<div class="tool-tittle">Clr 1</div>
-											<input class="storable" id="alt-3-style-color-1" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="D54141">
+											<input class="storable" id="alt-3-style-color-1" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
 											<div class="tool-tittle">Clr 2</div>
-											<input class="storable" id="alt-3-style-color-2" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="222222">
+											<input class="storable" id="alt-3-style-color-2" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
 										</div>
 									</div>
 								</div>
@@ -711,9 +720,9 @@
 									<div>
 										<div class="input-icon icon icon-corner"></div>
 										<div class="number-input">
-										<input id="alt-3-corners" class="storable" min="0" max="10" name="quantity" value="0" type="number" placeholder="0">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-3-corners" class="storable" min="0" max="10" name="quantity" value="0" type="number" placeholder="0">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>
 									<div>
@@ -722,9 +731,9 @@
 											<div class="icon-btn icon icon-thickness"></div>
 										</label>
 										<div class="number-input">
-										<input id="alt-3-border-thickness-amount" class="storable" min="0" max="10" name="quantity" value="0" type="number" placeholder="0">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-3-border-thickness-amount" class="storable" min="1" max="10" name="quantity" value="4" type="number" placeholder="4">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>
 									<div>
@@ -734,9 +743,9 @@
 										</label>
 										<div id="alt-3-style-border-color-appearance" class="border-color-appearance">
 											<div class="tool-tittle">Clr 3</div>
-											<input class="storable" id="alt-3-style-color-3" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="D54141">
+											<input class="storable" id="alt-3-style-color-3" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
 											<div class="tool-tittle">Clr 4</div>
-											<input class="storable" id="alt-3-style-color-4" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="222222">
+											<input class="storable" id="alt-3-style-color-4" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
 										</div>
 									</div>									
 								</div>
@@ -757,7 +766,7 @@
 										<input class="checkbox-storable" type="checkbox" id="alt-3-name-weight" checked>
 										<div class="icon-btn icon small icon-bold"></div>
 									</label>
-									<input class="storable" id="alt-3-name-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="f2f2f2">
+									<input class="storable" id="alt-3-name-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
 								</div>
 								<input class="storable" type="text" id="alt-3-info" placeholder="Info" tabindex="9">
 								<div id="alt-3-info-appearance">
@@ -769,7 +778,7 @@
 										<input class="checkbox-storable" type="checkbox" id="alt-3-info-weight">
 										<div class="icon-btn icon small icon-bold"></div>
 									</label>
-									<input class="storable" id="alt-3-info-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="555555">
+									<input class="storable" id="alt-3-info-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
 								</div>	
 								<div style="clear:both"></div>
 							</div>
@@ -807,13 +816,13 @@
 								<div class="alt-time-options">
 									<div class="settings-title">LT3 Times</div>
 									<div class="settings-inputs">
-										<input class="storable" id="alt-3-animation-time" placeholder="(in-out)" tabindex="18">
-										<input class="storable" id="alt-3-active-time" placeholder="(active)" tabindex="19">
+										<input class="storable" id="alt-3-animation-time" type="number" placeholder="in-out" tabindex="18">
+										<input class="storable" id="alt-3-active-time" type="number" placeholder="active" tabindex="19">
 										<label class="config-btn lock-input">
 											<input class="checkbox-storable" type="checkbox" id="alt-3-lock-active">
 											<div class="icon-btn icon icon-lock"></div>
 										</label>
-										<input class="storable" id="alt-3-inactive-time" placeholder="(inactive)" tabindex="20">
+										<input class="storable" id="alt-3-inactive-time" type="number" placeholder="inactive" tabindex="20">
 										<label class="config-btn lock-input">
 											<input class="checkbox-storable" type="checkbox" id="alt-3-oneshot">
 											<div class="icon-btn icon icon-oneshot"></div>
@@ -887,17 +896,17 @@
 									<div>
 										<div class="input-icon icon icon-text-height"></div>
 										<div class="number-input">
-										<input id="alt-4-inverse-ratio" class="storable" min="0" max="10" name="quantity" value="9" type="number" placeholder="9">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-4-inverse-ratio" class="storable" min="0" max="10" name="quantity" value="9" type="number" placeholder="9">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>
 									<div>
 										<div class="input-icon icon icon-line-spacing"></div>
 										<div class="number-input">
-										<input id="alt-4-line-spacing" class="storable" min="-5" max="5" name="quantity" value="2" type="number" placeholder="0">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-4-line-spacing" class="storable" min="-5" max="5" name="quantity" value="2" type="number" placeholder="0">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>									
 									<div class="font-config group">
@@ -910,13 +919,13 @@
 								<div class="grid-row">
 									<div>
 										<label class="config-btn">
-											<input class="checkbox-storable" type="checkbox" id="alt-4-logo">
+											<input class="checkbox-storable" type="checkbox" id="alt-4-logo" checked>
 											<div class="icon-btn icon icon-image"></div>
 										</label>									
 										<div class="number-input">
-										<input id="alt-4-logo-size" class="storable" min="-10" max="10" name="quantity" value="0" type="number" placeholder="0">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-4-logo-size" class="storable" min="-10" max="10" name="quantity" value="0" type="number" placeholder="0">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>										
 									<div>
@@ -932,14 +941,14 @@
 									</div>
 									<div>
 										<label class="config-btn">
-											<input class="checkbox-storable" type="checkbox" id="alt-4-background">
+											<input class="checkbox-storable" type="checkbox" id="alt-4-background" checked>
 											<div class="icon-btn icon icon-fill-drip"></div>
 										</label>
 										<div id="alt-4-style-color-appearance" class="fill-color-appearance">
 											<div class="tool-tittle">Clr 1</div>
-											<input class="storable" id="alt-4-style-color-1" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="D54141">
+											<input class="storable" id="alt-4-style-color-1" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
 											<div class="tool-tittle">Clr 2</div>
-											<input class="storable" id="alt-4-style-color-2" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="222222">
+											<input class="storable" id="alt-4-style-color-2" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
 										</div>
 									</div>
 								</div>
@@ -947,9 +956,9 @@
 									<div>
 										<div class="input-icon icon icon-corner"></div>
 										<div class="number-input">
-										<input id="alt-4-corners" class="storable" min="0" max="10" name="quantity" value="0" type="number" placeholder="0">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-4-corners" class="storable" min="0" max="10" name="quantity" value="0" type="number" placeholder="0">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>
 									<div>
@@ -958,9 +967,9 @@
 											<div class="icon-btn icon icon-thickness"></div>
 										</label>
 										<div class="number-input">
-										<input id="alt-4-border-thickness-amount" class="storable" min="0" max="10" name="quantity" value="0" type="number" placeholder="0">
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-										<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-4-border-thickness-amount" class="storable" min="1" max="10" name="quantity" value="4" type="number" placeholder="4">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
 										</div>
 									</div>
 									<div>
@@ -970,9 +979,9 @@
 										</label>
 										<div id="alt-4-style-border-color-appearance" class="border-color-appearance">
 											<div class="tool-tittle">Clr 3</div>
-											<input class="storable" id="alt-4-style-color-3" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="D54141">
+											<input class="storable" id="alt-4-style-color-3" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
 											<div class="tool-tittle">Clr 4</div>
-											<input class="storable" id="alt-4-style-color-4" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="222222">
+											<input class="storable" id="alt-4-style-color-4" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
 										</div>
 									</div>									
 								</div>
@@ -993,7 +1002,7 @@
 										<input class="checkbox-storable" type="checkbox" id="alt-4-name-weight" checked>
 										<div class="icon-btn icon small icon-bold"></div>
 									</label>
-									<input class="storable" id="alt-4-name-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="f2f2f2">
+									<input class="storable" id="alt-4-name-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
 								</div>
 								<input class="storable" type="text" id="alt-4-info" placeholder="Info" tabindex="11">
 								<div id="alt-4-info-appearance">
@@ -1005,7 +1014,7 @@
 										<input class="checkbox-storable" type="checkbox" id="alt-4-info-weight">
 										<div class="icon-btn icon small icon-bold"></div>
 									</label>
-									<input class="storable" id="alt-4-info-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="555555">
+									<input class="storable" id="alt-4-info-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
 								</div>	
 								<div style="clear:both"></div>
 							</div>
@@ -1043,13 +1052,13 @@
 								<div class="alt-time-options">
 									<div class="settings-title">LT4 Times</div>
 									<div class="settings-inputs">
-										<input class="storable" id="alt-4-animation-time" placeholder="(in-out)" tabindex="21">
-										<input class="storable" id="alt-4-active-time" placeholder="(active)" tabindex="22">
+										<input class="storable" id="alt-4-animation-time" type="number" placeholder="in-out" tabindex="21">
+										<input class="storable" id="alt-4-active-time" type="number" placeholder="active" tabindex="22">
 										<label class="config-btn lock-input">
 											<input class="checkbox-storable" type="checkbox" id="alt-4-lock-active">
 											<div class="icon-btn icon icon-lock"></div>
 										</label>
-										<input class="storable" id="alt-4-inactive-time" placeholder="(inactive)" tabindex="23">
+										<input class="storable" id="alt-4-inactive-time" type="number" placeholder="inactive" tabindex="23">
 										<label class="config-btn lock-input">
 											<input class="checkbox-storable" type="checkbox" id="alt-4-oneshot">
 											<div class="icon-btn icon icon-oneshot"></div>
@@ -1068,7 +1077,7 @@
 				<div class="form-input">
 					<div class="file-btns">
 						<label for="logo-file">Choose image</label>
-						<input type="file" id="logo-file" accept="image/*" onchange="showPreview(event);">
+						<input type="file" id="logo-file" accept="image/*" onchange="showPreview(this);">
 						<div class="btn-remove" onclick="removeLogoPopup()"><div class="icon-btn icon icon-trash"></div></div>
 					</div>
 					<div id="file-preview" class="no-image">
@@ -1087,6 +1096,8 @@
 					<div>
 						<h1>Copied to clipboard</h1>
 						<p>For security reasons, the exported data has been copied to the clipboard. Please paste it into a text editor (e.g. Notepad) and save it as a TXT file.</p>
+						<p>If you prefer, you can copy it manually:</p>
+						<textarea id="dataInput" rows="4" cols="50" onclick="this.focus();this.select()"></textarea>
 					</div>
 					<div class="export-btns">
 						<div class="btn-ok-export" onclick="okExportPopup()">Ok</div>
@@ -1121,15 +1132,85 @@
 		</div>
 
 		<script>
+			/**
+			 *
+			 * DEFAULT VALUES
+			 *
+			 */
+			const default_style = 1;
+			const default_size = 24;
+			const default_margin_h = 4;
+			const default_margin_v = 4;
+
+			const default_inverse_ratio = 9;
+			const default_line_spacing = 0;
+
+			const default_logo = true;
+			const default_logo_size = 0;
+			const default_logo_size_em = 3.5;
+			const default_shadow = false;
+			const default_shadow_amount = 5;
+			const default_shadow_amount_em = 0.5;
+			const default_background = true;
+			const default_style_color_1 = '#D54141';
+			const default_style_color_2 = '#222222';
+
+			const default_corners = 0;
+			const default_border_thickness = false;
+			const default_border_thickness_amount = 0;
+			const default_border_color = false;
+			const default_style_color_3 = '#D54141';
+			const default_style_color_4 = '#222222';
+
+			const default_name_transform = true;
+			const default_name_weight = true;
+			const default_name_color = '#F2F2F2';
+
+			const default_info_transform = false;
+			const default_info_weight = false;
+			const default_info_color = '#8A8A8A';
+
+			function loadDefaultValues() {
+				$("[id^=alt-][id$=-style]").val(default_style);
+				$("[id^=alt-][id$=-size]").val(default_size);
+				$("[id^=alt-][id$=-margin-h]").val(default_margin_h);
+				$("[id^=alt-][id$=-margin-v]").val(default_margin_v);
+
+				$("[id^=alt-][id$=-inverse-ratio]").val(default_inverse_ratio);
+				$("[id^=alt-][id$=-line-spacing]").val(default_line_spacing);
+
+				$("[id^=alt-][id$=-logo]").prop('checked', default_logo);
+				$("[id^=alt-][id$=-logo-size]").val(default_logo_size);
+				$("[id^=alt-][id$=-shadow]").prop('checked', default_shadow);
+				$("[id^=alt-][id$=-shadow-amount]").val(default_shadow_amount);
+				$("[id^=alt-][id$=-background]").val('checked', default_background);
+				$("[id^=alt-][id$=-style-color-1]").val(default_style_color_1);
+				$("[id^=alt-][id$=-style-color-2]").val(default_style_color_2);
+
+				$("[id^=alt-][id$=-corners]").val(default_corners);
+				$("[id^=alt-][id$=-border-thickness]").prop('checked', default_border_thickness);
+				$("[id^=alt-][id$=-border-thickness-amount]").val(default_border_thickness_amount);
+				$("[id^=alt-][id$=-border-color]").prop('checked', default_border_color);
+				$("[id^=alt-][id$=-style-color-3]").val(default_style_color_3);
+				$("[id^=alt-][id$=-style-color-4]").val(default_style_color_4);
+
+				$("[id^=alt-][id$=-name-transform]").prop('checked', default_name_transform);
+				$("[id^=alt-][id$=-name-weight]").prop('checked', default_name_weight);
+				$("[id^=alt-][id$=-name-color]").val(default_name_color);
+
+				$("[id^=alt-][id$=-info-transform]").prop('checked', default_info_transform);
+				$("[id^=alt-][id$=-info-weight]").prop('checked', default_info_weight);
+				$("[id^=alt-][id$=-info-color]").val(default_info_color);
+			}
+
+
 			var bc = new BroadcastChannel('obs-lower-thirds-channel'); //Send to browser source
 			var bcr = new BroadcastChannel('obs-lower-thirds-channel2'); //Receives from the source
-			var bcp = new BroadcastChannel('obs-lower-thirds-preview'); //Send to preview windows
 			var bcf = new BroadcastChannel('obs-lower-thirds-fonts'); //Send custom fonts
 					
 
 			var slotDeleted = false;
 
-			var fontlist_urls;
 			var new_font_to_send;
 
 			var alt_1_active_time_monitor;
@@ -1168,14 +1249,13 @@
 			var alt_3_lock_active;
 			var alt_4_lock_active;
 
-
 			var alt_1_logo_default = "../logos/logo_1.png";
 			var alt_2_logo_default = "../logos/logo_2.png";
 			var alt_3_logo_default = "../logos/logo_3.png";
 			var alt_4_logo_default = "../logos/logo_4.png";
 
-			var alt_1_style = 1;
-			var alt_1_inverse_ratio = 9;
+			var alt_1_style = default_style;
+			var alt_1_inverse_ratio = default_inverse_ratio;
 			var alt_1_name_size;
 			var alt_1_info_size;
 			var alt_1_size;
@@ -1184,12 +1264,16 @@
 			var alt_1_margin_v;
 			var alt_1_shadows;
 			var alt_1_font;
+			var alt_1_logo_size;
+			var alt_1_shadow_amount;
+			var alt_1_corners;
+			var alt_1_border_thickness_amount;
 
 			var alt_1_corners;
 			var alt_1_border_thickness_amount;
 
-			var alt_2_style = 1;
-			var alt_2_inverse_ratio = 9;
+			var alt_2_style = default_style;
+			var alt_2_inverse_ratio = default_inverse_ratio;
 			var alt_2_name_size;
 			var alt_2_info_size;
 			var alt_2_size;
@@ -1198,9 +1282,13 @@
 			var alt_2_margin_v;
 			var alt_2_shadows;
 			var alt_2_font;
+			var alt_2_logo_size;
+			var alt_2_shadow_amount;
+			var alt_2_corners;
+			var alt_2_border_thickness_amount;
 
-			var alt_3_style = 1;
-			var alt_3_inverse_ratio = 9;
+			var alt_3_style = default_style;
+			var alt_3_inverse_ratio = default_inverse_ratio;
 			var alt_3_name_size;
 			var alt_3_info_size;
 			var alt_3_size;
@@ -1209,9 +1297,13 @@
 			var alt_3_margin_v;
 			var alt_3_shadows;
 			var alt_3_font;
+			var alt_3_logo_size;
+			var alt_3_shadow_amount;
+			var alt_3_corners;
+			var alt_3_border_thickness_amount;
 
-			var alt_4_style = 1;
-			var alt_4_inverse_ratio = 9;
+			var alt_4_style = default_style;
+			var alt_4_inverse_ratio = default_inverse_ratio;
 			var alt_4_name_size;
 			var alt_4_info_size;
 			var alt_4_size;
@@ -1220,6 +1312,10 @@
 			var alt_4_margin_v;
 			var alt_4_shadows;
 			var alt_4_font;
+			var alt_4_logo_size;
+			var alt_4_shadow_amount;
+			var alt_4_corners;
+			var alt_4_border_thickness_amount;
 
 			var hotkeyMasterSwitchOld = hotkeyMasterSwitch;
 			var hotkeySwitch1Old = hotkeySwitch1;
@@ -1276,47 +1372,49 @@
 			var alt_3_turnoff = false;
 			var alt_4_turnoff = false;
 
-			
 			var acc = document.getElementsByClassName("accordion");
-			var i;
-
-			for (i = 0; i < acc.length; i++) {
-			  acc[i].onclick = function() {
-			    this.classList.toggle("active");
-			    var hidable = this.nextElementSibling;
-			    if (hidable.style.maxHeight){
-			      hidable.style.maxHeight = null;
-			    } else {
-			      hidable.style.maxHeight = hidable.scrollHeight + "px";
-			    } 
-			  }
+			for (var i = 0; i < acc.length; i++) {
+				acc[i].onclick = function () {
+					this.classList.toggle("active");
+					var hidable = this.nextElementSibling;
+					if (hidable.style.maxHeight) {
+						hidable.style.maxHeight = null;
+					} else {
+						hidable.style.maxHeight = hidable.scrollHeight + "px";
+					}
+				}
 			}
-			//acc[0].onclick() //Open the Main Settings accordion at startup.
-			//acc[1].onclick()
-			//acc[2].onclick()
-			//acc[3].onclick()
-			//acc[4].onclick()
 
 			var more = document.getElementsByClassName("more");
-			// var m;
-			for (i = 0; i < more.length; i++) {
-			  more[i].onclick = function() {
-			    this.classList.toggle("active");
-			    var hideMore = this.nextElementSibling;
-			    if (hideMore.style.maxHeight){
-			      hideMore.style.maxHeight = null;
-			    } else {
-			      hideMore.style.maxHeight = hideMore.scrollHeight + "px";
-				  
-				  //Increase the heigh of the main settings panel
-				  var hidable = document.getElementById("global-configuration").style.maxHeight;
-				  hidable = Number(hidable.replace(/px/g,''));
-				  document.getElementById("global-configuration").style.maxHeight = hidable + hideMore.scrollHeight + "px";
-			    } 
-			  }
+			for (var i = 0; i < more.length; i++) {
+				more[i].onclick = function () {
+					this.classList.toggle("active");
+					var hideMore = this.nextElementSibling;
+					if (hideMore.style.maxHeight) {
+						hideMore.style.maxHeight = null;
+					} else {
+						hideMore.style.maxHeight = hideMore.scrollHeight + "px";
+
+						//Increase the heigh of the main settings panel
+						var hidable = document.getElementById("global-configuration").style.maxHeight;
+						hidable = Number(hidable.replace(/px/g, ''));
+						document.getElementById("global-configuration").style.maxHeight = hidable + hideMore.scrollHeight + "px";
+					}
+				}
 			}
 
-			//more[0].onclick()
+			function updateMoreMaxHeight() {
+				const element = document.getElementsByClassName("more")[0];
+				if ($('#more-settings').css('max-height') != "0px") {
+					var hideMore = element.nextElementSibling;
+					hideMore.style.maxHeight = hideMore.scrollHeight + "px";
+
+					//Increase the heigh of the main settings panel
+					var hidable = document.getElementById("global-configuration").style.maxHeight;
+					hidable = Number(hidable.replace(/px/g, ''));
+					document.getElementById("global-configuration").style.maxHeight = hidable + hideMore.scrollHeight + "px";
+				}
+			}
 
 			////////////////////
 
@@ -1361,7 +1459,7 @@
 				customFonts = Number(localStorage.getItem("customFonts"));
 			}
 	
-			for (i = 0; i < customFonts; i++) {
+			for (var i = 0; i < customFonts; i++) {
 				font_number = i + 1;
 				$('#custom-font-list ul').append('<li><div class="font-name-added slot-storable" id="font-name-added-' + font_number + '"></div><div class="font-url-added slot-storable" id="font-url-added-' + font_number + '"></div><div class="delete-font"><div class="icon icon-trash"></div></div></li>');
 			}
@@ -1403,7 +1501,7 @@
     				});
 
 					//Call function to send to the source
-					function_send_font();
+					// function_send_font();
 
 			}
 
@@ -1475,12 +1573,14 @@
 					document.getElementById("global-configuration").style.maxHeight = hidable + 28 + "px";
 					document.getElementById("more-settings").style.maxHeight = hidable + 28 + "px";
 
+					//Update the amount of custom fonts (+1)
+					id = "customFonts";
+					localStorage.setItem(id, howMany);
+					
+					//Save localStorage
+					localStorage.setItem('font-name-added-' + howMany, font_name_to_add_clean);
+					localStorage.setItem('font-url-added-' + howMany, font_url_to_add_clean);
 				}
-				
-				//Update the amount of custom fonts (+1)
-				id = "customFonts";
-				localStorage.setItem(id, howMany);
-
 			});
 
 			//Remove Font
@@ -1490,7 +1590,6 @@
 
 				var font_name_to_remove = $(this).closest('li').children('.font-name-added').text();
 				var font_url_to_remove = $(this).closest('li').children('.font-url-added').text();
-				//console.log("I will remove: " + font_name_to_remove + " and " + font_url_to_remove);
 
 				$(this).closest('li').remove();
 				
@@ -1499,15 +1598,26 @@
 				//Update the amount of custom fonts (-1)
 				id = "customFonts";
 				localStorage.setItem(id, howMany);
-				//console.log(howMany);
 
+				//Clean localStorage of fonts that are no longer used.
+				for (var i = 20; i > howMany; i--) {
+					localStorage.removeItem('font-name-added-' + i);
+					localStorage.removeItem('font-url-added-' + i);
+				}
 			});
 
 			//<Rename> de IDs of Font to correct store
 			$('#custom-font-list ul').on('click', 'li', function(e) {
 				$('#custom-font-list ul li').each(function(i) {
-					$(this).children('.font-name-added').attr('id', 'font-name-added-'+(i+1));
-					$(this).children('.font-url-added').attr('id', 'font-url-added-'+(i+1));
+					i++;
+					var font_name_added = 'font-name-added-' + i;
+					var font_url_added = 'font-url-added-' + i;
+
+					$(this).children('.font-name-added').attr('id', font_name_added);
+					$(this).children('.font-url-added').attr('id', font_url_added);
+
+					localStorage.setItem(font_name_added, $('#' + font_name_added).text());
+					localStorage.setItem(font_url_added, $('#' + font_url_added).text());
 				});
 			});
 
@@ -1517,7 +1627,6 @@
 		    $( "#sortable" ).sortable({handle: ".drag-handle"});
 		    $( "#sortable" ).on("sortupdate",function( event, ui ) {
 		        var sorted = $( this ).sortable( "serialize");
-		        //console.log(sorted);
 		        localStorage.setItem('sorted', sorted);
 		    });
 		    
@@ -1546,18 +1655,153 @@
 
 			var oriVal;
 			$(".renameable").on('dblclick', function () {
-				if ($(this).text()){
-					oriVal = $(this).text();					
+				var titleDiv = $(this);
+				if (titleDiv.text()){
+					oriVal = titleDiv.text();
 				}
-				$(this).text("");
-				$("<input type='text' value='"+ oriVal + "' maxlength='40'>").appendTo(this).focus();
+				titleDiv.text("");
+				$("<input type='text' value='"+ oriVal + "' maxlength='40'>").appendTo(this).focus().change(function() {
+					titleDiv.text($(this).val());
+				});
+
 			});
 
 			$(".renameable").on('focusout', '> input', function () {
 				var newAltTitle = $(this);
-				newAltTitle.parent().text(newAltTitle.val() || oriVal);
+				// newAltTitle.parent().text(newAltTitle.val() || oriVal);
 				newAltTitle.remove();
 			});
+
+			////////////////////
+
+			function checkSwitches (){
+				//Check Master Switch
+				if (document.getElementById("lower-thirds-masterswitch").checked) {
+					masterSwitchIsOn = true;
+					document.getElementById("alt-main-config-content").classList.add("active");
+				} else {
+					masterSwitchIsOn = false;
+					document.getElementById("alt-main-config-content").classList.remove("active");
+				}
+
+				//Check switches and blue and red lights in the background to see active and inactive times
+				if (masterSwitchIsOn) {
+					//When the Main Switch is ON the lower thirds can be Active, Inactive or OFF.
+					//Switch 1
+					if (document.getElementById("lower-thirds-switch1").checked){
+						if (alt_1_active_time_monitor >= 0 && alt_1_inactive_time_monitor == 0 && alt_1_name && alt_1_info){
+							document.getElementById("alt-1-config-content").classList.remove("inactive");
+							document.getElementById("alt-1-config-content").classList.add("active");
+							alt_1_jumpnext = true;
+						} else {
+							document.getElementById("alt-1-config-content").classList.remove("active");
+							document.getElementById("alt-1-config-content").classList.add("inactive");
+							//check if autoload is active and jump to next slot
+							if (alt_1_autoload && alt_1_jumpnext) {
+								alt_1_jumpnext = false;
+								jumpNextSlot("#alt-1-memory-slots", "#alt-1-name", "#alt-1-info", "#alt-1-logo-preview", alt_1_waiting_time);
+							}
+						}
+					} else {
+						document.getElementById("alt-1-config-content").className = '';
+						if (alt_1_turnoff && alt_1_autoload && alt_1_jumpnext) {
+							alt_1_jumpnext = false;
+							jumpNextSlot("#alt-1-memory-slots", "#alt-1-name", "#alt-1-info", "#alt-1-logo-preview", alt_1_waiting_time);
+						}
+					}
+
+					//Switch 2
+					if (document.getElementById("lower-thirds-switch2").checked){
+						if (alt_2_active_time_monitor >= 0 && alt_2_inactive_time_monitor == 0 && alt_2_name && alt_2_info){
+							document.getElementById("alt-2-config-content").classList.remove("inactive");
+							document.getElementById("alt-2-config-content").classList.add("active");
+							alt_2_jumpnext = true;
+						} else {
+							document.getElementById("alt-2-config-content").classList.remove("active");
+							document.getElementById("alt-2-config-content").classList.add("inactive");
+							//check if autoload is active and jump to next slot
+							if (alt_2_autoload && alt_2_jumpnext) {
+								alt_2_jumpnext = false;
+								jumpNextSlot("#alt-2-memory-slots", "#alt-2-name", "#alt-2-info", "#alt-2-logo-preview", alt_2_waiting_time);
+							}
+						}
+					} else {
+						document.getElementById("alt-2-config-content").className = '';
+					}
+
+					//Switch 3
+					if (document.getElementById("lower-thirds-switch3").checked){
+						if (alt_3_active_time_monitor >= 0 && alt_3_inactive_time_monitor == 0 && alt_3_name && alt_3_info){
+							document.getElementById("alt-3-config-content").classList.remove("inactive");
+							document.getElementById("alt-3-config-content").classList.add("active");
+							alt_3_jumpnext = true;
+						} else {
+							document.getElementById("alt-3-config-content").classList.remove("active");
+							document.getElementById("alt-3-config-content").classList.add("inactive");
+							//check if autoload is active and jump to next slot
+							if (alt_3_autoload && alt_3_jumpnext) {
+								alt_3_jumpnext = false;
+								jumpNextSlot("#alt-3-memory-slots", "#alt-3-name", "#alt-3-info", "#alt-3-logo-preview", alt_3_waiting_time);
+							}
+						}
+					} else {
+						document.getElementById("alt-3-config-content").className = '';
+					}
+
+					//Switch 4
+					if (document.getElementById("lower-thirds-switch4").checked){
+						if (alt_4_active_time_monitor >= 0 && alt_4_inactive_time_monitor == 0 && alt_4_name && alt_4_info){
+							document.getElementById("alt-4-config-content").classList.remove("inactive");
+							document.getElementById("alt-4-config-content").classList.add("active");
+							alt_4_jumpnext = true;
+						} else {
+							document.getElementById("alt-4-config-content").classList.remove("active");
+							document.getElementById("alt-4-config-content").classList.add("inactive");
+							//check if autoload is active and jump to next slot
+							if (alt_4_autoload && alt_4_jumpnext) {
+								alt_4_jumpnext = false;
+								jumpNextSlot("#alt-4-memory-slots", "#alt-4-name", "#alt-4-info", "#alt-4-logo-preview", alt_4_waiting_time);
+							}
+						}
+					} else {
+						document.getElementById("alt-4-config-content").className = '';
+					}
+
+				} else {
+					//When the Main Switch is OFF all the Lower Thirds area Inactives or OFF.
+					//Switch 1
+					if (document.getElementById("lower-thirds-switch1").checked) {
+						document.getElementById("alt-1-config-content").classList.add("inactive");
+						document.getElementById("alt-1-config-content").classList.remove("active");
+					} else {
+						document.getElementById("alt-1-config-content").className = '';
+					}
+
+					//Switch 2
+					if (document.getElementById("lower-thirds-switch2").checked) {
+						document.getElementById("alt-2-config-content").classList.add("inactive");
+						document.getElementById("alt-2-config-content").classList.remove("active");
+					} else {
+						document.getElementById("alt-2-config-content").className = '';
+					}
+
+					//Switch 3
+					if (document.getElementById("lower-thirds-switch3").checked) {
+						document.getElementById("alt-3-config-content").classList.add("inactive");
+						document.getElementById("alt-3-config-content").classList.remove("active");
+					} else {
+						document.getElementById("alt-3-config-content").className = '';
+					}
+
+					//Switch 4
+					if (document.getElementById("lower-thirds-switch4").checked) {
+						document.getElementById("alt-4-config-content").classList.add("inactive");
+						document.getElementById("alt-4-config-content").classList.remove("active");
+					} else {
+						document.getElementById("alt-4-config-content").className = '';
+					}
+				}
+			}
 
 			////////////////////
 
@@ -1574,50 +1818,50 @@
 			//Toggle the switches if a hotkey is pressed
 			function checkHotkeys (){
 				if (hotkeyMasterSwitch != hotkeyMasterSwitchOld){
-					if (document.getElementById("lower-thirds-masterswitch").checked == true) {
-		            	document.getElementById("lower-thirds-masterswitch").checked = false;
+					if (document.getElementById("lower-thirds-masterswitch").checked) {
+						$('#lower-thirds-masterswitch').prop('checked', false).change();
 		            }
 		            else {
-		            	document.getElementById("lower-thirds-masterswitch").checked = true;
+						$('#lower-thirds-masterswitch').prop('checked', true).change();
 		            }
 					hotkeyMasterSwitchOld = hotkeyMasterSwitch;
 				}
 
 				if (hotkeySwitch1 != hotkeySwitch1Old){
-					if (document.getElementById("lower-thirds-switch1").checked == true) {
-						document.getElementById("lower-thirds-switch1").checked = false;
+					if (document.getElementById("lower-thirds-switch1").checked) {
+						$('#lower-thirds-switch1').prop('checked', false).change();
 					}
 					else {
-						document.getElementById("lower-thirds-switch1").checked = true;
+						$('#lower-thirds-switch1').prop('checked', true).change();
 					}
 					hotkeySwitch1Old = hotkeySwitch1;
 				}
 
 				if (hotkeySwitch2 != hotkeySwitch2Old){
-					if (document.getElementById("lower-thirds-switch2").checked == true) {
-						document.getElementById("lower-thirds-switch2").checked = false;
+					if (document.getElementById("lower-thirds-switch2").checked) {
+						$('#lower-thirds-switch2').prop('checked', false).change();
 					}
 					else {
-						document.getElementById("lower-thirds-switch2").checked = true;
+						$('#lower-thirds-switch2').prop('checked', true).change();
 					}
 					hotkeySwitch2Old = hotkeySwitch2;
 				}
 
 				if (hotkeySwitch3 != hotkeySwitch3Old){
-					if (document.getElementById("lower-thirds-switch3").checked == true) {
-						document.getElementById("lower-thirds-switch3").checked = false;
+					if (document.getElementById("lower-thirds-switch3").checked) {
+						$('#lower-thirds-switch3').prop('checked', false).change();
 					}
 					else {
-						document.getElementById("lower-thirds-switch3").checked = true;
+						$('#lower-thirds-switch3').prop('checked', true).change();
 					}
 					hotkeySwitch3Old = hotkeySwitch3;
 				}
 				if (hotkeySwitch4 != hotkeySwitch4Old){
-					if (document.getElementById("lower-thirds-switch4").checked == true) {
-						document.getElementById("lower-thirds-switch4").checked = false;
+					if (document.getElementById("lower-thirds-switch4").checked) {
+						$('#lower-thirds-switch4').prop('checked', false).change();
 					}
 					else {
-						document.getElementById("lower-thirds-switch4").checked = true;
+						$('#lower-thirds-switch4').prop('checked', true).change();
 					}
 					hotkeySwitch4Old = hotkeySwitch4;
 				}
@@ -1798,30 +2042,30 @@
 				document.getElementById("reset-all").classList.remove("hide");
 			}
 			function okResetPopup() {
-				clearTimeout(refreshSaveData); //Stop saving data to localstorage
 				localStorage.clear(); //To clear data fields
 
-				//Restore logo default (fix missing logos in the reload)			
-				$('.logo-storable').each(function(){    
+				//Restore logo default (fix missing logos in the reload)
+				$('.logo-storable').each(function(){
 					var id = $(this).attr('id');
+					var value
 					if (id == "alt-1-logo-preview" || id == "alt-1-logo-default"){
-						var value = alt_1_logo_default;
+						value = alt_1_logo_default;
 					}
 					if (id == "alt-2-logo-preview" || id == "alt-2-logo-default"){
-						var value = alt_2_logo_default;
+						value = alt_2_logo_default;
 					}
 					if (id == "alt-3-logo-preview" || id == "alt-3-logo-default"){
-						var value = alt_3_logo_default;
+						value = alt_3_logo_default;
 					}
 					if (id == "alt-4-logo-preview" || id == "alt-4-logo-default"){
-						var value = alt_4_logo_default;
+						value = alt_4_logo_default;
 					}
-					localStorage.setItem(id, value);              
-				});	
+					localStorage.setItem(id, value);
+				});
 
 				location.reload();
-				
 			}
+
 			function cancelResetPopup() {
 				document.getElementById("reset-all").classList.add("hide");
 			}
@@ -1835,9 +2079,9 @@
 			}
 
 			//Load new logo image
-			function showPreview(event){
-				if(event.target.files.length > 0){
-					var src = URL.createObjectURL(event.target.files[0]);
+			function showPreview(element){
+				if(element.files.length > 0){
+					var src = URL.createObjectURL(element.files[0]);
 					var preview = document.getElementById("logo-file-preview");
 					document.getElementById("file-preview").classList.remove("no-image");
 					preview.src = src;
@@ -1874,14 +2118,16 @@
 
 				if(src){
 					preview.src = "../logos/" + src.name;
+					$(preview).change();
 					//Change the lt logo if it use default
 					if (logo == logo_default && $("#" + alt_logo_preview).hasClass('default')){
-						$("#" + alt_logo_preview).attr("src", "../logos/" + src.name);
+						$("#" + alt_logo_preview).attr("src", "../logos/" + src.name).change();
 					}
 				} else {
 					if (!popup_preview) {
 						var alt_logo_default = $("#" + logo_default).attr("src");
 						preview.src = alt_logo_default;
+						$(preview).change();
 					}
 				}
 				
@@ -1918,51 +2164,55 @@
 			//Memory Slots System
 			function checkSlots (memory_slot, name, info, logo) {
 				$("ul" + memory_slot + " li").each(function(){
-					check_slot_id = $(this).attr('id');
-					check_name_id = $(this).children('.stored-name').attr('id');
-					check_info_id = $(this).children('.stored-info').attr('id');
-					check_logo_id = $(this).children('.stored-logo').attr('id');
-					check_is_default_logo = $(logo).hasClass('default');
-					name_value = $(this).children('.stored-name').text();
-					info_value = $(this).children('.stored-info').text();
-					logo_value = $(this).children('.stored-logo').text();
+					const check_slot_id = $(this).attr('id');
+					const check_name_id = $(this).children('.stored-name').attr('id');
+					const check_info_id = $(this).children('.stored-info').attr('id');
+					const check_logo_id = $(this).children('.stored-logo').attr('id');
+					const check_is_default_logo = $(logo).hasClass('default');
+					const name_value = $(this).children('.stored-name').text();
+					const info_value = $(this).children('.stored-info').text();
+					const logo_value = $(this).children('.stored-logo').text();
+
+					let check_slot_id_element = document.getElementById(check_slot_id);
+
 					//If stored data has no logo, set to default
 					if (name_value && info_value && !logo_value) {
 						$(this).children('.stored-logo').text("default");
 					}
 					if ($('#' + check_name_id).is(':empty') && $('#' + check_info_id).is(':empty') && $('#' + check_logo_id).is(':empty')){
-			  			document.getElementById(check_slot_id).classList.remove("stored");
+						check_slot_id_element.classList.remove("stored");
 					} else {
-						document.getElementById(check_slot_id).classList.add("stored");
+						check_slot_id_element.classList.add("stored");
 					}
 					//Check active slots
 					if ($(name).val() == name_value && $(info).val() == info_value && ($(logo).attr("src") == logo_value || (check_is_default_logo && logo_value == "default"))){
 						if(name_value && info_value && logo_value){
-							document.getElementById(check_slot_id).classList.add("active-slot");
-							document.getElementById(check_slot_id).classList.remove("next-to-load");
+							check_slot_id_element.classList.add("active-slot");
+							check_slot_id_element.classList.remove("next-to-load");
 						}
 					} else {
-						document.getElementById(check_slot_id).classList.remove("active-slot");
+						check_slot_id_element.classList.remove("active-slot");
 					}
 
 					//Check if it has default logo
 					if (logo_value && logo_value != "default"){
-						document.getElementById(check_slot_id).classList.add("custom-logo");
+						check_slot_id_element.classList.add("custom-logo");
 					} else {
-						document.getElementById(check_slot_id).classList.remove("custom-logo");
+						check_slot_id_element.classList.remove("custom-logo");
 					}
 
 				});
 			}
 
 			function memorySlotsSystem (memory_slot, name, info, logo) {
+				let slot_id, name_id, info_id, logo_id, default_logo, is_default_logo;
 				$("ul" + memory_slot + " li").mousedown(function(e){
 					slot_id = $(this).attr('id');
 					name_id = $(this).children('.stored-name').attr('id');
 					info_id = $(this).children('.stored-info').attr('id');
 					logo_id = $(this).children('.stored-logo').attr('id');
-					name_value = $(this).children('.stored-name').text();
-					info_value = $(this).children('.stored-info').text();
+					// name_value = $(this).children('.stored-name').text();
+					// info_value = $(this).children('.stored-info').text();
 					default_logo = logo.replace("-preview", "-default");
 					is_default_logo = ($(logo).attr("src") == $(default_logo).attr("src")) ? true : false;
 					clearTimeout(this.downTimer);
@@ -1980,9 +2230,9 @@
 				    	if (!slotDeleted){
 				    		if ($('#' + name_id).is(':empty') && $('#' + info_id).is(':empty') && $('#' + logo_id).is(':empty')){
 								//Save
-								name_to_save = $(name + ":text").val();
-								info_to_save = $(info + ":text").val();
-								logo_to_save = $(logo).attr("src");
+								const name_to_save = $(name + ":text").val();
+								const info_to_save = $(info + ":text").val();
+								const logo_to_save = $(logo).attr("src");
 								if (name_to_save && info_to_save){
 									$('#' + name_id)[0].innerHTML = name_to_save;
 									$('#' + info_id)[0].innerHTML = info_to_save;
@@ -1994,25 +2244,25 @@
 								}
 							} else {
 								//Load
-								name_to_load = $(this).children('#' + name_id).text();
-								info_to_load = $(this).children('#' + info_id).text();
-								logo_to_load = $(this).children('#' + logo_id).text();
-								defaul_logo_to_load = $(default_logo).attr("src");
-								$(name + ":text").val(name_to_load);
-								$(info + ":text").val(info_to_load);
+								const name_to_load = $(this).children('#' + name_id).text();
+								const info_to_load = $(this).children('#' + info_id).text();
+								const logo_to_load = $(this).children('#' + logo_id).text();
+								const defaul_logo_to_load = $(default_logo).attr("src");
+								$(name + ":text").val(name_to_load).change();
+								$(info + ":text").val(info_to_load).change();
 								if (logo_to_load == "default"){
-									$(logo).attr("src", defaul_logo_to_load);
+									$(logo).attr("src", defaul_logo_to_load).change();
 								} else {
-									$(logo).attr("src", logo_to_load);
+									$(logo).attr("src", logo_to_load).change();
 								}
 
 								//Switch ON the panel if the autotrigger is ON
-								slot_number_called = $(this).children('.slot-number').text();
-								auto_trigger = slot_id.replace("-slot-" + slot_number_called, "-autotrigger");
-								alt_switch = slot_id.replace("alt-", "");
+								const slot_number_called = $(this).children('.slot-number').text();
+								const auto_trigger = slot_id.replace("-slot-" + slot_number_called, "-autotrigger");
+								let alt_switch = slot_id.replace("alt-", "");
 								alt_switch = alt_switch.replace("-slot-" + slot_number_called, "");
-								if (document.getElementById(auto_trigger).checked == true) {
-									document.getElementById("lower-thirds-switch" + alt_switch).checked = true;
+								if (document.getElementById(auto_trigger).checked  && $("#lower-thirds-switch" + alt_switch).is(':not(:checked)')) {
+									$("#lower-thirds-switch" + alt_switch).prop('checked', true).change();
 								}
 							}
 				    	} else {
@@ -2028,26 +2278,28 @@
 			//////////////////////////////////////
 
 			function jumpNextSlot(memory_slot, name, info, logo, alt_waiting_time) {
-				var loadedSlot = false;
-				var find_next = false;
-				var find_first = false;
+				let find_next = false;
+				let find_first = false;
+				let first_stored_slot;
+				let next_slot_num;
+				let to_load = 0;
 
-				name_loaded = $(name + ":text").val();
-				info_loaded = $(info + ":text").val();
-				logo_loaded = $(logo).attr("src");				
+				const name_loaded = $(name + ":text").val();
+				const info_loaded = $(info + ":text").val();
+				const logo_loaded = $(logo).attr("src");
 
 				//Find actual and search the next slot to load
 				$("ul" + memory_slot + " li").each(function(){
-					name_id = $(this).children('.stored-name').attr('id');
-					info_id = $(this).children('.stored-info').attr('id');
-					logo_id = $(this).children('.stored-logo').attr('id');
-					name_value = $(this).children('.stored-name').text();
-					info_value = $(this).children('.stored-info').text();
-					logo_value = $(this).children('.stored-logo').text();
-					slot_number = Number($(this).children('.slot-number').text());
+					const name_id = $(this).children('.stored-name').attr('id');
+					const info_id = $(this).children('.stored-info').attr('id');
+					const logo_id = $(this).children('.stored-logo').attr('id');
+					const name_value = $(this).children('.stored-name').text();
+					const info_value = $(this).children('.stored-info').text();
+					const logo_value = $(this).children('.stored-logo').text();
+					const slot_number = Number($(this).children('.slot-number').text());
 
-					loadedSlot = (name_loaded == name_value && info_loaded == info_value && (logo_loaded == logo_value || $(logo).hasClass(logo_value))) ? true : false;
-					emptySlot = ($('#' + name_id).is(':empty') && $('#' + info_id).is(':empty') && $('#' + logo_id).is(':empty')) ? true : false;
+					const loadedSlot = (name_loaded == name_value && info_loaded == info_value && (logo_loaded == logo_value || $(logo).hasClass(logo_value))) ? true : false;
+					const emptySlot = ($('#' + name_id).is(':empty') && $('#' + info_id).is(':empty') && $('#' + logo_id).is(':empty')) ? true : false;
 
 					if(!find_first && !emptySlot) {
 						find_first = true;
@@ -2055,9 +2307,10 @@
 					}
 					if (loadedSlot) {
 						find_next = true;
-						loaded_slot_num = slot_number;
+						const loaded_slot_num = slot_number;
 						next_slot_num = loaded_slot_num + 1;
 					}
+
 					if (find_next && slot_number == next_slot_num && !emptySlot) {
 						find_next = false;
 						to_load = slot_number;
@@ -2068,34 +2321,30 @@
 					}
 				});
 
-				//console.log(loaded_slot_num + " -> " + to_load);
+				// Si hay un slot para cargar
+				if (to_load && to_load > 0) {
+					$("ul" + memory_slot + " li:nth-child("+to_load+")").each(function () {
+						const slot_id = ($(this).attr('id'));
+						const name_id = $(this).children('.stored-name').attr('id');
+						const info_id = $(this).children('.stored-info').attr('id');
+						const logo_id = $(this).children('.stored-logo').attr('id');
 
-				//Get all the data of the next slot and load it
-				$("ul" + memory_slot + " li").each(function(){
-					slot_number = Number($(this).children('.slot-number').text());
+						const name_to_load = $(this).children('#' + name_id).text();
+						const info_to_load = $(this).children('#' + info_id).text();
+						const logo_to_load = $(this).children('#' + logo_id).text();
 
-					if (to_load == slot_number) {
-						slot_id = ($(this).attr('id'));
-						name_id = $(this).children('.stored-name').attr('id');
-						info_id = $(this).children('.stored-info').attr('id');
-						logo_id = $(this).children('.stored-logo').attr('id');
-
-						name_to_load = $(this).children('#' + name_id).text();
-						info_to_load = $(this).children('#' + info_id).text();
-						logo_to_load = $(this).children('#' + logo_id).text();
-
-						loadSlot(name, info, logo, name_to_load, info_to_load, logo_to_load, alt_waiting_time);
+						loadSlot(name, info, logo, name_to_load, info_to_load, logo_to_load, alt_waiting_time, false);
 						$('#' + slot_id).addClass('next-to-load');
-					}
-				});
+					});
+				}
 			}
 
 			//////////////////////////////////////
 
-			function loadSlot(name, info, logo, name_to_load, info_to_load, logo_to_load, alt_waiting_time) {
+			function loadSlot(name, info, logo, name_to_load, info_to_load, logo_to_load, alt_waiting_time, from_hotkey = true) {
 				setTimeout(function (){
-					default_logo = logo.replace("-preview", "-default");
-					default_logo_value = $(default_logo).attr("src");
+					const default_logo = logo.replace("-preview", "-default");
+					const default_logo_value = $(default_logo).attr("src");
 
 					$(name + ":text").val(name_to_load);
 					$(info + ":text").val(info_to_load);
@@ -2103,16 +2352,17 @@
 						logo_to_load = default_logo_value;
 					}
 					$(logo).attr("src", logo_to_load);
+					refreshData();
 				}, alt_waiting_time * 1000);
 
 				//Switch ON the panel if the autotrigger is ON
-				auto_trigger = name.replace("#", "");
+				let auto_trigger = name.replace("#", "");
 				auto_trigger = auto_trigger.replace("-name", "-autotrigger");
-				alt_switch = name.replace("#alt-", "");
+				let alt_switch = name.replace("#alt-", "");
 				alt_switch = alt_switch.replace("-name", "");
 
-				if (document.getElementById(auto_trigger).checked == true) {
-					document.getElementById("lower-thirds-switch" + alt_switch).checked = true;
+				if (from_hotkey && document.getElementById(auto_trigger).checked && $("#lower-thirds-switch" + alt_switch).is(':not(:checked)')) {
+					$("#lower-thirds-switch" + alt_switch).prop('checked', true).change();
 				}
 				//console.log(name + "|" + info + "|" + logo + "|" + name_to_load + "|" + info_to_load + "|" + logo_to_load + "|" + alt_waiting_time);
 			}
@@ -2121,28 +2371,28 @@
 
 			//Button to clear fields
 			$("#alt-1-clean-inputs").click(function(){
-				$("#alt-1-name:text").val("");
-				$("#alt-1-info:text").val("");
+				$("#alt-1-name:text").val("").change();
+				$("#alt-1-info:text").val("").change();
 				var alt_logo_default = $("#alt-1-logo-default").attr("src");
-				$("#alt-1-logo-preview").attr("src", alt_logo_default);
+				$("#alt-1-logo-preview").attr("src", alt_logo_default).change();
 			});
 			$("#alt-2-clean-inputs").click(function(){
-				$("#alt-2-name:text").val("");
-				$("#alt-2-info:text").val("");
+				$("#alt-2-name:text").val("").change();
+				$("#alt-2-info:text").val("").change();
 				var alt_logo_default = $("#alt-2-logo-default").attr("src");
-				$("#alt-2-logo-preview").attr("src", alt_logo_default);
+				$("#alt-2-logo-preview").attr("src", alt_logo_default).change();
 			});
 			$("#alt-3-clean-inputs").click(function(){
-				$("#alt-3-name:text").val("");
-				$("#alt-3-info:text").val("");
+				$("#alt-3-name:text").val("").change();
+				$("#alt-3-info:text").val("").change();
 				var alt_logo_default = $("#alt-3-logo-default").attr("src");
-				$("#alt-3-logo-preview").attr("src", alt_logo_default);
+				$("#alt-3-logo-preview").attr("src", alt_logo_default).change();
 			});
 			$("#alt-4-clean-inputs").click(function(){
-				$("#alt-4-name:text").val("");
-				$("#alt-4-info:text").val("");
+				$("#alt-4-name:text").val("").change();
+				$("#alt-4-info:text").val("").change();
 				var alt_logo_default = $("#alt-4-logo-default").attr("src");
-				$("#alt-4-logo-preview").attr("src", alt_logo_default);
+				$("#alt-4-logo-preview").attr("src", alt_logo_default).change();
 			});
 
 			///////////////////////////////////////
@@ -2162,188 +2412,80 @@
 
 			function getAppearance () {
 				//Lower Third Style
-				alt_1_style = $("#alt-1-style").val();
-				if (!alt_1_style){
-					alt_1_style = 1;
-					$("#alt-1-style").val("1");
-				}
-				alt_2_style = $("#alt-2-style").val();
-				if (!alt_2_style){
-					alt_2_style = 1;
-					$("#alt-2-style").val("1");
-				}
-				alt_3_style = $("#alt-3-style").val();
-				if (!alt_3_style){
-					alt_3_style = 1;
-					$("#alt-3-style").val("1");
-				}
-				alt_4_style = $("#alt-4-style").val();
-				if (!alt_4_style){
-					alt_4_style = 1;
-					$("#alt-4-style").val("1");
-				}
+				alt_1_style = $("#alt-1-style").val() || default_style;
+				$("#alt-1-style").val(alt_1_style);
+				alt_2_style = $("#alt-2-style").val() || default_style;
+				$("#alt-2-style").val(alt_2_style);
+				alt_3_style = $("#alt-3-style").val() || default_style;
+				$("#alt-3-style").val(alt_3_style);
+				alt_4_style = $("#alt-4-style").val()  || default_style;
+				$("#alt-4-style").val(alt_4_style);
 
 				//Calculate Text Sizes using the inverse ratio
-				alt_1_inverse_ratio = $("#alt-1-inverse-ratio").val();
-				if (!alt_1_inverse_ratio){
-					alt_1_inverse_ratio = 9;
-				}
+				alt_1_inverse_ratio = $("#alt-1-inverse-ratio").val() || default_inverse_ratio;
 				alt_1_name_size = 1 + alt_1_inverse_ratio * 0.1;
 				alt_1_info_size = 2 - alt_1_inverse_ratio * 0.1;
 
-				alt_2_inverse_ratio = $("#alt-2-inverse-ratio").val();
-				if (!alt_2_inverse_ratio){
-					alt_2_inverse_ratio = 9;
-				}
+				alt_2_inverse_ratio = $("#alt-2-inverse-ratio").val() || default_inverse_ratio;
 				alt_2_name_size = 1 + alt_2_inverse_ratio * 0.1;
 				alt_2_info_size = 2 - alt_2_inverse_ratio * 0.1;				
 
-				alt_3_inverse_ratio = $("#alt-3-inverse-ratio").val();
-				if (!alt_3_inverse_ratio){
-					alt_3_inverse_ratio = 9;
-				}
+				alt_3_inverse_ratio = $("#alt-3-inverse-ratio").val() || default_inverse_ratio;
 				alt_3_name_size = 1 + alt_3_inverse_ratio * 0.1;
 				alt_3_info_size = 2 - alt_3_inverse_ratio * 0.1;
 
-				alt_4_inverse_ratio = $("#alt-4-inverse-ratio").val();
-				if (!alt_4_inverse_ratio){
-					alt_4_inverse_ratio = 9;
-				}
+				alt_4_inverse_ratio = $("#alt-4-inverse-ratio").val() || default_inverse_ratio;
 				alt_4_name_size = 1 + alt_4_inverse_ratio * 0.1;
 				alt_4_info_size = 2 - alt_4_inverse_ratio * 0.1;				
 
 				//Line Spacing
-				alt_1_line_spacing = $("#alt-1-line-spacing").val();
-				if (!alt_1_line_spacing){
-					alt_1_line_spacing = 0;
-				}
-				alt_2_line_spacing = $("#alt-2-line-spacing").val();
-				if (!alt_2_line_spacing){
-					alt_2_line_spacing = 0;
-				}
-				alt_3_line_spacing = $("#alt-3-line-spacing").val();
-				if (!alt_3_line_spacing){
-					alt_3_line_spacing = 0;
-				}
-				alt_4_line_spacing = $("#alt-4-line-spacing").val();
-				if (!alt_4_line_spacing){
-					alt_4_line_spacing = 0;
-				}
+				alt_1_line_spacing = $("#alt-1-line-spacing").val() || default_line_spacing;
+				alt_2_line_spacing = $("#alt-2-line-spacing").val() || default_line_spacing;
+				alt_3_line_spacing = $("#alt-3-line-spacing").val() || default_line_spacing;
+				alt_4_line_spacing = $("#alt-4-line-spacing").val() || default_line_spacing;
 
 				//Lower Third Size
-				alt_1_size = $("#alt-1-size").val();
-				if (!alt_1_size){
-					alt_1_size = 24;
-				}
-				alt_2_size = $("#alt-2-size").val();
-				if (!alt_2_size){
-					alt_2_size = 24;
-				}
-				alt_3_size = $("#alt-3-size").val();
-				if (!alt_3_size){
-					alt_3_size = 24;
-				}
-				alt_4_size = $("#alt-4-size").val();
-				if (!alt_4_size){
-					alt_4_size = 24;
-				}
+				alt_1_size = $("#alt-1-size").val() || default_size;
+				alt_2_size = $("#alt-2-size").val() || default_size;
+				alt_3_size = $("#alt-3-size").val() || default_size;
+				alt_4_size = $("#alt-4-size").val() || default_size;
 
 				//Logo Size
-				alt_1_logo_size = Number($("#alt-1-logo-size").val()) * 0.25 + 3.5;
-				if (!alt_1_logo_size){
-					alt_1_logo_size = 3.5;
-				}
+				alt_1_logo_size = Number($("#alt-1-logo-size").val()) * 0.25 + 3.5 || default_logo_size_em;
+				alt_2_logo_size = Number($("#alt-2-logo-size").val()) * 0.25 + 3.5 || default_logo_size_em;
+				alt_3_logo_size = Number($("#alt-3-logo-size").val()) * 0.25 + 3.5 || default_logo_size_em;
+				alt_4_logo_size = Number($("#alt-4-logo-size").val()) * 0.25 + 3.5 || default_logo_size_em;
 
 				//Shadow Amount
-				alt_1_shadow_amount = $("#alt-1-shadow-amount").val() * 0.1;
-				if (!alt_1_shadow_amount){
-					alt_1_shadow_amount = 0.5;
-				}
-				// alt_2_shadow_amount = $("#alt-2-shadow-amount").val() * 0.1;
-				// if (!alt_2_shadow_amount){
-				// 	alt_2_shadow_amount = 0.5;
-				// }
-				// alt_3_shadow_amount = $("#alt-3-shadow-amount").val() * 0.1;
-				// if (!alt_3_shadow_amount){
-				// 	alt_3_shadow_amount = 0.5;
-				// }
-				// alt_4_shadow_amount = $("#alt-4-shadow-amount").val() * 0.1;
-				// if (!alt_4_shadow_amount){
-				// 	alt_4_shadow_amount = 0.5;
-				// }
+				alt_1_shadow_amount = $("#alt-1-shadow-amount").val() * 0.1 || default_shadow_amount_em;
+				alt_2_shadow_amount = $("#alt-2-shadow-amount").val() * 0.1 || default_shadow_amount_em;
+				alt_3_shadow_amount = $("#alt-3-shadow-amount").val() * 0.1 || default_shadow_amount_em;
+				alt_4_shadow_amount = $("#alt-4-shadow-amount").val() * 0.1 || default_shadow_amount_em;
 
 				//Background Corners
-				alt_1_corners = Number($("#alt-1-corners").val()) * 0.25;
-				if (!alt_1_corners){
-					alt_1_corners = 0;
-				}
-				// alt_2_corners = $("#alt-2-corners").val();
-				// if (!alt_2_corners){
-				// 	alt_2_corners = 0;
-				// }
-				// alt_3_corners = $("#alt-3-corners").val();
-				// if (!alt_3_corners){
-				// 	alt_3_corners = 0;
-				// }
-				// alt_4_corners = $("#alt-4-corners").val();
-				// if (!alt_4_corners){
-				// 	alt_4_corners = 0;
-				// }
+				alt_1_corners = (Number($("#alt-1-corners").val()) * 0.25) || default_corners;
+				alt_2_corners = (Number($("#alt-2-corners").val()) * 0.25) || default_corners;
+				alt_3_corners = (Number($("#alt-3-corners").val()) * 0.25) || default_corners;
+				alt_4_corners = (Number($("#alt-4-corners").val()) * 0.25) || default_corners;
 
 				//Border Thickness amount
-				alt_1_border_thickness_amount = $("#alt-1-border-thickness-amount").val();
-				if (!alt_1_border_thickness_amount){
-					alt_1_border_thickness_amount = 0;
-				}
-				// alt_2_border_thickness_amount = $("#alt-2-border-thickness-amount").val();
-				// if (!alt_2_border_thickness_amount){
-				// 	alt_2_border_thickness_amount = 0;
-				// }
-				// alt_3_border_thickness_amount = $("#alt-3-border-thickness-amount").val();
-				// if (!alt_3_border_thickness_amount){
-				// 	alt_3_border_thickness_amount = 0;
-				// }
-				// alt_4_border_thickness_amount = $("#alt-4-border-thickness-amount").val();
-				// if (!alt_4_border_thickness_amount){
-				// 	alt_4_border_thickness_amount = 0;
-				// }
-			
+				alt_1_border_thickness_amount = $("#alt-1-border-thickness-amount").val() || default_border_thickness_amount;
+				alt_2_border_thickness_amount = $("#alt-2-border-thickness-amount").val() || default_border_thickness_amount;
+				alt_3_border_thickness_amount = $("#alt-3-border-thickness-amount").val() || default_border_thickness_amount;
+				alt_4_border_thickness_amount = $("#alt-4-border-thickness-amount").val() || default_border_thickness_amount;
+
 				//Margin from de borders Horizontal and Vertical
-				alt_1_margin_h = $("#alt-1-margin-h").val();
-				if (!alt_1_margin_h){
-					alt_1_margin_h = 4;
-				}
-				alt_1_margin_v = $("#alt-1-margin-v").val();
-				if (!alt_1_margin_v){
-					alt_1_margin_v = 4;
-				}
+				alt_1_margin_h = $("#alt-1-margin-h").val() || default_margin_h;
+				alt_1_margin_v = $("#alt-1-margin-v").val() || default_margin_v;
 
-				alt_2_margin_h = $("#alt-2-margin-h").val();
-				if (!alt_2_margin_h){
-					alt_2_margin_h = 4;
-				}
-				alt_2_margin_v = $("#alt-2-margin-v").val();
-				if (!alt_2_margin_v){
-					alt_2_margin_v = 4;
-				}
+				alt_2_margin_h = $("#alt-2-margin-h").val() || default_margin_h;
+				alt_2_margin_v = $("#alt-2-margin-v").val() || default_margin_v;
 
-				alt_3_margin_h = $("#alt-3-margin-h").val();
-				if (!alt_3_margin_h){
-					alt_3_margin_h = 4;
-				}
-				alt_3_margin_v = $("#alt-3-margin-v").val();
-				if (!alt_3_margin_v){
-					alt_3_margin_v = 4;
-				}
+				alt_3_margin_h = $("#alt-3-margin-h").val() || default_margin_h;
+				alt_3_margin_v = $("#alt-3-margin-v").val() || default_margin_v;
 
-				alt_4_margin_h = $("#alt-4-margin-h").val();
-				if (!alt_4_margin_h){
-					alt_4_margin_h = 4;
-				}
-				alt_4_margin_v = $("#alt-4-margin-v").val();
-				if (!alt_4_margin_v){
-					alt_4_margin_v = 4;
-				}
+				alt_4_margin_h = $("#alt-4-margin-h").val() || default_margin_h;
+				alt_4_margin_v = $("#alt-4-margin-v").val() || default_margin_v;
 
 				styleRestrictions();
 			}
@@ -2353,30 +2495,39 @@
 					case "1":
 						//Disable: align center | Enable: logo;
 						document.getElementById("alt-1-align-center").disabled = true;
-						if (document.getElementById("alt-1-align-center").checked == true){
-							document.getElementById("alt-1-align-left").checked = true;
+						if (document.getElementById("alt-1-align-center").checked){
+							$("#alt-1-align-left").prop('checked', true).change();
 						}
 						document.getElementById("alt-1-logo").disabled = false;
-						document.getElementById("alt-1-background").classList.remove("locked");
+						document.getElementById("alt-1-logo-size").disabled = false;
+						// document.getElementById("alt-1-background").classList.remove("locked");
+						$("#alt-1-style-border-color-appearance > :nth-child(3)").addClass("disabled");
 
 						break;
 					case "2":
 						//Disable: logo | Enable: align center;
 						document.getElementById("alt-1-align-center").disabled = false;
 						document.getElementById("alt-1-logo").disabled = true;
-						if (document.getElementById("alt-1-logo").checked == true){
-							document.getElementById("alt-1-logo").checked = false;
+						document.getElementById("alt-1-logo-size").disabled = false;
+						if (document.getElementById("alt-1-logo").checked){
+							$("#alt-1-logo").prop('checked', false).change();
 						}
-						document.getElementById("alt-1-background").classList.remove("locked");
+						// document.getElementById("alt-1-background").classList.remove("locked");
+						$("#alt-1-style-border-color-appearance > :nth-child(3)").removeClass("disabled");
 
 						break;
 					case "3":
 						//Disable: - | Enable: Logo, align center;
-						document.getElementById("alt-1-align-center").disabled = false;
+						document.getElementById("alt-1-align-center").disabled = true;
+						if (document.getElementById("alt-1-align-center").checked){
+							$("#alt-1-align-left").prop('checked', true).change();
+						}
 						document.getElementById("alt-1-logo").disabled = false;
-						document.getElementById("alt-1-background").checked = true;
-						// document.getElementById("alt-1-background").setAttribute("style", "cursor:not-allowed");
-						document.getElementById("alt-1-background").classList.add("locked");
+						document.getElementById("alt-1-logo-size").disabled = true;
+						$("#alt-1-style-border-color-appearance > :nth-child(3)").removeClass("disabled");
+						// $("#alt-1-background").prop('checked', true).change(); NO
+						// $("#alt-1-background").prop('checked', true);
+						// document.getElementById("alt-1-background").classList.add("locked");
 
 						break;
 				}
@@ -2384,69 +2535,93 @@
 					case "1":
 						//Disable: align center | Enable: logo;
 						document.getElementById("alt-2-align-center").disabled = true;
-						if (document.getElementById("alt-2-align-center").checked == true){
-							document.getElementById("alt-2-align-left").checked = true;
+						if (document.getElementById("alt-2-align-center").checked){
+							$("#alt-2-align-left").prop('checked', true).change();
 						}
 						document.getElementById("alt-2-logo").disabled = false;
+						document.getElementById("alt-2-logo-size").disabled = false;
+						$("#alt-2-style-border-color-appearance > :nth-child(3)").addClass("disabled");
 						break;
 					case "2":
 						//Disable: logo | Enable: align center;
 						document.getElementById("alt-2-align-center").disabled = false;
 						document.getElementById("alt-2-logo").disabled = true;
-						if (document.getElementById("alt-2-logo").checked == true){
-							document.getElementById("alt-2-logo").checked = false;
+						if (document.getElementById("alt-2-logo").checked){
+							$("#alt-2-logo").prop('checked', false).change();
 						}
+						$("#alt-2-style-border-color-appearance > :nth-child(3)").removeClass("disabled");
 						break;
 					case "3":
 						//Disable: - | Enable: Logo, align center;
-						document.getElementById("alt-2-align-center").disabled = false;
+						document.getElementById("alt-2-align-center").disabled = true;
+						if (document.getElementById("alt-2-align-center").checked){
+							$("#alt-2-align-left").prop('checked', true).change();
+						}
 						document.getElementById("alt-2-logo").disabled = false;
+						document.getElementById("alt-2-logo-size").disabled = true;
+						$("#alt-2-style-border-color-appearance > :nth-child(3)").removeClass("disabled");
 						break;
 				}
 				switch (alt_3_style){
 					case "1":
 						//Disable: align center | Enable: logo;
 						document.getElementById("alt-3-align-center").disabled = true;
-						if (document.getElementById("alt-3-align-center").checked == true){
-							document.getElementById("alt-3-align-left").checked = true;
+						if (document.getElementById("alt-3-align-center").checked){
+							$("#alt-3-align-left").prop('checked', true).change();
 						}
 						document.getElementById("alt-3-logo").disabled = false;
+						document.getElementById("alt-3-logo-size").disabled = false;
+						$("#alt-3-style-border-color-appearance > :nth-child(3)").addClass("disabled");
 						break;
 					case "2":
 						//Disable: logo | Enable: align center;
 						document.getElementById("alt-3-align-center").disabled = false;
 						document.getElementById("alt-3-logo").disabled = true;
-						if (document.getElementById("alt-3-logo").checked == true){
-							document.getElementById("alt-3-logo").checked = false;
+						if (document.getElementById("alt-3-logo").checked){
+							$("#alt-3-logo").prop('checked', false).change();
 						}
+						$("#alt-3-style-border-color-appearance > :nth-child(3)").removeClass("disabled");
 						break;
 					case "3":
 						//Disable: - | Enable: Logo, align center;
-						document.getElementById("alt-3-align-center").disabled = false;
+						document.getElementById("alt-3-align-center").disabled = true;
+						if (document.getElementById("alt-3-align-center").checked){
+							$("#alt-3-align-left").prop('checked', true).change();
+						}
 						document.getElementById("alt-3-logo").disabled = false;
+						document.getElementById("alt-3-logo-size").disabled = true;
+						$("#alt-3-style-border-color-appearance > :nth-child(3)").removeClass("disabled");
 						break;
 				}
 				switch (alt_4_style){
 					case "1":
 						//Disable: align center | Enable: logo;
 						document.getElementById("alt-4-align-center").disabled = true;
-						if (document.getElementById("alt-4-align-center").checked == true){
-							document.getElementById("alt-4-align-left").checked = true;
+						if (document.getElementById("alt-4-align-center").checked){
+							$("#alt-4-align-left").prop('checked', true).change();
 						}
 						document.getElementById("alt-4-logo").disabled = false;
+						document.getElementById("alt-4-logo-size").disabled = false;
+						$("#alt-4-style-border-color-appearance > :nth-child(3)").addClass("disabled");
 						break;
 					case "2":
 						//Disable: logo | Enable: align center;
 						document.getElementById("alt-4-align-center").disabled = false;
 						document.getElementById("alt-4-logo").disabled = true;
-						if (document.getElementById("alt-4-logo").checked == true){
-							document.getElementById("alt-4-logo").checked = false;
+						if (document.getElementById("alt-4-logo").checked){
+							$("#alt-4-logo").prop('checked', false).change();
 						}
+						$("#alt-4-style-border-color-appearance > :nth-child(3)").removeClass("disabled");
 						break;
 					case "3":
 						//Disable: - | Enable: Logo, align center;
-						document.getElementById("alt-4-align-center").disabled = false;
+						document.getElementById("alt-4-align-center").disabled = true;
+						if (document.getElementById("alt-4-align-center").checked){
+							$("#alt-4-align-left").prop('checked', true).change();
+						}
 						document.getElementById("alt-4-logo").disabled = false;
+						document.getElementById("alt-4-logo-size").disabled = true;
+						$("#alt-4-style-border-color-appearance > :nth-child(3)").removeClass("disabled");
 						break;
 				}				
 			}
@@ -2455,58 +2630,78 @@
 
 			//Receive data from the source
 			bcr.onmessage = function (ev) {
-				received_data=ev.data.split("|");
-				document.getElementById("alt-1-active-time-monitor").innerHTML = received_data[0];
-				document.getElementById("alt-1-inactive-time-monitor").innerHTML = received_data[1];
-				document.getElementById("alt-2-active-time-monitor").innerHTML = received_data[2];
-				document.getElementById("alt-2-inactive-time-monitor").innerHTML = received_data[3];
-				document.getElementById("alt-3-active-time-monitor").innerHTML = received_data[4];
-				document.getElementById("alt-3-inactive-time-monitor").innerHTML = received_data[5];
-				document.getElementById("alt-4-active-time-monitor").innerHTML = received_data[6];
-				document.getElementById("alt-4-inactive-time-monitor").innerHTML = received_data[7];
+				const received_data = ev.data;
 
-				alt_1_active_time_monitor = received_data[0];
-				alt_1_inactive_time_monitor = received_data[1];
-				alt_2_active_time_monitor = received_data[2];
-				alt_2_inactive_time_monitor = received_data[3];
-				alt_3_active_time_monitor = received_data[4];
-				alt_3_inactive_time_monitor = received_data[5];
-				alt_4_active_time_monitor = received_data[6];
-				alt_4_inactive_time_monitor = received_data[7];
+				if (received_data.resend) {
+					refreshData();
+					function_send_font();
+				} else {
 
-				alt_1_turnoff = (received_data[8] == "true");
-				alt_2_turnoff = (received_data[9] == "true");
-				alt_3_turnoff = (received_data[10] == "true");
-				alt_4_turnoff = (received_data[11] == "true");
+					alt_1_active_time_monitor = received_data.activeTime1_to_send;
+					alt_1_inactive_time_monitor = received_data.inactiveTime1_to_send;
+					alt_2_active_time_monitor = received_data.activeTime2_to_send;
+					alt_2_inactive_time_monitor = received_data.inactiveTime2_to_send;
+					alt_3_active_time_monitor = received_data.activeTime3_to_send;
+					alt_3_inactive_time_monitor = received_data.inactiveTime3_to_send;
+					alt_4_active_time_monitor = received_data.activeTime4_to_send;
+					alt_4_inactive_time_monitor = received_data.inactiveTime4_to_send;
 
-				if (alt_1_turnoff){
-					document.getElementById("lower-thirds-switch1").checked = false;
+					document.getElementById("alt-1-active-time-monitor").innerHTML = alt_1_active_time_monitor;
+					document.getElementById("alt-1-inactive-time-monitor").innerHTML = alt_1_inactive_time_monitor;
+					document.getElementById("alt-2-active-time-monitor").innerHTML = alt_2_active_time_monitor;
+					document.getElementById("alt-2-inactive-time-monitor").innerHTML = alt_2_inactive_time_monitor;
+					document.getElementById("alt-3-active-time-monitor").innerHTML = alt_3_active_time_monitor;
+					document.getElementById("alt-3-inactive-time-monitor").innerHTML = alt_3_inactive_time_monitor;
+					document.getElementById("alt-4-active-time-monitor").innerHTML = alt_4_active_time_monitor
+					document.getElementById("alt-4-inactive-time-monitor").innerHTML = alt_4_inactive_time_monitor;
+
+					alt_1_turnoff = (received_data.alt_1_turnoff);
+					alt_2_turnoff = (received_data.alt_2_turnoff);
+					alt_3_turnoff = (received_data.alt_3_turnoff);
+					alt_4_turnoff = (received_data.alt_4_turnoff);
+
+
+					if (alt_1_turnoff && $("#lower-thirds-switch1").is(':checked')) {
+						$("#lower-thirds-switch1").prop('checked', false).change();
+					}
+					if (alt_2_turnoff && $("#lower-thirds-switch2").is(':checked')) {
+						$('#lower-thirds-switch2').prop('checked', false).change();
+					}
+					if (alt_3_turnoff && $("#lower-thirds-switch3").is(':checked')) {
+						$('#lower-thirds-switch3').prop('checked', false).change();
+					}
+					if (alt_4_turnoff && $("#lower-thirds-switch4").is(':checked')) {
+						$('#lower-thirds-switch4').prop('checked', false).change();
+					}
+
+					checkSwitches();
 				}
-				if (alt_2_turnoff){
-					document.getElementById("lower-thirds-switch2").checked = false;
-				}
-				if (alt_3_turnoff){
-					document.getElementById("lower-thirds-switch3").checked = false;
-				}
-				if (alt_4_turnoff){
-					document.getElementById("lower-thirds-switch4").checked = false;
-				}
-				// console.log(alt_1_turnoff);
 			}
 
 			//////////////////////////////////////
 
 			function function_send() {
+				//Switch Lock Active Mode ALT ON/OFF
+				global_lock_active = (document.getElementById("global-lock-active").checked) ? true : false;
+
+				alt_1_lock_active = (document.getElementById("alt-1-lock-active").checked) ? true : false;
+				alt_2_lock_active = (document.getElementById("alt-2-lock-active").checked) ? true : false;
+				alt_3_lock_active = (document.getElementById("alt-3-lock-active").checked) ? true : false;
+				alt_4_lock_active = (document.getElementById("alt-4-lock-active").checked) ? true : false;
+
+
+				//////////////////////////////
+
 				global_animation_time = $("#global-animation-time").val();
 				if (global_lock_active){
 					global_active_time = Infinity;
 				} else {
-					global_active_time = $("#global-active-time:text").val();
+					global_active_time = $("#global-active-time").val();
 				}
-				global_inactive_time = $("#global-inactive-time:text").val();
+				global_inactive_time = $("#global-inactive-time").val();
 
 				alt_1_name = $("#alt-1-name:text").val();
-				alt_1_info = $("#alt-1-info:text").val();				
+				alt_1_info = $("#alt-1-info:text").val();
 				alt_1_name_color = $("#alt-1-name-color:text").val();
 				alt_1_info_color = $("#alt-1-info-color:text").val();
 				alt_1_style_color_1 = $("#alt-1-style-color-1:text").val();
@@ -2514,59 +2709,65 @@
 				alt_1_style_color_3 = $("#alt-1-style-color-3:text").val();
 				alt_1_style_color_4 = $("#alt-1-style-color-4:text").val();
 
-				alt_1_animation_time = $("#alt-1-animation-time:text").val();
+				alt_1_animation_time = $("#alt-1-animation-time").val();
 				if (alt_1_lock_active){
 					alt_1_active_time = Infinity;
 				} else {
-					alt_1_active_time = $("#alt-1-active-time:text").val();
+					alt_1_active_time = $("#alt-1-active-time").val();
 				}
-				alt_1_inactive_time = $("#alt-1-inactive-time:text").val();
-				alt_1_logo = $("#alt-1-logo-preview").attr("src");
+				alt_1_inactive_time = $("#alt-1-inactive-time").val();
+				alt_1_logo_image= $("#alt-1-logo-preview").attr("src");
 
 				alt_2_name = $("#alt-2-name:text").val();
-				alt_2_info = $("#alt-2-info:text").val();				
+				alt_2_info = $("#alt-2-info:text").val();
 				alt_2_name_color = $("#alt-2-name-color:text").val();
 				alt_2_info_color = $("#alt-2-info-color:text").val();
 				alt_2_style_color_1 = $("#alt-2-style-color-1:text").val();
 				alt_2_style_color_2 = $("#alt-2-style-color-2:text").val();
-				alt_2_animation_time = $("#alt-2-animation-time:text").val();
+				alt_2_style_color_3 = $("#alt-2-style-color-3:text").val();
+				alt_2_style_color_4 = $("#alt-2-style-color-4:text").val();
+				alt_2_animation_time = $("#alt-2-animation-time").val();
 				if (alt_2_lock_active){
 					alt_2_active_time = Infinity;
 				} else {
-					alt_2_active_time = $("#alt-2-active-time:text").val();
+					alt_2_active_time = $("#alt-2-active-time").val();
 				}
-				alt_2_inactive_time = $("#alt-2-inactive-time:text").val();
-				alt_2_logo = $("#alt-2-logo-preview").attr("src");
+				alt_2_inactive_time = $("#alt-2-inactive-time").val();
+				alt_2_logo_image = $("#alt-2-logo-preview").attr("src");
 
 				alt_3_name = $("#alt-3-name:text").val();
-				alt_3_info = $("#alt-3-info:text").val();				
+				alt_3_info = $("#alt-3-info:text").val();
 				alt_3_name_color = $("#alt-3-name-color:text").val();
 				alt_3_info_color = $("#alt-3-info-color:text").val();
 				alt_3_style_color_1 = $("#alt-3-style-color-1:text").val();
 				alt_3_style_color_2 = $("#alt-3-style-color-2:text").val();
-				alt_3_animation_time = $("#alt-3-animation-time:text").val();
+				alt_3_style_color_3 = $("#alt-3-style-color-3:text").val();
+				alt_3_style_color_4 = $("#alt-3-style-color-4:text").val();
+				alt_3_animation_time = $("#alt-3-animation-time").val();
 				if (alt_3_lock_active){
 					alt_3_active_time = Infinity;
 				} else {
-					alt_3_active_time = $("#alt-3-active-time:text").val();
-				}				
-				alt_3_inactive_time = $("#alt-3-inactive-time:text").val();
-				alt_3_logo = $("#alt-3-logo-preview").attr("src");
+					alt_3_active_time = $("#alt-3-active-time").val();
+				}
+				alt_3_inactive_time = $("#alt-3-inactive-time").val();
+				alt_3_logo_image = $("#alt-3-logo-preview").attr("src");
 
 				alt_4_name = $("#alt-4-name:text").val();
-				alt_4_info = $("#alt-4-info:text").val();				
+				alt_4_info = $("#alt-4-info:text").val();
 				alt_4_name_color = $("#alt-4-name-color:text").val();
 				alt_4_info_color = $("#alt-4-info-color:text").val();
 				alt_4_style_color_1 = $("#alt-4-style-color-1:text").val();
 				alt_4_style_color_2 = $("#alt-4-style-color-2:text").val();
-				alt_4_animation_time = $("#alt-4-animation-time:text").val();
+				alt_4_style_color_3 = $("#alt-4-style-color-3:text").val();
+				alt_4_style_color_4 = $("#alt-4-style-color-4:text").val();
+				alt_4_animation_time = $("#alt-4-animation-time").val();
 				if (alt_4_lock_active){
 					alt_4_active_time = Infinity;
 				} else {
-					alt_4_active_time = $("#alt-4-active-time:text").val();
-				}				
-				alt_4_inactive_time = $("#alt-4-inactive-time:text").val();
-				alt_4_logo = $("#alt-4-logo-preview").attr("src");
+					alt_4_active_time = $("#alt-4-active-time").val();
+				}
+				alt_4_inactive_time = $("#alt-4-inactive-time").val();
+				alt_4_logo_image = $("#alt-4-logo-preview").attr("src");
 
 				//Standard Main settings values
 				if(!global_lock_active && global_active_time == "") {
@@ -2579,219 +2780,117 @@
 					global_animation_time = 4;
 				}
 
-				alt_1_waiting_time = (alt_1_animation_time) ? alt_1_animation_time : global_animation_time;
-				alt_2_waiting_time = (alt_2_animation_time) ? alt_2_animation_time : global_animation_time;
-				alt_3_waiting_time = (alt_3_animation_time) ? alt_3_animation_time : global_animation_time;
-				alt_4_waiting_time = (alt_4_animation_time) ? alt_4_animation_time : global_animation_time;
-
 				//Check Master Switch
-				if (document.getElementById("lower-thirds-masterswitch").checked == true) {
+				if (document.getElementById("lower-thirds-masterswitch").checked) {
 					masterSwitchIsOn = true;
-					document.getElementById("alt-main-config-content").classList.add("active");
 				} else {
 					masterSwitchIsOn = false;
-					document.getElementById("alt-main-config-content").classList.remove("active");
 				}
 
-				//Check switches and blue and red lights in the background to see active and inactive times
+				//Check switches
 				if (masterSwitchIsOn) {
-					//When the Main Switch is ON the lower thirds can be Active, Inactive or OFF.
 					//Switch 1
-					if (document.getElementById("lower-thirds-switch1").checked == true){
+					if (document.getElementById("lower-thirds-switch1").checked){
 						alt_1_switch = "true";
-						if (alt_1_active_time_monitor >= 0 && alt_1_inactive_time_monitor == 0 && alt_1_name && alt_1_info){
-							document.getElementById("alt-1-config-content").classList.remove("inactive");
-							document.getElementById("alt-1-config-content").classList.add("active");
-							alt_1_jumpnext = true;
-						} else {
-							document.getElementById("alt-1-config-content").classList.remove("active");
-							document.getElementById("alt-1-config-content").classList.add("inactive");
-							//check if autoload is active and jump to next slot
-							if (alt_1_autoload && alt_1_jumpnext) {
-								jumpNextSlot("#alt-1-memory-slots", "#alt-1-name", "#alt-1-info", "#alt-1-logo-preview", alt_1_waiting_time);
-								alt_1_jumpnext = false;
-							}
-						}
 					} else {
 						alt_1_switch = "false";
-						document.getElementById("alt-1-config-content").className = '';
 					}
 
 					//Switch 2
-					if (document.getElementById("lower-thirds-switch2").checked == true){
+					if (document.getElementById("lower-thirds-switch2").checked){
 						alt_2_switch = "true";
-						if (alt_2_active_time_monitor >= 0 && alt_2_inactive_time_monitor == 0 && alt_2_name && alt_2_info){
-							document.getElementById("alt-2-config-content").classList.remove("inactive");
-							document.getElementById("alt-2-config-content").classList.add("active");
-							alt_2_jumpnext = true;							
-						} else {
-							document.getElementById("alt-2-config-content").classList.remove("active");
-							document.getElementById("alt-2-config-content").classList.add("inactive");
-							//check if autoload is active and jump to next slot
-							if (alt_2_autoload && alt_2_jumpnext) {
-								jumpNextSlot("#alt-2-memory-slots", "#alt-2-name", "#alt-2-info", "#alt-2-logo-preview", alt_2_waiting_time);
-								alt_2_jumpnext = false;
-							}
-						}
 					} else {
 						alt_2_switch = "false";
-						document.getElementById("alt-2-config-content").className = '';
 					}
 
 					//Switch 3
-					if (document.getElementById("lower-thirds-switch3").checked == true){
+					if (document.getElementById("lower-thirds-switch3").checked){
 						alt_3_switch = "true";
-						if (alt_3_active_time_monitor >= 0 && alt_3_inactive_time_monitor == 0 && alt_3_name && alt_3_info){
-							document.getElementById("alt-3-config-content").classList.remove("inactive");
-							document.getElementById("alt-3-config-content").classList.add("active");
-							alt_3_jumpnext = true;
-						} else {
-							document.getElementById("alt-3-config-content").classList.remove("active");
-							document.getElementById("alt-3-config-content").classList.add("inactive");
-							//check if autoload is active and jump to next slot
-							if (alt_3_autoload && alt_3_jumpnext) {
-								jumpNextSlot("#alt-3-memory-slots", "#alt-3-name", "#alt-3-info", "#alt-3-logo-preview", alt_3_waiting_time);
-								alt_3_jumpnext = false;
-							}
-						}
 					} else {
 						alt_3_switch = "false";
-						document.getElementById("alt-3-config-content").className = '';
 					}
 
 					//Switch 4
-					if (document.getElementById("lower-thirds-switch4").checked == true){
+					if (document.getElementById("lower-thirds-switch4").checked){
 						alt_4_switch = "true";
-						if (alt_4_active_time_monitor >= 0 && alt_4_inactive_time_monitor == 0 && alt_4_name && alt_4_info){
-							document.getElementById("alt-4-config-content").classList.remove("inactive");
-							document.getElementById("alt-4-config-content").classList.add("active");
-							alt_4_jumpnext = true;
-						} else {
-							document.getElementById("alt-4-config-content").classList.remove("active");
-							document.getElementById("alt-4-config-content").classList.add("inactive");
-							//check if autoload is active and jump to next slot
-							if (alt_4_autoload && alt_4_jumpnext) {
-								jumpNextSlot("#alt-4-memory-slots", "#alt-4-name", "#alt-4-info", "#alt-4-logo-preview", alt_4_waiting_time);
-								alt_4_jumpnext = false;
-							}
-						}
 					} else {
 						alt_4_switch = "false";
-						document.getElementById("alt-4-config-content").className = '';
 					}
-
 				} else {
 					//When the Main Switch is OFF all the Lower Thirds area Inactives or OFF.
-					//Switch 1
 					alt_1_switch = "false";
-					if (document.getElementById("lower-thirds-switch1").checked == true) {
-						document.getElementById("alt-1-config-content").classList.add("inactive");
-						document.getElementById("alt-1-config-content").classList.remove("active");
-					} else {
-						document.getElementById("alt-1-config-content").className = '';
-					}
-
-					//Switch 2
 					alt_2_switch = "false";
-					if (document.getElementById("lower-thirds-switch2").checked == true) {
-						document.getElementById("alt-2-config-content").classList.add("inactive");
-						document.getElementById("alt-2-config-content").classList.remove("active");
-					} else {
-						document.getElementById("alt-2-config-content").className = '';
-					}
-
-					//Switch 3					
 					alt_3_switch = "false";
-					if (document.getElementById("lower-thirds-switch3").checked == true) {
-						document.getElementById("alt-3-config-content").classList.add("inactive");
-						document.getElementById("alt-3-config-content").classList.remove("active");
-					} else {
-						document.getElementById("alt-3-config-content").className = '';
-					}
-
-					//Switch 4					
 					alt_4_switch = "false";
-					if (document.getElementById("lower-thirds-switch4").checked == true) {
-						document.getElementById("alt-4-config-content").classList.add("inactive");
-						document.getElementById("alt-4-config-content").classList.remove("active");
-					} else {
-						document.getElementById("alt-4-config-content").className = '';
-					}
-
 				}
+
+				alt_1_waiting_time = alt_1_animation_time || global_animation_time;
+				alt_2_waiting_time = alt_2_animation_time || global_animation_time;
+				alt_3_waiting_time = alt_3_animation_time || global_animation_time;
+				alt_4_waiting_time = alt_4_animation_time || global_animation_time;
 
 				//////////////////////////////
 
 				//Switch Autoload ALT ON/OFF
-				alt_1_autoload = (document.getElementById("alt-1-autoload").checked == true) ? true : false;
-				alt_2_autoload = (document.getElementById("alt-2-autoload").checked == true) ? true : false;
-				alt_3_autoload = (document.getElementById("alt-3-autoload").checked == true) ? true : false;
-				alt_4_autoload = (document.getElementById("alt-4-autoload").checked == true) ? true : false;
+				alt_1_autoload = (document.getElementById("alt-1-autoload").checked) ? true : false;
+				alt_2_autoload = (document.getElementById("alt-2-autoload").checked) ? true : false;
+				alt_3_autoload = (document.getElementById("alt-3-autoload").checked) ? true : false;
+				alt_4_autoload = (document.getElementById("alt-4-autoload").checked) ? true : false;
 
 				//////////////////////////////
 
 				//Switch Autotrigger ALT ON/OFF
-				alt_1_autotrigger = (document.getElementById("alt-1-autotrigger").checked == true) ? true : false;
-				alt_2_autotrigger = (document.getElementById("alt-2-autotrigger").checked == true) ? true : false;
-				alt_3_autotrigger = (document.getElementById("alt-3-autotrigger").checked == true) ? true : false;
-				alt_4_autotrigger = (document.getElementById("alt-4-autotrigger").checked == true) ? true : false;
-				
+				alt_1_autotrigger = document.getElementById("alt-1-autotrigger").checked;
+				alt_2_autotrigger = document.getElementById("alt-2-autotrigger").checked;
+				alt_3_autotrigger = document.getElementById("alt-3-autotrigger").checked;
+				alt_4_autotrigger = document.getElementById("alt-4-autotrigger").checked;
+
 
 				//////////////////////////////
 
 				//Switch One-shot Mode ALT ON/OFF
-				global_oneshot = (document.getElementById("global-oneshot").checked == true) ? true : false;
-				
-				alt_1_oneshot = (document.getElementById("alt-1-oneshot").checked == true) ? true : false;
-				alt_2_oneshot = (document.getElementById("alt-2-oneshot").checked == true) ? true : false;
-				alt_3_oneshot = (document.getElementById("alt-3-oneshot").checked == true) ? true : false;
-				alt_4_oneshot = (document.getElementById("alt-4-oneshot").checked == true) ? true : false;
-				
-				//////////////////////////////
+				global_oneshot = (document.getElementById("global-oneshot").checked) ? true : false;
 
-				//Switch Lock Active Mode ALT ON/OFF
-				global_lock_active = (document.getElementById("global-lock-active").checked == true) ? true : false;
-
-				alt_1_lock_active = (document.getElementById("alt-1-lock-active").checked == true) ? true : false;
-				alt_2_lock_active = (document.getElementById("alt-2-lock-active").checked == true) ? true : false;
-				alt_3_lock_active = (document.getElementById("alt-3-lock-active").checked == true) ? true : false;
-				alt_4_lock_active = (document.getElementById("alt-4-lock-active").checked == true) ? true : false;
-				
+				alt_1_oneshot = (document.getElementById("alt-1-oneshot").checked) ? true : false;
+				alt_2_oneshot = (document.getElementById("alt-2-oneshot").checked) ? true : false;
+				alt_3_oneshot = (document.getElementById("alt-3-oneshot").checked) ? true : false;
+				alt_4_oneshot = (document.getElementById("alt-4-oneshot").checked) ? true : false;
 
 				//////////////////////////////
 
 				//Show the slots numbers
 				if (document.getElementById("set-slot-numbers").checked == false) {
-					$('.slot-number').each(function(){    
+					$('.slot-number').each(function(){
 						$(this).removeClass("hide");
-	        		});
+					});
 				} else {
-					$('.slot-number').each(function(){    
+					$('.slot-number').each(function(){
 						$(this).addClass("hide");
-	        		});
+					});
 				}
 
 				//////////////////////////////
 
 				//Create Tooltips to show the contect of the slots
-				if (document.getElementById("set-tooltips").checked == true) {
-					$('.panel-bottom > ul > li').each(function(){    
+				if (document.getElementById("set-tooltips").checked) {
+					$('.panel-bottom > ul > li').each(function(){
 						var name_to_tooltip = $(this).children('.stored-name').text();
 						var info_to_tooltip = $(this).children('.stored-info').text();
 						var isStored = (name_to_tooltip && info_to_tooltip) ? true : false;
 						var isTooltip = $(this).children(".tooltiptext")[0] ? true : false;
 
-					if (isTooltip){
-						if (!isStored) {
-							$(this).children(".tooltiptext").remove();
+						if (isTooltip){
+							if (!isStored) {
+								$(this).children(".tooltiptext").remove();
+								// $(this).prepend('<span class="tooltiptext"><p>Empty. Click to save.</p></span>');
+							}
+						} else {
+							if (isStored) {
+								$(this).prepend('<span class="tooltiptext">' + name_to_tooltip + '<br>' + info_to_tooltip + '<hr><p>Click and hold to delete.</p></span>');
+							}
 						}
-					} else {
-						if (isStored) {
-							$(this).prepend('<span class="tooltiptext">' + name_to_tooltip + '<br>' + info_to_tooltip + '</span>');
-						}
-					}
-						
-	        		});
+
+					});
 				} else {
 					$('.tooltiptext').each(function(){
 						$(this).remove();
@@ -2799,65 +2898,61 @@
 				}
 
 
-				//////////////////////////////				
+				//////////////////////////////
 
-				if (document.getElementById("set-switch-position").checked == true) {
-					$('.switch').each(function(){    
+				if (document.getElementById("set-switch-position").checked) {
+					$('.switch').each(function(){
 						$(this).addClass("switch-left");
 					});
-					$('.drag-handle').each(function(){    
+					$('.drag-handle').each(function(){
 						$(this).addClass("switch-left");
 					});
 					$('.main-title').addClass("switch-left");
-					
+
 				} else {
-					$('.switch').each(function(){    
+					$('.switch').each(function(){
 						$(this).removeClass("switch-left");
 					});
-					$('.drag-handle').each(function(){    
+					$('.drag-handle').each(function(){
 						$(this).removeClass("switch-left");
 					});
 					$('.main-title').removeClass("switch-left");
 				}
-				
+
 
 				//////////////////////////////
 
 				//Switch Preview ALT ON/OFF
-				if (document.getElementById("set-preview").checked == false) {
-					$("#alt-preview").removeClass("hide");
-					//Hide preview butons
-					$('.preview-btn').each(function(){    
+				if (document.getElementById("set-preview").checked) {
+					$('#alt-preview, .preview-btn').each(function(){
 						$(this).removeClass("hide");
-	        		});
+					});
 				} else {
-					//Unhide preview butons
-					$("#alt-preview").addClass("hide");
-					$('.preview-btn').each(function(){    
+					$('#alt-preview, .preview-btn').each(function(){
 						$(this).addClass("hide");
-	        		});
+					});
 				}
-								
+
 				if (document.getElementById("alt-1-preview").checked == false) {
 					alt_1_preview = "false";
 				} else {
 					alt_1_preview = "true";
-				}			
+				}
 				if (document.getElementById("alt-2-preview").checked == false) {
 					alt_2_preview = "false";
 				} else {
 					alt_2_preview = "true";
-				}	
+				}
 				if (document.getElementById("alt-3-preview").checked == false) {
 					alt_3_preview = "false";
 				} else {
 					alt_3_preview = "true";
-				}	
+				}
 				if (document.getElementById("alt-4-preview").checked == false) {
 					alt_4_preview = "false";
 				} else {
 					alt_4_preview = "true";
-				}	
+				}
 
 
 				//////////////////////////////
@@ -2874,23 +2969,29 @@
 				}
 				if (document.getElementById("alt-2-logo").checked == false) {
 					alt_2_logo_switch = "false";
+					$("#alt-2-logo-size").addClass("disable");
 					$("#alt-2-config-content > .first-edit-container > .logo-container").addClass("hide");
 				} else {
 					alt_2_logo_switch = "true";
+					$("#alt-2-logo-size").removeClass("disable");
 					$("#alt-2-config-content > .first-edit-container > .logo-container").removeClass("hide");
 				}
 				if (document.getElementById("alt-3-logo").checked == false) {
 					alt_3_logo_switch = "false";
+					$("#alt-3-logo-size").addClass("disable");
 					$("#alt-3-config-content > .first-edit-container > .logo-container").addClass("hide");
 				} else {
 					alt_3_logo_switch = "true";
+					$("#alt-3-logo-size").removeClass("disable");
 					$("#alt-3-config-content > .first-edit-container > .logo-container").removeClass("hide");
 				}
 				if (document.getElementById("alt-4-logo").checked == false) {
 					alt_4_logo_switch = "false";
+					$("#alt-4-logo-size").addClass("disable");
 					$("#alt-4-config-content > .first-edit-container > .logo-container").addClass("hide");
 				} else {
 					alt_4_logo_switch = "true";
+					$("#alt-4-logo-size").removeClass("disable");
 					$("#alt-4-config-content > .first-edit-container > .logo-container").removeClass("hide");
 				}
 
@@ -2925,7 +3026,7 @@
 				}
 
 				//Multiple/Twins checkbox
-				$('.twin-checkbox').each(function(){    
+				$('.twin-checkbox').each(function(){
 					twin_name = $(this).attr('name');
 					var twin_checkboxes = $("input[type=checkbox][name="+ twin_name +"]");
 					twin_checkboxes.on("click", function(e) {
@@ -2944,23 +3045,29 @@
 					$("#alt-1-style-border-color-appearance").removeClass("disable");
 				}
 				if (document.getElementById("alt-2-border-color").checked == false) {
+					alt_2_border_switch = "false";
 					$("#alt-2-border-thickness-amount").addClass("disable");
 					$("#alt-2-style-border-color-appearance").addClass("disable");
 				} else {
+					alt_2_border_switch = "true";
 					$("#alt-2-border-thickness-amount").removeClass("disable");
 					$("#alt-2-style-border-color-appearance").removeClass("disable");
 				}
 				if (document.getElementById("alt-3-border-color").checked == false) {
+					alt_3_border_switch = "false";
 					$("#alt-3-border-thickness-amount").addClass("disable");
 					$("#alt-3-style-border-color-appearance").addClass("disable");
 				} else {
+					alt_3_border_switch = "true";
 					$("#alt-3-border-thickness-amount").removeClass("disable");
 					$("#alt-3-style-border-color-appearance").removeClass("disable");
 				}
 				if (document.getElementById("alt-4-border-color").checked == false) {
+					alt_4_border_switch = "false";
 					$("#alt-4-border-thickness-amount").addClass("disable");
 					$("#alt-4-style-border-color-appearance").addClass("disable");
 				} else {
+					alt_4_border_switch = "true";
 					$("#alt-4-border-thickness-amount").removeClass("disable");
 					$("#alt-4-style-border-color-appearance").removeClass("disable");
 				}
@@ -2975,18 +3082,24 @@
 				}
 				if (document.getElementById("alt-2-shadows").checked == false) {
 					alt_2_shadows = "false";
+					$("#alt-2-shadow-amount").addClass("disable");
 				} else {
 					alt_2_shadows = "true";
+					$("#alt-2-shadow-amount").removeClass("disable");
 				}
 				if (document.getElementById("alt-3-shadows").checked == false) {
 					alt_3_shadows = "false";
+					$("#alt-3-shadow-amount").addClass("disable");
 				} else {
 					alt_3_shadows = "true";
+					$("#alt-3-shadow-amount").removeClass("disable");
 				}
 				if (document.getElementById("alt-4-shadows").checked == false) {
 					alt_4_shadows = "false";
+					$("#alt-4-shadow-amount").addClass("disable");
 				} else {
 					alt_4_shadows = "true";
+					$("#alt-4-shadow-amount").removeClass("disable");
 				}
 
 				//Name and Info text appearance (Uppercase and Bold)
@@ -3085,19 +3198,19 @@
 				//Alignment of the Lower Third
 				var alt_1_align = $('input[name=alt-1-align]:checked').val();
 				if (!alt_1_align) {
-					document.getElementById("alt-1-align-left").checked = true;
+					$('#alt-1-align-left').prop('checked', true).change();
 				}
 				var alt_2_align = $('input[name=alt-2-align]:checked').val();
 				if (!alt_2_align) {
-					document.getElementById("alt-2-align-left").checked = true;
+					$('#alt-2-align-left').prop('checked', true).change();
 				}
 				var alt_3_align = $('input[name=alt-3-align]:checked').val();
 				if (!alt_3_align) {
-					document.getElementById("alt-3-align-left").checked = true;
+					$('#alt-3-align-left').prop('checked', true).change();
 				}
 				var alt_4_align = $('input[name=alt-4-align]:checked').val();
 				if (!alt_4_align) {
-					document.getElementById("alt-4-align-left").checked = true;
+					$('#alt-4-align-left').prop('checked', true).change();
 				}
 
 				//
@@ -3154,44 +3267,38 @@
 					document.getElementById("alt-4-active-time").classList.add("disable");
 				} else {
 					document.getElementById("alt-4-active-time").classList.remove("disable");
-				}				
+				}
 
 				//Shows if custom time settings is used
-				if (alt_1_animation_time || alt_1_active_time || alt_1_inactive_time || alt_1_lock_active || alt_1_oneshot) {
+				if (alt_1_animation_time || (alt_1_active_time && alt_1_active_time != 'Infinity') || alt_1_inactive_time || alt_1_lock_active || alt_1_oneshot) {
 					$("#alt-1-custom-times").children(".icon-btn").addClass("active");
 				} else {
 					$("#alt-1-custom-times").children(".icon-btn").removeClass("active");
 				}
-				if (alt_2_animation_time || alt_2_active_time || alt_2_inactive_time || alt_2_lock_active || alt_2_oneshot) {
+				if (alt_2_animation_time || (alt_2_active_time && alt_2_active_time != 'Infinity') || alt_2_inactive_time || alt_2_lock_active || alt_2_oneshot) {
 					$("#alt-2-custom-times").children(".icon-btn").addClass("active");
 				} else {
 					$("#alt-2-custom-times").children(".icon-btn").removeClass("active");
 				}
-				if (alt_3_animation_time || alt_3_active_time || alt_3_inactive_time || alt_3_lock_active || alt_3_oneshot) {
+				if (alt_3_animation_time || (alt_3_active_time && alt_3_active_time != 'Infinity') || alt_3_inactive_time || alt_3_lock_active || alt_3_oneshot) {
 					$("#alt-3-custom-times").children(".icon-btn").addClass("active");
 				} else {
 					$("#alt-3-custom-times").children(".icon-btn").removeClass("active");
 				}
-				if (alt_4_animation_time || alt_4_active_time || alt_4_inactive_time || alt_4_lock_active || alt_4_oneshot) {
+				if (alt_4_animation_time || (alt_4_active_time && alt_4_active_time != 'Infinity') || alt_4_inactive_time || alt_4_lock_active || alt_4_oneshot) {
 					$("#alt-4-custom-times").children(".icon-btn").addClass("active");
 				} else {
 					$("#alt-4-custom-times").children(".icon-btn").removeClass("active");
 				}
 
-				//New settings to add
-				//alt_1_logo_size, alt_1_shadow_amount, alt_1_corners, alt_1_border_switch, alt_1_border_thickness_amount, alt_1_style_color_3, alt_1_style_color_4
-				
-				bc.postMessage(global_animation_time + '|' + global_active_time + '|' + global_inactive_time + '|' + alt_1_switch + '|' + alt_1_style + '|' + alt_1_name + '|' + alt_1_info + '|' + alt_1_name_size + '|' + alt_1_info_size  + '|' + alt_1_name_transform + '|' + alt_1_info_transform + '|' + alt_1_name_weight + '|' + alt_1_info_weight + '|' + alt_1_name_color + '|' + alt_1_info_color + '|' + alt_1_style_color_1 + '|' + alt_1_style_color_2 + '|' + alt_1_logo_switch + '|' + alt_1_background_switch + '|' + alt_1_shadows + '|' + alt_1_align + '|' + alt_1_size + '|' + alt_1_margin_h + '|' + alt_1_margin_v + '|' + alt_1_line_spacing + '|' + alt_1_font + '|' + alt_2_switch + '|' + alt_2_style + '|' + alt_2_name + '|' + alt_2_info + '|' + alt_2_name_size + '|' + alt_2_info_size  + '|' + alt_2_name_transform + '|' + alt_2_info_transform + '|' + alt_2_name_weight + '|' + alt_2_info_weight + '|' + alt_2_name_color + '|' + alt_2_info_color + '|' + alt_2_style_color_1 + '|' + alt_2_style_color_2 + '|' + alt_2_logo_switch + '|' + alt_2_background_switch + '|' + alt_2_shadows + '|' + alt_2_align + '|' + alt_2_size + '|' + alt_2_margin_h + '|' + alt_2_margin_v + '|' + alt_2_line_spacing + '|' + alt_2_font + '|' + alt_3_switch + '|' + alt_3_style + '|' + alt_3_name + '|' + alt_3_info + '|' + alt_3_name_size + '|' + alt_3_info_size  + '|' + alt_3_name_transform + '|' + alt_3_info_transform + '|' + alt_3_name_weight + '|' + alt_3_info_weight + '|' + alt_3_name_color + '|' + alt_3_info_color + '|' + alt_3_style_color_1 + '|' + alt_3_style_color_2 + '|' + alt_3_logo_switch + '|' + alt_3_background_switch + '|' + alt_3_shadows + '|' + alt_3_align + '|' + alt_3_size + '|' + alt_3_margin_h + '|' + alt_3_margin_v + '|' + alt_3_line_spacing + '|' + alt_3_font + '|' + alt_4_switch + '|' + alt_4_style + '|' + alt_4_name + '|' + alt_4_info + '|' + alt_4_name_size + '|' + alt_4_info_size  + '|' + alt_4_name_transform + '|' + alt_4_info_transform + '|' + alt_4_name_weight + '|' + alt_4_info_weight + '|' + alt_4_name_color + '|' + alt_4_info_color + '|' + alt_4_style_color_1 + '|' + alt_4_style_color_2 + '|' + alt_4_logo_switch + '|' + alt_4_background_switch + '|' + alt_4_shadows + '|' + alt_4_align + '|' + alt_4_size + '|' + alt_4_margin_h + '|' + alt_4_margin_v + '|' + alt_4_line_spacing + '|' + alt_4_font + '|' + alt_1_animation_time + '|' + alt_1_active_time + '|' + alt_1_inactive_time + '|' + alt_2_animation_time + '|' + alt_2_active_time + '|' + alt_2_inactive_time + '|' + alt_3_animation_time + '|' + alt_3_active_time + '|' + alt_3_inactive_time + '|' + alt_4_animation_time + '|' + alt_4_active_time + '|' + alt_4_inactive_time + '|' + alt_1_logo + '|' + alt_2_logo + '|' + alt_3_logo + '|' + alt_4_logo + '|' + global_oneshot + '|' + alt_1_oneshot + '|' + alt_2_oneshot + '|' + alt_3_oneshot + '|' + alt_4_oneshot + '|' + alt_1_logo_size + '|' + alt_1_shadow_amount + '|' + alt_1_corners + '|' + alt_1_border_switch + '|' + alt_1_border_thickness_amount + '|' + alt_1_style_color_3 + '|' + alt_1_style_color_4);
-
-				//Previews
-				bcp.postMessage(global_animation_time + '|' + global_active_time + '|' + global_inactive_time + '|' + alt_1_preview + '|' + alt_1_style + '|' + alt_1_name + '|' + alt_1_info + '|' + alt_1_name_size + '|' + alt_1_info_size  + '|' + alt_1_name_transform + '|' + alt_1_info_transform + '|' + alt_1_name_weight + '|' + alt_1_info_weight + '|' + alt_1_name_color + '|' + alt_1_info_color + '|' + alt_1_style_color_1 + '|' + alt_1_style_color_2 + '|' + alt_1_logo_switch + '|' + alt_1_background_switch + '|' + alt_1_shadows + '|' + alt_1_align + '|' + alt_1_size + '|' + alt_1_margin_h + '|' + alt_1_margin_v + '|' + alt_1_line_spacing + '|' + alt_1_font + '|' + alt_2_preview + '|' + alt_2_style + '|' + alt_2_name + '|' + alt_2_info + '|' + alt_2_name_size + '|' + alt_2_info_size  + '|' + alt_2_name_transform + '|' + alt_2_info_transform + '|' + alt_2_name_weight + '|' + alt_2_info_weight + '|' + alt_2_name_color + '|' + alt_2_info_color + '|' + alt_2_style_color_1 + '|' + alt_2_style_color_2 + '|' + alt_2_logo_switch + '|' + alt_2_background_switch + '|' + alt_2_shadows + '|' + alt_2_align + '|' + alt_2_size + '|' + alt_2_margin_h + '|' + alt_2_margin_v + '|' + alt_2_line_spacing + '|' + alt_2_font + '|' + alt_3_preview + '|' + alt_3_style + '|' + alt_3_name + '|' + alt_3_info + '|' + alt_3_name_size + '|' + alt_3_info_size  + '|' + alt_3_name_transform + '|' + alt_3_info_transform + '|' + alt_3_name_weight + '|' + alt_3_info_weight + '|' + alt_3_name_color + '|' + alt_3_info_color + '|' + alt_3_style_color_1 + '|' + alt_3_style_color_2 + '|' + alt_3_logo_switch + '|' + alt_3_background_switch + '|' + alt_3_shadows + '|' + alt_3_align + '|' + alt_3_size + '|' + alt_3_margin_h + '|' + alt_3_margin_v + '|' + alt_3_line_spacing + '|' + alt_3_font + '|' + alt_4_preview + '|' + alt_4_style + '|' + alt_4_name + '|' + alt_4_info + '|' + alt_4_name_size + '|' + alt_4_info_size  + '|' + alt_4_name_transform + '|' + alt_4_info_transform + '|' + alt_4_name_weight + '|' + alt_4_info_weight + '|' + alt_4_name_color + '|' + alt_4_info_color + '|' + alt_4_style_color_1 + '|' + alt_4_style_color_2 + '|' + alt_4_logo_switch + '|' + alt_4_background_switch + '|' + alt_4_shadows + '|' + alt_4_align + '|' + alt_4_size + '|' + alt_4_margin_h + '|' + alt_4_margin_v + '|' + alt_4_line_spacing + '|' + alt_4_font + '|' + alt_1_animation_time + '|' + alt_1_active_time + '|' + alt_1_inactive_time + '|' + alt_2_animation_time + '|' + alt_2_active_time + '|' + alt_2_inactive_time + '|' + alt_3_animation_time + '|' + alt_3_active_time + '|' + alt_3_inactive_time + '|' + alt_4_animation_time + '|' + alt_4_active_time + '|' + alt_4_inactive_time + '|' + alt_1_logo + '|' + alt_2_logo + '|' + alt_3_logo + '|' + alt_4_logo + '|' + global_oneshot + '|' + alt_1_oneshot + '|' + alt_2_oneshot + '|' + alt_3_oneshot + '|' + alt_4_oneshot);
+				bc.postMessage({global_animation_time, global_active_time, global_inactive_time, alt_1_switch, alt_1_style, alt_1_name, alt_1_info, alt_1_name_size, alt_1_info_size , alt_1_name_transform, alt_1_info_transform, alt_1_name_weight, alt_1_info_weight, alt_1_name_color, alt_1_info_color, alt_1_style_color_1, alt_1_style_color_2, alt_1_logo_switch, alt_1_background_switch, alt_1_shadows, alt_1_align, alt_1_size, alt_1_margin_h, alt_1_margin_v, alt_1_line_spacing, alt_1_font, alt_2_switch, alt_2_style, alt_2_name, alt_2_info, alt_2_name_size, alt_2_info_size , alt_2_name_transform, alt_2_info_transform, alt_2_name_weight, alt_2_info_weight, alt_2_name_color, alt_2_info_color, alt_2_style_color_1, alt_2_style_color_2, alt_2_logo_switch, alt_2_background_switch, alt_2_shadows, alt_2_align, alt_2_size, alt_2_margin_h, alt_2_margin_v, alt_2_line_spacing, alt_2_font, alt_3_switch, alt_3_style, alt_3_name, alt_3_info, alt_3_name_size, alt_3_info_size , alt_3_name_transform, alt_3_info_transform, alt_3_name_weight, alt_3_info_weight, alt_3_name_color, alt_3_info_color, alt_3_style_color_1, alt_3_style_color_2, alt_3_logo_switch, alt_3_background_switch, alt_3_shadows, alt_3_align, alt_3_size, alt_3_margin_h, alt_3_margin_v, alt_3_line_spacing, alt_3_font, alt_4_switch, alt_4_style, alt_4_name, alt_4_info, alt_4_name_size, alt_4_info_size , alt_4_name_transform, alt_4_info_transform, alt_4_name_weight, alt_4_info_weight, alt_4_name_color, alt_4_info_color, alt_4_style_color_1, alt_4_style_color_2, alt_4_logo_switch, alt_4_background_switch, alt_4_shadows, alt_4_align, alt_4_size, alt_4_margin_h, alt_4_margin_v, alt_4_line_spacing, alt_4_font, alt_1_animation_time, alt_1_active_time, alt_1_inactive_time, alt_2_animation_time, alt_2_active_time, alt_2_inactive_time, alt_3_animation_time, alt_3_active_time, alt_3_inactive_time, alt_4_animation_time, alt_4_active_time, alt_4_inactive_time, alt_1_logo_image, alt_2_logo_image, alt_3_logo_image, alt_4_logo_image, global_oneshot, alt_1_oneshot, alt_2_oneshot, alt_3_oneshot, alt_4_oneshot, alt_1_logo_size, alt_1_shadow_amount, alt_1_corners, alt_1_border_switch, alt_1_border_thickness_amount, alt_1_style_color_3, alt_1_style_color_4, alt_2_logo_size, alt_2_shadow_amount, alt_2_corners, alt_2_border_switch, alt_2_border_thickness_amount, alt_2_style_color_3, alt_2_style_color_4, alt_3_logo_size, alt_3_shadow_amount, alt_3_corners, alt_3_border_switch, alt_3_border_thickness_amount, alt_3_style_color_3, alt_3_style_color_4, alt_4_logo_size, alt_4_shadow_amount, alt_4_corners, alt_4_border_switch, alt_4_border_thickness_amount, alt_4_style_color_3, alt_4_style_color_4, alt_1_preview, alt_2_preview, alt_3_preview, alt_4_preview});
 			}
 
 			//Send New Fonts to source
 			function function_send_font() {
 				$.each(fontlist_urls, function(i) {
 					new_font_to_send = fontlist_urls[i];
-					bcf.postMessage(new_font_to_send);
+					bcf.postMessage({new_font_to_send});
 				});					
 			}
 
@@ -3200,13 +3307,127 @@
 				var file = this.files[0];
 				var reader = new FileReader();
 				reader.onload = function(progressEvent){
-					clearTimeout(refreshSaveData); //Stop saving data to localstorage
 					localStorage.clear();
 					
 					writeLocalStorage(this.result);
 				};
 				reader.readAsText(file);
 			};
+
+			function openTab(element, cityName) {
+				// Declare all variables
+				var i, tabcontent, tablinks;
+
+				// Get all elements with class="tabcontent" and hide them
+				tabcontent = document.getElementsByClassName("tabcontent");
+				for (i = 0; i < tabcontent.length; i++) {
+					tabcontent[i].style.display = "none";
+				}
+
+				// Get all elements with class="tablinks" and remove the class "active"
+				tablinks = document.getElementsByClassName("tablinks");
+				for (i = 0; i < tablinks.length; i++) {
+					tablinks[i].className = tablinks[i].className.replace(" active", "");
+				}
+
+				// Show the current tab, and add an "active" class to the button that opened the tab
+				document.getElementById('tab-'+cityName).style.display = "block";
+				element.className += " active";
+				updateMoreMaxHeight()
+			}
+
+			//Create Tooltips to show settings info
+			function settingsTooltips (){
+				const tooltip = {
+					"global_animation_time" : "Length of the in and out animation.<br>Default: 4 sec.",
+					"global_active_time" : "How long the LT is active.<br>Default: 25 sec.",
+					"global_inactive_time" : "How long the LT is inactive.<br>Default: 420 sec." ,
+					"lock_active" : "Lock the active state: Always active.",
+					"oneshot" : "Oneshot: Turns off the LT Switch when it goes into inactive state.",
+					"preview" : "Show/hide the LT in the preview window",
+					"align_left" : "Left alignment.",
+					"align_center" : "Center alignment.",
+					"align_right" : "Right alignment.",
+					"style" : "Style: Changes the look of the LT.",
+					"size" : "Size of the LT.",
+					"margin" : "Horizontal and vertical margin.",
+					"text_size" : "Ratio between the size of the texts.",
+					"line_spacing" : "Space between texts.",					
+					"font" : "LT Text font.",
+					"logo" : "Show/hide the logo image.",
+					"logo_size" : "Size of the logo image.",
+					"shadow" : "Show/hide shadows.",
+					"shadow_opacity" : "Shadows opacity.",
+					"fill_colors" : "Enable/disable fill or background colors.",
+					"corners" : "Round corners.",
+					"borders" : "Enable/disable borders.",
+					"borders_thinkness" : "Border thickness.",
+					"uppercase" : "Enable/disable uppercase.",
+					"bold" : "Enable/disable bold.",
+					"clean" : "Clear the text fields and set the logo to default.",
+					"autotrigger" : "Autotrigger: Turns on the switch automatically when a slot memory is loaded.",
+					"autoload" : "Autoload: Loads automatically the next memory slot every time it goes to the inactive state. Ready to display in the next cycle.",
+					"custom_times" : "Show/hide custom time settings.",
+					"animation_time" : "Length of the in and out animation.",
+					"active_time" : "How long the LT is active.",
+					"inactive_time" : "How long the LT is inactive.",
+					"preview_window" : "Show/hide preview window.",
+					"custom_fonts" : "Add fonts from Google Fonts.",
+					"default_logos" : "Change the default logos of each LT.<br>Make sure to copy the logo files into the logos folder.<br>You can use JPG, PNG, TIFF, GIF, etc.<br>With transparency or animated.",
+				};
+
+				$("#global-animation-time").attr("title", tooltip.global_animation_time);
+				$("#global-active-time").attr("title", tooltip.global_active_time);
+				$("#global-inactive-time").attr("title", tooltip.global_inactive_time);
+				$("#alt-1-animation-time, #alt-2-animation-time, #alt-3-animation-time, #alt-4-animation-time").attr("title", tooltip.animation_time);
+				$("#alt-1-active-time, #alt-2-active-time, #alt-3-active-time, #alt-4-active-time").attr("title", tooltip.active_time);
+				$("#alt-1-inactive-time, #alt-2-inactive-time, #alt-3-inactive-time, #alt-4-inactive-time").attr("title", tooltip.inactive_time);
+				$("#global-lock-active, #alt-1-lock-active, #alt-2-lock-active, #alt-3-lock-active, #alt-4-lock-active").parent().attr("title", tooltip.lock_active);
+				$("#global-oneshot, #alt-1-oneshot, #alt-2-oneshot, #alt-3-oneshot, #alt-4-oneshot").parent().attr("title", tooltip.oneshot);
+				
+				$("#alt-1-preview, #alt-2-preview, #alt-3-preview, #alt-4-preview").parent().attr("title", tooltip.preview);
+				$("#alt-1-align-left, #alt-2-align-left, #alt-3-align-left, #alt-4-align-left").next().attr("title", tooltip.align_left);
+				$("#alt-1-align-center, #alt-2-align-center, #alt-3-align-center, #alt-4-align-center").next().attr("title", tooltip.align_center);
+				$("#alt-1-align-right, #alt-2-align-right, #alt-3-align-right, #alt-4-align-right").next().attr("title", tooltip.align_right);
+				$("#alt-1-style, #alt-2-style, #alt-3-style, #alt-4-style").parent().parent().attr("title", tooltip.style);
+				$("#alt-1-size, #alt-2-size, #alt-3-size, #alt-4-size").parent().parent().attr("title", tooltip.size);
+				$("#alt-1-margin-h, #alt-2-margin-h, #alt-3-margin-h, #alt-4-margin-h").parent().parent().attr("title", tooltip.margin);
+				$("#alt-1-inverse-ratio, #alt-2-inverse-ratio, #alt-3-inverse-ratio, #alt-4-inverse-ratio").parent().parent().attr("title", tooltip.text_size);
+				$("#alt-1-line-spacing, #alt-2-line-spacing, #alt-3-line-spacing, #alt-4-line-spacing").parent().parent().attr("title", tooltip.line_spacing);
+				$("#alt-1-font, #alt-2-font, #alt-3-font, #alt-4-font").parent().attr("title", tooltip.font);
+				$("#alt-1-logo, #alt-2-logo, #alt-3-logo, #alt-4-logo").parent().attr("title", tooltip.logo);
+				$("#alt-1-logo-size, #alt-2-logo-size, #alt-3-logo-size, #alt-4-logo-size").parent().attr("title", tooltip.logo_size);
+				$("#alt-1-shadows, #alt-2-shadows, #alt-3-shadows, #alt-4-shadows").parent().attr("title", tooltip.shadow);
+				$("#alt-1-shadow-amount, #alt-2-shadow-amount, #alt-3-shadow-amount, #alt-4-shadow-amount").parent().attr("title", tooltip.shadow_opacity);
+				$("#alt-1-background, #alt-2-background, #alt-3-background, #alt-4-background").parent().attr("title", tooltip.fill_colors);
+				$("#alt-1-corners, #alt-2-corners, #alt-3-corners, #alt-4-corners").parent().parent().attr("title", tooltip.corners);
+				$("#alt-1-border-thickness, #alt-2-border-thickness, #alt-3-border-thickness #alt-4-border-thickness").parent().attr("title", tooltip.borders);
+				$("#alt-1-border-color, #alt-2-border-color, #alt-3-border-color, #alt-4-border-color").parent().attr("title", tooltip.borders);
+				$("#alt-1-border-thickness-amount, #alt-2-border-thickness-amount, #alt-3-border-thickness-amount, #alt-4-border-thickness-amount").parent().attr("title", tooltip.borders_thinkness);
+
+				$("#alt-1-clean-inputs, #alt-2-clean-inputs, #alt-3-clean-inputs, #alt-4-clean-inputs").attr("title", tooltip.clean);
+				$("#alt-1-autotrigger, #alt-2-autotrigger, #alt-3-autotrigger, #alt-4-autotrigger").parent().attr("title", tooltip.autotrigger);
+				$("#alt-1-autoload, #alt-2-autoload, #alt-3-autoload, #alt-4-autoload").parent().attr("title", tooltip.autoload);
+				$("#alt-1-custom-times, #alt-2-custom-times, #alt-3-custom-times, #alt-4-custom-times").attr("title", tooltip.custom_times);
+
+				$("#fonts-options").children().first().attr("title", tooltip.custom_fonts);
+				$(".logos-options").children().first().attr("title", tooltip.default_logos);
+				$("#toggle-preview").attr("title", tooltip.preview_window);
+				
+				$(document).tooltip({  
+					show: { delay: 600, duration: 200 },
+					open: function(event, ui)  
+					{  
+						ui.tooltip.hover(  
+						function () {  
+							$(this).fadeTo("slow", 0.2);  
+						});  
+					},
+					content: function() {
+						return $(this).attr("title");
+					}
+				});
+			}
 
 			//Read all localstorage data
 			function getLocalStorage() {
@@ -3237,12 +3458,12 @@
 				document.getElementById("dataInput").value = allData;
 				var copyText = document.getElementById("dataInput");
 
+				//Open the Popup "Copied to Clipboard"
+				openExportPopup();
+
 				//Select text input and copy to the clipboard
 				copyText.select();
 				document.execCommand("copy");
-
-				//Open the Popup "Copied to Clipboard"
-				openExportPopup();
         	}
 
 
@@ -3250,18 +3471,21 @@
 				$('.storable').each(function(){    
 					var id = $(this).attr('id');
 					var value = localStorage.getItem(id);
-					
-					$(this).val(value);              
+					var default_value = $(this).attr('value');
+
+					if(value) {
+						$(this).val(value);
+					} else if (default_value) {
+						$(this).val(default_value);
+					}
 				});
 
 				$('.logo-storable').each(function(){    
 					var id = $(this).attr('id');
 					var value = localStorage.getItem(id);
-					//console.log(id + ":" + value);
 					if(value != "undefined" && value != ""){
-						$(this).attr('src', value);            
+						$(this).attr('src', value);
 					} else {
-						
 						//Set all to default the first time
 						if (id == "alt-1-logo-preview" || id == "alt-1-logo-default"){
 							$(this).attr('src', alt_1_logo_default);
@@ -3285,17 +3509,14 @@
 					$(this).text(value);
 				});
 
-				$('.checkbox-storable').each(function(){
-					var id = $(this).attr('id');
-					var checked = JSON.parse(localStorage.getItem(id));
-    				document.getElementById(id).checked = checked;
-    			});
+				$('.checkbox-storable, .radio-storable').each(function(){
+                    var id = $(this).attr('id');
+					var value = localStorage.getItem(id);
 
-				$('.radio-storable').each(function(){
-					var id = $(this).attr('id');
-					var checked = JSON.parse(localStorage.getItem(id));
-    				document.getElementById(id).checked = checked;
-    			});
+					if (value) {
+						$(this).prop('checked', localStorage.getItem(id) === 'true');
+					}
+                });
 
 				$('.title-storable').each(function(){    
 					var id = $(this).attr('id');
@@ -3309,83 +3530,112 @@
 			}
 
 			function saveData () {
-				y = 0.05; // Refresh time multiplier
+				// If local storage is empty, call reset to reinitialize
+				if (localStorage.length === 0) {
+					okResetPopup();
+				}
 
-	        	$('.storable').each(function(){    
+	        	$('.storable').change(function(){
+					refreshData();
 					var id = $(this).attr('id');
 					var value = $(this).val();
-					localStorage.setItem(id, value);              
+					localStorage.setItem(id, value);
 	        	});
 
-	        	$('.logo-storable').each(function(){    
+	        	// Update while input (text or number) is changed
+				$(':input[type=text], :input[type=number]').on('input',function(e){
+					refreshData();
+					var id = $(this).attr('id');
+					var value = $(this).val();
+					localStorage.setItem(id, value);
+				});
+
+	        	$('.logo-storable').change(function(){
+					refreshData();
 					var id = $(this).attr('id');
 					var value = $(this).attr('src');
 					localStorage.setItem(id, value);              
 	        	});
 
-	        	$('.slot-storable').each(function(){    
+	        	$('.slot-storable, .title-storable').change(function(){
+					refreshData();
 					var id = $(this).attr('id');
 					var value = $(this).text();
 					localStorage.setItem(id, value);
 	        	});
 
-				$('.checkbox-storable').each(function(){
+				$('.checkbox-storable').change(function(){
+					refreshData();
 					var id = $(this).attr('id');
-					var checkbox = document.getElementById(id);
-					localStorage.setItem(id, checkbox.checked);
-    			});
+					localStorage.setItem(id, $(this).is(':checked'));
 
-				$('.radio-storable').each(function(){
-					var id = $(this).attr('id');
-					var checkbox = document.getElementById(id);	
-					localStorage.setItem(id, checkbox.checked);
-    			});
-
-				$('.font-storable').each(function(){
-					var id =  $(this).attr('id');
-					$("#" + id).change(function() {
-				        localStorage.setItem(id, this.value);
-				    });
+					// Check for a twin chekcbox
+					if ($(this).hasClass('twin-checkbox')) {
+						const twin =$(this).parents('.grid-row').find('.twin-checkbox').not(this);
+						id = twin.attr('id');
+						localStorage.setItem(id, twin.is(':checked'));
+					}
 				});
 
-	        	$('.title-storable').each(function(){    
-					var id = $(this).attr('id');
-					var value = $(this).text();
-					localStorage.setItem(id, value);              
-	        	});
-
-				$('.select-settings-storable').each(function(){
-					var id =  $(this).attr('id');
-					$("#" + id).change(function() {
-				        localStorage.setItem(id, this.value);
-				    });
+				$('.radio-storable').change(function(){
+					refreshData();
+					var radio_name = $(this).attr('name');
+					$(':input[name=' + radio_name + ']').each(function(){
+						var id = $(this).attr('id');
+						localStorage.setItem(id, $(this).is(':checked'));
+					});
 				});
 
-	        	refreshSaveData = setTimeout(saveData, y*1000);
+				$('.font-storable, .select-settings-storable').change(function(){
+					refreshData();
+					var id =  $(this).attr('id');
+					localStorage.setItem(id, this.value);
+				});
+
+				/**
+				 * Indirect changes
+ 				 */
+				$(':button').on('click',function(e){
+					// Lanza evento de cambio del input superior
+					$(this).parent().find('input').change()
+				});
+
+				$('.slot-number').on('click',function(e){
+					// Lanza evento de cambio de los divs hermanos
+					$(this).siblings('.slot-storable').change();
+				});
 			}
 
 			function refreshData() {
-			    x = 0.05; // Refresh time multiplier
-
+				console.log('refreshData');
+				checkLogos();
 				checkSlots("#alt-1-memory-slots", "#alt-1-name", "#alt-1-info", "#alt-1-logo-preview");
 				checkSlots("#alt-2-memory-slots", "#alt-2-name", "#alt-2-info", "#alt-2-logo-preview");
 				checkSlots("#alt-3-memory-slots", "#alt-3-name", "#alt-3-info", "#alt-3-logo-preview");
 				checkSlots("#alt-4-memory-slots", "#alt-4-name", "#alt-4-info", "#alt-4-logo-preview");
-				checkLogos();
-				checkHotkeys();
 				getAppearance();
-				updateHotkeys();
-
+				checkSwitches();
 				function_send();
-				
-				setTimeout(refreshData, x*1000);
 			}
 
-			// localStorage.clear();
+			function checkUpdates() {
+				checkHotkeys();
+				updateHotkeys();
+			}
+
+			settingsTooltips();
+			loadDefaultValues();
 			loadData();
 			updateCustomFontList();
 			refreshData();
+			checkSwitches();
 			saveData();
+			setInterval(() => checkUpdates(), 200);
+
+			// Wait document to be ready to do some stuff
+			$( document ).ready(function() {
+				$('#defaultTab').click();
+			});
 
 		</script>
 

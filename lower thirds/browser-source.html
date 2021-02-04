@@ -13,7 +13,9 @@
   <body class="browser-source lower-thirds">
 		<!--Lower third 1-->
 		<div id="lower-third-1" class="alt left style-1 hide-anim">
-			<div id="alt-1-logo" class="logo no-logo"></div>
+			<div id="alt-1-logo" class="logo no-logo">
+				<img id="alt-1-logo-image" src="//:0" />
+			</div>
 			<div class="graph-1"></div>
 			<div class="text-content">
 				<div class="text-mask">
@@ -28,7 +30,9 @@
 
 		<!--Lower third 2-->
 		<div id="lower-third-2" class="alt left style-1 hide-anim">
-			<div id="alt-2-logo" class="logo no-logo"></div>
+			<div id="alt-2-logo" class="logo no-logo">
+				<img id="alt-2-logo-image" src="//:0" />
+			</div>
 			<div class="graph-1"></div>
 			<div class="text-content">
 				<div class="text-mask">
@@ -43,7 +47,9 @@
 
 		<!--Lower third 3-->
 		<div id="lower-third-3" class="alt left style-1 hide-anim">
-			<div id="alt-3-logo" class="logo no-logo"></div>
+			<div id="alt-3-logo" class="logo no-logo">
+				<img id="alt-3-logo-image" src="//:0" />
+			</div>
 			<div class="graph-1"></div>
 			<div class="text-content">
 				<div class="text-mask">
@@ -58,7 +64,9 @@
 
 		<!--Lower third 4-->
 		<div id="lower-third-4" class="alt left style-1 hide-anim">
-			<div id="alt-4-logo" class="logo no-logo"></div>
+			<div id="alt-4-logo" class="logo no-logo">
+				<img id="alt-4-logo-image" src="//:0" />
+			</div>
 			<div class="graph-1"></div>
 			<div class="text-content">
 				<div class="text-mask">
@@ -71,11 +79,10 @@
 			<div class="graph-2"></div>
 		</div>
 
-	<script>
-
+	 <script type="text/javascript">
 		//Check preview
-		var getUrlParameter = function getUrlParameter(sParam) {
-		    var sPageURL = window.location.search.substring(1),
+		function getUrlParameter(sParam) {
+		    let sPageURL = window.location.search.substring(1),
 		        sURLVariables = sPageURL.split('&'),
 		        sParameterName,
 		        i;
@@ -87,311 +94,251 @@
 		            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
 		        }
 		    }
-		};		
+		};
 
-		var mode = getUrlParameter('mode');
+		const mode = getUrlParameter('mode');
 
 		//Check mode and change de channel to receive switches orders or preview orders
 		if (mode == "preview") {
 			document.body.classList.add('preview');
-			var receiveChannel = 'obs-lower-thirds-preview'; //Preview channel
-		} else {
-			var receiveChannel = 'obs-lower-thirds-channel';
 		}
 
-		var bcp = new BroadcastChannel(receiveChannel); //Receives from the source 
-		var bcr = new BroadcastChannel('obs-lower-thirds-channel2'); //Send to Control Panel
-		var bcf = new BroadcastChannel('obs-lower-thirds-fonts');
+		const bcp = new BroadcastChannel('obs-lower-thirds-channel'); //Receives from the source
+		const bcr = new BroadcastChannel('obs-lower-thirds-channel2'); //Send to Control Panel
+		const bcf = new BroadcastChannel('obs-lower-thirds-fonts');
 
-		var alt_1_logo_image;
-		var alt_1_logo_image_old = alt_1_logo_image;
-		var alt_2_logo_image;
-		var alt_2_logo_image_old = alt_2_logo_image;
-		var alt_3_logo_image;
-		var alt_3_logo_image_old = alt_3_logo_image;
-		var alt_4_logo_image;
-		var alt_4_logo_image_old = alt_4_logo_image;
+		let alt_1_logo_image_old;
+		let alt_2_logo_image_old;
+		let alt_3_logo_image_old;
+		let alt_4_logo_image_old;
 
+		let alt_1_align_old = "left";
+		let alt_2_align_old = "left";
+		let alt_3_align_old = "left";
+		let alt_4_align_old = "left";
 
-		var global_animation_time;
-		var activeTime;
-		var inactiveTime;
+		let alt_1_style_old;
+		let alt_2_style_old;
+		let alt_3_style_old;
+		let alt_4_style_old;
 
-		var canIn1 = false;
-		var canIn2 = false;
-		var canIn3 = false;
-		var canIn4 = false;		
+		let canIn1 = false;
+		let canIn2 = false;
+		let canIn3 = false;
+		let canIn4 = false;
 
-		var c1 = 0;
-		var d1 = 0;
-		var t1;
-		var s1;
+		let c1 = 0;
+		let d1 = 0;
+		let t1;
+		let s1;
 
-		var c2 = 0;
-		var d2 = 0;
-		var t2;
-		var s2;
+		let c2 = 0;
+		let d2 = 0;
+		let t2;
+		let s2;
 
-		var c3 = 0;
-		var d3 = 0;
-		var t3;
-		var s3;
+		let c3 = 0;
+		let d3 = 0;
+		let t3;
+		let s3;
 
-		var c4 = 0;
-		var d4 = 0;
-		var t4;
-		var s4;		
+		let c4 = 0;
+		let d4 = 0;
+		let t4;
+		let s4;
 
-		var activeTime1_to_send;
-		var inactiveTime1_to_send;
-		var activeTime2_to_send;
-		var inactiveTime2_to_send;
-		var activeTime3_to_send;
-		var inactiveTime3_to_send;
-		var activeTime4_to_send;
-		var inactiveTime4_to_send;
+		let active1IsOn = 0;
+		let inactive1IsOn = 0;
+		let active2IsOn = 0;
+		let inactive2IsOn = 0;
+		let active3IsOn = 0;
+		let inactive3IsOn = 0;
+		let active4IsOn = 0;
+		let inactive4IsOn = 0;
 
-		var active1IsOn = 0;
-		var inactive1IsOn = 0;
-		var active2IsOn = 0;
-		var inactive2IsOn = 0;
-		var active3IsOn = 0;
-		var inactive3IsOn = 0;
-		var active4IsOn = 0;
-		var inactive4IsOn = 0;
-
-		var alt_1_logo_switch;
-		var alt_1_logo_switch_old = alt_1_logo_switch;
-		var alt_1_align = "left";
-		var alt_1_align_old = alt_1_align;
-		var alt_1_style;
-		var alt_1_style_old = alt_1_style;
-
-		var alt_2_logo_switch;
-		var alt_2_logo_switch_old = alt_2_logo_switch;
-		var alt_2_align = "left";
-		var alt_2_align_old = alt_2_align;
-		var alt_2_style;
-		var alt_2_style_old = alt_2_style;
-
-		var alt_3_logo_switch;
-		var alt_3_logo_switch_old = alt_3_logo_switch;
-		var alt_3_align = "left";
-		var alt_3_align_old = alt_3_align;
-		var alt_3_style;
-		var alt_3_style_old = alt_3_style;				
-
-		var alt_4_logo_switch;
-		var alt_4_logo_switch_old = alt_4_logo_switch;
-		var alt_4_align = "left";
-		var alt_4_align_old = alt_4_align;
-		var alt_4_style;
-		var alt_4_style_old = alt_4_style;
-
-		var alt_1_wait_hide_logo;
-		var alt_2_wait_hide_logo;
-		var alt_3_wait_hide_logo;
-		var alt_4_wait_hide_logo;
-		
-		var hide_logo_1 = false;
-		var hide_logo_2 = false;
-		var hide_logo_3 = false;
-		var hide_logo_4 = false;
-
-		var alt_1_turnoff;
-		var alt_2_turnoff;
-		var alt_3_turnoff;
-		var alt_4_turnoff;
+		let alt_1_turnoff;
+		let alt_2_turnoff;
+		let alt_3_turnoff;
+		let alt_4_turnoff;
 
 
 		function animationIn(animation) {
-			elementAnim = document.getElementById(animation);			
-			document.getElementById(animation).classList.remove("animation-out");
+			const elementAnim = document.getElementById(animation);
+			elementAnim.classList.remove("animation-out");
 			void elementAnim.offsetWidth;
-			document.getElementById(animation).classList.add("animation-in");
+			elementAnim.classList.add("animation-in");
 		}
 
 		function animationOut(animation) {
-			elementAnim = document.getElementById(animation);			
-			document.getElementById(animation).classList.remove("animation-in");
+			const elementAnim = document.getElementById(animation);
+			elementAnim.classList.remove("animation-in");
 			void elementAnim.offsetWidth;
-			document.getElementById(animation).classList.add("animation-out");		
+			elementAnim.classList.add("animation-out");
 		}
 
-		// Active time counter (Lower Third 1)
-		function activeCount1(i) {
-		  if (c1 <= alt_1_active_time){
-		    c1 = c1 + 1;
-		    t1 = setTimeout(activeCount1, 1000, i);
-		  } else {
-		      stopTimeCount(i);
-		      startInactiveCount(i);      
-		  }
+		function activeCount(i) {
+			switch (i) {
+				case "lower-third-1": {
+					if (c1 <= alt_1_active_time){
+						c1 = c1 + 1;
+						t1 = setTimeout(activeCount, 1000, i);
+					} else {
+						stopTimeCount(i);
+						startInactiveCount(i);
+					}
+				}
+					break;
+				case "lower-third-2": {
+					if (c2 <= alt_2_active_time){
+						c2 = c2 + 1;
+						t2 = setTimeout(activeCount, 1000, i);
+					} else {
+						stopTimeCount(i);
+						startInactiveCount(i);
+					}
+				}
+					break;
+				case "lower-third-3": {
+					if (c3 <= alt_3_active_time){
+						c3 = c3 + 1;
+						t3 = setTimeout(activeCount, 1000, i);
+					} else {
+						stopTimeCount(i);
+						startInactiveCount(i);
+					}
+				}
+					break;
+				case "lower-third-4": {
+					if (c4 <= alt_4_active_time){
+						c4 = c4 + 1;
+						t4 = setTimeout(activeCount, 1000, i);
+					} else {
+						stopTimeCount(i);
+						startInactiveCount(i);
+					}
+				}
+					break;
+				default:
+					break;
+			}
 		}
 
-		// Inactive time counter (Lower Third 1)
-		function inactiveCount1(i) {
-		  if (d1 <= alt_1_inactive_time){
-		    d1 = d1 + 1;
-		    s1 = setTimeout(inactiveCount1, 1000, i);
-		  } else {
-		      startActiveCount(i);
-		      d1 = 0;
-		      clearTimeout(s1);
-		      inactive1IsOn = 0;
-		  }
-		}
-
-		// Active time counter (Lower Third 2)
-		function activeCount2(i) {
-		  if (c2 <= alt_2_active_time){
-		    c2 = c2 + 1;
-		    t2 = setTimeout(activeCount2, 1000, i);
-		  } else {
-		      stopTimeCount(i);
-		      startInactiveCount(i);      
-		  }
-		}
-
-		// Inactive time counter (Lower Third 2)
-		function inactiveCount2(i) {
-		  if (d2 <= alt_2_inactive_time){
-		    d2 = d2 + 1;
-		    s2 = setTimeout(inactiveCount2, 1000, i);
-		  } else {
-		      startActiveCount(i);
-		      d2 = 0;
-		      clearTimeout(s2);
-		      inactive2IsOn = 0;
-		  }
-		}
-
-		// Active time counter (Lower Third 3)
-		function activeCount3(i) {
-		  if (c3 <= alt_3_active_time){
-		    c3 = c3 + 1;
-		    t3 = setTimeout(activeCount3, 1000, i);
-		  } else {
-		      stopTimeCount(i);
-		      startInactiveCount(i);      
-		  }
-		}
-
-		// Inactive time counter (Lower Third 3)
-		function inactiveCount3(i) {
-		  if (d3 <= alt_3_inactive_time){
-		    d3 = d3 + 1;
-		    s3 = setTimeout(inactiveCount3, 1000, i);
-		  } else {
-		      startActiveCount(i);
-		      d3 = 0;
-		      clearTimeout(s3);
-		      inactive3IsOn = 0;
-		  }
-		}
-
-		// Active time counter (Lower Third 4)
-		function activeCount4(i) {
-		  if (c4 <= alt_4_active_time){
-		    c4 = c4 + 1;
-		    t4 = setTimeout(activeCount4, 1000, i);
-		  } else {
-		      stopTimeCount(i);
-		      startInactiveCount(i);      
-		  }
-		}
-
-		// Inactive time counter (Lower Third 4)
-		function inactiveCount4(i) {
-		  if (d4 <= alt_4_inactive_time){
-		    d4 = d4 + 1;
-		    s4 = setTimeout(inactiveCount4, 1000, i);
-		  } else {
-		      startActiveCount(i);
-		      d4 = 0;
-		      clearTimeout(s4);
-		      inactive4IsOn = 0;
-		  }
+		function inactiveCount(i) {
+			switch (i) {
+				case "lower-third-1": {
+					if (d1 <= alt_1_inactive_time){
+						d1 = d1 + 1;
+						s1 = setTimeout(inactiveCount, 1000, i);
+					} else {
+						startActiveCount(i);
+						d1 = 0;
+						clearTimeout(s1);
+						inactive1IsOn = 0;
+					}
+				}
+					break;
+				case "lower-third-2": {
+					if (d2 <= alt_2_inactive_time){
+						d2 = d2 + 1;
+						s2 = setTimeout(inactiveCount, 1000, i);
+					} else {
+						startActiveCount(i);
+						d2 = 0;
+						clearTimeout(s2);
+						inactive2IsOn = 0;
+					}
+				}
+					break;
+				case "lower-third-3": {
+					if (d3 <= alt_3_inactive_time){
+						d3 = d3 + 1;
+						s3 = setTimeout(inactiveCount, 1000, i);
+					} else {
+						startActiveCount(i);
+						d3 = 0;
+						clearTimeout(s3);
+						inactive3IsOn = 0;
+					}
+				}
+					break;
+				case "lower-third-4": {
+					if (d4 <= alt_4_inactive_time){
+						d4 = d4 + 1;
+						s4 = setTimeout(inactiveCount, 1000, i);
+					} else {
+						startActiveCount(i);
+						d4 = 0;
+						clearTimeout(s4);
+						inactive4IsOn = 0;
+					}
+				}
+					break;
+				default:
+					break;
+			}
 		}
 
 		// Can start Active time counter? Start Animation In
 		function startActiveCount(i) {
-		  if (!active1IsOn) {
-		  	activeIs1On = true;
-			if (i == "lower-third-1"){
-				activeCount1(i);
-				animationIn(i);
-			}
+		  if (!active1IsOn && i == "lower-third-1") {
+		  	active1IsOn = true;
+			activeCount(i);
+			animationIn(i);
 		  }
-		  if (!active2IsOn) {
-		  	activeIs2On = true;
-			if (i == "lower-third-2"){
-				activeCount2(i);
-				animationIn(i);
-			}
+		  if (!active2IsOn && i == "lower-third-2") {
+		  	active2IsOn = true;
+			activeCount(i);
+			animationIn(i);
 		  }
-		  if (!active3IsOn) {
-		  	activeIs3On = true;
-			if (i == "lower-third-3"){
-				activeCount3(i);
-				animationIn(i);
-			}
+		  if (!active3IsOn && i == "lower-third-3") {
+		  	active3IsOn = true;
+			activeCount(i);
+			animationIn(i);
 		  }
-		  if (!active4IsOn) {
-		  	activeIs4On = true;
-			if (i == "lower-third-4"){
-				activeCount4(i);
-				animationIn(i);
-			}
+		  if (!active4IsOn && i == "lower-third-4") {
+		  	active4IsOn = true;
+			activeCount(i);
+			animationIn(i);
 		  }
 		}
 
 		// Can start Inactive time counter? Start Animation Out
 		function startInactiveCount(i) {
-		  if (!inactive1IsOn) {
+		  if (!inactive1IsOn && i == "lower-third-1") {
 		    inactive1IsOn = true;
-		    if (i == "lower-third-1"){
-				if (!alt_1_oneshot){
-					inactiveCount1(i);
-				} else {
-					alt_1_turnoff = true;
-				}
-				animationOut(i);
-				// alt_1_turnoff = false;
+			if (!alt_1_oneshot){
+				inactiveCount(i);
+			} else {
+				alt_1_turnoff = true;
 			}
+			animationOut(i);
 		  }
-		  if (!inactive2IsOn) {
+		  if (!inactive2IsOn && i == "lower-third-2") {
 		    inactive2IsOn = true;
-			if (i == "lower-third-2"){
-				if (!alt_2_oneshot){
-					inactiveCount2(i);
-				} else {
-					alt_2_turnoff = true;
-				}				
-			    animationOut(i);
+			if (!alt_2_oneshot){
+				inactiveCount(i);
+			} else {
+				alt_2_turnoff = true;
 			}
+			animationOut(i);
 		  }
-		  if (!inactive3IsOn) {
+		  if (!inactive3IsOn && i == "lower-third-3") {
 		    inactive3IsOn = true;
-			if (i == "lower-third-3"){
-				if (!alt_3_oneshot){
-					inactiveCount3(i);
-				} else {
-					alt_3_turnoff = true;
-				}
-			    animationOut(i);
+			if (!alt_3_oneshot){
+				inactiveCount(i);
+			} else {
+				alt_3_turnoff = true;
 			}
+			animationOut(i);
 		  }
-		  if (!inactive4IsOn) {
+		  if (!inactive4IsOn && i == "lower-third-4") {
 		    inactive4IsOn = true;
-			if (i == "lower-third-4"){
-				if (!alt_4_oneshot){
-					inactiveCount4(i);
-				} else {
-					alt_4_turnoff = true;
-				}
-			    animationOut(i);
+			if (!alt_4_oneshot){
+				inactiveCount(i);
+			} else {
+				alt_4_turnoff = true;
 			}
+			animationOut(i);
 		  }
 		}
 
@@ -399,203 +346,204 @@
 		function stopTimeCount(i) {
 		  if (i == "lower-third-1"){
 			c1 = 0;
-			clearTimeout(t1);
-			active1IsOn = 0;
 			d1 = 0;
+			active1IsOn = 0;
+			inactive1IsOn = 0;
 			clearTimeout(s1);
-			inactive1IsOn = 0;		  
+			clearTimeout(t1);
 		  }
 		  if (i == "lower-third-2"){
 			c2 = 0;
-
-			clearTimeout(t2);
-			active2IsOn = 0;
 			d2 = 0;
+			active2IsOn = 0;
+			inactive2IsOn = 0;
 			clearTimeout(s2);
-			inactive2IsOn = 0;		  
+			clearTimeout(t2);
 		  }
 		  if (i == "lower-third-3"){
 			c3 = 0;
-			clearTimeout(t3);
-			active3IsOn = 0;
 			d3 = 0;
+			active3IsOn = 0;
+			inactive3IsOn = 0;
 			clearTimeout(s3);
-			inactive3IsOn = 0;		  
+			clearTimeout(t3);
 		  }
 		  if (i == "lower-third-4"){
 			c4 = 0;
-			clearTimeout(t4);
-			active4IsOn = 0;
 			d4 = 0;
+			active4IsOn = 0;
+			inactive4IsOn = 0;
 			clearTimeout(s4);
-			inactive4IsOn = 0;		  
+			clearTimeout(t4);
 		  }
 
 		  animationOut(i);
 		}
 
-		///////////////////////////
-
-		bcp.onmessage = function (ev) {
-			received_data=ev.data.split("|");
-			global_animation_time = received_data[0];
-			if (mode != "preview") {
-				activeTime = received_data[1];
+		function changeLogoVisibility(alt_1_logo_switch, alt_1_logo_image, alt_2_logo_switch, alt_2_logo_image, alt_3_logo_switch, alt_3_logo_image, alt_4_logo_switch, alt_4_logo_image) {
+			if (alt_1_logo_switch == "true") {
+				$("#alt-1-logo").removeClass("no-logo");
+				loadLogo("alt-1-logo-image", alt_1_logo_image);
 			} else {
-				activeTime = Infinity;				
+				$("#alt-1-logo").addClass("no-logo");
+				loadLogo("alt-1-logo-image");
 			}
-			inactiveTime = received_data[2];
+
+			if (alt_2_logo_switch == "true") {
+				$("#alt-2-logo").removeClass("no-logo");
+				loadLogo("alt-2-logo-image", alt_2_logo_image);
+			} else {
+				$("#alt-2-logo").addClass("no-logo");
+				loadLogo("alt-2-logo-image");
+			}
+
+			if (alt_3_logo_switch == "true") {
+				$("#alt-3-logo").removeClass("no-logo");
+				loadLogo("alt-3-logo-image", alt_3_logo_image);
+			} else {
+				$("#alt-3-logo").addClass("no-logo");
+				loadLogo("alt-3-logo-image");
+			}
+
+			if (alt_4_logo_switch == "true") {
+				$("#alt-4-logo").removeClass("no-logo");
+				loadLogo("alt-4-logo-image", alt_4_logo_image);
+			} else {
+				$("#alt-4-logo").addClass("no-logo");
+				loadLogo("alt-4-logo-image");
+			}
+		}
+
+		///////////////////////////
+		bcp.onmessage = function (ev) {
+			const received_data = ev.data;
+			const {global_animation_time, global_oneshot} = received_data;
+
+			if (mode != "preview") {
+				activeTime = received_data.global_active_time;
+			} else {
+				activeTime = Infinity;
+			}
+			inactiveTime = received_data.global_inactive_time;
 
 			//Animated Lower Thirds 1
-			alt_1_switch = received_data[3];
-			alt_1_style = received_data[4];		
-			document.getElementById("alt-1-name").innerHTML = received_data[5];
-			document.getElementById("alt-1-info").innerHTML = received_data[6];
-			alt_1_name_size = received_data[7];
-			alt_1_info_size = received_data[8];
-			alt_1_name_transform = received_data[9];
-			alt_1_info_transform = received_data[10];
-			alt_1_name_weight = received_data[11];
-			alt_1_info_weight = received_data[12];
-			alt_1_name_color = received_data[13];
-			alt_1_info_color = received_data[14];
+			const {alt_1_style, alt_1_name, alt_1_info, alt_1_name_size, alt_1_info_size, alt_1_name_transform, alt_1_info_transform,
+				alt_1_name_weight, alt_1_info_weight, alt_1_name_color, alt_1_info_color, alt_1_logo_switch, alt_1_background_switch,
+				alt_1_shadows, alt_1_align = "left", alt_1_size, alt_1_margin_h, alt_1_margin_v, alt_1_font , alt_1_logo_image = "../logos/logo_1.png",
+				alt_1_logo_size, alt_1_shadow_amount, alt_1_corners, alt_1_border_switch} = received_data;
+			let {alt_1_switch, alt_1_preview, alt_1_style_color_1, alt_1_style_color_2, alt_1_line_spacing, alt_1_border_thickness_amount, alt_1_style_color_3, alt_1_style_color_4} = received_data;
 
-			alt_1_logo_switch = received_data[17];
-			alt_1_background_switch = received_data[18];
+			document.getElementById("alt-1-name").innerHTML = alt_1_name;
+			document.getElementById("alt-1-info").innerHTML = alt_1_info;
+
 			if (alt_1_background_switch == "false"){
 				alt_1_style_color_1 = "none";
 				alt_1_style_color_2 = "none";
-			} else {
-				alt_1_style_color_1 = received_data[15];
-				alt_1_style_color_2 = received_data[16];
 			}
 
-			alt_1_shadows = received_data[19];
-			alt_1_align = received_data[20];
-			alt_1_size = received_data[21];
-			alt_1_margin_h = received_data[22];
-			alt_1_margin_v = received_data[23];
-			alt_1_line_spacing = received_data[24] * 0.1;
-			alt_1_font = received_data [25];
+			alt_1_line_spacing = alt_1_line_spacing * 0.1;
+			alt_1_border_thickness_amount = alt_1_border_thickness_amount * 0.1;
 
-			//Animated Lower Thirds 2
-			alt_2_switch = received_data[26];
-			alt_2_style = received_data[27];		
-			document.getElementById("alt-2-name").innerHTML = received_data[28];
-			document.getElementById("alt-2-info").innerHTML = received_data[29];
-			alt_2_name_size = received_data[30];
-			alt_2_info_size = received_data[31];
-			alt_2_name_transform = received_data[32];
-			alt_2_info_transform = received_data[33];
-			alt_2_name_weight = received_data[34];
-			alt_2_info_weight = received_data[35];
-			alt_2_name_color = received_data[36];
-			alt_2_info_color = received_data[37];
-			alt_2_style_color_1 = received_data[38];
-			alt_2_style_color_2 = received_data[39];
-			alt_2_logo_switch = received_data[40];
-			alt_2_background_switch = received_data[41];
-			alt_2_shadows = received_data[42];
-			alt_2_align = received_data[43];
-			alt_2_size = received_data[44];
-			alt_2_margin_h = received_data[45];
-			alt_2_margin_v = received_data[46];
-			alt_2_line_spacing = received_data[47] * 0.1;
-			alt_2_font = received_data [48];
-
-			//Animated Lower Thirds 3
-			alt_3_switch = received_data[49];
-			alt_3_style = received_data[50];		
-			document.getElementById("alt-3-name").innerHTML = received_data[51];
-			document.getElementById("alt-3-info").innerHTML = received_data[52];
-			alt_3_name_size = received_data[53];
-			alt_3_info_size = received_data[54];
-			alt_3_name_transform = received_data[55];
-			alt_3_info_transform = received_data[56];
-			alt_3_name_weight = received_data[57];
-			alt_3_info_weight = received_data[58];
-			alt_3_name_color = received_data[59];
-			alt_3_info_color = received_data[60];
-			alt_3_style_color_1 = received_data[61];
-			alt_3_style_color_2 = received_data[62];
-			alt_3_logo_switch = received_data[63];
-			alt_3_background_switch = received_data[64];
-			alt_3_shadows = received_data[65];
-			alt_3_align = received_data[66];
-			alt_3_size = received_data[67];
-			alt_3_margin_h = received_data[68];
-			alt_3_margin_v = received_data[69];
-			alt_3_line_spacing = received_data[70] * 0.1;
-			alt_3_font = received_data [71];
-
-			//Animated Lower Thirds 4
-			alt_4_switch = received_data[72];
-			alt_4_style = received_data[73];		
-			document.getElementById("alt-4-name").innerHTML = received_data[74];
-			document.getElementById("alt-4-info").innerHTML = received_data[75];
-			alt_4_name_size = received_data[76];
-			alt_4_info_size = received_data[77];
-			alt_4_name_transform = received_data[78];
-			alt_4_info_transform = received_data[79];
-			alt_4_name_weight = received_data[80];
-			alt_4_info_weight = received_data[81];
-			alt_4_name_color = received_data[82];
-			alt_4_info_color = received_data[83];
-			alt_4_style_color_1 = received_data[84];
-			alt_4_style_color_2 = received_data[85];
-			alt_4_logo_switch = received_data[86];
-			alt_4_background_switch = received_data[87];
-			alt_4_shadows = received_data[88];
-			alt_4_align = received_data[89];
-			alt_4_size = received_data[90];
-			alt_4_margin_h = received_data[91];
-			alt_4_margin_v = received_data[92];
-			alt_4_line_spacing = received_data[93] * 0.1;
-			alt_4_font = received_data[94];
-
-			//Use the global times settins if custom times is empty
-			alt_1_animation_time = Number((received_data [95]) ? received_data [95] : received_data[0]);
-			alt_1_active_time = Number((received_data [96]) ? received_data [96] : received_data[1]);
-			alt_1_inactive_time = Number((received_data [97]) ? received_data [97] : received_data[2]);
-
-			alt_2_animation_time = Number((received_data [98]) ? received_data [98] : received_data[0]);
-			alt_2_active_time = Number((received_data [99]) ? received_data [99] : received_data[1]);
-			alt_2_inactive_time = Number((received_data [100]) ? received_data [100] : received_data[2]);
-
-			alt_3_animation_time = Number((received_data [101]) ? received_data [101] : received_data[0]);
-			alt_3_active_time = Number((received_data [102]) ? received_data [102] : received_data[1]);
-			alt_3_inactive_time = Number((received_data [103]) ? received_data [103] : received_data[2]);
-
-			alt_4_animation_time = Number((received_data [104]) ? received_data [104] : received_data[0]);
-			alt_4_active_time = Number((received_data [105]) ? received_data [105] : received_data[1]);
-			alt_4_inactive_time = Number((received_data [106]) ? received_data [106] : received_data[2]);
-
-			alt_1_logo_image = (received_data[107]) ? received_data[107] : "../logos/logo_1.png";
-			alt_2_logo_image = received_data[108];
-			alt_3_logo_image = received_data[109];
-			alt_4_logo_image = received_data[110];
-
-			global_oneshot = (received_data[111] === 'true');
-			//Use the global oneshot setting if oneshot switch is off or inactive field is empty
-			alt_1_oneshot = (received_data[112] === 'true' || (global_oneshot && !received_data [97]));
-			alt_2_oneshot = (received_data[113] === 'true' || (global_oneshot && !received_data [100]));
-			alt_3_oneshot = (received_data[114] === 'true' || (global_oneshot && !received_data [103]));
-			alt_4_oneshot = (received_data[115] === 'true' || (global_oneshot && !received_data [106]));
-
-			alt_1_logo_size = received_data[116];
-			alt_1_shadow_amount = received_data[117];
-			alt_1_corners = received_data[118];
-			alt_1_border_switch = received_data[119];
 			if (alt_1_border_switch == "false"){
 				alt_1_style_color_3 = "none";
 				alt_1_style_color_4 = "none";
 				alt_1_border_thickness_amount = 0;
-			} else {
-				alt_1_border_thickness_amount = received_data[120];
-				alt_1_style_color_3 = received_data[121];
-				alt_1_style_color_4 = received_data[122];
 			}
 
+			//Use the global times settins if custom times is empty
+			alt_1_animation_time = Number(received_data.alt_1_animation_time || global_animation_time);
+			alt_1_active_time = Number(received_data.alt_1_active_time || activeTime);
+			alt_1_inactive_time = Number(received_data.alt_1_inactive_time || inactiveTime);
+
+			//Animated Lower Thirds 2
+			const {alt_2_style, alt_2_name, alt_2_info, alt_2_name_size, alt_2_info_size, alt_2_name_transform, alt_2_info_transform,
+				alt_2_name_weight, alt_2_info_weight, alt_2_name_color, alt_2_info_color, alt_2_logo_switch, alt_2_background_switch,
+				alt_2_shadows, alt_2_align = "left", alt_2_size, alt_2_margin_h, alt_2_margin_v, alt_2_font, alt_2_logo_image = "../logos/logo_2.png",
+				alt_2_logo_size, alt_2_shadow_amount, alt_2_corners, alt_2_border_switch} = received_data;
+			let {alt_2_switch, alt_2_preview, alt_2_style_color_1, alt_2_style_color_2, alt_2_line_spacing, alt_2_border_thickness_amount, alt_2_style_color_3, alt_2_style_color_4} = received_data;
+
+			document.getElementById("alt-2-name").innerHTML = alt_2_name;
+			document.getElementById("alt-2-info").innerHTML = alt_2_info;
+
+			if (alt_2_background_switch == "false"){
+				alt_2_style_color_1 = "none";
+				alt_2_style_color_2 = "none";
+			}
+
+			alt_2_line_spacing = alt_2_line_spacing * 0.1;
+			alt_2_border_thickness_amount = alt_2_border_thickness_amount * 0.1;
+
+			if (alt_2_border_switch == "false"){
+				alt_2_style_color_3 = "none";
+				alt_2_style_color_4 = "none";
+				alt_2_border_thickness_amount = 0;
+			}
+
+			alt_2_animation_time = Number(received_data.alt_2_animation_time || global_animation_time);
+			alt_2_active_time = Number(received_data.alt_2_active_time || activeTime);
+			alt_2_inactive_time = Number(received_data.alt_2_inactive_time || inactiveTime);
+
+			//Animated Lower Thirds 3
+			const {alt_3_style, alt_3_name, alt_3_info, alt_3_name_size, alt_3_info_size, alt_3_name_transform, alt_3_info_transform,
+				alt_3_name_weight, alt_3_info_weight, alt_3_name_color, alt_3_info_color, alt_3_logo_switch, alt_3_background_switch,
+				alt_3_shadows, alt_3_align = "left", alt_3_size, alt_3_margin_h, alt_3_margin_v, alt_3_font, alt_3_logo_image = "../logos/logo_3.png",
+				alt_3_logo_size, alt_3_shadow_amount, alt_3_corners, alt_3_border_switch} = received_data;
+			let {alt_3_switch, alt_3_preview, alt_3_style_color_1, alt_3_style_color_2, alt_3_line_spacing, alt_3_border_thickness_amount, alt_3_style_color_3, alt_3_style_color_4} = received_data;
+
+			document.getElementById("alt-3-name").innerHTML = alt_3_name;
+			document.getElementById("alt-3-info").innerHTML = alt_3_info;
+
+			if (alt_3_background_switch == "false"){
+				alt_3_style_color_1 = "none";
+				alt_3_style_color_2 = "none";
+			}
+
+			alt_3_line_spacing = alt_3_line_spacing * 0.1;
+			alt_3_border_thickness_amount = alt_3_border_thickness_amount * 0.1;
+
+			if (alt_3_border_switch == "false"){
+				alt_3_style_color_3 = "none";
+				alt_3_style_color_4 = "none";
+				alt_3_border_thickness_amount = 0;
+			}
+
+			alt_3_animation_time = Number(received_data.alt_3_animation_time || global_animation_time);
+			alt_3_active_time = Number(received_data.alt_3_active_time || activeTime);
+			alt_3_inactive_time = Number(received_data.alt_3_inactive_time || inactiveTime);
+
+			//Animated Lower Thirds 4
+			const {alt_4_style, alt_4_name, alt_4_info, alt_4_name_size, alt_4_info_size, alt_4_name_transform, alt_4_info_transform,
+				alt_4_name_weight, alt_4_info_weight, alt_4_name_color, alt_4_info_color, alt_4_logo_switch, alt_4_background_switch,
+				alt_4_shadows, alt_4_align = "left", alt_4_size, alt_4_margin_h, alt_4_margin_v, alt_4_font, alt_4_logo_image = "../logos/logo_4.png",
+				alt_4_logo_size, alt_4_shadow_amount, alt_4_corners, alt_4_border_switch} = received_data;
+			let {alt_4_switch, alt_4_preview, alt_4_style_color_1, alt_4_style_color_2, alt_4_line_spacing, alt_4_border_thickness_amount, alt_4_style_color_3, alt_4_style_color_4} = received_data;
+
+			document.getElementById("alt-4-name").innerHTML = alt_4_name;
+			document.getElementById("alt-4-info").innerHTML = alt_4_info;
+
+			if (alt_4_background_switch == "false"){
+				alt_4_style_color_1 = "none";
+				alt_4_style_color_2 = "none";
+			}			
+
+			alt_4_line_spacing = alt_4_line_spacing * 0.1;
+			alt_4_border_thickness_amount = alt_4_border_thickness_amount * 0.1;
+
+			if (alt_4_border_switch == "false"){
+				alt_4_style_color_3 = "none";
+				alt_4_style_color_4 = "none";
+				alt_4_border_thickness_amount = 0;
+			}			
+
+			alt_4_animation_time = Number(received_data.alt_4_animation_time || global_animation_time);
+			alt_4_active_time = Number(received_data.alt_4_active_time || activeTime);
+			alt_4_inactive_time = Number(received_data.alt_4_inactive_time || inactiveTime);
+
+			//Use the global oneshot setting if oneshot switch is off or inactive field is empty
+			alt_1_oneshot = received_data.alt_1_oneshot || (global_oneshot && !received_data.alt_1_inactive_time);
+			alt_2_oneshot = received_data.alt_2_oneshot || (global_oneshot && !received_data.alt_2_inactive_time);
+			alt_3_oneshot = received_data.alt_3_oneshot || (global_oneshot && !received_data.alt_3_inactive_time);
+			alt_4_oneshot = received_data.alt_4_oneshot || (global_oneshot && !received_data.alt_4_inactive_time);
 
 			if (alt_1_inactive_time < alt_1_animation_time){
 				alt_1_inactive_time = alt_1_animation_time;
@@ -629,74 +577,68 @@
 				alt_2_active_time = Infinity;
 				alt_3_active_time = Infinity;
 				alt_4_active_time = Infinity;
-			}
-
-			//Isn't lower third empty? unhide it
-			if (canIn1) {
-				document.getElementById("lower-third-1").classList.remove("hide-anim");
-			}
-			if (canIn2) {
-				document.getElementById("lower-third-2").classList.remove("hide-anim");
-			}
-			if (canIn3) {
-				document.getElementById("lower-third-3").classList.remove("hide-anim");
-			}
-			if (canIn4) {
-				document.getElementById("lower-third-4").classList.remove("hide-anim");
+				alt_1_switch = alt_1_preview;
+				alt_2_switch = alt_2_preview;
+				alt_3_switch = alt_3_preview;
+				alt_4_switch = alt_4_preview;
 			}
 
 			//Check the switches
-			if (alt_1_switch == "false" || received_data[5].length == 0 || received_data[6].length == 0) {
+			if (alt_1_switch == "false" || alt_1_name.length == 0 || alt_1_info.length == 0) {
 				if(canIn1){
 					canIn1 = false;
 					stopTimeCount("lower-third-1");
 				} else {
 					stopTimeCount("lower-third-1");
-				}	
+				}
 			} else {
 				if(!canIn1){
 					canIn1 = true;
+					document.getElementById("lower-third-1").classList.remove("hide-anim");
 					startActiveCount("lower-third-1");
 				}
 			};
 
-			if (alt_2_switch == "false" || received_data[28].length == 0 || received_data[29].length == 0) {
+			if (alt_2_switch == "false" || alt_2_name.length == 0 || alt_2_info.length == 0) {
 				if(canIn2){
 					canIn2 = false;
 					stopTimeCount("lower-third-2");
 				} else {
 					stopTimeCount("lower-third-2");
-				}	
+				}
 			} else {
 				if(!canIn2){
 					canIn2 = true;
+					document.getElementById("lower-third-2").classList.remove("hide-anim");
 					startActiveCount("lower-third-2");
 				}
 			};
 
-			if (alt_3_switch == "false" || received_data[51].length == 0 || received_data[52].length == 0) {
+			if (alt_3_switch == "false" || alt_3_name.length == 0 || alt_3_info.length == 0) {
 				if(canIn3){
 					canIn3 = false;
 					stopTimeCount("lower-third-3");
 				} else {
 					stopTimeCount("lower-third-3");
-				}	
+				}
 			} else {
 				if(!canIn3){
 					canIn3 = true;
+					document.getElementById("lower-third-3").classList.remove("hide-anim");
 					startActiveCount("lower-third-3");
 				}
 			};
-			if (alt_4_switch == "false" || received_data[74].length == 0 || received_data[75].length == 0) {
+			if (alt_4_switch == "false" || alt_4_name.length == 0 || alt_4_info.length == 0) {
 				if(canIn4){
 					canIn4 = false;
 					stopTimeCount("lower-third-4");
 				} else {
 					stopTimeCount("lower-third-4");
-				}	
+				}
 			} else {
 				if(!canIn4){
 					canIn4 = true;
+					document.getElementById("lower-third-4").classList.remove("hide-anim");
 					startActiveCount("lower-third-4");
 				}
 			};
@@ -773,7 +715,7 @@
 				document.getElementById("lower-third-3").classList.replace("style-2", "style-" + alt_3_style);
 				document.getElementById("lower-third-3").classList.replace("style-3", "style-" + alt_3_style);
 			}
-			alt_3_style_old = alt_3_style;			
+			alt_3_style_old = alt_3_style;
 
 			if (alt_4_style != alt_4_style_old){
 				if (alt_4_switch == "false"){
@@ -790,140 +732,27 @@
 
 			//Load logo when it change
 			if (alt_1_logo_image != alt_1_logo_image_old) {
-				loadLogo("alt-1-logo", alt_1_logo_image);
+				loadLogo("alt-1-logo-image", alt_1_logo_image);
 			}
 			alt_1_logo_image_old = alt_1_logo_image;
 
 			if (alt_2_logo_image != alt_2_logo_image_old) {
-				loadLogo("alt-2-logo", alt_2_logo_image);
+				loadLogo("alt-2-logo-image", alt_2_logo_image);
 			}
 			alt_2_logo_image_old = alt_2_logo_image;
 
 			if (alt_3_logo_image != alt_3_logo_image_old) {
-				loadLogo("alt-3-logo", alt_3_logo_image);
+				loadLogo("alt-3-logo-image", alt_3_logo_image);
 			}
 			alt_3_logo_image_old = alt_3_logo_image;
 
 			if (alt_4_logo_image != alt_4_logo_image_old) {
-				loadLogo("alt-4-logo", alt_4_logo_image);
+				loadLogo("alt-4-logo-image", alt_4_logo_image);
 			}
 			alt_4_logo_image_old = alt_4_logo_image;
 
-
 			//Show or hide if logo switch is ON.
-			if (alt_1_logo_switch == "true"){
-				//Show when change and is active
-				if ($("#lower-third-1").hasClass("animation-in")) {
-					if (!hide_logo_1) {
-						clearTimeout(alt_1_wait_hide_logo);
-						hide_logo_1 = true;
-						$("#alt-1-logo").removeClass("no-logo");
-						loadLogo("alt-1-logo", alt_1_logo_image);
-					}
-				} else {
-					//Hide when change and is inactive
-					if (hide_logo_1) {
-						hide_logo_1 = false;
-						alt_1_wait_hide_logo = setTimeout(function () {
-							$("#alt-1-logo").addClass("no-logo");
-							loadLogo("alt-1-logo", "");
-						}, alt_1_animation_time * 1000);
-					}
-				}
-			} else {
-				hide_logo_1 = false;
-				$("#alt-1-logo").addClass("no-logo");
-				loadLogo("alt-1-logo", "");
-			}
-
-			if (alt_2_logo_switch == "true"){
-				if ($("#lower-third-2").hasClass("animation-in")) {
-					if (!hide_logo_2) {
-						clearTimeout(alt_2_wait_hide_logo);
-						hide_logo_2 = true;
-						$("#alt-2-logo").removeClass("no-logo");
-						loadLogo("alt-2-logo", alt_2_logo_image);
-					}
-				} else {
-					if (hide_logo_2) {
-						hide_logo_2 = false;
-						alt_2_wait_hide_logo = setTimeout(function () {
-							$("#alt-2-logo").addClass("no-logo");
-							loadLogo("alt-2-logo", "");
-						}, alt_2_animation_time * 1000);
-					}
-				}
-			} else {
-				$("#alt-2-logo").addClass("no-logo");
-				loadLogo("alt-2-logo", "");
-			}
-
-			if (alt_3_logo_switch == "true"){
-				if ($("#lower-third-3").hasClass("animation-in")) {
-					if (!hide_logo_3) {
-						clearTimeout(alt_3_wait_hide_logo);
-						hide_logo_3 = true;
-						$("#alt-3-logo").removeClass("no-logo");
-						loadLogo("alt-3-logo", alt_3_logo_image);
-					}
-				} else {
-					if (hide_logo_3) {
-						hide_logo_3 = false;
-						alt_3_wait_hide_logo = setTimeout(function () {
-							$("#alt-3-logo").addClass("no-logo");
-							loadLogo("alt-3-logo", "");
-						}, alt_3_animation_time * 1000);
-					}
-				}
-			} else {
-				$("#alt-3-logo").addClass("no-logo");
-				loadLogo("alt-3-logo", "");
-			}
-
-			if (alt_4_logo_switch == "true"){
-				if ($("#lower-third-4").hasClass("animation-in")) {
-					if (!hide_logo_4) {
-						clearTimeout(alt_4_wait_hide_logo);
-						hide_logo_4 = true;
-						$("#alt-4-logo").removeClass("no-logo");
-						loadLogo("alt-4-logo", alt_4_logo_image);
-					}
-				} else {
-					if (hide_logo_4) {
-						hide_logo_4 = false;
-						alt_4_wait_hide_logo = setTimeout(function () {
-							$("#alt-4-logo").addClass("no-logo");
-							loadLogo("alt-4-logo", "");
-						}, alt_4_animation_time * 1000);
-					}
-				}
-			} else {
-				$("#alt-4-logo").addClass("no-logo");
-				loadLogo("alt-4-logo", "");
-			}
-
-			//Help to update logo when logo switch is ON
-			if (alt_1_logo_switch != alt_1_logo_switch_old){
-				hide_logo_1 = false;
-			}			
-			alt_1_logo_switch_old = alt_1_logo_switch;
-			
-
-			if (alt_2_logo_switch != alt_2_logo_switch_old){
-				hide_logo_2 = false;
-			}			
-			alt_2_logo_switch_old = alt_2_logo_switch;
-
-			if (alt_3_logo_switch != alt_3_logo_switch_old){
-				hide_logo_3 = false;
-			}			
-			alt_3_logo_switch_old = alt_3_logo_switch;
-
-			if (alt_4_logo_switch != alt_4_logo_switch_old){
-				hide_logo_4 = false;
-			}			
-			alt_4_logo_switch_old = alt_4_logo_switch;									
-
+			changeLogoVisibility(alt_1_logo_switch, alt_1_logo_image, alt_2_logo_switch, alt_2_logo_image, alt_3_logo_switch, alt_3_logo_image, alt_4_logo_switch, alt_4_logo_image);
 
 			///////////////////////////
 
@@ -936,27 +765,27 @@
 			// 	root.style.setProperty('--alt-1-background', "0");
 			// }
 
-			if (alt_2_background_switch == "true"){
-				root.style.setProperty('--alt-2-background', "1");
-			} else {
-				root.style.setProperty('--alt-2-background', "0");
-			}
-			if (alt_3_background_switch == "true"){
-				root.style.setProperty('--alt-3-background', "1");
-			} else {
-				root.style.setProperty('--alt-3-background', "0");
-			}
-			if (alt_4_background_switch == "true"){
-				root.style.setProperty('--alt-4-background', "1");
-			} else {
-				root.style.setProperty('--alt-4-background', "0");
-			}
+			// if (alt_2_background_switch == "true"){
+			// 	root.style.setProperty('--alt-2-background', "1");
+			// } else {
+			// 	root.style.setProperty('--alt-2-background', "0");
+			// }
+			// if (alt_3_background_switch == "true"){
+			// 	root.style.setProperty('--alt-3-background', "1");
+			// } else {
+			// 	root.style.setProperty('--alt-3-background', "0");
+			// }
+			// if (alt_4_background_switch == "true"){
+			// 	root.style.setProperty('--alt-4-background', "1");
+			// } else {
+			// 	root.style.setProperty('--alt-4-background', "0");
+			// }
 
 			//root.style.setProperty('--animation-time', global_animation_time + "s"); no hace falta enviar el global
 			root.style.setProperty('--alt-1-animation-time', alt_1_animation_time + "s");
 			root.style.setProperty('--alt-2-animation-time', alt_2_animation_time + "s");
 			root.style.setProperty('--alt-3-animation-time', alt_3_animation_time + "s");
-			root.style.setProperty('--alt-4-animation-time', alt_4_animation_time + "s");												
+			root.style.setProperty('--alt-4-animation-time', alt_4_animation_time + "s");
 
 			//texts styling
 			root.style.setProperty('--alt-1-size', alt_1_size + "px");
@@ -976,12 +805,10 @@
 			root.style.setProperty('--alt-1-style-color-3', alt_1_style_color_3);
 			root.style.setProperty('--alt-1-style-color-4', alt_1_style_color_4);
 			root.style.setProperty('--alt-1-font', alt_1_font);
-
 			root.style.setProperty('--alt-1-logo-size', alt_1_logo_size + "em");
-			// root.style.setProperty('--alt-1-shadow-amount', alt_1_shadow_amount);
 			root.style.setProperty('--alt-1-corners', alt_1_corners + "em");
 			root.style.setProperty('--alt-1-border-switch', alt_1_border_switch);
-			root.style.setProperty('--alt-1-border_thickness_amount', alt_1_border_thickness_amount + "px");
+			root.style.setProperty('--alt-1-border_thickness_amount', alt_1_border_thickness_amount + "rem");
 
 			root.style.setProperty('--alt-2-size', alt_2_size + "px");
 			root.style.setProperty('--alt-2-margin-h', alt_2_margin_h + "rem");
@@ -997,7 +824,13 @@
 			root.style.setProperty('--alt-2-info-color', alt_2_info_color);
 			root.style.setProperty('--alt-2-style-color-1', alt_2_style_color_1);
 			root.style.setProperty('--alt-2-style-color-2', alt_2_style_color_2);
+			root.style.setProperty('--alt-2-style-color-3', alt_2_style_color_3);
+			root.style.setProperty('--alt-2-style-color-4', alt_2_style_color_4);
 			root.style.setProperty('--alt-2-font', alt_2_font);
+			root.style.setProperty('--alt-2-logo-size', alt_2_logo_size + "em");
+			root.style.setProperty('--alt-2-corners', alt_2_corners + "em");
+			root.style.setProperty('--alt-2-border-switch', alt_2_border_switch);
+			root.style.setProperty('--alt-2-border_thickness_amount', alt_2_border_thickness_amount + "rem");			
 
 			root.style.setProperty('--alt-3-size', alt_3_size + "px");
 			root.style.setProperty('--alt-3-margin-h', alt_3_margin_h + "rem");
@@ -1013,7 +846,13 @@
 			root.style.setProperty('--alt-3-info-color', alt_3_info_color);
 			root.style.setProperty('--alt-3-style-color-1', alt_3_style_color_1);
 			root.style.setProperty('--alt-3-style-color-2', alt_3_style_color_2);
+			root.style.setProperty('--alt-3-style-color-3', alt_3_style_color_3);
+			root.style.setProperty('--alt-3-style-color-4', alt_3_style_color_4);
 			root.style.setProperty('--alt-3-font', alt_3_font);
+			root.style.setProperty('--alt-3-logo-size', alt_3_logo_size + "em");
+			root.style.setProperty('--alt-3-corners', alt_3_corners + "em");
+			root.style.setProperty('--alt-3-border-switch', alt_3_border_switch);
+			root.style.setProperty('--alt-3-border_thickness_amount', alt_3_border_thickness_amount + "rem");
 
 			root.style.setProperty('--alt-4-size', alt_4_size + "px");
 			root.style.setProperty('--alt-4-margin-h', alt_4_margin_h + "rem");
@@ -1029,60 +868,118 @@
 			root.style.setProperty('--alt-4-info-color', alt_4_info_color);
 			root.style.setProperty('--alt-4-style-color-1', alt_4_style_color_1);
 			root.style.setProperty('--alt-4-style-color-2', alt_4_style_color_2);
+			root.style.setProperty('--alt-4-style-color-3', alt_3_style_color_3);
+			root.style.setProperty('--alt-4-style-color-4', alt_3_style_color_4);			
 			root.style.setProperty('--alt-4-font', alt_4_font);
+			root.style.setProperty('--alt-4-logo-size', alt_4_logo_size + "em");
+			root.style.setProperty('--alt-4-corners', alt_4_corners + "em");
+			root.style.setProperty('--alt-4-border-switch', alt_4_border_switch);
+			root.style.setProperty('--alt-4-border_thickness_amount', alt_4_border_thickness_amount + "rem");			
 
-						
-			//alt_1_shadows
-			if (alt_1_shadows == "false") {
-				root.style.setProperty('--alt-1-shadows', "none");
-			} else if (alt_1_shadows == "true") {
-				// root.style.setProperty('--alt-1-shadows', "0.1rem 0.1rem 0.2rem #000000" + alt_1_shadow_amount + "0");
-				root.style.setProperty('--alt-1-shadows', "0.1rem 0.1rem 0.2rem rgba(0,0,0," + alt_1_shadow_amount + ")");
+
+			//Hide the background shadow if color is transparent (end with ",0)")
+			if (alt_1_style_color_2.match(/,0\)$/)) {
+				root.style.setProperty('--alt-1-background', "0");
+			} else {
+				root.style.setProperty('--alt-1-background', "1");
 			}
+			if (alt_2_style_color_2.match(/,0\)$/)) {
+				root.style.setProperty('--alt-2-background', "0");
+			} else {
+				root.style.setProperty('--alt-2-background', "1");
+			}
+			if (alt_3_style_color_2.match(/,0\)$/)) {
+				root.style.setProperty('--alt-3-background', "0");
+			} else {
+				root.style.setProperty('--alt-3-background', "1");
+			}
+			if (alt_4_style_color_2.match(/,0\)$/)) {
+				root.style.setProperty('--alt-4-background', "0");
+			} else {
+				root.style.setProperty('--alt-4-background', "1");
+			}
+
+
+			if (alt_1_shadows == "false"){
+				root.style.setProperty('--alt-1-shadows', "none");
+				root.style.setProperty('--alt-1-shadows-graph', "none");
+			}
+			if (alt_1_shadows == "true") {
+				root.style.setProperty('--alt-1-shadows', "0.1rem 0.1rem 0.2rem rgba(0,0,0," + alt_1_shadow_amount + ")");
+				if (alt_1_background_switch == "false"){
+					root.style.setProperty('--alt-1-shadows-graph', "none");
+				} else {
+					root.style.setProperty('--alt-1-shadows-graph', "0.1rem 0.1rem 0.2rem rgba(0,0,0," + alt_1_shadow_amount + ")");
+				} 
+			}
+
 			if (alt_2_shadows == "false") {
 				root.style.setProperty('--alt-2-shadows', "none");
-			} else if (alt_2_shadows == "true") {
-				root.style.setProperty('--alt-2-shadows', "0.1rem 0.1rem 0.2rem #00000060");
+				root.style.setProperty('--alt-2-shadows-graph', "none");
 			}
+			if (alt_2_shadows == "true") {
+				root.style.setProperty('--alt-2-shadows', "0.1rem 0.1rem 0.2rem rgba(0,0,0," + alt_2_shadow_amount + ")");
+				if (alt_2_background_switch == "false"){
+					root.style.setProperty('--alt-2-shadows-graph', "none");
+				} else {
+					root.style.setProperty('--alt-2-shadows-graph', "0.1rem 0.1rem 0.2rem rgba(0,0,0," + alt_2_shadow_amount + ")");
+				} 
+			}
+
 			if (alt_3_shadows == "false") {
 				root.style.setProperty('--alt-3-shadows', "none");
-			} else if (alt_3_shadows == "true") {
-				root.style.setProperty('--alt-3-shadows', "0.1rem 0.1rem 0.2rem #00000060");
+				root.style.setProperty('--alt-3-shadows-graph', "none");
 			}
+			if (alt_3_shadows == "true") {
+				root.style.setProperty('--alt-3-shadows', "0.1rem 0.1rem 0.2rem rgba(0,0,0," + alt_3_shadow_amount + ")");
+				if (alt_3_background_switch == "false"){
+					root.style.setProperty('--alt-3-shadows-graph', "none");
+				} else {
+					root.style.setProperty('--alt-3-shadows-graph', "0.1rem 0.1rem 0.2rem rgba(0,0,0," + alt_3_shadow_amount + ")");
+				} 
+			}
+			
 			if (alt_4_shadows == "false") {
 				root.style.setProperty('--alt-4-shadows', "none");
-			} else if (alt_4_shadows == "true") {
-				root.style.setProperty('--alt-4-shadows', "0.1rem 0.1rem 0.2rem #00000060");
+				root.style.setProperty('--alt-4-shadows-graph', "none");
+			}
+			if (alt_4_shadows == "true") {
+				root.style.setProperty('--alt-4-shadows', "0.1rem 0.1rem 0.2rem rgba(0,0,0," + alt_4_shadow_amount + ")");
+				if (alt_4_background_switch == "false"){
+					root.style.setProperty('--alt-4-shadows-graph', "none");
+				} else {
+					root.style.setProperty('--alt-4-shadows-graph', "0.1rem 0.1rem 0.2rem rgba(0,0,0," + alt_4_shadow_amount + ")");
+				} 
 			}
 		}
 
 		bcf.onmessage = function (ev) {
-			received_data=ev.data.split("|");
-			new_font = received_data[0];
-			
+			received_data = ev.data;
+			new_font = received_data.new_font_to_send;
+
 			//console.log(new_font);
 			$('head').append('<style>' + new_font + '</style>');
 		}
 
 		function loadLogo(alt,logo) {
 			if(logo){
-				document.getElementById(alt).innerHTML = '<img src="' + logo + '"></div>';				
-			} else {	
-				document.getElementById(alt).innerHTML = '';
+				$('#'+alt).attr("src", logo);
+			} else {
+				$('#'+alt).attr("src", '//:0');
 			}
 		}
 
 
 		//Send data to Control Panel
 		function function_send() {
-			activeTime1_to_send = c1 - 1;
-			inactiveTime1_to_send = d1 - 1;
-			activeTime2_to_send = c2 - 1;
-			inactiveTime2_to_send = d2 - 1;
-			activeTime3_to_send = c3 - 1;
-			inactiveTime3_to_send = d3 - 1;
-			activeTime4_to_send = c4 - 1;
-			inactiveTime4_to_send = d4 - 1;
+			let activeTime1_to_send = c1 - 1;
+			let inactiveTime1_to_send = d1 - 1;
+			let activeTime2_to_send = c2 - 1;
+			let inactiveTime2_to_send = d2 - 1;
+			let activeTime3_to_send = c3 - 1;
+			let inactiveTime3_to_send = d3 - 1;
+			let activeTime4_to_send = c4 - 1;
+			let inactiveTime4_to_send = d4 - 1;
 
 			if (activeTime1_to_send < 0){
 				activeTime1_to_send = 0;
@@ -1110,7 +1007,7 @@
 			}
 
 
-			bcr.postMessage(activeTime1_to_send + '|' + inactiveTime1_to_send + '|' + activeTime2_to_send + '|' + inactiveTime2_to_send + '|' + activeTime3_to_send + '|' + inactiveTime3_to_send + '|' + activeTime4_to_send + '|' + inactiveTime4_to_send + '|' + alt_1_turnoff + '|' + alt_2_turnoff + '|' + alt_3_turnoff + '|' + alt_4_turnoff);
+			bcr.postMessage({activeTime1_to_send, inactiveTime1_to_send, activeTime2_to_send, inactiveTime2_to_send, activeTime3_to_send, inactiveTime3_to_send, activeTime4_to_send, inactiveTime4_to_send, alt_1_turnoff, alt_2_turnoff, alt_3_turnoff, alt_4_turnoff});
 
 			alt_1_turnoff = false;
 			alt_2_turnoff = false;
@@ -1119,15 +1016,14 @@
 		}
 
 		function refreshData() {
-		    x = 0.05; // Refresh time miltiplier
-
 		    if (mode != "preview"){
 		    	function_send();
 		    }
-
-		    setTimeout(refreshData, x*1000);
 		}
-		refreshData();
+
+		const x = 1; // Refresh time multiplier
+		setInterval(refreshData, x * 1000);
+		bcr.postMessage({resend: true});
 
 	</script>
 
