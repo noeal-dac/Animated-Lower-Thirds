@@ -21,7 +21,7 @@ This project is based on [Lower thirds in HTML/CSS](https://obsproject.com/forum
 2. See how to install and new features: https://youtu.be/tddMYWya7O0
 
 ### Requiriments 
-Unfortunately, OBS doesn't support browser panels on MacOs. It only works on Windows.
+Unfortunately, OBS doesn't support browser panels on MacOs. It only works on Windows, but can be used on Linux using the snap installation of OBS (More info [here](https://obsproject.com/forum/thread...with-most-of-the-plugins-and-features.137672/))
 
 ## Usage 
 See previus features: https://youtu.be/cQ0_1GwpwB0
