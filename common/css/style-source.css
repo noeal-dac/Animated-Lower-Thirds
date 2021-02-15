@@ -691,9 +691,20 @@ body {
 	transition: margin 0.1s;
 	min-width: fit-content;
 }
+#lower-third-1 > .logo img {
+	max-height: var(--alt-1-logo-size);
+}
+#lower-third-2 > .logo img {
+	max-height: var(--alt-2-logo-size);
+}
+#lower-third-3 > .logo img {
+	max-height: var(--alt-3-logo-size);
+}
+#lower-third-4 > .logo img {
+	max-height: var(--alt-4-logo-size);
+}
 .logo img {
     /* max-height: 3.5em; */
-    max-height: var(--alt-1-logo-size);
     display: flex;
 	position: relative;
 	filter: blur(0);
