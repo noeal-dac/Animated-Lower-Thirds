@@ -192,7 +192,11 @@ body.browser-source.lower-thirds{
 #alt-1-config-content > .accordion > i.fas,
 #alt-2-config-content > .accordion > i.fas,
 #alt-3-config-content > .accordion > i.fas,
-#alt-4-config-content > .accordion > i.fas {
+#alt-4-config-content > .accordion > i.fas,
+#alt-5-config-content > .accordion > i.fas,
+#alt-6-config-content > .accordion > i.fas,
+#alt-7-config-content > .accordion > i.fas,
+#alt-8-config-content > .accordion > i.fas {
     height: 10px;
     overflow: hidden;
 }
@@ -257,7 +261,11 @@ body.browser-source.lower-thirds{
 #alt-1-config-content,
 #alt-2-config-content,
 #alt-3-config-content,
-#alt-4-config-content {
+#alt-4-config-content,
+#alt-5-config-content,
+#alt-6-config-content,
+#alt-7-config-content,
+#alt-8-config-content {
   box-shadow: inset 0px 0px 5px 0px rgb(0 0 0 / 20%);
   border: var(--obs-panel-border);
   padding: 5px;
@@ -269,7 +277,11 @@ body.browser-source.lower-thirds{
 #alt-1-config-content.active,
 #alt-2-config-content.active,
 #alt-3-config-content.active,
-#alt-4-config-content.active {
+#alt-4-config-content.active,
+#alt-5-config-content.active,
+#alt-6-config-content.active,
+#alt-7-config-content.active,
+#alt-8-config-content.active {
   box-shadow: 0px 0px 2px 0px rgb(222, 240, 255),
               0px 0px 12px 0px rgb(0,149,255);
   border-radius: 3px;
@@ -277,7 +289,11 @@ body.browser-source.lower-thirds{
 #alt-1-config-content.inactive,
 #alt-2-config-content.inactive,
 #alt-3-config-content.inactive,
-#alt-4-config-content.inactive {
+#alt-4-config-content.inactive,
+#alt-5-config-content.inactive,
+#alt-6-config-content.inactive,
+#alt-7-config-content.inactive,
+#alt-8-config-content.inactive {
   box-shadow: 0px 0px 2px 0px rgb(255,231,231),
               0px 0px 12px 0px rgb(255,13,13);
   border-radius: 3px;
@@ -339,7 +355,11 @@ body.browser-source.lower-thirds{
 #alt-1-name-color, #alt-1-info-color,
 #alt-2-name-color, #alt-2-info-color,
 #alt-3-name-color, #alt-3-info-color,
-#alt-4-name-color, #alt-4-info-color {
+#alt-4-name-color, #alt-4-info-color,
+#alt-5-name-color, #alt-5-info-color,
+#alt-6-name-color, #alt-6-info-color,
+#alt-7-name-color, #alt-7-info-color,
+#alt-8-name-color, #alt-8-info-color {
   width: 45px;
   height: 15px;
   border: none;
@@ -355,7 +375,11 @@ body.browser-source.lower-thirds{
 #alt-1-name-color.jscolor-active, #alt-1-info-color.jscolor-active,
 #alt-2-name-color.jscolor-active, #alt-2-info-color.jscolor-active,
 #alt-3-name-color.jscolor-active, #alt-3-info-color.jscolor-active,
-#alt-4-name-color.jscolor-active, #alt-4-info-color.jscolor-active {
+#alt-4-name-color.jscolor-active, #alt-4-info-color.jscolor-active,
+#alt-5-name-color.jscolor-active, #alt-5-info-color.jscolor-active,
+#alt-6-name-color.jscolor-active, #alt-6-info-color.jscolor-active,
+#alt-7-name-color.jscolor-active, #alt-7-info-color.jscolor-active,
+#alt-8-name-color.jscolor-active, #alt-8-info-color.jscolor-active {
   cursor: text;
 }
 .tool-tittle.disabled {
@@ -369,7 +393,11 @@ body.browser-source.lower-thirds{
 #alt-1-style-color-1, #alt-1-style-color-2, #alt-1-style-color-3, #alt-1-style-color-4,
 #alt-2-style-color-1, #alt-2-style-color-2, #alt-2-style-color-3, #alt-2-style-color-4,
 #alt-3-style-color-1, #alt-3-style-color-2, #alt-3-style-color-3, #alt-3-style-color-4,
-#alt-4-style-color-1, #alt-4-style-color-2, #alt-4-style-color-3, #alt-4-style-color-4 {
+#alt-4-style-color-1, #alt-4-style-color-2, #alt-4-style-color-3, #alt-4-style-color-4,
+#alt-5-style-color-1, #alt-5-style-color-2, #alt-5-style-color-3, #alt-5-style-color-4,
+#alt-6-style-color-1, #alt-6-style-color-2, #alt-6-style-color-3, #alt-6-style-color-4,
+#alt-7-style-color-1, #alt-7-style-color-2, #alt-7-style-color-3, #alt-7-style-color-4,
+#alt-8-style-color-1, #alt-8-style-color-2, #alt-8-style-color-3, #alt-8-style-color-4 {
   width: 45px;
   height: 15px;
   border: none;
@@ -444,14 +472,22 @@ body.browser-source.lower-thirds{
 label#alt-1-custom-times::after,
 label#alt-2-custom-times::after,
 label#alt-3-custom-times::after,
-label#alt-4-custom-times::after {
+label#alt-4-custom-times::after,
+label#alt-5-custom-times::after,
+label#alt-6-custom-times::after,
+label#alt-7-custom-times::after,
+label#alt-8-custom-times::after {
   display: none;
 }
 
 label#alt-1-custom-times,
 label#alt-2-custom-times,
 label#alt-3-custom-times,
-label#alt-4-custom-times {
+label#alt-4-custom-times,
+label#alt-5-custom-times,
+label#alt-6-custom-times,
+label#alt-7-custom-times,
+label#alt-8-custom-times {
   width: 15px;
   height: 15px;
   display: flex;
@@ -461,14 +497,22 @@ label#alt-4-custom-times {
 #alt-1-custom-times + .hidable,
 #alt-2-custom-times + .hidable,
 #alt-3-custom-times + .hidable,
-#alt-4-custom-times + .hidable {
+#alt-4-custom-times + .hidable,
+#alt-5-custom-times + .hidable,
+#alt-6-custom-times + .hidable,
+#alt-7-custom-times + .hidable,
+#alt-8-custom-times + .hidable {
   margin-top: 0px;
 }
 
 label#alt-1-custom-times i.fas,
 label#alt-2-custom-times i.fas,
 label#alt-3-custom-times i.fas,
-label#alt-4-custom-times i.fas {
+label#alt-4-custom-times i.fas,
+label#alt-5-custom-times i.fas,
+label#alt-6-custom-times i.fas,
+label#alt-7-custom-times i.fas,
+label#alt-8-custom-times i.fas {
   font-size: 12px;
   font-weight: 100;
   margin: 0;
@@ -477,13 +521,21 @@ label#alt-4-custom-times i.fas {
 label#alt-1-custom-times.active > .icon-btn,
 label#alt-2-custom-times.active > .icon-btn,
 label#alt-3-custom-times.active > .icon-btn,
-label#alt-4-custom-times.active > .icon-btn {
+label#alt-4-custom-times.active > .icon-btn,
+label#alt-5-custom-times.active > .icon-btn,
+label#alt-6-custom-times.active > .icon-btn,
+label#alt-7-custom-times.active > .icon-btn,
+label#alt-8-custom-times.active > .icon-btn {
   background-color: var(--main-color);
 }
 label#alt-1-custom-times > .icon-btn.active,
 label#alt-2-custom-times > .icon-btn.active,
 label#alt-3-custom-times > .icon-btn.active,
-label#alt-4-custom-times > .icon-btn.active {
+label#alt-4-custom-times > .icon-btn.active,
+label#alt-5-custom-times > .icon-btn.active,
+label#alt-6-custom-times > .icon-btn.active,
+label#alt-7-custom-times > .icon-btn.active,
+label#alt-8-custom-times > .icon-btn.active {
   background-color: var(--main-color);
 }
 
@@ -606,7 +658,11 @@ input:checked + .slider:before {
 input#alt-1-name, input#alt-1-info,
 input#alt-2-name, input#alt-2-info,
 input#alt-3-name, input#alt-3-info,
-input#alt-4-name, input#alt-4-info {
+input#alt-4-name, input#alt-4-info,
+input#alt-5-name, input#alt-5-info,
+input#alt-6-name, input#alt-6-info,
+input#alt-7-name, input#alt-7-info,
+input#alt-8-name, input#alt-8-info {
     float: left;
     width: calc(100% - 92px);
     margin-right: 0px;
@@ -616,7 +672,11 @@ input#alt-4-name, input#alt-4-info {
 #alt-1-name-appearance, #alt-1-info-appearance,
 #alt-2-name-appearance, #alt-2-info-appearance,
 #alt-3-name-appearance, #alt-3-info-appearance,
-#alt-4-name-appearance, #alt-4-info-appearance {
+#alt-4-name-appearance, #alt-4-info-appearance,
+#alt-5-name-appearance, #alt-5-info-appearance,
+#alt-6-name-appearance, #alt-6-info-appearance,
+#alt-7-name-appearance, #alt-7-info-appearance,
+#alt-8-name-appearance, #alt-8-info-appearance {
     float: right;
     background-color: var(--obs-field-background);
     border-radius: 0 var(--element-radius) var(--element-radius) 0;
@@ -634,7 +694,15 @@ input#alt-4-name, input#alt-4-info {
 #alt-3-name-appearance > .config-btn > .icon-btn > i.fas,
 #alt-3-info-appearance > .config-btn > .icon-btn > i.fas,
 #alt-4-name-appearance > .config-btn > .icon-btn > i.fas,
-#alt-4-info-appearance > .config-btn > .icon-btn > i.fas {
+#alt-4-info-appearance > .config-btn > .icon-btn > i.fas,
+#alt-5-name-appearance > .config-btn > .icon-btn > i.fas,
+#alt-5-info-appearance > .config-btn > .icon-btn > i.fas,
+#alt-6-name-appearance > .config-btn > .icon-btn > i.fas,
+#alt-6-info-appearance > .config-btn > .icon-btn > i.fas,
+#alt-7-name-appearance > .config-btn > .icon-btn > i.fas,
+#alt-7-info-appearance > .config-btn > .icon-btn > i.fas,
+#alt-8-name-appearance > .config-btn > .icon-btn > i.fas,
+#alt-8-info-appearance > .config-btn > .icon-btn > i.fas {
     font-size: 13px;
     margin: 5px;
 }
@@ -668,7 +736,11 @@ input#alt-4-name, input#alt-4-info {
 #alt-1-style-color-1 + .tool-tittle,
 #alt-2-style-color-1 + .tool-tittle,
 #alt-3-style-color-1 + .tool-tittle,
-#alt-4-style-color-1 + .tool-tittle {
+#alt-4-style-color-1 + .tool-tittle,
+#alt-5-style-color-1 + .tool-tittle,
+#alt-6-style-color-1 + .tool-tittle,
+#alt-7-style-color-1 + .tool-tittle,
+#alt-8-style-color-1 + .tool-tittle {
     margin-left: 1px;
 }
 	
@@ -952,7 +1024,11 @@ select {
 select#alt-1-font,
 select#alt-2-font,
 select#alt-3-font,
-select#alt-4-font {
+select#alt-4-font,
+select#alt-5-font,
+select#alt-6-font,
+select#alt-7-font,
+select#alt-8-font {
     width: 155px;
 }
 
@@ -1477,17 +1553,29 @@ i.alt-icon {
 #alt-2-logo-default,
 #alt-3-logo-default,
 #alt-4-logo-default,
+#alt-5-logo-default,
+#alt-6-logo-default,
+#alt-7-logo-default,
+#alt-8-logo-default,
 #alt-1-logo-preview,
 #alt-2-logo-preview,
 #alt-3-logo-preview,
-#alt-4-logo-preview {
+#alt-4-logo-preview,
+#alt-5-logo-preview,
+#alt-6-logo-preview,
+#alt-7-logo-preview,
+#alt-8-logo-preview {
   max-height: 100%;
   max-width: 100%;
 }
 #alt-1-logo-default,
 #alt-2-logo-default,
 #alt-3-logo-default,
-#alt-4-logo-default {
+#alt-4-logo-default,
+#alt-5-logo-default,
+#alt-6-logo-default,
+#alt-7-logo-default,
+#alt-8-logo-default {
   margin-left: 1px;
 }
 

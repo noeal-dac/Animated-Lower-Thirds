@@ -14,6 +14,10 @@ local hotkeySwitch1 = 0;
 local hotkeySwitch2 = 0;
 local hotkeySwitch3 = 0;
 local hotkeySwitch4 = 0;
+local hotkeySwitch5 = 0;
+local hotkeySwitch6 = 0;
+local hotkeySwitch7 = 0;
+local hotkeySwitch8 = 0;
 local hotkeyAlt1Slot1 = 0;
 local hotkeyAlt1Slot2 = 0;
 local hotkeyAlt1Slot3 = 0;
@@ -54,6 +58,46 @@ local hotkeyAlt4Slot7 = 0;
 local hotkeyAlt4Slot8 = 0;
 local hotkeyAlt4Slot9 = 0;
 local hotkeyAlt4Slot10 = 0;
+local hotkeyAlt5Slot1 = 0;
+local hotkeyAlt5Slot2 = 0;
+local hotkeyAlt5Slot3 = 0;
+local hotkeyAlt5Slot4 = 0;
+local hotkeyAlt5Slot5 = 0;
+local hotkeyAlt5Slot6 = 0;
+local hotkeyAlt5Slot7 = 0;
+local hotkeyAlt5Slot8 = 0;
+local hotkeyAlt5Slot9 = 0;
+local hotkeyAlt5Slot10 = 0;
+local hotkeyAlt6Slot1 = 0;
+local hotkeyAlt6Slot2 = 0;
+local hotkeyAlt6Slot3 = 0;
+local hotkeyAlt6Slot4 = 0;
+local hotkeyAlt6Slot5 = 0;
+local hotkeyAlt6Slot6 = 0;
+local hotkeyAlt6Slot7 = 0;
+local hotkeyAlt6Slot8 = 0;
+local hotkeyAlt6Slot9 = 0;
+local hotkeyAlt6Slot10 = 0;
+local hotkeyAlt7Slot1 = 0;
+local hotkeyAlt7Slot2 = 0;
+local hotkeyAlt7Slot3 = 0;
+local hotkeyAlt7Slot4 = 0;
+local hotkeyAlt7Slot5 = 0;
+local hotkeyAlt7Slot6 = 0;
+local hotkeyAlt7Slot7 = 0;
+local hotkeyAlt7Slot8 = 0;
+local hotkeyAlt7Slot9 = 0;
+local hotkeyAlt7Slot10 = 0;
+local hotkeyAlt8Slot1 = 0;
+local hotkeyAlt8Slot2 = 0;
+local hotkeyAlt8Slot3 = 0;
+local hotkeyAlt8Slot4 = 0;
+local hotkeyAlt8Slot5 = 0;
+local hotkeyAlt8Slot6 = 0;
+local hotkeyAlt8Slot7 = 0;
+local hotkeyAlt8Slot8 = 0;
+local hotkeyAlt8Slot9 = 0;
+local hotkeyAlt8Slot10 = 0;
 
 
 -- if you are extending the script, you can add more hotkeys here
@@ -64,6 +108,10 @@ local hotkeys = {
 	A_SWITCH_2 = "Lower Third Switch #2",
 	A_SWITCH_3 = "Lower Third Switch #3",
 	A_SWITCH_4 = "Lower Third Switch #4",
+	A_SWITCH_5 = "Lower Third Switch #1",
+	A_SWITCH_6 = "Lower Third Switch #2",
+	A_SWITCH_7 = "Lower Third Switch #3",
+	A_SWITCH_8 = "Lower Third Switch #4",
 	LT1_SLT01 = "Load Slot #1 on LT#1",
 	LT1_SLT02 = "Load Slot #2 on LT#1",
 	LT1_SLT03 = "Load Slot #3 on LT#1",
@@ -104,6 +152,46 @@ local hotkeys = {
 	LT4_SLT08 = "Load Slot #8 on LT#4",
 	LT4_SLT09 = "Load Slot #9 on LT#4",
 	LT4_SLT10 = "Load Slot #10 on LT#4",
+	LT5_SLT01 = "Load Slot #1 on LT#1",
+	LT5_SLT02 = "Load Slot #2 on LT#1",
+	LT5_SLT03 = "Load Slot #3 on LT#1",
+	LT5_SLT04 = "Load Slot #4 on LT#1",
+	LT5_SLT05 = "Load Slot #5 on LT#1",
+	LT5_SLT06 = "Load Slot #6 on LT#1",
+	LT5_SLT07 = "Load Slot #7 on LT#1",
+	LT5_SLT08 = "Load Slot #8 on LT#1",
+	LT5_SLT09 = "Load Slot #9 on LT#1",
+	LT5_SLT10 = "Load Slot #10 on LT#1",
+	LT6_SLT01 = "Load Slot #1 on LT#2",
+	LT6_SLT02 = "Load Slot #2 on LT#2",
+	LT6_SLT03 = "Load Slot #3 on LT#2",
+	LT6_SLT04 = "Load Slot #4 on LT#2",
+	LT6_SLT05 = "Load Slot #5 on LT#2",
+	LT6_SLT06 = "Load Slot #6 on LT#2",
+	LT6_SLT07 = "Load Slot #7 on LT#2",
+	LT6_SLT08 = "Load Slot #8 on LT#2",
+	LT6_SLT09 = "Load Slot #9 on LT#2",
+	LT6_SLT10 = "Load Slot #10 on LT#2",
+	LT7_SLT01 = "Load Slot #1 on LT#3",
+	LT7_SLT02 = "Load Slot #2 on LT#3",
+	LT7_SLT03 = "Load Slot #3 on LT#3",
+	LT7_SLT04 = "Load Slot #4 on LT#3",
+	LT7_SLT05 = "Load Slot #5 on LT#3",
+	LT7_SLT06 = "Load Slot #6 on LT#3",
+	LT7_SLT07 = "Load Slot #7 on LT#3",
+	LT7_SLT08 = "Load Slot #8 on LT#3",
+	LT7_SLT09 = "Load Slot #9 on LT#3",
+	LT7_SLT10 = "Load Slot #10 on LT#3",
+	LT8_SLT01 = "Load Slot #1 on LT#4",
+	LT8_SLT02 = "Load Slot #2 on LT#4",
+	LT8_SLT03 = "Load Slot #3 on LT#4",
+	LT8_SLT04 = "Load Slot #4 on LT#4",
+	LT8_SLT05 = "Load Slot #5 on LT#4",
+	LT8_SLT06 = "Load Slot #6 on LT#4",
+	LT8_SLT07 = "Load Slot #7 on LT#4",
+	LT8_SLT08 = "Load Slot #8 on LT#4",
+	LT8_SLT09 = "Load Slot #9 on LT#4",
+	LT8_SLT10 = "Load Slot #10 on LT#4",
 
 }
 
@@ -141,6 +229,34 @@ local function onHotKey(action)
 		end
 		update_hotkeys_js()
 	elseif action == "A_SWITCH_4" then
+		if hotkeySwitch4 == 0 then
+			hotkeySwitch4 = 1
+		else
+			hotkeySwitch4 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "A_SWITCH_5" then
+		if hotkeySwitch1 == 0 then
+			hotkeySwitch1 = 1
+		else
+			hotkeySwitch1 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "A_SWITCH_6" then
+		if hotkeySwitch2 == 0 then
+			hotkeySwitch2 = 1
+		else
+			hotkeySwitch2 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "A_SWITCH_7" then
+		if hotkeySwitch3 == 0 then
+			hotkeySwitch3 = 1
+		else
+			hotkeySwitch3 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "A_SWITCH_8" then
 		if hotkeySwitch4 == 0 then
 			hotkeySwitch4 = 1
 		else
@@ -427,6 +543,286 @@ local function onHotKey(action)
 			hotkeyAlt4Slot10 = 0
 		end
 		update_hotkeys_js()
+	elseif action == "LT5_SLT01" then
+		if hotkeyAlt5Slot1 == 0 then
+			hotkeyAlt5Slot1 = 1
+		else
+			hotkeyAlt5Slot1 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT5_SLT02" then
+		if hotkeyAlt5Slot2 == 0 then
+			hotkeyAlt5Slot2 = 1
+		else
+			hotkeyAlt5Slot2 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT5_SLT03" then
+		if hotkeyAlt5Slot3 == 0 then
+			hotkeyAlt5Slot3 = 1
+		else
+			hotkeyAlt5Slot3 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT5_SLT04" then
+		if hotkeyAlt5Slot4 == 0 then
+			hotkeyAlt5Slot4 = 1
+		else
+			hotkeyAlt5Slot4 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT5_SLT05" then
+		if hotkeyAlt5Slot5 == 0 then
+			hotkeyAlt5Slot5 = 1
+		else
+			hotkeyAlt5Slot5 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT5_SLT06" then
+		if hotkeyAlt5Slot6 == 0 then
+			hotkeyAlt5Slot6 = 1
+		else
+			hotkeyAlt5Slot6 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT5_SLT07" then
+		if hotkeyAlt5Slot7 == 0 then
+			hotkeyAlt5Slot7 = 1
+		else
+			hotkeyAlt5Slot7 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT5_SLT08" then
+		if hotkeyAlt5Slot8 == 0 then
+			hotkeyAlt5Slot8 = 1
+		else
+			hotkeyAlt5Slot8 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT5_SLT09" then
+		if hotkeyAlt5Slot9 == 0 then
+			hotkeyAlt5Slot9 = 1
+		else
+			hotkeyAlt5Slot9 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT5_SLT10" then
+		if hotkeyAlt5Slot10 == 0 then
+			hotkeyAlt5Slot10 = 1
+		else
+			hotkeyAlt5Slot10 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT6_SLT01" then
+		if hotkeyAlt6Slot1 == 0 then
+			hotkeyAlt6Slot1 = 1
+		else
+			hotkeyAlt6Slot1 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT6_SLT02" then
+		if hotkeyAlt6Slot2 == 0 then
+			hotkeyAlt6Slot2 = 1
+		else
+			hotkeyAlt6Slot2 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT6_SLT03" then
+		if hotkeyAlt6Slot3 == 0 then
+			hotkeyAlt6Slot3 = 1
+		else
+			hotkeyAlt6Slot3 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT6_SLT04" then
+		if hotkeyAlt6Slot4 == 0 then
+			hotkeyAlt6Slot4 = 1
+		else
+			hotkeyAlt6Slot4 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT6_SLT05" then
+		if hotkeyAlt6Slot5 == 0 then
+			hotkeyAlt6Slot5 = 1
+		else
+			hotkeyAlt6Slot5 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT6_SLT06" then
+		if hotkeyAlt6Slot6 == 0 then
+			hotkeyAlt6Slot6 = 1
+		else
+			hotkeyAlt6Slot6 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT6_SLT07" then
+		if hotkeyAlt6Slot7 == 0 then
+			hotkeyAlt6Slot7 = 1
+		else
+			hotkeyAlt6Slot7 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT6_SLT08" then
+		if hotkeyAlt6Slot8 == 0 then
+			hotkeyAlt6Slot8 = 1
+		else
+			hotkeyAlt6Slot8 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT6_SLT09" then
+		if hotkeyAlt6Slot9 == 0 then
+			hotkeyAlt6Slot9 = 1
+		else
+			hotkeyAlt6Slot9 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT6_SLT10" then
+		if hotkeyAlt6Slot10 == 0 then
+			hotkeyAlt6Slot10 = 1
+		else
+			hotkeyAlt6Slot10 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT7_SLT01" then
+		if hotkeyAlt7Slot1 == 0 then
+			hotkeyAlt7Slot1 = 1
+		else
+			hotkeyAlt7Slot1 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT7_SLT02" then
+		if hotkeyAlt7Slot2 == 0 then
+			hotkeyAlt7Slot2 = 1
+		else
+			hotkeyAlt7Slot2 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT7_SLT03" then
+		if hotkeyAlt7Slot3 == 0 then
+			hotkeyAlt7Slot3 = 1
+		else
+			hotkeyAlt7Slot3 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT7_SLT04" then
+		if hotkeyAlt7Slot4 == 0 then
+			hotkeyAlt7Slot4 = 1
+		else
+			hotkeyAlt7Slot4 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT7_SLT05" then
+		if hotkeyAlt7Slot5 == 0 then
+			hotkeyAlt7Slot5 = 1
+		else
+			hotkeyAlt7Slot5 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT7_SLT06" then
+		if hotkeyAlt7Slot6 == 0 then
+			hotkeyAlt7Slot6 = 1
+		else
+			hotkeyAlt7Slot6 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT7_SLT07" then
+		if hotkeyAlt7Slot7 == 0 then
+			hotkeyAlt7Slot7 = 1
+		else
+			hotkeyAlt7Slot7 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT7_SLT08" then
+		if hotkeyAlt7Slot8 == 0 then
+			hotkeyAlt7Slot8 = 1
+		else
+			hotkeyAlt7Slot8 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT7_SLT09" then
+		if hotkeyAlt7Slot9 == 0 then
+			hotkeyAlt7Slot9 = 1
+		else
+			hotkeyAlt7Slot9 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT7_SLT10" then
+		if hotkeyAlt7Slot10 == 0 then
+			hotkeyAlt7Slot10 = 1
+		else
+			hotkeyAlt7Slot10 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT8_SLT01" then
+		if hotkeyAlt8Slot1 == 0 then
+			hotkeyAlt8Slot1 = 1
+		else
+			hotkeyAlt8Slot1 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT8_SLT02" then
+		if hotkeyAlt8Slot2 == 0 then
+			hotkeyAlt8Slot2 = 1
+		else
+			hotkeyAlt8Slot2 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT8_SLT03" then
+		if hotkeyAlt8Slot3 == 0 then
+			hotkeyAlt8Slot3 = 1
+		else
+			hotkeyAlt8Slot3 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT8_SLT04" then
+		if hotkeyAlt8Slot4 == 0 then
+			hotkeyAlt8Slot4 = 1
+		else
+			hotkeyAlt8Slot4 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT8_SLT05" then
+		if hotkeyAlt8Slot5 == 0 then
+			hotkeyAlt8Slot5 = 1
+		else
+			hotkeyAlt8Slot5 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT8_SLT06" then
+		if hotkeyAlt8Slot6 == 0 then
+			hotkeyAlt8Slot6 = 1
+		else
+			hotkeyAlt8Slot6 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT8_SLT07" then
+		if hotkeyAlt8Slot7 == 0 then
+			hotkeyAlt8Slot7 = 1
+		else
+			hotkeyAlt8Slot7 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT8_SLT08" then
+		if hotkeyAlt8Slot8 == 0 then
+			hotkeyAlt8Slot8 = 1
+		else
+			hotkeyAlt8Slot8 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT8_SLT09" then
+		if hotkeyAlt8Slot9 == 0 then
+			hotkeyAlt8Slot9 = 1
+		else
+			hotkeyAlt8Slot9 = 0
+		end
+		update_hotkeys_js()
+	elseif action == "LT8_SLT10" then
+		if hotkeyAlt8Slot10 == 0 then
+			hotkeyAlt8Slot10 = 1
+		else
+			hotkeyAlt8Slot10 = 0
+		end
+		update_hotkeys_js()
 	end
 end
 
@@ -439,6 +835,10 @@ function update_hotkeys_js()
     output:write('hotkeySwitch2 = '.. hotkeySwitch2 .. ';\n')
     output:write('hotkeySwitch3 = '.. hotkeySwitch3 .. ';\n')
 	output:write('hotkeySwitch4 = '.. hotkeySwitch4 .. ';\n')
+    output:write('hotkeySwitch5 = '.. hotkeySwitch5 .. ';\n')
+    output:write('hotkeySwitch6 = '.. hotkeySwitch6 .. ';\n')
+    output:write('hotkeySwitch7 = '.. hotkeySwitch7 .. ';\n')
+	output:write('hotkeySwitch8 = '.. hotkeySwitch8 .. ';\n')
 	output:write('hotkeyAlt1Slot1 = '.. hotkeyAlt1Slot1 .. ';\n')
 	output:write('hotkeyAlt1Slot2 = '.. hotkeyAlt1Slot2 .. ';\n')
 	output:write('hotkeyAlt1Slot3 = '.. hotkeyAlt1Slot3 .. ';\n')
@@ -479,6 +879,46 @@ function update_hotkeys_js()
 	output:write('hotkeyAlt4Slot8 = '.. hotkeyAlt4Slot8 .. ';\n')
 	output:write('hotkeyAlt4Slot9 = '.. hotkeyAlt4Slot9 .. ';\n')
 	output:write('hotkeyAlt4Slot10 = '.. hotkeyAlt4Slot10 .. ';\n')
+	output:write('hotkeyAlt5Slot1 = '.. hotkeyAlt5Slot1 .. ';\n')
+	output:write('hotkeyAlt5Slot2 = '.. hotkeyAlt5Slot2 .. ';\n')
+	output:write('hotkeyAlt5Slot3 = '.. hotkeyAlt5Slot3 .. ';\n')
+	output:write('hotkeyAlt5Slot4 = '.. hotkeyAlt5Slot4 .. ';\n')
+	output:write('hotkeyAlt5Slot5 = '.. hotkeyAlt5Slot5 .. ';\n')
+	output:write('hotkeyAlt5Slot6 = '.. hotkeyAlt5Slot6 .. ';\n')
+	output:write('hotkeyAlt5Slot7 = '.. hotkeyAlt5Slot7 .. ';\n')
+	output:write('hotkeyAlt5Slot8 = '.. hotkeyAlt5Slot8 .. ';\n')
+	output:write('hotkeyAlt5Slot9 = '.. hotkeyAlt5Slot9 .. ';\n')
+	output:write('hotkeyAlt5Slot10 = '.. hotkeyAlt5Slot10 .. ';\n')
+	output:write('hotkeyAlt6Slot1 = '.. hotkeyAlt6Slot1 .. ';\n')
+	output:write('hotkeyAlt6Slot2 = '.. hotkeyAlt6Slot2 .. ';\n')
+	output:write('hotkeyAlt6Slot3 = '.. hotkeyAlt6Slot3 .. ';\n')
+	output:write('hotkeyAlt6Slot4 = '.. hotkeyAlt6Slot4 .. ';\n')
+	output:write('hotkeyAlt6Slot5 = '.. hotkeyAlt6Slot5 .. ';\n')
+	output:write('hotkeyAlt6Slot6 = '.. hotkeyAlt6Slot6 .. ';\n')
+	output:write('hotkeyAlt6Slot7 = '.. hotkeyAlt6Slot7 .. ';\n')
+	output:write('hotkeyAlt6Slot8 = '.. hotkeyAlt6Slot8 .. ';\n')
+	output:write('hotkeyAlt6Slot9 = '.. hotkeyAlt6Slot9 .. ';\n')
+	output:write('hotkeyAlt6Slot10 = '.. hotkeyAlt6Slot10 .. ';\n')
+	output:write('hotkeyAlt7Slot1 = '.. hotkeyAlt7Slot1 .. ';\n')
+	output:write('hotkeyAlt7Slot2 = '.. hotkeyAlt7Slot2 .. ';\n')
+	output:write('hotkeyAlt7Slot3 = '.. hotkeyAlt7Slot3 .. ';\n')
+	output:write('hotkeyAlt7Slot4 = '.. hotkeyAlt7Slot4 .. ';\n')
+	output:write('hotkeyAlt7Slot5 = '.. hotkeyAlt7Slot5 .. ';\n')
+	output:write('hotkeyAlt7Slot6 = '.. hotkeyAlt7Slot6 .. ';\n')
+	output:write('hotkeyAlt7Slot7 = '.. hotkeyAlt7Slot7 .. ';\n')
+	output:write('hotkeyAlt7Slot8 = '.. hotkeyAlt7Slot8 .. ';\n')
+	output:write('hotkeyAlt7Slot9 = '.. hotkeyAlt7Slot9 .. ';\n')
+	output:write('hotkeyAlt7Slot10 = '.. hotkeyAlt7Slot10 .. ';\n')
+	output:write('hotkeyAlt8Slot1 = '.. hotkeyAlt8Slot1 .. ';\n')
+	output:write('hotkeyAlt8Slot2 = '.. hotkeyAlt8Slot2 .. ';\n')
+	output:write('hotkeyAlt8Slot3 = '.. hotkeyAlt8Slot3 .. ';\n')
+	output:write('hotkeyAlt8Slot4 = '.. hotkeyAlt8Slot4 .. ';\n')
+	output:write('hotkeyAlt8Slot5 = '.. hotkeyAlt8Slot5 .. ';\n')
+	output:write('hotkeyAlt8Slot6 = '.. hotkeyAlt8Slot6 .. ';\n')
+	output:write('hotkeyAlt8Slot7 = '.. hotkeyAlt8Slot7 .. ';\n')
+	output:write('hotkeyAlt8Slot8 = '.. hotkeyAlt8Slot8 .. ';\n')
+	output:write('hotkeyAlt8Slot9 = '.. hotkeyAlt8Slot9 .. ';\n')
+	output:write('hotkeyAlt8Slot10 = '.. hotkeyAlt8Slot10 .. ';\n')
 	output:close()
 end
 

@@ -103,6 +103,22 @@
 										<div class="logo-numbers">4</div>
 										<img id="alt-4-logo-default" class="logo-storable alt-logo-default" >
 									</div>
+									<div class="logo-container default" onclick="openLogoPopup('alt-5-logo-default', 'alt-5-logo-default')">
+										<div class="logo-numbers">5</div>
+										<img id="alt-5-logo-default" class="logo-storable alt-logo-default" >
+									</div>
+									<div class="logo-container default" onclick="openLogoPopup('alt-6-logo-default', 'alt-6-logo-default')">
+										<div class="logo-numbers">6</div>
+										<img id="alt-6-logo-default" class="logo-storable alt-logo-default" >
+									</div>
+									<div class="logo-container default" onclick="openLogoPopup('alt-7-logo-default', 'alt-7-logo-default')">
+										<div class="logo-numbers">7</div>
+										<img id="alt-7-logo-default" class="logo-storable alt-logo-default" >
+									</div>
+									<div class="logo-container default" onclick="openLogoPopup('alt-8-logo-default', 'alt-8-logo-default')">
+										<div class="logo-numbers">8</div>
+										<img id="alt-8-logo-default" class="logo-storable alt-logo-default" >
+									</div>
 								</div>
 							</div>
 						</div>
@@ -1070,6 +1086,951 @@
 					</div>
 				</div>
 
+				<div class="sortees" id="alt_5"> <!--// Lower Third 5//-->
+					<div id="alt-5-config-content">
+						<label class="switch">
+						<input class="checkbox-storable" type="checkbox" id="lower-thirds-switch1">
+						<span class="slider round"></span>
+						</label>
+						<label class="config-btn preview-btn">
+							<input class="checkbox-storable" type="checkbox" id="alt-5-preview">
+							<div class="icon-btn icon icon-search"></div>
+						</label>
+						<div class="drag-handle">
+							<div class="alt-number-icon">1</div>
+							<div id="alt-5-title" class="renameable title-storable">Lower Third 5</div>
+						</div>
+						<label class="accordion"></label>
+						<div class="hidable">
+							<div class="grid-container">
+								<div class="grid-row">
+									<div>
+										<div class="align-toggle">
+										<input class="radio-storable" id="alt-5-align-left" name="alt-5-align" type="radio" value="left" checked/>
+										<label for="alt-5-align-left" onclick=""><div class="icon icon-aling-left"></div></label>
+										<input class="radio-storable" id="alt-5-align-center" name="alt-5-align" type="radio" value="center" />
+										<label for="alt-5-align-center" onclick=""><div class="icon icon-aling-center"></div></label>
+										<input class="radio-storable" id="alt-5-align-right" name="alt-5-align" type="radio" value="right" />
+										<label for="alt-5-align-right" onclick=""><div class="icon icon-aling-right"></div></label>
+										</div>
+									</div>
+									<div>
+										<div class="input-icon icon icon-paint-brush"></div>
+										<div class="number-input">
+											<input id="alt-5-style" class="storable" min="1" max="3" name="quantity" value="1" type="number" placeholder="1" readonly>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>
+									<div>
+										<div class="input-icon icon icon-size"></div>
+										<div class="number-input">
+											<input id="alt-5-size" class="storable" min="10" max="50" name="quantity" value="24" type="number" placeholder="24">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>							
+									<div class="margin-config group">
+										<div class="input-icon icon icon-position"></div>
+										<div class="number-input">
+											<input id="alt-5-margin-h" class="storable" min="0" max="100" name="quantity" value="4" type="number" placeholder="4">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+										<div class="number-input input-no-icon">
+											<input id="alt-5-margin-v" class="storable" min="0" max="55" name="quantity" value="4" type="number" placeholder="4">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>
+								</div>
+								<div class="grid-row">
+									<div>
+										<div class="input-icon icon icon-text-height"></div>
+											<div class="number-input">
+											<input id="alt-5-inverse-ratio" class="storable" min="0" max="10" name="quantity" value="9" type="number" placeholder="9">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>
+									<div>
+										<div class="input-icon icon icon-line-spacing"></div>
+											<div class="number-input">
+											<input id="alt-5-line-spacing" class="storable" min="-5" max="5" name="quantity" value="0" type="number" placeholder="0">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>									
+									<div class="font-config group">
+										<div class="input-icon icon icon-font"></div>
+										<select id="alt-5-font" class="font-storable">
+											<!--Fonts list-->
+										</select>
+									</div>
+								</div>
+								<div class="grid-row">
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable" type="checkbox" id="alt-5-logo" checked>
+											<div class="icon-btn icon icon-image"></div>
+										</label>									
+										<div class="number-input">
+											<input id="alt-5-logo-size" class="storable" min="-10" max="10" name="quantity" value="0" type="number" placeholder="0">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>										
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable" type="checkbox" id="alt-5-shadows">
+											<div class="icon-btn icon icon-shadow"></div>
+										</label>
+										<div class="number-input">
+											<input id="alt-5-shadow-amount" class="storable" min="1" max="10" name="quantity" value="5" type="number" placeholder="5">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable" type="checkbox" id="alt-5-background" checked>
+											<div class="icon-btn icon icon-fill-drip"></div>
+										</label>
+										<div id="alt-5-style-color-appearance" class="fill-color-appearance">
+											<div class="tool-tittle">Clr 1</div>
+											<input class="storable" id="alt-5-style-color-1" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
+											<div class="tool-tittle">Clr 2</div>
+											<input class="storable" id="alt-5-style-color-2" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
+										</div>
+									</div>
+								</div>
+								<div class="grid-row">
+									<div>
+										<div class="input-icon icon icon-corner"></div>
+										<div class="number-input">
+											<input id="alt-5-corners" class="storable" min="0" max="10" name="quantity" value="0" type="number" placeholder="0">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable twin-checkbox" type="checkbox" name="alt-5-border" id="alt-5-border-thickness">
+											<div class="icon-btn icon icon-thickness"></div>
+										</label>
+										<div class="number-input">
+											<input id="alt-5-border-thickness-amount" class="storable" min="1" max="10" name="quantity" value="4" type="number" placeholder="4">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable twin-checkbox" type="checkbox" name="alt-5-border" id="alt-5-border-color">
+											<div class="icon-btn icon icon-pen"></div>
+										</label>
+										<div id="alt-5-style-border-color-appearance" class="border-color-appearance">
+											<div class="tool-tittle">Clr 3</div>
+											<input class="storable" id="alt-5-style-color-3" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
+											<div class="tool-tittle">Clr 4</div>
+											<input class="storable" id="alt-5-style-color-4" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
+										</div>
+									</div>
+								</div>
+							</div>					
+						</div>
+						<div class="first-edit-container">
+							<div class="logo-container" onclick="openLogoPopup('alt-5-logo-preview', 'alt-5-logo-default')">
+								<img id="alt-5-logo-preview" class="logo-storable alt-logo-preview" >
+							</div>
+							<div class="textfields-container">
+								<input class="storable" type="text" id="alt-5-name" placeholder="Name" tabindex="4">
+								<div id="alt-5-name-appearance">
+									<label class="config-btn small">
+										<input class="checkbox-storable" type="checkbox" id="alt-5-name-transform" checked>
+										<div class="icon-btn icon small icon-uppercase"></div>
+									</label>
+									<label class="config-btn small">
+										<input class="checkbox-storable" type="checkbox" id="alt-5-name-weight" checked>
+										<div class="icon-btn icon small icon-bold"></div>
+									</label>
+									<input class="storable" id="alt-5-name-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
+								</div>
+								<input class="storable" type="text" id="alt-5-info" placeholder="Info" tabindex="5">
+								<div id="alt-5-info-appearance">
+									<label class="config-btn small">
+										<input class="checkbox-storable" type="checkbox" id="alt-5-info-transform">
+										<div class="icon-btn icon small icon-uppercase"></div>
+									</label>
+									<label class="config-btn small">
+										<input class="checkbox-storable" type="checkbox" id="alt-5-info-weight">
+										<div class="icon-btn icon small icon-bold"></div>
+									</label>
+									<input class="storable" id="alt-5-info-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
+								</div>	
+								<div style="clear:both"></div>
+							</div>
+						</div>
+						<div class="panel-bottom">
+							<div id="alt-5-clean-inputs" class="clean"><div class="icon icon-cross"></div></div>
+							<ul id="alt-5-memory-slots">
+								<li id="alt-5-slot-1"><div class="slot-number">1</div><div class="slot-storable stored-name" id="alt-5-name-1"></div><div class="slot-storable stored-info" id="alt-5-info-1"></div><div class="slot-storable stored-logo" id="alt-5-logo-1"></div></li>
+								<li id="alt-5-slot-2"><div class="slot-number">2</div><div class="slot-storable stored-name" id="alt-5-name-2"></div><div class="slot-storable stored-info" id="alt-5-info-2"></div><div class="slot-storable stored-logo" id="alt-5-logo-2"></div></li>
+								<li id="alt-5-slot-3"><div class="slot-number">3</div><div class="slot-storable stored-name" id="alt-5-name-3"></div><div class="slot-storable stored-info" id="alt-5-info-3"></div><div class="slot-storable stored-logo" id="alt-5-logo-3"></div></li>
+								<li id="alt-5-slot-4"><div class="slot-number">4</div><div class="slot-storable stored-name" id="alt-5-name-4"></div><div class="slot-storable stored-info" id="alt-5-info-4"></div><div class="slot-storable stored-logo" id="alt-5-logo-4"></div></li>
+								<li id="alt-5-slot-5"><div class="slot-number">5</div><div class="slot-storable stored-name" id="alt-5-name-5"></div><div class="slot-storable stored-info" id="alt-5-info-5"></div><div class="slot-storable stored-logo" id="alt-5-logo-5"></div></li>
+								<li id="alt-5-slot-6"><div class="slot-number">6</div><div class="slot-storable stored-name" id="alt-5-name-6"></div><div class="slot-storable stored-info" id="alt-5-info-6"></div><div class="slot-storable stored-logo" id="alt-5-logo-6"></div></li>
+								<li id="alt-5-slot-7"><div class="slot-number">7</div><div class="slot-storable stored-name" id="alt-5-name-7"></div><div class="slot-storable stored-info" id="alt-5-info-7"></div><div class="slot-storable stored-logo" id="alt-5-logo-7"></div></li>
+								<li id="alt-5-slot-8"><div class="slot-number">8</div><div class="slot-storable stored-name" id="alt-5-name-8"></div><div class="slot-storable stored-info" id="alt-5-info-8"></div><div class="slot-storable stored-logo" id="alt-5-logo-8"></div></li>
+								<li id="alt-5-slot-9"><div class="slot-number">9</div><div class="slot-storable stored-name" id="alt-5-name-9"></div><div class="slot-storable stored-info" id="alt-5-info-9"></div><div class="slot-storable stored-logo" id="alt-5-logo-9"></div></li>
+								<li id="alt-5-slot-10"><div class="slot-number">10</div><div class="slot-storable stored-name" id="alt-5-name-10"></div><div class="slot-storable stored-info" id="alt-5-info-10"></div><div class="slot-storable stored-logo" id="alt-5-logo-10"></div></li>
+							</ul>
+							<div class="time-bar">
+								<div id="alt-5-active-time-monitor">0</div>
+								<div id="alt-5-inactive-time-monitor">0</div>
+							</div>
+							<label class="config-btn">
+								<input class="checkbox-storable" type="checkbox" id="alt-5-autotrigger">
+								<div class="icon-btn icon icon-autotrigger"></div>
+							</label>
+							<label class="config-btn">
+								<input class="checkbox-storable" type="checkbox" id="alt-5-autoload">
+								<div class="icon-btn icon icon-sync"></div>
+							</label>
+							<label id="alt-5-custom-times" class="accordion">
+								<div class="icon-btn icon icon-clock"></div>
+							</label>
+							<div class="hidable">
+								<div class="alt-time-options">
+									<div class="settings-title">LT1 Times</div>
+									<div class="settings-inputs">
+										<input class="storable" id="alt-5-animation-time" type="number" placeholder="in-out" tabindex="12">
+										<input class="storable" id="alt-5-active-time" type="number" placeholder="active" tabindex="13">
+										<label class="config-btn lock-input">
+											<input class="checkbox-storable" type="checkbox" id="alt-5-lock-active">
+											<div class="icon-btn icon icon-lock"></div>
+										</label>
+										<input class="storable" id="alt-5-inactive-time" type="number" placeholder="inactive" tabindex="14">
+										<label class="config-btn lock-input">
+											<input class="checkbox-storable" type="checkbox" id="alt-5-oneshot">
+											<div class="icon-btn icon icon-oneshot"></div>
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					</div>
+					
+					<div class="sortees" id="alt_6"> <!--// Lower Third 6//-->
+					<div id="alt-6-config-content">
+						<label class="switch">
+						<input class="checkbox-storable" type="checkbox" id="lower-thirds-switch2">
+						<span class="slider round"></span>
+						</label>
+						<label class="config-btn preview-btn">
+							<input class="checkbox-storable" type="checkbox" id="alt-6-preview">
+							<div class="icon-btn icon icon-search"></div>
+						</label>
+						<div class="drag-handle">
+							<div class="alt-number-icon">2</div>
+							<div id="alt-6-title" class="renameable title-storable">Lower Third 6</div>
+						</div>
+						<label class="accordion"></label>
+						<div class="hidable">
+							<div class="grid-container">
+								<div class="grid-row">
+									<div>
+										<div class="align-toggle">
+										<input class="radio-storable" id="alt-6-align-left" name="alt-6-align" type="radio" value="left" checked/>
+										<label for="alt-6-align-left" onclick=""><div class="icon icon-aling-left"></div></label>
+										<input class="radio-storable" id="alt-6-align-center" name="alt-6-align" type="radio" value="center" />
+										<label for="alt-6-align-center" onclick=""><div class="icon icon-aling-center"></div></label>
+										<input class="radio-storable" id="alt-6-align-right" name="alt-6-align" type="radio" value="right" />
+										<label for="alt-6-align-right" onclick=""><div class="icon icon-aling-right"></div></label>
+										</div>
+									</div>
+									<div>
+										<div class="input-icon icon icon-paint-brush"></div>
+										<div class="number-input">
+											<input id="alt-6-style" class="storable" min="1" max="3" name="quantity" value="1" type="number" placeholder="1" readonly>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>
+									<div>
+										<div class="input-icon icon icon-size"></div>
+										<div class="number-input">
+											<input id="alt-6-size" class="storable" min="10" max="50" name="quantity" value="24" type="number" placeholder="24">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>							
+									<div class="margin-config group">
+										<div class="input-icon icon icon-position"></div>
+										<div class="number-input">
+											<input id="alt-6-margin-h" class="storable" min="0" max="100" name="quantity" value="4" type="number" placeholder="4">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+										<div class="number-input input-no-icon">
+											<input id="alt-6-margin-v" class="storable" min="0" max="55" name="quantity" value="4" type="number" placeholder="4">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>
+								</div>
+								<div class="grid-row">
+									<div>
+										<div class="input-icon icon icon-text-height"></div>
+										<div class="number-input">
+											<input id="alt-6-inverse-ratio" class="storable" min="0" max="10" name="quantity" value="9" type="number" placeholder="9">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>
+									<div>
+										<div class="input-icon icon icon-line-spacing"></div>
+										<div class="number-input">
+											<input id="alt-6-line-spacing" class="storable" min="-5" max="5" name="quantity" value="2" type="number" placeholder="0">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>									
+									<div class="font-config group">
+										<div class="input-icon icon icon-font"></div>
+										<select id="alt-6-font" class="font-storable">
+											<!--Fonts list-->
+										</select>
+									</div>
+								</div>
+								<div class="grid-row">
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable" type="checkbox" id="alt-6-logo" checked>
+											<div class="icon-btn icon icon-image"></div>
+										</label>									
+										<div class="number-input">
+											<input id="alt-6-logo-size" class="storable" min="-10" max="10" name="quantity" value="0" type="number" placeholder="0">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>										
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable" type="checkbox" id="alt-6-shadows">
+											<div class="icon-btn icon icon-shadow"></div>
+										</label>
+										<div class="number-input">
+											<input id="alt-6-shadow-amount" class="storable" min="1" max="10" name="quantity" value="5" type="number" placeholder="5">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable" type="checkbox" id="alt-6-background" checked>
+											<div class="icon-btn icon icon-fill-drip"></div>
+										</label>
+										<div id="alt-6-style-color-appearance" class="fill-color-appearance">
+											<div class="tool-tittle">Clr 1</div>
+											<input class="storable" id="alt-6-style-color-1" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
+											<div class="tool-tittle">Clr 2</div>
+											<input class="storable" id="alt-6-style-color-2" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
+										</div>
+									</div>
+								</div>
+								<div class="grid-row">
+									<div>
+										<div class="input-icon icon icon-corner"></div>
+										<div class="number-input">
+											<input id="alt-6-corners" class="storable" min="0" max="10" name="quantity" value="0" type="number" placeholder="0">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable twin-checkbox" type="checkbox" name="alt-6-border" id="alt-6-border-thickness">
+											<div class="icon-btn icon icon-thickness"></div>
+										</label>
+										<div class="number-input">
+											<input id="alt-6-border-thickness-amount" class="storable" min="1" max="10" name="quantity" value="4" type="number" placeholder="4">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable twin-checkbox" type="checkbox" name="alt-6-border" id="alt-6-border-color">
+											<div class="icon-btn icon icon-pen"></div>
+										</label>
+										<div id="alt-6-style-border-color-appearance" class="border-color-appearance">
+											<div class="tool-tittle">Clr 3</div>
+											<input class="storable" id="alt-6-style-color-3" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
+											<div class="tool-tittle">Clr 4</div>
+											<input class="storable" id="alt-6-style-color-4" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
+										</div>
+									</div>									
+								</div>
+							</div>					
+						</div>
+						<div class="first-edit-container">
+							<div class="logo-container" onclick="openLogoPopup('alt-6-logo-preview', 'alt-6-logo-default')">
+								<img id="alt-6-logo-preview" class="logo-storable alt-logo-preview" >
+							</div>
+							<div class="textfields-container">
+								<input class="storable" type="text" id="alt-6-name" placeholder="Name" tabindex="6">
+								<div id="alt-6-name-appearance">
+									<label class="config-btn small">
+										<input class="checkbox-storable" type="checkbox" id="alt-6-name-transform" checked>
+										<div class="icon-btn icon small icon-uppercase"></div>
+									</label>
+									<label class="config-btn small">
+										<input class="checkbox-storable" type="checkbox" id="alt-6-name-weight" checked>
+										<div class="icon-btn icon small icon-bold"></div>
+									</label>
+									<input class="storable" id="alt-6-name-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
+								</div>
+								<input class="storable" type="text" id="alt-6-info" placeholder="Info" tabindex="7">
+								<div id="alt-6-info-appearance">
+									<label class="config-btn small">
+										<input class="checkbox-storable" type="checkbox" id="alt-6-info-transform">
+										<div class="icon-btn icon small icon-uppercase"></div>
+									</label>
+									<label class="config-btn small">
+										<input class="checkbox-storable" type="checkbox" id="alt-6-info-weight">
+										<div class="icon-btn icon small icon-bold"></div>
+									</label>
+									<input class="storable" id="alt-6-info-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
+								</div>	
+								<div style="clear:both"></div>
+							</div>
+						</div>
+						<div class="panel-bottom">
+							<div id="alt-6-clean-inputs" class="clean"><div class="icon icon-cross"></div></div>
+							<ul id="alt-6-memory-slots">
+								<li id="alt-6-slot-1"><div class="slot-number">1</div><div class="slot-storable stored-name" id="alt-6-name-1"></div><div class="slot-storable stored-info" id="alt-6-info-1"></div><div class="slot-storable stored-logo" id="alt-6-logo-1"></div></li>
+								<li id="alt-6-slot-2"><div class="slot-number">2</div><div class="slot-storable stored-name" id="alt-6-name-2"></div><div class="slot-storable stored-info" id="alt-6-info-2"></div><div class="slot-storable stored-logo" id="alt-6-logo-2"></div></li>
+								<li id="alt-6-slot-3"><div class="slot-number">3</div><div class="slot-storable stored-name" id="alt-6-name-3"></div><div class="slot-storable stored-info" id="alt-6-info-3"></div><div class="slot-storable stored-logo" id="alt-6-logo-3"></div></li>
+								<li id="alt-6-slot-4"><div class="slot-number">4</div><div class="slot-storable stored-name" id="alt-6-name-4"></div><div class="slot-storable stored-info" id="alt-6-info-4"></div><div class="slot-storable stored-logo" id="alt-6-logo-4"></div></li>
+								<li id="alt-6-slot-5"><div class="slot-number">5</div><div class="slot-storable stored-name" id="alt-6-name-5"></div><div class="slot-storable stored-info" id="alt-6-info-5"></div><div class="slot-storable stored-logo" id="alt-6-logo-5"></div></li>
+								<li id="alt-6-slot-6"><div class="slot-number">6</div><div class="slot-storable stored-name" id="alt-6-name-6"></div><div class="slot-storable stored-info" id="alt-6-info-6"></div><div class="slot-storable stored-logo" id="alt-6-logo-6"></div></li>
+								<li id="alt-6-slot-7"><div class="slot-number">7</div><div class="slot-storable stored-name" id="alt-6-name-7"></div><div class="slot-storable stored-info" id="alt-6-info-7"></div><div class="slot-storable stored-logo" id="alt-6-logo-7"></div></li>
+								<li id="alt-6-slot-8"><div class="slot-number">8</div><div class="slot-storable stored-name" id="alt-6-name-8"></div><div class="slot-storable stored-info" id="alt-6-info-8"></div><div class="slot-storable stored-logo" id="alt-6-logo-8"></div></li>
+								<li id="alt-6-slot-9"><div class="slot-number">9</div><div class="slot-storable stored-name" id="alt-6-name-9"></div><div class="slot-storable stored-info" id="alt-6-info-9"></div><div class="slot-storable stored-logo" id="alt-6-logo-9"></div></li>
+								<li id="alt-6-slot-10"><div class="slot-number">10</div><div class="slot-storable stored-name" id="alt-6-name-10"></div><div class="slot-storable stored-info" id="alt-6-info-10"></div><div class="slot-storable stored-logo" id="alt-6-logo-10"></div></li>
+							</ul>
+							<div class="time-bar">
+								<div id="alt-6-active-time-monitor">0</div>
+								<div id="alt-6-inactive-time-monitor">0</div>
+							</div>
+							<label class="config-btn">
+								<input class="checkbox-storable" type="checkbox" id="alt-6-autotrigger">
+								<div class="icon-btn icon icon-autotrigger"></div>
+							</label>
+							<label class="config-btn">
+								<input class="checkbox-storable" type="checkbox" id="alt-6-autoload">
+								<div class="icon-btn icon icon-sync"></div>
+							</label>
+							<label id="alt-6-custom-times" class="accordion">
+								<div class="icon-btn icon icon-clock"></div>
+							</label>
+							<div class="hidable">
+								<div class="alt-time-options">
+									<div class="settings-title">LT2 Times</div>
+									<div class="settings-inputs">
+										<input class="storable" id="alt-6-animation-time" type="number" placeholder="in-out" tabindex="15">
+										<input class="storable" id="alt-6-active-time" type="number" placeholder="active" tabindex="16">
+										<label class="config-btn lock-input">
+											<input class="checkbox-storable" type="checkbox" id="alt-6-lock-active">
+											<div class="icon-btn icon icon-lock"></div>
+										</label>
+										<input class="storable" id="alt-6-inactive-time" type="number" placeholder="inactive" tabindex="17">
+										<label class="config-btn lock-input">
+											<input class="checkbox-storable" type="checkbox" id="alt-6-oneshot">
+											<div class="icon-btn icon icon-oneshot"></div>
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					</div>
+					
+					<div class="sortees" id="alt_7"> <!--// Lower Third 7//-->
+					<div id="alt-7-config-content">
+						<label class="switch">
+						<input class="checkbox-storable" type="checkbox" id="lower-thirds-switch3">
+						<span class="slider round"></span>
+						</label>
+						<label class="config-btn preview-btn">
+							<input class="checkbox-storable" type="checkbox" id="alt-7-preview">
+							<div class="icon-btn icon icon-search"></div>
+						</label>
+						<div class="drag-handle">
+							<div class="alt-number-icon">3</div>
+							<div id="alt-7-title" class="renameable title-storable">Lower Third 7</div>
+						</div>
+						<label class="accordion"></label>
+						<div class="hidable">
+							<div class="grid-container">
+								<div class="grid-row">
+									<div>
+										<div class="align-toggle">
+										<input class="radio-storable" id="alt-7-align-left" name="alt-7-align" type="radio" value="left" checked/>
+										<label for="alt-7-align-left" onclick=""><div class="icon icon-aling-left"></div></label>
+										<input class="radio-storable" id="alt-7-align-center" name="alt-7-align" type="radio" value="center" />
+										<label for="alt-7-align-center" onclick=""><div class="icon icon-aling-center"></div></label>
+										<input class="radio-storable" id="alt-7-align-right" name="alt-7-align" type="radio" value="right" />
+										<label for="alt-7-align-right" onclick=""><div class="icon icon-aling-right"></div></label>
+										</div>
+									</div>
+									<div>
+										<div class="input-icon icon icon-paint-brush"></div>
+										<div class="number-input">
+											<input id="alt-7-style" class="storable" min="1" max="3" name="quantity" value="1" type="number" placeholder="1" readonly>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>
+									<div>
+										<div class="input-icon icon icon-size"></div>
+										<div class="number-input">
+											<input id="alt-7-size" class="storable" min="10" max="50" name="quantity" value="24" type="number" placeholder="24">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>							
+									<div class="margin-config group">
+										<div class="input-icon icon icon-position"></div>
+										<div class="number-input">
+											<input id="alt-7-margin-h" class="storable" min="0" max="100" name="quantity" value="4" type="number" placeholder="4">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+										<div class="number-input input-no-icon">
+											<input id="alt-7-margin-v" class="storable" min="0" max="55" name="quantity" value="4" type="number" placeholder="4">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>
+								</div>
+								<div class="grid-row">
+									<div>
+										<div class="input-icon icon icon-text-height"></div>
+										<div class="number-input">
+											<input id="alt-7-inverse-ratio" class="storable" min="0" max="10" name="quantity" value="9" type="number" placeholder="9">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>
+									<div>
+										<div class="input-icon icon icon-line-spacing"></div>
+										<div class="number-input">
+											<input id="alt-7-line-spacing" class="storable" min="-5" max="5" name="quantity" value="2" type="number" placeholder="0">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>									
+									<div class="font-config group">
+										<div class="input-icon icon icon-font"></div>
+										<select id="alt-7-font" class="font-storable">
+											<!--Fonts list-->
+										</select>
+									</div>
+								</div>
+								<div class="grid-row">
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable" type="checkbox" id="alt-7-logo" checked>
+											<div class="icon-btn icon icon-image"></div>
+										</label>									
+										<div class="number-input">
+											<input id="alt-7-logo-size" class="storable" min="-10" max="10" name="quantity" value="0" type="number" placeholder="0">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>										
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable" type="checkbox" id="alt-7-shadows">
+											<div class="icon-btn icon icon-shadow"></div>
+										</label>
+										<div class="number-input">
+											<input id="alt-7-shadow-amount" class="storable" min="1" max="10" name="quantity" value="5" type="number" placeholder="5">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable" type="checkbox" id="alt-7-background" checked>
+											<div class="icon-btn icon icon-fill-drip"></div>
+										</label>
+										<div id="alt-7-style-color-appearance" class="fill-color-appearance">
+											<div class="tool-tittle">Clr 1</div>
+											<input class="storable" id="alt-7-style-color-1" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
+											<div class="tool-tittle">Clr 2</div>
+											<input class="storable" id="alt-7-style-color-2" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
+										</div>
+									</div>
+								</div>
+								<div class="grid-row">
+									<div>
+										<div class="input-icon icon icon-corner"></div>
+										<div class="number-input">
+											<input id="alt-7-corners" class="storable" min="0" max="10" name="quantity" value="0" type="number" placeholder="0">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable twin-checkbox" type="checkbox" name="alt-7-border" id="alt-7-border-thickness">
+											<div class="icon-btn icon icon-thickness"></div>
+										</label>
+										<div class="number-input">
+											<input id="alt-7-border-thickness-amount" class="storable" min="1" max="10" name="quantity" value="4" type="number" placeholder="4">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable twin-checkbox" type="checkbox" name="alt-7-border" id="alt-7-border-color">
+											<div class="icon-btn icon icon-pen"></div>
+										</label>
+										<div id="alt-7-style-border-color-appearance" class="border-color-appearance">
+											<div class="tool-tittle">Clr 3</div>
+											<input class="storable" id="alt-7-style-color-3" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
+											<div class="tool-tittle">Clr 4</div>
+											<input class="storable" id="alt-7-style-color-4" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
+										</div>
+									</div>									
+								</div>
+							</div>					
+						</div>
+						<div class="first-edit-container">
+							<div class="logo-container" onclick="openLogoPopup('alt-7-logo-preview', 'alt-7-logo-default')">
+								<img id="alt-7-logo-preview" class="logo-storable alt-logo-preview" >
+							</div>
+							<div class="textfields-container">
+								<input class="storable" type="text" id="alt-7-name" placeholder="Name" tabindex="8">
+								<div id="alt-7-name-appearance">
+									<label class="config-btn small">
+										<input class="checkbox-storable" type="checkbox" id="alt-7-name-transform" checked>
+										<div class="icon-btn icon small icon-uppercase"></div>
+									</label>
+									<label class="config-btn small">
+										<input class="checkbox-storable" type="checkbox" id="alt-7-name-weight" checked>
+										<div class="icon-btn icon small icon-bold"></div>
+									</label>
+									<input class="storable" id="alt-7-name-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
+								</div>
+								<input class="storable" type="text" id="alt-7-info" placeholder="Info" tabindex="9">
+								<div id="alt-7-info-appearance">
+									<label class="config-btn small">
+										<input class="checkbox-storable" type="checkbox" id="alt-7-info-transform">
+										<div class="icon-btn icon small icon-uppercase"></div>
+									</label>
+									<label class="config-btn small">
+										<input class="checkbox-storable" type="checkbox" id="alt-7-info-weight">
+										<div class="icon-btn icon small icon-bold"></div>
+									</label>
+									<input class="storable" id="alt-7-info-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
+								</div>	
+								<div style="clear:both"></div>
+							</div>
+						</div>
+						<div class="panel-bottom">
+							<div id="alt-7-clean-inputs" class="clean"><div class="icon icon-cross"></div></div>
+							<ul id="alt-7-memory-slots">
+								<li id="alt-7-slot-1"><div class="slot-number">1</div><div class="slot-storable stored-name" id="alt-7-name-1"></div><div class="slot-storable stored-info" id="alt-7-info-1"></div><div class="slot-storable stored-logo" id="alt-7-logo-1"></div></li>
+								<li id="alt-7-slot-2"><div class="slot-number">2</div><div class="slot-storable stored-name" id="alt-7-name-2"></div><div class="slot-storable stored-info" id="alt-7-info-2"></div><div class="slot-storable stored-logo" id="alt-7-logo-2"></div></li>
+								<li id="alt-7-slot-3"><div class="slot-number">3</div><div class="slot-storable stored-name" id="alt-7-name-3"></div><div class="slot-storable stored-info" id="alt-7-info-3"></div><div class="slot-storable stored-logo" id="alt-7-logo-3"></div></li>
+								<li id="alt-7-slot-4"><div class="slot-number">4</div><div class="slot-storable stored-name" id="alt-7-name-4"></div><div class="slot-storable stored-info" id="alt-7-info-4"></div><div class="slot-storable stored-logo" id="alt-7-logo-4"></div></li>
+								<li id="alt-7-slot-5"><div class="slot-number">5</div><div class="slot-storable stored-name" id="alt-7-name-5"></div><div class="slot-storable stored-info" id="alt-7-info-5"></div><div class="slot-storable stored-logo" id="alt-7-logo-5"></div></li>
+								<li id="alt-7-slot-6"><div class="slot-number">6</div><div class="slot-storable stored-name" id="alt-7-name-6"></div><div class="slot-storable stored-info" id="alt-7-info-6"></div><div class="slot-storable stored-logo" id="alt-7-logo-6"></div></li>
+								<li id="alt-7-slot-7"><div class="slot-number">7</div><div class="slot-storable stored-name" id="alt-7-name-7"></div><div class="slot-storable stored-info" id="alt-7-info-7"></div><div class="slot-storable stored-logo" id="alt-7-logo-7"></div></li>
+								<li id="alt-7-slot-8"><div class="slot-number">8</div><div class="slot-storable stored-name" id="alt-7-name-8"></div><div class="slot-storable stored-info" id="alt-7-info-8"></div><div class="slot-storable stored-logo" id="alt-7-logo-8"></div></li>
+								<li id="alt-7-slot-9"><div class="slot-number">9</div><div class="slot-storable stored-name" id="alt-7-name-9"></div><div class="slot-storable stored-info" id="alt-7-info-9"></div><div class="slot-storable stored-logo" id="alt-7-logo-9"></div></li>
+								<li id="alt-7-slot-10"><div class="slot-number">10</div><div class="slot-storable stored-name" id="alt-7-name-10"></div><div class="slot-storable stored-info" id="alt-7-info-10"></div><div class="slot-storable stored-logo" id="alt-7-logo-10"></div></li>
+							</ul>
+							<div class="time-bar">
+								<div id="alt-7-active-time-monitor">0</div>
+								<div id="alt-7-inactive-time-monitor">0</div>
+							</div>
+							<label class="config-btn">
+								<input class="checkbox-storable" type="checkbox" id="alt-7-autotrigger">
+								<div class="icon-btn icon icon-autotrigger"></div>
+							</label>
+							<label class="config-btn">
+								<input class="checkbox-storable" type="checkbox" id="alt-7-autoload">
+								<div class="icon-btn icon icon-sync"></div>
+							</label>
+							<label id="alt-7-custom-times" class="accordion">
+								<div class="icon-btn icon icon-clock"></div>
+							</label>
+							<div class="hidable">
+								<div class="alt-time-options">
+									<div class="settings-title">LT3 Times</div>
+									<div class="settings-inputs">
+										<input class="storable" id="alt-7-animation-time" type="number" placeholder="in-out" tabindex="18">
+										<input class="storable" id="alt-7-active-time" type="number" placeholder="active" tabindex="19">
+										<label class="config-btn lock-input">
+											<input class="checkbox-storable" type="checkbox" id="alt-7-lock-active">
+											<div class="icon-btn icon icon-lock"></div>
+										</label>
+										<input class="storable" id="alt-7-inactive-time" type="number" placeholder="inactive" tabindex="20">
+										<label class="config-btn lock-input">
+											<input class="checkbox-storable" type="checkbox" id="alt-7-oneshot">
+											<div class="icon-btn icon icon-oneshot"></div>
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					</div>
+					
+					<div class="sortees" id="alt_8"> <!--// Lower Third 8//-->
+					<div id="alt-8-config-content">
+						<label class="switch">
+						<input class="checkbox-storable" type="checkbox" id="lower-thirds-switch8">
+						<span class="slider round"></span>
+						</label>
+						<label class="config-btn preview-btn">
+							<input class="checkbox-storable" type="checkbox" id="alt-8-preview">
+							<div class="icon-btn icon icon-search"></div>
+						</label>
+						<div class="drag-handle">
+							<div class="alt-number-icon">4</div>
+							<div id="alt-8-title" class="renameable title-storable">Lower Third 8</div>
+						</div>
+						<label class="accordion"></label>
+						<div class="hidable">
+							<div class="grid-container">
+								<div class="grid-row">
+									<div>
+										<div class="align-toggle">
+										<input class="radio-storable" id="alt-8-align-left" name="alt-8-align" type="radio" value="left" checked/>
+										<label for="alt-8-align-left" onclick=""><div class="icon icon-aling-left"></div></label>
+										<input class="radio-storable" id="alt-8-align-center" name="alt-8-align" type="radio" value="center" />
+										<label for="alt-8-align-center" onclick=""><div class="icon icon-aling-center"></div></label>
+										<input class="radio-storable" id="alt-8-align-right" name="alt-8-align" type="radio" value="right" />
+										<label for="alt-8-align-right" onclick=""><div class="icon icon-aling-right"></div></label>
+										</div>
+									</div>
+									<div>
+										<div class="input-icon icon icon-paint-brush"></div>
+										<div class="number-input">
+											<input id="alt-8-style" class="storable" min="1" max="3" name="quantity" value="1" type="number" placeholder="1" readonly>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>
+									<div>
+										<div class="input-icon icon icon-size"></div>
+										<div class="number-input">
+											<input id="alt-8-size" class="storable" min="10" max="50" name="quantity" value="24" type="number" placeholder="24">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>							
+									<div class="margin-config group">
+										<div class="input-icon icon icon-position"></div>
+										<div class="number-input">
+											<input id="alt-8-margin-h" class="storable" min="0" max="100" name="quantity" value="4" type="number" placeholder="4">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+										<div class="number-input input-no-icon">
+											<input id="alt-8-margin-v" class="storable" min="0" max="55" name="quantity" value="4" type="number" placeholder="4">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>
+								</div>
+								<div class="grid-row">
+									<div>
+										<div class="input-icon icon icon-text-height"></div>
+										<div class="number-input">
+											<input id="alt-8-inverse-ratio" class="storable" min="0" max="10" name="quantity" value="9" type="number" placeholder="9">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>
+									<div>
+										<div class="input-icon icon icon-line-spacing"></div>
+										<div class="number-input">
+											<input id="alt-8-line-spacing" class="storable" min="-5" max="5" name="quantity" value="2" type="number" placeholder="0">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>									
+									<div class="font-config group">
+										<div class="input-icon icon icon-font"></div>
+										<select id="alt-8-font" class="font-storable">
+											<!--Fonts list-->
+										</select>
+									</div>
+								</div>
+								<div class="grid-row">
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable" type="checkbox" id="alt-8-logo" checked>
+											<div class="icon-btn icon icon-image"></div>
+										</label>									
+										<div class="number-input">
+											<input id="alt-8-logo-size" class="storable" min="-10" max="10" name="quantity" value="0" type="number" placeholder="0">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>										
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable" type="checkbox" id="alt-8-shadows">
+											<div class="icon-btn icon icon-shadow"></div>
+										</label>
+										<div class="number-input">
+											<input id="alt-8-shadow-amount" class="storable" min="1" max="10" name="quantity" value="5" type="number" placeholder="5">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable" type="checkbox" id="alt-8-background" checked>
+											<div class="icon-btn icon icon-fill-drip"></div>
+										</label>
+										<div id="alt-8-style-color-appearance" class="fill-color-appearance">
+											<div class="tool-tittle">Clr 1</div>
+											<input class="storable" id="alt-8-style-color-1" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
+											<div class="tool-tittle">Clr 2</div>
+											<input class="storable" id="alt-8-style-color-2" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
+										</div>
+									</div>
+								</div>
+								<div class="grid-row">
+									<div>
+										<div class="input-icon icon icon-corner"></div>
+										<div class="number-input">
+											<input id="alt-8-corners" class="storable" min="0" max="10" name="quantity" value="0" type="number" placeholder="0">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable twin-checkbox" type="checkbox" name="alt-8-border" id="alt-8-border-thickness">
+											<div class="icon-btn icon icon-thickness"></div>
+										</label>
+										<div class="number-input">
+											<input id="alt-8-border-thickness-amount" class="storable" min="1" max="10" name="quantity" value="4" type="number" placeholder="4">
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
+											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+										</div>
+									</div>
+									<div>
+										<label class="config-btn">
+											<input class="checkbox-storable twin-checkbox" type="checkbox" name="alt-8-border" id="alt-8-border-color">
+											<div class="icon-btn icon icon-pen"></div>
+										</label>
+										<div id="alt-8-style-border-color-appearance" class="border-color-appearance">
+											<div class="tool-tittle">Clr 3</div>
+											<input class="storable" id="alt-8-style-color-3" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
+											<div class="tool-tittle">Clr 4</div>
+											<input class="storable" id="alt-8-style-color-4" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
+										</div>
+									</div>									
+								</div>
+							</div>					
+						</div>
+						<div class="first-edit-container">
+							<div class="logo-container" onclick="openLogoPopup('alt-8-logo-preview', 'alt-8-logo-default')">
+								<img id="alt-8-logo-preview" class="logo-storable alt-logo-preview" >
+							</div>
+							<div class="textfields-container">
+								<input class="storable" type="text" id="alt-8-name" placeholder="Name" tabindex="10">
+								<div id="alt-8-name-appearance">
+									<label class="config-btn small">
+										<input class="checkbox-storable" type="checkbox" id="alt-8-name-transform" checked>
+										<div class="icon-btn icon small icon-uppercase"></div>
+									</label>
+									<label class="config-btn small">
+										<input class="checkbox-storable" type="checkbox" id="alt-8-name-weight" checked>
+										<div class="icon-btn icon small icon-bold"></div>
+									</label>
+									<input class="storable" id="alt-8-name-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
+								</div>
+								<input class="storable" type="text" id="alt-8-info" placeholder="Info" tabindex="11">
+								<div id="alt-8-info-appearance">
+									<label class="config-btn small">
+										<input class="checkbox-storable" type="checkbox" id="alt-8-info-transform">
+										<div class="icon-btn icon small icon-uppercase"></div>
+									</label>
+									<label class="config-btn small">
+										<input class="checkbox-storable" type="checkbox" id="alt-8-info-weight">
+										<div class="icon-btn icon small icon-bold"></div>
+									</label>
+									<input class="storable" id="alt-8-info-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
+								</div>	
+								<div style="clear:both"></div>
+							</div>
+						</div>
+						<div class="panel-bottom">
+							<div id="alt-8-clean-inputs" class="clean"><div class="icon icon-cross"></div></div>
+							<ul id="alt-8-memory-slots">
+								<li id="alt-8-slot-1"><div class="slot-number">1</div><div class="slot-storable stored-name" id="alt-8-name-1"></div><div class="slot-storable stored-info" id="alt-8-info-1"></div><div class="slot-storable stored-logo" id="alt-8-logo-1"></div></li>
+								<li id="alt-8-slot-2"><div class="slot-number">2</div><div class="slot-storable stored-name" id="alt-8-name-2"></div><div class="slot-storable stored-info" id="alt-8-info-2"></div><div class="slot-storable stored-logo" id="alt-8-logo-2"></div></li>
+								<li id="alt-8-slot-3"><div class="slot-number">3</div><div class="slot-storable stored-name" id="alt-8-name-3"></div><div class="slot-storable stored-info" id="alt-8-info-3"></div><div class="slot-storable stored-logo" id="alt-8-logo-3"></div></li>
+								<li id="alt-8-slot-4"><div class="slot-number">4</div><div class="slot-storable stored-name" id="alt-8-name-4"></div><div class="slot-storable stored-info" id="alt-8-info-4"></div><div class="slot-storable stored-logo" id="alt-8-logo-4"></div></li>
+								<li id="alt-8-slot-5"><div class="slot-number">5</div><div class="slot-storable stored-name" id="alt-8-name-5"></div><div class="slot-storable stored-info" id="alt-8-info-5"></div><div class="slot-storable stored-logo" id="alt-8-logo-5"></div></li>
+								<li id="alt-8-slot-6"><div class="slot-number">6</div><div class="slot-storable stored-name" id="alt-8-name-6"></div><div class="slot-storable stored-info" id="alt-8-info-6"></div><div class="slot-storable stored-logo" id="alt-8-logo-6"></div></li>
+								<li id="alt-8-slot-7"><div class="slot-number">7</div><div class="slot-storable stored-name" id="alt-8-name-7"></div><div class="slot-storable stored-info" id="alt-8-info-7"></div><div class="slot-storable stored-logo" id="alt-8-logo-7"></div></li>
+								<li id="alt-8-slot-8"><div class="slot-number">8</div><div class="slot-storable stored-name" id="alt-8-name-8"></div><div class="slot-storable stored-info" id="alt-8-info-8"></div><div class="slot-storable stored-logo" id="alt-8-logo-8"></div></li>
+								<li id="alt-8-slot-9"><div class="slot-number">9</div><div class="slot-storable stored-name" id="alt-8-name-9"></div><div class="slot-storable stored-info" id="alt-8-info-9"></div><div class="slot-storable stored-logo" id="alt-8-logo-9"></div></li>
+								<li id="alt-8-slot-10"><div class="slot-number">10</div><div class="slot-storable stored-name" id="alt-8-name-10"></div><div class="slot-storable stored-info" id="alt-8-info-10"></div><div class="slot-storable stored-logo" id="alt-8-logo-10"></div></li>
+							</ul>
+							<div class="time-bar">
+								<div id="alt-8-active-time-monitor">0</div>
+								<div id="alt-8-inactive-time-monitor">0</div>
+							</div>
+							<label class="config-btn">
+								<input class="checkbox-storable" type="checkbox" id="alt-8-autotrigger">
+								<div class="icon-btn icon icon-autotrigger"></div>
+							</label>
+							<label class="config-btn">
+								<input class="checkbox-storable" type="checkbox" id="alt-8-autoload">
+								<div class="icon-btn icon icon-sync"></div>
+							</label>
+							<label id="alt-8-custom-times" class="accordion">
+								<div class="icon-btn icon icon-clock"></div>
+							</label>
+							<div class="hidable">
+								<div class="alt-time-options">
+									<div class="settings-title">LT4 Times</div>
+									<div class="settings-inputs">
+										<input class="storable" id="alt-8-animation-time" type="number" placeholder="in-out" tabindex="21">
+										<input class="storable" id="alt-8-active-time" type="number" placeholder="active" tabindex="22">
+										<label class="config-btn lock-input">
+											<input class="checkbox-storable" type="checkbox" id="alt-8-lock-active">
+											<div class="icon-btn icon icon-lock"></div>
+										</label>
+										<input class="storable" id="alt-8-inactive-time" type="number" placeholder="inactive" tabindex="23">
+										<label class="config-btn lock-input">
+											<input class="checkbox-storable" type="checkbox" id="alt-8-oneshot">
+											<div class="icon-btn icon icon-oneshot"></div>
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					</div>
+					
+
 			</div>
 
 			<div id="select-image" class="center hide" >
@@ -1221,6 +2182,14 @@
 			var alt_3_inactive_time_monitor;
 			var alt_4_active_time_monitor;
 			var alt_4_inactive_time_monitor;
+			var alt_5_active_time_monitor;
+			var alt_5_inactive_time_monitor;
+			var alt_6_active_time_monitor;
+			var alt_6_inactive_time_monitor;
+			var alt_7_active_time_monitor;
+			var alt_7_inactive_time_monitor;
+			var alt_8_active_time_monitor;
+			var alt_8_inactive_time_monitor;
 
 
 			var alt_1_autoload;
@@ -1231,28 +2200,52 @@
 			var alt_3_jumpnext;
 			var alt_4_autoload;
 			var alt_4_jumpnext;
+			var alt_5_autoload;
+			var alt_5_jumpnext;
+			var alt_6_autoload;
+			var alt_6_jumpnext;
+			var alt_7_autoload;
+			var alt_7_jumpnext;
+			var alt_8_autoload;
+			var alt_8_jumpnext;
 
 			var alt_1_autotrigger;
 			var alt_2_autotrigger;
 			var alt_3_autotrigger;
 			var alt_4_autotrigger;
+			var alt_5_autotrigger;
+			var alt_6_autotrigger;
+			var alt_7_autotrigger;
+			var alt_8_autotrigger;
 
 			var global_oneshot;
 			var alt_1_oneshot;
 			var alt_2_oneshot;
 			var alt_3_oneshot;
 			var alt_4_oneshot;
+			var alt_5_oneshot;
+			var alt_6_oneshot;
+			var alt_7_oneshot;
+			var alt_8_oneshot;
 
 			var global_lock_active;
 			var alt_1_lock_active;
 			var alt_2_lock_active;
 			var alt_3_lock_active;
 			var alt_4_lock_active;
+			var alt_5_lock_active;
+			var alt_6_lock_active;
+			var alt_7_lock_active;
+			var alt_8_lock_active;
 
 			var alt_1_logo_default = "../logos/logo_1.png";
 			var alt_2_logo_default = "../logos/logo_2.png";
 			var alt_3_logo_default = "../logos/logo_3.png";
 			var alt_4_logo_default = "../logos/logo_4.png";
+			var alt_5_logo_default = "../logos/logo_5.png";
+			var alt_6_logo_default = "../logos/logo_6.png";
+			var alt_7_logo_default = "../logos/logo_7.png";
+			var alt_8_logo_default = "../logos/logo_8.png";
 
 			var alt_1_style = default_style;
 			var alt_1_inverse_ratio = default_inverse_ratio;
@@ -1316,12 +2309,76 @@
 			var alt_4_shadow_amount;
 			var alt_4_corners;
 			var alt_4_border_thickness_amount;
+			
+			var alt_5_style = default_style;
+			var alt_5_inverse_ratio = default_inverse_ratio;
+			var alt_5_name_size;
+			var alt_5_info_size;
+			var alt_5_size;
+			var alt_5_line_spacing;
+			var alt_5_margin_h;
+			var alt_5_margin_v;
+			var alt_5_shadows;
+			var alt_5_font;
+			var alt_5_logo_size;
+			var alt_5_shadow_amount;
+			var alt_5_corners;
+			var alt_5_border_thickness_amount;
+
+			var alt_6_style = default_style;
+			var alt_6_inverse_ratio = default_inverse_ratio;
+			var alt_6_name_size;
+			var alt_6_info_size;
+			var alt_6_size;
+			var alt_6_line_spacing;
+			var alt_6_margin_h;
+			var alt_6_margin_v;
+			var alt_6_shadows;
+			var alt_6_font;
+			var alt_6_logo_size;
+			var alt_6_shadow_amount;
+			var alt_6_corners;
+			var alt_6_border_thickness_amount;
+
+			var alt_7_style = default_style;
+			var alt_7_inverse_ratio = default_inverse_ratio;
+			var alt_7_name_size;
+			var alt_7_info_size;
+			var alt_7_size;
+			var alt_7_line_spacing;
+			var alt_7_margin_h;
+			var alt_7_margin_v;
+			var alt_7_shadows;
+			var alt_7_font;
+			var alt_7_logo_size;
+			var alt_7_shadow_amount;
+			var alt_7_corners;
+			var alt_7_border_thickness_amount;
+
+			var alt_8_style = default_style;
+			var alt_8_inverse_ratio = default_inverse_ratio;
+			var alt_8_name_size;
+			var alt_8_info_size;
+			var alt_8_size;
+			var alt_8_line_spacing;
+			var alt_8_margin_h;
+			var alt_8_margin_v;
+			var alt_8_shadows;
+			var alt_8_font;
+			var alt_8_logo_size;
+			var alt_8_shadow_amount;
+			var alt_8_corners;
+			var alt_8_border_thickness_amount;
 
 			var hotkeyMasterSwitchOld = hotkeyMasterSwitch;
 			var hotkeySwitch1Old = hotkeySwitch1;
 			var hotkeySwitch2Old = hotkeySwitch2;
 			var hotkeySwitch3Old = hotkeySwitch3;
 			var hotkeySwitch4Old = hotkeySwitch4;
+			var hotkeySwitch5Old = hotkeySwitch5;
+			var hotkeySwitch6Old = hotkeySwitch6;
+			var hotkeySwitch7Old = hotkeySwitch7;
+			var hotkeySwitch8Old = hotkeySwitch8;
 
 			var hotkeyAlt1Slot1Old = hotkeyAlt1Slot1;
 			var hotkeyAlt1Slot2Old = hotkeyAlt1Slot2;
@@ -1367,10 +2424,58 @@
 			var hotkeyAlt4Slot9Old = hotkeyAlt4Slot9;
 			var hotkeyAlt4Slot10Old = hotkeyAlt4Slot10;
 
+			var hotkeyAlt5Slot1Old = hotkeyAlt5Slot1;
+			var hotkeyAlt5Slot2Old = hotkeyAlt5Slot2;
+			var hotkeyAlt5Slot3Old = hotkeyAlt5Slot3;
+			var hotkeyAlt5Slot4Old = hotkeyAlt5Slot4;
+			var hotkeyAlt5Slot5Old = hotkeyAlt5Slot5;
+			var hotkeyAlt5Slot6Old = hotkeyAlt5Slot6;
+			var hotkeyAlt5Slot7Old = hotkeyAlt5Slot7;
+			var hotkeyAlt5Slot8Old = hotkeyAlt5Slot8;
+			var hotkeyAlt5Slot9Old = hotkeyAlt5Slot9;
+			var hotkeyAlt5Slot10Old = hotkeyAlt5Slot10;
+
+			var hotkeyAlt6Slot1Old = hotkeyAlt6Slot1;
+			var hotkeyAlt6Slot2Old = hotkeyAlt6Slot2;
+			var hotkeyAlt6Slot3Old = hotkeyAlt6Slot3;
+			var hotkeyAlt6Slot4Old = hotkeyAlt6Slot4;
+			var hotkeyAlt6Slot5Old = hotkeyAlt6Slot5;
+			var hotkeyAlt6Slot6Old = hotkeyAlt6Slot6;
+			var hotkeyAlt6Slot7Old = hotkeyAlt6Slot7;
+			var hotkeyAlt6Slot8Old = hotkeyAlt6Slot8;
+			var hotkeyAlt6Slot9Old = hotkeyAlt6Slot9;
+			var hotkeyAlt6Slot10Old = hotkeyAlt6Slot10;			
+
+			var hotkeyAlt7Slot1Old = hotkeyAlt7Slot1;
+			var hotkeyAlt7Slot2Old = hotkeyAlt7Slot2;
+			var hotkeyAlt7Slot3Old = hotkeyAlt7Slot3;
+			var hotkeyAlt7Slot4Old = hotkeyAlt7Slot4;
+			var hotkeyAlt7Slot5Old = hotkeyAlt7Slot5;
+			var hotkeyAlt7Slot6Old = hotkeyAlt7Slot6;
+			var hotkeyAlt7Slot7Old = hotkeyAlt7Slot7;
+			var hotkeyAlt7Slot8Old = hotkeyAlt7Slot8;
+			var hotkeyAlt7Slot9Old = hotkeyAlt7Slot9;
+			var hotkeyAlt7Slot10Old = hotkeyAlt7Slot10;
+
+			var hotkeyAlt8Slot1Old = hotkeyAlt8Slot1;
+			var hotkeyAlt8Slot2Old = hotkeyAlt8Slot2;
+			var hotkeyAlt8Slot3Old = hotkeyAlt8Slot3;
+			var hotkeyAlt8Slot4Old = hotkeyAlt8Slot4;
+			var hotkeyAlt8Slot5Old = hotkeyAlt8Slot5;
+			var hotkeyAlt8Slot6Old = hotkeyAlt8Slot6;
+			var hotkeyAlt8Slot7Old = hotkeyAlt8Slot7;
+			var hotkeyAlt8Slot8Old = hotkeyAlt8Slot8;
+			var hotkeyAlt8Slot9Old = hotkeyAlt8Slot9;
+			var hotkeyAlt8Slot10Old = hotkeyAlt8Slot10;
+
 			var alt_1_turnoff = false;
 			var alt_2_turnoff = false;
 			var alt_3_turnoff = false;
 			var alt_4_turnoff = false;
+			var alt_5_turnoff = false;
+			var alt_6_turnoff = false;
+			var alt_7_turnoff = false;
+			var alt_8_turnoff = false;
 
 			var acc = document.getElementsByClassName("accordion");
 			for (var i = 0; i < acc.length; i++) {
@@ -1767,6 +2872,86 @@
 						document.getElementById("alt-4-config-content").className = '';
 					}
 
+					//Switch 5
+					if (document.getElementById("lower-thirds-switch5").checked){
+						if (alt_5_active_time_monitor >= 0 && alt_5_inactive_time_monitor == 0 && alt_5_name && alt_5_info){
+							document.getElementById("alt-5-config-content").classList.remove("inactive");
+							document.getElementById("alt-5-config-content").classList.add("active");
+							alt_5_jumpnext = true;
+						} else {
+							document.getElementById("alt-5-config-content").classList.remove("active");
+							document.getElementById("alt-5-config-content").classList.add("inactive");
+							//check if autoload is active and jump to next slot
+							if (alt_5_autoload && alt_5_jumpnext) {
+								alt_5_jumpnext = false;
+								jumpNextSlot("#alt-5-memory-slots", "#alt-5-name", "#alt-5-info", "#alt-5-logo-preview", alt_5_waiting_time);
+							}
+						}
+					} else {
+						document.getElementById("alt-5-config-content").className = '';
+						if (alt_5_turnoff && alt_5_autoload && alt_5_jumpnext) {
+							alt_5_jumpnext = false;
+							jumpNextSlot("#alt-5-memory-slots", "#alt-5-name", "#alt-5-info", "#alt-5-logo-preview", alt_5_waiting_time);
+						}
+					}
+
+					//Switch 6
+					if (document.getElementById("lower-thirds-switch6").checked){
+						if (alt_6_active_time_monitor >= 0 && alt_6_inactive_time_monitor == 0 && alt_6_name && alt_6_info){
+							document.getElementById("alt-6-config-content").classList.remove("inactive");
+							document.getElementById("alt-6-config-content").classList.add("active");
+							alt_6_jumpnext = true;
+						} else {
+							document.getElementById("alt-6-config-content").classList.remove("active");
+							document.getElementById("alt-6-config-content").classList.add("inactive");
+							//check if autoload is active and jump to next slot
+							if (alt_6_autoload && alt_6_jumpnext) {
+								alt_6_jumpnext = false;
+								jumpNextSlot("#alt-6-memory-slots", "#alt-6-name", "#alt-6-info", "#alt-6-logo-preview", alt_6_waiting_time);
+							}
+						}
+					} else {
+						document.getElementById("alt-6-config-content").className = '';
+					}
+
+					//Switch 7
+					if (document.getElementById("lower-thirds-switch7").checked){
+						if (alt_7_active_time_monitor >= 0 && alt_7_inactive_time_monitor == 0 && alt_7_name && alt_7_info){
+							document.getElementById("alt-7-config-content").classList.remove("inactive");
+							document.getElementById("alt-7-config-content").classList.add("active");
+							alt_7_jumpnext = true;
+						} else {
+							document.getElementById("alt-7-config-content").classList.remove("active");
+							document.getElementById("alt-7-config-content").classList.add("inactive");
+							//check if autoload is active and jump to next slot
+							if (alt_7_autoload && alt_7_jumpnext) {
+								alt_7_jumpnext = false;
+								jumpNextSlot("#alt-7-memory-slots", "#alt-7-name", "#alt-7-info", "#alt-7-logo-preview", alt_7_waiting_time);
+							}
+						}
+					} else {
+						document.getElementById("alt-7-config-content").className = '';
+					}
+
+					//Switch 8
+					if (document.getElementById("lower-thirds-switch8").checked){
+						if (alt_8_active_time_monitor >= 0 && alt_8_inactive_time_monitor == 0 && alt_8_name && alt_8_info){
+							document.getElementById("alt-8-config-content").classList.remove("inactive");
+							document.getElementById("alt-8-config-content").classList.add("active");
+							alt_8_jumpnext = true;
+						} else {
+							document.getElementById("alt-8-config-content").classList.remove("active");
+							document.getElementById("alt-8-config-content").classList.add("inactive");
+							//check if autoload is active and jump to next slot
+							if (alt_8_autoload && alt_8_jumpnext) {
+								alt_8_jumpnext = false;
+								jumpNextSlot("#alt-8-memory-slots", "#alt-8-name", "#alt-8-info", "#alt-8-logo-preview", alt_8_waiting_time);
+							}
+						}
+					} else {
+						document.getElementById("alt-8-config-content").className = '';
+					}
+
 				} else {
 					//When the Main Switch is OFF all the Lower Thirds area Inactives or OFF.
 					//Switch 1
@@ -1799,6 +2984,38 @@
 						document.getElementById("alt-4-config-content").classList.remove("active");
 					} else {
 						document.getElementById("alt-4-config-content").className = '';
+					}
+
+					//Switch 5
+					if (document.getElementById("lower-thirds-switch5").checked) {
+						document.getElementById("alt-5-config-content").classList.add("inactive");
+						document.getElementById("alt-5-config-content").classList.remove("active");
+					} else {
+						document.getElementById("alt-5-config-content").className = '';
+					}
+
+					//Switch 6
+					if (document.getElementById("lower-thirds-switch6").checked) {
+						document.getElementById("alt-6-config-content").classList.add("inactive");
+						document.getElementById("alt-6-config-content").classList.remove("active");
+					} else {
+						document.getElementById("alt-6-config-content").className = '';
+					}
+
+					//Switch 7
+					if (document.getElementById("lower-thirds-switch7").checked) {
+						document.getElementById("alt-7-config-content").classList.add("inactive");
+						document.getElementById("alt-7-config-content").classList.remove("active");
+					} else {
+						document.getElementById("alt-7-config-content").className = '';
+					}
+
+					//Switch 8
+					if (document.getElementById("lower-thirds-switch8").checked) {
+						document.getElementById("alt-8-config-content").classList.add("inactive");
+						document.getElementById("alt-8-config-content").classList.remove("active");
+					} else {
+						document.getElementById("alt-8-config-content").className = '';
 					}
 				}
 			}
@@ -1864,6 +3081,45 @@
 						$('#lower-thirds-switch4').prop('checked', true).change();
 					}
 					hotkeySwitch4Old = hotkeySwitch4;
+				}
+
+				if (hotkeySwitch5 != hotkeySwitch5Old){
+					if (document.getElementById("lower-thirds-switch5").checked) {
+						$('#lower-thirds-switch5').prop('checked', false).change();
+					}
+					else {
+						$('#lower-thirds-switch5').prop('checked', true).change();
+					}
+					hotkeySwitch5Old = hotkeySwitch5;
+				}
+
+				if (hotkeySwitch6 != hotkeySwitch6Old){
+					if (document.getElementById("lower-thirds-switch6").checked) {
+						$('#lower-thirds-switch6').prop('checked', false).change();
+					}
+					else {
+						$('#lower-thirds-switch6').prop('checked', true).change();
+					}
+					hotkeySwitch6Old = hotkeySwitch6;
+				}
+
+				if (hotkeySwitch7 != hotkeySwitch7Old){
+					if (document.getElementById("lower-thirds-switch7").checked) {
+						$('#lower-thirds-switch7').prop('checked', false).change();
+					}
+					else {
+						$('#lower-thirds-switch7').prop('checked', true).change();
+					}
+					hotkeySwitch7Old = hotkeySwitch7;
+				}
+				if (hotkeySwitch8 != hotkeySwitch8Old){
+					if (document.getElementById("lower-thirds-switch8").checked) {
+						$('#lower-thirds-switch8').prop('checked', false).change();
+					}
+					else {
+						$('#lower-thirds-switch8').prop('checked', true).change();
+					}
+					hotkeySwitch8Old = hotkeySwitch8;
 				}
 
 				//Memory Slots triggers LT1
@@ -2036,6 +3292,176 @@
 					hotkeyAlt4Slot10Old = hotkeyAlt4Slot10;
 				}
 
+				//Memory Slots triggers LT5
+				if (hotkeyAlt5Slot1 != hotkeyAlt5Slot1Old) {
+				if ($("#alt-5-name-1").text() && $("#alt-5-info-1").text()){
+					loadSlot("#alt-5-name", "#alt-5-info", "#alt-5-logo-preview", $("#alt-5-name-1").text(), $("#alt-5-info-1").text(), $("#alt-5-logo-1").text(), 0);
+					hotkeyAlt5Slot1Old = hotkeyAlt5Slot1;
+				}
+				if (hotkeyAlt5Slot2 != hotkeyAlt5Slot2Old) {
+					loadSlot("#alt-5-name", "#alt-5-info", "#alt-5-logo-preview", $("#alt-5-name-2").text(), $("#alt-5-info-2").text(), $("#alt-5-logo-2").text(), 0);
+					hotkeyAlt5Slot2Old = hotkeyAlt5Slot2;
+				}
+				if (hotkeyAlt5Slot3 != hotkeyAlt5Slot3Old) {
+					loadSlot("#alt-5-name", "#alt-5-info", "#alt-5-logo-preview", $("#alt-5-name-3").text(), $("#alt-5-info-3").text(), $("#alt-5-logo-3").text(), 0);
+					hotkeyAlt5Slot3Old = hotkeyAlt5Slot3;
+				}
+				if (hotkeyAlt5Slot4 != hotkeyAlt5Slot4Old) {
+					loadSlot("#alt-5-name", "#alt-5-info", "#alt-5-logo-preview", $("#alt-5-name-4").text(), $("#alt-5-info-4").text(), $("#alt-5-logo-4").text(), 0);
+					hotkeyAlt5Slot4Old = hotkeyAlt5Slot4;
+				}
+				if (hotkeyAlt5Slot5 != hotkeyAlt5Slot5Old) {
+					loadSlot("#alt-5-name", "#alt-5-info", "#alt-5-logo-preview", $("#alt-5-name-5").text(), $("#alt-5-info-5").text(), $("#alt-5-logo-5").text(), 0);
+					hotkeyAlt5Slot5Old = hotkeyAlt5Slot5;
+				}
+				if (hotkeyAlt5Slot6 != hotkeyAlt5Slot6Old) {
+					loadSlot("#alt-5-name", "#alt-5-info", "#alt-5-logo-preview", $("#alt-5-name-6").text(), $("#alt-5-info-6").text(), $("#alt-5-logo-6").text(), 0);
+					hotkeyAlt5Slot6Old = hotkeyAlt5Slot6;
+				}
+				if (hotkeyAlt5Slot7 != hotkeyAlt5Slot7Old) {
+					loadSlot("#alt-5-name", "#alt-5-info", "#alt-5-logo-preview", $("#alt-5-name-7").text(), $("#alt-5-info-7").text(), $("#alt-5-logo-7").text(), 0);
+					hotkeyAlt5Slot7Old = hotkeyAlt5Slot7;
+				}
+				if (hotkeyAlt5Slot8 != hotkeyAlt5Slot8Old) {
+					loadSlot("#alt-5-name", "#alt-5-info", "#alt-5-logo-preview", $("#alt-5-name-8").text(), $("#alt-5-info-8").text(), $("#alt-5-logo-8").text(), 0);
+					hotkeyAlt5Slot8Old = hotkeyAlt5Slot8;
+				}
+				if (hotkeyAlt5Slot9 != hotkeyAlt5Slot9Old) {
+					loadSlot("#alt-5-name", "#alt-5-info", "#alt-5-logo-preview", $("#alt-5-name-9").text(), $("#alt-5-info-9").text(), $("#alt-5-logo-9").text(), 0);
+					hotkeyAlt5Slot9Old = hotkeyAlt5Slot9;
+				}
+				if (hotkeyAlt5Slot10 != hotkeyAlt5Slot10Old) {
+					loadSlot("#alt-5-name", "#alt-5-info", "#alt-5-logo-preview", $("#alt-5-name-10").text(), $("#alt-5-info-10").text(), $("#alt-5-logo-10").text(), 0);
+					hotkeyAlt5Slot10Old = hotkeyAlt5Slot10;
+				}
+
+				//Memory Slots triggers LT6
+				if (hotkeyAlt6Slot1 != hotkeyAlt6Slot1Old) {
+					loadSlot("#alt-6-name", "#alt-6-info", "#alt-6-logo-preview", $("#alt-6-name-1").text(), $("#alt-6-info-1").text(), $("#alt-6-logo-1").text(), 0);
+					hotkeyAlt6Slot1Old = hotkeyAlt6Slot1;
+				}
+				if (hotkeyAlt6Slot2 != hotkeyAlt6Slot2Old) {
+					loadSlot("#alt-6-name", "#alt-6-info", "#alt-6-logo-preview", $("#alt-6-name-2").text(), $("#alt-6-info-2").text(), $("#alt-6-logo-2").text(), 0);
+					hotkeyAlt6Slot2Old = hotkeyAlt6Slot2;
+				}
+				if (hotkeyAlt6Slot3 != hotkeyAlt6Slot3Old) {
+					loadSlot("#alt-6-name", "#alt-6-info", "#alt-6-logo-preview", $("#alt-6-name-3").text(), $("#alt-6-info-3").text(), $("#alt-6-logo-3").text(), 0);
+					hotkeyAlt6Slot3Old = hotkeyAlt6Slot3;
+				}
+				if (hotkeyAlt6Slot4 != hotkeyAlt6Slot4Old) {
+					loadSlot("#alt-6-name", "#alt-6-info", "#alt-6-logo-preview", $("#alt-6-name-4").text(), $("#alt-6-info-4").text(), $("#alt-6-logo-4").text(), 0);
+					hotkeyAlt6Slot4Old = hotkeyAlt6Slot4;
+				}
+				if (hotkeyAlt6Slot5 != hotkeyAlt6Slot5Old) {
+					loadSlot("#alt-6-name", "#alt-6-info", "#alt-6-logo-preview", $("#alt-6-name-5").text(), $("#alt-6-info-5").text(), $("#alt-6-logo-5").text(), 0);
+					hotkeyAlt6Slot5Old = hotkeyAlt6Slot5;
+				}
+				if (hotkeyAlt6Slot6 != hotkeyAlt6Slot6Old) {
+					loadSlot("#alt-6-name", "#alt-6-info", "#alt-6-logo-preview", $("#alt-6-name-6").text(), $("#alt-6-info-6").text(), $("#alt-6-logo-6").text(), 0);
+					hotkeyAlt6Slot6Old = hotkeyAlt6Slot6;
+				}
+				if (hotkeyAlt6Slot7 != hotkeyAlt6Slot7Old) {
+					loadSlot("#alt-6-name", "#alt-6-info", "#alt-6-logo-preview", $("#alt-6-name-7").text(), $("#alt-6-info-7").text(), $("#alt-6-logo-7").text(), 0);
+					hotkeyAlt6Slot7Old = hotkeyAlt6Slot7;
+				}
+				if (hotkeyAlt6Slot8 != hotkeyAlt6Slot8Old) {
+					loadSlot("#alt-6-name", "#alt-6-info", "#alt-6-logo-preview", $("#alt-6-name-8").text(), $("#alt-6-info-8").text(), $("#alt-6-logo-8").text(), 0);
+					hotkeyAlt6Slot8Old = hotkeyAlt6Slot8;
+				}
+				if (hotkeyAlt6Slot9 != hotkeyAlt6Slot9Old) {
+					loadSlot("#alt-6-name", "#alt-6-info", "#alt-6-logo-preview", $("#alt-6-name-9").text(), $("#alt-6-info-9").text(), $("#alt-6-logo-9").text(), 0);
+					hotkeyAlt6Slot9Old = hotkeyAlt6Slot9;
+				}
+				if (hotkeyAlt6Slot10 != hotkeyAlt6Slot10Old) {
+					loadSlot("#alt-6-name", "#alt-6-info", "#alt-6-logo-preview", $("#alt-6-name-10").text(), $("#alt-6-info-10").text(), $("#alt-6-logo-10").text(), 0);
+					hotkeyAlt6Slot10Old = hotkeyAlt6Slot10;
+				}
+
+				//Memory Slots triggers LT7
+				if (hotkeyAlt7Slot1 != hotkeyAlt7Slot1Old) {
+					loadSlot("#alt-7-name", "#alt-7-info", "#alt-7-logo-preview", $("#alt-7-name-1").text(), $("#alt-7-info-1").text(), $("#alt-7-logo-1").text(), 0);
+					hotkeyAlt7Slot1Old = hotkeyAlt7Slot1;
+				}
+				if (hotkeyAlt7Slot2 != hotkeyAlt7Slot2Old) {
+					loadSlot("#alt-7-name", "#alt-7-info", "#alt-7-logo-preview", $("#alt-7-name-2").text(), $("#alt-7-info-2").text(), $("#alt-7-logo-2").text(), 0);
+					hotkeyAlt7Slot2Old = hotkeyAlt7Slot2;
+				}
+				if (hotkeyAlt7Slot3 != hotkeyAlt7Slot3Old) {
+					loadSlot("#alt-7-name", "#alt-7-info", "#alt-7-logo-preview", $("#alt-7-name-3").text(), $("#alt-7-info-3").text(), $("#alt-7-logo-3").text(), 0);
+					hotkeyAlt7Slot3Old = hotkeyAlt7Slot3;
+				}
+				if (hotkeyAlt7Slot4 != hotkeyAlt7Slot4Old) {
+					loadSlot("#alt-7-name", "#alt-7-info", "#alt-7-logo-preview", $("#alt-7-name-4").text(), $("#alt-7-info-4").text(), $("#alt-7-logo-4").text(), 0);
+					hotkeyAlt7Slot4Old = hotkeyAlt7Slot4;
+				}
+				if (hotkeyAlt7Slot5 != hotkeyAlt7Slot5Old) {
+					loadSlot("#alt-7-name", "#alt-7-info", "#alt-7-logo-preview", $("#alt-7-name-5").text(), $("#alt-7-info-5").text(), $("#alt-7-logo-5").text(), 0);
+					hotkeyAlt7Slot5Old = hotkeyAlt7Slot5;
+				}
+				if (hotkeyAlt7Slot6 != hotkeyAlt7Slot6Old) {
+					loadSlot("#alt-7-name", "#alt-7-info", "#alt-7-logo-preview", $("#alt-7-name-6").text(), $("#alt-7-info-6").text(), $("#alt-7-logo-6").text(), 0);
+					hotkeyAlt7Slot6Old = hotkeyAlt7Slot6;
+				}
+				if (hotkeyAlt7Slot7 != hotkeyAlt7Slot7Old) {
+					loadSlot("#alt-7-name", "#alt-7-info", "#alt-7-logo-preview", $("#alt-7-name-7").text(), $("#alt-7-info-7").text(), $("#alt-7-logo-7").text(), 0);
+					hotkeyAlt7Slot7Old = hotkeyAlt7Slot7;
+				}
+				if (hotkeyAlt7Slot8 != hotkeyAlt7Slot8Old) {
+					loadSlot("#alt-7-name", "#alt-7-info", "#alt-7-logo-preview", $("#alt-7-name-8").text(), $("#alt-7-info-8").text(), $("#alt-7-logo-8").text(), 0);
+					hotkeyAlt7Slot8Old = hotkeyAlt7Slot8;
+				}
+				if (hotkeyAlt7Slot9 != hotkeyAlt7Slot9Old) {
+					loadSlot("#alt-7-name", "#alt-7-info", "#alt-7-logo-preview", $("#alt-7-name-9").text(), $("#alt-7-info-9").text(), $("#alt-7-logo-9").text(), 0);
+					hotkeyAlt7Slot9Old = hotkeyAlt7Slot9;
+				}
+				if (hotkeyAlt7Slot10 != hotkeyAlt7Slot10Old) {
+					loadSlot("#alt-7-name", "#alt-7-info", "#alt-7-logo-preview", $("#alt-7-name-10").text(), $("#alt-7-info-10").text(), $("#alt-7-logo-10").text(), 0);
+					hotkeyAlt7Slot10Old = hotkeyAlt7Slot10;
+				}
+
+				//Memory Slots triggers LT8
+				if (hotkeyAlt8Slot1 != hotkeyAlt8Slot1Old) {
+					loadSlot("#alt-8-name", "#alt-8-info", "#alt-8-logo-preview", $("#alt-8-name-1").text(), $("#alt-8-info-1").text(), $("#alt-8-logo-1").text(), 0);
+					hotkeyAlt8Slot1Old = hotkeyAlt8Slot1;
+				}
+				if (hotkeyAlt8Slot2 != hotkeyAlt8Slot2Old) {
+					loadSlot("#alt-8-name", "#alt-8-info", "#alt-8-logo-preview", $("#alt-8-name-2").text(), $("#alt-8-info-2").text(), $("#alt-8-logo-2").text(), 0);
+					hotkeyAlt8Slot2Old = hotkeyAlt8Slot2;
+				}
+				if (hotkeyAlt8Slot3 != hotkeyAlt8Slot3Old) {
+					loadSlot("#alt-8-name", "#alt-8-info", "#alt-8-logo-preview", $("#alt-8-name-3").text(), $("#alt-8-info-3").text(), $("#alt-8-logo-3").text(), 0);
+					hotkeyAlt8Slot3Old = hotkeyAlt8Slot3;
+				}
+				if (hotkeyAlt8Slot4 != hotkeyAlt8Slot4Old) {
+					loadSlot("#alt-8-name", "#alt-8-info", "#alt-8-logo-preview", $("#alt-8-name-4").text(), $("#alt-8-info-4").text(), $("#alt-8-logo-4").text(), 0);
+					hotkeyAlt8Slot4Old = hotkeyAlt8Slot4;
+				}
+				if (hotkeyAlt8Slot5 != hotkeyAlt8Slot5Old) {
+					loadSlot("#alt-8-name", "#alt-8-info", "#alt-8-logo-preview", $("#alt-8-name-5").text(), $("#alt-8-info-5").text(), $("#alt-8-logo-5").text(), 0);
+					hotkeyAlt8Slot5Old = hotkeyAlt8Slot5;
+				}
+				if (hotkeyAlt8Slot6 != hotkeyAlt8Slot6Old) {
+					loadSlot("#alt-8-name", "#alt-8-info", "#alt-8-logo-preview", $("#alt-8-name-6").text(), $("#alt-8-info-6").text(), $("#alt-8-logo-6").text(), 0);
+					hotkeyAlt8Slot6Old = hotkeyAlt8Slot6;
+				}
+				if (hotkeyAlt8Slot7 != hotkeyAlt8Slot7Old) {
+					loadSlot("#alt-8-name", "#alt-8-info", "#alt-8-logo-preview", $("#alt-8-name-7").text(), $("#alt-8-info-7").text(), $("#alt-8-logo-7").text(), 0);
+					hotkeyAlt8Slot7Old = hotkeyAlt8Slot7;
+				}
+				if (hotkeyAlt8Slot8 != hotkeyAlt8Slot8Old) {
+					loadSlot("#alt-8-name", "#alt-8-info", "#alt-8-logo-preview", $("#alt-8-name-8").text(), $("#alt-8-info-8").text(), $("#alt-8-logo-8").text(), 0);
+					hotkeyAlt8Slot8Old = hotkeyAlt8Slot8;
+				}
+				if (hotkeyAlt8Slot9 != hotkeyAlt8Slot9Old) {
+					loadSlot("#alt-8-name", "#alt-8-info", "#alt-8-logo-preview", $("#alt-8-name-9").text(), $("#alt-8-info-9").text(), $("#alt-8-logo-9").text(), 0);
+					hotkeyAlt8Slot9Old = hotkeyAlt8Slot9;
+				}
+				if (hotkeyAlt8Slot10 != hotkeyAlt8Slot10Old) {
+					loadSlot("#alt-8-name", "#alt-8-info", "#alt-8-logo-preview", $("#alt-8-name-10").text(), $("#alt-8-info-10").text(), $("#alt-8-logo-10").text(), 0);
+					hotkeyAlt8Slot10Old = hotkeyAlt8Slot10;
+				}
+
+
 			}
 
 			function openResetPopup() {
@@ -2059,6 +3485,18 @@
 					}
 					if (id == "alt-4-logo-preview" || id == "alt-4-logo-default"){
 						value = alt_4_logo_default;
+					}
+					if (id == "alt-5-logo-preview" || id == "alt-5-logo-default"){
+						value = alt_5_logo_default;
+					}
+					if (id == "alt-6-logo-preview" || id == "alt-6-logo-default"){
+						value = alt_6_logo_default;
+					}
+					if (id == "alt-7-logo-preview" || id == "alt-7-logo-default"){
+						value = alt_7_logo_default;
+					}
+					if (id == "alt-8-logo-preview" || id == "alt-8-logo-default"){
+						value = alt_8_logo_default;
 					}
 					localStorage.setItem(id, value);
 				});
@@ -2274,6 +3712,10 @@
 			memorySlotsSystem("#alt-2-memory-slots", "#alt-2-name", "#alt-2-info" , "#alt-2-logo-preview");
 			memorySlotsSystem("#alt-3-memory-slots", "#alt-3-name", "#alt-3-info" , "#alt-3-logo-preview");
 			memorySlotsSystem("#alt-4-memory-slots", "#alt-4-name", "#alt-4-info" , "#alt-4-logo-preview");
+			memorySlotsSystem("#alt-5-memory-slots", "#alt-5-name", "#alt-5-info" , "#alt-5-logo-preview");
+			memorySlotsSystem("#alt-6-memory-slots", "#alt-6-name", "#alt-6-info" , "#alt-6-logo-preview");
+			memorySlotsSystem("#alt-7-memory-slots", "#alt-7-name", "#alt-7-info" , "#alt-7-logo-preview");
+			memorySlotsSystem("#alt-8-memory-slots", "#alt-8-name", "#alt-8-info" , "#alt-8-logo-preview");
 
 			//////////////////////////////////////
 
@@ -2394,6 +3836,30 @@
 				var alt_logo_default = $("#alt-4-logo-default").attr("src");
 				$("#alt-4-logo-preview").attr("src", alt_logo_default).change();
 			});
+			$("#alt-5-clean-inputs").click(function(){
+				$("#alt-5-name:text").val("").change();
+				$("#alt-5-info:text").val("").change();
+				var alt_logo_default = $("#alt-5-logo-default").attr("src");
+				$("#alt-5-logo-preview").attr("src", alt_logo_default).change();
+			});
+			$("#alt-6-clean-inputs").click(function(){
+				$("#alt-6-name:text").val("").change();
+				$("#alt-6-info:text").val("").change();
+				var alt_logo_default = $("#alt-6-logo-default").attr("src");
+				$("#alt-6-logo-preview").attr("src", alt_logo_default).change();
+			});
+			$("#alt-7-clean-inputs").click(function(){
+				$("#alt-7-name:text").val("").change();
+				$("#alt-7-info:text").val("").change();
+				var alt_logo_default = $("#alt-7-logo-default").attr("src");
+				$("#alt-7-logo-preview").attr("src", alt_logo_default).change();
+			});
+			$("#alt-8-clean-inputs").click(function(){
+				$("#alt-8-name:text").val("").change();
+				$("#alt-8-info:text").val("").change();
+				var alt_logo_default = $("#alt-8-logo-default").attr("src");
+				$("#alt-8-logo-preview").attr("src", alt_logo_default).change();
+			});
 
 			///////////////////////////////////////
 
@@ -2420,6 +3886,14 @@
 				$("#alt-3-style").val(alt_3_style);
 				alt_4_style = $("#alt-4-style").val()  || default_style;
 				$("#alt-4-style").val(alt_4_style);
+				alt_5_style = $("#alt-5-style").val() || default_style;
+				$("#alt-5-style").val(alt_5_style);
+				alt_6_style = $("#alt-6-style").val() || default_style;
+				$("#alt-6-style").val(alt_6_style);
+				alt_7_style = $("#alt-7-style").val() || default_style;
+				$("#alt-7-style").val(alt_7_style);
+				alt_8_style = $("#alt-8-style").val()  || default_style;
+				$("#alt-8-style").val(alt_8_style);
 
 				//Calculate Text Sizes using the inverse ratio
 				alt_1_inverse_ratio = $("#alt-1-inverse-ratio").val() || default_inverse_ratio;
@@ -2438,41 +3912,81 @@
 				alt_4_name_size = 1 + alt_4_inverse_ratio * 0.1;
 				alt_4_info_size = 2 - alt_4_inverse_ratio * 0.1;				
 
+				alt_5_inverse_ratio = $("#alt-5-inverse-ratio").val() || default_inverse_ratio;
+				alt_5_name_size = 1 + alt_5_inverse_ratio * 0.1;
+				alt_5_info_size = 2 - alt_5_inverse_ratio * 0.1;
+
+				alt_6_inverse_ratio = $("#alt-6-inverse-ratio").val() || default_inverse_ratio;
+				alt_6_name_size = 1 + alt_6_inverse_ratio * 0.1;
+				alt_6_info_size = 2 - alt_6_inverse_ratio * 0.1;				
+
+				alt_7_inverse_ratio = $("#alt-7-inverse-ratio").val() || default_inverse_ratio;
+				alt_7_name_size = 1 + alt_7_inverse_ratio * 0.1;
+				alt_7_info_size = 2 - alt_7_inverse_ratio * 0.1;
+
+				alt_8_inverse_ratio = $("#alt-8-inverse-ratio").val() || default_inverse_ratio;
+				alt_8_name_size = 1 + alt_8_inverse_ratio * 0.1;
+				alt_8_info_size = 2 - alt_8_inverse_ratio * 0.1;				
+
 				//Line Spacing
 				alt_1_line_spacing = $("#alt-1-line-spacing").val() || default_line_spacing;
 				alt_2_line_spacing = $("#alt-2-line-spacing").val() || default_line_spacing;
 				alt_3_line_spacing = $("#alt-3-line-spacing").val() || default_line_spacing;
 				alt_4_line_spacing = $("#alt-4-line-spacing").val() || default_line_spacing;
+				alt_5_line_spacing = $("#alt-5-line-spacing").val() || default_line_spacing;
+				alt_6_line_spacing = $("#alt-6-line-spacing").val() || default_line_spacing;
+				alt_7_line_spacing = $("#alt-7-line-spacing").val() || default_line_spacing;
+				alt_8_line_spacing = $("#alt-8-line-spacing").val() || default_line_spacing;
 
 				//Lower Third Size
 				alt_1_size = $("#alt-1-size").val() || default_size;
 				alt_2_size = $("#alt-2-size").val() || default_size;
 				alt_3_size = $("#alt-3-size").val() || default_size;
 				alt_4_size = $("#alt-4-size").val() || default_size;
+				alt_5_size = $("#alt-5-size").val() || default_size;
+				alt_6_size = $("#alt-6-size").val() || default_size;
+				alt_7_size = $("#alt-7-size").val() || default_size;
+				alt_8_size = $("#alt-8-size").val() || default_size;
 
 				//Logo Size
 				alt_1_logo_size = Number($("#alt-1-logo-size").val()) * 0.25 + 3.5 || default_logo_size_em;
 				alt_2_logo_size = Number($("#alt-2-logo-size").val()) * 0.25 + 3.5 || default_logo_size_em;
 				alt_3_logo_size = Number($("#alt-3-logo-size").val()) * 0.25 + 3.5 || default_logo_size_em;
 				alt_4_logo_size = Number($("#alt-4-logo-size").val()) * 0.25 + 3.5 || default_logo_size_em;
+				alt_5_logo_size = Number($("#alt-5-logo-size").val()) * 0.25 + 3.5 || default_logo_size_em;
+				alt_6_logo_size = Number($("#alt-6-logo-size").val()) * 0.25 + 3.5 || default_logo_size_em;
+				alt_7_logo_size = Number($("#alt-7-logo-size").val()) * 0.25 + 3.5 || default_logo_size_em;
+				alt_8_logo_size = Number($("#alt-8-logo-size").val()) * 0.25 + 3.5 || default_logo_size_em;
 
 				//Shadow Amount
 				alt_1_shadow_amount = $("#alt-1-shadow-amount").val() * 0.1 || default_shadow_amount_em;
 				alt_2_shadow_amount = $("#alt-2-shadow-amount").val() * 0.1 || default_shadow_amount_em;
 				alt_3_shadow_amount = $("#alt-3-shadow-amount").val() * 0.1 || default_shadow_amount_em;
 				alt_4_shadow_amount = $("#alt-4-shadow-amount").val() * 0.1 || default_shadow_amount_em;
+				alt_5_shadow_amount = $("#alt-5-shadow-amount").val() * 0.1 || default_shadow_amount_em;
+				alt_6_shadow_amount = $("#alt-6-shadow-amount").val() * 0.1 || default_shadow_amount_em;
+				alt_7_shadow_amount = $("#alt-7-shadow-amount").val() * 0.1 || default_shadow_amount_em;
+				alt_8_shadow_amount = $("#alt-8-shadow-amount").val() * 0.1 || default_shadow_amount_em;
 
 				//Background Corners
 				alt_1_corners = (Number($("#alt-1-corners").val()) * 0.25) || default_corners;
 				alt_2_corners = (Number($("#alt-2-corners").val()) * 0.25) || default_corners;
 				alt_3_corners = (Number($("#alt-3-corners").val()) * 0.25) || default_corners;
 				alt_4_corners = (Number($("#alt-4-corners").val()) * 0.25) || default_corners;
+				alt_5_corners = (Number($("#alt-5-corners").val()) * 0.25) || default_corners;
+				alt_6_corners = (Number($("#alt-6-corners").val()) * 0.25) || default_corners;
+				alt_7_corners = (Number($("#alt-7-corners").val()) * 0.25) || default_corners;
+				alt_8_corners = (Number($("#alt-8-corners").val()) * 0.25) || default_corners;
 
 				//Border Thickness amount
 				alt_1_border_thickness_amount = $("#alt-1-border-thickness-amount").val() || default_border_thickness_amount;
 				alt_2_border_thickness_amount = $("#alt-2-border-thickness-amount").val() || default_border_thickness_amount;
 				alt_3_border_thickness_amount = $("#alt-3-border-thickness-amount").val() || default_border_thickness_amount;
 				alt_4_border_thickness_amount = $("#alt-4-border-thickness-amount").val() || default_border_thickness_amount;
+				alt_5_border_thickness_amount = $("#alt-5-border-thickness-amount").val() || default_border_thickness_amount;
+				alt_6_border_thickness_amount = $("#alt-6-border-thickness-amount").val() || default_border_thickness_amount;
+				alt_7_border_thickness_amount = $("#alt-7-border-thickness-amount").val() || default_border_thickness_amount;
+				alt_8_border_thickness_amount = $("#alt-8-border-thickness-amount").val() || default_border_thickness_amount;
 
 				//Margin from de borders Horizontal and Vertical
 				alt_1_margin_h = $("#alt-1-margin-h").val() || default_margin_h;
@@ -2486,6 +4000,18 @@
 
 				alt_4_margin_h = $("#alt-4-margin-h").val() || default_margin_h;
 				alt_4_margin_v = $("#alt-4-margin-v").val() || default_margin_v;
+
+				alt_5_margin_h = $("#alt-5-margin-h").val() || default_margin_h;
+				alt_5_margin_v = $("#alt-5-margin-v").val() || default_margin_v;
+
+				alt_6_margin_h = $("#alt-6-margin-h").val() || default_margin_h;
+				alt_6_margin_v = $("#alt-6-margin-v").val() || default_margin_v;
+
+				alt_7_margin_h = $("#alt-7-margin-h").val() || default_margin_h;
+				alt_7_margin_v = $("#alt-7-margin-v").val() || default_margin_v;
+
+				alt_8_margin_h = $("#alt-8-margin-h").val() || default_margin_h;
+				alt_8_margin_v = $("#alt-8-margin-v").val() || default_margin_v;
 
 				styleRestrictions();
 			}
@@ -2645,6 +4171,14 @@
 					alt_3_inactive_time_monitor = received_data.inactiveTime3_to_send;
 					alt_4_active_time_monitor = received_data.activeTime4_to_send;
 					alt_4_inactive_time_monitor = received_data.inactiveTime4_to_send;
+					alt_5_active_time_monitor = received_data.activeTime1_to_send;
+					alt_5_inactive_time_monitor = received_data.inactiveTime1_to_send;
+					alt_6_active_time_monitor = received_data.activeTime2_to_send;
+					alt_6_inactive_time_monitor = received_data.inactiveTime2_to_send;
+					alt_7_active_time_monitor = received_data.activeTime3_to_send;
+					alt_7_inactive_time_monitor = received_data.inactiveTime3_to_send;
+					alt_8_active_time_monitor = received_data.activeTime4_to_send;
+					alt_8_inactive_time_monitor = received_data.inactiveTime4_to_send;
 
 					document.getElementById("alt-1-active-time-monitor").innerHTML = alt_1_active_time_monitor;
 					document.getElementById("alt-1-inactive-time-monitor").innerHTML = alt_1_inactive_time_monitor;
@@ -2654,11 +4188,23 @@
 					document.getElementById("alt-3-inactive-time-monitor").innerHTML = alt_3_inactive_time_monitor;
 					document.getElementById("alt-4-active-time-monitor").innerHTML = alt_4_active_time_monitor
 					document.getElementById("alt-4-inactive-time-monitor").innerHTML = alt_4_inactive_time_monitor;
+					document.getElementById("alt-5-active-time-monitor").innerHTML = alt_5_active_time_monitor;
+					document.getElementById("alt-5-inactive-time-monitor").innerHTML = alt_5_inactive_time_monitor;
+					document.getElementById("alt-6-active-time-monitor").innerHTML = alt_6_active_time_monitor;
+					document.getElementById("alt-6-inactive-time-monitor").innerHTML = alt_6_inactive_time_monitor;
+					document.getElementById("alt-7-active-time-monitor").innerHTML = alt_7_active_time_monitor;
+					document.getElementById("alt-7-inactive-time-monitor").innerHTML = alt_7_inactive_time_monitor;
+					document.getElementById("alt-8-active-time-monitor").innerHTML = alt_8_active_time_monitor
+					document.getElementById("alt-8-inactive-time-monitor").innerHTML = alt_8_inactive_time_monitor;
 
 					alt_1_turnoff = (received_data.alt_1_turnoff);
 					alt_2_turnoff = (received_data.alt_2_turnoff);
 					alt_3_turnoff = (received_data.alt_3_turnoff);
 					alt_4_turnoff = (received_data.alt_4_turnoff);
+					alt_5_turnoff = (received_data.alt_5_turnoff);
+					alt_6_turnoff = (received_data.alt_6_turnoff);
+					alt_7_turnoff = (received_data.alt_7_turnoff);
+					alt_8_turnoff = (received_data.alt_8_turnoff);
 
 
 					if (alt_1_turnoff && $("#lower-thirds-switch1").is(':checked')) {
@@ -2672,6 +4218,18 @@
 					}
 					if (alt_4_turnoff && $("#lower-thirds-switch4").is(':checked')) {
 						$('#lower-thirds-switch4').prop('checked', false).change();
+					}
+					if (alt_5_turnoff && $("#lower-thirds-switch5").is(':checked')) {
+						$("#lower-thirds-switch5").prop('checked', false).change();
+					}
+					if (alt_6_turnoff && $("#lower-thirds-switch6").is(':checked')) {
+						$('#lower-thirds-switch6').prop('checked', false).change();
+					}
+					if (alt_7_turnoff && $("#lower-thirds-switch7").is(':checked')) {
+						$('#lower-thirds-switch7').prop('checked', false).change();
+					}
+					if (alt_8_turnoff && $("#lower-thirds-switch8").is(':checked')) {
+						$('#lower-thirds-switch8').prop('checked', false).change();
 					}
 
 					checkSwitches();
@@ -2688,6 +4246,10 @@
 				alt_2_lock_active = (document.getElementById("alt-2-lock-active").checked) ? true : false;
 				alt_3_lock_active = (document.getElementById("alt-3-lock-active").checked) ? true : false;
 				alt_4_lock_active = (document.getElementById("alt-4-lock-active").checked) ? true : false;
+				alt_5_lock_active = (document.getElementById("alt-5-lock-active").checked) ? true : false;
+				alt_6_lock_active = (document.getElementById("alt-6-lock-active").checked) ? true : false;
+				alt_7_lock_active = (document.getElementById("alt-7-lock-active").checked) ? true : false;
+				alt_8_lock_active = (document.getElementById("alt-8-lock-active").checked) ? true : false;
 
 
 				//////////////////////////////
@@ -2769,6 +4331,75 @@
 				alt_4_inactive_time = $("#alt-4-inactive-time").val();
 				alt_4_logo_image = $("#alt-4-logo-preview").attr("src");
 
+				alt_5_name = $("#alt-5-name:text").val();
+				alt_5_info = $("#alt-5-info:text").val();
+				alt_5_name_color = $("#alt-5-name-color:text").val();
+				alt_5_info_color = $("#alt-5-info-color:text").val();
+				alt_5_style_color_1 = $("#alt-5-style-color-1:text").val();
+				alt_5_style_color_2 = $("#alt-5-style-color-2:text").val();
+				alt_5_style_color_3 = $("#alt-5-style-color-3:text").val();
+				alt_5_style_color_4 = $("#alt-5-style-color-4:text").val();
+
+				alt_5_animation_time = $("#alt-5-animation-time").val();
+				if (alt_5_lock_active){
+					alt_5_active_time = Infinity;
+				} else {
+					alt_5_active_time = $("#alt-5-active-time").val();
+				}
+				alt_5_inactive_time = $("#alt-5-inactive-time").val();
+				alt_5_logo_image= $("#alt-5-logo-preview").attr("src");
+
+				alt_6_name = $("#alt-6-name:text").val();
+				alt_6_info = $("#alt-6-info:text").val();
+				alt_6_name_color = $("#alt-6-name-color:text").val();
+				alt_6_info_color = $("#alt-6-info-color:text").val();
+				alt_6_style_color_1 = $("#alt-6-style-color-1:text").val();
+				alt_6_style_color_2 = $("#alt-6-style-color-2:text").val();
+				alt_6_style_color_3 = $("#alt-6-style-color-3:text").val();
+				alt_6_style_color_4 = $("#alt-6-style-color-4:text").val();
+				alt_6_animation_time = $("#alt-6-animation-time").val();
+				if (alt_6_lock_active){
+					alt_6_active_time = Infinity;
+				} else {
+					alt_6_active_time = $("#alt-6-active-time").val();
+				}
+				alt_6_inactive_time = $("#alt-6-inactive-time").val();
+				alt_6_logo_image = $("#alt-6-logo-preview").attr("src");
+
+				alt_7_name = $("#alt-7-name:text").val();
+				alt_7_info = $("#alt-7-info:text").val();
+				alt_7_name_color = $("#alt-7-name-color:text").val();
+				alt_7_info_color = $("#alt-7-info-color:text").val();
+				alt_7_style_color_1 = $("#alt-7-style-color-1:text").val();
+				alt_7_style_color_2 = $("#alt-7-style-color-2:text").val();
+				alt_7_style_color_3 = $("#alt-7-style-color-3:text").val();
+				alt_7_style_color_4 = $("#alt-7-style-color-4:text").val();
+				alt_7_animation_time = $("#alt-7-animation-time").val();
+				if (alt_7_lock_active){
+					alt_7_active_time = Infinity;
+				} else {
+					alt_7_active_time = $("#alt-7-active-time").val();
+				}
+				alt_7_inactive_time = $("#alt-7-inactive-time").val();
+				alt_7_logo_image = $("#alt-7-logo-preview").attr("src");
+
+				alt_8_name = $("#alt-8-name:text").val();
+				alt_8_info = $("#alt-8-info:text").val();
+				alt_8_name_color = $("#alt-8-name-color:text").val();
+				alt_8_info_color = $("#alt-8-info-color:text").val();
+				alt_8_style_color_1 = $("#alt-8-style-color-1:text").val();
+				alt_8_style_color_2 = $("#alt-8-style-color-2:text").val();
+				alt_8_style_color_3 = $("#alt-8-style-color-3:text").val();
+				alt_8_style_color_4 = $("#alt-8-style-color-4:text").val();
+				alt_8_animation_time = $("#alt-8-animation-time").val();
+				if (alt_8_lock_active){
+					alt_8_active_time = Infinity;
+				} else {
+					alt_8_active_time = $("#alt-8-active-time").val();
+				}
+				alt_8_inactive_time = $("#alt-8-inactive-time").val();
+				alt_8_logo_image = $("#alt-8-logo-preview").attr("src");
+
 				//Standard Main settings values
 				if(!global_lock_active && global_active_time == "") {
 					global_active_time = 25;
@@ -2816,18 +4447,54 @@
 					} else {
 						alt_4_switch = "false";
 					}
+					
+					//Switch 5
+					if (document.getElementById("lower-thirds-switch5").checked){
+						alt_5_switch = "true";
+					} else {
+						alt_5_switch = "false";
+					}
+
+					//Switch 6
+					if (document.getElementById("lower-thirds-switch6").checked){
+						alt_6_switch = "true";
+					} else {
+						alt_6_switch = "false";
+					}
+
+					//Switch 7
+					if (document.getElementById("lower-thirds-switch7").checked){
+						alt_7_switch = "true";
+					} else {
+						alt_7_switch = "false";
+					}
+
+					//Switch 8
+					if (document.getElementById("lower-thirds-switch8").checked){
+						alt_8_switch = "true";
+					} else {
+						alt_8_switch = "false";
+					}
 				} else {
 					//When the Main Switch is OFF all the Lower Thirds area Inactives or OFF.
 					alt_1_switch = "false";
 					alt_2_switch = "false";
 					alt_3_switch = "false";
 					alt_4_switch = "false";
+					alt_5_switch = "false";
+					alt_6_switch = "false";
+					alt_7_switch = "false";
+					alt_8_switch = "false";
 				}
 
 				alt_1_waiting_time = alt_1_animation_time || global_animation_time;
 				alt_2_waiting_time = alt_2_animation_time || global_animation_time;
 				alt_3_waiting_time = alt_3_animation_time || global_animation_time;
 				alt_4_waiting_time = alt_4_animation_time || global_animation_time;
+				alt_5_waiting_time = alt_5_animation_time || global_animation_time;
+				alt_6_waiting_time = alt_6_animation_time || global_animation_time;
+				alt_7_waiting_time = alt_7_animation_time || global_animation_time;
+				alt_8_waiting_time = alt_8_animation_time || global_animation_time;
 
 				//////////////////////////////
 
@@ -2836,6 +4503,10 @@
 				alt_2_autoload = (document.getElementById("alt-2-autoload").checked) ? true : false;
 				alt_3_autoload = (document.getElementById("alt-3-autoload").checked) ? true : false;
 				alt_4_autoload = (document.getElementById("alt-4-autoload").checked) ? true : false;
+				alt_5_autoload = (document.getElementById("alt-5-autoload").checked) ? true : false;
+				alt_6_autoload = (document.getElementById("alt-6-autoload").checked) ? true : false;
+				alt_7_autoload = (document.getElementById("alt-7-autoload").checked) ? true : false;
+				alt_8_autoload = (document.getElementById("alt-8-autoload").checked) ? true : false;
 
 				//////////////////////////////
 
@@ -2844,6 +4515,10 @@
 				alt_2_autotrigger = document.getElementById("alt-2-autotrigger").checked;
 				alt_3_autotrigger = document.getElementById("alt-3-autotrigger").checked;
 				alt_4_autotrigger = document.getElementById("alt-4-autotrigger").checked;
+				alt_5_autotrigger = document.getElementById("alt-5-autotrigger").checked;
+				alt_6_autotrigger = document.getElementById("alt-6-autotrigger").checked;
+				alt_7_autotrigger = document.getElementById("alt-7-autotrigger").checked;
+				alt_8_autotrigger = document.getElementById("alt-8-autotrigger").checked;
 
 
 				//////////////////////////////
@@ -2855,6 +4530,10 @@
 				alt_2_oneshot = (document.getElementById("alt-2-oneshot").checked) ? true : false;
 				alt_3_oneshot = (document.getElementById("alt-3-oneshot").checked) ? true : false;
 				alt_4_oneshot = (document.getElementById("alt-4-oneshot").checked) ? true : false;
+				alt_5_oneshot = (document.getElementById("alt-5-oneshot").checked) ? true : false;
+				alt_6_oneshot = (document.getElementById("alt-6-oneshot").checked) ? true : false;
+				alt_7_oneshot = (document.getElementById("alt-7-oneshot").checked) ? true : false;
+				alt_8_oneshot = (document.getElementById("alt-8-oneshot").checked) ? true : false;
 
 				//////////////////////////////
 
@@ -2953,6 +4632,26 @@
 				} else {
 					alt_4_preview = "true";
 				}
+				if (document.getElementById("alt-5-preview").checked == false) {
+					alt_5_preview = "false";
+				} else {
+					alt_5_preview = "true";
+				}
+				if (document.getElementById("alt-6-preview").checked == false) {
+					alt_6_preview = "false";
+				} else {
+					alt_6_preview = "true";
+				}
+				if (document.getElementById("alt-7-preview").checked == false) {
+					alt_7_preview = "false";
+				} else {
+					alt_7_preview = "true";
+				}
+				if (document.getElementById("alt-8-preview").checked == false) {
+					alt_8_preview = "false";
+				} else {
+					alt_8_preview = "true";
+				}
 
 
 				//////////////////////////////
@@ -2994,6 +4693,42 @@
 					$("#alt-4-logo-size").removeClass("disable");
 					$("#alt-4-config-content > .first-edit-container > .logo-container").removeClass("hide");
 				}
+				if (document.getElementById("alt-5-logo").checked == false) {
+					alt_5_logo_switch = "false";
+					$("#alt-5-logo-size").addClass("disable");
+					$("#alt-5-config-content > .first-edit-container > .logo-container").addClass("hide");
+				} else {
+					alt_5_logo_switch = "true";
+					$("#alt-5-logo-size").removeClass("disable");
+					$("#alt-5-config-content > .first-edit-container > .logo-container").removeClass("hide");
+				}
+				if (document.getElementById("alt-6-logo").checked == false) {
+					alt_6_logo_switch = "false";
+					$("#alt-6-logo-size").addClass("disable");
+					$("#alt-6-config-content > .first-edit-container > .logo-container").addClass("hide");
+				} else {
+					alt_6_logo_switch = "true";
+					$("#alt-6-logo-size").removeClass("disable");
+					$("#alt-6-config-content > .first-edit-container > .logo-container").removeClass("hide");
+				}
+				if (document.getElementById("alt-7-logo").checked == false) {
+					alt_7_logo_switch = "false";
+					$("#alt-7-logo-size").addClass("disable");
+					$("#alt-7-config-content > .first-edit-container > .logo-container").addClass("hide");
+				} else {
+					alt_7_logo_switch = "true";
+					$("#alt-7-logo-size").removeClass("disable");
+					$("#alt-7-config-content > .first-edit-container > .logo-container").removeClass("hide");
+				}
+				if (document.getElementById("alt-8-logo").checked == false) {
+					alt_8_logo_switch = "false";
+					$("#alt-8-logo-size").addClass("disable");
+					$("#alt-8-config-content > .first-edit-container > .logo-container").addClass("hide");
+				} else {
+					alt_8_logo_switch = "true";
+					$("#alt-8-logo-size").removeClass("disable");
+					$("#alt-8-config-content > .first-edit-container > .logo-container").removeClass("hide");
+				}
 
 				//Switch Background color ON/OFF
 				if (document.getElementById("alt-1-background").checked == false) {
@@ -3023,6 +4758,34 @@
 				} else {
 					alt_4_background_switch = "true";
 					$("#alt-4-style-color-appearance").removeClass("disable");
+				}
+				if (document.getElementById("alt-5-background").checked == false) {
+					alt_5_background_switch = "false";
+					$("#alt-5-style-color-appearance").addClass("disable");
+				} else {
+					alt_5_background_switch = "true";
+					$("#alt-5-style-color-appearance").removeClass("disable");
+				}
+				if (document.getElementById("alt-6-background").checked == false) {
+					alt_6_background_switch = "false";
+					$("#alt-6-style-color-appearance").addClass("disable");
+				} else {
+					alt_6_background_switch = "true";
+					$("#alt-6-style-color-appearance").removeClass("disable");
+				}
+				if (document.getElementById("alt-7-background").checked == false) {
+					alt_7_background_switch = "false";
+					$("#alt-7-style-color-appearance").addClass("disable");
+				} else {
+					alt_7_background_switch = "true";
+					$("#alt-7-style-color-appearance").removeClass("disable");
+				}
+				if (document.getElementById("alt-8-background").checked == false) {
+					alt_8_background_switch = "false";
+					$("#alt-8-style-color-appearance").addClass("disable");
+				} else {
+					alt_8_background_switch = "true";
+					$("#alt-8-style-color-appearance").removeClass("disable");
 				}
 
 				//Multiple/Twins checkbox
@@ -3071,6 +4834,42 @@
 					$("#alt-4-border-thickness-amount").removeClass("disable");
 					$("#alt-4-style-border-color-appearance").removeClass("disable");
 				}
+				if (document.getElementById("alt-5-border-color").checked == false) {
+					alt_5_border_switch = "false";
+					$("#alt-5-border-thickness-amount").addClass("disable");
+					$("#alt-5-style-border-color-appearance").addClass("disable");
+				} else {
+					alt_5_border_switch = "true";
+					$("#alt-5-border-thickness-amount").removeClass("disable");
+					$("#alt-5-style-border-color-appearance").removeClass("disable");
+				}
+				if (document.getElementById("alt-6-border-color").checked == false) {
+					alt_6_border_switch = "false";
+					$("#alt-6-border-thickness-amount").addClass("disable");
+					$("#alt-6-style-border-color-appearance").addClass("disable");
+				} else {
+					alt_6_border_switch = "true";
+					$("#alt-6-border-thickness-amount").removeClass("disable");
+					$("#alt-6-style-border-color-appearance").removeClass("disable");
+				}
+				if (document.getElementById("alt-7-border-color").checked == false) {
+					alt_7_border_switch = "false";
+					$("#alt-7-border-thickness-amount").addClass("disable");
+					$("#alt-7-style-border-color-appearance").addClass("disable");
+				} else {
+					alt_7_border_switch = "true";
+					$("#alt-7-border-thickness-amount").removeClass("disable");
+					$("#alt-7-style-border-color-appearance").removeClass("disable");
+				}
+				if (document.getElementById("alt-8-border-color").checked == false) {
+					alt_8_border_switch = "false";
+					$("#alt-8-border-thickness-amount").addClass("disable");
+					$("#alt-8-style-border-color-appearance").addClass("disable");
+				} else {
+					alt_8_border_switch = "true";
+					$("#alt-8-border-thickness-amount").removeClass("disable");
+					$("#alt-8-style-border-color-appearance").removeClass("disable");
+				}
 
 				//Switch Shadows ON/OFF
 				if (document.getElementById("alt-1-shadows").checked == false) {
@@ -3100,6 +4899,34 @@
 				} else {
 					alt_4_shadows = "true";
 					$("#alt-4-shadow-amount").removeClass("disable");
+				}
+				if (document.getElementById("alt-5-shadows").checked == false) {
+					alt_5_shadows = "false";
+					$("#alt-5-shadow-amount").addClass("disable");
+				} else {
+					alt_5_shadows = "true";
+					$("#alt-5-shadow-amount").removeClass("disable");
+				}
+				if (document.getElementById("alt-6-shadows").checked == false) {
+					alt_6_shadows = "false";
+					$("#alt-6-shadow-amount").addClass("disable");
+				} else {
+					alt_6_shadows = "true";
+					$("#alt-6-shadow-amount").removeClass("disable");
+				}
+				if (document.getElementById("alt-7-shadows").checked == false) {
+					alt_7_shadows = "false";
+					$("#alt-7-shadow-amount").addClass("disable");
+				} else {
+					alt_7_shadows = "true";
+					$("#alt-7-shadow-amount").removeClass("disable");
+				}
+				if (document.getElementById("alt-8-shadows").checked == false) {
+					alt_8_shadows = "false";
+					$("#alt-8-shadow-amount").addClass("disable");
+				} else {
+					alt_8_shadows = "true";
+					$("#alt-8-shadow-amount").removeClass("disable");
 				}
 
 				//Name and Info text appearance (Uppercase and Bold)
@@ -3143,6 +4970,46 @@
 				} else {
 					alt_4_name_weight = "bold";
 				}
+				if (document.getElementById("alt-5-name-transform").checked == false) {
+					alt_5_name_transform = "normal";
+				} else {
+					alt_5_name_transform = "uppercase";
+				}
+				if (document.getElementById("alt-5-name-weight").checked == false) {
+					alt_5_name_weight = "lighter";
+				} else {
+					alt_5_name_weight = "bold";
+				}
+				if (document.getElementById("alt-6-name-transform").checked == false) {
+					alt_6_name_transform = "normal";
+				} else {
+					alt_6_name_transform = "uppercase";
+				}
+				if (document.getElementById("alt-6-name-weight").checked == false) {
+					alt_6_name_weight = "lighter";
+				} else {
+					alt_6_name_weight = "bold";
+				}
+				if (document.getElementById("alt-7-name-transform").checked == false) {
+					alt_7_name_transform = "normal";
+				} else {
+					alt_7_name_transform = "uppercase";
+				}
+				if (document.getElementById("alt-7-name-weight").checked == false) {
+					alt_7_name_weight = "lighter";
+				} else {
+					alt_7_name_weight = "bold";
+				}
+				if (document.getElementById("alt-8-name-transform").checked == false) {
+					alt_8_name_transform = "normal";
+				} else {
+					alt_8_name_transform = "uppercase";
+				}
+				if (document.getElementById("alt-8-name-weight").checked == false) {
+					alt_8_name_weight = "lighter";
+				} else {
+					alt_8_name_weight = "bold";
+				}
 
 				if (document.getElementById("alt-1-info-transform").checked == false) {
 					alt_1_info_transform = "normal";
@@ -3184,6 +5051,46 @@
 				} else {
 					alt_4_info_weight = "bold";
 				}
+				if (document.getElementById("alt-5-info-transform").checked == false) {
+					alt_5_info_transform = "normal";
+				} else {
+					alt_5_info_transform = "uppercase";
+				}
+				if (document.getElementById("alt-5-info-weight").checked == false) {
+					alt_5_info_weight = "lighter";
+				} else {
+					alt_5_info_weight = "bold";
+				}
+				if (document.getElementById("alt-6-info-transform").checked == false) {
+					alt_6_info_transform = "normal";
+				} else {
+					alt_6_info_transform = "uppercase";
+				}
+				if (document.getElementById("alt-6-info-weight").checked == false) {
+					alt_6_info_weight = "lighter";
+				} else {
+					alt_6_info_weight = "bold";
+				}
+				if (document.getElementById("alt-7-info-transform").checked == false) {
+					alt_7_info_transform = "normal";
+				} else {
+					alt_7_info_transform = "uppercase";
+				}
+				if (document.getElementById("alt-7-info-weight").checked == false) {
+					alt_7_info_weight = "lighter";
+				} else {
+					alt_7_info_weight = "bold";
+				}
+				if (document.getElementById("alt-8-info-transform").checked == false) {
+					alt_8_info_transform = "normal";
+				} else {
+					alt_8_info_transform = "uppercase";
+				}
+				if (document.getElementById("alt-8-info-weight").checked == false) {
+					alt_8_info_weight = "lighter";
+				} else {
+					alt_8_info_weight = "bold";
+				}
 
 				//Font of the Lower Third
 				var font_id_1 = document.getElementById("alt-1-font");
@@ -3194,6 +5101,14 @@
 				var alt_3_font = font_id_3.options[font_id_3.selectedIndex].value;
 				var font_id_4 = document.getElementById("alt-4-font");
 				var alt_4_font = font_id_4.options[font_id_4.selectedIndex].value;
+				var font_id_5 = document.getElementById("alt-5-font");
+				var alt_5_font = font_id_5.options[font_id_5.selectedIndex].value;
+				var font_id_6 = document.getElementById("alt-6-font");
+				var alt_6_font = font_id_6.options[font_id_6.selectedIndex].value;
+				var font_id_7 = document.getElementById("alt-7-font");
+				var alt_7_font = font_id_7.options[font_id_7.selectedIndex].value;
+				var font_id_8 = document.getElementById("alt-8-font");
+				var alt_8_font = font_id_8.options[font_id_8.selectedIndex].value;
 
 				//Alignment of the Lower Third
 				var alt_1_align = $('input[name=alt-1-align]:checked').val();
@@ -3211,6 +5126,22 @@
 				var alt_4_align = $('input[name=alt-4-align]:checked').val();
 				if (!alt_4_align) {
 					$('#alt-4-align-left').prop('checked', true).change();
+				}
+				var alt_5_align = $('input[name=alt-5-align]:checked').val();
+				if (!alt_5_align) {
+					$('#alt-5-align-left').prop('checked', true).change();
+				}
+				var alt_6_align = $('input[name=alt-6-align]:checked').val();
+				if (!alt_6_align) {
+					$('#alt-6-align-left').prop('checked', true).change();
+				}
+				var alt_7_align = $('input[name=alt-7-align]:checked').val();
+				if (!alt_7_align) {
+					$('#alt-7-align-left').prop('checked', true).change();
+				}
+				var alt_8_align = $('input[name=alt-8-align]:checked').val();
+				if (!alt_8_align) {
+					$('#alt-8-align-left').prop('checked', true).change();
 				}
 
 				//
@@ -3238,6 +5169,26 @@
 					document.getElementById("alt-4-inactive-time").classList.add("disable");
 				} else {
 					document.getElementById("alt-4-inactive-time").classList.remove("disable");
+				}
+				if (alt_5_oneshot){
+					document.getElementById("alt-5-inactive-time").classList.add("disable");
+				} else {
+					document.getElementById("alt-5-inactive-time").classList.remove("disable");
+				}
+				if (alt_6_oneshot){
+					document.getElementById("alt-6-inactive-time").classList.add("disable");
+				} else {
+					document.getElementById("alt-6-inactive-time").classList.remove("disable");
+				}
+				if (alt_7_oneshot){
+					document.getElementById("alt-7-inactive-time").classList.add("disable");
+				} else {
+					document.getElementById("alt-7-inactive-time").classList.remove("disable");
+				}
+				if (alt_8_oneshot){
+					document.getElementById("alt-8-inactive-time").classList.add("disable");
+				} else {
+					document.getElementById("alt-8-inactive-time").classList.remove("disable");
 				}
 
 				//
@@ -3268,6 +5219,28 @@
 				} else {
 					document.getElementById("alt-4-active-time").classList.remove("disable");
 				}
+				if (alt_5_lock_active){
+					document.getElementById("alt-5-active-time").classList.add("disable");
+					// document.getElementById("alt-5-active-time").value = "Locked";
+				} else {
+					document.getElementById("alt-5-active-time").classList.remove("disable");
+					// document.getElementById("alt-5-active-time").value = "";
+				}
+				if (alt_6_lock_active){
+					document.getElementById("alt-6-active-time").classList.add("disable");
+				} else {
+					document.getElementById("alt-6-active-time").classList.remove("disable");
+				}
+				if (alt_7_lock_active){
+					document.getElementById("alt-7-active-time").classList.add("disable");
+				} else {
+					document.getElementById("alt-7-active-time").classList.remove("disable");
+				}
+				if (alt_8_lock_active){
+					document.getElementById("alt-8-active-time").classList.add("disable");
+				} else {
+					document.getElementById("alt-8-active-time").classList.remove("disable");
+				}
 
 				//Shows if custom time settings is used
 				if (alt_1_animation_time || (alt_1_active_time && alt_1_active_time != 'Infinity') || alt_1_inactive_time || alt_1_lock_active || alt_1_oneshot) {
@@ -3287,6 +5260,26 @@
 				}
 				if (alt_4_animation_time || (alt_4_active_time && alt_4_active_time != 'Infinity') || alt_4_inactive_time || alt_4_lock_active || alt_4_oneshot) {
 					$("#alt-4-custom-times").children(".icon-btn").addClass("active");
+				} else {
+					$("#alt-4-custom-times").children(".icon-btn").removeClass("active");
+				}
+				if (alt_5_animation_time || (alt_5_active_time && alt_5_active_time != 'Infinity') || alt_5_inactive_time || alt_5_lock_active || alt_5_oneshot) {
+					$("#alt-5-custom-times").children(".icon-btn").addClass("active");
+				} else {
+					$("#alt-5-custom-times").children(".icon-btn").removeClass("active");
+				}
+				if (alt_6_animation_time || (alt_6_active_time && alt_6_active_time != 'Infinity') || alt_6_inactive_time || alt_6_lock_active || alt_6_oneshot) {
+					$("#alt-6-custom-times").children(".icon-btn").addClass("active");
+				} else {
+					$("#alt-6-custom-times").children(".icon-btn").removeClass("active");
+				}
+				if (alt_7_animation_time || (alt_7_active_time && alt_7_active_time != 'Infinity') || alt_7_inactive_time || alt_7_lock_active || alt_7_oneshot) {
+					$("#alt-7-custom-times").children(".icon-btn").addClass("active");
+				} else {
+					$("#alt-7-custom-times").children(".icon-btn").removeClass("active");
+				}
+				if (alt_8_animation_time || (alt_8_active_time && alt_8_active_time != 'Infinity') || alt_8_inactive_time || alt_8_lock_active || alt_8_oneshot) {
+					$("#alt-8-custom-times").children(".icon-btn").addClass("active");
 				} else {
 					$("#alt-4-custom-times").children(".icon-btn").removeClass("active");
 				}
@@ -3379,36 +5372,36 @@
 				$("#global-animation-time").attr("title", tooltip.global_animation_time);
 				$("#global-active-time").attr("title", tooltip.global_active_time);
 				$("#global-inactive-time").attr("title", tooltip.global_inactive_time);
-				$("#alt-1-animation-time, #alt-2-animation-time, #alt-3-animation-time, #alt-4-animation-time").attr("title", tooltip.animation_time);
-				$("#alt-1-active-time, #alt-2-active-time, #alt-3-active-time, #alt-4-active-time").attr("title", tooltip.active_time);
-				$("#alt-1-inactive-time, #alt-2-inactive-time, #alt-3-inactive-time, #alt-4-inactive-time").attr("title", tooltip.inactive_time);
-				$("#global-lock-active, #alt-1-lock-active, #alt-2-lock-active, #alt-3-lock-active, #alt-4-lock-active").parent().attr("title", tooltip.lock_active);
-				$("#global-oneshot, #alt-1-oneshot, #alt-2-oneshot, #alt-3-oneshot, #alt-4-oneshot").parent().attr("title", tooltip.oneshot);
+				$("#alt-1-animation-time, #alt-2-animation-time, #alt-3-animation-time, #alt-4-animation-time, #alt-5-animation-time, #alt-6-animation-time, #alt-7-animation-time, #alt-8-animation-time").attr("title", tooltip.animation_time);
+				$("#alt-1-active-time, #alt-2-active-time, #alt-3-active-time, #alt-4-active-time, #alt-5-active-time, #alt-6-active-time, #alt-7-active-time, #alt-8-active-time").attr("title", tooltip.active_time);
+				$("#alt-1-inactive-time, #alt-2-inactive-time, #alt-3-inactive-time, #alt-4-inactive-time, #alt-5-inactive-time, #alt-6-inactive-time, #alt-7-inactive-time, #alt-8-inactive-time").attr("title", tooltip.inactive_time);
+				$("#global-lock-active, #alt-1-lock-active, #alt-2-lock-active, #alt-3-lock-active, #alt-4-lock-active, #alt-5-lock-active, #alt-6-lock-active, #alt-7-lock-active, #alt-8-lock-active").parent().attr("title", tooltip.lock_active);
+				$("#global-oneshot, #alt-1-oneshot, #alt-2-oneshot, #alt-3-oneshot, #alt-4-oneshot, #alt-5-oneshot, #alt-6-oneshot, #alt-7-oneshot, #alt-8-oneshot").parent().attr("title", tooltip.oneshot);
 				
-				$("#alt-1-preview, #alt-2-preview, #alt-3-preview, #alt-4-preview").parent().attr("title", tooltip.preview);
-				$("#alt-1-align-left, #alt-2-align-left, #alt-3-align-left, #alt-4-align-left").next().attr("title", tooltip.align_left);
-				$("#alt-1-align-center, #alt-2-align-center, #alt-3-align-center, #alt-4-align-center").next().attr("title", tooltip.align_center);
-				$("#alt-1-align-right, #alt-2-align-right, #alt-3-align-right, #alt-4-align-right").next().attr("title", tooltip.align_right);
-				$("#alt-1-style, #alt-2-style, #alt-3-style, #alt-4-style").parent().parent().attr("title", tooltip.style);
-				$("#alt-1-size, #alt-2-size, #alt-3-size, #alt-4-size").parent().parent().attr("title", tooltip.size);
-				$("#alt-1-margin-h, #alt-2-margin-h, #alt-3-margin-h, #alt-4-margin-h").parent().parent().attr("title", tooltip.margin);
-				$("#alt-1-inverse-ratio, #alt-2-inverse-ratio, #alt-3-inverse-ratio, #alt-4-inverse-ratio").parent().parent().attr("title", tooltip.text_size);
-				$("#alt-1-line-spacing, #alt-2-line-spacing, #alt-3-line-spacing, #alt-4-line-spacing").parent().parent().attr("title", tooltip.line_spacing);
-				$("#alt-1-font, #alt-2-font, #alt-3-font, #alt-4-font").parent().attr("title", tooltip.font);
-				$("#alt-1-logo, #alt-2-logo, #alt-3-logo, #alt-4-logo").parent().attr("title", tooltip.logo);
-				$("#alt-1-logo-size, #alt-2-logo-size, #alt-3-logo-size, #alt-4-logo-size").parent().attr("title", tooltip.logo_size);
-				$("#alt-1-shadows, #alt-2-shadows, #alt-3-shadows, #alt-4-shadows").parent().attr("title", tooltip.shadow);
-				$("#alt-1-shadow-amount, #alt-2-shadow-amount, #alt-3-shadow-amount, #alt-4-shadow-amount").parent().attr("title", tooltip.shadow_opacity);
-				$("#alt-1-background, #alt-2-background, #alt-3-background, #alt-4-background").parent().attr("title", tooltip.fill_colors);
-				$("#alt-1-corners, #alt-2-corners, #alt-3-corners, #alt-4-corners").parent().parent().attr("title", tooltip.corners);
-				$("#alt-1-border-thickness, #alt-2-border-thickness, #alt-3-border-thickness #alt-4-border-thickness").parent().attr("title", tooltip.borders);
-				$("#alt-1-border-color, #alt-2-border-color, #alt-3-border-color, #alt-4-border-color").parent().attr("title", tooltip.borders);
-				$("#alt-1-border-thickness-amount, #alt-2-border-thickness-amount, #alt-3-border-thickness-amount, #alt-4-border-thickness-amount").parent().attr("title", tooltip.borders_thinkness);
+				$("#alt-1-preview, #alt-2-preview, #alt-3-preview, #alt-4-preview, #alt-5-preview, #alt-6-preview, #alt-7-preview, #alt-8-preview").parent().attr("title", tooltip.preview);
+				$("#alt-1-align-left, #alt-2-align-left, #alt-3-align-left, #alt-4-align-left, #alt-5-align-left, #alt-6-align-left, #alt-7-align-left, #alt-8-align-left").next().attr("title", tooltip.align_left);
+				$("#alt-1-align-center, #alt-2-align-center, #alt-3-align-center, #alt-4-align-center, #alt-5-align-center, #alt-6-align-center, #alt-7-align-center, #alt-8-align-center").next().attr("title", tooltip.align_center);
+				$("#alt-1-align-right, #alt-2-align-right, #alt-3-align-right, #alt-4-align-right, #alt-5-align-right, #alt-6-align-right, #alt-7-align-right, #alt-8-align-right").next().attr("title", tooltip.align_right);
+				$("#alt-1-style, #alt-2-style, #alt-3-style, #alt-4-style, #alt-5-style, #alt-6-style, #alt-7-style, #alt-8-style").parent().parent().attr("title", tooltip.style);
+				$("#alt-1-size, #alt-2-size, #alt-3-size, #alt-4-size, #alt-5-size, #alt-6-size, #alt-7-size, #alt-8-size").parent().parent().attr("title", tooltip.size);
+				$("#alt-1-margin-h, #alt-2-margin-h, #alt-3-margin-h, #alt-4-margin-h, #alt-5-margin-h, #alt-6-margin-h, #alt-7-margin-h, #alt-8-margin-h").parent().parent().attr("title", tooltip.margin);
+				$("#alt-1-inverse-ratio, #alt-2-inverse-ratio, #alt-3-inverse-ratio, #alt-4-inverse-ratio, #alt-5-inverse-ratio, #alt-6-inverse-ratio, #alt-7-inverse-ratio, #alt-8-inverse-ratio").parent().parent().attr("title", tooltip.text_size);
+				$("#alt-1-line-spacing, #alt-2-line-spacing, #alt-3-line-spacing, #alt-4-line-spacing, #alt-5-line-spacing, #alt-6-line-spacing, #alt-7-line-spacing, #alt-8-line-spacing").parent().parent().attr("title", tooltip.line_spacing);
+				$("#alt-1-font, #alt-2-font, #alt-3-font, #alt-4-font, #alt-5-font, #alt-6-font, #alt-7-font, #alt-8-font").parent().attr("title", tooltip.font);
+				$("#alt-1-logo, #alt-2-logo, #alt-3-logo, #alt-4-logo, #alt-5-logo, #alt-6-logo, #alt-7-logo, #alt-8-logo").parent().attr("title", tooltip.logo);
+				$("#alt-1-logo-size, #alt-2-logo-size, #alt-3-logo-size, #alt-4-logo-size, #alt-5-logo-size, #alt-6-logo-size, #alt-7-logo-size, #alt-8-logo-size").parent().attr("title", tooltip.logo_size);
+				$("#alt-1-shadows, #alt-2-shadows, #alt-3-shadows, #alt-4-shadows, #alt-5-shadows, #alt-6-shadows, #alt-7-shadows, #alt-8-shadows").parent().attr("title", tooltip.shadow);
+				$("#alt-1-shadow-amount, #alt-2-shadow-amount, #alt-3-shadow-amount, #alt-4-shadow-amount, #alt-5-shadow-amount, #alt-6-shadow-amount, #alt-7-shadow-amount, #alt-8-shadow-amount").parent().attr("title", tooltip.shadow_opacity);
+				$("#alt-1-background, #alt-2-background, #alt-3-background, #alt-4-background, #alt-5-background, #alt-6-background, #alt-7-background, #alt-8-background").parent().attr("title", tooltip.fill_colors);
+				$("#alt-1-corners, #alt-2-corners, #alt-3-corners, #alt-4-corners, #alt-5-corners, #alt-6-corners, #alt-7-corners, #alt-8-corners").parent().parent().attr("title", tooltip.corners);
+				$("#alt-1-border-thickness, #alt-2-border-thickness, #alt-3-border-thickness, #alt-4-border-thickness, #alt-5-border-thickness, #alt-6-border-thickness, #alt-7-border-thickness, #alt-8-border-thickness").parent().attr("title", tooltip.borders);
+				$("#alt-1-border-color, #alt-2-border-color, #alt-3-border-color, #alt-4-border-color, #alt-5-border-color, #alt-6-border-color, #alt-7-border-color, #alt-8-border-color").parent().attr("title", tooltip.borders);
+				$("#alt-1-border-thickness-amount, #alt-2-border-thickness-amount, #alt-3-border-thickness-amount, #alt-4-border-thickness-amount, #alt-5-border-thickness-amount, #alt-6-border-thickness-amount, #alt-7-border-thickness-amount, #alt-8-border-thickness-amount").parent().attr("title", tooltip.borders_thinkness);
 
-				$("#alt-1-clean-inputs, #alt-2-clean-inputs, #alt-3-clean-inputs, #alt-4-clean-inputs").attr("title", tooltip.clean);
-				$("#alt-1-autotrigger, #alt-2-autotrigger, #alt-3-autotrigger, #alt-4-autotrigger").parent().attr("title", tooltip.autotrigger);
-				$("#alt-1-autoload, #alt-2-autoload, #alt-3-autoload, #alt-4-autoload").parent().attr("title", tooltip.autoload);
-				$("#alt-1-custom-times, #alt-2-custom-times, #alt-3-custom-times, #alt-4-custom-times").attr("title", tooltip.custom_times);
+				$("#alt-1-clean-inputs, #alt-2-clean-inputs, #alt-3-clean-inputs, #alt-4-clean-inputs, #alt-5-clean-inputs, #alt-6-clean-inputs, #alt-7-clean-inputs, #alt-8-clean-inputs").attr("title", tooltip.clean);
+				$("#alt-1-autotrigger, #alt-2-autotrigger, #alt-3-autotrigger, #alt-4-autotrigger, #alt-5-autotrigger, #alt-6-autotrigger, #alt-7-autotrigger, #alt-8-autotrigger").parent().attr("title", tooltip.autotrigger);
+				$("#alt-1-autoload, #alt-2-autoload, #alt-3-autoload, #alt-4-autoload, #alt-5-autoload, #alt-6-autoload, #alt-7-autoload, #alt-8-autoload").parent().attr("title", tooltip.autoload);
+				$("#alt-1-custom-times, #alt-2-custom-times, #alt-3-custom-times, #alt-4-custom-times, #alt-5-custom-times, #alt-6-custom-times, #alt-7-custom-times, #alt-8-custom-times").attr("title", tooltip.custom_times);
 
 				$("#fonts-options").children().first().attr("title", tooltip.custom_fonts);
 				$(".logos-options").children().first().attr("title", tooltip.default_logos);
@@ -3498,6 +5491,18 @@
 						}
 						if (id == "alt-4-logo-preview" || id == "alt-4-logo-default"){
 							$(this).attr('src', alt_4_logo_default);
+						}
+						if (id == "alt-5-logo-preview" || id == "alt-5-logo-default"){
+							$(this).attr('src', alt_5_logo_default);
+						}
+						if (id == "alt-6-logo-preview" || id == "alt-6-logo-default"){
+							$(this).attr('src', alt_6_logo_default);
+						}
+						if (id == "alt-7-logo-preview" || id == "alt-7-logo-default"){
+							$(this).attr('src', alt_7_logo_default);
+						}
+						if (id == "alt-8-logo-preview" || id == "alt-8-logo-default"){
+							$(this).attr('src', alt_8_logo_default);
 						}
 					}
 				});
@@ -3613,6 +5618,10 @@
 				checkSlots("#alt-2-memory-slots", "#alt-2-name", "#alt-2-info", "#alt-2-logo-preview");
 				checkSlots("#alt-3-memory-slots", "#alt-3-name", "#alt-3-info", "#alt-3-logo-preview");
 				checkSlots("#alt-4-memory-slots", "#alt-4-name", "#alt-4-info", "#alt-4-logo-preview");
+				checkSlots("#alt-5-memory-slots", "#alt-5-name", "#alt-5-info", "#alt-5-logo-preview");
+				checkSlots("#alt-6-memory-slots", "#alt-6-name", "#alt-6-info", "#alt-6-logo-preview");
+				checkSlots("#alt-7-memory-slots", "#alt-7-name", "#alt-7-info", "#alt-7-logo-preview");
+				checkSlots("#alt-8-memory-slots", "#alt-8-name", "#alt-8-info", "#alt-8-logo-preview");
 				getAppearance();
 				checkSwitches();
 				function_send();
@@ -3636,7 +5645,7 @@
 			$( document ).ready(function() {
 				$('#defaultTab').click();
 			});
-
+		}
 		</script>
 
 	</body>
