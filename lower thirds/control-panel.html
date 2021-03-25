@@ -294,6 +294,10 @@
 										<input class="checkbox-storable" type="checkbox" id="alt-1-name-weight" checked>
 										<div class="icon-btn icon small icon-bold"></div>
 									</label>
+									<label class="config-btn small">
+										<input class="checkbox-storable" type="checkbox" id="alt-1-name-style" checked>
+										<div class="icon-btn icon small icon-italic"></div>
+									</label>
 									<input class="storable" id="alt-1-name-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
 								</div>
 								<input class="storable" type="text" id="alt-1-info" placeholder="Info" tabindex="5">
@@ -305,6 +309,10 @@
 									<label class="config-btn small">
 										<input class="checkbox-storable" type="checkbox" id="alt-1-info-weight">
 										<div class="icon-btn icon small icon-bold"></div>
+									</label>
+									<label class="config-btn small">
+										<input class="checkbox-storable" type="checkbox" id="alt-1-info-style">
+										<div class="icon-btn icon small icon-italic"></div>
 									</label>
 									<input class="storable" id="alt-1-info-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
 								</div>	
@@ -530,6 +538,10 @@
 										<input class="checkbox-storable" type="checkbox" id="alt-2-name-weight" checked>
 										<div class="icon-btn icon small icon-bold"></div>
 									</label>
+									<label class="config-btn small">
+										<input class="checkbox-storable" type="checkbox" id="alt-2-name-style" checked>
+										<div class="icon-btn icon small icon-italic"></div>
+									</label>
 									<input class="storable" id="alt-2-name-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
 								</div>
 								<input class="storable" type="text" id="alt-2-info" placeholder="Info" tabindex="7">
@@ -541,6 +553,10 @@
 									<label class="config-btn small">
 										<input class="checkbox-storable" type="checkbox" id="alt-2-info-weight">
 										<div class="icon-btn icon small icon-bold"></div>
+									</label>
+									<label class="config-btn small">
+										<input class="checkbox-storable" type="checkbox" id="alt-2-info-style">
+										<div class="icon-btn icon small icon-italic"></div>
 									</label>
 									<input class="storable" id="alt-2-info-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
 								</div>	
@@ -766,6 +782,10 @@
 										<input class="checkbox-storable" type="checkbox" id="alt-3-name-weight" checked>
 										<div class="icon-btn icon small icon-bold"></div>
 									</label>
+									<label class="config-btn small">
+										<input class="checkbox-storable" type="checkbox" id="alt-3-name-style" checked>
+										<div class="icon-btn icon small icon-italic"></div>
+									</label>
 									<input class="storable" id="alt-3-name-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
 								</div>
 								<input class="storable" type="text" id="alt-3-info" placeholder="Info" tabindex="9">
@@ -777,6 +797,10 @@
 									<label class="config-btn small">
 										<input class="checkbox-storable" type="checkbox" id="alt-3-info-weight">
 										<div class="icon-btn icon small icon-bold"></div>
+									</label>
+									<label class="config-btn small">
+										<input class="checkbox-storable" type="checkbox" id="alt-3-info-style">
+										<div class="icon-btn icon small icon-italic"></div>
 									</label>
 									<input class="storable" id="alt-3-info-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
 								</div>	
@@ -1002,6 +1026,10 @@
 										<input class="checkbox-storable" type="checkbox" id="alt-4-name-weight" checked>
 										<div class="icon-btn icon small icon-bold"></div>
 									</label>
+									<label class="config-btn small">
+										<input class="checkbox-storable" type="checkbox" id="alt-4-name-style" checked>
+										<div class="icon-btn icon small icon-italic"></div>
+									</label>
 									<input class="storable" id="alt-4-name-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
 								</div>
 								<input class="storable" type="text" id="alt-4-info" placeholder="Info" tabindex="11">
@@ -1013,6 +1041,10 @@
 									<label class="config-btn small">
 										<input class="checkbox-storable" type="checkbox" id="alt-4-info-weight">
 										<div class="icon-btn icon small icon-bold"></div>
+									</label>
+									<label class="config-btn small">
+										<input class="checkbox-storable" type="checkbox" id="alt-4-info-style">
+										<div class="icon-btn icon small icon-italic"></div>
 									</label>
 									<input class="storable" id="alt-4-info-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
 								</div>	
@@ -1164,10 +1196,12 @@
 
 			const default_name_transform = true;
 			const default_name_weight = true;
+			const default_name_style = false;
 			const default_name_color = '#F2F2F2';
 
 			const default_info_transform = false;
 			const default_info_weight = false;
+			const default_info_style = false;
 			const default_info_color = '#8A8A8A';
 
 			function loadDefaultValues() {
@@ -1196,10 +1230,12 @@
 
 				$("[id^=alt-][id$=-name-transform]").prop('checked', default_name_transform);
 				$("[id^=alt-][id$=-name-weight]").prop('checked', default_name_weight);
+				$("[id^=alt-][id$=-name-style]").prop('checked', default_name_style);
 				$("[id^=alt-][id$=-name-color]").val(default_name_color);
 
 				$("[id^=alt-][id$=-info-transform]").prop('checked', default_info_transform);
 				$("[id^=alt-][id$=-info-weight]").prop('checked', default_info_weight);
+				$("[id^=alt-][id$=-info-style]").prop('checked', default_info_style);
 				$("[id^=alt-][id$=-info-color]").val(default_info_color);
 			}
 
@@ -3113,6 +3149,11 @@
 				} else {
 					alt_1_name_weight = "bold";
 				}
+				if (document.getElementById("alt-1-name-style").checked == false) {
+					alt_1_name_style = "normal";
+				} else {
+					alt_1_name_style = "italic";
+				}
 				if (document.getElementById("alt-2-name-transform").checked == false) {
 					alt_2_name_transform = "normal";
 				} else {
@@ -3122,6 +3163,11 @@
 					alt_2_name_weight = "lighter";
 				} else {
 					alt_2_name_weight = "bold";
+				}
+				if (document.getElementById("alt-2-name-style").checked == false) {
+					alt_2_name_style = "normal";
+				} else {
+					alt_2_name_style = "italic";
 				}
 				if (document.getElementById("alt-3-name-transform").checked == false) {
 					alt_3_name_transform = "normal";
@@ -3133,6 +3179,11 @@
 				} else {
 					alt_3_name_weight = "bold";
 				}
+				if (document.getElementById("alt-3-name-style").checked == false) {
+					alt_3_name_style = "normal";
+				} else {
+					alt_3_name_style = "italic";
+				}
 				if (document.getElementById("alt-4-name-transform").checked == false) {
 					alt_4_name_transform = "normal";
 				} else {
@@ -3142,6 +3193,11 @@
 					alt_4_name_weight = "lighter";
 				} else {
 					alt_4_name_weight = "bold";
+				}
+				if (document.getElementById("alt-4-name-style").checked == false) {
+					alt_4_name_style = "normal";
+				} else {
+					alt_4_name_style = "italic";
 				}
 
 				if (document.getElementById("alt-1-info-transform").checked == false) {
@@ -3154,6 +3210,11 @@
 				} else {
 					alt_1_info_weight = "bold";
 				}
+				if (document.getElementById("alt-1-info-style").checked == false) {
+					alt_1_info_style = "normal";
+				} else {
+					alt_1_info_style = "italic";
+				}
 				if (document.getElementById("alt-2-info-transform").checked == false) {
 					alt_2_info_transform = "normal";
 				} else {
@@ -3163,6 +3224,11 @@
 					alt_2_info_weight = "lighter";
 				} else {
 					alt_2_info_weight = "bold";
+				}
+				if (document.getElementById("alt-2-info-style").checked == false) {
+					alt_2_info_style = "normal";
+				} else {
+					alt_2_info_style = "italic";
 				}
 				if (document.getElementById("alt-3-info-transform").checked == false) {
 					alt_3_info_transform = "normal";
@@ -3174,6 +3240,11 @@
 				} else {
 					alt_3_info_weight = "bold";
 				}
+				if (document.getElementById("alt-3-info-style").checked == false) {
+					alt_3_info_style = "normal";
+				} else {
+					alt_3_info_style = "italic";
+				}
 				if (document.getElementById("alt-4-info-transform").checked == false) {
 					alt_4_info_transform = "normal";
 				} else {
@@ -3183,6 +3254,11 @@
 					alt_4_info_weight = "lighter";
 				} else {
 					alt_4_info_weight = "bold";
+				}
+				if (document.getElementById("alt-4-info-style").checked == false) {
+					alt_4_info_style = "normal";
+				} else {
+					alt_4_info_style = "italic";
 				}
 
 				//Font of the Lower Third
@@ -3291,7 +3367,7 @@
 					$("#alt-4-custom-times").children(".icon-btn").removeClass("active");
 				}
 
-				bc.postMessage({global_animation_time, global_active_time, global_inactive_time, alt_1_switch, alt_1_style, alt_1_name, alt_1_info, alt_1_name_size, alt_1_info_size , alt_1_name_transform, alt_1_info_transform, alt_1_name_weight, alt_1_info_weight, alt_1_name_color, alt_1_info_color, alt_1_style_color_1, alt_1_style_color_2, alt_1_logo_switch, alt_1_background_switch, alt_1_shadows, alt_1_align, alt_1_size, alt_1_margin_h, alt_1_margin_v, alt_1_line_spacing, alt_1_font, alt_2_switch, alt_2_style, alt_2_name, alt_2_info, alt_2_name_size, alt_2_info_size , alt_2_name_transform, alt_2_info_transform, alt_2_name_weight, alt_2_info_weight, alt_2_name_color, alt_2_info_color, alt_2_style_color_1, alt_2_style_color_2, alt_2_logo_switch, alt_2_background_switch, alt_2_shadows, alt_2_align, alt_2_size, alt_2_margin_h, alt_2_margin_v, alt_2_line_spacing, alt_2_font, alt_3_switch, alt_3_style, alt_3_name, alt_3_info, alt_3_name_size, alt_3_info_size , alt_3_name_transform, alt_3_info_transform, alt_3_name_weight, alt_3_info_weight, alt_3_name_color, alt_3_info_color, alt_3_style_color_1, alt_3_style_color_2, alt_3_logo_switch, alt_3_background_switch, alt_3_shadows, alt_3_align, alt_3_size, alt_3_margin_h, alt_3_margin_v, alt_3_line_spacing, alt_3_font, alt_4_switch, alt_4_style, alt_4_name, alt_4_info, alt_4_name_size, alt_4_info_size , alt_4_name_transform, alt_4_info_transform, alt_4_name_weight, alt_4_info_weight, alt_4_name_color, alt_4_info_color, alt_4_style_color_1, alt_4_style_color_2, alt_4_logo_switch, alt_4_background_switch, alt_4_shadows, alt_4_align, alt_4_size, alt_4_margin_h, alt_4_margin_v, alt_4_line_spacing, alt_4_font, alt_1_animation_time, alt_1_active_time, alt_1_inactive_time, alt_2_animation_time, alt_2_active_time, alt_2_inactive_time, alt_3_animation_time, alt_3_active_time, alt_3_inactive_time, alt_4_animation_time, alt_4_active_time, alt_4_inactive_time, alt_1_logo_image, alt_2_logo_image, alt_3_logo_image, alt_4_logo_image, global_oneshot, alt_1_oneshot, alt_2_oneshot, alt_3_oneshot, alt_4_oneshot, alt_1_logo_size, alt_1_shadow_amount, alt_1_corners, alt_1_border_switch, alt_1_border_thickness_amount, alt_1_style_color_3, alt_1_style_color_4, alt_2_logo_size, alt_2_shadow_amount, alt_2_corners, alt_2_border_switch, alt_2_border_thickness_amount, alt_2_style_color_3, alt_2_style_color_4, alt_3_logo_size, alt_3_shadow_amount, alt_3_corners, alt_3_border_switch, alt_3_border_thickness_amount, alt_3_style_color_3, alt_3_style_color_4, alt_4_logo_size, alt_4_shadow_amount, alt_4_corners, alt_4_border_switch, alt_4_border_thickness_amount, alt_4_style_color_3, alt_4_style_color_4, alt_1_preview, alt_2_preview, alt_3_preview, alt_4_preview});
+				bc.postMessage({global_animation_time, global_active_time, global_inactive_time, alt_1_switch, alt_1_style, alt_1_name, alt_1_info, alt_1_name_size, alt_1_info_size , alt_1_name_transform, alt_1_info_transform, alt_1_name_weight, alt_1_name_style, alt_1_info_weight, alt_1_info_style, alt_1_name_color, alt_1_info_color, alt_1_style_color_1, alt_1_style_color_2, alt_1_logo_switch, alt_1_background_switch, alt_1_shadows, alt_1_align, alt_1_size, alt_1_margin_h, alt_1_margin_v, alt_1_line_spacing, alt_1_font, alt_2_switch, alt_2_style, alt_2_name, alt_2_info, alt_2_name_size, alt_2_info_size , alt_2_name_transform, alt_2_info_transform, alt_2_name_weight, alt_2_name_style, alt_2_info_weight, alt_2_info_style, alt_2_name_color, alt_2_info_color, alt_2_style_color_1, alt_2_style_color_2, alt_2_logo_switch, alt_2_background_switch, alt_2_shadows, alt_2_align, alt_2_size, alt_2_margin_h, alt_2_margin_v, alt_2_line_spacing, alt_2_font, alt_3_switch, alt_3_style, alt_3_name, alt_3_info, alt_3_name_size, alt_3_info_size , alt_3_name_transform, alt_3_info_transform, alt_3_name_weight, alt_3_name_style, alt_3_info_weight, alt_3_info_style, alt_3_name_color, alt_3_info_color, alt_3_style_color_1, alt_3_style_color_2, alt_3_logo_switch, alt_3_background_switch, alt_3_shadows, alt_3_align, alt_3_size, alt_3_margin_h, alt_3_margin_v, alt_3_line_spacing, alt_3_font, alt_4_switch, alt_4_style, alt_4_name, alt_4_info, alt_4_name_size, alt_4_info_size , alt_4_name_transform, alt_4_info_transform, alt_4_name_weight, alt_4_name_style, alt_4_info_weight, alt_4_info_style, alt_4_name_color, alt_4_info_color, alt_4_style_color_1, alt_4_style_color_2, alt_4_logo_switch, alt_4_background_switch, alt_4_shadows, alt_4_align, alt_4_size, alt_4_margin_h, alt_4_margin_v, alt_4_line_spacing, alt_4_font, alt_1_animation_time, alt_1_active_time, alt_1_inactive_time, alt_2_animation_time, alt_2_active_time, alt_2_inactive_time, alt_3_animation_time, alt_3_active_time, alt_3_inactive_time, alt_4_animation_time, alt_4_active_time, alt_4_inactive_time, alt_1_logo_image, alt_2_logo_image, alt_3_logo_image, alt_4_logo_image, global_oneshot, alt_1_oneshot, alt_2_oneshot, alt_3_oneshot, alt_4_oneshot, alt_1_logo_size, alt_1_shadow_amount, alt_1_corners, alt_1_border_switch, alt_1_border_thickness_amount, alt_1_style_color_3, alt_1_style_color_4, alt_2_logo_size, alt_2_shadow_amount, alt_2_corners, alt_2_border_switch, alt_2_border_thickness_amount, alt_2_style_color_3, alt_2_style_color_4, alt_3_logo_size, alt_3_shadow_amount, alt_3_corners, alt_3_border_switch, alt_3_border_thickness_amount, alt_3_style_color_3, alt_3_style_color_4, alt_4_logo_size, alt_4_shadow_amount, alt_4_corners, alt_4_border_switch, alt_4_border_thickness_amount, alt_4_style_color_3, alt_4_style_color_4, alt_1_preview, alt_2_preview, alt_3_preview, alt_4_preview});
 			}
 
 			//Send New Fonts to source

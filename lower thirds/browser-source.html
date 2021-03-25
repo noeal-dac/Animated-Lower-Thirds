@@ -428,7 +428,7 @@
 
 			//Animated Lower Thirds 1
 			const {alt_1_style, alt_1_name, alt_1_info, alt_1_name_size, alt_1_info_size, alt_1_name_transform, alt_1_info_transform,
-				alt_1_name_weight, alt_1_info_weight, alt_1_name_color, alt_1_info_color, alt_1_logo_switch, alt_1_background_switch,
+				alt_1_name_weight, alt_1_name_style, alt_1_info_weight, alt_1_info_style, alt_1_name_color, alt_1_info_color, alt_1_logo_switch, alt_1_background_switch,
 				alt_1_shadows, alt_1_align = "left", alt_1_size, alt_1_margin_h, alt_1_margin_v, alt_1_font , alt_1_logo_image = "../logos/logo_1.png",
 				alt_1_logo_size, alt_1_shadow_amount, alt_1_corners, alt_1_border_switch} = received_data;
 			let {alt_1_switch, alt_1_preview, alt_1_style_color_1, alt_1_style_color_2, alt_1_line_spacing, alt_1_border_thickness_amount, alt_1_style_color_3, alt_1_style_color_4} = received_data;
@@ -457,7 +457,7 @@
 
 			//Animated Lower Thirds 2
 			const {alt_2_style, alt_2_name, alt_2_info, alt_2_name_size, alt_2_info_size, alt_2_name_transform, alt_2_info_transform,
-				alt_2_name_weight, alt_2_info_weight, alt_2_name_color, alt_2_info_color, alt_2_logo_switch, alt_2_background_switch,
+				alt_2_name_weight, alt_2_name_style, alt_2_info_weight, alt_2_info_style, alt_2_name_color, alt_2_info_color, alt_2_logo_switch, alt_2_background_switch,
 				alt_2_shadows, alt_2_align = "left", alt_2_size, alt_2_margin_h, alt_2_margin_v, alt_2_font, alt_2_logo_image = "../logos/logo_2.png",
 				alt_2_logo_size, alt_2_shadow_amount, alt_2_corners, alt_2_border_switch} = received_data;
 			let {alt_2_switch, alt_2_preview, alt_2_style_color_1, alt_2_style_color_2, alt_2_line_spacing, alt_2_border_thickness_amount, alt_2_style_color_3, alt_2_style_color_4} = received_data;
@@ -485,7 +485,7 @@
 
 			//Animated Lower Thirds 3
 			const {alt_3_style, alt_3_name, alt_3_info, alt_3_name_size, alt_3_info_size, alt_3_name_transform, alt_3_info_transform,
-				alt_3_name_weight, alt_3_info_weight, alt_3_name_color, alt_3_info_color, alt_3_logo_switch, alt_3_background_switch,
+				alt_3_name_weight, alt_3_name_style, alt_3_info_weight, alt_3_info_style, alt_3_name_color, alt_3_info_color, alt_3_logo_switch, alt_3_background_switch,
 				alt_3_shadows, alt_3_align = "left", alt_3_size, alt_3_margin_h, alt_3_margin_v, alt_3_font, alt_3_logo_image = "../logos/logo_3.png",
 				alt_3_logo_size, alt_3_shadow_amount, alt_3_corners, alt_3_border_switch} = received_data;
 			let {alt_3_switch, alt_3_preview, alt_3_style_color_1, alt_3_style_color_2, alt_3_line_spacing, alt_3_border_thickness_amount, alt_3_style_color_3, alt_3_style_color_4} = received_data;
@@ -513,7 +513,7 @@
 
 			//Animated Lower Thirds 4
 			const {alt_4_style, alt_4_name, alt_4_info, alt_4_name_size, alt_4_info_size, alt_4_name_transform, alt_4_info_transform,
-				alt_4_name_weight, alt_4_info_weight, alt_4_name_color, alt_4_info_color, alt_4_logo_switch, alt_4_background_switch,
+				alt_4_name_weight, alt_4_name_style, alt_4_info_weight, alt_4_info_style, alt_4_name_color, alt_4_info_color, alt_4_logo_switch, alt_4_background_switch,
 				alt_4_shadows, alt_4_align = "left", alt_4_size, alt_4_margin_h, alt_4_margin_v, alt_4_font, alt_4_logo_image = "../logos/logo_4.png",
 				alt_4_logo_size, alt_4_shadow_amount, alt_4_corners, alt_4_border_switch} = received_data;
 			let {alt_4_switch, alt_4_preview, alt_4_style_color_1, alt_4_style_color_2, alt_4_line_spacing, alt_4_border_thickness_amount, alt_4_style_color_3, alt_4_style_color_4} = received_data;
@@ -797,7 +797,9 @@
 			root.style.setProperty('--alt-1-name-transform', alt_1_name_transform);
 			root.style.setProperty('--alt-1-info-transform', alt_1_info_transform);
 			root.style.setProperty('--alt-1-name-weight', alt_1_name_weight);
+			root.style.setProperty('--alt-1-name-style', alt_1_name_style);
 			root.style.setProperty('--alt-1-info-weight', alt_1_info_weight);
+			root.style.setProperty('--alt-1-info-style', alt_1_info_style);
 			root.style.setProperty('--alt-1-name-color', alt_1_name_color);
 			root.style.setProperty('--alt-1-info-color', alt_1_info_color);
 			root.style.setProperty('--alt-1-style-color-1', alt_1_style_color_1);
@@ -819,7 +821,9 @@
 			root.style.setProperty('--alt-2-name-transform', alt_2_name_transform);
 			root.style.setProperty('--alt-2-info-transform', alt_2_info_transform);
 			root.style.setProperty('--alt-2-name-weight', alt_2_name_weight);
+			root.style.setProperty('--alt-2-name-style', alt_2_name_style);
 			root.style.setProperty('--alt-2-info-weight', alt_2_info_weight);
+			root.style.setProperty('--alt-2-info-style', alt_2_info_style);
 			root.style.setProperty('--alt-2-name-color', alt_2_name_color);
 			root.style.setProperty('--alt-2-info-color', alt_2_info_color);
 			root.style.setProperty('--alt-2-style-color-1', alt_2_style_color_1);
@@ -841,7 +845,9 @@
 			root.style.setProperty('--alt-3-name-transform', alt_3_name_transform);
 			root.style.setProperty('--alt-3-info-transform', alt_3_info_transform);
 			root.style.setProperty('--alt-3-name-weight', alt_3_name_weight);
+			root.style.setProperty('--alt-3-name-style', alt_3_name_style);
 			root.style.setProperty('--alt-3-info-weight', alt_3_info_weight);
+			root.style.setProperty('--alt-3-info-style', alt_3_info_style);
 			root.style.setProperty('--alt-3-name-color', alt_3_name_color);
 			root.style.setProperty('--alt-3-info-color', alt_3_info_color);
 			root.style.setProperty('--alt-3-style-color-1', alt_3_style_color_1);
@@ -863,7 +869,9 @@
 			root.style.setProperty('--alt-4-name-transform', alt_4_name_transform);
 			root.style.setProperty('--alt-4-info-transform', alt_4_info_transform);
 			root.style.setProperty('--alt-4-name-weight', alt_4_name_weight);
+			root.style.setProperty('--alt-4-name-style', alt_4_name_style);
 			root.style.setProperty('--alt-4-info-weight', alt_4_info_weight);
+			root.style.setProperty('--alt-4-info-style', alt_4_info_style);
 			root.style.setProperty('--alt-4-name-color', alt_4_name_color);
 			root.style.setProperty('--alt-4-info-color', alt_4_info_color);
 			root.style.setProperty('--alt-4-style-color-1', alt_4_style_color_1);
