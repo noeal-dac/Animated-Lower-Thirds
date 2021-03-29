@@ -839,20 +839,19 @@ body {
 /*****Style 2*****/
 
 #lower-third-1.style-2 > div.text-content > div:first-child {
-	/* height: calc(var(--alt-1-name-size) + 1rem); */
 	height: calc(var(--alt-1-name-size) + 1.2rem);
     padding: 0 0.2rem 0 0;
 }
 #lower-third-2.style-2 > div.text-content > div:first-child {
-	height: calc(var(--alt-2-name-size) + 1rem);
+	height: calc(var(--alt-2-name-size) + 1.2rem);
 	padding: 0 0.2rem 0 0;
 }
 #lower-third-3.style-2 > div.text-content > div:first-child {
-	height: calc(var(--alt-3-name-size) + 1rem);
+	height: calc(var(--alt-3-name-size) + 1.2rem);
 	padding: 0 0.2rem 0 0;
 }
 #lower-third-4.style-2 > div.text-content > div:first-child {
-	height: calc(var(--alt-4-name-size) + 1rem);
+	height: calc(var(--alt-4-name-size) + 1.2rem);
 	padding: 0 0.2rem 0 0;
 }
 
@@ -911,15 +910,15 @@ body {
     padding: 0 0.2rem 0 0;
 }
 #lower-third-2.style-2 > div.text-content > div:nth-child(2) {
-	height: calc(var(--alt-2-info-size) + 1rem);
+	height: calc(var(--alt-2-info-size) + 1.2rem);
 	padding: 0 0.2rem 0 0;
 }
 #lower-third-3.style-2 > div.text-content > div:nth-child(2) {
-	height: calc(var(--alt-3-info-size) + 1rem);
+	height: calc(var(--alt-3-info-size) + 1.2rem);
 	padding: 0 0.2rem 0 0;
 }
 #lower-third-4.style-2 > div.text-content > div:nth-child(2) {
-	height: calc(var(--alt-4-info-size) + 1rem);
+	height: calc(var(--alt-4-info-size) + 1.2rem);
 	padding: 0 0.2rem 0 0;
 }
 
