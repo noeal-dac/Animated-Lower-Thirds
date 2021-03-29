@@ -311,10 +311,10 @@ body {
 }
 @keyframes animation-style3-text-1 {
 	0% {
-		bottom: -102%;
+		bottom: -110%;
 	}
 	70% {
-		bottom: -102%;
+		bottom: -110%;
 	}
 	100% {
 		bottom: 0;
@@ -322,10 +322,10 @@ body {
 }
 @keyframes animation-style3-text-2 {
 	0% {
-		top: -102%;
+		top: -110%;
 	}
 	70% {
-		top: -102%;
+		top: -110%;
 	}
 	100% {
 		top: 0;
