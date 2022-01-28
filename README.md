@@ -1,58 +1,57 @@
 # Animated-Lower-Thirds
+Lower Thirds Animados com Painel de Controle - Ferramenta OBS
 
-Animated Lower Thirds with dockable Control Panel - OBS Tool
+## Descrição
 
-## Description
+Com esta ferramenta, você pode usar um painel de controle para adicionar e alterar seus próprios terços inferiores em tempo real. Sinta-se livre para personalizar. É necessário conhecimento básico de HTML, Javascript e CSS.
+Para comunicação entre o painel de controle e a camada do navegador, use a API BroadcastChannel.
 
-With this tool you can use a control panel to add and change your own lower thirds on the fly. Feel free to customize. Basic knowledge of HTML, Javascript and CSS is required.
-For communication between control panel and browser layer it use BroadcastChannel API.
+Este projeto é baseado em [Lower thirds in HTML/CSS](https://obsproject.com/forum/resources/lower-thirds-in-html-css.928/), e [Animated lower thirds with control panel](https://obsproject.com/forum/resources/animated-lower-thirds-with-control-panel.922/).
 
-This project is based on [Lower thirds in HTML/CSS](https://obsproject.com/forum/resources/lower-thirds-in-html-css.928/), and [Animated lower thirds with control panel](https://obsproject.com/forum/resources/animated-lower-thirds-with-control-panel.922/).
+![Captura de tela dos terços inferiores](https://obsproject.com/forum/attachments/screen-jpg.61515/)
 
-![Lower Thirds Screenshot](https://obsproject.com/forum/attachments/screen-jpg.61515/)
+### Recursos
 
-### Features
+- Incluir conteúdo dinâmico no aplicativo de streaming com suporte ao navegador (como OBS)
+- 4 diferentes Terços Inferiores ao mesmo tempo
+- 10 slots para cada terço inferior (mesma configuração, mas com título, descrição e logotipo diferentes)
+- 3 estilos predefinidos
+- Altamente personalizável (cores, fontes, tempo, automação, ...)
 
-- Include dynamic content to streaming app with browser support (like OBS)
-- 4 differents Lower Thirds at same time
-- 10 slots for each Lower Third (Same configuration but with different title, description and logo)
-- 3 predefined styles
-- Highly customizable (colors, fonts, timing, automation, ...)
+## Instalação
 
-## Installation
+1. Baixe o arquivo Zip, descompacte-o.
+2. Veja como instalar e novos recursos: https://youtu.be/tddMYWya7O0
 
-1. Download the Zip file, unzip it.
-2. See how to install and new features: https://youtu.be/tddMYWya7O0
+### Requisitos
 
-### Requiriments
+Infelizmente, o OBS não suporta painéis de navegador em MacOs. Funciona apenas no Windows, mas pode ser usado no Linux usando a instalação instantânea do OBS (Para mais informações [clique aqui](https://obsproject.com/forum/threads/installation-from-snap-26-1-2-35-gbb6b1e53f-with-most-of-the-plugins-and-features.137672/))
 
-Unfortunately, OBS doesn't support browser panels on MacOs. It only works on Windows, but can be used on Linux using the snap installation of OBS (More info [here](https://obsproject.com/forum/threads/installation-from-snap-26-1-2-35-gbb6b1e53f-with-most-of-the-plugins-and-features.137672/))
+## Uso
 
-## Usage
+Veja os recursos anteriores: https://youtu.be/cQ0_1GwpwB0
 
-See previus features: https://youtu.be/cQ0_1GwpwB0
+## Apoio, suporte
 
-## Support
+Você pode encontrar todos os tutoriais em vídeo neste [Canal do YouTube](https://www.youtube.com/channel/UCUYiOIl-DHn8B1eRzUfDyyw)
 
-You can find all videotutorials on this [Youtube Channel](https://www.youtube.com/channel/UCUYiOIl-DHn8B1eRzUfDyyw)
+## Traduções
 
-## Translations
-
-[Portugues (Brazil)](https://github.com/eudanielhenrique/Animated-Lower-Thirds/tree/tradu%C3%A7%C3%A3o-pt-br)</br>
+[Portugues (Brasil)](https://github.com/eudanielhenrique/Animated-Lower-Thirds/tree/tradu%C3%A7%C3%A3o-pt-br)</br>
 [Inglês](https://github.com/noeal-dac/Animated-Lower-Thirds)
 
 ## Contribuindo
 
-I am a designer and my scripting knowledge is few. I made this tool (Frankenststool) because I needed it and I want to share it. You are welcome to improve it. I am aware that many parts of the code can make any expert cry. I'm really sorry :P
+Eu sou um designer e meu conhecimento de script é pouco. Fiz esta ferramenta (Frankenststool) porque precisava dela e quero compartilhá-la. Você está convidado a melhorá-lo. Estou ciente de que muitas partes do código podem fazer qualquer especialista chorar. sinto muito :P
 
-## Contributors
+## Contribuidores
 
 <a href="https://github.com/brasilapi/cep-promise/graphs/contributors"><img src="https://contrib.rocks/image?repo=noeal-dac/Animated-Lower-Thirds" /></a>
 
-## Donations
+## Doações
 
-If you like the extension and you want to support the development - please consider to donate by [Paypal](https://paypal.me/noealdac). Any donations are greatly appreciated.
+Se você gosta da extensão e deseja apoiar o desenvolvimento - considere doar por [Paypal](https://paypal.me/noealdac). Quaisquer doações são muito apreciadas.
 
-## License
+## Licença
 
-The Animated Lower Thirds source code is made available under the [MIT license](https://github.com/noeal-dac/Animated-Lower-Thrids/blob/master/LICENSE).
+O código-fonte Animated Lower Thirds é disponibilizado sob a [licença MIT](https://github.com/noeal-dac/Animated-Lower-Thrids/blob/master/LICENSE).
