@@ -47,7 +47,7 @@ I am a designer and my scripting knowledge is few. I made this tool (Frankenstst
 
 ## Contributors
 
-<a href="https://github.com/brasilapi/cep-promise/graphs/contributors"><img src="https://contrib.rocks/image?repo=noeal-dac/Animated-Lower-Thirds /></a>
+<a href="https://github.com/brasilapi/cep-promise/graphs/contributors"><img src="https://contrib.rocks/image?repo=noeal-dac/Animated-Lower-Thirds" /></a>
 
 ## Donations
 
