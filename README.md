@@ -29,8 +29,16 @@ See previus features: https://youtu.be/cQ0_1GwpwB0
 ## Support
 You can find all videotutorials on this [Youtube Channel](https://www.youtube.com/channel/UCUYiOIl-DHn8B1eRzUfDyyw)
 
+## Translations
+[Portugues (Brasil)](https://github.com/eudanielhenrique/Animated-Lower-Thirds/tree/tradu%C3%A7%C3%A3o-pt-br)</br>
+[Inglês](https://github.com/noeal-dac/Animated-Lower-Thirds)
+
 ## Contributing
 I am a designer and my scripting knowledge is few. I made this tool (Frankenststool) because I needed it and I want to share it. You are welcome to improve it. I am aware that many parts of the code can make any expert cry. I'm really sorry :P
+
+## Contributors
+
+<a href="https://github.com/brasilapi/cep-promise/graphs/contributors"><img src="https://contrib.rocks/image?repo=noeal-dac/Animated-Lower-Thirds" /></a>
 
 ## Donations
 If you like the extension and you want to support the development - please consider to donate by [Paypal](https://paypal.me/noealdac). Any donations are greatly appreciated.
