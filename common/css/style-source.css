@@ -984,19 +984,23 @@ body {
 
 /*****Style 3*****/
 
-.style-3 > .logo img{
-	max-height: 4.5em;
-	max-width: 4.5em;
-}
-
 .style-3 > .logo {
     z-index: 1;
     margin: 0;
+    position: absolute;
+    width: 8.5em;
 }
-.style-3 > .logo.no-logo {
-	min-width: 5.5em;
-	min-height: 5.5em;
+.style-3.left > .logo {
+    left: -1.5em;
 }
+.style-3.right > .logo {
+    right: -1.5em;
+}
+
+.style-3 > .logo img {
+    margin: auto;
+}
+
 
 .style-3 > .graph-1 {
 	border-radius: 50%;
@@ -1006,18 +1010,7 @@ body {
 	z-index: 0;
 	box-sizing: border-box;
 }
-.style-3.left > .graph-1 {
-	margin-left: -5em;
-}
-.style-3.left > .logo.no-logo + .graph-1 {
-	margin-left: -6em;
-}
-.style-3.right > .graph-1 {
-	margin-right: -5em;
-}
-.style-3.right > .logo.no-logo + .graph-1 {
-	margin-right: -6em;
-}
+
 
 #lower-third-1.style-3 > .graph-1 {
     background: var(--alt-1-style-color-1);
@@ -1114,15 +1107,15 @@ body {
 }
 
 .style-3.left > .text-content {
-	/* margin-right: 0.5em; */
+	margin-right: 0.5em;
 	/* margin: 1em 2.5em 1em 0; FOR MULTI LINES */
-	left: 0.75em;
+	left: 1.25em;
 	position: relative;
 }
 .style-3.right > .text-content {
-	/* margin-left: 0.5em; */
+	margin-left: 0.5em;
 		/* margin: 1em 0 1em 2.5em; FOR MULTI LINES */
-	right: 0.75em;
+	right: 1.25em;
 	position: relative;
 }
 
