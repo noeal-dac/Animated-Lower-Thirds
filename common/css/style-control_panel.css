@@ -61,15 +61,16 @@ body.browser-source.lower-thirds{
 }
 
 /*Main settings panel*/
-#alt-main-config-content{
+#alt-main-config-content > div{
   box-shadow: inset 0px 0px 5px 0px rgb(0 0 0 / 20%);
   border: var(--obs-panel-border);
   border-radius: var(--element-radius);
   padding: 5px;
   margin-bottom: 15px;
   transition: background 0.5s;
+  min-height: 15px;
 }
-#alt-main-config-content.active {
+#alt-main-config-content > div.active {
   box-shadow: 0px 0px 2px 0px rgb(222, 240, 255),
               0px 0px 12px 0px rgb(0,149,255);
   border-radius: 3px;
@@ -93,7 +94,7 @@ body.browser-source.lower-thirds{
 .main-icon.icon.icon-settings{
   background-color: var(--main-color);
 }
-#alt-main-config-content i.fas {
+#alt-main-config-content > div i.fas {
   margin: 0px;
 }
 
@@ -184,7 +185,7 @@ body.browser-source.lower-thirds{
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M448 208H64c-18 0-32 14-32 32v32c0 18 14 32 32 32h384c18 0 32-14 32-32v-32C480 222 466 208 448 208z'/%3E%3C/svg%3E");
 }
 .hidable {
-  max-height: 0;
+  /* max-height: 0; */
   margin-top: 20px;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
@@ -1295,6 +1296,7 @@ i.alt-icon {
   align-items:center;
   justify-content:center;
   position: fixed;
+  gap: 4px;
 }
 .form-input {
   width: 240px;
