@@ -34,20 +34,26 @@ const ImageSelector = {
     },
 
     ok() {
-      const src = this.logoFile;
+      let src = this.logoFile;
       const preview = document.getElementById(this.logo)
 
 			const alt_logo_preview = this.defaultLogo.replace("-default", "-preview");
 
-      if(src){
-        preview.src = "../logos/" + src.name;
+      if (src) {
+        src = "../logos/" + src.name;
         
-        //Change the lt logo if it use default
-        if (this.isDefault && $("#" + alt_logo_preview).hasClass('default')){
-          $("#" + alt_logo_preview).attr("src", preview.src).change();
+        //Change the lt logo if it is default
+        if (this.isDefault && $("#" + this.defaultLogo).hasClass('alt-logo-default')){
+          const index = parseInt(this.defaultLogo.replace('alt-', '').replace('-logo-default')) - 1;
+          $("#" + this.defaultLogo).attr("src", src);
+
+          console.log(src);
+          
+          mainSettings.defaultLogos.value[index] = src;
+          mainSettings.defaultLogos.value = mainSettings.defaultLogos.value; // update localStorage
         }
 				} else if (!this.previewSrc) {
-          preview.src = $("#" + logo_default).attr("src");
+          src = $("#" + this.defaultLogo).attr("src");
 				}
       
       this.active = false;

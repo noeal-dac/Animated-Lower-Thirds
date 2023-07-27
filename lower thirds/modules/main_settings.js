@@ -1,17 +1,47 @@
 const MainSettings = {
   setup() {
-    // load theme
-    this.activeTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : 'dark';
-		$('head').append('<link rel="stylesheet" href="../common/css/themes/' + activeTheme + '/theme.css"/>');
+    const props = {
+      accordionCollapsed: ref(true),
+      showMoreCollapsed: ref(true),
 
-    // load fonts
-    this.customFonts = localStorage.getItem('customFonts') ? JSON.parse(localStorage.getItem('customFonts')) : [];
+      activeTab: ref('appearance'),
 
-    // load logos
-    this.defaultLogos = localStorage.getItem('defaultLogos') ? JSON.parse(localStorage.getItem('customFonts')) : ['../logos/logo_1.png', '../logos/logo_2.png', '../logos/logo_3.png', '../logos/logo_4.png'];
+      customFontFamily: ref(''),
+      customFontUrl: ref(''),
+
+      themeOptions: ref(THEME_OPTIONS)
+    }
+
+    let storables = {
+      active: ['alt-master-switch', false],
+      activeTheme: ['alt-theme', 'dark'],
+      customFonts: ['alt-custom-fonts', []],
+      defaultLogos: ['alt-default-logos', DEFAULT_LOGOS],
+      
+      animationTime: ['alt-animation-time', 4],
+      
+      activeTime: ['alt-active-time', 25],
+      lockActive: ['alt-lock-active', false],
+
+      inactiveTime: ['alt-inactive-time', 420],
+      oneShot: ['alt-one-shot', false],
+
+      enabledPreview: ['alt-enabled-preview', false],
+      hiddenSlotNumbers: ['alt-hidden-slot-numbers', false],
+      switchesLeft: ['alt-switches-left', false],
+      enabledTooltips: ['alt-enabled-tooltips', true],
+    }
+
+    Object.keys(storables).forEach(key => {
+      storables[key] = reactive(new Storable(...storables[key]));
+    });
+
+    $('head').append('<link rel="stylesheet" href="../common/css/themes/' + storables.activeTheme.value + '/theme.css"/>');
+
+    return {...storables, ...props};
   },
   mounted() {
-    this.defaultLogos.forEach((logoSrc, index) => {
+    this.defaultLogos.value.forEach((logoSrc, index) => {
       const previews = [...document.querySelectorAll(`#alt-${index + 1}-logo-preview`)];
       previews.forEach(elem => {
         elem.src = logoSrc;
@@ -22,44 +52,16 @@ const MainSettings = {
       });
     });
   },
-  data() {
-    return {
-      active: false,
-      accordionCollapsed: true,
-      showMoreCollapsed: true,
-      
-      animationTime: undefined,
-      activeTime: undefined,
-      lockActive: false,
-      inactiveTime: undefined,
-      oneShot: false,
-
-      activeTab: 'appearance',
-      
-      activeTheme: 'dark',
-      themeOptions: ['acri', 'dark', 'rachni'],
-      enabledPreview: false,
-      hiddenSlotNumbers: false,
-      switchesLeft: false,
-      enabledTooltips: false,
-
-      customFontFamily: '',
-      customFontUrl: '',
-      customFonts: [],
-
-      defaultLogos: ['../logos/logo_1.png', '../logos/logo_2.png', '../logos/logo_3.png', '../logos/logo_4.png'],
-    }
-  },
   methods: {
     changeTheme(event) {
       const newTheme = event.target.value;
-      $('link[href="../common/css/themes/' + this.activeTheme + '/theme.css"]').remove();
+      $('link[href="../common/css/themes/' + this.activeTheme.value + '/theme.css"]').remove();
       const head= document.getElementsByTagName('head')[0];
       const link= document.createElement('link');
       link.rel= "stylesheet";
       link.href= "../common/css/themes/" + newTheme + "/theme.css";
       head.appendChild(link);
-      this.activeTheme = newTheme;
+      this.activeTheme.value = newTheme;
     },
 
     addFont() {
@@ -70,11 +72,8 @@ const MainSettings = {
           url: this.customFontUrl.replace("<style> ", "").replace('</style>', '')
         }
 
-        this.customFonts.push(newFont);
+        this.customFonts.value = [...this.customFonts.value, newFont];
         this.sendFont(newFont);
-
-        //Update fonts
-        localStorage.setItem("customFonts", JSON.stringify(this.customFonts));
 
         this.customFontFamily = '';
         this.customFontUrl = '';
@@ -82,9 +81,7 @@ const MainSettings = {
     },
 
     delFont(font) {
-      this.customFonts = this.customFonts.filter(item => item.name != font.name);
-
-      localStorage.setItem("customFonts", JSON.stringify(this.customFonts));
+      this.customFonts.value = this.customFonts.value.filter(item => item.name != font.name);
     },
     
     sendFont(font) {
