@@ -1,4 +1,5 @@
 const MainSettings = {
+  template: '#main-settings-template',
   setup() {
     const props = {
       accordionCollapsed: ref(true),
@@ -91,5 +92,35 @@ const MainSettings = {
     openLogo(logo) {
       imSel.open(logo);
     },
+
+    toggleAccordion() {
+      this.accordionCollapsed = !this.accordionCollapsed;
+      const globalConf = this.$el.querySelector('#global-configuration');
+
+      if (this.accordionCollapsed) {
+        globalConf.style.maxHeight = '0px';
+      } else {
+        globalConf.style.maxHeight = globalConf.scrollHeight + 'px';
+      }
+    },
+    toggleMore() {
+      this.showMoreCollapsed = !this.showMoreCollapsed;
+      const showMoreCollapsed = this.showMoreCollapsed;
+      const moreConf = this.$el.querySelector('#more-configuration');
+      const globalConf = this.$el.querySelector('#global-configuration');
+
+
+      setTimeout(() => {
+        if (showMoreCollapsed) {
+          globalConf.style.maxHeight = '46px';
+          setTimeout(() => {
+            moreConf.style.display = 'none';
+          }, 200);
+        } else {
+          moreConf.style.display = 'block';
+          globalConf.style.maxHeight = (moreConf.scrollHeight + 50) + 'px';
+        }
+      }, 1);
+    }
   }
 }
