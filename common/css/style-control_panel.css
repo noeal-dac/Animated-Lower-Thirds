@@ -321,17 +321,17 @@ body.browser-source.lower-thirds{
 }
 
 [id$=-name-color], [id$=-info-color] {
-  width: 45px;
-  height: 15px;
-  border: none;
-  border-radius: var(--element-radius);
-  padding: 3px;
+  width: 45px !important;
+  height: 15px !important;
+  border: none !important;
+  border-radius: var(--element-radius) !important;
+  padding: 3px !important;
   float: right;
-  font-size: 9px;
+  font-size: 9px !important;
   transition: 0.1s;
   cursor: pointer;
   text-align: center;
-  margin: 4px;
+  margin: 4px !important;
 }
 [id$=-name-color].jscolor-active, [id$=-info-color].jscolor-active {
   cursor: text;

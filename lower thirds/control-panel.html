@@ -420,39 +420,39 @@
 								<img id="alt-1-logo-preview" class="logo-preview" :src="logoSrc.value">
 							</div>
 							<div class="textfields-container">
-								<input class="storable" type="text" id="alt-1-name" placeholder="Name" tabindex="4">
-								<div id="alt-1-name-appearance">
+								<input type="text" id="alt-1-name" placeholder="Name" tabindex="4" v-model="name.value">
+								<div :id="`alt-${index}-name-appearance`">
 									<label class="config-btn small">
-										<input class="checkbox-storable" type="checkbox" id="alt-1-name-transform" checked>
+										<input type="checkbox" id="alt-1-name-transform" :checked="nameTransform.value" v-model="nameTransform.value">
 										<div class="icon-btn icon small icon-uppercase"></div>
 									</label>
 									<label class="config-btn small">
-										<input class="checkbox-storable" type="checkbox" id="alt-1-name-weight" checked>
+										<input type="checkbox" id="alt-1-name-weight" :checked="nameBold.value" v-model="nameBold.value">
 										<div class="icon-btn icon small icon-bold"></div>
 									</label>
 									<label class="config-btn small">
-										<input class="checkbox-storable" type="checkbox" id="alt-1-name-style" checked>
+										<input type="checkbox" id="alt-1-name-style" :checked="nameItalic.value" v-model="nameItalic.value">
 										<div class="icon-btn icon small icon-italic"></div>
 									</label>
-									<input class="storable" id="alt-1-name-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
+									<input id="alt-1-name-color" :data-jscolor="JSON.stringify(jscolorConfig)" v-model="nameColor.value">
 								</div>
-								<input class="storable" type="text" id="alt-1-info" placeholder="Info" tabindex="5">
-								<div id="alt-1-info-appearance">
+								<input type="text" id="alt-1-info" placeholder="Info" tabindex="4" v-model="info.value">
+								<div :id="`alt-${index}-info-appearance`">
 									<label class="config-btn small">
-										<input class="checkbox-storable" type="checkbox" id="alt-1-info-transform">
+										<input type="checkbox" id="alt-1-info-transform" :checked="infoTransform.value" v-model="infoTransform.value">
 										<div class="icon-btn icon small icon-uppercase"></div>
 									</label>
 									<label class="config-btn small">
-										<input class="checkbox-storable" type="checkbox" id="alt-1-info-weight">
+										<input type="checkbox" id="alt-1-info-weight" :checked="infoBold.value" v-model="infoBold.value">
 										<div class="icon-btn icon small icon-bold"></div>
 									</label>
 									<label class="config-btn small">
-										<input class="checkbox-storable" type="checkbox" id="alt-1-info-style">
+										<input type="checkbox" id="alt-1-info-style" :checked="infoItalic.value" v-model="infoItalic.value">
 										<div class="icon-btn icon small icon-italic"></div>
 									</label>
-									<input class="storable" id="alt-1-info-color" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
-								</div>	
-								<div style="clear:both"></div>
+									<input id="alt-1-info-color" :data-jscolor="JSON.stringify(jscolorConfig)" v-model="infoColor.value">
+								</div>
+								<div style="clear: both"></div>
 							</div>
 						</div>
 						<div class="panel-bottom">
@@ -531,7 +531,7 @@
 		</template>
 
 		<script>
-			const bc = new BroadcastChannel('obs-lower-thirds-channel'); //Send to browser source
+			const bc  = new BroadcastChannel('obs-lower-thirds-channel'); //Send to browser source
 			const bcr = new BroadcastChannel('obs-lower-thirds-channel2'); //Receives from the source
 			const bcf = new BroadcastChannel('obs-lower-thirds-fonts'); //Send custom fonts
 

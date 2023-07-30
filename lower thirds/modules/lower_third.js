@@ -52,6 +52,18 @@ const LowerThird = {
       borderThickness: [`alt-${args.index}-borders`, 4],
       bordersColor1: [`alt-${args.index}-borders-color-1`, '#D54141'],
       bordersColor2: [`alt-${args.index}-borders-color-2`, '#222222'],
+
+      name: [`alt-${args.index}-name`, ''],
+      nameTransform: [`alt-${args.index}-name-transform`, true],
+      nameBold: [`alt-${args.index}-name-bold`, true],
+      nameItalic: [`alt-${args.index}-name-italic`, false],
+      nameColor: [`alt-${args.index}-name-color`, '#F2F2F2'],
+
+      info: [`alt-${args.index}-info`, ''],
+      infoTransform: [`alt-${args.index}-info-transform`, true],
+      infoBold: [`alt-${args.index}-info-bold`, true],
+      infoItalic: [`alt-${args.index}-info-italic`, false],
+      infoColor: [`alt-${args.index}-info-color`, '#8A8A8A'],
     };
 
     // prepare properties
