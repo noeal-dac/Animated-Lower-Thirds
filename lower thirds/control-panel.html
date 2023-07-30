@@ -12,7 +12,13 @@
 		<script src="../common/js/vue.js"></script>
 		<script>
 			const DEFAULT_LOGOS = ['../logos/logo_1.png', '../logos/logo_2.png', '../logos/logo_3.png', '../logos/logo_4.png'];
-			const THEME_OPTIONS = ['acri', 'dark', 'rachni'];			
+			const THEME_OPTIONS = ['acri', 'dark', 'rachni'];
+			const DEFAULT_FONTS = {
+				'sans-serif': ['Open Sans', 'Poppins', 'Raleway'],
+				'monospace': ['Anonymous Pro'],
+				'cursive': ['Patua One', 'Cookie', 'Oleo Script', 'Kalam', 'Fredoka One'],
+				'serif': ['Lora'],
+			};
 			const TOOLTIP = {
 				"animation-time" : "Length of the in and out animation (sec)",
 				"active-time" : "How long the LT is active (sec)",
@@ -47,6 +53,18 @@
 				"custom-fonts" : "Add fonts from Google Fonts.",
 				"default-logos" : "Change the default logos of each LT.<br>Make sure to copy the logo files into the logos folder.<br>You can use JPG, PNG, TIFF, GIF, etc.<br>With transparency or animated.",
 			};
+
+			const JSCOLOR_CONFIG = {
+				width: 100,
+				padding: 5,
+				borderRadius: 3,
+				borderWidth: 0,
+				controlBorderWidth: 0,
+				backgroundColor: '#1f1e1f',
+				position: 'right',
+				shadow: true,
+				previewSize: 60
+			};
 			
 			const { createApp, ref, reactive, computed } = Vue;
 		</script>
@@ -55,36 +73,21 @@
 		<script src="./modules/image_selector.js"></script>
 		<script src="./modules/lower_third.js"></script>
 		<script src="./modules/lower_thirds_container.js"></script>
+		<script src="./modules/app.js"></script>
 		<script src="../common/js/jquery.js"></script>
 		<script src="../common/js/jscolor.js"></script>
 		<script src="../common/js/hotkeys.js"></script>
 		<script src="../common/js/jquery-ui.js"></script>
 	</head>
 	<body class="lower-thirds-panel panel">
-		<div id="alt-panel" class="static-panel-top" style="margin-bottom: 0px">
-			<div id="alt-main-config-content"> <!--// Main Settings//--> </div>
-			
-			<div id="lts-container"></div>
+		<div id="alt-panel" class="static-panel-top" style="margin-bottom: 0px"></div>
 
-			<div id="image-selector" style="position: fixed;">
-				<div id="select-image" class="center" v-show="active">
-					<div class="select-image-bg" @click="active=false"></div>
-					<div class="form-input">
-						<div class="file-btns">
-							<label for="logo-file">Choose image</label>
-							<input type="file" id="logo-file" accept="image/*" @change="showPreview">
-							<div class="btn-remove" onclick="removeLogo()" v-show="!isDefault"><div class="icon-btn icon icon-trash"></div></div>
-						</div>
-						<div id="file-preview" :class="{'no-image': !!previewSrc}">
-							<img :src="previewSrc" style="display: block" v-show="!!previewSrc">
-						</div>
-						<div class="file-btns">
-							<div class="btn-ok" @click="ok()">Ok</div>
-							<div class="btn-cancel" @click="active=false">Cancel</div>
-						</div>
-					</div>
-				</div>
-			</div>
+		<template id="app-template">
+			<main-settings ref="mainSettings" @switch-changed="checkSwitches" @preview-changed="checkPreviews" @open-logo="openLogo"></main-settings>
+			
+			<lower-thirds-container ref="ltsContainer" @switch-changed="checkSwitches" @open-logo="openLogo"></lower-thirds-container>
+
+			<image-selector ref="imageSelector" @default-changed="checkLogos" @logo-changed="updateIsDefault"></image-selector>
 
 			<div id="export-data" class="center hide" >
 				<div class="export-data-bg" onclick="okExportPopup()"></div>
@@ -115,128 +118,123 @@
 				</div>
 			</div>
 
-			<div id='fileNames'> </div>
-
-			<div id="alt-preview" class="active">
-				<label><div class="icon icon-search"></div></label>
-				<div id="toggle-preview" class="active"><div class="icon icon-chevron-down"></div></div>
-				<div class="embed-container">
-				    <iframe id="myiframe" src="./browser-source.html?mode=preview" frameborder="0" allowfullscreen></iframe>
-				</div>
-			</div>
-
-		</div>
-
-		<template>
-			<transition name="hidable-transition">
-				<slot></slot>
-			</transition>
+			<div id='fileNames'></div>
 		</template>
 
 		<template id="main-settings-template">
-			<div :class="{active: active.value}">
-				<label class="switch">
-					<input id="alt-master-switch" type="checkbox" onchange="checkSwitches()" v-model="active.value"> <!--"checked" to active switch-->
-					<span class="slider round"></span>
-				</label>
-				
-				<div class="main-title">
-					<div class="main-icon icon icon-settings"></div>
-					<div>Main settings</div>					
-				</div>
-				
-				<label class="accordion" :class="{active: !accordionCollapsed}" @click="toggleAccordion"></label>
-				<div id="global-configuration" class="hidable">
-					<div id="time-options">
-						<div class="settings-title">Global Times</div>
-						<div class="settings-inputs">
-							<input id="alt-animation-time" type="number" placeholder="in-out" tabindex="1" v-model="animationTime.value">
-							<input id="alt-active-time" type="number" placeholder="active"  tabindex="2" v-model="activeTime.value" :disabled="lockActive.value">
-							<label class="config-btn lock-input">
-								<input type="checkbox" id="alt-lock-active" v-model="lockActive.active">
-								<div class="icon-btn icon icon-lock"></div>
-							</label>
-							<input class="storable" id="alt-inactive-time" type="number" placeholder="inactive" tabindex="3" v-model="inactiveTime.value" :disabled="oneShot.value">
-							<label class="config-btn lock-input">
-								<input type="checkbox" id="alt-one-shot" v-model="oneShot.value">
-								<div class="icon-btn icon icon-oneshot"></div>
-							</label>
-						</div>
+			<div id="alt-main-config-content">
+				<div :class="{active: active.value}">
+					<label class="switch">
+						<input id="alt-master-switch" type="checkbox" @change="$emit('switchChanged')" v-model="active.value"> <!--"checked" to active switch-->
+						<span class="slider round"></span>
+					</label>
+					
+					<div class="main-title">
+						<div class="main-icon icon icon-settings"></div>
+						<div>Main settings</div>					
 					</div>
 					
-					<label class="more" :class="{active: !showMoreCollapsed}" @click="toggleMore"><div class="icon icon-angle-down"></div></label>
-					<div id="more-configuration" style="display: none">
-						<div class="tab">
-							<button id="defaultTab" class="tablinks" @click="activeTab = 'appearance'">Appearance</button>
-							<button class="tablinks" @click="activeTab = 'customs'">Customs</button>
-							<button class="tablinks" @click="activeTab = 'system'">System</button>
+					<label class="accordion" :class="{active: !accordionCollapsed}" @click="toggleAccordion"></label>
+					<div id="global-configuration" class="hidable">
+						<div id="time-options">
+							<div class="settings-title">Global Times</div>
+							<div class="settings-inputs">
+								<input id="alt-animation-time" type="number" placeholder="in-out" tabindex="1" v-model="animationTime.value">
+								<input id="alt-active-time" type="number" placeholder="active"  tabindex="2" v-model="activeTime.value" :disabled="lockActive.value">
+								<label class="config-btn lock-input">
+									<input type="checkbox" id="alt-lock-active" v-model="lockActive.active">
+									<div class="icon-btn icon icon-lock"></div>
+								</label>
+								<input class="storable" id="alt-inactive-time" type="number" placeholder="inactive" tabindex="3" v-model="inactiveTime.value" :disabled="oneShot.value">
+								<label class="config-btn lock-input">
+									<input type="checkbox" id="alt-one-shot" v-model="oneShot.value">
+									<div class="icon-btn icon icon-oneshot"></div>
+								</label>
+							</div>
 						</div>
 						
-						<!-- Tab content -->
-						<div id="tab-appearance" class="tabcontent" v-show="activeTab == 'appearance'">
-							<div id="theme-options">
-								<div class="settings-title">Theme</div>
-								<div class="settings-inputs">
-									<select name="theme" id="theme" @change="changeTheme">
-										<option v-for="theme in themeOptions" :name="theme" :value="theme" :selected="theme == activeTheme.value">{{theme}}</option>
-									</select>
+						<label class="more" :class="{active: !showMoreCollapsed}" @click="toggleMore"><div class="icon icon-angle-down"></div></label>
+						<div id="more-configuration" style="display: none">
+							<div class="tab">
+								<button id="defaultTab" class="tablinks" @click="activeTab = 'appearance'" :class="{active: activeTab == 'appearance'}">Appearance</button>
+								<button class="tablinks" @click="activeTab = 'customs'" :class="{active: activeTab == 'customs'}">Customs</button>
+								<button class="tablinks" @click="activeTab = 'system'" :class="{active: activeTab == 'system'}">System</button>
+							</div>
+							
+							<!-- Tab content -->
+							<div id="tab-appearance" class="tabcontent" v-show="activeTab == 'appearance'">
+								<div id="theme-options">
+									<div class="settings-title">Theme</div>
+									<div class="settings-inputs">
+										<select name="theme" id="theme" @change="changeTheme">
+											<option v-for="theme in themeOptions" :name="theme" :value="theme" :selected="theme == activeTheme.value">{{theme}}</option>
+										</select>
+									</div>
 								</div>
-							</div>
-							<div class="default-options">
-								<div class="settings-title"></div>
-								<div class="settings-inputs">
-									<label><input type="checkbox" id="alt-enable-preview" v-model="enabledPreview.value">Enable preview window</label>
-									<label><input type="checkbox" id="alt-hidden-slot-numbers" v-model="hiddenSlotNumbers.value">Hide numbers of the memory slots</label>
-									<label><input type="checkbox" id="alt-switches-left" v-model="switchesLeft.value">Switches on the left</label>
-									<label><input type="checkbox" id="alt-enabled-tooltips" v-model="enabledTooltips.value" onchange="initTooltips()">Show tooltips with the stored content</label>
-								</div>
-							</div>
-						</div>
-
-						<div id="tab-customs" class="tabcontent" v-show="activeTab == 'customs'">
-							<div id="fonts-options">
-								<div class="settings-title">Custom Font</div>
-								<div class="settings-inputs">
-									<input id="new-font-name" v-model="customFontFamily" placeholder="Font Family" tabindex="51">
-									<input id="new-font-url" v-model="customFontUrl" placeholder="@import url" tabindex="52">
-									<div id="add-new-font" class="add" @click="addFont()"><div class="icon icon-plus-square"></div></div>
-								</div>
-							</div>
-							<div id="custom-font-list">
-								<ul>
-									<li v-for="(customFont, index) in customFonts.value">
-										<div class="font-name-added" :id="'font-name-added-' + index">{{customFont.name}}</div>
-										<div class="font-url-added" :id="'font-url-added-' + index">{{customFont.url}}</div>
-										<div class="delete-font" @click="delFont(customFont)"><div class="icon icon-trash"></div></div>
-									</li>
-								</ul>
-							</div>
-							<div class="logos-options">
-								<div class="settings-title">Default Logos</div>
-								<div class="settings-inputs">
-									<div v-for="(logoSrc, index) in defaultLogos.value" class="logo-container default" @click="openLogo(`alt-${index + 1}-logo-default`)">
-										<div class="logo-numbers">{{index + 1}}</div>
-										<img :id="`alt-${index + 1}-logo-default`" class="alt-logo-default" :src="logoSrc">
+								<div class="default-options">
+									<div class="settings-title"></div>
+									<div class="settings-inputs">
+										<label><input type="checkbox" id="alt-enable-preview" v-model="enabledPreview.value" @change="$emit('previewChanged')">Enable preview window</label>
+										<label><input type="checkbox" id="alt-hidden-slot-numbers" v-model="hiddenSlotNumbers.value">Hide numbers of the memory slots</label>
+										<label><input type="checkbox" id="alt-switches-left" v-model="switchesLeft.value">Switches on the left</label>
+										<label><input type="checkbox" id="alt-enabled-tooltips" v-model="enabledTooltips.value" onchange="initTooltips()">Show tooltips with the stored content</label>
 									</div>
 								</div>
 							</div>
-						</div>
-
-						<div id="tab-system" class="tabcontent" v-show="activeTab == 'system'">
-							<div class="bottom-options">
-								<div class="settings-title">Backup Data</div>
-								<div class="settings-inputs">
-									<div class="import-file-btn">
-										<label for="importFile">Import</label>
-										<input id="importFile" type="file"/>
+	
+							<div id="tab-customs" class="tabcontent" v-show="activeTab == 'customs'">
+								<div id="fonts-options">
+									<div class="settings-title">Custom Font</div>
+									<div class="settings-inputs">
+										<input id="new-font-name" v-model="customFontFamily" placeholder="Font Family" tabindex="51">
+										<input id="new-font-url" v-model="customFontUrl" placeholder="@import url" tabindex="52">
+										<div id="add-new-font" class="add" @click="addFont()"><div class="icon icon-plus-square"></div></div>
 									</div>
-									<!-- <input type="text" id="dataInput"> -->
-									<div class="btn-settings" onclick="exportData()">Export</div>
-									<div class="btn-settings" onclick="openResetPopup()">Reset</div>
+								</div>
+								<div id="custom-font-list">
+									<ul>
+										<li v-for="(customFont, index) in customFonts.value">
+											<div class="font-name-added" :id="'font-name-added-' + index">{{customFont.name}}</div>
+											<div class="font-url-added" :id="'font-url-added-' + index">{{customFont.url}}</div>
+											<div class="delete-font" @click="delFont(customFont)"><div class="icon icon-trash"></div></div>
+										</li>
+									</ul>
+								</div>
+								<div class="logos-options">
+									<div class="settings-title">Default Logos</div>
+									<div class="settings-inputs">
+										<div v-for="(logoSrc, index) in defaultLogos.value" class="logo-container default" @click="openLogo(index)">
+											<div class="logo-numbers">{{index + 1}}</div>
+											<img class="logo-default" :src="logoSrc">
+										</div>
+									</div>
+								</div>
+							</div>
+	
+							<div id="tab-system" class="tabcontent" v-show="activeTab == 'system'">
+								<div class="bottom-options">
+									<div class="settings-title">Backup Data</div>
+									<div class="settings-inputs">
+										<div class="import-file-btn">
+											<label for="importFile">Import</label>
+											<input id="importFile" type="file"/>
+										</div>
+										<!-- <input type="text" id="dataInput"> -->
+										<div class="btn-settings" onclick="exportData()">Export</div>
+										<div class="btn-settings" onclick="openResetPopup()">Reset</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+	
+					<!-- <div id="alt-preview" class="active" v-show="enabledPreview.value">
+						<label><div class="icon icon-search"></div></label>
+						<div id="toggle-preview" class="active"><div class="icon icon-chevron-down"></div></div>
+						<div class="embed-container">
+							<iframe id="myiframe" src="./browser-source.html?mode=preview" frameborder="0" allowfullscreen></iframe>
+						</div>
+					</div> -->
 				</div>
 			</div>
 		</template>
@@ -248,7 +246,9 @@
 							 :id="`alt-${index}`"
 							 :key="index"
 							 :index="index"
-							 :mainsettings="mainSettings"></lower-third>
+							 :ref="`lt${index}`"
+							 @switch-changed="$emit('switchChanged')"
+							 @open-logo="$emit('openLogo', $event)"></lower-third>
 			</div>
 		</template>
 
@@ -257,10 +257,10 @@
 				<div :id="`alt-${index}-config-content`">
 					<div :class="{active: active, inactive: inactive}">
 						<label class="switch">
-							<input type="checkbox" onchange="checkSwitches()" :checked="switchOn" v-model="switchOn">
+							<input type="checkbox" @change="$emit('switchChanged')" :checked="switchOn" v-model="switchOn">
 							<span class="slider round"></span>
 						</label>
-						<label class="config-btn preview-btn" v-show="mainsettings.enabledPreview.value">
+						<label class="config-btn preview-btn" v-show="enabledPreview">
 							<input type="checkbox" :id="`alt-${index}-preview`" :checked="previewOn" v-model="previewOn">
 							<div class="icon-btn icon icon-search"></div>
 						</label>
@@ -277,41 +277,41 @@
 								<div class="grid-row">
 									<div>
 										<div class="align-toggle">
-										<input class="radio-storable" id="alt-1-align-left" name="alt-1-align" type="radio" value="left" checked/>
-										<label for="alt-1-align-left" onclick=""><div class="icon icon-aling-left"></div></label>
-										<input class="radio-storable" id="alt-1-align-center" name="alt-1-align" type="radio" value="center" />
-										<label for="alt-1-align-center" onclick=""><div class="icon icon-aling-center"></div></label>
-										<input class="radio-storable" id="alt-1-align-right" name="alt-1-align" type="radio" value="right" />
-										<label for="alt-1-align-right" onclick=""><div class="icon icon-aling-right"></div></label>
+										<input id="alt-1-align-left" type="radio" :checked="align.value == 'left'" @click="align.value = 'left'"/>
+										<label for="alt-1-align-left"><div class="icon icon-aling-left"></div></label>
+										<input id="alt-1-align-center" type="radio" :checked="align.value == 'center'" @click="align.value = 'center'" :disabled="style.value == 1"/>
+										<label for="alt-1-align-center"><div class="icon icon-aling-center"></div></label>
+										<input id="alt-1-align-right" type="radio" :checked="align.value == 'right'" @click="align.value = 'right'"/>
+										<label for="alt-1-align-right"><div class="icon icon-aling-right"></div></label>
 										</div>
 									</div>
 									<div>
 										<div class="input-icon icon icon-paint-brush"></div>
 										<div class="number-input">
-											<input id="alt-1-style" class="storable" min="1" max="3" name="quantity" value="1" type="number" placeholder="1" readonly>
-											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-1-style" min="1" max="3" v-model="style.value" type="number" readonly>
+											<button @click="stepDown(style, 1)" class="down"></button>
+											<button @click="stepUp(style, 3)" class="up"></button>
 										</div>
 									</div>
 									<div>
 										<div class="input-icon icon icon-size"></div>
 										<div class="number-input">
-											<input id="alt-1-size" class="storable" min="10" max="50" name="quantity" value="24" type="number" placeholder="24">
-											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-1-size" min="10" max="50" v-model="size.value" type="number">
+											<button @click="stepDown(size, 10)" class="down"></button>
+											<button @click="stepUp(size, 50)" class="up"></button>
 										</div>
 									</div>							
 									<div class="margin-config group">
 										<div class="input-icon icon icon-position"></div>
 										<div class="number-input">
-											<input id="alt-1-margin-h" class="storable" min="0" max="100" name="quantity" value="4" type="number" placeholder="4">
-											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-1-margin-h" min="0" max="100" v-model="marginH.value" type="number">
+											<button @click="stepDown(marginH, 0)" class="down"></button>
+											<button @click="stepUp(marginH, 100)" class="up"></button>
 										</div>
 										<div class="number-input input-no-icon">
-											<input id="alt-1-margin-v" class="storable" min="0" max="55" name="quantity" value="4" type="number" placeholder="4">
-											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-1-margin-v" min="0" max="55" v-model="marginV.value" type="number">
+											<button @click="stepDown(marginV, 0)" class="down"></button>
+											<button @click="stepUp(marginV, 55)" class="up"></button>
 										</div>
 									</div>
 								</div>
@@ -319,59 +319,63 @@
 									<div>
 										<div class="input-icon icon icon-text-height"></div>
 											<div class="number-input">
-											<input id="alt-1-inverse-ratio" class="storable" min="0" max="10" name="quantity" value="9" type="number" placeholder="9">
-											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-1-inverse-ratio" min="0" max="10" v-model="inverseRatio.value" type="number">
+											<button @click="stepDown(inverseRatio, 0)" class="down"></button>
+											<button @click="stepUp(inverseRatio, 10)" class="up"></button>
 										</div>
 									</div>
 									<div>
 										<div class="input-icon icon icon-line-spacing"></div>
 											<div class="number-input">
-											<input id="alt-1-line-spacing" class="storable" min="-5" max="5" name="quantity" value="0" type="number" placeholder="0">
-											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-1-line-spacing" min="-5" max="5" v-model="lineSpacing.value" type="number">
+											<button @click="stepDown(lineSpacing, -5)" class="down"></button>
+											<button @click="stepUp(lineSpacing, 5)" class="up"></button>
 										</div>
 									</div>									
 									<div class="font-config group">
 										<div class="input-icon icon icon-font"></div>
-										<select id="alt-1-font" class="font-storable">
-											<!--Fonts list-->
+										<select id="alt-1-font" v-model="font.value">
+											<optgroup v-for="(fonts, fontgroup) in fonts" :label="fontgroup">
+												<option v-if="fontgroup != 'custom'" v-for="font in fonts" :value="`${font}, ${fontgroup}`">{{font}}</option>
+												<option v-else v-for="font in fonts" :value="`${font}`">{{font}}</option>
+											</optgroup>
 										</select>
 									</div>
 								</div>
 								<div class="grid-row">
 									<div>
 										<label class="config-btn">
-											<input class="checkbox-storable" type="checkbox" id="alt-1-logo" checked>
+											<input type="checkbox" id="alt-1-logo" v-model="enabledLogo.value" :checked="enabledLogo.value">
 											<div class="icon-btn icon icon-image"></div>
 										</label>									
 										<div class="number-input">
-											<input id="alt-1-logo-size" class="storable" min="-10" max="10" name="quantity" value="0" type="number" placeholder="0">
-											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
-										</div>
-									</div>										
-									<div>
-										<label class="config-btn">
-											<input class="checkbox-storable" type="checkbox" id="alt-1-shadows">
-											<div class="icon-btn icon icon-shadow"></div>
-										</label>
-										<div class="number-input">
-											<input id="alt-1-shadow-amount" class="storable" min="1" max="10" name="quantity" value="5" type="number" placeholder="5">
-											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-1-logo-size" min="-10" max="10" v-model="logoSize.value" type="number" :disabled="!enabledLogo.value">
+											<button @click="stepDown(logoSize, -10)" class="down" :disabled="!enabledLogo.value"></button>
+											<button @click="stepUp(logoSize, 10)" class="up" :disabled="!enabledLogo.value"></button>
 										</div>
 									</div>
 									<div>
 										<label class="config-btn">
-											<input class="checkbox-storable" type="checkbox" id="alt-1-background" checked>
+											<input type="checkbox" id="alt-1-shadows" v-model="shadows.value" :checked="shadows.value">
+											<div class="icon-btn icon icon-shadow"></div>
+										</label>
+										<div class="number-input">
+											<input id="alt-1-shadow-amount" min="1" max="10" v-model="shadowAmount.value" type="number" :disabled="!shadows.value">
+											<button @click="stepDown(shadowAmount, 1)" class="down" :disabled="!shadows.value"></button>
+											<button @click="stepUp(shadowAmount, 10)" class="up" :disabled="!shadows.value"></button>
+										</div>
+									</div>
+									<div>
+										<label class="config-btn">
+											<input type="checkbox" id="alt-1-background" v-model="background.value" :checked="background.value">
 											<div class="icon-btn icon icon-fill-drip"></div>
 										</label>
-										<div id="alt-1-style-color-appearance" class="fill-color-appearance">
-											<div class="tool-tittle">Clr 1</div>
-											<input class="storable" id="alt-1-style-color-1" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
-											<div class="tool-tittle">Clr 2</div>
-											<input class="storable" id="alt-1-style-color-2" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
+										<div class="fill-color-appearance">
+										<!-- <div id="alt-1-style-color-appearance" class="fill-color-appearance"> -->
+											<div class="tool-title" :class="{disabled: !background.value}">Clr 1</div>
+											<input id="alt-1-style-color-1" v-model="backgroundColor1.value" :data-jscolor="JSON.stringify(jscolorConfig)" :disabled="!background.value">
+											<div class="tool-title" :class="{disabled: !background.value}">Clr 2</div>
+											<input id="alt-1-style-color-2" v-model="backgroundColor2.value" :data-jscolor="JSON.stringify(jscolorConfig)" :disabled="!background.value">
 										</div>
 									</div>
 								</div>
@@ -379,40 +383,41 @@
 									<div>
 										<div class="input-icon icon icon-corner"></div>
 										<div class="number-input">
-											<input id="alt-1-corners" class="storable" min="0" max="10" name="quantity" value="0" type="number" placeholder="0">
-											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-1-corners" min="0" max="10" v-model="corners.value" type="number">
+											<button @click="stepDown(corners, 0)" class="down"></button>
+											<button @click="stepUp(corners, 10)" class="up"></button>
 										</div>
 									</div>
 									<div>
 										<label class="config-btn">
-											<input class="checkbox-storable twin-checkbox" type="checkbox" name="alt-1-border" id="alt-1-border-thickness">
+											<input type="checkbox" id="alt-1-border-thickness" v-model="borders.value" :checked="borders.value">
 											<div class="icon-btn icon icon-thickness"></div>
 										</label>
 										<div class="number-input">
-											<input id="alt-1-border-thickness-amount" class="storable" min="1" max="10" name="quantity" value="4" type="number" placeholder="4">
-											<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="down"></button>
-											<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="up"></button>
+											<input id="alt-1-border-thickness-amount" min="1" max="10" v-model="borderThickness.value" type="number" :disabled="!borders.value">
+											<button @click="stepDown(borderThickness, 1)" class="down" :disabled="!borders.value"></button>
+											<button @click="stepUp(borderThickness, 10)" class="up" :disabled="!borders.value"></button>
 										</div>
 									</div>
 									<div>
 										<label class="config-btn">
-											<input class="checkbox-storable twin-checkbox" type="checkbox" name="alt-1-border" id="alt-1-border-color">
+											<input type="checkbox" id="alt-1-border-color" v-model="borders.value" :checked="borders.value">
 											<div class="icon-btn icon icon-pen"></div>
 										</label>
-										<div id="alt-1-style-border-color-appearance" class="border-color-appearance">
-											<div class="tool-tittle">Clr 3</div>
-											<input class="storable" id="alt-1-style-color-3" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
-											<div class="tool-tittle">Clr 4</div>
-											<input class="storable" id="alt-1-style-color-4" data-jscolor="{width:100, padding:5, borderRadius:3, borderWidth:0, controlBorderWidth:0, backgroundColor:'#1f1e1f', position:'right', shadow:true, previewSize:60}" value="">
+										<!-- <div id="alt-1-style-border-color-appearance" class="border-color-appearance"> -->
+										<div class="border-color-appearance">
+											<div class="tool-title" :class="{disabled: !borders.value}">Clr 3</div>
+											<input id="alt-1-style-color-3" v-model="bordersColor1.value" :data-jscolor="JSON.stringify(jscolorConfig)" :disabled="!borders.value">
+											<div class="tool-title" :class="{disabled: !borders.value}">Clr 4</div>
+											<input id="alt-1-style-color-4" v-model="bordersColor2.value" :data-jscolor="JSON.stringify(jscolorConfig)" :disabled="!borders.value">
 										</div>
 									</div>
 								</div>
 							</div>					
 						</div>
 						<div class="first-edit-container">
-							<div class="logo-container" onclick="openLogoPopup('alt-1-logo-preview', 'alt-1-logo-default')">
-								<img id="alt-1-logo-preview" class="logo-storable alt-logo-preview" >
+							<div class ="logo-container" @click="openLogo()" v-show="enabledLogo.value">
+								<img id="alt-1-logo-preview" class="logo-preview" :src="logoSrc.value">
 							</div>
 							<div class="textfields-container">
 								<input class="storable" type="text" id="alt-1-name" placeholder="Name" tabindex="4">
@@ -503,24 +508,34 @@
 			</div>
 		</template>
 
+		<template id="image-selector-template">
+			<div style="position: fixed">
+				<div id="select-image" class="center" v-show="active">
+					<div class="select-image-bg" @click="active = false"></div>
+					<div class="form-input">
+						<div class="file-btns">
+							<label for="logo-file">Choose image</label>
+							<input type="file" id="logo-file" accept="image/*" @change="showPreview">
+							<div class="btn-remove" @click="removeLogo()" v-show="!isDefault"><div class="icon-btn icon icon-trash"></div></div>
+						</div>
+						<div id="file-preview" :class="{'no-image': !previewSrc}">
+							<img :src="previewSrc" style="display: block" v-show="!!previewSrc">
+						</div>
+						<div class="file-btns">
+							<div class="btn-ok" @click="ok()">Ok</div>
+							<div class="btn-cancel" @click="active=false">Cancel</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</template>
+
 		<script>
 			const bc = new BroadcastChannel('obs-lower-thirds-channel'); //Send to browser source
 			const bcr = new BroadcastChannel('obs-lower-thirds-channel2'); //Receives from the source
 			const bcf = new BroadcastChannel('obs-lower-thirds-fonts'); //Send custom fonts
 
-			const mainSettings = createApp(MainSettings).mount('#alt-main-config-content');			
-			const imSel = createApp(ImageSelector).mount('#image-selector');
-			const ltsContainer = createApp(LowerThirdsContainer);
-			ltsContainer.config.globalProperties.mainSettings = mainSettings;
-			ltsContainer.mount('#lts-container');
-			// const lts = ['#alt-1', '#alt-2', '#alt-3', '#alt-4'];
-
-			// lts.forEach((elemId, index) => {
-			// 	const app = createApp(LowerThird);
-			// 	app.config.globalProperties.mainSettings = mainSettings;
-			// 	app.config.globalProperties.index = index;
-			// 	lts[index] = app.mount(elemId);
-			// })
+			const app = createApp(App).mount('#alt-panel');
 			/**
 			 *
 			 * DEFAULT VALUES
@@ -842,14 +857,6 @@
 			// });
 
 			// ////////////////////
-
-			function checkSwitches() {
-				lts.forEach(lt => {
-					lt.active = mainSettings.active.value && lt.inactiveTimeMonitor == 0 && lt.switchOn;
-					lt.inactive = ((mainSettings.active.value && lt.inactiveTimeMonitor > 0) || 
-									!mainSettings.active.value)	&& lt.switchOn;
-				});
-			}
 
 			// 	//Check switches and blue and red lights in the background to see active and inactive times
 			// 	if (masterSwitchIsOn) {
@@ -1530,99 +1537,6 @@
 
 			// 			break;
 			// 	}
-			// 	switch (alt_2_style){
-			// 		case "1":
-			// 			//Disable: align center | Enable: logo;
-			// 			document.getElementById("alt-2-align-center").disabled = true;
-			// 			if (document.getElementById("alt-2-align-center").checked){
-			// 				$("#alt-2-align-left").prop('checked', true).change();
-			// 			}
-			// 			document.getElementById("alt-2-logo").disabled = false;
-			// 			document.getElementById("alt-2-logo-size").disabled = false;
-			// 			$("#alt-2-style-border-color-appearance > :nth-child(3)").addClass("disabled");
-			// 			break;
-			// 		case "2":
-			// 			//Disable: logo | Enable: align center;
-			// 			document.getElementById("alt-2-align-center").disabled = false;
-			// 			document.getElementById("alt-2-logo").disabled = true;
-			// 			if (document.getElementById("alt-2-logo").checked){
-			// 				$("#alt-2-logo").prop('checked', false).change();
-			// 			}
-			// 			$("#alt-2-style-border-color-appearance > :nth-child(3)").removeClass("disabled");
-			// 			break;
-			// 		case "3":
-			// 			//Disable: - | Enable: Logo, align center;
-			// 			document.getElementById("alt-2-align-center").disabled = true;
-			// 			if (document.getElementById("alt-2-align-center").checked){
-			// 				$("#alt-2-align-left").prop('checked', true).change();
-			// 			}
-			// 			document.getElementById("alt-2-logo").disabled = false;
-			// 			document.getElementById("alt-2-logo-size").disabled = true;
-			// 			$("#alt-2-style-border-color-appearance > :nth-child(3)").removeClass("disabled");
-			// 			break;
-			// 	}
-			// 	switch (alt_3_style){
-			// 		case "1":
-			// 			//Disable: align center | Enable: logo;
-			// 			document.getElementById("alt-3-align-center").disabled = true;
-			// 			if (document.getElementById("alt-3-align-center").checked){
-			// 				$("#alt-3-align-left").prop('checked', true).change();
-			// 			}
-			// 			document.getElementById("alt-3-logo").disabled = false;
-			// 			document.getElementById("alt-3-logo-size").disabled = false;
-			// 			$("#alt-3-style-border-color-appearance > :nth-child(3)").addClass("disabled");
-			// 			break;
-			// 		case "2":
-			// 			//Disable: logo | Enable: align center;
-			// 			document.getElementById("alt-3-align-center").disabled = false;
-			// 			document.getElementById("alt-3-logo").disabled = true;
-			// 			if (document.getElementById("alt-3-logo").checked){
-			// 				$("#alt-3-logo").prop('checked', false).change();
-			// 			}
-			// 			$("#alt-3-style-border-color-appearance > :nth-child(3)").removeClass("disabled");
-			// 			break;
-			// 		case "3":
-			// 			//Disable: - | Enable: Logo, align center;
-			// 			document.getElementById("alt-3-align-center").disabled = true;
-			// 			if (document.getElementById("alt-3-align-center").checked){
-			// 				$("#alt-3-align-left").prop('checked', true).change();
-			// 			}
-			// 			document.getElementById("alt-3-logo").disabled = false;
-			// 			document.getElementById("alt-3-logo-size").disabled = true;
-			// 			$("#alt-3-style-border-color-appearance > :nth-child(3)").removeClass("disabled");
-			// 			break;
-			// 	}
-			// 	switch (alt_4_style){
-			// 		case "1":
-			// 			//Disable: align center | Enable: logo;
-			// 			document.getElementById("alt-4-align-center").disabled = true;
-			// 			if (document.getElementById("alt-4-align-center").checked){
-			// 				$("#alt-4-align-left").prop('checked', true).change();
-			// 			}
-			// 			document.getElementById("alt-4-logo").disabled = false;
-			// 			document.getElementById("alt-4-logo-size").disabled = false;
-			// 			$("#alt-4-style-border-color-appearance > :nth-child(3)").addClass("disabled");
-			// 			break;
-			// 		case "2":
-			// 			//Disable: logo | Enable: align center;
-			// 			document.getElementById("alt-4-align-center").disabled = false;
-			// 			document.getElementById("alt-4-logo").disabled = true;
-			// 			if (document.getElementById("alt-4-logo").checked){
-			// 				$("#alt-4-logo").prop('checked', false).change();
-			// 			}
-			// 			$("#alt-4-style-border-color-appearance > :nth-child(3)").removeClass("disabled");
-			// 			break;
-			// 		case "3":
-			// 			//Disable: - | Enable: Logo, align center;
-			// 			document.getElementById("alt-4-align-center").disabled = true;
-			// 			if (document.getElementById("alt-4-align-center").checked){
-			// 				$("#alt-4-align-left").prop('checked', true).change();
-			// 			}
-			// 			document.getElementById("alt-4-logo").disabled = false;
-			// 			document.getElementById("alt-4-logo-size").disabled = true;
-			// 			$("#alt-4-style-border-color-appearance > :nth-child(3)").removeClass("disabled");
-			// 			break;
-			// 	}				
 			// }
 
 			// //////////////////////////////////////
@@ -2374,7 +2288,7 @@
 						localStorage.setItem(property, o[property]);
 					}
 				}
-				// location.reload();
+				location.reload();
         	}
 
 			//Copy all data to clipboard
@@ -2391,116 +2305,6 @@
 				document.execCommand("copy");
         	}
 
-
-			function loadData () {
-				$('.storable').each(function(){    
-					var id = $(this).attr('id');
-					var value = localStorage.getItem(id);
-					var default_value = $(this).attr('value');
-
-					if(value) {
-						$(this).val(value);
-					} else if (default_value) {
-						$(this).val(default_value);
-					}
-				});
-
-				$('.slot-storable').each(function(){    
-					var id = $(this).attr('id');
-					var value = localStorage.getItem(id);
-
-					$(this).text(value);
-				});
-
-				$('.checkbox-storable, .radio-storable').each(function(){
-                    var id = $(this).attr('id');
-					var value = localStorage.getItem(id);
-
-					if (value) {
-						$(this).prop('checked', localStorage.getItem(id) === 'true');
-					}
-                });
-
-				$('.title-storable').each(function(){    
-					var id = $(this).attr('id');
-					var value = localStorage.getItem(id);
-					
-					if (value) {
-						$(this).text(value);
-					}
-				});
-
-			}
-
-			// function saveData () {
-			// 	// If local storage is empty, call reset to reinitialize
-			// 	if (localStorage.length === 0) {
-			// 		okResetPopup();
-			// 	}
-
-	        // 	$('.storable').change(function(){
-			// 		refreshData();
-			// 		var id = $(this).attr('id');
-			// 		var value = $(this).val();
-			// 		localStorage.setItem(id, value);
-	        // 	});
-
-	        // 	// Update while input (text or number) is changed
-			// 	$(':input[type=text], :input[type=number]').on('input',function(e){
-			// 		refreshData();
-			// 		var id = $(this).attr('id');
-			// 		var value = $(this).val();
-			// 		localStorage.setItem(id, value);
-			// 	});
-
-	        // 	$('.slot-storable, .title-storable').change(function(){
-			// 		refreshData();
-			// 		var id = $(this).attr('id');
-			// 		var value = $(this).text();
-			// 		localStorage.setItem(id, value);
-	        // 	});
-
-			// 	$('.checkbox-storable').change(function(){
-			// 		refreshData();
-			// 		var id = $(this).attr('id');
-			// 		localStorage.setItem(id, $(this).is(':checked'));
-
-			// 		// Check for a twin chekcbox
-			// 		if ($(this).hasClass('twin-checkbox')) {
-			// 			const twin =$(this).parents('.grid-row').find('.twin-checkbox').not(this);
-			// 			id = twin.attr('id');
-			// 			localStorage.setItem(id, twin.is(':checked'));
-			// 		}
-			// 	});
-
-			// 	$('.radio-storable').change(function(){
-			// 		refreshData();
-			// 		var radio_name = $(this).attr('name');
-			// 		$(':input[name=' + radio_name + ']').each(function(){
-			// 			var id = $(this).attr('id');
-			// 			localStorage.setItem(id, $(this).is(':checked'));
-			// 		});
-			// 	});
-
-			// 	$('.font-storable, .select-settings-storable').change(function(){
-			// 		refreshData();
-			// 		var id =  $(this).attr('id');
-			// 		localStorage.setItem(id, this.value);
-			// 	});
-
-			// 	/**
-			// 	 * Indirect changes
- 			// 	 */
-			// 	$(':button').on('click',function(e){
-			// 		// Lanza evento de cambio del input superior
-			// 		$(this).parent().find('input').change()
-			// 	});
-
-			// 	$('.slot-number').on('click',function(e){
-			// 		// Lanza evento de cambio de los divs hermanos
-			// 		$(this).siblings('.slot-storable').change();
-			// 	});
-			// }
 
 			function refreshData() {
 			// 	console.log('refreshData');
@@ -2519,11 +2323,10 @@
 			// 	updateHotkeys();
 			// }
 
-			setTimeout(() => {
-				initTooltips();
-			}, 100);
+			// setTimeout(() => {
+			// 	initTooltips();
+			// }, 100);
 			// loadDefaultValues();
-			loadData();
 			// updateCustomFontList();
 			// refreshData();
 			// checkSwitches();

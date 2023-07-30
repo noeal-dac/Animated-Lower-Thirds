@@ -1,4 +1,6 @@
 const ImageSelector = {
+  template: '#image-selector-template',
+  props: ['ltsContainer'],
   setup() {
   },
   data() {
@@ -6,23 +8,26 @@ const ImageSelector = {
       active: false,
       previewSrc: '',
       isDefault: false,
-      logo: '',
-      defaultLogo: '',
-      logoFile: ''
+      logoSrc: '',
+      defaultArray: '',
+      logoFile: '',
+      index: 0,
     }
   },
   methods: {
-    open(logo, defaultLogo = undefined) {
+    open(index, logoSrc, defaultArray, isDefault = false) {
       this.active = true;
-      this.isDefault = !defaultLogo;
-      
-      this.logo = logo;
-      this.defaultLogo = defaultLogo ? defaultLogo : logo;
+      this.index = index;
+      this.logoSrc = logoSrc;
+      this.defaultArray = defaultArray;
+      this.isDefault = isDefault;
+      this.previewSrc = isDefault ? defaultArray.value[index] : logoSrc.value;
+      this.oldSrc = this.previewSrc;
     },
 
     removeLogo() {
       this.previewSrc = '';
-      this.logo = '';
+      this.logoFile = '';
     },
 
     showPreview(event) {
@@ -34,27 +39,23 @@ const ImageSelector = {
     },
 
     ok() {
-      let src = this.logoFile;
-      const preview = document.getElementById(this.logo)
+      if (this.logoFile && this.previewSrc != this.oldSrc) {
+        const src = "../logos/" + this.logoFile.name;
 
-			const alt_logo_preview = this.defaultLogo.replace("-default", "-preview");
-
-      if (src) {
-        src = "../logos/" + src.name;
-        
         //Change the lt logo if it is default
-        if (this.isDefault && $("#" + this.defaultLogo).hasClass('alt-logo-default')){
-          const index = parseInt(this.defaultLogo.replace('alt-', '').replace('-logo-default')) - 1;
-          $("#" + this.defaultLogo).attr("src", src);
+        if (this.isDefault) {
+          this.defaultArray.value[this.index] = src;
+          this.defaultArray.value = this.defaultArray.value;
 
-          console.log(src);
-          
-          mainSettings.defaultLogos.value[index] = src;
-          mainSettings.defaultLogos.value = mainSettings.defaultLogos.value; // update localStorage
-        }
-				} else if (!this.previewSrc) {
-          src = $("#" + this.defaultLogo).attr("src");
+          this.$emit('defaultChanged');
+				} else {
+          this.logoSrc.value = src;
+          this.$emit('logoChanged');
 				}
+      } else if (!this.isDefault && !this.previewSrc) {
+        this.logoSrc.value = this.defaultArray.value[this.index];
+        this.$emit('logoChanged');
+      }
       
       this.active = false;
     }

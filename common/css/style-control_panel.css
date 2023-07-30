@@ -336,10 +336,10 @@ body.browser-source.lower-thirds{
 [id$=-name-color].jscolor-active, [id$=-info-color].jscolor-active {
   cursor: text;
 }
-.tool-tittle.disabled {
+.tool-title.disabled {
   opacity: 0.2;
 }
-.tool-tittle.disabled + .jscolor {
+.tool-title.disabled + .jscolor {
   opacity: 0.2;
   pointer-events: none;
 }
@@ -599,20 +599,20 @@ input[id$=-name], input[id$=-info] {
 .fill-color-appearance,
 .border-color-appearance {
     background-color: var(--obs-field-background);
-    border-radius: var(--element-radius);
-    border: var(--obs-field-border);
+    border-radius: var(--element-radius) !important;
+    border: var(--obs-field-border) !important;
     box-sizing: border-box;
-    height: 23px;
-    width: 155px;
+    height: 23px !important;
+    width: 155px !important;
     display: inline-flex;
     justify-content: flex-end;
 }
-.fill-color-appearance.disable,
-.border-color-appearance.disable {
+.fill-color-appearance:disabled,
+.border-color-appearance:disabled {
   background-color: #2f2f2f;
   color: #828282;
 }
-.tool-tittle {
+.tool-title {
     line-height: 14px;
     font-size: 9px;
     text-transform: uppercase;
@@ -620,8 +620,8 @@ input[id$=-name], input[id$=-info] {
     margin: 4px 0px 4px 0px;
     cursor: default;
 }
-[id*=-style-color-] + .tool-tittle {
-    margin-left: 1px !important;
+[id*=-style-color-] + .tool-title {
+    margin-left: 1px;
 }
 	
 .panel button{
@@ -755,23 +755,17 @@ input[type=number]::-webkit-outer-spin-button {
   transform: translate(-25%, -50%) rotate(-45deg);
 }
 
-.number-input input[type=number] {
+.number-input input[type="number"] {
   order: 1;
   text-align: center;
   width: 40px;
   padding-right: 12px;
 }
-.number-input input[type="number"]:disabled {
+.number-input input[type="number"]:disabled,
+.number-input button:disabled {
   background: #2f2f2f;
-
-}
-.number-input input[type="number"]:disabled + button,
-.number-input input[type="number"]:disabled + button + button {
-    background: #2f2f2f;
-    pointer-events: none;
-}
-.number-input input[type="number"]:disabled + button + button + .input-icon {
-    color: #666;
+  color: #828282;
+  pointer-events: none;
 }
 
 .input-icon {
@@ -944,6 +938,8 @@ select[id$=-font] {
   background: var(--obs-background);
   box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 40%);
   transition: bottom 0.5s;
+  z-index: 100;
+  left: 8px;
 }
 
 #alt-preview > label > .icon.icon-search {
@@ -1423,11 +1419,11 @@ i.alt-icon {
 .logo-container.hide {
   display: none;
 }
-[id*=-logo-] {
+.logo-default, .logo-preview {
   max-height: 100%;
   max-width: 100%;
 }
-[id$=-logo-default] {
+.logo-default {
   margin-left: 1px;
 }
 

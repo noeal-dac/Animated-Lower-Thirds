@@ -43,14 +43,7 @@ const MainSettings = {
   },
   mounted() {
     this.defaultLogos.value.forEach((logoSrc, index) => {
-      const previews = [...document.querySelectorAll(`#alt-${index + 1}-logo-preview`)];
-      previews.forEach(elem => {
-        elem.src = logoSrc;
-      });
-      const defaults = [...document.querySelectorAll(`#alt-${index + 1}-logo-default`)];
-      defaults.forEach(elem => {
-        elem.src = logoSrc;
-      });
+      new Storable(`alt-${index}-logo-src`, logoSrc);
     });
   },
   methods: {
@@ -89,10 +82,6 @@ const MainSettings = {
       bcf.postMessage({new_font: font.url})
     },
 
-    openLogo(logo) {
-      imSel.open(logo);
-    },
-
     toggleAccordion() {
       this.accordionCollapsed = !this.accordionCollapsed;
       const globalConf = this.$el.querySelector('#global-configuration');
@@ -121,6 +110,9 @@ const MainSettings = {
           globalConf.style.maxHeight = (moreConf.scrollHeight + 50) + 'px';
         }
       }, 1);
+    },
+    openLogo(index) {
+      this.$emit('openLogo', {index, logoSrc: undefined, defaultArray: this.defaultLogos, isDefault: true});
     }
   }
 }

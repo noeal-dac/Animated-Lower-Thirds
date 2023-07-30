@@ -2,7 +2,7 @@ const LowerThirdsContainer = {
     template: '#lts-container-template',
     components: {LowerThird},
   
-    setup() {
+    setup(args) {
   
       const storables = {
         lts: ['alt-sort-order', [0,1,2,3]]
