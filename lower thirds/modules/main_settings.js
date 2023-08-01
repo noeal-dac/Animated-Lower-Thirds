@@ -55,7 +55,6 @@ const MainSettings = {
         return '46px';
       } else {
         const moreConf = this.$el.querySelector('#more-configuration');
-        console.log(moreConf.scrollHeight);
         this.refreshHeightInternal;
 
         return (moreConf.scrollHeight + 51) + 'px';

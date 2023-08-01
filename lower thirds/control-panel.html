@@ -23,35 +23,36 @@
 				"animation-time" : "Length of the in and out animation (sec)",
 				"active-time" : "How long the LT is active (sec)",
 				"inactive-time" : "How long the LT is inactive (sec)" ,
-				"lock-active" : "Lock the active state: Always active.",
-				"one-shot" : "Oneshot: Turns off the LT Switch when it goes into inactive state.",
-				"enabled-preview" : "Show/hide the LT in the preview window",
-				"align_left" : "Left alignment.",
-				"align_center" : "Center alignment.",
-				"align_right" : "Right alignment.",
-				"style" : "Style: Changes the look of the LT.",
-				"size" : "Size of the LT.",
-				"margin" : "Horizontal and vertical margin.",
-				"text_size" : "Ratio between the size of the texts.",
-				"line_spacing" : "Space between texts.",					
-				"font" : "LT Text font.",
-				"logo" : "Show/hide the logo image.",
-				"logo_size" : "Size of the logo image.",
-				"shadow" : "Show/hide shadows.",
-				"shadow_opacity" : "Shadows opacity.",
-				"fill_colors" : "Enable/disable fill or background colors.",
-				"corners" : "Round corners.",
-				"borders" : "Enable/disable borders.",
-				"borders_thinkness" : "Border thickness.",
-				"uppercase" : "Enable/disable uppercase.",
-				"bold" : "Enable/disable bold.",
-				"clean" : "Clear the text fields and set the logo to default.",
-				"autotrigger" : "Autotrigger: Turns on the switch automatically when a slot memory is loaded.",
-				"autoload" : "Autoload: Loads automatically the next memory slot every time it goes to the inactive state. Ready to display in the next cycle.",
-				"custom_times" : "Show/hide custom time settings.",
-				"preview_window" : "Show/hide preview window.",
-				"custom-fonts" : "Add fonts from Google Fonts.",
-				"default-logos" : "Change the default logos of each LT.<br>Make sure to copy the logo files into the logos folder.<br>You can use JPG, PNG, TIFF, GIF, etc.<br>With transparency or animated.",
+				"lock-active" : "Lock the active state: Always active",
+				"one-shot" : "One-shot: Turns off the LT Switch when it goes into inactive state.",
+				"enable-preview" : "Show/hide the LT in the preview window",
+				"align-left" : "Left alignment",
+				"align-center" : "Center alignment",
+				"align-right" : "Right alignment",
+				"style" : "Style: Changes the look of the LT",
+				"size" : "Size of the LT",
+				"margin" : "Horizontal and vertical margin",
+				"line-height" : "Ratio between the size of the texts",
+				"line-spacing" : "Space between texts",					
+				"font" : "LT Text font",
+				"logo" : "Show/hide the logo image",
+				"logo-size" : "Size of the logo image",
+				"shadows" : "Show/hide shadows",
+				"shadow-opacity" : "Shadows opacity",
+				"fill-colors" : "Enable/disable fill or background colors",
+				"corners" : "Round corners",
+				"borders" : "Enable/disable borders",
+				"border-thickness" : "Border thickness",
+				"uppercase" : "Enable/disable uppercase",
+				"bold" : "Enable/disable bold",
+				"italic" : "Enable/disable italic",
+				"clean" : "Clear the text fields and set the logo to default",
+				"autotrigger" : "Autotrigger: Turns on the switch automatically when a slot memory is loaded",
+				"autoload" : "Autoload: Loads automatically the next memory slot every time it goes to the inactive state. Ready to display in the next cycle",
+				"custom-times" : "Show/hide custom time settings",
+				"toggle-preview" : "Show/hide preview window",
+				"fonts-options" : "Add fonts from Google Fonts",
+				"default-logos" : "Change the default logos of each LT.<br>Make sure to copy the logo files into the logos folder.<br>You can use JPG, PNG, TIFF, GIF, etc.<br>With transparency or animated",
 			};
 
 			const JSCOLOR_CONFIG = {
@@ -200,10 +201,10 @@
 								<div class="default-options">
 									<div class="settings-title"></div>
 									<div class="settings-inputs">
-										<label><input type="checkbox" id="alt-enable-preview" v-model="enabledPreview.value" @change="$emit('appearanceChanged')">Enable preview window</label>
-										<label><input type="checkbox" id="alt-hidden-slot-numbers" v-model="hiddenSlotNumbers.value" @change="$emit('appearanceChanged')">Hide numbers of the memory slots</label>
-										<label><input type="checkbox" id="alt-switches-left" v-model="switchesLeft.value" @change="$emit('appearanceChanged')">Switches on the left</label>
-										<label><input type="checkbox" id="alt-enabled-tooltips" v-model="enabledTooltips.value" @change="initTooltips()">Show tooltips with the stored content</label>
+										<label><input type="checkbox" v-model="enabledPreview.value" @change="$emit('appearanceChanged')">Enable preview window</label>
+										<label><input type="checkbox" v-model="hiddenSlotNumbers.value" @change="$emit('appearanceChanged')">Hide numbers of the memory slots</label>
+										<label><input type="checkbox" v-model="switchesLeft.value" @change="$emit('appearanceChanged')">Switches on the left</label>
+										<label><input type="checkbox" v-model="enabledTooltips.value" @change="$emit('appearanceChanged')">Show tooltips with the stored content</label>
 									</div>
 								</div>
 							</div>
@@ -229,8 +230,8 @@
 								<div class="logos-options">
 									<div class="settings-title">Default Logos</div>
 									<div class="settings-inputs">
-										<div v-for="(logoSrc, index) in defaultLogos.value" class="logo-container default" @click="openLogo(index)">
-											<div class="logo-numbers">{{index + 1}}</div>
+										<div :id="`alt-${id}-default-logos`" v-for="(logoSrc, id) in defaultLogos.value" class="logo-container default" @click="openLogo(id)">
+											<div class="logo-numbers">{{id + 1}}</div>
 											<img class="logo-default" :src="logoSrc">
 										</div>
 									</div>
@@ -265,7 +266,7 @@
 							<input type="checkbox" @change="$emit('switchChanged')" :checked="switchOn" v-model="switchOn">
 							<span class="slider round"></span>
 						</label>
-						<label class="config-btn preview-btn" v-show="enabledPreview">
+						<label :id="`alt-${index}-enable-preview`" class="config-btn preview-btn" v-show="enabledPreview">
 							<input type="checkbox" :id="`alt-${index}-preview`" :checked="previewOn" v-model="previewOn">
 							<div class="icon-btn icon icon-search"></div>
 						</label>
@@ -282,13 +283,13 @@
 								<div class="grid-row">
 									<div>
 										<div class="align-toggle">
-										<input id="alt-1-align-left" type="radio" :checked="align.value == 'left'" @click="align.value = 'left'"/>
-										<label for="alt-1-align-left"><div class="icon icon-aling-left"></div></label>
+										<input type="radio" :checked="align.value == 'left'" @click="align.value = 'left'"/>
+										<label :id="`alt-${index}-align-left`"><div class="icon icon-aling-left"></div></label>
 										<input id="alt-1-align-center" type="radio" :checked="align.value == 'center'" @click="align.value = 'center'" :disabled="style.value == 1"/>
-										<label for="alt-1-align-center"><div class="icon icon-aling-center"></div></label>
-										<input id="alt-1-align-right" type="radio" :checked="align.value == 'right'" @click="align.value = 'right'"/>
-										<label for="alt-1-align-right"><div class="icon icon-aling-right"></div></label>
-										</div>
+										<label :id="`alt-${index}-align-center`"><div class="icon icon-aling-center"></div></label>
+										<input type="radio" :checked="align.value == 'right'" @click="align.value = 'right'"/>
+										<label :id="`alt-${index}-align-right`"><div class="icon icon-aling-right"></div></label>
+									</div>
 									</div>
 									<div>
 										<div class="input-icon icon icon-paint-brush"></div>
@@ -306,7 +307,7 @@
 											<button @click="stepUp(size, 50)" class="up"></button>
 										</div>
 									</div>							
-									<div class="margin-config group">
+									<div :id="`alt-${index}-margin`" class="margin-config group">
 										<div class="input-icon icon icon-position"></div>
 										<div class="number-input">
 											<input id="alt-1-margin-h" min="0" max="100" v-model="marginH.value" type="number">
@@ -321,7 +322,7 @@
 									</div>
 								</div>
 								<div class="grid-row">
-									<div>
+									<div :id="`alt-${index}-line-height`">
 										<div class="input-icon icon icon-text-height"></div>
 											<div class="number-input">
 											<input id="alt-1-inverse-ratio" min="0" max="10" v-model="inverseRatio.value" type="number">
@@ -329,10 +330,10 @@
 											<button @click="stepUp(inverseRatio, 10)" class="up"></button>
 										</div>
 									</div>
-									<div>
+									<div :id="`alt-${index}-line-spacing`">
 										<div class="input-icon icon icon-line-spacing"></div>
 											<div class="number-input">
-											<input id="alt-1-line-spacing" min="-5" max="5" v-model="lineSpacing.value" type="number">
+											<input min="-5" max="5" v-model="lineSpacing.value" type="number">
 											<button @click="stepDown(lineSpacing, -5)" class="down"></button>
 											<button @click="stepUp(lineSpacing, 5)" class="up"></button>
 										</div>
@@ -349,30 +350,30 @@
 								</div>
 								<div class="grid-row">
 									<div>
-										<label class="config-btn">
-											<input type="checkbox" id="alt-1-logo" v-model="enabledLogo.value" :checked="enabledLogo.value">
+										<label class="config-btn" :id="`alt-${index}-logo`">
+											<input type="checkbox" v-model="enabledLogo.value" :checked="enabledLogo.value">
 											<div class="icon-btn icon icon-image"></div>
 										</label>									
-										<div class="number-input">
+										<div class="number-input" :id="`alt-${index}-logo-size`">
 											<input id="alt-1-logo-size" min="-10" max="10" v-model="logoSize.value" type="number" :disabled="!enabledLogo.value">
 											<button @click="stepDown(logoSize, -10)" class="down" :disabled="!enabledLogo.value"></button>
 											<button @click="stepUp(logoSize, 10)" class="up" :disabled="!enabledLogo.value"></button>
 										</div>
 									</div>
 									<div>
-										<label class="config-btn">
-											<input type="checkbox" id="alt-1-shadows" v-model="shadows.value" :checked="shadows.value">
+										<label class="config-btn" :id="`alt-${index}-shadows`">
+											<input type="checkbox" v-model="shadows.value" :checked="shadows.value">
 											<div class="icon-btn icon icon-shadow"></div>
 										</label>
-										<div class="number-input">
+										<div class="number-input" :id="`alt-${index}-shadow-opacity`">
 											<input id="alt-1-shadow-amount" min="1" max="10" v-model="shadowAmount.value" type="number" :disabled="!shadows.value">
 											<button @click="stepDown(shadowAmount, 1)" class="down" :disabled="!shadows.value"></button>
 											<button @click="stepUp(shadowAmount, 10)" class="up" :disabled="!shadows.value"></button>
 										</div>
 									</div>
 									<div>
-										<label class="config-btn">
-											<input type="checkbox" id="alt-1-background" v-model="background.value" :checked="background.value">
+										<label class="config-btn" :id="`alt-${index}-fill-colors`">
+											<input type="checkbox" v-model="background.value" :checked="background.value">
 											<div class="icon-btn icon icon-fill-drip"></div>
 										</label>
 										<div class="fill-color-appearance">
@@ -385,7 +386,7 @@
 									</div>
 								</div>
 								<div class="grid-row">
-									<div>
+									<div :id="`alt-${index}-corners`">
 										<div class="input-icon icon icon-corner"></div>
 										<div class="number-input">
 											<input id="alt-1-corners" min="0" max="10" v-model="corners.value" type="number">
@@ -393,28 +394,28 @@
 											<button @click="stepUp(corners, 10)" class="up"></button>
 										</div>
 									</div>
-									<div>
+									<div :id="`alt-${index}-border-thickness`">
 										<label class="config-btn">
 											<input type="checkbox" id="alt-1-border-thickness" v-model="borders.value" :checked="borders.value">
 											<div class="icon-btn icon icon-thickness"></div>
 										</label>
 										<div class="number-input">
-											<input id="alt-1-border-thickness-amount" min="1" max="10" v-model="borderThickness.value" type="number" :disabled="!borders.value">
+											<input min="1" max="10" v-model="borderThickness.value" type="number" :disabled="!borders.value">
 											<button @click="stepDown(borderThickness, 1)" class="down" :disabled="!borders.value"></button>
 											<button @click="stepUp(borderThickness, 10)" class="up" :disabled="!borders.value"></button>
 										</div>
 									</div>
-									<div>
+									<div :id="`alt-${index}-borders`">
 										<label class="config-btn">
-											<input type="checkbox" id="alt-1-border-color" v-model="borders.value" :checked="borders.value">
+											<input type="checkbox" v-model="borders.value" :checked="borders.value">
 											<div class="icon-btn icon icon-pen"></div>
 										</label>
 										<!-- <div id="alt-1-style-border-color-appearance" class="border-color-appearance"> -->
 										<div class="border-color-appearance">
 											<div class="tool-title" :class="{disabled: !borders.value}">Clr 3</div>
-											<input id="alt-1-style-color-3" v-model="bordersColor1.value" :data-jscolor="JSON.stringify(jscolorConfig)" :disabled="!borders.value">
+											<input :id="`alt-${index}-style-color-3`" v-model="bordersColor1.value" :data-jscolor="JSON.stringify(jscolorConfig)" :disabled="!borders.value">
 											<div class="tool-title" :class="{disabled: !borders.value}">Clr 4</div>
-											<input id="alt-1-style-color-4" v-model="bordersColor2.value" :data-jscolor="JSON.stringify(jscolorConfig)" :disabled="!borders.value">
+											<input :id="`alt-${index}-style-color-3`" v-model="bordersColor2.value" :data-jscolor="JSON.stringify(jscolorConfig)" :disabled="!borders.value">
 										</div>
 									</div>
 								</div>
@@ -422,46 +423,46 @@
 						</div>
 						<div class="first-edit-container">
 							<div class ="logo-container" @click="openLogo()" v-show="enabledLogo.value">
-								<img id="alt-1-logo-preview" class="logo-preview" :src="logoSrc.value">
+								<img class="logo-preview" :src="logoSrc.value">
 							</div>
 							<div class="textfields-container">
-								<input type="text" id="alt-1-name" placeholder="Name" tabindex="4" v-model="name.value">
+								<input type="text" :id="`alt-${index}-name`" placeholder="Name" tabindex="4" v-model="name.value">
 								<div :id="`alt-${index}-name-appearance`">
-									<label class="config-btn small">
-										<input type="checkbox" id="alt-1-name-transform" :checked="nameTransform.value" v-model="nameTransform.value">
+									<label :id="`alt-${index}-name-uppercase`" class="config-btn small">
+										<input type="checkbox" :checked="nameTransform.value" v-model="nameTransform.value">
 										<div class="icon-btn icon small icon-uppercase"></div>
 									</label>
-									<label class="config-btn small">
-										<input type="checkbox" id="alt-1-name-weight" :checked="nameBold.value" v-model="nameBold.value">
+									<label :id="`alt-${index}-name-bold`" class="config-btn small">
+										<input type="checkbox" :checked="nameBold.value" v-model="nameBold.value">
 										<div class="icon-btn icon small icon-bold"></div>
 									</label>
-									<label class="config-btn small">
-										<input type="checkbox" id="alt-1-name-style" :checked="nameItalic.value" v-model="nameItalic.value">
+									<label :id="`alt-${index}-name-italic`" class="config-btn small">
+										<input type="checkbox" :checked="nameItalic.value" v-model="nameItalic.value">
 										<div class="icon-btn icon small icon-italic"></div>
 									</label>
-									<input id="alt-1-name-color" :data-jscolor="JSON.stringify(jscolorConfig)" v-model="nameColor.value">
+									<input :id="`alt-${index}-name-color`" :data-jscolor="JSON.stringify(jscolorConfig)" v-model="nameColor.value">
 								</div>
-								<input type="text" id="alt-1-info" placeholder="Info" tabindex="4" v-model="info.value">
+								<input type="text" :id="`alt-${index}-info`" placeholder="Info" tabindex="4" v-model="info.value">
 								<div :id="`alt-${index}-info-appearance`">
-									<label class="config-btn small">
-										<input type="checkbox" id="alt-1-info-transform" :checked="infoTransform.value" v-model="infoTransform.value">
+									<label :id="`alt-${index}-info-uppercase`" class="config-btn small">
+										<input type="checkbox" :checked="infoTransform.value" v-model="infoTransform.value">
 										<div class="icon-btn icon small icon-uppercase"></div>
 									</label>
-									<label class="config-btn small">
-										<input type="checkbox" id="alt-1-info-weight" :checked="infoBold.value" v-model="infoBold.value">
+									<label :id="`alt-${index}-info-bold`" class="config-btn small">
+										<input type="checkbox" :checked="infoBold.value" v-model="infoBold.value">
 										<div class="icon-btn icon small icon-bold"></div>
 									</label>
-									<label class="config-btn small">
-										<input type="checkbox" id="alt-1-info-style" :checked="infoItalic.value" v-model="infoItalic.value">
+									<label :id="`alt-${index}-info-italic`" class="config-btn small">
+										<input type="checkbox" :checked="infoItalic.value" v-model="infoItalic.value">
 										<div class="icon-btn icon small icon-italic"></div>
 									</label>
-									<input id="alt-1-info-color" :data-jscolor="JSON.stringify(jscolorConfig)" v-model="infoColor.value">
+									<input :id="`alt-${index}-info-color`" :data-jscolor="JSON.stringify(jscolorConfig)" v-model="infoColor.value">
 								</div>
 								<div style="clear: both"></div>
 							</div>
 						</div>
 						<div class="panel-bottom">
-							<div class="clean" @click="clearInputs"><div class="icon icon-cross"></div></div>
+							<div :id="`alt-${index}-clean`" class="clean" @click="clearInputs"><div class="icon icon-cross"></div></div>
 							<ul>
 								<li v-for="(name, index) in slotNames.value"
 									:class="{delete: slotIsDelete[index], 'active-slot': slotIsActive(index), stored: slotIsStored(index)}"
@@ -474,15 +475,15 @@
 								<div>{{activeTimeMonitor}}</div>
 								<div>{{inactiveTimeMonitor}}</div>
 							</div>
-							<label class="config-btn">
-								<input type="checkbox" id="alt-1-autotrigger" v-model="autoTrigger.value" :checked="autoTrigger.value">
+							<label class="config-btn" :id="`alt-${index}-autotrigger`">
+								<input type="checkbox" v-model="autoTrigger.value" :checked="autoTrigger.value">
 								<div class="icon-btn icon icon-autotrigger"></div>
 							</label>
-							<label class="config-btn">
-								<input type="checkbox" id="alt-1-autoload" v-model="autoLoad.value" :checked="autoLoad.value">
+							<label :id="`alt-${index}-autoload`" class="config-btn">
+								<input type="checkbox" v-model="autoLoad.value" :checked="autoLoad.value">
 								<div class="icon-btn icon icon-sync"></div>
 							</label>
-							<label id="alt-1-custom-times" class="accordion" @click="toggleTimeSettings()" :class="{active: customTimeSettings.value}">
+							<label :id="`alt-${index}-custom-times`" class="accordion" @click="toggleTimeSettings()" :class="{active: customTimeSettings.value}">
 								<div class="icon-btn icon icon-clock"></div>
 							</label>
 							<div :id="`time-settings-${index}`" class="hidable" :class="{active: customTimeSettings.value}">
@@ -538,43 +539,6 @@
 
 			const app = createApp(App).mount('#alt-panel');
 
-			// var slotDeleted = false;
-
-			// var new_font_to_send;
-
-			// var alt_1_active_time_monitor;
-			// var alt_1_inactive_time_monitor;
-
-
-			// var alt_1_autoload;
-			// var alt_1_jumpnext;
-			
-			// var alt_1_autotrigger;
-
-			// var global_oneshot;
-			// var alt_1_oneshot;
-
-			// var global_lock_active;
-			// var alt_1_lock_active;
-
-			// var alt_1_style = default_style;
-			// var alt_1_inverse_ratio = default_inverse_ratio;
-			// var alt_1_name_size;
-			// var alt_1_info_size;
-			// var alt_1_size;
-			// var alt_1_line_spacing;
-			// var alt_1_margin_h;
-			// var alt_1_margin_v;
-			// var alt_1_shadows;
-			// var alt_1_font;
-			// var alt_1_logo_size;
-			// var alt_1_shadow_amount;
-			// var alt_1_corners;
-			// var alt_1_border_thickness_amount;
-
-			// var alt_1_corners;
-			// var alt_1_border_thickness_amount;
-
 			// var hotkeyMasterSwitchOld = hotkeyMasterSwitch;
 			// var hotkeySwitch1Old = hotkeySwitch1;
 
@@ -588,8 +552,6 @@
 			// var hotkeyAlt1Slot8Old = hotkeyAlt1Slot8;
 			// var hotkeyAlt1Slot9Old = hotkeyAlt1Slot9;
 			// var hotkeyAlt1Slot10Old = hotkeyAlt1Slot10;
-
-			// var alt_1_turnoff = false;
 
 			// ////////////////////
 
@@ -1114,28 +1076,6 @@
 			// 		$('.tooltiptext').each(function(){
 			// 			$(this).remove();
 			// 		});
-			// 	}
-
-
-			// 	//////////////////////////////
-
-			// 	if (document.getElementById("set-switch-position").checked) {
-			// 		$('.switch').each(function(){
-			// 			$(this).addClass("switch-left");
-			// 		});
-			// 		$('.drag-handle').each(function(){
-			// 			$(this).addClass("switch-left");
-			// 		});
-			// 		$('.main-title').addClass("switch-left");
-
-			// 	} else {
-			// 		$('.switch').each(function(){
-			// 			$(this).removeClass("switch-left");
-			// 		});
-			// 		$('.drag-handle').each(function(){
-			// 			$(this).removeClass("switch-left");
-			// 		});
-			// 		$('.main-title').removeClass("switch-left");
 			// 	}
 
 

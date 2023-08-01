@@ -160,11 +160,9 @@ const LowerThird = {
     },
     slotHandlerDown(index) {
       clearTimeout(this.slotTimeout);
-      console.log('down', index + 1);
       this.slotTimeout = setTimeout(() => {
         if (this.slotIsStored(index)){
           this.slotIsDelete[index] = true;
-          console.log(this.slotIsDelete[index], index + 1);
         }
       }, 600);
     },

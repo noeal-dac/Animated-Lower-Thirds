@@ -26,7 +26,6 @@ const App = {
         return {...props, ...storables};
     },
     mounted() {
-        this.initTooltips();
         this.updateFonts();
         this.checkAppearance();
 
@@ -37,12 +36,12 @@ const App = {
     methods: {
         initTooltips() {
             Object.keys(TOOLTIP).forEach(id => {
-                const elem = document.querySelector(`[id$=${id}]`);
-                if (elem) {
-                    elem.setAttribute('title', TOOLTIP[id]);
-                } else {
-                    console.log(id, elem);
-                }
+                const elems = document.querySelectorAll(`[id$=${id}]`);
+                elems.forEach(elem => {
+                    if (elem) {
+                        elem.setAttribute('title', TOOLTIP[id]);
+                    }
+                });
             });
           
             
@@ -83,6 +82,7 @@ const App = {
 
             if (mainSettings) {
                 this.enabledPreview = mainSettings.enabledPreview.value;
+                this.initTooltips();
             }
 
             Object.values(this.$refs.lt)
