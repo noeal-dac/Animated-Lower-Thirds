@@ -1,13 +1,16 @@
 const LowerThird = {
   template: '#lt-template',
-  props: ['index'],
+  props: ['index', 'fonts'],
   setup(args) {
     const props = {
       active: ref(false),
       inactive: ref(false),
       switchOn: ref(false),
       previewOn: ref(false),
+      
       enabledPreview: ref(false),
+      switchLeft: ref(false),
+      hiddenSlotNumbers: ref(false),
       
       nameClicks: ref(0),
       nameIsEditable: ref(false),
@@ -17,14 +20,23 @@ const LowerThird = {
       activeTimeMonitor: ref(0),
       inactiveTimeMonitor: ref(0),
 
-      fonts: {},
-
+      slotTimeout: ref(),
+      slotIsDelete: ref(Array.from({length: 10}, () => false)),
       jscolorConfig: ref(JSCOLOR_CONFIG),
     };
 
     const storables = {
       title: [`alt-${args.index}-title`, `Lower Third ${args.index + 1}`],
       style: [`alt-${args.index}-style`, 1],
+      autoTrigger: [`alt-${args.index}-auto-trigger`, false],
+      autoLoad: [`alt-${args.index}-auto-load`, false],
+      
+      customTimeSettings: [`alt-${args.index}-custom-time-settings`, false],
+      animationTime: [`alt-${args.index}-animation-time`, ''],
+      activeTime: [`alt-${args.index}-active-time`, ''],
+      lockActive: [`alt-${args.index}-lock-active`, false],
+      inactiveTime: [`alt-${args.index}-inactive-time`, ''],
+      oneShot: [`alt-${args.index}-one-shot`, false],
       
       align: [`alt-${args.index}-align`, 'left'],
       size: [`alt-${args.index}-size`, 24],
@@ -54,9 +66,9 @@ const LowerThird = {
       bordersColor2: [`alt-${args.index}-borders-color-2`, '#222222'],
 
       name: [`alt-${args.index}-name`, ''],
-      nameTransform: [`alt-${args.index}-name-transform`, true],
-      nameBold: [`alt-${args.index}-name-bold`, true],
-      nameItalic: [`alt-${args.index}-name-italic`, false],
+      nameTransform: [`alt-${args.index}-name-transform`, true],  // uppercase | normal
+      nameBold: [`alt-${args.index}-name-bold`, true],            // lighter | bold
+      nameItalic: [`alt-${args.index}-name-italic`, false],       // normal | italic
       nameColor: [`alt-${args.index}-name-color`, '#F2F2F2'],
 
       info: [`alt-${args.index}-info`, ''],
@@ -64,6 +76,10 @@ const LowerThird = {
       infoBold: [`alt-${args.index}-info-bold`, true],
       infoItalic: [`alt-${args.index}-info-italic`, false],
       infoColor: [`alt-${args.index}-info-color`, '#8A8A8A'],
+
+      slotNames: [`alt-${args.index}-slot-names`, Array.from({length: 10}, () => '')],
+      slotInfos: [`alt-${args.index}-slot-infos`, Array.from({length: 10}, () => '')],
+      slotLogos: [`alt-${args.index}-slot-logos`, Array.from({length: 10}, () => '')],
     };
 
     // prepare properties
@@ -73,16 +89,6 @@ const LowerThird = {
 
     return {...storables, ...props};
   },
-  computed: {
-    fonts() {
-      const fonts = {};
-      if (this.mainSettings) {
-        Object.assign(fonts, {'custom': this.mainSettings.customFonts.value.map(val => val.name)});
-      }
-      Object.assign(fonts, DEFAULT_FONTS);
-      return fonts;
-    }
-  },
   mounted() {
     const initInterval = setInterval(function() {
       if (!this.logoSrc.value) {
@@ -91,6 +97,15 @@ const LowerThird = {
         clearInterval(initInterval);
       }
     }.bind(this), 10);
+
+    //expand timeSettings if customTimeSettings = true;
+    const timeSettings = this.$el.querySelector(`#time-settings-${this.index}`);
+    if (!this.customTimeSettings.value) {
+      timeSettings.style.maxHeight = '0px';
+    } else {
+      timeSettings.style.maxHeight = timeSettings.scrollHeight + 'px';
+    }
+
     jscolor.install();
   },
   methods: {
@@ -118,6 +133,16 @@ const LowerThird = {
         styleSettings.style.maxHeight = styleSettings.scrollHeight + 'px';
       }
     },
+    toggleTimeSettings() {
+      this.customTimeSettings.value = !this.customTimeSettings.value;
+      const timeSettings = this.$el.querySelector(`#time-settings-${this.index}`);
+
+      if (!this.customTimeSettings.value) {
+        timeSettings.style.maxHeight = '0px';
+      } else {
+        timeSettings.style.maxHeight = timeSettings.scrollHeight + 'px';
+      }
+    },
     stepUp(value, max) {
       value.value = Math.min(value.value + 1, max);
     },
@@ -127,5 +152,62 @@ const LowerThird = {
     openLogo() {
       this.$emit('openLogo', {index: this.index, logoSrc: this.logoSrc});
     },
+    clearInputs() {
+      this.name.value = '';
+      this.info.value = '';
+      this.isDefaultLogo.value = true;
+      this.$emit('resetLogo');
+    },
+    slotHandlerDown(index) {
+      clearTimeout(this.slotTimeout);
+      console.log('down', index + 1);
+      this.slotTimeout = setTimeout(() => {
+        if (this.slotIsStored(index)){
+          this.slotIsDelete[index] = true;
+          console.log(this.slotIsDelete[index], index + 1);
+        }
+      }, 600);
+    },
+    slotHandlerUp(index) {
+      clearTimeout(this.slotTimeout);
+      // store Slot
+      if (!this.slotIsDelete[index] && !this.slotIsStored(index)) {
+        this.slotNames.value[index] = this.name.value;
+        this.slotInfos.value[index] = this.info.value;
+        this.slotLogos.value[index] = this.isDefaultLogo.value ? '' : this.logoSrc.value;
+      // load Slot
+      } else if (!this.slotIsDelete[index]) {
+        this.name.value = this.slotNames.value[index];
+        this.info.name = this.slotInfos.value[index];
+        this.isDefaultLogo.value = this.slotLogos.value[index] == '';
+        if (!this.isDefaultLogo.value) {
+          this.logoSrc.value = this.slotLogos.value[index];
+        } else {
+          this.$emit('resetLogo');
+        }
+
+      // delete Slot
+      } else {
+        this.slotNames.value[index] = '';
+        this.slotInfos.value[index] = '';
+        this.slotLogos.value[index] = '';
+        this.slotIsDelete[index] = false;
+      }
+      this.slotNames.update();
+      this.slotInfos.update();
+      this.slotLogos.update();
+    },
+    slotIsActive(index) {
+      const logoVal = this.isDefaultLogo ? '' : this.logoSrc.value;
+  
+      if (this.name.value == '' || this.info.value == '') return false;
+  
+      return this.slotNames.value[index] === this.name.value &&
+             this.slotInfos.value[index] === this.info.value &&
+             this.slotLogos.value[index] === logoVal;
+    },
+    slotIsStored(index) {
+      return this.slotNames.value[index] !== '' || this.slotInfos.value[index] !== '';
+    }
   }
 }

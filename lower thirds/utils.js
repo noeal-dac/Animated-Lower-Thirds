@@ -15,6 +15,10 @@ class Storable {
         this.value = item;
       }
     }
+
+    update() {
+      this.value = this._value;
+    }
   
     get value() {
       return this._value;

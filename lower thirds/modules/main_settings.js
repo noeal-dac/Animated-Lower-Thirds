@@ -6,6 +6,7 @@ const MainSettings = {
       showMoreCollapsed: ref(true),
 
       activeTab: ref('appearance'),
+      refreshHeightInternal: ref(0),
 
       customFontFamily: ref(''),
       customFontUrl: ref(''),
@@ -46,6 +47,21 @@ const MainSettings = {
       new Storable(`alt-${index}-logo-src`, logoSrc);
     });
   },
+  computed: {
+    maxHeight() {
+      if (this.accordionCollapsed) {
+        return '0';
+      } else if (this.showMoreCollapsed) {
+        return '46px';
+      } else {
+        const moreConf = this.$el.querySelector('#more-configuration');
+        console.log(moreConf.scrollHeight);
+        this.refreshHeightInternal;
+
+        return (moreConf.scrollHeight + 51) + 'px';
+      }
+    }
+  },
   methods: {
     changeTheme(event) {
       const newTheme = event.target.value;
@@ -67,49 +83,40 @@ const MainSettings = {
         }
 
         this.customFonts.value = [...this.customFonts.value, newFont];
-        this.sendFont(newFont);
+        // this.sendFont(newFont);
 
         this.customFontFamily = '';
         this.customFontUrl = '';
+
+        this.$emit('fontsChanged');
+        this.refreshHeight();
       }
     },
 
     delFont(font) {
       this.customFonts.value = this.customFonts.value.filter(item => item.name != font.name);
+      this.$emit('fontsChanged');
+      this.refreshHeight();
     },
     
-    sendFont(font) {
-      bcf.postMessage({new_font: font.url})
+    // sendFont(font) {
+    //   bcf.postMessage({new_font: font.url})
+    // },
+    
+    refreshHeight() {
+      setTimeout(() => {
+        this.refreshHeightInternal++;
+      }, 1);
     },
-
+    changeTab(name) {
+      this.activeTab = name;
+      this.refreshHeight();
+    },
     toggleAccordion() {
       this.accordionCollapsed = !this.accordionCollapsed;
-      const globalConf = this.$el.querySelector('#global-configuration');
-
-      if (this.accordionCollapsed) {
-        globalConf.style.maxHeight = '0px';
-      } else {
-        globalConf.style.maxHeight = globalConf.scrollHeight + 'px';
-      }
     },
     toggleMore() {
       this.showMoreCollapsed = !this.showMoreCollapsed;
-      const showMoreCollapsed = this.showMoreCollapsed;
-      const moreConf = this.$el.querySelector('#more-configuration');
-      const globalConf = this.$el.querySelector('#global-configuration');
-
-
-      setTimeout(() => {
-        if (showMoreCollapsed) {
-          globalConf.style.maxHeight = '46px';
-          setTimeout(() => {
-            moreConf.style.display = 'none';
-          }, 200);
-        } else {
-          moreConf.style.display = 'block';
-          globalConf.style.maxHeight = (moreConf.scrollHeight + 50) + 'px';
-        }
-      }, 1);
     },
     openLogo(index) {
       this.$emit('openLogo', {index, logoSrc: undefined, defaultArray: this.defaultLogos, isDefault: true});

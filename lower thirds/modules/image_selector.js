@@ -45,7 +45,7 @@ const ImageSelector = {
         //Change the lt logo if it is default
         if (this.isDefault) {
           this.defaultArray.value[this.index] = src;
-          this.defaultArray.value = this.defaultArray.value;
+          this.defaultArray.update();
 
           this.$emit('defaultChanged');
 				} else {
