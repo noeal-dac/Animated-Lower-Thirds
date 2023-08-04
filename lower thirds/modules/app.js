@@ -15,7 +15,7 @@ const App = {
         Object.assign(props['fonts'], DEFAULT_FONTS);
 
         const storables = {
-            lts: ['alt-sort-order', [0,1,2,3]]
+            lts: ['alt-sort-order', [0]]
         };
     
         // prepare properties
@@ -233,6 +233,19 @@ const App = {
                 }
             }
             if (slotsChanged) this.sendSlotUpdate();
+        },
+        removeLT() {
+            this.lts.value.pop();
+            this.lts.update();
+        },
+        addLT() {
+            // find next missing id
+            let nextMissing = 0;
+            while (this.lts.value.indexOf(nextMissing) >= 0) {
+                nextMissing++;
+            }
+            
+            this.lts.value = [...this.lts.value, nextMissing];
         }
     }
 };

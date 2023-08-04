@@ -1462,3 +1462,13 @@ input.locked + .icon-btn {
   background: var(--obs-tab-active-background);
   border-color: var(--obs-tab-active-border);
 }
+
+#lt-btns {
+  display: flex;
+  justify-content: space-evenly;
+  color: var(--main-color);
+}
+#lt-btns div {
+ margin: 20px;
+ border: 1px solid var(--obs-tab-border);
+}

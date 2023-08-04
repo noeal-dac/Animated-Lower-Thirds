@@ -12,7 +12,7 @@
 		<script src="../common/js/vue.js"></script>
 		<script>
 			let hotKeys;
-			const DEFAULT_LOGOS = ['../logos/logo_1.png', '../logos/logo_2.png', '../logos/logo_3.png', '../logos/logo_4.png'];
+			const DEFAULT_LOGOS = Array.from({length: 10}, () => '../logos/logo.png');
 			const THEME_OPTIONS = ['acri', 'dark', 'rachni'];
 			const DEFAULT_FONTS = {
 				'sans-serif': ['Open Sans', 'Poppins', 'Raleway'],
@@ -89,6 +89,11 @@
 						   @appearance-changed="checkAppearance"
 						   @open-logo="openLogo"
 						   @fonts-changed="updateFonts"></main-settings>
+
+			<div id="lt-btns">
+				<div class="btn icon icon-minus icon-btn" @click="removeLT" v-if="lts.value.length > 1"></div>
+				<div class="btn icon icon-plus icon-btn" @click="addLT" v-if="lts.value.length < 10"></div>
+			</div>
 			
 			<div id="sortable">
 				<lower-third v-for="index in lts.value"
