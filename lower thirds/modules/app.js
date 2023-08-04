@@ -195,6 +195,44 @@ const App = {
         sendSlotUpdate() {
             console.log('send slot update');
             this.bc.postMessage({ updateSlot: true });
+        },
+        handleHotKeys(keys) {
+            
+            // handle switches
+            let checkSwitches = false;
+            for (const [key, val] of Object.entries(keys.switches)) {
+                const main = this.$refs.mainSettings;
+
+                if (key == 'master' && val == 1) {
+                    main.active.value = !main.active.value;
+                    checkSwitches = true;
+                } else if (key != 'master' && val == 1) {
+                    const ltId = parseInt(key.substring(2));
+
+                    if (this.$refs.lt.length > ltId) {
+                        const lt = this.$refs.lt[ltId];
+                        lt.switchOn = !lt.switchOn;
+                        checkSwitches = true;
+                    }
+                }
+            }
+            if (checkSwitches) this.checkSwitches();
+
+            // handle slots
+            let slotsChanged = false;
+            for (const [ltKey, slots] of Object.entries(keys.loadSlots)) {
+                const ltId = parseInt(ltKey.substring(2));
+                
+                for (const [key, val] of Object.entries(slots)) {
+                    const slotId = parseInt(key.substring(4));
+                    
+                    if (val == 1) {
+                        this.$refs.lt[ltId].loadSlot(slotId);
+                        slotsChanged = true;
+                    }
+                }
+            }
+            if (slotsChanged) this.sendSlotUpdate();
         }
     }
 };

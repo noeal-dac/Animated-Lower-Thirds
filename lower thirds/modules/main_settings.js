@@ -82,7 +82,7 @@ const MainSettings = {
         }
 
         this.customFonts.value = [...this.customFonts.value, newFont];
-        // this.sendFont(newFont);
+        this.sendFont(newFont);
 
         this.customFontFamily = '';
         this.customFontUrl = '';
@@ -98,9 +98,9 @@ const MainSettings = {
       this.refreshHeight();
     },
     
-    // sendFont(font) {
-    //   bcf.postMessage({new_font: font.url})
-    // },
+    sendFont(font) {
+      bcf.postMessage({fontUrl: font.url})
+    },
     
     refreshHeight() {
       setTimeout(() => {

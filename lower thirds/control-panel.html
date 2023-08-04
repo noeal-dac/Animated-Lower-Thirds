@@ -11,6 +11,7 @@
 		<link rel="stylesheet" href="../common/css/cp-icons.css">
 		<script src="../common/js/vue.js"></script>
 		<script>
+			let hotKeys;
 			const DEFAULT_LOGOS = ['../logos/logo_1.png', '../logos/logo_2.png', '../logos/logo_3.png', '../logos/logo_4.png'];
 			const THEME_OPTIONS = ['acri', 'dark', 'rachni'];
 			const DEFAULT_FONTS = {
@@ -538,138 +539,24 @@
 		<script>
 			const app = createApp(App).mount('#alt-panel');
 
-			// var hotkeyMasterSwitchOld = hotkeyMasterSwitch;
-			// var hotkeySwitch1Old = hotkeySwitch1;
-
-			// var hotkeyAlt1Slot1Old = hotkeyAlt1Slot1;
-			// var hotkeyAlt1Slot2Old = hotkeyAlt1Slot2;
-			// var hotkeyAlt1Slot3Old = hotkeyAlt1Slot3;
-			// var hotkeyAlt1Slot4Old = hotkeyAlt1Slot4;
-			// var hotkeyAlt1Slot5Old = hotkeyAlt1Slot5;
-			// var hotkeyAlt1Slot6Old = hotkeyAlt1Slot6;
-			// var hotkeyAlt1Slot7Old = hotkeyAlt1Slot7;
-			// var hotkeyAlt1Slot8Old = hotkeyAlt1Slot8;
-			// var hotkeyAlt1Slot9Old = hotkeyAlt1Slot9;
-			// var hotkeyAlt1Slot10Old = hotkeyAlt1Slot10;
-
-			// ////////////////////
-
-			// 	//Check switches and blue and red lights in the background to see active and inactive times
-			// 	if (masterSwitchIsOn) {
-			// 		//When the Main Switch is ON the lower thirds can be Active, Inactive or OFF.
-			// 		//Switch 1
-			// 		if (document.getElementById("lower-thirds-switch1").checked){
-			// 			if (alt_1_active_time_monitor >= 0 && alt_1_inactive_time_monitor == 0 && alt_1_name && alt_1_info){
-			// 				document.getElementById("alt-1-config-content").classList.remove("inactive");
-			// 				document.getElementById("alt-1-config-content").classList.add("active");
-			// 				alt_1_jumpnext = true;
-			// 			} else {
-			// 				document.getElementById("alt-1-config-content").classList.remove("active");
-			// 				document.getElementById("alt-1-config-content").classList.add("inactive");
-			// 				//check if autoload is active and jump to next slot
-			// 				if (alt_1_autoload && alt_1_jumpnext) {
-			// 					alt_1_jumpnext = false;
-			// 					jumpNextSlot("#alt-1-memory-slots", "#alt-1-name", "#alt-1-info", "#alt-1-logo-preview", alt_1_waiting_time);
-			// 				}
-			// 			}
-			// 		} else {
-			// 			document.getElementById("alt-1-config-content").className = '';
-			// 			if (alt_1_turnoff && alt_1_autoload && alt_1_jumpnext) {
-			// 				alt_1_jumpnext = false;
-			// 				jumpNextSlot("#alt-1-memory-slots", "#alt-1-name", "#alt-1-info", "#alt-1-logo-preview", alt_1_waiting_time);
-			// 			}
-			// 		}
-
-			// 	} else {
-			// 		//When the Main Switch is OFF all the Lower Thirds area Inactives or OFF.
-			// 		//Switch 1
-			// 		if (document.getElementById("lower-thirds-switch1").checked) {
-			// 			document.getElementById("alt-1-config-content").classList.add("inactive");
-			// 			document.getElementById("alt-1-config-content").classList.remove("active");
-			// 		} else {
-			// 			document.getElementById("alt-1-config-content").className = '';
-			// 		}
-			// 	}
-			// }
-
-			// ////////////////////
-
 			// //Reload the hotjeys.js file updated by the LUA script
-			// function updateHotkeys() {
-			//     src = '../common/js/hotkeys.js';
-			//     $('script[src="' + src + '"]').remove();
-			//     var head= document.getElementsByTagName('head')[0];
-		    // 	var script= document.createElement('script');
-		    // 	script.src= src;
-		    // 	head.appendChild(script);
-			// }
+			setInterval(() => {
+			    const lastChange = JSON.parse(JSON.stringify(hotKeys));
 
-			// //Toggle the switches if a hotkey is pressed
-			// function checkHotkeys (){
-			// 	if (hotkeyMasterSwitch != hotkeyMasterSwitchOld){
-			// 		if (mainSettings.active) {
-			// 			$('#lower-thirds-masterswitch').prop('checked', false).change();
-		    //         }
-		    //         else {
-			// 			$('#lower-thirds-masterswitch').prop('checked', true).change();
-		    //         }
-			// 		hotkeyMasterSwitchOld = hotkeyMasterSwitch;
-			// 	}
-
-			// 	if (hotkeySwitch1 != hotkeySwitch1Old){
-			// 		if (document.getElementById("lower-thirds-switch1").checked) {
-			// 			$('#lower-thirds-switch1').prop('checked', false).change();
-			// 		}
-			// 		else {
-			// 			$('#lower-thirds-switch1').prop('checked', true).change();
-			// 		}
-			// 		hotkeySwitch1Old = hotkeySwitch1;
-			// 	}
-
-			// 	//Memory Slots triggers LT1
-			// 	if (hotkeyAlt1Slot1 != hotkeyAlt1Slot1Old) {
-			// 		if ($("#alt-1-name-1").text() && $("#alt-1-info-1").text()){
-			// 			loadSlot("#alt-1-name", "#alt-1-info", "#alt-1-logo-preview", $("#alt-1-name-1").text(), $("#alt-1-info-1").text(), $("#alt-1-logo-1").text(), 0);
-			// 		}
-			// 		hotkeyAlt1Slot1Old = hotkeyAlt1Slot1;
-			// 	}
-			// 	if (hotkeyAlt1Slot2 != hotkeyAlt1Slot2Old) {
-			// 		loadSlot("#alt-1-name", "#alt-1-info", "#alt-1-logo-preview", $("#alt-1-name-2").text(), $("#alt-1-info-2").text(), $("#alt-1-logo-2").text(), 0);
-			// 		hotkeyAlt1Slot2Old = hotkeyAlt1Slot2;
-			// 	}
-			// 	if (hotkeyAlt1Slot3 != hotkeyAlt1Slot3Old) {
-			// 		loadSlot("#alt-1-name", "#alt-1-info", "#alt-1-logo-preview", $("#alt-1-name-3").text(), $("#alt-1-info-3").text(), $("#alt-1-logo-3").text(), 0);
-			// 		hotkeyAlt1Slot3Old = hotkeyAlt1Slot3;
-			// 	}
-			// 	if (hotkeyAlt1Slot4 != hotkeyAlt1Slot4Old) {
-			// 		loadSlot("#alt-1-name", "#alt-1-info", "#alt-1-logo-preview", $("#alt-1-name-4").text(), $("#alt-1-info-4").text(), $("#alt-1-logo-4").text(), 0);
-			// 		hotkeyAlt1Slot4Old = hotkeyAlt1Slot4;
-			// 	}
-			// 	if (hotkeyAlt1Slot5 != hotkeyAlt1Slot5Old) {
-			// 		loadSlot("#alt-1-name", "#alt-1-info", "#alt-1-logo-preview", $("#alt-1-name-5").text(), $("#alt-1-info-5").text(), $("#alt-1-logo-5").text(), 0);
-			// 		hotkeyAlt1Slot5Old = hotkeyAlt1Slot5;
-			// 	}
-			// 	if (hotkeyAlt1Slot6 != hotkeyAlt1Slot6Old) {
-			// 		loadSlot("#alt-1-name", "#alt-1-info", "#alt-1-logo-preview", $("#alt-1-name-6").text(), $("#alt-1-info-6").text(), $("#alt-1-logo-6").text(), 0);
-			// 		hotkeyAlt1Slot6Old = hotkeyAlt1Slot6;
-			// 	}
-			// 	if (hotkeyAlt1Slot7 != hotkeyAlt1Slot7Old) {
-			// 		loadSlot("#alt-1-name", "#alt-1-info", "#alt-1-logo-preview", $("#alt-1-name-7").text(), $("#alt-1-info-7").text(), $("#alt-1-logo-7").text(), 0);
-			// 		hotkeyAlt1Slot7Old = hotkeyAlt1Slot7;
-			// 	}
-			// 	if (hotkeyAlt1Slot8 != hotkeyAlt1Slot8Old) {
-			// 		loadSlot("#alt-1-name", "#alt-1-info", "#alt-1-logo-preview", $("#alt-1-name-8").text(), $("#alt-1-info-8").text(), $("#alt-1-logo-8").text(), 0);
-			// 		hotkeyAlt1Slot8Old = hotkeyAlt1Slot8;
-			// 	}
-			// 	if (hotkeyAlt1Slot9 != hotkeyAlt1Slot9Old) {
-			// 		loadSlot("#alt-1-name", "#alt-1-info", "#alt-1-logo-preview", $("#alt-1-name-9").text(), $("#alt-1-info-9").text(), $("#alt-1-logo-9").text(), 0);
-			// 		hotkeyAlt1Slot9Old = hotkeyAlt1Slot9;
-			// 	}
-			// 	if (hotkeyAlt1Slot10 != hotkeyAlt1Slot10Old) {
-			// 		loadSlot("#alt-1-name", "#alt-1-info", "#alt-1-logo-preview", $("#alt-1-name-10").text(), $("#alt-1-info-10").text(), $("#alt-1-logo-10").text(), 0);
-			// 		hotkeyAlt1Slot10Old = hotkeyAlt1Slot10;
-			// 	}
-			// }
+				setTimeout(() => {
+					src = '../common/js/hotkeys.js';
+					$('script[src="' + src + '"]').remove();
+					var head= document.getElementsByTagName('head')[0];
+					var script= document.createElement('script');
+					script.src= src;
+					head.appendChild(script);
+	
+					console.log(lastChange.change, hotKeys.change)
+					if (lastChange.change < hotKeys.change) {
+						app.handleHotKeys(hotKeys);
+					}
+				}, 100);
+			}, 100);
 
 			function openResetPopup() {
 				document.getElementById("reset-all").classList.remove("hide");
@@ -691,99 +578,6 @@
 			function okExportPopup() {
 				document.getElementById("export-data").classList.add("hide");
 			}
-
-			// //////////////////////////////////////
-
-			// function jumpNextSlot(memory_slot, name, info, logo, alt_waiting_time) {
-			// 	let find_next = false;
-			// 	let find_first = false;
-			// 	let first_stored_slot;
-			// 	let next_slot_num;
-			// 	let to_load = 0;
-
-			// 	const name_loaded = $(name + ":text").val();
-			// 	const info_loaded = $(info + ":text").val();
-			// 	const logo_loaded = $(logo).attr("src");
-
-			// 	//Find actual and search the next slot to load
-			// 	$("ul" + memory_slot + " li").each(function(){
-			// 		const name_id = $(this).children('.stored-name').attr('id');
-			// 		const info_id = $(this).children('.stored-info').attr('id');
-			// 		const logo_id = $(this).children('.stored-logo').attr('id');
-			// 		const name_value = $(this).children('.stored-name').text();
-			// 		const info_value = $(this).children('.stored-info').text();
-			// 		const logo_value = $(this).children('.stored-logo').text();
-			// 		const slot_number = Number($(this).children('.slot-number').text());
-
-			// 		const loadedSlot = (name_loaded == name_value && info_loaded == info_value && (logo_loaded == logo_value || $(logo).hasClass(logo_value))) ? true : false;
-			// 		const emptySlot = ($('#' + name_id).is(':empty') && $('#' + info_id).is(':empty') && $('#' + logo_id).is(':empty')) ? true : false;
-
-			// 		if(!find_first && !emptySlot) {
-			// 			find_first = true;
-			// 			first_stored_slot = slot_number;
-			// 		}
-			// 		if (loadedSlot) {
-			// 			find_next = true;
-			// 			const loaded_slot_num = slot_number;
-			// 			next_slot_num = loaded_slot_num + 1;
-			// 		}
-
-			// 		if (find_next && slot_number == next_slot_num && !emptySlot) {
-			// 			find_next = false;
-			// 			to_load = slot_number;
-			// 		}
-			// 		if (find_next && (next_slot_num > 10 || emptySlot)) {
-			// 			find_next = false;
-			// 			to_load = first_stored_slot;
-			// 		}
-			// 	});
-
-			// 	// Si hay un slot para cargar
-			// 	if (to_load && to_load > 0) {
-			// 		$("ul" + memory_slot + " li:nth-child("+to_load+")").each(function () {
-			// 			const slot_id = ($(this).attr('id'));
-			// 			const name_id = $(this).children('.stored-name').attr('id');
-			// 			const info_id = $(this).children('.stored-info').attr('id');
-			// 			const logo_id = $(this).children('.stored-logo').attr('id');
-
-			// 			const name_to_load = $(this).children('#' + name_id).text();
-			// 			const info_to_load = $(this).children('#' + info_id).text();
-			// 			const logo_to_load = $(this).children('#' + logo_id).text();
-
-			// 			loadSlot(name, info, logo, name_to_load, info_to_load, logo_to_load, alt_waiting_time, false);
-			// 			$('#' + slot_id).addClass('next-to-load');
-			// 		});
-			// 	}
-			// }
-
-			// //////////////////////////////////////
-
-			// function function_send() {
-
-			// 	//Switch Autoload ALT ON/OFF
-			// 	alt_1_autoload = (document.getElementById("alt-1-autoload").checked) ? true : false;
-
-			// 	//////////////////////////////
-
-			// 	//Switch Autotrigger ALT ON/OFF
-			// 	alt_1_autotrigger = document.getElementById("alt-1-autotrigger").checked;
-
-			// 	//////////////////////////////
-
-			// 	//Font of the Lower Third
-			// 	var font_id_1 = document.getElementById("alt-1-font");
-			// 	var alt_1_font = font_id_1.options[font_id_1.selectedIndex].value;
-
-			// 	bc.postMessage({global_animation_time, global_active_time, global_inactive_time, alt_1_switch, alt_1_style, alt_1_name, alt_1_info, alt_1_name_size, alt_1_info_size , alt_1_name_transform, alt_1_info_transform, alt_1_name_weight, alt_1_name_style, alt_1_info_weight, alt_1_info_style, alt_1_name_color, alt_1_info_color, alt_1_style_color_1, alt_1_style_color_2, alt_1_logo_switch, alt_1_background_switch, alt_1_shadows, alt_1_align, alt_1_size, alt_1_margin_h, alt_1_margin_v, alt_1_line_spacing, alt_1_font, alt_2_switch, alt_2_style, alt_2_name, alt_2_info, alt_2_name_size, alt_2_info_size , alt_2_name_transform, alt_2_info_transform, alt_2_name_weight, alt_2_name_style, alt_2_info_weight, alt_2_info_style, alt_2_name_color, alt_2_info_color, alt_2_style_color_1, alt_2_style_color_2, alt_2_logo_switch, alt_2_background_switch, alt_2_shadows, alt_2_align, alt_2_size, alt_2_margin_h, alt_2_margin_v, alt_2_line_spacing, alt_2_font, alt_3_switch, alt_3_style, alt_3_name, alt_3_info, alt_3_name_size, alt_3_info_size , alt_3_name_transform, alt_3_info_transform, alt_3_name_weight, alt_3_name_style, alt_3_info_weight, alt_3_info_style, alt_3_name_color, alt_3_info_color, alt_3_style_color_1, alt_3_style_color_2, alt_3_logo_switch, alt_3_background_switch, alt_3_shadows, alt_3_align, alt_3_size, alt_3_margin_h, alt_3_margin_v, alt_3_line_spacing, alt_3_font, alt_4_switch, alt_4_style, alt_4_name, alt_4_info, alt_4_name_size, alt_4_info_size , alt_4_name_transform, alt_4_info_transform, alt_4_name_weight, alt_4_name_style, alt_4_info_weight, alt_4_info_style, alt_4_name_color, alt_4_info_color, alt_4_style_color_1, alt_4_style_color_2, alt_4_logo_switch, alt_4_background_switch, alt_4_shadows, alt_4_align, alt_4_size, alt_4_margin_h, alt_4_margin_v, alt_4_line_spacing, alt_4_font, alt_1_animation_time, alt_1_active_time, alt_1_inactive_time, alt_2_animation_time, alt_2_active_time, alt_2_inactive_time, alt_3_animation_time, alt_3_active_time, alt_3_inactive_time, alt_4_animation_time, alt_4_active_time, alt_4_inactive_time, alt_1_logo_image, alt_2_logo_image, alt_3_logo_image, alt_4_logo_image, global_oneshot, alt_1_oneshot, alt_2_oneshot, alt_3_oneshot, alt_4_oneshot, alt_1_logo_size, alt_1_shadow_amount, alt_1_corners, alt_1_border_switch, alt_1_border_thickness_amount, alt_1_style_color_3, alt_1_style_color_4, alt_2_logo_size, alt_2_shadow_amount, alt_2_corners, alt_2_border_switch, alt_2_border_thickness_amount, alt_2_style_color_3, alt_2_style_color_4, alt_3_logo_size, alt_3_shadow_amount, alt_3_corners, alt_3_border_switch, alt_3_border_thickness_amount, alt_3_style_color_3, alt_3_style_color_4, alt_4_logo_size, alt_4_shadow_amount, alt_4_corners, alt_4_border_switch, alt_4_border_thickness_amount, alt_4_style_color_3, alt_4_style_color_4, alt_1_preview, alt_2_preview, alt_3_preview, alt_4_preview});
-			// }
-
-			// //Send New Fonts to source
-			// function function_send_font() {
-			// 	$.each(fontlist_urls, function(i) {
-			// 		new_font_to_send = fontlist_urls[i];
-			// 		bcf.postMessage({new_font_to_send});
-			// 	});					
-			// }
 
 			//Read txt file and call writeLocalStorage function
 			document.getElementById('importFile').onchange = function(){
@@ -833,33 +627,6 @@
 				copyText.select();
 				document.execCommand("copy");
         	}
-
-
-			function refreshData() {
-			// 	console.log('refreshData');
-			// 	checkLogos();
-			// 	checkSlots("#alt-1-memory-slots", "#alt-1-name", "#alt-1-info", "#alt-1-logo-preview");
-			// 	checkSlots("#alt-2-memory-slots", "#alt-2-name", "#alt-2-info", "#alt-2-logo-preview");
-			// 	checkSlots("#alt-3-memory-slots", "#alt-3-name", "#alt-3-info", "#alt-3-logo-preview");
-			// 	checkSlots("#alt-4-memory-slots", "#alt-4-name", "#alt-4-info", "#alt-4-logo-preview");
-			// 	getAppearance();
-			// 	checkSwitches();
-			// 	function_send();
-			}
-
-			// function checkUpdates() {
-			// 	checkHotkeys();
-			// 	updateHotkeys();
-			// }
-
-			// setTimeout(() => {
-			// 	initTooltips();
-			// }, 100);
-			// loadDefaultValues();
-			// updateCustomFontList();
-			// refreshData();
-			// checkSwitches();
-			// setInterval(() => checkUpdates(), 200);
 
 		</script>
 

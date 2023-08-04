@@ -74,25 +74,30 @@
             },
             methods: {
                 update(msg) {
+                    // update slot msg
                     if (msg.data.updateSlot) {
                         Object.values(this.$refs.lt).forEach(lt => lt.updateSlot());
-                        return;
+
+                    // update fonts
+                    } else if (msg.data.fontUrl) {
+                        $('head').append('<style>' + new_font + '</style>');
+
+                    // update everything
+                    } else if (msg.data.previewStates) {
+
+                        const {switchStates, previewStates, animationTimes, activeTimes, inactiveTimes} = msg.data;
+                        // update amount of lts
+                        this.lts.update();
+
+                        Object.values(this.$refs.lt).forEach((lt, index) => {
+                            const switchState = this.isPreview ? previewStates[index] : switchStates[index];
+                            const animationTime = animationTimes[index];
+                            const activeTime = this.isPreview ? Infinity : activeTimes[index];
+                            
+                            // update appearance
+                            lt.update(switchState, animationTime, activeTime, inactiveTimes[index], this.isPreview);
+                        });
                     }
-
-                    if (!msg.data.previewStates) return;
-
-                    const {switchStates, previewStates, animationTimes, activeTimes, inactiveTimes} = msg.data;
-                    // update amount of lts
-                    this.lts.update();
-
-                    Object.values(this.$refs.lt).forEach((lt, index) => {
-                        const switchState = this.isPreview ? previewStates[index] : switchStates[index];
-                        const animationTime = animationTimes[index];
-                        const activeTime = this.isPreview ? Infinity : activeTimes[index];
-                        
-                        // update appearance
-                        lt.update(switchState, animationTime, activeTime, inactiveTimes[index], this.isPreview);
-                    });
                 },
                 timer() {
                     Object.values(this.$refs.lt).forEach(lt => {
@@ -142,15 +147,6 @@
                 }
             }
         }).mount('#app');
-
-
-		// bcf.onmessage = function (ev) {
-		// 	received_data = ev.data;
-		// 	new_font = received_data.new_font_to_send;
-
-		// 	//console.log(new_font);
-		// 	$('head').append('<style>' + new_font + '</style>');
-		// }
 
 	</script>
 
