@@ -113,8 +113,16 @@
                                     lt.activeTimer = 0;
                                     lt.inactiveTimer = 0;
                                     document.getAnimations().forEach(anim => {
-                                        anim.cancel();
-                                        anim.play();
+                                        let parent = anim.effect.target;
+
+                                        while (!parent.id || !parent.id.startsWith('lower-third-')) {
+                                            parent = parent.parentElement;
+                                        }
+                                        
+                                        if (lt.$el.id == parent.id) {
+                                            anim.cancel();
+                                            anim.play();
+                                        }
                                     });
                                 }
                             } else {
@@ -124,8 +132,16 @@
                                     lt.active = true;
                                     lt.inactiveTimer = 0;
                                     document.getAnimations().forEach(anim => {
-                                        anim.cancel();
-                                        anim.play();
+                                        let parent = anim.effect.target;
+
+                                        while (!parent.id || !parent.id.startsWith('lower-third-')) {
+                                            parent = parent.parentElement;
+                                        }
+                                        
+                                        if (lt.$el.id == parent.id) {
+                                            anim.cancel();
+                                            anim.play();
+                                        }
                                     });
                                 }
                             }

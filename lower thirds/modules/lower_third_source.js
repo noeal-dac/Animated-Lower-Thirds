@@ -134,11 +134,18 @@ const LowerThirdSource = {
                 this.active = switchState;
 
                 setTimeout(() => {
-                    
-                document.getAnimations().forEach(anim => {
-                    anim.cancel();
-                    anim.play();
-                });
+                    document.getAnimations().forEach(anim => {
+                        let parent = anim.effect.target;
+
+                        while (!parent.id || !parent.id.startsWith('lower-third-')) {
+                            parent = parent.parentElement;
+                        }
+                        
+                        if (this.$el.id == parent.id) {
+                            anim.cancel();
+                            anim.play();
+                        }
+                    });
                 }, 1);
             }
         },
@@ -150,7 +157,6 @@ const LowerThirdSource = {
                         this.info.update();
                         this.logoSrc.update();
                         clearInterval(updateTimer);
-                        console.log(this.name.value, this.info.value, this.logoSrc.value);
                     }
                 }, 1000);
             }

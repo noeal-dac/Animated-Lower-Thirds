@@ -550,8 +550,7 @@
 					var script= document.createElement('script');
 					script.src= src;
 					head.appendChild(script);
-	
-					console.log(lastChange.change, hotKeys.change)
+
 					if (lastChange.change < hotKeys.change) {
 						app.handleHotKeys(hotKeys);
 					}
