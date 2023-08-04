@@ -15,23 +15,23 @@ const MainSettings = {
     }
 
     let storables = {
-      active: ['alt-master-switch', false],
-      activeTheme: ['alt-theme', 'dark'],
-      customFonts: ['alt-custom-fonts', []],
-      defaultLogos: ['alt-default-logos', DEFAULT_LOGOS],
+      active: ['alt2-master-switch', false],
+      activeTheme: ['alt2-theme', 'dark'],
+      customFonts: ['alt2-custom-fonts', []],
+      defaultLogos: ['alt2-default-logos', DEFAULT_LOGOS],
       
-      animationTime: ['alt-animation-time', 4],
+      animationTime: ['alt2-animation-time', 4],
       
-      activeTime: ['alt-active-time', 25],
-      lockActive: ['alt-lock-active', false],
+      activeTime: ['alt2-active-time', 25],
+      lockActive: ['alt2-lock-active', false],
 
-      inactiveTime: ['alt-inactive-time', 420],
-      oneShot: ['alt-one-shot', false],
+      inactiveTime: ['alt2-inactive-time', 420],
+      oneShot: ['alt2-one-shot', false],
 
-      enabledPreview: ['alt-enabled-preview', false],
-      hiddenSlotNumbers: ['alt-hidden-slot-numbers', false],
-      switchesLeft: ['alt-switches-left', false],
-      enabledTooltips: ['alt-enabled-tooltips', true],
+      enabledPreview: ['alt2-enabled-preview', false],
+      hiddenSlotNumbers: ['alt2-hidden-slot-numbers', false],
+      switchesLeft: ['alt2-switches-left', false],
+      enabledTooltips: ['alt2-enabled-tooltips', true],
     }
 
     Object.keys(storables).forEach(key => {
@@ -99,7 +99,7 @@ const MainSettings = {
     },
     
     sendFont(font) {
-      bcf.postMessage({fontUrl: font.url})
+      this.$emit('sendFont', {fontUrl: font.url});
     },
     
     refreshHeight() {

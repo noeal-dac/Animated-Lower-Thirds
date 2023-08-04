@@ -20,44 +20,44 @@ const LowerThirdSource = {
         };
 
         const readables = {
-            name: `alt-${args.index}-name`,
-            nameTransform: `alt-${args.index}-name-transform`,
-            nameBold: `alt-${args.index}-name-bold`,            // lighter | bold
-            nameItalic: `alt-${args.index}-name-italic`,        // normal | italic
-            nameColor: `alt-${args.index}-name-color`,
+            name: `alt2-${args.index}-name`,
+            nameTransform: `alt2-${args.index}-name-transform`,
+            nameBold: `alt2-${args.index}-name-bold`,            // lighter | bold
+            nameItalic: `alt2-${args.index}-name-italic`,        // normal | italic
+            nameColor: `alt2-${args.index}-name-color`,
             
-            info: `alt-${args.index}-info`,
-            infoTransform: `alt-${args.index}-info-transform`,
-            infoBold: `alt-${args.index}-info-bold`,
-            infoItalic: `alt-${args.index}-info-italic`,
-            infoColor: `alt-${args.index}-info-color`,
+            info: `alt2-${args.index}-info`,
+            infoTransform: `alt2-${args.index}-info-transform`,
+            infoBold: `alt2-${args.index}-info-bold`,
+            infoItalic: `alt2-${args.index}-info-italic`,
+            infoColor: `alt2-${args.index}-info-color`,
             
-            enabledLogo: `alt-${args.index}-logo`,
-            logoSrc: `alt-${args.index}-logo-src`,
-            logoSizeReadable: `alt-${args.index}-logo-size`,
+            enabledLogo: `alt2-${args.index}-logo`,
+            logoSrc: `alt2-${args.index}-logo-src`,
+            logoSizeReadable: `alt2-${args.index}-logo-size`,
 
-            style: `alt-${args.index}-style`,
-            align: `alt-${args.index}-align`,
-            size: `alt-${args.index}-size`,
-            marginH: `alt-${args.index}-margin-h`,
-            marginV: `alt-${args.index}-margin-v`,
-            inverseRatio: `alt-${args.index}-inverse-ratio`,
-            lineSpacingReadable: `alt-${args.index}-line-spacing`,
-            font: `alt-${args.index}-font`,
+            style: `alt2-${args.index}-style`,
+            align: `alt2-${args.index}-align`,
+            size: `alt2-${args.index}-size`,
+            marginH: `alt2-${args.index}-margin-h`,
+            marginV: `alt2-${args.index}-margin-v`,
+            inverseRatio: `alt2-${args.index}-inverse-ratio`,
+            lineSpacingReadable: `alt2-${args.index}-line-spacing`,
+            font: `alt2-${args.index}-font`,
             
-            shadows: `alt-${args.index}-shadows`,
-            shadowAmountReadable: `alt-${args.index}-shadow-amount`,
+            shadows: `alt2-${args.index}-shadows`,
+            shadowAmountReadable: `alt2-${args.index}-shadow-amount`,
             
-            background: `alt-${args.index}-background`,
-            backgroundColor1: `alt-${args.index}-background-color-1`,
-            backgroundColor2: `alt-${args.index}-background-color-2`,
+            background: `alt2-${args.index}-background`,
+            backgroundColor1: `alt2-${args.index}-background-color-1`,
+            backgroundColor2: `alt2-${args.index}-background-color-2`,
             
-            cornersReadable: `alt-${args.index}-corners`,
+            cornersReadable: `alt2-${args.index}-corners`,
             
-            borders: `alt-${args.index}-borders`,
-            borderThicknessReadable: `alt-${args.index}-border-thickness`,
-            bordersColor1: `alt-${args.index}-borders-color-1`,
-            bordersColor2: `alt-${args.index}-borders-color-2`,
+            borders: `alt2-${args.index}-borders`,
+            borderThicknessReadable: `alt2-${args.index}-border-thickness`,
+            bordersColor1: `alt2-${args.index}-borders-color-1`,
+            bordersColor2: `alt2-${args.index}-borders-color-2`,
         };
     
         // prepare properties

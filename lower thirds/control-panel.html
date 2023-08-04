@@ -88,7 +88,8 @@
 						   @switch-changed="checkSwitches"
 						   @appearance-changed="checkAppearance"
 						   @open-logo="openLogo"
-						   @fonts-changed="updateFonts"></main-settings>
+						   @fonts-changed="updateFonts"
+						   @send-font="sendFont"></main-settings>
 
 			<div id="lt-btns">
 				<div class="btn icon icon-minus icon-btn" @click="removeLT" v-if="lts.value.length > 1"></div>
@@ -587,9 +588,16 @@
 			document.getElementById('importFile').onchange = function(){
 				var file = this.files[0];
 				var reader = new FileReader();
-				reader.onload = function(progressEvent){
+				reader.onload = function(progressEvent) {
 					localStorage.clear();
-					
+
+					let newConfig = this.result;
+
+					// try migration
+					if (this.result.includes("alt-1-logo-default")) {
+						newConfig = JSON.stringify(migrate(JSON.parse(this.result)));
+					}
+
 					writeLocalStorage(this.result);
 				};
 				reader.readAsText(file);

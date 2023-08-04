@@ -52,7 +52,7 @@
                 };
 
                 const readables = {
-                    lts: 'alt-sort-order',
+                    lts: 'alt2-sort-order',
                 };
             
                 // prepare properties
@@ -80,7 +80,7 @@
 
                     // update fonts
                     } else if (msg.data.fontUrl) {
-                        $('head').append('<style>' + new_font + '</style>');
+                        $('head').append('<style>@import url(' + msg.data.fontUrl + ');</style>');
 
                     // update everything
                     } else if (msg.data.previewStates) {

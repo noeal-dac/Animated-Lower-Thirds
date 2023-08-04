@@ -1,8 +1,8 @@
 hotKeys = {
-  change: 2572.379,
+  change: 8509.514,
   switches: {
     master: 0,
-    lt1: 0,
+    lt1: 1,
     lt2: 0,
     lt3: 0,
     lt4: 0,

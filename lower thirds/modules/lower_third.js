@@ -29,60 +29,60 @@ const LowerThird = {
     };
 
     const storables = {
-      title: [`alt-${args.index}-title`, `Lower Third ${args.index + 1}`],
-      style: [`alt-${args.index}-style`, 1],
-      autoTrigger: [`alt-${args.index}-auto-trigger`, false],
-      autoLoad: [`alt-${args.index}-auto-load`, false],
+      title: [`alt2-${args.index}-title`, `Lower Third ${args.index + 1}`],
+      style: [`alt2-${args.index}-style`, 1],
+      autoTrigger: [`alt2-${args.index}-auto-trigger`, false],
+      autoLoad: [`alt2-${args.index}-auto-load`, false],
       
-      customTimeSettings: [`alt-${args.index}-custom-time-settings`, false],
-      animationTime: [`alt-${args.index}-animation-time`, ''],
-      activeTime: [`alt-${args.index}-active-time`, ''],
-      lockActive: [`alt-${args.index}-lock-active`, false],
-      inactiveTime: [`alt-${args.index}-inactive-time`, ''],
-      oneShot: [`alt-${args.index}-one-shot`, false],
+      customTimeSettings: [`alt2-${args.index}-custom-time-settings`, false],
+      animationTime: [`alt2-${args.index}-animation-time`, ''],
+      activeTime: [`alt2-${args.index}-active-time`, ''],
+      lockActive: [`alt2-${args.index}-lock-active`, false],
+      inactiveTime: [`alt2-${args.index}-inactive-time`, ''],
+      oneShot: [`alt2-${args.index}-one-shot`, false],
       
-      align: [`alt-${args.index}-align`, 'left'],
-      size: [`alt-${args.index}-size`, 24],
-      marginH: [`alt-${args.index}-margin-h`, 4],
-      marginV: [`alt-${args.index}-margin-v`, 4],
-      inverseRatio: [`alt-${args.index}-inverse-ratio`, 9],
-      lineSpacing: [`alt-${args.index}-line-spacing`, 0],
-      font: [`alt-${args.index}-font`, 'Open Sans, sans-serif'],
+      align: [`alt2-${args.index}-align`, 'left'],
+      size: [`alt2-${args.index}-size`, 24],
+      marginH: [`alt2-${args.index}-margin-h`, 4],
+      marginV: [`alt2-${args.index}-margin-v`, 4],
+      inverseRatio: [`alt2-${args.index}-inverse-ratio`, 9],
+      lineSpacing: [`alt2-${args.index}-line-spacing`, 0],
+      font: [`alt2-${args.index}-font`, 'Open Sans, sans-serif'],
       
-      enabledLogo: [`alt-${args.index}-logo`, true],
-      logoSize: [`alt-${args.index}-logo-size`, 0],
-      isDefaultLogo: [`alt-${args.index}-default-logo`, true],
-      logoSrc: [`alt-${args.index}-logo-src`, undefined],
+      enabledLogo: [`alt2-${args.index}-logo`, true],
+      logoSize: [`alt2-${args.index}-logo-size`, 0],
+      isDefaultLogo: [`alt2-${args.index}-default-logo`, true],
+      logoSrc: [`alt2-${args.index}-logo-src`, undefined],
       
-      shadows: [`alt-${args.index}-shadows`, false],
-      shadowAmount: [`alt-${args.index}-shadow-amount`, 5],
+      shadows: [`alt2-${args.index}-shadows`, false],
+      shadowAmount: [`alt2-${args.index}-shadow-amount`, 5],
 
-      background: [`alt-${args.index}-background`, true],
-      backgroundColor1: [`alt-${args.index}-background-color-1`, '#D54141'],
-      backgroundColor2: [`alt-${args.index}-background-color-2`, '#222222'],
+      background: [`alt2-${args.index}-background`, true],
+      backgroundColor1: [`alt2-${args.index}-background-color-1`, '#D54141'],
+      backgroundColor2: [`alt2-${args.index}-background-color-2`, '#222222'],
 
-      corners: [`alt-${args.index}-corners`, 0],
+      corners: [`alt2-${args.index}-corners`, 0],
 
-      borders: [`alt-${args.index}-borders`, false],
-      borderThickness: [`alt-${args.index}-border-thickness`, 4],
-      bordersColor1: [`alt-${args.index}-borders-color-1`, '#D54141'],
-      bordersColor2: [`alt-${args.index}-borders-color-2`, '#222222'],
+      borders: [`alt2-${args.index}-borders`, false],
+      borderThickness: [`alt2-${args.index}-border-thickness`, 4],
+      bordersColor1: [`alt2-${args.index}-borders-color-1`, '#D54141'],
+      bordersColor2: [`alt2-${args.index}-borders-color-2`, '#222222'],
 
-      name: [`alt-${args.index}-name`, ''],
-      nameTransform: [`alt-${args.index}-name-transform`, true],  // uppercase | normal
-      nameBold: [`alt-${args.index}-name-bold`, true],            // lighter | bold
-      nameItalic: [`alt-${args.index}-name-italic`, false],       // normal | italic
-      nameColor: [`alt-${args.index}-name-color`, '#F2F2F2'],
+      name: [`alt2-${args.index}-name`, ''],
+      nameTransform: [`alt2-${args.index}-name-transform`, true],  // uppercase | normal
+      nameBold: [`alt2-${args.index}-name-bold`, true],            // lighter | bold
+      nameItalic: [`alt2-${args.index}-name-italic`, false],       // normal | italic
+      nameColor: [`alt2-${args.index}-name-color`, '#F2F2F2'],
 
-      info: [`alt-${args.index}-info`, ''],
-      infoTransform: [`alt-${args.index}-info-transform`, true],
-      infoBold: [`alt-${args.index}-info-bold`, true],
-      infoItalic: [`alt-${args.index}-info-italic`, false],
-      infoColor: [`alt-${args.index}-info-color`, '#8A8A8A'],
+      info: [`alt2-${args.index}-info`, ''],
+      infoTransform: [`alt2-${args.index}-info-transform`, true],
+      infoBold: [`alt2-${args.index}-info-bold`, true],
+      infoItalic: [`alt2-${args.index}-info-italic`, false],
+      infoColor: [`alt2-${args.index}-info-color`, '#8A8A8A'],
 
-      slotNames: [`alt-${args.index}-slot-names`, Array.from({length: 10}, () => '')],
-      slotInfos: [`alt-${args.index}-slot-infos`, Array.from({length: 10}, () => '')],
-      slotLogos: [`alt-${args.index}-slot-logos`, Array.from({length: 10}, () => '')],
+      slotNames: [`alt2-${args.index}-slot-names`, Array.from({length: 10}, () => '')],
+      slotInfos: [`alt2-${args.index}-slot-infos`, Array.from({length: 10}, () => '')],
+      slotLogos: [`alt2-${args.index}-slot-logos`, Array.from({length: 10}, () => '')],
     };
 
     // prepare properties

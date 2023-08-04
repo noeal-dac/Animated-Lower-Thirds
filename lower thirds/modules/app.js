@@ -15,7 +15,7 @@ const App = {
         Object.assign(props['fonts'], DEFAULT_FONTS);
 
         const storables = {
-            lts: ['alt-sort-order', [0]]
+            lts: ['alt2-sort-order', [0]]
         };
     
         // prepare properties
@@ -195,6 +195,9 @@ const App = {
         sendSlotUpdate() {
             console.log('send slot update');
             this.bc.postMessage({ updateSlot: true });
+        },
+        sendFont(payload) {
+            this.bc.postMessage(payload);
         },
         handleHotKeys(keys) {
             
