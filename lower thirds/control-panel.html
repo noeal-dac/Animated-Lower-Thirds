@@ -67,7 +67,7 @@
 				previewSize: 60
 			};
 			
-			const { createApp, ref, reactive, computed } = Vue;
+			const { createApp, ref, reactive, computed, watch } = Vue;
 		</script>
 		<script src="utils.js"></script>
 		<script src="./modules/main_settings.js"></script>
@@ -99,7 +99,9 @@
 							 ref="lt"
 							 @switch-changed="checkSwitches"
 							 @open-logo="openLogo"
-							 @reset-logo="checkLogos"></lower-third>
+							 @reset-logo="checkLogos"
+							 @style-changed="send"
+							 @slot-changed="sendSlotUpdate"></lower-third>
 			</div>
 
 			<image-selector ref="imageSelector" @default-changed="checkLogos" @logo-changed="updateIsDefault"></image-selector>
@@ -152,7 +154,7 @@
 			<div id="alt-main-config-content">
 				<div :class="{active: active.value}">
 					<label class="switch" :class="{'switch-left': switchesLeft.value}">
-						<input id="alt-master-switch" type="checkbox" @change="$emit('appearanceChanged')" v-model="active.value"> <!--"checked" to active switch-->
+						<input id="alt-master-switch" type="checkbox" @change="$emit('switchChanged');" v-model="active.value"> <!--"checked" to active switch-->
 						<span class="slider round"></span>
 					</label>
 					
@@ -263,11 +265,11 @@
 				<div :id="`alt-${index}-config-content`">
 					<div :class="{active: active, inactive: inactive}">
 						<label class="switch" :class="{'switch-left': switchLeft}">
-							<input type="checkbox" @change="$emit('switchChanged')" :checked="switchOn" v-model="switchOn">
+							<input type="checkbox" @change="$emit('switchChanged')" v-model="switchOn">
 							<span class="slider round"></span>
 						</label>
 						<label :id="`alt-${index}-enable-preview`" class="config-btn preview-btn" v-show="enabledPreview">
-							<input type="checkbox" :id="`alt-${index}-preview`" :checked="previewOn" v-model="previewOn">
+							<input type="checkbox" @change="$emit('switchChanged')" :id="`alt-${index}-preview`" v-model="previewOn">
 							<div class="icon-btn icon icon-search"></div>
 						</label>
 						<div class="drag-handle" :class="{'switch-left': switchLeft}">
@@ -283,20 +285,20 @@
 								<div class="grid-row">
 									<div>
 										<div class="align-toggle">
-										<input type="radio" :checked="align.value == 'left'" @click="align.value = 'left'"/>
-										<label :id="`alt-${index}-align-left`"><div class="icon icon-aling-left"></div></label>
-										<input id="alt-1-align-center" type="radio" :checked="align.value == 'center'" @click="align.value = 'center'" :disabled="style.value == 1"/>
-										<label :id="`alt-${index}-align-center`"><div class="icon icon-aling-center"></div></label>
-										<input type="radio" :checked="align.value == 'right'" @click="align.value = 'right'"/>
-										<label :id="`alt-${index}-align-right`"><div class="icon icon-aling-right"></div></label>
+										<input type="radio" :checked="align.value == 'left'"/>
+										<label :id="`alt-${index}-align-left`" @click="align.value = 'left'; $emit('styleChanged');"><div class="icon icon-aling-left"></div></label>
+										<input type="radio" :checked="align.value == 'center'" :disabled="style.value == 1"/>
+										<label :id="`alt-${index}-align-center`" @click="align.value = 'center'; $emit('styleChanged');"><div class="icon icon-aling-center"></div></label>
+										<input type="radio" :checked="align.value == 'right'"/>
+										<label :id="`alt-${index}-align-right`" @click="align.value = 'right'; $emit('styleChanged');"><div class="icon icon-aling-right"></div></label>
 									</div>
 									</div>
 									<div>
 										<div class="input-icon icon icon-paint-brush"></div>
 										<div class="number-input">
 											<input id="alt-1-style" min="1" max="3" v-model="style.value" type="number" readonly>
-											<button @click="stepDown(style, 1)" class="down"></button>
-											<button @click="stepUp(style, 3)" class="up"></button>
+											<button @click="stepDown(style, 1); restrictStyles(); $emit('styleChanged');" class="down"></button>
+											<button @click="stepUp(style, 3); restrictStyles(); $emit('styleChanged');" class="up"></button>
 										</div>
 									</div>
 									<div>
@@ -340,7 +342,7 @@
 									</div>									
 									<div class="font-config group">
 										<div class="input-icon icon icon-font"></div>
-										<select id="alt-1-font" v-model="font.value">
+										<select id="alt-1-font" v-model="font.value" @change="$emit('styleChanged');">
 											<optgroup v-for="(fonts, fontgroup) in fonts" :label="fontgroup">
 												<option v-if="fontgroup != 'custom'" v-for="font in fonts" :value="`${font}, ${fontgroup}`">{{font}}</option>
 												<option v-else v-for="font in fonts" :value="`${font}`">{{font}}</option>
@@ -351,18 +353,18 @@
 								<div class="grid-row">
 									<div>
 										<label class="config-btn" :id="`alt-${index}-logo`">
-											<input type="checkbox" v-model="enabledLogo.value" :checked="enabledLogo.value">
+											<input type="checkbox" v-model="enabledLogo.value" :disabled="style.value == 2" @change="$emit('styleChanged');">
 											<div class="icon-btn icon icon-image"></div>
 										</label>									
 										<div class="number-input" :id="`alt-${index}-logo-size`">
-											<input id="alt-1-logo-size" min="-10" max="10" v-model="logoSize.value" type="number" :disabled="!enabledLogo.value">
+											<input id="alt-1-logo-size" min="-10" max="10" v-model="logoSize.value" type="number" :disabled="!enabledLogo.value || style.value == 2">
 											<button @click="stepDown(logoSize, -10)" class="down" :disabled="!enabledLogo.value"></button>
 											<button @click="stepUp(logoSize, 10)" class="up" :disabled="!enabledLogo.value"></button>
 										</div>
 									</div>
 									<div>
 										<label class="config-btn" :id="`alt-${index}-shadows`">
-											<input type="checkbox" v-model="shadows.value" :checked="shadows.value">
+											<input type="checkbox" v-model="shadows.value" @change="$emit('styleChanged');">
 											<div class="icon-btn icon icon-shadow"></div>
 										</label>
 										<div class="number-input" :id="`alt-${index}-shadow-opacity`">
@@ -373,15 +375,15 @@
 									</div>
 									<div>
 										<label class="config-btn" :id="`alt-${index}-fill-colors`">
-											<input type="checkbox" v-model="background.value" :checked="background.value">
+											<input type="checkbox" v-model="background.value" @change="$emit('styleChanged');">
 											<div class="icon-btn icon icon-fill-drip"></div>
 										</label>
 										<div class="fill-color-appearance">
 										<!-- <div id="alt-1-style-color-appearance" class="fill-color-appearance"> -->
 											<div class="tool-title" :class="{disabled: !background.value}">Clr 1</div>
-											<input id="alt-1-style-color-1" v-model="backgroundColor1.value" :data-jscolor="JSON.stringify(jscolorConfig)" :disabled="!background.value">
+											<input id="alt-1-style-color-1" v-model="backgroundColor1.value" @change="$emit('styleChanged');" :data-jscolor="JSON.stringify(jscolorConfig)" :disabled="!background.value">
 											<div class="tool-title" :class="{disabled: !background.value}">Clr 2</div>
-											<input id="alt-1-style-color-2" v-model="backgroundColor2.value" :data-jscolor="JSON.stringify(jscolorConfig)" :disabled="!background.value">
+											<input id="alt-1-style-color-2" v-model="backgroundColor2.value" @change="$emit('styleChanged');" :data-jscolor="JSON.stringify(jscolorConfig)" :disabled="!background.value">
 										</div>
 									</div>
 								</div>
@@ -396,7 +398,7 @@
 									</div>
 									<div :id="`alt-${index}-border-thickness`">
 										<label class="config-btn">
-											<input type="checkbox" id="alt-1-border-thickness" v-model="borders.value" :checked="borders.value">
+											<input type="checkbox" id="alt-1-border-thickness" v-model="borders.value" @change="$emit('styleChanged');">
 											<div class="icon-btn icon icon-thickness"></div>
 										</label>
 										<div class="number-input">
@@ -407,56 +409,56 @@
 									</div>
 									<div :id="`alt-${index}-borders`">
 										<label class="config-btn">
-											<input type="checkbox" v-model="borders.value" :checked="borders.value">
+											<input type="checkbox" v-model="borders.value" @change="$emit('styleChanged');">
 											<div class="icon-btn icon icon-pen"></div>
 										</label>
 										<!-- <div id="alt-1-style-border-color-appearance" class="border-color-appearance"> -->
 										<div class="border-color-appearance">
 											<div class="tool-title" :class="{disabled: !borders.value}">Clr 3</div>
-											<input :id="`alt-${index}-style-color-3`" v-model="bordersColor1.value" :data-jscolor="JSON.stringify(jscolorConfig)" :disabled="!borders.value">
+											<input :id="`alt-${index}-style-color-3`" v-model="bordersColor1.value" @change="$emit('styleChanged');" :data-jscolor="JSON.stringify(jscolorConfig)" :disabled="!borders.value">
 											<div class="tool-title" :class="{disabled: !borders.value}">Clr 4</div>
-											<input :id="`alt-${index}-style-color-3`" v-model="bordersColor2.value" :data-jscolor="JSON.stringify(jscolorConfig)" :disabled="!borders.value">
+											<input :id="`alt-${index}-style-color-3`" v-model="bordersColor2.value" @change="$emit('styleChanged');" :data-jscolor="JSON.stringify(jscolorConfig)" :disabled="!borders.value">
 										</div>
 									</div>
 								</div>
 							</div>					
 						</div>
 						<div class="first-edit-container">
-							<div class ="logo-container" @click="openLogo()" v-show="enabledLogo.value">
+							<div class ="logo-container" @click="openLogo()" v-show="enabledLogo.value && style.value !== 2">
 								<img class="logo-preview" :src="logoSrc.value">
 							</div>
 							<div class="textfields-container">
-								<input type="text" :id="`alt-${index}-name`" placeholder="Name" tabindex="4" v-model="name.value">
+								<input type="text" :id="`alt-${index}-name`" placeholder="Name" tabindex="4" v-model="name.value" @change="$emit('styleChanged');">
 								<div :id="`alt-${index}-name-appearance`">
 									<label :id="`alt-${index}-name-uppercase`" class="config-btn small">
-										<input type="checkbox" :checked="nameTransform.value" v-model="nameTransform.value">
+										<input type="checkbox" v-model="nameTransform.value" @change="$emit('styleChanged');">
 										<div class="icon-btn icon small icon-uppercase"></div>
 									</label>
 									<label :id="`alt-${index}-name-bold`" class="config-btn small">
-										<input type="checkbox" :checked="nameBold.value" v-model="nameBold.value">
+										<input type="checkbox" v-model="nameBold.value" @change="$emit('styleChanged');">
 										<div class="icon-btn icon small icon-bold"></div>
 									</label>
 									<label :id="`alt-${index}-name-italic`" class="config-btn small">
-										<input type="checkbox" :checked="nameItalic.value" v-model="nameItalic.value">
+										<input type="checkbox" v-model="nameItalic.value" @change="$emit('styleChanged');">
 										<div class="icon-btn icon small icon-italic"></div>
 									</label>
-									<input :id="`alt-${index}-name-color`" :data-jscolor="JSON.stringify(jscolorConfig)" v-model="nameColor.value">
+									<input :id="`alt-${index}-name-color`" :data-jscolor="JSON.stringify(jscolorConfig)" v-model="nameColor.value" @change="$emit('styleChanged');">
 								</div>
-								<input type="text" :id="`alt-${index}-info`" placeholder="Info" tabindex="4" v-model="info.value">
+								<input type="text" :id="`alt-${index}-info`" placeholder="Info" tabindex="4" v-model="info.value" @change="$emit('styleChanged');">
 								<div :id="`alt-${index}-info-appearance`">
 									<label :id="`alt-${index}-info-uppercase`" class="config-btn small">
-										<input type="checkbox" :checked="infoTransform.value" v-model="infoTransform.value">
+										<input type="checkbox" v-model="infoTransform.value" @change="$emit('styleChanged');">
 										<div class="icon-btn icon small icon-uppercase"></div>
 									</label>
 									<label :id="`alt-${index}-info-bold`" class="config-btn small">
-										<input type="checkbox" :checked="infoBold.value" v-model="infoBold.value">
+										<input type="checkbox" v-model="infoBold.value" @change="$emit('styleChanged');">
 										<div class="icon-btn icon small icon-bold"></div>
 									</label>
 									<label :id="`alt-${index}-info-italic`" class="config-btn small">
-										<input type="checkbox" :checked="infoItalic.value" v-model="infoItalic.value">
+										<input type="checkbox" v-model="infoItalic.value" @change="$emit('styleChanged');">
 										<div class="icon-btn icon small icon-italic"></div>
 									</label>
-									<input :id="`alt-${index}-info-color`" :data-jscolor="JSON.stringify(jscolorConfig)" v-model="infoColor.value">
+									<input :id="`alt-${index}-info-color`" :data-jscolor="JSON.stringify(jscolorConfig)" v-model="infoColor.value" @change="$emit('styleChanged');">
 								</div>
 								<div style="clear: both"></div>
 							</div>
@@ -467,7 +469,8 @@
 								<li v-for="(name, index) in slotNames.value"
 									:class="{delete: slotIsDelete[index], 'active-slot': slotIsActive(index), stored: slotIsStored(index)}"
 									@mouseDown="slotHandlerDown(index)"
-									@mouseUp="slotHandlerUp(index)">
+									@mouseUp="slotHandlerUp(index)"
+									:title="slotTooltips[index]">
 									<div class="slot-number">{{index + 1}}</div>
 								</li>
 							</ul>
@@ -476,11 +479,11 @@
 								<div>{{inactiveTimeMonitor}}</div>
 							</div>
 							<label class="config-btn" :id="`alt-${index}-autotrigger`">
-								<input type="checkbox" v-model="autoTrigger.value" :checked="autoTrigger.value">
+								<input type="checkbox" v-model="autoTrigger.value">
 								<div class="icon-btn icon icon-autotrigger"></div>
 							</label>
 							<label :id="`alt-${index}-autoload`" class="config-btn">
-								<input type="checkbox" v-model="autoLoad.value" :checked="autoLoad.value">
+								<input type="checkbox" v-model="autoLoad.value">
 								<div class="icon-btn icon icon-sync"></div>
 							</label>
 							<label :id="`alt-${index}-custom-times`" class="accordion" @click="toggleTimeSettings()" :class="{active: customTimeSettings.value}">
@@ -490,15 +493,15 @@
 								<div class="alt-time-options">
 									<div class="settings-title">LT{{index + 1}} Times</div>
 									<div class="settings-inputs">
-										<input type="number" placeholder="in-out" tabindex="12" v-model="animationTime.value">
-										<input type="number" placeholder="active" tabindex="13" v-model="activeTime.value" :disabled="lockActive.value">
+										<input type="number" placeholder="in-out" tabindex="12" v-model="animationTime.value" @change="$emit('styleChanged');">
+										<input type="number" placeholder="active" tabindex="13" v-model="activeTime.value" :disabled="lockActive.value" @change="$emit('styleChanged');">
 										<label class="config-btn lock-input">
-											<input type="checkbox" id="alt-1-lock-active" v-model="lockActive.value" :checked="lockActive.value">
+											<input type="checkbox" id="alt-1-lock-active" v-model="lockActive.value" @change="$emit('styleChanged');">
 											<div class="icon-btn icon icon-lock"></div>
 										</label>
-										<input id="alt-1-inactive-time" type="number" placeholder="inactive" tabindex="14" v-model="inactiveTime.value" :disabled="oneShot.value">
+										<input id="alt-1-inactive-time" type="number" placeholder="inactive" tabindex="14" v-model="inactiveTime.value" :disabled="oneShot.value" @change="$emit('styleChanged');">
 										<label class="config-btn lock-input">
-											<input type="checkbox" id="alt-1-oneshot" v-model="oneShot.value" :checked="oneShot.value">
+											<input type="checkbox" id="alt-1-oneshot" v-model="oneShot.value" @change="$emit('styleChanged');">
 											<div class="icon-btn icon icon-oneshot"></div>
 										</label>
 									</div>
@@ -533,10 +536,6 @@
 		</template>
 
 		<script>
-			const bc  = new BroadcastChannel('obs-lower-thirds-channel'); //Send to browser source
-			const bcr = new BroadcastChannel('obs-lower-thirds-channel2'); //Receives from the source
-			const bcf = new BroadcastChannel('obs-lower-thirds-fonts'); //Send custom fonts
-
 			const app = createApp(App).mount('#alt-panel');
 
 			// var hotkeyMasterSwitchOld = hotkeyMasterSwitch;
@@ -693,49 +692,6 @@
 				document.getElementById("export-data").classList.add("hide");
 			}
 
-			// //Memory Slots System
-			// function checkSlots (memory_slot, name, info, logo) {
-			// 	$("ul" + memory_slot + " li").each(function(){
-			// 		const check_slot_id = $(this).attr('id');
-			// 		const check_name_id = $(this).children('.stored-name').attr('id');
-			// 		const check_info_id = $(this).children('.stored-info').attr('id');
-			// 		const check_logo_id = $(this).children('.stored-logo').attr('id');
-			// 		const check_is_default_logo = $(logo).hasClass('default');
-			// 		const name_value = $(this).children('.stored-name').text();
-			// 		const info_value = $(this).children('.stored-info').text();
-			// 		const logo_value = $(this).children('.stored-logo').text();
-
-			// 		let check_slot_id_element = document.getElementById(check_slot_id);
-
-			// 		//If stored data has no logo, set to default
-			// 		if (name_value && info_value && !logo_value) {
-			// 			$(this).children('.stored-logo').text("default");
-			// 		}
-			// 		if ($('#' + check_name_id).is(':empty') && $('#' + check_info_id).is(':empty') && $('#' + check_logo_id).is(':empty')){
-			// 			check_slot_id_element.classList.remove("stored");
-			// 		} else {
-			// 			check_slot_id_element.classList.add("stored");
-			// 		}
-			// 		//Check active slots
-			// 		if ($(name).val() == name_value && $(info).val() == info_value && ($(logo).attr("src") == logo_value || (check_is_default_logo && logo_value == "default"))){
-			// 			if(name_value && info_value && logo_value){
-			// 				check_slot_id_element.classList.add("active-slot");
-			// 				check_slot_id_element.classList.remove("next-to-load");
-			// 			}
-			// 		} else {
-			// 			check_slot_id_element.classList.remove("active-slot");
-			// 		}
-
-			// 		//Check if it has default logo
-			// 		if (logo_value && logo_value != "default"){
-			// 			check_slot_id_element.classList.add("custom-logo");
-			// 		} else {
-			// 			check_slot_id_element.classList.remove("custom-logo");
-			// 		}
-
-			// 	});
-			// }
-
 			// //////////////////////////////////////
 
 			// function jumpNextSlot(memory_slot, name, info, logo, alt_waiting_time) {
@@ -802,224 +758,7 @@
 
 			// //////////////////////////////////////
 
-			// function loadSlot(name, info, logo, name_to_load, info_to_load, logo_to_load, alt_waiting_time, from_hotkey = true) {
-			// 	setTimeout(function (){
-			// 		const default_logo = logo.replace("-preview", "-default");
-			// 		const default_logo_value = $(default_logo).attr("src");
-
-			// 		$(name + ":text").val(name_to_load);
-			// 		$(info + ":text").val(info_to_load);
-			// 		if (logo_to_load == "default") {
-			// 			logo_to_load = default_logo_value;
-			// 		}
-			// 		$(logo).attr("src", logo_to_load);
-			// 		refreshData();
-			// 	}, alt_waiting_time * 1000);
-
-			// 	//Switch ON the panel if the autotrigger is ON
-			// 	let auto_trigger = name.replace("#", "");
-			// 	auto_trigger = auto_trigger.replace("-name", "-autotrigger");
-			// 	let alt_switch = name.replace("#alt-", "");
-			// 	alt_switch = alt_switch.replace("-name", "");
-
-			// 	if (from_hotkey && document.getElementById(auto_trigger).checked && $("#lower-thirds-switch" + alt_switch).is(':not(:checked)')) {
-			// 		$("#lower-thirds-switch" + alt_switch).prop('checked', true).change();
-			// 	}
-			// 	//console.log(name + "|" + info + "|" + logo + "|" + name_to_load + "|" + info_to_load + "|" + logo_to_load + "|" + alt_waiting_time);
-			// }
-
-			// ///////////////////////////////////////
-
-			// //Open Preview screen
-			// $("#toggle-preview").click(function(){
-			// 	document.getElementById("toggle-preview").classList.toggle("active");
-			// 	document.getElementById("alt-preview").classList.toggle("active");
-			// 	if (document.getElementById("alt-panel").style.marginBottom == "0px") {
-			// 		document.getElementById("alt-panel").style.marginBottom = "220px";
-			// 	} else {
-			// 		document.getElementById("alt-panel").style.marginBottom = "0px";
-			// 	}
-			// });
-
-			// ///////////////////////////////////////
-
-			// function getAppearance () {
-			// 	//Lower Third Style
-			// 	alt_1_style = $("#alt-1-style").val() || default_style;
-			// 	$("#alt-1-style").val(alt_1_style);
-
-			// 	//Calculate Text Sizes using the inverse ratio
-			// 	alt_1_inverse_ratio = $("#alt-1-inverse-ratio").val() || default_inverse_ratio;
-			// 	alt_1_name_size = 1 + alt_1_inverse_ratio * 0.1;
-			// 	alt_1_info_size = 2 - alt_1_inverse_ratio * 0.1;
-
-			// 	//Line Spacing
-			// 	alt_1_line_spacing = $("#alt-1-line-spacing").val() || default_line_spacing;
-
-			// 	//Lower Third Size
-			// 	alt_1_size = $("#alt-1-size").val() || default_size;
-
-			// 	//Logo Size
-			// 	alt_1_logo_size = Number($("#alt-1-logo-size").val()) * 0.25 + 3.5 || default_logo_size_em;
-
-			// 	//Shadow Amount
-			// 	alt_1_shadow_amount = $("#alt-1-shadow-amount").val() * 0.1 || default_shadow_amount_em;
-			
-			// 	//Background Corners
-			// 	alt_1_corners = (Number($("#alt-1-corners").val()) * 0.25) || default_corners;
-			
-			// 	//Border Thickness amount
-			// 	alt_1_border_thickness_amount = $("#alt-1-border-thickness-amount").val() || default_border_thickness_amount;
-			
-			// 	//Margin from de borders Horizontal and Vertical
-			// 	alt_1_margin_h = $("#alt-1-margin-h").val() || default_margin_h;
-			// 	alt_1_margin_v = $("#alt-1-margin-v").val() || default_margin_v;
-
-			// 	styleRestrictions();
-			// }
-
-			// function styleRestrictions() {
-			// 	switch (alt_1_style){
-			// 		case "1":
-			// 			//Disable: align center | Enable: logo;
-			// 			document.getElementById("alt-1-align-center").disabled = true;
-			// 			if (document.getElementById("alt-1-align-center").checked){
-			// 				$("#alt-1-align-left").prop('checked', true).change();
-			// 			}
-			// 			document.getElementById("alt-1-logo").disabled = false;
-			// 			document.getElementById("alt-1-logo-size").disabled = false;
-			// 			// document.getElementById("alt-1-background").classList.remove("locked");
-			// 			$("#alt-1-style-border-color-appearance > :nth-child(3)").addClass("disabled");
-
-			// 			break;
-			// 		case "2":
-			// 			//Disable: logo | Enable: align center;
-			// 			document.getElementById("alt-1-align-center").disabled = false;
-			// 			document.getElementById("alt-1-logo").disabled = true;
-			// 			document.getElementById("alt-1-logo-size").disabled = false;
-			// 			if (document.getElementById("alt-1-logo").checked){
-			// 				$("#alt-1-logo").prop('checked', false).change();
-			// 			}
-			// 			// document.getElementById("alt-1-background").classList.remove("locked");
-			// 			$("#alt-1-style-border-color-appearance > :nth-child(3)").removeClass("disabled");
-
-			// 			break;
-			// 		case "3":
-			// 			//Disable: - | Enable: Logo, align center;
-			// 			document.getElementById("alt-1-align-center").disabled = true;
-			// 			if (document.getElementById("alt-1-align-center").checked){
-			// 				$("#alt-1-align-left").prop('checked', true).change();
-			// 			}
-			// 			document.getElementById("alt-1-logo").disabled = false;
-			// 			document.getElementById("alt-1-logo-size").disabled = true;
-			// 			$("#alt-1-style-border-color-appearance > :nth-child(3)").removeClass("disabled");
-			// 			// $("#alt-1-background").prop('checked', true).change(); NO
-			// 			// $("#alt-1-background").prop('checked', true);
-			// 			// document.getElementById("alt-1-background").classList.add("locked");
-
-			// 			break;
-			// 	}
-			// }
-
-			// //////////////////////////////////////
-
-			// //Receive data from the source
-			// bcr.onmessage = function (ev) {
-			// 	const received_data = ev.data;
-
-			// 	if (received_data.resend) {
-			// 		refreshData();
-			// 		function_send_font();
-			// 	} else {
-
-			// 		alt_1_active_time_monitor = received_data.activeTime1_to_send;
-			// 		alt_1_inactive_time_monitor = received_data.inactiveTime1_to_send;
-
-			// 		document.getElementById("alt-1-active-time-monitor").innerHTML = alt_1_active_time_monitor;
-			// 		document.getElementById("alt-1-inactive-time-monitor").innerHTML = alt_1_inactive_time_monitor;
-
-			// 		alt_1_turnoff = (received_data.alt_1_turnoff);
-
-
-			// 		if (alt_1_turnoff && $("#lower-thirds-switch1").is(':checked')) {
-			// 			$("#lower-thirds-switch1").prop('checked', false).change();
-			// 		}
-
-			// 		checkSwitches();
-			// 	}
-			// }
-
-			// //////////////////////////////////////
-
 			// function function_send() {
-			// 	//Switch Lock Active Mode ALT ON/OFF
-			// 	global_lock_active = mainSettings.active;
-			// 	// global_lock_active = (document.getElementById("global-lock-active").checked) ? true : false;
-
-			// 	alt_1_lock_active = (document.getElementById("alt-1-lock-active").checked) ? true : false;
-
-			// 	//////////////////////////////
-
-			// 	global_animation_time = $("#global-animation-time").val();
-			// 	if (global_lock_active){
-			// 		global_active_time = Infinity;
-			// 	} else {
-			// 		global_active_time = $("#global-active-time").val();
-			// 	}
-			// 	global_inactive_time = $("#global-inactive-time").val();
-
-			// 	alt_1_name = $("#alt-1-name:text").val();
-			// 	alt_1_info = $("#alt-1-info:text").val();
-			// 	alt_1_name_color = $("#alt-1-name-color:text").val();
-			// 	alt_1_info_color = $("#alt-1-info-color:text").val();
-			// 	alt_1_style_color_1 = $("#alt-1-style-color-1:text").val();
-			// 	alt_1_style_color_2 = $("#alt-1-style-color-2:text").val();
-			// 	alt_1_style_color_3 = $("#alt-1-style-color-3:text").val();
-			// 	alt_1_style_color_4 = $("#alt-1-style-color-4:text").val();
-
-			// 	alt_1_animation_time = $("#alt-1-animation-time").val();
-			// 	if (alt_1_lock_active){
-			// 		alt_1_active_time = Infinity;
-			// 	} else {
-			// 		alt_1_active_time = $("#alt-1-active-time").val();
-			// 	}
-			// 	alt_1_inactive_time = $("#alt-1-inactive-time").val();
-			// 	alt_1_logo_image= $("#alt-1-logo-preview").attr("src");
-
-			// 	//Standard Main settings values
-			// 	if(!global_lock_active && global_active_time == "") {
-			// 		global_active_time = 25;
-			// 	}
-			// 	if(global_inactive_time == "") {
-			// 		global_inactive_time = 420;
-			// 	}
-			// 	if(global_animation_time == "") {
-			// 		global_animation_time = 4;
-			// 	}
-
-			// 	//Check Master Switch
-			// 	if (mainSettings.active) {
-			// 		masterSwitchIsOn = true;
-			// 	} else {
-			// 		masterSwitchIsOn = false;
-			// 	}
-
-			// 	//Check switches
-			// 	if (masterSwitchIsOn) {
-			// 		//Switch 1
-			// 		if (document.getElementById("lower-thirds-switch1").checked){
-			// 			alt_1_switch = "true";
-			// 		} else {
-			// 			alt_1_switch = "false";
-			// 		}
-			// 	} else {
-			// 		//When the Main Switch is OFF all the Lower Thirds area Inactives or OFF.
-			// 		alt_1_switch = "false";
-			// 	}
-
-			// 	alt_1_waiting_time = alt_1_animation_time || global_animation_time;
-
-			// 	//////////////////////////////
 
 			// 	//Switch Autoload ALT ON/OFF
 			// 	alt_1_autoload = (document.getElementById("alt-1-autoload").checked) ? true : false;
@@ -1029,120 +768,11 @@
 			// 	//Switch Autotrigger ALT ON/OFF
 			// 	alt_1_autotrigger = document.getElementById("alt-1-autotrigger").checked;
 
-
-			// 	//////////////////////////////
-
-			// 	//Switch One-shot Mode ALT ON/OFF
-			// 	global_oneshot = (document.getElementById("global-oneshot").checked) ? true : false;
-
-			// 	alt_1_oneshot = (document.getElementById("alt-1-oneshot").checked) ? true : false;
-
-			// 	//////////////////////////////
-
-			// 	//Show the slots numbers
-			// 	if (document.getElementById("set-slot-numbers").checked == false) {
-			// 		$('.slot-number').each(function(){
-			// 			$(this).removeClass("hide");
-			// 		});
-			// 	} else {
-			// 		$('.slot-number').each(function(){
-			// 			$(this).addClass("hide");
-			// 		});
-			// 	}
-
-			// 	//////////////////////////////
-
-			// 	//Create Tooltips to show the contect of the slots
-			// 	if (document.getElementById("set-tooltips").checked) {
-			// 		$('.panel-bottom > ul > li').each(function(){
-			// 			var name_to_tooltip = $(this).children('.stored-name').text();
-			// 			var info_to_tooltip = $(this).children('.stored-info').text();
-			// 			var isStored = (name_to_tooltip && info_to_tooltip) ? true : false;
-			// 			var isTooltip = $(this).children(".tooltiptext")[0] ? true : false;
-
-			// 			if (isTooltip){
-			// 				if (!isStored) {
-			// 					$(this).children(".tooltiptext").remove();
-			// 					// $(this).prepend('<span class="tooltiptext"><p>Empty. Click to save.</p></span>');
-			// 				}
-			// 			} else {
-			// 				if (isStored) {
-			// 					$(this).prepend('<span class="tooltiptext">' + name_to_tooltip + '<br>' + info_to_tooltip + '<hr><p>Click and hold to delete.</p></span>');
-			// 				}
-			// 			}
-
-			// 		});
-			// 	} else {
-			// 		$('.tooltiptext').each(function(){
-			// 			$(this).remove();
-			// 		});
-			// 	}
-
-
-			// 	//////////////////////////////
-
-			// 	//Switch Preview ALT ON/OFF
-			// 	if (document.getElementById("set-preview").checked) {
-			// 		$('#alt-preview, .preview-btn').each(function(){
-			// 			$(this).removeClass("hide");
-			// 		});
-			// 	} else {
-			// 		$('#alt-preview, .preview-btn').each(function(){
-			// 			$(this).addClass("hide");
-			// 		});
-			// 	}
-
-			// 	if (document.getElementById("alt-1-preview").checked == false) {
-			// 		alt_1_preview = "false";
-			// 	} else {
-			// 		alt_1_preview = "true";
-			// 	}
-
-
 			// 	//////////////////////////////
 
 			// 	//Font of the Lower Third
 			// 	var font_id_1 = document.getElementById("alt-1-font");
 			// 	var alt_1_font = font_id_1.options[font_id_1.selectedIndex].value;
-
-			// 	//Alignment of the Lower Third
-			// 	var alt_1_align = $('input[name=alt-1-align]:checked').val();
-			// 	if (!alt_1_align) {
-			// 		$('#alt-1-align-left').prop('checked', true).change();
-			// 	}
-
-			// 	//
-			// 	if (global_oneshot){
-			// 		document.getElementById("global-inactive-time").classList.add("disable");
-			// 	} else {
-			// 		document.getElementById("global-inactive-time").classList.remove("disable");
-			// 	}
-			// 	if (alt_1_oneshot){
-			// 		document.getElementById("alt-1-inactive-time").classList.add("disable");
-			// 	} else {
-			// 		document.getElementById("alt-1-inactive-time").classList.remove("disable");
-			// 	}
-
-			// 	//
-			// 	if (global_lock_active){
-			// 		document.getElementById("global-active-time").classList.add("disable");
-			// 	} else {
-			// 		document.getElementById("global-active-time").classList.remove("disable");
-			// 	}
-			// 	if (alt_1_lock_active){
-			// 		document.getElementById("alt-1-active-time").classList.add("disable");
-			// 		// document.getElementById("alt-1-active-time").value = "Locked";
-			// 	} else {
-			// 		document.getElementById("alt-1-active-time").classList.remove("disable");
-			// 		// document.getElementById("alt-1-active-time").value = "";
-			// 	}
-
-			// 	//Shows if custom time settings is used
-			// 	if (alt_1_animation_time || (alt_1_active_time && alt_1_active_time != 'Infinity') || alt_1_inactive_time || alt_1_lock_active || alt_1_oneshot) {
-			// 		$("#alt-1-custom-times").children(".icon-btn").addClass("active");
-			// 	} else {
-			// 		$("#alt-1-custom-times").children(".icon-btn").removeClass("active");
-			// 	}
 
 			// 	bc.postMessage({global_animation_time, global_active_time, global_inactive_time, alt_1_switch, alt_1_style, alt_1_name, alt_1_info, alt_1_name_size, alt_1_info_size , alt_1_name_transform, alt_1_info_transform, alt_1_name_weight, alt_1_name_style, alt_1_info_weight, alt_1_info_style, alt_1_name_color, alt_1_info_color, alt_1_style_color_1, alt_1_style_color_2, alt_1_logo_switch, alt_1_background_switch, alt_1_shadows, alt_1_align, alt_1_size, alt_1_margin_h, alt_1_margin_v, alt_1_line_spacing, alt_1_font, alt_2_switch, alt_2_style, alt_2_name, alt_2_info, alt_2_name_size, alt_2_info_size , alt_2_name_transform, alt_2_info_transform, alt_2_name_weight, alt_2_name_style, alt_2_info_weight, alt_2_info_style, alt_2_name_color, alt_2_info_color, alt_2_style_color_1, alt_2_style_color_2, alt_2_logo_switch, alt_2_background_switch, alt_2_shadows, alt_2_align, alt_2_size, alt_2_margin_h, alt_2_margin_v, alt_2_line_spacing, alt_2_font, alt_3_switch, alt_3_style, alt_3_name, alt_3_info, alt_3_name_size, alt_3_info_size , alt_3_name_transform, alt_3_info_transform, alt_3_name_weight, alt_3_name_style, alt_3_info_weight, alt_3_info_style, alt_3_name_color, alt_3_info_color, alt_3_style_color_1, alt_3_style_color_2, alt_3_logo_switch, alt_3_background_switch, alt_3_shadows, alt_3_align, alt_3_size, alt_3_margin_h, alt_3_margin_v, alt_3_line_spacing, alt_3_font, alt_4_switch, alt_4_style, alt_4_name, alt_4_info, alt_4_name_size, alt_4_info_size , alt_4_name_transform, alt_4_info_transform, alt_4_name_weight, alt_4_name_style, alt_4_info_weight, alt_4_info_style, alt_4_name_color, alt_4_info_color, alt_4_style_color_1, alt_4_style_color_2, alt_4_logo_switch, alt_4_background_switch, alt_4_shadows, alt_4_align, alt_4_size, alt_4_margin_h, alt_4_margin_v, alt_4_line_spacing, alt_4_font, alt_1_animation_time, alt_1_active_time, alt_1_inactive_time, alt_2_animation_time, alt_2_active_time, alt_2_inactive_time, alt_3_animation_time, alt_3_active_time, alt_3_inactive_time, alt_4_animation_time, alt_4_active_time, alt_4_inactive_time, alt_1_logo_image, alt_2_logo_image, alt_3_logo_image, alt_4_logo_image, global_oneshot, alt_1_oneshot, alt_2_oneshot, alt_3_oneshot, alt_4_oneshot, alt_1_logo_size, alt_1_shadow_amount, alt_1_corners, alt_1_border_switch, alt_1_border_thickness_amount, alt_1_style_color_3, alt_1_style_color_4, alt_2_logo_size, alt_2_shadow_amount, alt_2_corners, alt_2_border_switch, alt_2_border_thickness_amount, alt_2_style_color_3, alt_2_style_color_4, alt_3_logo_size, alt_3_shadow_amount, alt_3_corners, alt_3_border_switch, alt_3_border_thickness_amount, alt_3_style_color_3, alt_3_style_color_4, alt_4_logo_size, alt_4_shadow_amount, alt_4_corners, alt_4_border_switch, alt_4_border_thickness_amount, alt_4_style_color_3, alt_4_style_color_4, alt_1_preview, alt_2_preview, alt_3_preview, alt_4_preview});
 			// }
@@ -1156,16 +786,16 @@
 			// }
 
 			//Read txt file and call writeLocalStorage function
-			// document.getElementById('importFile').onchange = function(){
-			// 	var file = this.files[0];
-			// 	var reader = new FileReader();
-			// 	reader.onload = function(progressEvent){
-			// 		localStorage.clear();
+			document.getElementById('importFile').onchange = function(){
+				var file = this.files[0];
+				var reader = new FileReader();
+				reader.onload = function(progressEvent){
+					localStorage.clear();
 					
-			// 		writeLocalStorage(this.result);
-			// 	};
-			// 	reader.readAsText(file);
-			// };
+					writeLocalStorage(this.result);
+				};
+				reader.readAsText(file);
+			};
 
 			//Read all localstorage data
 			function getLocalStorage() {
@@ -1230,11 +860,6 @@
 			// refreshData();
 			// checkSwitches();
 			// setInterval(() => checkUpdates(), 200);
-
-			// // Wait document to be ready to do some stuff
-			// $( document ).ready(function() {
-			// 	$('#defaultTab').click();
-			// });
 
 		</script>
 

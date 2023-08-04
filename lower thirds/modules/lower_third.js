@@ -22,7 +22,10 @@ const LowerThird = {
 
       slotTimeout: ref(),
       slotIsDelete: ref(Array.from({length: 10}, () => false)),
+      slotIndex: ref(-1),
+
       jscolorConfig: ref(JSCOLOR_CONFIG),
+      storables: [],
     };
 
     const storables = {
@@ -61,7 +64,7 @@ const LowerThird = {
       corners: [`alt-${args.index}-corners`, 0],
 
       borders: [`alt-${args.index}-borders`, false],
-      borderThickness: [`alt-${args.index}-borders`, 4],
+      borderThickness: [`alt-${args.index}-border-thickness`, 4],
       bordersColor1: [`alt-${args.index}-borders-color-1`, '#D54141'],
       bordersColor2: [`alt-${args.index}-borders-color-2`, '#222222'],
 
@@ -85,9 +88,23 @@ const LowerThird = {
     // prepare properties
     Object.keys(storables).forEach(key => {
       storables[key] = reactive(new Storable(...storables[key]));
+      props.storables.push(key);
     });
 
     return {...storables, ...props};
+  },
+  computed: {
+    slotTooltips() {
+      return Object.values(this.slotNames.value)
+                   .map((name, index) => name !== '' || this.slotInfos.value[index] !== '')
+                   .map((isStored, index) => {
+                      if (isStored) {
+                        return `<p>${this.slotNames.value[index]}<br>${this.slotInfos.value[index]}<hr><p>Click and hold to delete.</p>`;
+                      } else {
+                        return '<p>Empty. Click to save.</p>';
+                      }
+                   });
+    }
   },
   mounted() {
     const initInterval = setInterval(function() {
@@ -105,6 +122,8 @@ const LowerThird = {
     } else {
       timeSettings.style.maxHeight = timeSettings.scrollHeight + 'px';
     }
+
+    // this.storables.forEach(key => watch(this[key], () => {}));
 
     jscolor.install();
   },
@@ -145,9 +164,17 @@ const LowerThird = {
     },
     stepUp(value, max) {
       value.value = Math.min(value.value + 1, max);
+      this.$emit('styleChanged');
     },
     stepDown(value, min) {
       value.value = Math.max(value.value - 1, min);
+      this.$emit('styleChanged');
+    },
+    restrictStyles() {
+      if (this.style.value == 1 && this.align.value == 'center') {
+        this.align.value = 'left';
+        this.$emit('styleChanged');
+      }
     },
     openLogo() {
       this.$emit('openLogo', {index: this.index, logoSrc: this.logoSrc});
@@ -173,16 +200,10 @@ const LowerThird = {
         this.slotNames.value[index] = this.name.value;
         this.slotInfos.value[index] = this.info.value;
         this.slotLogos.value[index] = this.isDefaultLogo.value ? '' : this.logoSrc.value;
+        this.slotIndex = index;
       // load Slot
       } else if (!this.slotIsDelete[index]) {
-        this.name.value = this.slotNames.value[index];
-        this.info.name = this.slotInfos.value[index];
-        this.isDefaultLogo.value = this.slotLogos.value[index] == '';
-        if (!this.isDefaultLogo.value) {
-          this.logoSrc.value = this.slotLogos.value[index];
-        } else {
-          this.$emit('resetLogo');
-        }
+        this.loadSlot(index);
 
       // delete Slot
       } else {
@@ -206,6 +227,54 @@ const LowerThird = {
     },
     slotIsStored(index) {
       return this.slotNames.value[index] !== '' || this.slotInfos.value[index] !== '';
+    },
+    loadSlot(index) {
+      this.slotIndex = index;
+      this.name.value = this.slotNames.value[index];
+      this.info.name = this.slotInfos.value[index];
+      this.isDefaultLogo.value = this.slotLogos.value[index] == '';
+
+      if (!this.isDefaultLogo.value) {
+        this.logoSrc.value = this.slotLogos.value[index];
+      } else {
+        this.$emit('resetLogo');
+      }
+      
+      if (this.autoTrigger.value) {
+        this.switchOn = true;
+        this.$emit('switchChanged');
+      }
+
+      if (this.autoLoad.value) {
+        this.$emit('slotChanged');
+      }
+    },
+    slotLoadNext() {
+      // if no slot was loaded and no slot is stored => do nothing
+      // if no slot was loaded and no slot is active => load first stored
+      // if no slot was loaded => assume that first active slot is current slot and load next
+      
+      const storedSlots = Array.from({length: 10}, (v, i) => this.slotIsStored(i));
+
+      // if slotIndex is -1 search for first active or stored if no active is found
+      if (this.slotIndex == -1) {
+        const firstActive = Array.from({length: 10}, (v, i) => this.slotIsActive(i)).indexOf(true);
+        const firstStored = storedSlots.indexOf(true);
+        
+        if (firstActive < 0 && firstStored < 0) {
+          return;
+        } else {
+          this.loadSlot(storedSlots.indexOf(true, firstActive + 1));
+        }
+      } else {
+        let nextSlot = storedSlots.indexOf(true, this.slotIndex + 1);
+
+        if (nextSlot < 0) {
+          // is >= 0 because a slot is loaded :)
+          nextSlot = storedSlots.indexOf(true);
+        }
+        this.loadSlot(nextSlot);
+      }
     }
   }
 }

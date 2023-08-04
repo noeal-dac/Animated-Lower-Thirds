@@ -33,3 +33,16 @@ class Storable {
       }
     }
   }
+
+  class Readable {
+    value;
+  
+    constructor(id) {
+      this.id = id;
+      this.update();
+    }
+
+    update() {
+      this.value = JSON.parse(localStorage.getItem(this.id));
+    }
+  }

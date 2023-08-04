@@ -15,13 +15,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Kalam&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
-:root {
-	--alt-1-animation-time: 4s;
-	--alt-2-animation-time: 4s;
-	--alt-3-animation-time: 4s;
-	--alt-4-animation-time: 4s;
-}
-
 body {
 	margin: 0;
 	line-height: 0;
@@ -31,7 +24,6 @@ body {
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
-	/*background-color: #888888; //Tests background*/ 
 }
 
 /*********************************
@@ -79,13 +71,13 @@ body {
 		opacity: 0;
 		transform: translate3d(10em, 0, 0);
 	}
-		50% {
+	50% {
 		opacity: 1;
 	}
-		75% {
+	75% {
 		transform: translate3d(0, 0, 0);
 	}
-		100% {
+	100% {
 		transform: translate3d(0, 0, 0);
 	}
 }
@@ -336,27 +328,9 @@ body {
 /*Logo animation*/
 .animation-in > div:first-child img {
 	animation: cubic-bezier(0.19, 0.76, 0.32, 1) 1 normal both;
-	/*animation-duration: var(--animation-time);*/
 }
 .animation-out > div:first-child img {
 	animation: cubic-bezier(0.19, 0.76, 0.32, 1) 1 reverse both;
-	/*animation-duration: var(--animation-time);*/
-}
-#lower-third-1.animation-in > div:first-child img,
-#lower-third-1.animation-out > div:first-child img {
-	animation-duration: var(--alt-1-animation-time);
-}
-#lower-third-2.animation-in > div:first-child img,
-#lower-third-2.animation-out > div:first-child img {
-	animation-duration: var(--alt-2-animation-time);
-}
-#lower-third-3.animation-in > div:first-child img,
-#lower-third-3.animation-out > div:first-child img {
-	animation-duration: var(--alt-3-animation-time);
-}
-#lower-third-4.animation-in > div:first-child img,
-#lower-third-4.animation-out > div:first-child img {
-	animation-duration: var(--alt-4-animation-time);
 }
 /*left*/
 .animation-in.style-1.left > div:first-child img,
@@ -384,22 +358,6 @@ body {
 .animation-out > div:nth-child(2),
 .animation-out > div:nth-child(4) {
 	animation: cubic-bezier(0.19, 0.76, 0.32, 1) 1 reverse both;
-}
-#lower-third-1.animation-in > div:nth-child(1), #lower-third-1.animation-in > div:nth-child(2), #lower-third-1.animation-in > div:nth-child(4),
-#lower-third-1.animation-out > div:nth-child(1), #lower-third-1.animation-out > div:nth-child(2), #lower-third-1.animation-out > div:nth-child(4) {
-	animation-duration: var(--alt-1-animation-time);
-}
-#lower-third-2.animation-in > div:nth-child(1), #lower-third-2.animation-in > div:nth-child(2), #lower-third-2.animation-in > div:nth-child(4),
-#lower-third-2.animation-out > div:nth-child(1), #lower-third-2.animation-out > div:nth-child(2), #lower-third-2.animation-out > div:nth-child(4) {
-	animation-duration: var(--alt-2-animation-time);
-}
-#lower-third-3.animation-in > div:nth-child(1), #lower-third-3.animation-in > div:nth-child(2), #lower-third-3.animation-in > div:nth-child(4),
-#lower-third-3.animation-out > div:nth-child(1),#lower-third-3.animation-out > div:nth-child(2), #lower-third-3.animation-out > div:nth-child(4) {
-	animation-duration: var(--alt-3-animation-time);
-}
-#lower-third-4.animation-in > div:nth-child(1), #lower-third-4.animation-in > div:nth-child(2), #lower-third-4.animation-in > div:nth-child(4),
-#lower-third-4.animation-out > div:nth-child(1), #lower-third-4.animation-out > div:nth-child(2), #lower-third-4.animation-out > div:nth-child(4) {
-	animation-duration: var(--alt-4-animation-time);
 }
 /*left*/
 .animation-in.style-1.left > div:nth-child(2),
@@ -435,22 +393,6 @@ body {
 .animation-out > .text-content > div:first-child div,
 .animation-out > .text-content > div:nth-child(2) div {
 	animation: cubic-bezier(0.19, 0.76, 0.32, 1) 1 reverse both;
-}
-#lower-third-1.animation-in > .text-content > div:first-child div, #lower-third-1.animation-in > .text-content > div:nth-child(2) div,
-#lower-third-1.animation-out > .text-content > div:first-child div, #lower-third-1.animation-out > .text-content > div:nth-child(2) div {
-	animation-duration: var(--alt-1-animation-time);
-}
-#lower-third-2.animation-in > .text-content > div:first-child div, #lower-third-2.animation-in > .text-content > div:nth-child(2) div,
-#lower-third-2.animation-out > .text-content > div:first-child div, #lower-third-2.animation-out > .text-content > div:nth-child(2) div {
-	animation-duration: var(--alt-2-animation-time);
-}
-#lower-third-3.animation-in > .text-content > div:first-child div, #lower-third-3.animation-in > .text-content > div:nth-child(2) div,
-#lower-third-3.animation-out > .text-content > div:first-child div, #lower-third-3.animation-out > .text-content > div:nth-child(2) div {
-	animation-duration: var(--alt-3-animation-time);
-}
-#lower-third-4.animation-in > .text-content > div:first-child div, #lower-third-4.animation-in > .text-content > div:nth-child(2) div,
-#lower-third-4.animation-out > .text-content > div:first-child div, #lower-third-4.animation-out > .text-content > div:nth-child(2) div {
-	animation-duration: var(--alt-4-animation-time);
 }
 /*left*/
 .animation-in.left > .text-content > div:first-child div,
@@ -496,70 +438,6 @@ body {
     overflow: hidden;
     transition: height 0.1s;
 }
-#lower-third-1.alt{
-	font-size: var(--alt-1-size);
-}
-#lower-third-2.alt{
-	font-size: var(--alt-2-size);
-}
-#lower-third-3.alt{
-	font-size: var(--alt-3-size);
-}
-#lower-third-4.alt{
-	font-size: var(--alt-4-size);
-}
-
-#lower-third-1.left{
-    left: var(--alt-1-margin-h);
-    bottom: var(--alt-1-margin-v);
-}
-#lower-third-1.right{
-    flex-direction: row-reverse;
-    right: var(--alt-1-margin-h);
-    bottom: var(--alt-1-margin-v);
-}
-#lower-third-1.center{
-	bottom: var(--alt-1-margin-v);
-}
-
-#lower-third-2.left{
-    left: var(--alt-2-margin-h);
-    bottom: var(--alt-2-margin-v);
-}
-#lower-third-2.right{
-    flex-direction: row-reverse;
-    right: var(--alt-2-margin-h);
-    bottom: var(--alt-2-margin-v);
-}
-#lower-third-2.center{
-	bottom: var(--alt-2-margin-v);
-}
-
-#lower-third-3.left{
-    left: var(--alt-3-margin-h);
-    bottom: var(--alt-3-margin-v);
-}
-#lower-third-3.right{
-    flex-direction: row-reverse;
-    right: var(--alt-3-margin-h);
-    bottom: var(--alt-3-margin-v);
-}
-#lower-third-3.center{
-	bottom: var(--alt-3-margin-v);
-}
-
-#lower-third-4.left{
-    left: var(--alt-4-margin-h);
-    bottom: var(--alt-4-margin-v);
-}
-#lower-third-4.right{
-    flex-direction: row-reverse;
-    right: var(--alt-4-margin-h);
-    bottom: var(--alt-4-margin-v);
-}
-#lower-third-4.center{
-	bottom: var(--alt-4-margin-v);
-}
 
 .hide-anim {
 	display: none;
@@ -571,38 +449,6 @@ body {
 .center > .text-content > .text-mask {
 	text-align: center;
 }
-#lower-third-1 > div.text-content > div:first-child {
-    height: calc(var(--alt-1-name-size) + 0.25em);
-    margin-bottom: var(--alt-1-line-spacing);
-    transition: margin 0.1s;
-}
-#lower-third-1 > div.text-content > div:nth-child(2) {
-	height: calc(var(--alt-1-info-size) + 0.25em);
-}
-#lower-third-2 > div.text-content > div:first-child {
-    height: calc(var(--alt-2-name-size) + 0.25em);
-    margin-bottom: var(--alt-2-line-spacing);
-    transition: margin 0.1s;
-}
-#lower-third-2 > div.text-content > div:nth-child(2) {
-	height: calc(var(--alt-2-info-size) + 0.25em);
-}
-#lower-third-3 > div.text-content > div:first-child {
-    height: calc(var(--alt-3-name-size) + 0.25em);
-    margin-bottom: var(--alt-3-line-spacing);
-    transition: margin 0.1s;
-}
-#lower-third-3 > div.text-content > div:nth-child(2) {
-	height: calc(var(--alt-3-info-size) + 0.25em);
-}
-#lower-third-4 > div.text-content > div:first-child {
-    height: calc(var(--alt-4-name-size) + 0.25em);
-    margin-bottom: var(--alt-4-line-spacing);
-    transition: margin 0.1s;
-}
-#lower-third-4 > div.text-content > div:nth-child(2) {
-	height: calc(var(--alt-4-info-size) + 0.25em);
-}
 
 /*Name*/
 .text-content > div:first-child div {
@@ -610,42 +456,6 @@ body {
     display: inline-flex;
     transition: font-size 0.1s;
     padding: 0 0.2rem;
-}
-#lower-third-1 > div.text-content > div:first-child div {
-	font-family: var(--alt-1-font);
-	font-size: var(--alt-1-name-size);
-    font-style: var(--alt-1-name-style);
-    font-weight: var(--alt-1-name-weight);
-    text-transform: var(--alt-1-name-transform);
-    color: var(--alt-1-name-color);
-    text-shadow : var(--alt-1-shadows);
-}
-#lower-third-2 > div.text-content > div:first-child div {
-	font-family: var(--alt-2-font);
-	font-size: var(--alt-2-name-size);
-    font-style: var(--alt-2-name-style);
-	font-weight: var(--alt-2-name-weight);
-    text-transform: var(--alt-2-name-transform);
-    color: var(--alt-2-name-color);
-    text-shadow : var(--alt-2-shadows);
-}
-#lower-third-3 > div.text-content > div:first-child div {
-	font-family: var(--alt-3-font);
-	font-size: var(--alt-3-name-size);
-    font-style: var(--alt-3-name-style);
-    font-weight: var(--alt-3-name-weight);
-    text-transform: var(--alt-3-name-transform);
-    color: var(--alt-3-name-color);
-    text-shadow : var(--alt-3-shadows);
-}
-#lower-third-4 > div.text-content > div:first-child div {
-	font-family: var(--alt-4-font);
-	font-size: var(--alt-4-name-size);
-    font-style: var(--alt-4-name-style);
-    font-weight: var(--alt-4-name-weight);
-    text-transform: var(--alt-4-name-transform);
-    color: var(--alt-4-name-color);
-    text-shadow : var(--alt-4-shadows);
 }
 
 /*Info*/
@@ -655,42 +465,6 @@ body {
     transition: font-size 0.1s;
     padding: 0 0.2rem;
 }
-#lower-third-1 > div.text-content > div:nth-child(2) div {
-    font-family: var(--alt-1-font);
-    font-size: var(--alt-1-info-size);
-	font-style: var(--alt-1-info-style);
-    font-weight: var(--alt-1-info-weight);
-    text-transform: var(--alt-1-info-transform);
-    color: var(--alt-1-info-color);
-    text-shadow : var(--alt-1-shadows);	
-}
-#lower-third-2 > div.text-content > div:nth-child(2) div {
-    font-family: var(--alt-2-font);
-    font-size: var(--alt-2-info-size);
-	font-style: var(--alt-2-info-style);
-    font-weight: var(--alt-2-info-weight);
-    text-transform: var(--alt-2-info-transform);
-    color: var(--alt-2-info-color);
-    text-shadow : var(--alt-2-shadows);	
-}
-#lower-third-3 > div.text-content > div:nth-child(2) div {
-    font-family: var(--alt-3-font);
-    font-size: var(--alt-3-info-size);
-	font-style: var(--alt-3-info-style);
-    font-weight: var(--alt-3-info-weight);
-    text-transform: var(--alt-3-info-transform);
-    color: var(--alt-3-info-color);
-    text-shadow : var(--alt-3-shadows);	
-}
-#lower-third-4 > div.text-content > div:nth-child(2) div {
-    font-family: var(--alt-4-font);
-    font-size: var(--alt-4-info-size);
-	font-style: var(--alt-4-info-style);
-	font-weight: var(--alt-4-info-weight);
-    text-transform: var(--alt-4-info-transform);
-    color: var(--alt-4-info-color);
-    text-shadow : var(--alt-4-shadows);	
-}
 
 /*Logo*/
 .logo{
@@ -699,20 +473,7 @@ body {
 	transition: margin 0.1s;
 	min-width: fit-content;
 }
-#lower-third-1 > .logo img {
-	max-height: var(--alt-1-logo-size);
-}
-#lower-third-2 > .logo img {
-	max-height: var(--alt-2-logo-size);
-}
-#lower-third-3 > .logo img {
-	max-height: var(--alt-3-logo-size);
-}
-#lower-third-4 > .logo img {
-	max-height: var(--alt-4-logo-size);
-}
 .logo img {
-    /* max-height: 3.5em; */
     display: flex;
 	position: relative;
 	filter: blur(0);
@@ -724,8 +485,6 @@ body {
 	height: 0;
 }
 .no-logo {
-    /* opacity: 0;
-    width: 0; */
 	margin: 0!important;
 }
 .left > .logo {
@@ -749,26 +508,7 @@ body {
     order: 1;
 	position: relative;
 	min-width: 0.3em;
-    /* width: 0.3em; */
     height: 3.5em;
-}
-
-#lower-third-1.style-1 > .graph-1 {
-    background: var(--alt-1-style-color-1);
-    /* box-shadow : var(--alt-1-shadows);	 */
-    box-shadow : var(--alt-1-shadows-graph);
-}
-#lower-third-2.style-1 > .graph-1 {
-    background: var(--alt-2-style-color-1);
-    box-shadow : var(--alt-2-shadows-graph);
-}
-#lower-third-3.style-1 > .graph-1 {
-    background: var(--alt-3-style-color-1);
-    box-shadow : var(--alt-3-shadows-graph);
-}
-#lower-third-4.style-1 > .graph-1 {
-    background: var(--alt-4-style-color-1);
-    box-shadow : var(--alt-4-shadows-graph);
 }
 
 .style-1 > .graph-2 {
@@ -781,47 +521,6 @@ body {
 	padding: 0 1em;
 	
 	box-sizing: border-box;
-
-	/* height: 100%;
-	margin: -1em;
-	padding: 1em; */
-
-	/*margin: -1em -5em;
-	padding: 1em 400%;	Full with background */
-}
-
-#lower-third-1.style-1 > .graph-2 {
-	background: var(--alt-1-style-color-2);
-	opacity: var(--alt-1-background);
-	border: solid var(--alt-1-border_thickness_amount);
-    border-color: var(--alt-1-style-color-3);
-	border-radius: calc(var(--alt-1-corners) * 1.1);
-	box-shadow: var(--alt-1-shadows-graph);
-
-}
-#lower-third-2.style-1 > .graph-2 {
-	background: var(--alt-2-style-color-2);
-	opacity: var(--alt-2-background);
-	border: solid var(--alt-2-border_thickness_amount);
-    border-color: var(--alt-2-style-color-3);
-	border-radius: calc(var(--alt-2-corners) * 1.1);
-	box-shadow: var(--alt-2-shadows-graph);		
-}
-#lower-third-3.style-1 > .graph-2 {
-	background: var(--alt-3-style-color-2);
-	opacity: var(--alt-3-background);
-	border: solid var(--alt-3-border_thickness_amount);
-    border-color: var(--alt-3-style-color-3);
-	border-radius: calc(var(--alt-3-corners) * 1.1);
-	box-shadow: var(--alt-3-shadows-graph);
-}
-#lower-third-4.style-1 > .graph-2 {
-	background: var(--alt-4-style-color-2);
-	opacity: var(--alt-4-background);	
-	border: solid var(--alt-4-border_thickness_amount);
-    border-color: var(--alt-4-style-color-3);
-	border-radius: calc(var(--alt-4-corners) * 1.1);
-	box-shadow: var(--alt-4-shadows-graph);	
 }
 
 .style-1.left > .graph-2 {
@@ -838,23 +537,6 @@ body {
 
 /*****Style 2*****/
 
-#lower-third-1.style-2 > div.text-content > div:first-child {
-	height: calc(var(--alt-1-name-size) + 1.2rem);
-    padding: 0 0.2rem 0 0;
-}
-#lower-third-2.style-2 > div.text-content > div:first-child {
-	height: calc(var(--alt-2-name-size) + 1.2rem);
-	padding: 0 0.2rem 0 0;
-}
-#lower-third-3.style-2 > div.text-content > div:first-child {
-	height: calc(var(--alt-3-name-size) + 1.2rem);
-	padding: 0 0.2rem 0 0;
-}
-#lower-third-4.style-2 > div.text-content > div:first-child {
-	height: calc(var(--alt-4-name-size) + 1.2rem);
-	padding: 0 0.2rem 0 0;
-}
-
 .style-2 > div.text-content > div:first-child div {
 	padding: 0.5rem 1.3rem;
 }
@@ -866,60 +548,6 @@ body {
 	z-index: -1;
 	top: 0;
 	left: 0;	
-}
-
-#lower-third-1.style-2 > div.text-content > div:first-child div::after {
-	background: var(--alt-1-style-color-1);
-	/* opacity: var(--alt-1-background); */
-	box-sizing: border-box;
-	border: solid var(--alt-1-border_thickness_amount);
-    border-color: var(--alt-1-style-color-3);
-	border-radius: var(--alt-1-corners);
-	box-shadow: var(--alt-1-shadows-graph);
-}
-#lower-third-2.style-2 > div.text-content > div:first-child div::after {
-	background: var(--alt-2-style-color-1);
-	/* opacity: var(--alt-2-background); */
-	box-sizing: border-box;
-	border: solid var(--alt-2-border_thickness_amount);
-    border-color: var(--alt-2-style-color-3);
-	border-radius: var(--alt-2-corners);
-	box-shadow: var(--alt-2-shadows-graph);
-}
-#lower-third-3.style-2 > div.text-content > div:first-child div::after {
-	background: var(--alt-3-style-color-1);
-	/* opacity: var(--alt-3-background); */
-	box-sizing: border-box;
-	border: solid var(--alt-3-border_thickness_amount);
-    border-color: var(--alt-3-style-color-3);
-	border-radius: var(--alt-3-corners);
-	box-shadow: var(--alt-3-shadows-graph);
-}
-#lower-third-4.style-2 > div.text-content > div:first-child div::after {
-	background: var(--alt-4-style-color-1);
-	/* opacity: var(--alt-4-background); */
-	box-sizing: border-box;
-	border: solid var(--alt-4-border_thickness_amount);
-    border-color: var(--alt-4-style-color-3);
-	border-radius: var(--alt-4-corners);
-	box-shadow: var(--alt-4-shadows-graph);
-}
-
-#lower-third-1.style-2 > div.text-content > div:nth-child(2) {
-	height: calc(var(--alt-1-info-size) + 1.2rem);
-    padding: 0 0.2rem 0 0;
-}
-#lower-third-2.style-2 > div.text-content > div:nth-child(2) {
-	height: calc(var(--alt-2-info-size) + 1.2rem);
-	padding: 0 0.2rem 0 0;
-}
-#lower-third-3.style-2 > div.text-content > div:nth-child(2) {
-	height: calc(var(--alt-3-info-size) + 1.2rem);
-	padding: 0 0.2rem 0 0;
-}
-#lower-third-4.style-2 > div.text-content > div:nth-child(2) {
-	height: calc(var(--alt-4-info-size) + 1.2rem);
-	padding: 0 0.2rem 0 0;
 }
 
 .style-2.center > div.text-content > div:nth-child(2) {
@@ -937,43 +565,6 @@ body {
 	z-index: -1;
 	top: 0;
 	left: 0;
-}
-
-#lower-third-1.style-2 > div.text-content > div:nth-child(2) div::after {
-    background: var(--alt-1-style-color-2);
-	/* opacity: var(--alt-1-background); */
-	box-sizing: border-box;
-	border: solid var(--alt-1-border_thickness_amount);
-    border-color: var(--alt-1-style-color-4);
-	border-radius: var(--alt-1-corners);
-	box-shadow: var(--alt-1-shadows-graph);
-}
-#lower-third-2.style-2 > div.text-content > div:nth-child(2) div::after {
-    background: var(--alt-2-style-color-2);
-	/* opacity: var(--alt-2-background); */
-	box-sizing: border-box;
-	border: solid var(--alt-2-border_thickness_amount);
-    border-color: var(--alt-2-style-color-4);
-	border-radius: var(--alt-2-corners);
-	box-shadow: var(--alt-2-shadows-graph);
-}
-#lower-third-3.style-2 > div.text-content > div:nth-child(2) div::after {
-    background: var(--alt-3-style-color-2);
-	/* opacity: var(--alt-3-background); */
-	box-sizing: border-box;
-	border: solid var(--alt-3-border_thickness_amount);
-    border-color: var(--alt-3-style-color-4);
-	border-radius: var(--alt-3-corners);
-	box-shadow: var(--alt-3-shadows-graph);
-}
-#lower-third-4.style-2 > div.text-content > div:nth-child(2) div::after {
-    background: var(--alt-4-style-color-2);
-	/* opacity: var(--alt-4-background); */
-	box-sizing: border-box;
-	border: solid var(--alt-4-border_thickness_amount);
-    border-color: var(--alt-4-style-color-4);
-	border-radius: var(--alt-4-corners);
-	box-shadow: var(--alt-4-shadows-graph);
 }
 
 .style-2 > .graph-1,
@@ -1019,31 +610,6 @@ body {
 	margin-right: -6em;
 }
 
-#lower-third-1.style-3 > .graph-1 {
-    background: var(--alt-1-style-color-1);
-	box-shadow: var(--alt-1-shadows-graph);
-	border: var(--alt-1-border_thickness_amount) solid var(--alt-1-style-color-3);
-	border-radius: calc(var(--alt-1-corners) * 1.1);
-}
-#lower-third-2.style-3 > .graph-1 {
-    background: var(--alt-2-style-color-1);
-	box-shadow: var(--alt-2-shadows-graph);
-	border: var(--alt-2-border_thickness_amount) solid var(--alt-2-style-color-3);
-	border-radius: calc(var(--alt-2-corners) * 1.1);
-}
-#lower-third-3.style-3 > .graph-1 {
-    background: var(--alt-3-style-color-1);
-	box-shadow: var(--alt-3-shadows-graph);
-	border: var(--alt-3-border_thickness_amount) solid var(--alt-3-style-color-3);
-	border-radius: calc(var(--alt-3-corners) * 1.1);
-}
-#lower-third-4.style-3 > .graph-1 {
-    background: var(--alt-4-style-color-1);
-	box-shadow: var(--alt-4-shadows-graph);
-	border: var(--alt-4-border_thickness_amount) solid var(--alt-4-style-color-3);
-	border-radius: calc(var(--alt-4-corners) * 1.1);
-}
-
 .style-3 > .graph-2 {
 	order: 3;
 	z-index: -1;
@@ -1053,61 +619,11 @@ body {
 .style-3 > .graph-2 {
 	height: calc(100% - 0.5em);
 }
-
-#lower-third-1.style-3 > .graph-2 {
-	background: var(--alt-1-style-color-2);
-	box-shadow: var(--alt-1-shadows-graph);
-	opacity: var(--alt-1-background);
-    border: var(--alt-1-border_thickness_amount) solid var(--alt-1-style-color-4);
-}
-#lower-third-2.style-3 > .graph-2 {
-	background: var(--alt-2-style-color-2);
-	box-shadow: var(--alt-2-shadows-graph);
-	opacity: var(--alt-2-background);
-    border: var(--alt-2-border_thickness_amount) solid var(--alt-2-style-color-4);
-}
-#lower-third-3.style-3 > .graph-2 {
-	background: var(--alt-3-style-color-2);
-	box-shadow: var(--alt-3-shadows-graph);
-	opacity: var(--alt-3-background);
-    border: var(--alt-3-border_thickness_amount) solid var(--alt-3-style-color-4);
-}
-#lower-third-4.style-3 > .graph-2 {
-	background: var(--alt-4-style-color-2);
-	box-shadow: var(--alt-4-shadows-graph);
-	opacity: var(--alt-4-background);
-    border: var(--alt-4-border_thickness_amount) solid var(--alt-4-style-color-4);
-}
-
-#lower-third-1.style-3.left > .graph-2 {
-	border-radius: 0 var(--alt-1-corners) var(--alt-1-corners) 0;
-}
-#lower-third-2.style-3.left > .graph-2 {
-	border-radius: 0 var(--alt-2-corners) var(--alt-2-corners) 0;
-}
-#lower-third-3.style-3.left > .graph-2 {
-	border-radius: 0 var(--alt-3-corners) var(--alt-3-corners) 0;
-}
-#lower-third-4.style-3.left > .graph-2 {
-	border-radius: 0 var(--alt-4-corners) var(--alt-4-corners) 0;
-}
 .style-3.left > .graph-2 {
 	left: 3.3em;
 	border-left: 0;
 }
 
-#lower-third-1.style-3.right > .graph-2 {
-	border-radius: var(--alt-1-corners) 0 0 var(--alt-1-corners);
-}
-#lower-third-2.style-3.right > .graph-2 {
-	border-radius: var(--alt-2-corners) 0 0 var(--alt-2-corners);
-}
-#lower-third-3.style-3.right > .graph-2 {
-	border-radius: var(--alt-3-corners) 0 0 var(--alt-3-corners);
-}
-#lower-third-4.style-3.right > .graph-2 {
-	border-radius: var(--alt-4-corners) 0 0 var(--alt-4-corners);
-}
 .style-3.right > .graph-2 {
 	right: 3.3em;
 	border-right: 0;
@@ -1185,7 +701,11 @@ body {
 
 
 /*Uncomment to invert vertical position*/
-/* #lower-third-1 {
+/* #lower-third-0 {
+	top: var(--alt-0-margin-v);
+	bottom: unset!important;
+}
+#lower-third-1 {
 	top: var(--alt-1-margin-v);
 	bottom: unset!important;
 }
@@ -1195,10 +715,6 @@ body {
 }
 #lower-third-3 {
 	top: var(--alt-3-margin-v);
-	bottom: unset!important;
-}
-#lower-third-4 {
-	top: var(--alt-4-margin-v);
 	bottom: unset!important;
 } */
 
@@ -1217,10 +733,10 @@ body {
 	align-items: center;
 	display: flex;
 }
-#lower-third-1.style-3 > .logo {
-    background: var(--alt-1-style-color-1);
-	box-shadow: var(--alt-1-shadows);
-	opacity: var(--alt-1-background);
+#lower-third-0.style-3 > .logo {
+    background: var(--alt-0-style-color-1);
+	box-shadow: var(--alt-0-shadows);
+	opacity: var(--alt-0-background);
 } */
 /*repetir */
 

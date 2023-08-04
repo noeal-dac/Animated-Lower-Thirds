@@ -32,6 +32,10 @@ const App = {
         $( "#sortable" ).sortable({handle: ".drag-handle"});
         $( "#sortable" ).on("sortupdate", this.updateSortOrder);
         $( "#sortable" ).disableSelection();
+
+        
+        this.bc = new BroadcastChannel('obs-animated-lower-thirds'); //Send to browser source
+        this.bc.onmessage = this.bcHandler;
     },
     methods: {
         initTooltips() {
@@ -68,14 +72,17 @@ const App = {
             const sorted = $('#sortable').sortable("toArray").map(val => parseInt(val.replace('alt-', '')));
             this.lts.value = sorted;
         },
-        checkSwitches() {
+        checkSwitches(send = true) {
             const mainSettings = this.$refs.mainSettings;
             Object.values(this.$refs.lt)
                   .forEach(lt => {
-                        lt.active = mainSettings.active.value && lt.inactiveTimeMonitor == 0 && lt.switchOn;
-                        lt.inactive = ((mainSettings.active.value && lt.inactiveTimeMonitor > 0) || 
-                                        !mainSettings.active.value)	&& lt.switchOn;
+                        lt.active = mainSettings.active.value && lt.activeTimeMonitor > 0 && lt.inactiveTimeMonitor == 0 && lt.switchOn;
+                        lt.inactive = !lt.active && lt.switchOn;
                   });
+            
+            if (send) {
+                this.send();
+            }
         },
         checkAppearance() {
             const mainSettings = this.$refs.mainSettings;
@@ -90,6 +97,10 @@ const App = {
                         lt.enabledPreview = mainSettings.enabledPreview.value;
                         lt.switchLeft = mainSettings.switchesLeft.value;
                         lt.hiddenSlotNumbers = mainSettings.hiddenSlotNumbers.value;
+
+                        if (!lt.enabledPreview) {
+                            lt.previewOn = false;
+                        }
                   });
         },
         openLogo(args) {
@@ -119,6 +130,71 @@ const App = {
         updateFonts() {
             const mainSettings = this.$refs.mainSettings;
             Object.assign(this.fonts, {'custom': mainSettings.customFonts.value.map(val => val.name)});
+        },
+        bcHandler(msg) {
+            const {timer, switchStates} = msg.data;
+
+            Object.values(this.$refs.lt).forEach((lt, index) => {
+                // state changes and lt has autoLoad enabled
+                if (lt.active && !switchStates[index] && lt.autoLoad.value) {
+                    lt.slotLoadNext();
+                }
+                
+                lt.activeTimeMonitor = timer[index].activeTimer;
+                lt.inactiveTimeMonitor = timer[index].inactiveTimer;
+                lt.active = switchStates[index];
+            });
+
+            this.checkSwitches(false);
+        },
+        send() {
+            // values that should be communicated:
+            //      * which switches are on
+            //      * which previews are on
+            //      * aggregated times (animation, active, inactive)
+            //      * values that are calculated from 
+            console.log('send');
+            const main = this.$refs.mainSettings;
+
+            
+            const switchStates = Object.values(this.$refs.lt)
+                                       .map(lt => lt.switchOn && main.active.value);
+            const previewStates = Object.values(this.$refs.lt)
+                                        .map(lt => lt.previewOn);
+
+            const animationTimes = Object.values(this.$refs.lt)
+                                        .map(lt => lt.animationTime.value || main.animationTime.value);
+            const activeTimes = Object.values(this.$refs.lt)
+                                        .map(lt => {
+                                        if (lt.customTimeSettings && lt.lockActive.value) {
+                                            return Infinity;
+                                        } else if (!lt.customTimeSettings && main.lockActive.value) {
+                                            return Infinity;
+                                        } else if (lt.customTimeSettings && lt.activeTime.value){
+                                            return lt.activeTime.value
+                                        } else {
+                                            return main.activeTime.value;
+                                        }
+                                        });
+            const inactiveTimes = Object.values(this.$refs.lt)
+                                        .map(lt => {
+                                            if (lt.customTimeSettings && lt.oneShot.value) {
+                                                return Infinity;
+                                            } else if (!lt.customTimeSettings && main.oneShot.value) {
+                                                return Infinity;
+                                            } else if (lt.customTimeSettings && lt.inactiveTime.value){
+                                                return lt.inactiveTime.value
+                                            } else {
+                                                return main.inactiveTime.value;
+                                            }
+                                        });
+            this.bc.postMessage({
+                switchStates, previewStates, animationTimes, activeTimes, inactiveTimes
+            });
+        },
+        sendSlotUpdate() {
+            console.log('send slot update');
+            this.bc.postMessage({ updateSlot: true });
         }
     }
 };
