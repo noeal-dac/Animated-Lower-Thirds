@@ -87,7 +87,7 @@ function migrate(config) {
     'alt-1-shadow-amount': ['-shadow-amount', parseInt],
     'alt-1-background': ['-background', parseBool],
     'alt-1-style-color-1': ['-background-color-1', parseStr],
-    'alt-1-style-color-2': ['-background-color-1', parseStr],
+    'alt-1-style-color-2': ['-background-color-2', parseStr],
     'alt-1-style-color-3': ['-borders-color-1', parseStr],
     'alt-1-style-color-4': ['-borders-color-2', parseStr],
     'alt-1-border-color': ['-borders', parseBool],

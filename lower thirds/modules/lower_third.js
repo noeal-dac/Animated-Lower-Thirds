@@ -11,6 +11,7 @@ const LowerThird = {
       enabledPreview: ref(false),
       switchLeft: ref(false),
       hiddenSlotNumbers: ref(false),
+      defaultLogoSrc: ref('../logos/logo.png'),
       
       nameClicks: ref(0),
       nameIsEditable: ref(false),
@@ -51,7 +52,6 @@ const LowerThird = {
       
       enabledLogo: [`alt2-${args.index}-logo`, true],
       logoSize: [`alt2-${args.index}-logo-size`, 0],
-      isDefaultLogo: [`alt2-${args.index}-default-logo`, true],
       logoSrc: [`alt2-${args.index}-logo-src`, undefined],
       
       shadows: [`alt2-${args.index}-shadows`, false],
@@ -104,6 +104,12 @@ const LowerThird = {
                         return '<p>Empty. Click to save.</p>';
                       }
                    });
+    },
+    isDefaultLogo() {
+      return !this.logoSrc.value || this.logoSrc.value == this.defaultLogoSrc;
+    },
+    resolvedLogoSrc() {
+      return this.isDefaultLogo ? this.defaultLogoSrc : this.logoSrc.value;
     }
   },
   mounted() {

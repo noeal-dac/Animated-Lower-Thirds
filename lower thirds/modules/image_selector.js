@@ -21,7 +21,7 @@ const ImageSelector = {
       this.logoSrc = logoSrc;
       this.defaultArray = defaultArray;
       this.isDefault = isDefault;
-      this.previewSrc = isDefault ? defaultArray.value[index] : logoSrc.value;
+      this.previewSrc = isDefault ? defaultArray.value[index] : logoSrc.value[slotIndex];
       this.oldSrc = this.previewSrc;
     },
 
@@ -49,11 +49,9 @@ const ImageSelector = {
 
           this.$emit('defaultChanged');
 				} else {
-          this.logoSrc.value = src;
           this.$emit('logoChanged');
 				}
       } else if (!this.isDefault && !this.previewSrc) {
-        this.logoSrc.value = this.defaultArray.value[this.index];
         this.$emit('logoChanged');
       }
       

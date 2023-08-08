@@ -132,12 +132,20 @@ const App = {
             Object.assign(this.fonts, {'custom': mainSettings.customFonts.value.map(val => val.name)});
         },
         bcHandler(msg) {
+            const mainSettings = this.$refs.mainSettings;
             const {timer, switchStates} = msg.data;
 
             Object.values(this.$refs.lt).forEach((lt, index) => {
                 // state changes and lt has autoLoad enabled
                 if (lt.active && !switchStates[index] && lt.autoLoad.value) {
                     lt.slotLoadNext();
+                }
+
+                // one shot
+                const isOneShot = lt.customTimeSettings.value ? lt.oneShot.value : mainSettings.oneShot;
+                if (lt.active && !switchStates[index] && isOneShot) {
+                    lt.switchOn = false;
+                    this.checkSwitches();
                 }
                 
                 lt.activeTimeMonitor = timer[index].activeTimer;
@@ -154,6 +162,7 @@ const App = {
             //      * aggregated times (animation, active, inactive)
             //      * values that are calculated from 
             console.log('send');
+            this.sendStyleUpdate();
             const main = this.$refs.mainSettings;
 
             
@@ -188,13 +197,32 @@ const App = {
                                                 return main.inactiveTime.value;
                                             }
                                         });
+            const slotValues = Object.values(this.$refs.lt)
+                .map(lt => {
+                    return {
+                        name: lt.name.value,
+                        info: lt.info.value,
+                        logoSrc: lt.resolvedLogoSrc,
+                    }
+                });
             this.bc.postMessage({
-                switchStates, previewStates, animationTimes, activeTimes, inactiveTimes
+                switchStates, previewStates, animationTimes, activeTimes, inactiveTimes, slotValues
             });
+        },
+        sendStyleUpdate() {
+            this.bc.postMessage({ updateStyles: true });
         },
         sendSlotUpdate() {
             console.log('send slot update');
-            this.bc.postMessage({ updateSlot: true });
+            const slotValues = Object.values(this.$refs.lt)
+                .map(lt => {
+                    return {
+                        name: lt.name.value,
+                        info: lt.info.value,
+                        logoSrc: lt.resolvedLogoSrc,
+                    }
+                });
+            this.bc.postMessage({ updateSlot: true, slotValues });
         },
         sendFont(payload) {
             this.bc.postMessage(payload);
@@ -240,6 +268,10 @@ const App = {
         removeLT() {
             this.lts.value.pop();
             this.lts.update();
+            setTimeout(() => {
+                this.sendStyleUpdate();
+                this.checkLogos();
+            }, 1);
         },
         addLT() {
             // find next missing id
@@ -249,6 +281,10 @@ const App = {
             }
             
             this.lts.value = [...this.lts.value, nextMissing];
+            setTimeout(() => {
+                this.sendStyleUpdate();
+                this.checkLogos();
+            }, 1);
         }
     }
 };

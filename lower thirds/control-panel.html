@@ -107,7 +107,7 @@
 							 @switch-changed="checkSwitches"
 							 @open-logo="openLogo"
 							 @reset-logo="checkLogos"
-							 @style-changed="send"
+							 @style-changed="sendStyleUpdate"
 							 @slot-changed="sendSlotUpdate"></lower-third>
 			</div>
 
@@ -133,7 +133,7 @@
 				<div class="form-input">
 					<div>
 						<h1>Reset all settings</h1>
-						<p>You are going to reset all configuration and memory slots ¿Are you sure?</p>
+						<p>You are going to reset all configuration and memory slots. Are you sure?</p>
 					</div>
 					<div class="reset-btns">
 						<div class="btn-ok-reset" onclick="okResetPopup()">Ok</div>
@@ -432,17 +432,17 @@
 						</div>
 						<div class="first-edit-container">
 							<div class ="logo-container" @click="openLogo()" v-show="enabledLogo.value && style.value !== 2">
-								<img class="logo-preview" :src="logoSrc.value">
+								<img class="logo-preview" :src="resolvedLogoSrc">
 							</div>
 							<div class="textfields-container">
-								<input type="text" :id="`alt-${index}-name`" placeholder="Name" tabindex="4" v-model="name.value" @change="$emit('styleChanged');">
+								<input type="text" :id="`alt-${index}-name`" placeholder="Name" tabindex="4" v-model="name.value">
 								<div :id="`alt-${index}-name-appearance`">
 									<label :id="`alt-${index}-name-uppercase`" class="config-btn small">
-										<input type="checkbox" v-model="nameTransform.value" @change="$emit('styleChanged');">
+										<input type="checkbox" v-model="nameTransform.value">
 										<div class="icon-btn icon small icon-uppercase"></div>
 									</label>
 									<label :id="`alt-${index}-name-bold`" class="config-btn small">
-										<input type="checkbox" v-model="nameBold.value" @change="$emit('styleChanged');">
+										<input type="checkbox" v-model="nameBold.value">
 										<div class="icon-btn icon small icon-bold"></div>
 									</label>
 									<label :id="`alt-${index}-name-italic`" class="config-btn small">
@@ -584,6 +584,7 @@
 				document.getElementById("export-data").classList.add("hide");
 			}
 
+			
 			//Read txt file and call writeLocalStorage function
 			document.getElementById('importFile').onchange = function(){
 				var file = this.files[0];
@@ -598,21 +599,21 @@
 						newConfig = JSON.stringify(migrate(JSON.parse(this.result)));
 					}
 
-					writeLocalStorage(this.result);
+					writeLocalStorage(newConfig);
 				};
 				reader.readAsText(file);
 			};
 
 			//Read all localstorage data
 			function getLocalStorage() {
-				var a = {};
-				for (var i = 0; i < localStorage.length; i++) {
-					var k = localStorage.key(i);
-					var v = localStorage.getItem(k);
-					a[k] = v;
+				const a = {};
+				for (const i = 0; i < localStorage.length; i++) {
+					const k = localStorage.key(i);
+					if (k.startsWith("alt2-")) {
+						a[k] = localStorage.getItem(k);
+					}
 				}
-				var s = JSON.stringify(a);
-				return s;
+				return JSON.stringify(a);
 			}
 
 			//Save data to localStorage
@@ -620,11 +621,20 @@
 				var o = JSON.parse(data);
 				for (var property in o) {
 					if (o.hasOwnProperty(property)) {
-						localStorage.setItem(property, o[property]);
+						localStorage.setItem(property, JSON.stringify(o[property]));
 					}
 				}
 				location.reload();
         	}
+
+			function clearLocalStorage() {
+				for (const i = 0; i < localStorage.length; i++) {
+					const k = localStorage.key(i);
+					if (k.startsWith("alt2-")) {
+						localStorage.removeItem(k);
+					}
+				}
+			}
 
 			//Copy all data to clipboard
 			function exportData() {

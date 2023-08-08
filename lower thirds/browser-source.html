@@ -19,6 +19,7 @@
         <div id="app">
             <lower-third-source v-for="index in lts.value"
                 :index="index"
+                @switch-changed="runAnimations"
                 ref="lt">
             </lower-third>
         </div>
@@ -26,15 +27,15 @@
         <template id="lower-third-template">
             <div :id="`lower-third-${index}`" :class="classes">
                 <div :class="['logo', {'no-logo': !enabledLogo.value || style.value == 2}]">
-                    <img :src="logoSrc.value" />
+                    <img :src="logoSrc" />
                 </div>
                 <div class="graph-1"></div>
                 <div class="text-content">
                     <div class="text-mask">
-                        <div>{{name.value}}</div>
+                        <div>{{name}}</div>
                     </div>
                     <div class="text-mask">
-                        <div>{{info.value}}</div>
+                        <div>{{info}}</div>
                     </div>
                 </div>
                 <div class="graph-2"></div>
@@ -49,6 +50,7 @@
             setup() {
                 const props = {
                     isPreview: new URL(window.location).searchParams.get('mode') == 'preview',
+                    hideTimeout: ref(undefined),
                 };
 
                 const readables = {
@@ -76,16 +78,26 @@
                 update(msg) {
                     // update slot msg
                     if (msg.data.updateSlot) {
-                        Object.values(this.$refs.lt).forEach(lt => lt.updateSlot());
+                        Object.values(this.$refs.lt).forEach((lt, index) => lt.updateSlot(msg.data.slotValues[index]));
 
                     // update fonts
                     } else if (msg.data.fontUrl) {
                         $('head').append('<style>@import url(' + msg.data.fontUrl + ');</style>');
 
+                    // update Styles only
+                    } else if (msg.data.updateStyles) {
+
+                        // update amount of lts
+                        this.lts.update();
+
+                        Object.values(this.$refs.lt).forEach((lt, index) => {
+                            lt.updateStyles(this.isPreview);
+                        });
+
                     // update everything
                     } else if (msg.data.previewStates) {
 
-                        const {switchStates, previewStates, animationTimes, activeTimes, inactiveTimes} = msg.data;
+                        const {switchStates, previewStates, animationTimes, activeTimes, inactiveTimes, slotValues} = msg.data;
                         // update amount of lts
                         this.lts.update();
 
@@ -95,7 +107,7 @@
                             const activeTime = this.isPreview ? Infinity : activeTimes[index];
                             
                             // update appearance
-                            lt.update(switchState, animationTime, activeTime, inactiveTimes[index], this.isPreview);
+                            lt.update(switchState, animationTime, activeTime, inactiveTimes[index], this.isPreview, slotValues[index]);
                         });
                     }
                 },
@@ -112,37 +124,16 @@
                                     lt.active = false;
                                     lt.activeTimer = 0;
                                     lt.inactiveTimer = 0;
-                                    document.getAnimations().forEach(anim => {
-                                        let parent = anim.effect.target;
-
-                                        while (!parent.id || !parent.id.startsWith('lower-third-')) {
-                                            parent = parent.parentElement;
-                                        }
-                                        
-                                        if (lt.$el.id == parent.id) {
-                                            anim.cancel();
-                                            anim.play();
-                                        }
-                                    });
+                                    this.runAnimations(lt);
                                 }
                             } else {
                                 if (lt.inactiveTimer < lt.inactiveTime) {
                                     lt.inactiveTimer++;
                                 } else {
+                                    lt.hide = false;
                                     lt.active = true;
                                     lt.inactiveTimer = 0;
-                                    document.getAnimations().forEach(anim => {
-                                        let parent = anim.effect.target;
-
-                                        while (!parent.id || !parent.id.startsWith('lower-third-')) {
-                                            parent = parent.parentElement;
-                                        }
-                                        
-                                        if (lt.$el.id == parent.id) {
-                                            anim.cancel();
-                                            anim.play();
-                                        }
-                                    });
+                                    this.runAnimations(lt);
                                 }
                             }
                         }
@@ -160,6 +151,31 @@
                         const switchStates = Object.values(this.$refs.lt).map(lt => lt.active);
                         this.bc.postMessage({timer, switchStates});
                     }
+                },
+                runAnimations(lt) {
+                    document.getAnimations().forEach(anim => {
+                        let parent = anim.effect.target;
+
+                        while (!parent.id || !parent.id.startsWith('lower-third-')) {
+                            parent = parent.parentElement;
+                        }
+                        
+                        if (lt.$el.id == parent.id) {
+                            anim.cancel();
+                            anim.play();
+                        }
+
+                        if (!lt.active) {
+                            if (this.hideTimeout) {
+                                clearTimeout(this.hideTimeout);
+                            }
+                            this.hideTimeout = setTimeout(() => {
+                                if (!lt.active) {
+                                    lt.hide = true;
+                                }
+                            }, lt.animationTime * 1000);
+                        }
+                    });
                 }
             }
         }).mount('#app');

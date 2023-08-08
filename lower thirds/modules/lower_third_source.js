@@ -8,6 +8,11 @@ const LowerThirdSource = {
             hide: ref(true),
             animationIn: ref(false),
             animationOut: ref(false),
+            stylesInitialized: ref(false),
+
+            name: ref(''),
+            info: ref(''),
+            logoSrc: ref(''),
 
             animationTime: ref(2),
             activeTime: ref(25),
@@ -20,20 +25,17 @@ const LowerThirdSource = {
         };
 
         const readables = {
-            name: `alt2-${args.index}-name`,
             nameTransform: `alt2-${args.index}-name-transform`,
             nameBold: `alt2-${args.index}-name-bold`,            // lighter | bold
             nameItalic: `alt2-${args.index}-name-italic`,        // normal | italic
             nameColor: `alt2-${args.index}-name-color`,
             
-            info: `alt2-${args.index}-info`,
             infoTransform: `alt2-${args.index}-info-transform`,
             infoBold: `alt2-${args.index}-info-bold`,
             infoItalic: `alt2-${args.index}-info-italic`,
             infoColor: `alt2-${args.index}-info-color`,
             
             enabledLogo: `alt2-${args.index}-logo`,
-            logoSrc: `alt2-${args.index}-logo-src`,
             logoSizeReadable: `alt2-${args.index}-logo-size`,
 
             style: `alt2-${args.index}-style`,
@@ -114,54 +116,58 @@ const LowerThirdSource = {
         document.body.append(styles);
     },
     methods: {
-        update(switchState, animationTime, activeTime, inactiveTime, isPreview) {
-            console.log('update');
+        update(switchState, animationTime, activeTime, inactiveTime, isPreview, slotValues) {
             this.switchOn = switchState;
+            
             // only update if not active
             if (!this.active || isPreview) {
                 this.readables.forEach(key => this[key].update());
                 this.animationTime = animationTime;
                 this.activeTime = Math.max(animationTime, activeTime);
                 this.inactiveTime = Math.max(animationTime, inactiveTime);
-
-                this.updateStyles();
+                this.name = slotValues.name;
+                this.info = slotValues.info;
+                this.logoSrc = slotValues.logoSrc;
             }
 
+            // update animations if switch changed
             if (switchState != this.active) {
-                this.hide = false;
                 this.animationIn = switchState;
                 this.animationOut = !switchState;
                 this.active = switchState;
+                this.$emit('switchChanged', this);
+            }
 
-                setTimeout(() => {
-                    document.getAnimations().forEach(anim => {
-                        let parent = anim.effect.target;
-
-                        while (!parent.id || !parent.id.startsWith('lower-third-')) {
-                            parent = parent.parentElement;
-                        }
-                        
-                        if (this.$el.id == parent.id) {
-                            anim.cancel();
-                            anim.play();
-                        }
-                    });
-                }, 1);
+            if (this.hide && this.active) {
+                this.hide = false;
             }
         },
-        updateSlot() {
+        updateSlot(slotValues) {
             if (this.switchOn) {
+                // wait until animation is done => then update
                 const updateTimer = setInterval(() => {
                     if (this.inactiveTimer > this.animationTime) {
-                        this.name.update();
-                        this.info.update();
-                        this.logoSrc.update();
+                        this.name = slotValues.name;
+                        this.info = slotValues.info;
+                        this.logoSrc = slotValues.logoSrc;
                         clearInterval(updateTimer);
                     }
-                }, 1000);
+                }, 500);
             }
         },
-        updateStyles() {
+        updateStyles(isPreview) {
+            const waitUntilInactive = setInterval(() => {
+                if (this.hide || !this.stylesInitialized || isPreview) {
+                    this.updateCss();
+                    clearInterval(waitUntilInactive);
+                }
+            }, 100);
+        },
+        updateCss() {
+            console.log('update css');
+            this.readables.forEach(key => this[key].update());
+            this.stylesInitialized = true;
+            
             const root = document.documentElement;
             root.style.setProperty(`--alt-${this.index}-background`, this.background.value && !this.color2.endsWith(',0)') ? 1 : 0);
         	root.style.setProperty(`--alt-${this.index}-animation-time`, this.animationTime + "s");
