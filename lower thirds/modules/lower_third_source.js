@@ -105,10 +105,10 @@ const LowerThirdSource = {
         corners() {
             return this.cornersReadable.value * 0.25;
         },
-        color1() { return this.background ? this.backgroundColor1.value : 'none'; },
-        color2() { return this.background ? this.backgroundColor2.value : 'none'; },
-        color3() { return this.border ? this.bordersColor1.value : 'none'; },
-        color4() { return this.border ? this.bordersColor2.value : 'none'; },
+        color1() { return this.background.value ? this.backgroundColor1.value : 'none'; },
+        color2() { return this.background.value ? this.backgroundColor2.value : 'none'; },
+        color3() { return this.borders.value ? this.bordersColor1.value : 'none'; },
+        color4() { return this.borders.value ? this.bordersColor2.value : 'none'; },
     },
     mounted() {
         const styles = document.createElement('style');
@@ -201,11 +201,11 @@ const LowerThirdSource = {
 				root.style.setProperty(`--alt-${this.index}-shadows`, "none");
 				root.style.setProperty(`--alt-${this.index}-shadows-graph`, "none");
 			} else {
-				root.style.setProperty(`--alt-${this.index}-shadows`, "0.1rem 0.1rem 0.2rem rgba(0,0,0," + alt_1_shadow_amount + ")");
+				root.style.setProperty(`--alt-${this.index}-shadows`, `0.1rem 0.1rem 0.2rem rgba(0,0,0,${this.shadowAmount.value})`);
 				if (!this.background){
 					root.style.setProperty(`--alt-${this.index}-shadows-graph`, "none");
 				} else {
-					root.style.setProperty(`--alt-${this.index}-shadows-graph`, "0.1rem 0.1rem 0.2rem rgba(0,0,0," + alt_1_shadow_amount + ")");
+					root.style.setProperty(`--alt-${this.index}-shadows-graph`, `0.1rem 0.1rem 0.2rem rgba(0,0,0,${this.shadowAmount.value})`);
 				} 
 			}
         },

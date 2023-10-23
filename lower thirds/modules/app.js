@@ -142,7 +142,7 @@ const App = {
                 }
 
                 // one shot
-                const isOneShot = lt.customTimeSettings.value ? lt.oneShot.value : mainSettings.oneShot;
+                const isOneShot = lt.customTimeSettings.value ? lt.oneShot.value : mainSettings.oneShot.value;
                 if (lt.active && !switchStates[index] && isOneShot) {
                     lt.switchOn = false;
                     this.checkSwitches();
@@ -175,11 +175,11 @@ const App = {
                                         .map(lt => lt.animationTime.value || main.animationTime.value);
             const activeTimes = Object.values(this.$refs.lt)
                                         .map(lt => {
-                                        if (lt.customTimeSettings && lt.lockActive.value) {
+                                        if (lt.customTimeSettings.value && lt.lockActive.value) {
                                             return Infinity;
-                                        } else if (!lt.customTimeSettings && main.lockActive.value) {
+                                        } else if (!lt.customTimeSettings.value && main.lockActive.value) {
                                             return Infinity;
-                                        } else if (lt.customTimeSettings && lt.activeTime.value){
+                                        } else if (lt.customTimeSettings.value && lt.activeTime.value){
                                             return lt.activeTime.value
                                         } else {
                                             return main.activeTime.value;
@@ -187,11 +187,11 @@ const App = {
                                         });
             const inactiveTimes = Object.values(this.$refs.lt)
                                         .map(lt => {
-                                            if (lt.customTimeSettings && lt.oneShot.value) {
+                                            if (lt.customTimeSettings.value && lt.oneShot.value) {
                                                 return Infinity;
-                                            } else if (!lt.customTimeSettings && main.oneShot.value) {
+                                            } else if (!lt.customTimeSettings.value && main.oneShot.value) {
                                                 return Infinity;
-                                            } else if (lt.customTimeSettings && lt.inactiveTime.value){
+                                            } else if (lt.customTimeSettings.value && lt.inactiveTime.value){
                                                 return lt.inactiveTime.value
                                             } else {
                                                 return main.inactiveTime.value;
