@@ -23,7 +23,6 @@ const LowerThird = {
 
       slotTimeout: ref(),
       slotIsDelete: ref(Array.from({length: 10}, () => false)),
-      slotIndex: ref(-1),
 
       jscolorConfig: ref(JSCOLOR_CONFIG),
       storables: [],
@@ -34,6 +33,7 @@ const LowerThird = {
       style: [`alt2-${args.index}-style`, 1],
       autoTrigger: [`alt2-${args.index}-auto-trigger`, false],
       autoLoad: [`alt2-${args.index}-auto-load`, false],
+      slotIndex: [`alt2-${args.index}-slot-index`, -1],
       
       customTimeSettings: [`alt2-${args.index}-custom-time-settings`, false],
       animationTime: [`alt2-${args.index}-animation-time`, ''],
@@ -188,7 +188,7 @@ const LowerThird = {
     clearInputs() {
       this.name.value = '';
       this.info.value = '';
-      this.isDefaultLogo.value = true;
+      this.logoSrc.value = this.defaultLogoSrc;
       this.$emit('resetLogo');
     },
     slotHandlerDown(index) {
@@ -203,39 +203,30 @@ const LowerThird = {
       clearTimeout(this.slotTimeout);
       // store Slot
       if (!this.slotIsDelete[index] && !this.slotIsStored(index)) {
-        this.slotNames.value[index] = this.name.value;
-        this.slotInfos.value[index] = this.info.value;
-        this.slotLogos.value[index] = this.isDefaultLogo.value ? '' : this.logoSrc.value;
-        this.slotIndex = index;
+        this.storeSlot(index);
       // load Slot
       } else if (!this.slotIsDelete[index]) {
         this.loadSlot(index);
 
       // delete Slot
       } else {
-        this.slotNames.value[index] = '';
-        this.slotInfos.value[index] = '';
-        this.slotLogos.value[index] = '';
-        this.slotIsDelete[index] = false;
+        this.deleteSlot(index);
       }
       this.slotNames.update();
       this.slotInfos.update();
       this.slotLogos.update();
     },
-    slotIsActive(index) {
-      const logoVal = this.isDefaultLogo ? '' : this.logoSrc.value;
-  
-      if (this.name.value == '' || this.info.value == '') return false;
-  
-      return this.slotNames.value[index] === this.name.value &&
-             this.slotInfos.value[index] === this.info.value &&
-             this.slotLogos.value[index] === logoVal;
-    },
     slotIsStored(index) {
       return this.slotNames.value[index] !== '' || this.slotInfos.value[index] !== '';
     },
+    storeSlot(index) {
+      this.slotNames.value[index] = this.name.value;
+      this.slotInfos.value[index] = this.info.value;
+      this.slotLogos.value[index] = this.isDefaultLogo ? '' : this.logoSrc.value;
+      this.slotIndex.value = index;
+    },
     loadSlot(index) {
-      this.slotIndex = index;
+      this.slotIndex.value = index;
       this.name.value = this.slotNames.value[index];
       this.info.name = this.slotInfos.value[index];
       this.isDefaultLogo.value = this.slotLogos.value[index] == '';
@@ -255,6 +246,15 @@ const LowerThird = {
         this.$emit('slotChanged');
       }
     },
+    deleteSlot(index) {
+      this.slotNames.value[index] = '';
+      this.slotInfos.value[index] = '';
+      this.slotLogos.value[index] = '';
+      this.slotIsDelete[index] = false;
+      if (this.slotIndex.value == index) {
+        this.slotIndex.value = -1;
+      }
+    },
     slotLoadNext() {
       // if no slot was loaded and no slot is stored => do nothing
       // if no slot was loaded and no slot is active => load first stored
@@ -263,7 +263,7 @@ const LowerThird = {
       const storedSlots = Array.from({length: 10}, (v, i) => this.slotIsStored(i));
 
       // if slotIndex is -1 search for first active or stored if no active is found
-      if (this.slotIndex == -1) {
+      if (this.slotIndex.value == -1) {
         const firstActive = Array.from({length: 10}, (v, i) => this.slotIsActive(i)).indexOf(true);
         const firstStored = storedSlots.indexOf(true);
         
@@ -273,7 +273,7 @@ const LowerThird = {
           this.loadSlot(storedSlots.indexOf(true, firstActive + 1));
         }
       } else {
-        let nextSlot = storedSlots.indexOf(true, this.slotIndex + 1);
+        let nextSlot = storedSlots.indexOf(true, this.slotIndex.value + 1);
 
         if (nextSlot < 0) {
           // is >= 0 because a slot is loaded :)

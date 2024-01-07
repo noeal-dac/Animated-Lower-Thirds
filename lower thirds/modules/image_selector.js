@@ -21,12 +21,16 @@ const ImageSelector = {
       this.logoSrc = logoSrc;
       this.defaultArray = defaultArray;
       this.isDefault = isDefault;
-      this.previewSrc = isDefault ? defaultArray.value[index] : logoSrc.value[slotIndex];
+      this.previewSrc = isDefault || !logoSrc.value ? defaultArray.value[index] : logoSrc.value;
       this.oldSrc = this.previewSrc;
     },
 
     removeLogo() {
-      this.previewSrc = '';
+      if (this.defaultArray.value) {
+        this.previewSrc = this.defaultArray.value[this.index];
+      } else {
+        this.previewSrc = '';
+      }
       this.logoFile = '';
     },
 
@@ -49,6 +53,7 @@ const ImageSelector = {
 
           this.$emit('defaultChanged');
 				} else {
+          this.logoSrc.value = src;
           this.$emit('logoChanged');
 				}
       } else if (!this.isDefault && !this.previewSrc) {

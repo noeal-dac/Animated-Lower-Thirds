@@ -120,11 +120,11 @@ const App = {
                   });
         },
         updateIsDefault() {
-            const mainSettings = this.$refs.mainSettings;
-            Object.values(this.$refs.lt)
-                  .forEach((lt, index) => {
-                        lt.isDefaultLogo = lt.logoSrc.value == mainSettings.defaultLogos.value[index];
-                  });
+            // const mainSettings = this.$refs.mainSettings;
+            // Object.values(this.$refs.lt)
+            //       .forEach((lt, index) => {
+            //             lt.isDefaultLogo = lt.logoSrc.value == mainSettings.defaultLogos.value[index];
+            //       });
 
         },
         updateFonts() {
