@@ -292,20 +292,20 @@
 								<div class="grid-row">
 									<div>
 										<div class="align-toggle">
-										<input type="radio" :checked="align.value == 'left'"/>
-										<label :id="`alt-${index}-align-left`" @click="align.value = 'left'; $emit('styleChanged');"><div class="icon icon-aling-left"></div></label>
-										<input type="radio" :checked="align.value == 'center'" :disabled="style.value == 1"/>
-										<label :id="`alt-${index}-align-center`" @click="align.value = 'center'; $emit('styleChanged');"><div class="icon icon-aling-center"></div></label>
-										<input type="radio" :checked="align.value == 'right'"/>
-										<label :id="`alt-${index}-align-right`" @click="align.value = 'right'; $emit('styleChanged');"><div class="icon icon-aling-right"></div></label>
-									</div>
+											<input type="radio" :checked="align.value == 'left'"/>
+											<label :id="`alt-${index}-align-left`" @click="align.value = 'left'; $emit('styleChanged');"><div class="icon icon-aling-left"></div></label>
+											<input type="radio" :checked="align.value == 'center'" :disabled="style.value == 1 || style.value == 4"/>
+											<label :id="`alt-${index}-align-center`" @click="align.value = 'center'; $emit('styleChanged');"><div class="icon icon-aling-center"></div></label>
+											<input type="radio" :checked="align.value == 'right'"/>
+											<label :id="`alt-${index}-align-right`" @click="align.value = 'right'; $emit('styleChanged');"><div class="icon icon-aling-right"></div></label>
+										</div>
 									</div>
 									<div>
 										<div class="input-icon icon icon-paint-brush"></div>
 										<div class="number-input">
-											<input :id="`alt-${index}-style`" min="1" max="3" v-model="style.value" type="number" readonly>
+											<input :id="`alt-${index}-style`" min="1" max="4" v-model="style.value" type="number" readonly>
 											<button @click="stepDown(style, 1); restrictStyles(); $emit('styleChanged');" class="down"></button>
-											<button @click="stepUp(style, 3); restrictStyles(); $emit('styleChanged');" class="up"></button>
+											<button @click="stepUp(style, 4); restrictStyles(); $emit('styleChanged');" class="up"></button>
 										</div>
 									</div>
 									<div>
@@ -360,11 +360,11 @@
 								<div class="grid-row">
 									<div>
 										<label class="config-btn" :id="`alt-${index}-logo`">
-											<input type="checkbox" v-model="enabledLogo.value" :disabled="style.value == 2" @change="$emit('styleChanged');">
+											<input type="checkbox" v-model="enabledLogo.value" :disabled="style.value == 2 || style.value == 4" @change="$emit('styleChanged');">
 											<div class="icon-btn icon icon-image"></div>
 										</label>									
 										<div class="number-input" :id="`alt-${index}-logo-size`">
-											<input :id="`alt-${index}-logo-size`" min="-10" max="10" v-model="logoSize.value" type="number" :disabled="!enabledLogo.value || style.value == 2">
+											<input :id="`alt-${index}-logo-size`" min="-10" max="10" v-model="logoSize.value" type="number" :disabled="!enabledLogo.value || style.value == 2 || style.value == 4">
 											<button @click="stepDown(logoSize, -10)" class="down" :disabled="!enabledLogo.value"></button>
 											<button @click="stepUp(logoSize, 10)" class="up" :disabled="!enabledLogo.value"></button>
 										</div>
@@ -419,7 +419,6 @@
 											<input type="checkbox" v-model="borders.value" @change="$emit('styleChanged');">
 											<div class="icon-btn icon icon-pen"></div>
 										</label>
-										<!-- <div :id="`alt-${index}-style-border-color-appearance`" class="border-color-appearance"> -->
 										<div class="border-color-appearance">
 											<div class="tool-title" :class="{disabled: !borders.value}">Clr 3</div>
 											<input :id="`alt-${index}-style-color-3`" v-model="bordersColor1.value" @change="$emit('styleChanged');" :data-jscolor="JSON.stringify(jscolorConfig)" :disabled="!borders.value">
@@ -431,7 +430,7 @@
 							</div>					
 						</div>
 						<div class="first-edit-container">
-							<div class ="logo-container" @click="openLogo()" v-show="enabledLogo.value && style.value !== 2">
+							<div class ="logo-container" @click="openLogo()" v-show="enabledLogo.value && style.value !== 2 && style.value !== 4">
 								<img class="logo-preview" :src="resolvedLogoSrc">
 							</div>
 							<div class="textfields-container">

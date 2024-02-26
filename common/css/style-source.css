@@ -324,6 +324,72 @@ body {
 	}
 }
 
+/*****************************
+** Style 4 Animations  **
+*****************************/
+
+@keyframes animation-style4-background {
+	from {
+		opacity: 0;
+	}
+}
+
+@keyframes animation-style4-background-out {
+	to {
+		opacity: 0;
+	}
+}
+
+@keyframes animation-style4-text-1 {
+	0% {
+		bottom: -110%;
+	}
+	70% {
+		bottom: -110%;
+	}
+	100% {
+		bottom: 0;
+	}
+}
+
+@keyframes animation-style4-text-2 {
+	0% {
+		top: -110%;
+	}
+	70% {
+		top: -110%;
+	}
+	100% {
+		top: 0;
+	}
+}
+
+/* Style 4 add animations */
+
+/* Set cubic bezier for all elements */
+
+.animation-in.style-4 > .text-content {
+	animation-timing-function: cubic-bezier(1,-0.01,.45,1.01);
+}
+
+/* IN animations */
+
+.animation-in.style-4 > .text-content > div:first-child div {
+	animation-name: animation-style4-text-1;
+}
+.animation-in.style-4 > .text-content > div:nth-child(2) div {
+	animation-name: animation-style4-text-2;
+	animation-delay: 200ms;
+}
+
+/* OUT animations */
+.animation-out.style-4 > .text-content > div:first-child div {
+	animation-name: animation-style4-text-1;
+	animation-delay: 200ms;
+}
+.animation-out.style-4 > .text-content > div:nth-child(2) div {
+	animation-name: animation-style4-text-2;
+}
 
 /*Logo animation*/
 .animation-in > div:first-child img {
@@ -674,6 +740,34 @@ body {
 .animation-in.style-3.right > .text-content > div:nth-child(2) div,
 .animation-out.style-3.right > .text-content > div:nth-child(2) div {
 	animation-name: animation-style3-text-2;
+}
+
+/******Style 4*******/
+.style-4 > div.text-content > div:first-child div {
+	padding: 0.5rem 1.3rem;
+}
+.style-4 > div.text-content > div:first-child div::after {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+.style-4 > div.text-content > div:nth-child(2) div {
+	padding: 0.5rem 1.3rem;
+}
+.style-4 > div.text-content > div:nth-child(2) div::after {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+.style-4 > .graph-1,
+.style-4 > .graph-2 {
+	display: none;
 }
 
 /*********************************/

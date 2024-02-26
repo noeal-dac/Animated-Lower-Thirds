@@ -352,6 +352,43 @@ const LowerThirdSource = {
             #lower-third-${this.index}.style-3.right > .graph-2 {
                 border-radius: var(--alt-${this.index}-corners) 0 0 var(--alt-${this.index}-corners);
             }
+
+            /* style 4 */
+            #lower-third-${this.index}.animation-in.style-4 > .text-content {
+                animation-name: animation-style4-background;
+                animation-duration: var(--alt-${this.index}-animation-time);
+            }
+            #lower-third-${this.index}.animation-out.style-4 > .text-content {
+                animation-name: animation-style4-background-out;
+                animation-fill-mode: forwards;
+                animation-duration: var(--alt-${this.index}-animation-time);
+                animation-delay: 250ms;
+            }
+            lower-third-${this.index}.style-4 > div.text-content > div:first-child {
+                height: calc(var(--alt-${this.index}-name-size) + 1.2rem);
+                padding: 0 0.2rem 0 0;
+            }
+            #lower-third-${this.index}.style-4 > div.text-content > div:first-child {
+                background: var(--alt-${this.index}-style-color-1);
+                box-sizing: border-box;
+                border: solid var(--alt-${this.index}-border-thickness);
+                border-color: var(--alt-${this.index}-style-color-3);
+                border-radius: var(--alt-${this.index}-corners);
+                box-shadow: var(--alt-${this.index}-shadows-graph);
+            }
+            #lower-third-${this.index}.style-4 > div.text-content > div:nth-child(2) {
+                height: calc(var(--alt-${this.index}-info-size) + 1.2rem);
+                padding: 0 0.2rem 0 0;
+            }
+            #lower-third-${this.index}.style-4 > div.text-content > div:nth-child(2) {
+                background: var(--alt-${this.index}-style-color-2);
+                box-sizing: border-box;
+                border: solid var(--alt-${this.index}-border-thickness);
+                border-color: var(--alt-${this.index}-style-color-4);
+                border-radius: var(--alt-${this.index}-corners);
+                box-shadow: var(--alt-${this.index}-shadows-graph);
+            }
+            
             `;
         }
     }
