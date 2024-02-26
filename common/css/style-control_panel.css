@@ -61,15 +61,16 @@ body.browser-source.lower-thirds{
 }
 
 /*Main settings panel*/
-#alt-main-config-content{
+#alt-main-config-content > div {
   box-shadow: inset 0px 0px 5px 0px rgb(0 0 0 / 20%);
   border: var(--obs-panel-border);
   border-radius: var(--element-radius);
   padding: 5px;
   margin-bottom: 15px;
   transition: background 0.5s;
+  min-height: 15px;
 }
-#alt-main-config-content.active {
+#alt-main-config-content > div.active {
   box-shadow: 0px 0px 2px 0px rgb(222, 240, 255),
               0px 0px 12px 0px rgb(0,149,255);
   border-radius: 3px;
@@ -93,7 +94,7 @@ body.browser-source.lower-thirds{
 .main-icon.icon.icon-settings{
   background-color: var(--main-color);
 }
-#alt-main-config-content i.fas {
+#alt-main-config-content > div i.fas {
   margin: 0px;
 }
 
@@ -189,13 +190,11 @@ body.browser-source.lower-thirds{
   overflow: hidden;
   transition: max-height 0.2s ease-out;
 }
-#alt-1-config-content > .accordion > i.fas,
-#alt-2-config-content > .accordion > i.fas,
-#alt-3-config-content > .accordion > i.fas,
-#alt-4-config-content > .accordion > i.fas {
+[id$=-config-content] > .accordion > i.fas {
     height: 10px;
     overflow: hidden;
 }
+
 .alt-number-icon {
   float: left;
   border-radius: 3px;
@@ -246,18 +245,9 @@ body.browser-source.lower-thirds{
   content: 'Show less';
 }
 
-.hide-more {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-}
-
 /*********************/
 
-#alt-1-config-content,
-#alt-2-config-content,
-#alt-3-config-content,
-#alt-4-config-content {
+[id$=-config-content] > div {
   box-shadow: inset 0px 0px 5px 0px rgb(0 0 0 / 20%);
   border: var(--obs-panel-border);
   padding: 5px;
@@ -266,18 +256,12 @@ body.browser-source.lower-thirds{
   transition: background 0.5s;
 }
 
-#alt-1-config-content.active,
-#alt-2-config-content.active,
-#alt-3-config-content.active,
-#alt-4-config-content.active {
+[id$=-config-content] > div.active {
   box-shadow: 0px 0px 2px 0px rgb(222, 240, 255),
               0px 0px 12px 0px rgb(0,149,255);
   border-radius: 3px;
 }
-#alt-1-config-content.inactive,
-#alt-2-config-content.inactive,
-#alt-3-config-content.inactive,
-#alt-4-config-content.inactive {
+[id$=-config-content] > div.inactive {
   box-shadow: 0px 0px 2px 0px rgb(255,231,231),
               0px 0px 12px 0px rgb(255,13,13);
   border-radius: 3px;
@@ -336,50 +320,41 @@ body.browser-source.lower-thirds{
   50% { background-color: #666; border: 1px solid #666; }
 }
 
-#alt-1-name-color, #alt-1-info-color,
-#alt-2-name-color, #alt-2-info-color,
-#alt-3-name-color, #alt-3-info-color,
-#alt-4-name-color, #alt-4-info-color {
-  width: 45px;
-  height: 15px;
-  border: none;
-  border-radius: var(--element-radius);
-  padding: 3px;
+[id$=-name-color], [id$=-info-color] {
+  width: 45px !important;
+  height: 15px !important;
+  border: none !important;
+  border-radius: var(--element-radius) !important;
+  padding: 3px !important;
   float: right;
-  font-size: 9px;
+  font-size: 9px !important;
   transition: 0.1s;
   cursor: pointer;
   text-align: center;
-  margin: 4px;
+  margin: 4px !important;
 }
-#alt-1-name-color.jscolor-active, #alt-1-info-color.jscolor-active,
-#alt-2-name-color.jscolor-active, #alt-2-info-color.jscolor-active,
-#alt-3-name-color.jscolor-active, #alt-3-info-color.jscolor-active,
-#alt-4-name-color.jscolor-active, #alt-4-info-color.jscolor-active {
+[id$=-name-color].jscolor-active, [id$=-info-color].jscolor-active {
   cursor: text;
 }
-.tool-tittle.disabled {
+.tool-title.disabled {
   opacity: 0.2;
 }
-.tool-tittle.disabled + .jscolor {
+.tool-title.disabled + .jscolor {
   opacity: 0.2;
   pointer-events: none;
 }
 
-#alt-1-style-color-1, #alt-1-style-color-2, #alt-1-style-color-3, #alt-1-style-color-4,
-#alt-2-style-color-1, #alt-2-style-color-2, #alt-2-style-color-3, #alt-2-style-color-4,
-#alt-3-style-color-1, #alt-3-style-color-2, #alt-3-style-color-3, #alt-3-style-color-4,
-#alt-4-style-color-1, #alt-4-style-color-2, #alt-4-style-color-3, #alt-4-style-color-4 {
-  width: 45px;
-  height: 15px;
-  border: none;
-  border-radius: var(--element-radius);
-  padding: 3px;
-  font-size: 9px;
-  transition: 0.1s;
-  cursor: pointer;
-  text-align: center;
-  margin: 4px 4px 4px 3px;
+[id*=-style-color-] {
+  width: 45px !important;
+  height: 15px !important;
+  border: none !important;
+  border-radius: var(--element-radius) !important;
+  padding: 3px !important;
+  font-size: 9px !important;
+  transition: 0.1s !important;
+  cursor: pointer !important;
+  text-align: center !important;
+  margin: 4px 4px 4px 3px !important;
 }
 
 .clean {
@@ -451,49 +426,31 @@ body.browser-source.lower-thirds{
   color: #b46161;
 }
 
-label#alt-1-custom-times::after,
-label#alt-2-custom-times::after,
-label#alt-3-custom-times::after,
-label#alt-4-custom-times::after {
+label[id$=-custom-times]::after {
   display: none;
 }
 
-label#alt-1-custom-times,
-label#alt-2-custom-times,
-label#alt-3-custom-times,
-label#alt-4-custom-times {
+label[id$=-custom-times] {
   width: 15px;
   height: 15px;
   display: flex;
   margin: 1px!important;
 }
 
-#alt-1-custom-times + .hidable,
-#alt-2-custom-times + .hidable,
-#alt-3-custom-times + .hidable,
-#alt-4-custom-times + .hidable {
+[id$=-custom-times] + .hidable{
   margin-top: 0px;
 }
 
-label#alt-1-custom-times i.fas,
-label#alt-2-custom-times i.fas,
-label#alt-3-custom-times i.fas,
-label#alt-4-custom-times i.fas {
+label[id$=-custom-times] i.fas {
   font-size: 12px;
   font-weight: 100;
   margin: 0;
   color: #666666;
 }
-label#alt-1-custom-times.active > .icon-btn,
-label#alt-2-custom-times.active > .icon-btn,
-label#alt-3-custom-times.active > .icon-btn,
-label#alt-4-custom-times.active > .icon-btn {
+label[id$=-custom-times].active > .icon-btn {
   background-color: var(--main-color);
 }
-label#alt-1-custom-times > .icon-btn.active,
-label#alt-2-custom-times > .icon-btn.active,
-label#alt-3-custom-times > .icon-btn.active,
-label#alt-4-custom-times > .icon-btn.active {
+label[id$=-custom-times] > .icon-btn.active {
   background-color: var(--main-color);
 }
 
@@ -590,7 +547,7 @@ input:checked + .slider:before {
 	color: #d2d2d2;
 	font-size: 1em;
 }
-.panel input.disable{
+.panel input:disabled {
 	color: #828282;
 	background: #2f2f2f;
 }
@@ -613,20 +570,14 @@ input:checked + .slider:before {
 }
 
 /***********************/
-input#alt-1-name, input#alt-1-info,
-input#alt-2-name, input#alt-2-info,
-input#alt-3-name, input#alt-3-info,
-input#alt-4-name, input#alt-4-info {
+input[id$=-name], input[id$=-info] {
     float: left;
     width: calc(100% - 111px);
     margin-right: 0px;
     border-radius: 2px 0 0 2px;
     border-right: 0;
 }
-#alt-1-name-appearance, #alt-1-info-appearance,
-#alt-2-name-appearance, #alt-2-info-appearance,
-#alt-3-name-appearance, #alt-3-info-appearance,
-#alt-4-name-appearance, #alt-4-info-appearance {
+[id$=-name-appearance], [id$=-info-appearance] {
     float: right;
     background-color: var(--obs-field-background);
     border-radius: 0 var(--element-radius) var(--element-radius) 0;
@@ -637,14 +588,8 @@ input#alt-4-name, input#alt-4-info {
     width: 111px;
 }
 
-#alt-1-name-appearance > .config-btn > .icon-btn > i.fas,
-#alt-1-info-appearance > .config-btn > .icon-btn > i.fas,
-#alt-2-name-appearance > .config-btn > .icon-btn > i.fas,
-#alt-2-info-appearance > .config-btn > .icon-btn > i.fas,
-#alt-3-name-appearance > .config-btn > .icon-btn > i.fas,
-#alt-3-info-appearance > .config-btn > .icon-btn > i.fas,
-#alt-4-name-appearance > .config-btn > .icon-btn > i.fas,
-#alt-4-info-appearance > .config-btn > .icon-btn > i.fas {
+[id$=-name-appearance] > .config-btn > .icon-btn > i.fas,
+[id$=-info-appearance] > .config-btn > .icon-btn > i.fas {
     font-size: 13px;
     margin: 5px;
 }
@@ -654,20 +599,20 @@ input#alt-4-name, input#alt-4-info {
 .fill-color-appearance,
 .border-color-appearance {
     background-color: var(--obs-field-background);
-    border-radius: var(--element-radius);
-    border: var(--obs-field-border);
+    border-radius: var(--element-radius) !important;
+    border: var(--obs-field-border) !important;
     box-sizing: border-box;
-    height: 23px;
-    width: 155px;
+    height: 23px !important;
+    width: 155px !important;
     display: inline-flex;
     justify-content: flex-end;
 }
-.fill-color-appearance.disable,
-.border-color-appearance.disable {
+.fill-color-appearance:disabled,
+.border-color-appearance:disabled {
   background-color: #2f2f2f;
   color: #828282;
 }
-.tool-tittle {
+.tool-title {
     line-height: 14px;
     font-size: 9px;
     text-transform: uppercase;
@@ -675,10 +620,7 @@ input#alt-4-name, input#alt-4-info {
     margin: 4px 0px 4px 0px;
     cursor: default;
 }
-#alt-1-style-color-1 + .tool-tittle,
-#alt-2-style-color-1 + .tool-tittle,
-#alt-3-style-color-1 + .tool-tittle,
-#alt-4-style-color-1 + .tool-tittle {
+[id*=-style-color-] + .tool-title {
     margin-left: 1px;
 }
 	
@@ -813,23 +755,17 @@ input[type=number]::-webkit-outer-spin-button {
   transform: translate(-25%, -50%) rotate(-45deg);
 }
 
-.number-input input[type=number] {
+.number-input input[type="number"] {
   order: 1;
   text-align: center;
   width: 40px;
   padding-right: 12px;
 }
-.number-input input[type="number"]:disabled {
+.number-input input[type="number"]:disabled,
+.number-input button:disabled {
   background: #2f2f2f;
-
-}
-.number-input input[type="number"]:disabled + button,
-.number-input input[type="number"]:disabled + button + button {
-    background: #2f2f2f;
-    pointer-events: none;
-}
-.number-input input[type="number"]:disabled + button + button + .input-icon {
-    color: #666;
+  color: #828282;
+  pointer-events: none;
 }
 
 .input-icon {
@@ -841,12 +777,6 @@ input[type=number]::-webkit-outer-spin-button {
 .input-icon > .fas {
     font-size: 15px;
     margin: 4px;
-}
-
-/* CSS :invalid pseudo selector */
-input:invalid {
-  /* border: 1px solid;
-  border-color: red; */
 }
 
 label.config-btn {
@@ -959,10 +889,7 @@ select {
   background-color: var(--obs-field-background);
   color: #d2d2d2;
 }
-select#alt-1-font,
-select#alt-2-font,
-select#alt-3-font,
-select#alt-4-font {
+select[id$=-font] {
     width: 155px;
 }
 
@@ -1005,6 +932,8 @@ select#alt-4-font {
   background: var(--obs-background);
   box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 40%);
   transition: bottom 0.5s;
+  z-index: 100;
+  left: 8px;
 }
 
 #alt-preview > label > .icon.icon-search {
@@ -1070,7 +999,7 @@ select#alt-4-font {
 /*********************************/
 
 .sortees {
-  background: var(--obs-background);  
+  background: var(--obs-background);
 }
 
 .ui-sortable-helper {
@@ -1093,6 +1022,7 @@ select#alt-4-font {
   min-width: 230px;
   position: relative;
   top: 4px;
+  left: 4px;
 }
 .renameable input {
   display: inline-block;
@@ -1295,6 +1225,7 @@ i.alt-icon {
   align-items:center;
   justify-content:center;
   position: fixed;
+  gap: 4px;
 }
 .form-input {
   width: 240px;
@@ -1483,21 +1414,11 @@ i.alt-icon {
 .logo-container.hide {
   display: none;
 }
-#alt-1-logo-default,
-#alt-2-logo-default,
-#alt-3-logo-default,
-#alt-4-logo-default,
-#alt-1-logo-preview,
-#alt-2-logo-preview,
-#alt-3-logo-preview,
-#alt-4-logo-preview {
+.logo-default, .logo-preview {
   max-height: 100%;
   max-width: 100%;
 }
-#alt-1-logo-default,
-#alt-2-logo-default,
-#alt-3-logo-default,
-#alt-4-logo-default {
+.logo-default {
   margin-left: 1px;
 }
 
@@ -1540,4 +1461,14 @@ input.locked + .icon-btn {
 .tablinks.active {
   background: var(--obs-tab-active-background);
   border-color: var(--obs-tab-active-border);
+}
+
+#lt-btns {
+  display: flex;
+  justify-content: space-evenly;
+  color: var(--main-color);
+}
+#lt-btns div {
+ margin: 20px;
+ border: 1px solid var(--obs-tab-border);
 }
